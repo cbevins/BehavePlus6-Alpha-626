@@ -1,0 +1,134 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Fuel Model Export Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Fuel Model Export</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+
+<P>Once a custom fuel model has been saved in BehavePlus format, it can then be saved in a format that can be read by NEXUS, FlamMap, and FARSITE using <b>File -> Save as a fuel model &gt;FARSITE format, English</B> or <b>File -> Save as a fuel model &gt;FARSITE format, metric</B>. Select (click on or highlight) one or more of the fuel models in the list and press <strong>Ok</strong> to write the selected fuel models to a file. 
+
+<p><b>NOTE:</b> Before you can export a BehavePlus custom fuel model, it must be saved and attached. 
+
+<P><strong>BehavePlus format vs. FARSITE format:</strong> Custom fuel models you create and save in the BehavePlus &quot;.bpf&quot; format can be exported to the".fmd" format used by NEXUS, FlamMap, and FARSITE. Files with a ".fmd" extension cannot be used in BehavePlus, and ".bpf" files cannot be used in NEXUS, FlamMap, or FARSITE.
+    
+<P><strong>Naming convention:</strong> In the exported ".fmd" file the first field for each fuel model is the fuel model number.  This number is defined in the custom fuel model worksheet. These numbers should match the data in the landscape file used in FlamMap or FARSITE. See page 5 of Scott and Burgan's (2005) fuel model guide for available numbers. The second field is the fuel model code, which can be up to seven characters long. It is also defined in the custom fuel model worksheet.
+
+<P>Files exported in &quot;.fmd&quot; format will be saved using the following units.
+<P>
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+		<td colspan="3"><p align="center"><strong>FARSITE Export Units</strong></p></td>
+	</tr> 
+	<tr bgcolor="#CCCCCC">
+		<td width="300" valign="top"><p><strong>Fuel Model Parameter</strong></p></td>
+		<td width="101" valign="top"><p><strong>English Units</strong></p></td>
+		<td width="100" valign="top"><p><strong>Metric Units</strong></p></td>
+	</tr> 
+	<tr>
+		<td width="300" valign="top">Fuel model number</td>
+		<td colspan="2" width="101" valign="top">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Fuel model name</td>
+		<td colspan="2" width="101" valign="top">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">1-h fuel load</td>
+		<td width="101" valign="top">tons/acre</td>
+		<td width="100" valign="top">tonnes/hectare</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">10-h fuel load</td>
+		<td width="101" valign="top">tons/acre</td>
+		<td width="100" valign="top">tonnes/hectare</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">100-h fuel load</td>
+		<td width="101" valign="top">tons/acre</td>
+		<td width="100" valign="top">tonnes/hectare</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Live herbaceous fuel load</td>
+		<td width="101" valign="top">tons/acre</td>
+		<td width="100" valign="top">tonnes/hectare</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Live woody fuel load</td>
+		<td width="101" valign="top">tons/acre</td>
+		<td width="100" valign="top">tonnes/hectare</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Fuel model type</td>
+		<td colspan="2" valign="top" align="center">&quot;static&quot; or &quot;dynamic&quot;</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">1-h surface-area-to-volume ratio</td>
+		<td width="101" valign="top">ft<sup>2</sup>/ft<sup>3</sup></td>
+		<td width="100" valign="top">cm<sup>2</sup>/cm<sup>3</sup></td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Live herbaceous surface-area-to-volume ratio</td>
+		<td width="101" valign="top">ft<sup>2</sup>/ft<sup>3</sup></td>
+		<td width="100" valign="top">cm<sup>2</sup>/cm<sup>3</sup></td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Live woody surface-area-to-volume ratio</td>
+		<td width="101" valign="top">ft<sup>2</sup>/ft<sup>3</sup></td>
+		<td width="100" valign="top">cm<sup>2</sup>/cm<sup>3</sup></td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Fuel bed depth</td>
+		<td width="101" valign="top">ft</td>
+		<td width="100" valign="top">cm</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Dead fuel moisture of extinction</td>
+		<td width="101" valign="top">percent</td>
+		<td width="100" valign="top">percent</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Dead fuel heat content</td>
+		<td width="101" valign="top">Btu/lb</td>
+		<td width="100" valign="top">kJ/kg</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Live fuel heat content</td>
+		<td width="101" valign="top">Btu/lb</td>
+		<td width="100" valign="top">kJ/kg</td>
+	</tr>
+	<tr>
+		<td width="300" valign="top">Fuel model description</td>
+		<td colspan="2" width="101" valign="top">&nbsp;</td>
+	</tr>
+</table>
+
+
+<H3><FONT COLOR="#ff5500">See Also</FONT>    </H3>
+    <UL>
+      <LI><A HREF="vSurfaceFuelBedModel.html">Fuel Model</A></LI>
+      <LI><A HREF="attachFiles.html">Attach Fuel Model or Moisture Scenario Files</A></LI>
+	</UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, June 27, 2013.</FONT>
+</BODY>
+</HTML>

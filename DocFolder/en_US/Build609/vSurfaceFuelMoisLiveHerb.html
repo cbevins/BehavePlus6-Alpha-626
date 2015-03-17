@@ -1,0 +1,202 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Live Herbaceous Moisture Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Live Herbaceous Moisture</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P> Live herbaceous fuel moisture content is the portion of the live grasses and 
+  forbs that is water, calculated on a dry weight basis. This can be a very important 
+  value for <i>dynamic</i> fuel models if it is used to determine the amount of fuel that is 
+  transferred from the live herbaceous fuel load category to dead herbaceous fuel load. 
+  (Alternatively, the user can directly specify the portion of fuel load that 
+  is transferred, fuel load transfer portion.)
+<P>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC"> 
+    <td width="67" valign="top"> 
+      <p align="center"><strong>I/O</strong></p>
+    </td>
+    <td width="109" valign="top"> 
+      <p align="center"><strong>Module</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>If</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>Notes</strong></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top">Input</td>
+    <td width="109" valign="top">SURFACE</td>
+    <td width="207" valign="top">If live herbaceous fuels are in the fuel model.</td>
+    <td width="207" valign="top"><p>If the fuel model is <i>dynamic</i> and if <i>Dynamic 
+      curing load transfer is calculated from live herbaceous fuel moisture</i> 
+      is selected, the value is used to determine live and dead herbaceous load 
+      values. 
+      <p>If the <i>Fuel is entered as special case fuel model, palmetto-gallberry</i> is selected, 
+        the value is used for P-G live foliage moisture.
+    </td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top">Output</td>
+    <td width="109" valign="top">None</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<p><P>Following is a rough guideline for estimating live fuel moisture content when no other information is available.
+<p><A NAME="Table1"></a>
+  <strong>Guidelines for Estimating Live Fuel Moisture Content</strong><br>
+<TABLE border="1" cellspacing="0" cellpadding="5">
+  <TR BGCOLOR="#cccccc">
+    <TH>Moisture</TH>
+    <TH>Stage of Vegetative Development</TH>
+  </TR>
+  <TR>
+    <TD>300%</TD>
+    <TD>Fresh foliage, annuals developing, early in growing cycle</TD>
+  </TR>
+  <TR>
+    <TD>200%</TD>
+    <TD>Maturing foliage, still developing with full turgor</TD>
+  </TR>
+  <TR>
+    <TD>100%</TD>
+    <TD>Mature foliage, new growth complete and
+    comparable to older perennial foliage</TD>
+  </TR>
+  <TR>
+    <TD>50%</TD>
+    <TD>Entering dormancy, coloration starting,
+    some leaves may have dropped from the stem</TD>
+  </TR>
+  <TR>
+    <TD>30%</TD>
+    <TD>Completely cured, treat as dead fuel</TD>
+  </TR>
+</TABLE>
+<br><br><br>  
+<A NAME="Table2"></a>
+  <strong>Fuel Load Transfer for Dynamic Fuel Models</strong><br>
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr bgcolor="#CCCCCC"> 
+    <td> 
+      <p align="center"><strong>Live <br>herbaceous <br>fuel moisture </strong></p>
+    </td>
+    <td> 
+      <p align="center"><strong>Fuel load <br>transfer <br>portion </strong></p>
+    </td>
+    <td>
+      <p align="center"><strong>Curing</strong></p>
+    </td>
+  </tr>
+  <tr> 
+    <td>
+      <p>120% </p>
+    </td>
+    <td> 
+      <p>0% </p>
+    </td>
+    <td>
+	  <p>Uncured</p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p>98%</p>
+    </td>
+    <td> 
+      <p>25% </p>
+    </td>
+    <td> 
+      <p>One-quarter cured </p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p>90%</p>
+    </td>
+    <td> 
+      <p>33.3% </p>
+    </td>
+    <td> 
+      <p>One-third cured </p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p>75% </p>
+    </td>
+    <td> 
+      <p>50% </p>
+    </td>
+    <td> 
+      <p>One-half cured</p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p>60% </p>
+    </td>
+    <td> 
+      <p>66.7% </p>
+    </td>
+    <td> 
+      <p>Two-thirds cured</p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p>53% </p>
+    </td>
+    <td> 
+      <p>75% </p>
+    </td>
+    <td> 
+      <p>Three-quarters cured</p>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <p>30% </p>
+    </td>
+    <td> 
+      <p>100% </p>
+    </td>
+    <td> 
+      <p>Fully cured </p>
+    </td>
+  </tr>
+</table>
+<p>
+    <H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+    <UL>
+      <LI><A HREF="vSurfaceFuelMoisDead1.html">1-h Moisture</A></LI>
+      <LI><A HREF="vSurfaceFuelLoadDeadHerb.html">Dead Herbaceous Fuel Load</A></LI>
+      <LI><A HREF="vSurfaceFuelLoadTransferFraction.html">Fuel Load Transfer Portion</A></LI>
+      <LI><A HREF="vSurfaceFuelLoadLiveHerb.html">Live Herbaceous Fuel Load</A></LI>
+    </UL>
+<P>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

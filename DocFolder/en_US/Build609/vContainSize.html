@@ -1,0 +1,72 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Contained Area Page</TITLE>
+  </HEAD>
+  <BODY>
+<TABLE WIDTH="100%">
+	<TR>
+		<TD width="100">
+			<IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+		</TD>
+		<TD ALIGN="left" VALIGN="center">
+			<H2><FONT COLOR="#ff5500">Contained Area</FONT></H2>
+		</TD>
+	</TR>
+</TABLE>
+<HR>
+Contained area is the size of the fire enclosed by the containment line. The contained area 
+will be larger than the fire area at the time of containment when the line construction 
+offset is greater than zero. If the fire escapes because resource productivity 
+is insufficient or because all specified resources have arrived at the fire and 
+their duration times have expired, the contained area is given as -1. 
+<P>
+
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+		<td width="67" valign="top"><p align="center"><strong>I/O</strong></p></td>
+		<td width="109" valign="top"><p align="center"><strong>Module</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>If</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>Notes</strong></p></td>
+	</tr> 
+	<tr>
+		<td width="67" valign="top">Input</td>
+		<td width="109" valign="top">None</td>
+		<td width="207" valign="top">&nbsp;</td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr> 
+	<tr>
+		<td width="67" valign="top">Output</td>
+		<td width="109" valign="top">CONTAIN</td>
+		<td width="207" valign="top">&nbsp;</td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr>
+</table>
+
+<p>Contained area is illustrated in the containment diagram as the area within the line indicating the fireline constructed. <BR><BR><table><tr><td><A NAME="firelineconstructed.png"></a> 
+<IMG SRC="firelineconstructed.png" ALT="Containment Diagram showing Fireline Constructed"></td></tr></table><BR CLEAR=left> 
+<BR> 
+Contained area differs from the area output from the SIZE module. SIZE estimates 
+area of a point-source fire in the absence of suppression for the elapsed time 
+entered. The area output from SIZE is the fire size at report input to CONTAIN 
+when both modules are checked. Contained area in CONTAIN estimates the area of 
+the fire at containment resulting from suppression as indicated on the worksheet. 
+<p>
+<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+<UL>
+	<LI><A HREF="vContainStatus.html">Contain Status</A></LI>
+	<LI><A HREF="vContainDiagram.html">Containment Diagram</A></LI>
+	<LI><A HREF="vContainLine.html">Fireline Constructed</A></LI>
+	<LI><A HREF="vContainTime.html">Time from Report</A></LI>
+</UL><p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

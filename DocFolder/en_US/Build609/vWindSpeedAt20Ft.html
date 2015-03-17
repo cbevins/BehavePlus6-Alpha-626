@@ -1,0 +1,212 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus 20-Foot Wind Speed Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">20-Foot Wind Speed</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P> 20-foot wind speed is the wind value at 20 feet above the vegetation. For 
+  fire spread and intensity calculations in SURFACE, the 20-foot wind speed is 
+  reduced to the midflame wind speed. In SPOT the 20-foot wind speed is the wind 
+  that carries the embers.
+<P>If <i>Wind speed is entered as midflame height</i> is selected as an input 
+  option for SURFACE, and if either SPOT or CROWN is also selected, the initial 
+  version of the worksheet will request both midflame wind and 20-ft wind. The 
+  program then offers a choice of how to resolve the conflict.
+<P>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC"> 
+    <td width="67" valign="top"> 
+      <p align="center"><strong>I/O</strong></p>
+    </td>
+    <td width="109" valign="top"> 
+      <p align="center"><strong>Module</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>If</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>Notes</strong></p>
+    </td>
+  </tr>
+  <tr> 
+    <td rowspan="4" valign="top">Input</td>
+    <td width="109" valign="top">SURFACE</td>
+    <td width="207" valign="top">If <i>Wind speed is entered as 20-ft wind and input</i> or <i>calculated 
+    wind adjustment factor</i> is selected as an input option.</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="109" valign="top">CROWN</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="109" valign="top">SPOT</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="109" valign="top">SCORCH</td>
+    <td width="207" valign="top">If <i>Wind speed is entered as 20-ft wind and input</i> or <i>calculated wind 
+    adjustment factor</i> is selected as an input option in SURFACE.</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top">Outputs</td>
+    <td width="109" valign="top">None</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<P>
+<H3><FONT COLOR="#ff5500">Estimating Wind Speed</FONT></H3>
+The illustration and table of the Beaufort Scale below may be useful
+in estimating 20-ft windspeed.
+
+      <p><A NAME="Table1"></a>
+<B>Beaufort Scale for Estimating 20-ft Wind Speed</B><br>
+<TABLE border="1" cellspacing="0" cellpadding="2">
+  <TR bgcolor="#CCCCCC">
+    <TH>Wind Class</TH>
+    <TH>Wind Speed<BR>(mph)</TH>
+    <TH>Nomenclature</TH>
+  </TR>
+  <TR>
+    <TD>1</TD>
+    <TD>0 - 3</TD>
+    <TD><B>Very light:</B>
+        <ul><li>smoke rises nearly vertically,</li>
+        <li>leaves of quaking aspen are in constant motion,</li>
+        <li>small branches of bushes may sway,</li>
+        <li>slender branches and twigs of trees move gently,</li>
+        <li>tall grasses and weeds sway and bend with the wind,</li>
+        <li>wind vanes barely move.</li></ul>
+     </TD>
+  </TR>
+  <TR>
+    <TD>2</TD>
+    <TD>4 - 7</TD>
+    <TD><B>Light:</B>
+        <ul><li>trees of pole size in the open sway gently,</li>
+        <li>wind is felt distinctly on the face,</li>
+        <li>loose scraps of paper move,</li>
+        <li>wind flutters small flags.</li></ul>
+    </TD>
+  </TR>
+  <TR>
+    <TD>3</TD>
+    <TD>8 - 12</TD>
+    <TD><B>Gentle breeze:</B>
+        <ul><li>trees of pole size in the open sway very noticeably,</li>
+        <li>large branches of pole size trees in the open toss,</li>
+        <li>tops of trees in dense stands sway,</li>
+        <li>wind extends small flags,</li>
+        <li>a few crested waves form on lakes.</li></ul>
+    </TD>
+  </TR>
+  <TR>
+    <TD>4</TD>
+    <TD>13 - 18</TD>
+    <TD><B>Moderate breeze:</B>
+        <ul><li>trees of pole size in the open sway violently,</li>
+        <li>whole trees in dense stands sway noticeably,</li>
+        <li>dust is raised on the road.</li></ul>
+    </TD>
+  </TR>
+  <TR>
+    <TD>5</TD>
+    <TD>19 - 24</TD>
+    <TD><B>Fresh:</B>
+        <ul><li>branches are broken from trees,</li>
+        <li>inconvenience is felt in walking against the wind.</li></ul>
+    </TD>
+  </TR>
+  <TR>
+    <TD>6</TD>
+    <TD>25 - 31</TD>
+    <TD><B>Strong:</B>
+        <ul><li>tree damage increases with occasional breaking
+          of exposed tops and branches,</li>
+        <li>progress impeded when walking against the wind,</li>
+        <li>light structural damage to buildings.</li></ul>
+    </TD>
+  </TR>
+  <TR>
+    <TD>7</TD>
+    <TD>32 - 38</TD>
+    <TD><B>Moderate gale:</B>
+        <ul><li>severe damage to tree tops,</li>
+        <li>very difficult to walk into the wind,</li>
+        <li>significant structural damage occurs.</li></ul>
+    </TD>
+  </TR>
+  <TR>
+    <TD>8</TD>
+    <TD>38 +</TD>
+    <TD><B>Fresh gale:</B>
+        <ul><li>surfaced strong Santa Ana,</li>
+        <li>intense stress on all exposed objects, vegetation, and buildings,</li>
+        <li>canopy offers virtually no protection,</li>
+        <li>wind flow is systematic in disturbing everything in its path.</li></ul>
+    </TD>
+  </TR>
+</TABLE>
+
+<P>
+<table>
+	<tr>
+		<td><A NAME="beaufort1.png"></a>
+	      <IMG SRC="beaufort1.png" ALT="Beaufort Scale for Estimating 20-ft Wind Speed from 0 to 7 m.p.h.">
+		 </td>
+	</tr>
+	<tr>
+		<td><A NAME="beaufort2.png"></a>
+      		<IMG SRC="beaufort2.png" ALT="Beaufort Scale for Estimating 20-ft Wind Speed from 8 to 38 m.p.h.">
+		</td>
+	</tr>
+</table>
+
+<P>
+<table>
+  	<tr>
+    	<td><A NAME="Crown_20ftWind_Transition.png"></a><IMG SRC="Crown_20ftWind_Transition.png" ALT="Crown Module Data Flow, Transition - 20-ft Wind Speed">
+        </td>
+    </tr>
+    <tr>
+    	<td><font size="1">&nbsp;</font></td>
+    </tr>
+	<tr>
+    	<td><A NAME="Crown_20ftWind_Power.png"></a><IMG SRC="Crown_20ftWind_Power.png" ALT="Crown Module Data Flow, Power Ratio - 20-ft Wind Speed">
+        </td>
+    </tr>
+</table> 
+<p>
+<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+    <UL>
+      <LI><A HREF="vWindSpeedAt10M.html">10-Meter Wind Speed</A></LI>
+      <LI><A HREF="vWindSpeedAtMidflame.html">Midflame Wind Speed</A></LI>
+      <LI><A HREF="vWindAdjFactor.html">Wind Adjustment Factor</A></LI>
+    </UL>
+<P>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

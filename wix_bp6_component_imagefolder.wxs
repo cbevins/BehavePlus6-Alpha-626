@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment Id="Bp6_ComponentGroup_ImageFolder_Fragment">
+
+    <ComponentGroup Id="Bp6_ComponentGroup_ImageFolder">
+      <Component Id="cmp47DD73E3416E068D62541C875300CE3C" Directory="ImageFolder" Guid="{E50B38E2-3F44-4E07-8766-38023B02E1A2}">
+        <File Id="fil3DBEBE97CE081416813B000E15C2BEEF" KeyPath="yes" Source="ImageFolder\AfterHours.png" />
+      </Component>
+      <Component Id="cmpBD798F53739545E9652228BD67C4F746" Directory="ImageFolder" Guid="{9DF39E58-5150-41D3-879B-BEF3E666F00C}">
+        <File Id="filC4409B7150A4FD84FAC3D94A914A46D1" KeyPath="yes" Source="ImageFolder\ArmchairSafari.png" />
+      </Component>
+      <Component Id="cmp2477DE0CDEBDD7BB5DFB710965F53350" Directory="ImageFolder" Guid="{8DAE54CC-A897-4BEA-B914-AA06F42BB86C}">
+        <File Id="filDD655BD651547A5E49991CCF8A65AC3A" KeyPath="yes" Source="ImageFolder\Ascension.png" />
+      </Component>
+      <Component Id="cmp32D71877AD294E865CDBFE72385DF0A9" Directory="ImageFolder" Guid="{1C1A3A67-5D42-460F-BAB8-C0B048F9C6D9}">
+        <File Id="fil52AB6CB2C9EA864E90F1F26CC55A2DA0" KeyPath="yes" Source="ImageFolder\BearsDen.png" />
+      </Component>
+      <Component Id="cmp5A2F3036945E0B4690B56DAEC988CA54" Directory="ImageFolder" Guid="{2639EC7B-97E8-462F-86A5-057357A72069}">
+        <File Id="fil4FDD6B002D55CDC815E641CC2C96F865" KeyPath="yes" Source="ImageFolder\BlackfootClearwater1.png" />
+      </Component>
+      <Component Id="cmpD8BFFFDB9EFECCA95D00633F0FEF8BCD" Directory="ImageFolder" Guid="{92D40F60-C068-4440-971C-99CC65EA28C1}">
+        <File Id="fil098DD8DB3FD289A236BA36C89E73484C" KeyPath="yes" Source="ImageFolder\BlackfootClearwater2.png" />
+      </Component>
+      <Component Id="cmpC2227C56741C73D54802EFD0354130FA" Directory="ImageFolder" Guid="{634C801F-F455-4567-BE31-E21C3656DCC8}">
+        <File Id="filC11764D2D35B5061404FDB8849C76053" KeyPath="yes" Source="ImageFolder\BlackfootRiver.png" />
+      </Component>
+      <Component Id="cmpFC009B7D2147F9E157D7955FFF6D1CB4" Directory="ImageFolder" Guid="{33265FF1-6B2E-448F-8EFA-7BC43944A59B}">
+        <File Id="fil7056812F6CF14739E6D6610D314B07EF" KeyPath="yes" Source="ImageFolder\BlueWolf1.png" />
+      </Component>
+      <Component Id="cmp398F6AE8B4655657E7D7980AE1AE87D3" Directory="ImageFolder" Guid="{295B46DD-BF4E-41C4-8587-6284841FFCF3}">
+        <File Id="fil0FAE1A980A0CE6A555810C195C754B98" KeyPath="yes" Source="ImageFolder\BlueWolf2.png" />
+      </Component>
+      <Component Id="cmp216CFCAC1193FAF7CDC8A9830E8CF391" Directory="ImageFolder" Guid="{FA45725E-24DB-4AE2-BB67-455CE09F345D}">
+        <File Id="fil086BE07BB16E515525F18DDBDFA207D9" KeyPath="yes" Source="ImageFolder\BrightIdea.png" />
+      </Component>
+      <Component Id="cmp34C0BE0001E1682421D148DB0D23C634" Directory="ImageFolder" Guid="{271F7235-6DA0-49A7-980F-4DB53AA22EB4}">
+        <File Id="fil8C5817DF0D734EDDD4EE7274A7E0166A" KeyPath="yes" Source="ImageFolder\CabinFever.png" />
+      </Component>
+      <Component Id="cmpBDA321EB82D2A04B35A18963C7A8247F" Directory="ImageFolder" Guid="{3A6ADD4B-9EEA-468F-9942-02834E9701B0}">
+        <File Id="filFCF13FACF787B92E4CE43B193E38DA51" KeyPath="yes" Source="ImageFolder\CliffSwallows.png" />
+      </Component>
+      <Component Id="cmp4A50577006D2887A6E5E6100175DBFCF" Directory="ImageFolder" Guid="{4AC1C006-F4A2-440B-A7B6-2BDE93F4C542}">
+        <File Id="fil782C5290EF55E93045CB0625BF6AC46D" KeyPath="yes" Source="ImageFolder\DancingCranes.png" />
+      </Component>
+      <Component Id="cmpFADCBA5DA1537AF2911745BA083E465B" Directory="ImageFolder" Guid="{2AD8E533-EF48-4A89-8B4B-998126326CF4}">
+        <File Id="fil4156DDA2E28961F2B92161650C0A5C47" KeyPath="yes" Source="ImageFolder\EastMeetsWest.png" />
+      </Component>
+      <Component Id="cmp7897DDE69857F109F3E6A7C1CD168C01" Directory="ImageFolder" Guid="{BFD79930-7425-4BE2-B30C-1A7CF66B16FF}">
+        <File Id="fil19E483DAE14826E772E799A99E0ADA5A" KeyPath="yes" Source="ImageFolder\EveningInTheBob1.png" />
+      </Component>
+      <Component Id="cmpD744AA157FE5243838969A64B5139D4B" Directory="ImageFolder" Guid="{8C634D81-DAB7-4B1B-A8A5-28FCD5C66228}">
+        <File Id="fil215E54DA8D5375CE95BFDD625EC031C5" KeyPath="yes" Source="ImageFolder\EveningInTheBob2.png" />
+      </Component>
+      <Component Id="cmp1B402CA2AE8B1C489F5F0BAF5AFE4594" Directory="ImageFolder" Guid="{142773F9-B277-4BAA-9BF4-FF5A00CA4B02}">
+        <File Id="fil8F243A8753E7E3FD280E9D6B000A46F5" KeyPath="yes" Source="ImageFolder\EveningInTheBob3.png" />
+      </Component>
+      <Component Id="cmp83A6A3B57B4D62B7E1113FDB188AF208" Directory="ImageFolder" Guid="{F0812FB8-B9E3-49B2-839E-89E525A59179}">
+        <File Id="filF6936773A51674F88145A4D50084DFFF" KeyPath="yes" Source="ImageFolder\EveningRise.png" />
+      </Component>
+      <Component Id="cmpF97440E81C4CD3056B9DFDCB2DB5E0A9" Directory="ImageFolder" Guid="{9B5E954E-DF0B-489B-8257-2AAC263CE8ED}">
+        <File Id="filE4CC85A726D8C4977C748670DCBB896A" KeyPath="yes" Source="ImageFolder\FirewiseCommunities1.png" />
+      </Component>
+      <Component Id="cmp2B2FA45E21A8F100AB088CB0BB563715" Directory="ImageFolder" Guid="{41D54492-F04E-471C-AD18-BADB19E0EB3C}">
+        <File Id="fil70EB4824326586AE5C13334B4015C137" KeyPath="yes" Source="ImageFolder\FishingTheYellowstone.png" />
+      </Component>
+      <Component Id="cmp4ADD58EFED7B883F6D17FF6A7EF90BCC" Directory="ImageFolder" Guid="{84842AFF-CBA0-4613-9620-AAB81A29A7C1}">
+        <File Id="filCD0D8AE60F9C6AF29707E46DB8BA6EDE" KeyPath="yes" Source="ImageFolder\FlatheadLake1.png" />
+      </Component>
+      <Component Id="cmpBF7E7FC16B405394CA18FE82ACEB1C0C" Directory="ImageFolder" Guid="{E50239B1-12BA-4EA5-89D2-45C286045090}">
+        <File Id="fil08DB2AE7B3345919F8888782DCC842AC" KeyPath="yes" Source="ImageFolder\FlatheadLake2.png" />
+      </Component>
+      <Component Id="cmp039214732C002789366E98CE162D3272" Directory="ImageFolder" Guid="{95AA2B9A-5D4D-482B-888B-45FDC6BBA64B}">
+        <File Id="fil323A81CA4A2929960E4DB15C13DF41C5" KeyPath="yes" Source="ImageFolder\FlatheadLake3.png" />
+      </Component>
+      <Component Id="cmpF5A0E1B02EB47F6FFC5464A8CA2BCAC6" Directory="ImageFolder" Guid="{1A2233E8-AE9F-4DF2-834A-F4DFC5B4F403}">
+        <File Id="fil65E071FB2C6D618270618265BED9C9E3" KeyPath="yes" Source="ImageFolder\ForestServiceHistory.png" />
+      </Component>
+      <Component Id="cmp1F4CBA1DC781D57D0D30811EC872ACD5" Directory="ImageFolder" Guid="{27B75D2E-D88E-4E0D-8C49-97A303724757}">
+        <File Id="filB1918EEFFBFDDFC46BCDDB847978D1EF" KeyPath="yes" Source="ImageFolder\Garnet.png" />
+      </Component>
+      <Component Id="cmp234066067588096EF520899D3E11E875" Directory="ImageFolder" Guid="{6C66D916-9F94-433E-B4CA-14D742A67EFD}">
+        <File Id="fil61D75DF12C25B2A84F1D32136141CC03" KeyPath="yes" Source="ImageFolder\GhostRiders.png" />
+      </Component>
+      <Component Id="cmp46F1461781F15B8D3088D05E0EC74DC5" Directory="ImageFolder" Guid="{DAC8E9C7-FE90-47A8-90AA-17D5C8EBCA4B}">
+        <File Id="filCEC87A642D2D1A5F99707CA5EB00E98E" KeyPath="yes" Source="ImageFolder\GlacierPark.png" />
+      </Component>
+      <Component Id="cmp3FC124DFC70D46239B9501E5141DF3AF" Directory="ImageFolder" Guid="{F3A76A80-FE76-42A9-BF6A-E0328D8419D3}">
+        <File Id="filAFB2BB88B5AF78B718C9316AB38E563C" KeyPath="yes" Source="ImageFolder\GoingToTheSun.png" />
+      </Component>
+      <Component Id="cmp53168CAB8EE6303BF911EBC39D0767E2" Directory="ImageFolder" Guid="{C7768139-A71B-4B97-A0F5-13444DE1D150}">
+        <File Id="fil45BE8FA180ED17F6C158E87D603390BE" KeyPath="yes" Source="ImageFolder\HarvestBread.png" />
+      </Component>
+      <Component Id="cmpD81E1CF129A34437DDA9B5CBADC999F5" Directory="ImageFolder" Guid="{BC9248CA-C4EC-48C8-A4D9-2378054C664F}">
+        <File Id="fil55922C4911969B881817E395D9824E6C" KeyPath="yes" Source="ImageFolder\Hatrack.png" />
+      </Component>
+      <Component Id="cmp28464EE269D48C3C382CDBA88500535D" Directory="ImageFolder" Guid="{ED8BFE04-0061-41E7-948B-02995490ADEB}">
+        <File Id="filDC4A883FCA64F3088C07C4C0ED14BECA" KeyPath="yes" Source="ImageFolder\HomeOnTheReef.png" />
+      </Component>
+      <Component Id="cmp1A112DD46373D9646A3B9C8743287682" Directory="ImageFolder" Guid="{2E404B76-4ED2-40D4-B10A-4E2315994BD6}">
+        <File Id="fil3D2DC22433ECF8CBE18FBD14116B3C1E" KeyPath="yes" Source="ImageFolder\KitchenPreserve.png" />
+      </Component>
+      <Component Id="cmp1E107A2348D6E39F5A2DB30044546C63" Directory="ImageFolder" Guid="{4E802C7B-5C27-437E-B7EC-B902EEAC6385}">
+        <File Id="fil4E7471C346D706FA641F6592E261854E" KeyPath="yes" Source="ImageFolder\LandscapesOfTheMind.png" />
+      </Component>
+      <Component Id="cmpAF5EBE223EEA013682FAD3ECCC688C86" Directory="ImageFolder" Guid="{FCF46A81-2232-4903-96BF-01E46AFCD087}">
+        <File Id="fil70B888299871FFEBC69E45E4A115B86B" KeyPath="yes" Source="ImageFolder\LeaveItToBeavers1.png" />
+      </Component>
+      <Component Id="cmpAF554A82ECD632E4D93AA5AB90B214FC" Directory="ImageFolder" Guid="{42BAF7AB-40B2-4C6F-8293-954B121070A3}">
+        <File Id="fil9B7F46E82750187937441BB26FB0D93D" KeyPath="yes" Source="ImageFolder\LeaveItToBeavers2.png" />
+      </Component>
+      <Component Id="cmp80C37840E2441E3F081492E029AC4304" Directory="ImageFolder" Guid="{00DEA094-9C6D-45A9-B7CF-0DFDFA5F004B}">
+        <File Id="fil5FB147DEADA3E058F736031C8D3BD3E5" KeyPath="yes" Source="ImageFolder\LongEaredOwl.png" />
+      </Component>
+      <Component Id="cmpCC537B2AF8EF22F871B9DD36107A5345" Directory="ImageFolder" Guid="{C4DA6632-8090-440C-B8EB-37C95E1B293A}">
+        <File Id="filFC5D2101570E807382554FB89288A195" KeyPath="yes" Source="ImageFolder\LoonsOfTheSwanValley.png" />
+      </Component>
+      <Component Id="cmp3542188FEC4953FBF65924FAF9DA7095" Directory="ImageFolder" Guid="{5F6F277C-953C-47F6-BFEB-65726F200872}">
+        <File Id="filBEBF4FCCFBCBC408767183516BF5624F" KeyPath="yes" Source="ImageFolder\Magpie.png" />
+      </Component>
+      <Component Id="cmpF71068CA8F750142BAA993182B156115" Directory="ImageFolder" Guid="{26D8822B-7C69-461D-B76F-83867FFCC141}">
+        <File Id="filD2AE51BCA7140380B20352F600C38E28" KeyPath="yes" Source="ImageFolder\Mirage1.png" />
+      </Component>
+      <Component Id="cmpE962195D4F74E99032E4CF3AC164349B" Directory="ImageFolder" Guid="{3F6A2492-F8B1-45C2-9ECD-42181F219404}">
+        <File Id="filD25A52933670E737122D551D6F14FB91" KeyPath="yes" Source="ImageFolder\Mirage2.png" />
+      </Component>
+      <Component Id="cmpD739D41D29E6BE39A2DF91A9AED2CBF5" Directory="ImageFolder" Guid="{17E22F60-05C5-45A3-A59D-5A324EC0AAF8}">
+        <File Id="fil9A13171E9FA0F34673F99094803A6F34" KeyPath="yes" Source="ImageFolder\MontanaHistoryLesson.png" />
+      </Component>
+      <Component Id="cmp63DED8DB606A7A82629F9530BA6BF9A0" Directory="ImageFolder" Guid="{10667358-AA5E-4EAE-8133-B18842F9D266}">
+        <File Id="fil09F1F09E6E478B7B93E04AC170924F4B" KeyPath="yes" Source="ImageFolder\MontanasPineButteSwamp1.png" />
+      </Component>
+      <Component Id="cmp6D44F1FD7E2534FE8B25125440A9366A" Directory="ImageFolder" Guid="{98E73077-2B87-4B03-84BF-5B810213D20D}">
+        <File Id="fil02033A5D6D8CC5BE68D79DFAF1408BDC" KeyPath="yes" Source="ImageFolder\MontanasPineButteSwamp2.png" />
+      </Component>
+      <Component Id="cmp1987D9CB3D19CA95B66789CFA55EFB9D" Directory="ImageFolder" Guid="{7B375B83-4668-4057-ADA3-47D9E0EB5DE7}">
+        <File Id="fil504AE99C01D18E1F0D157FDD85756537" KeyPath="yes" Source="ImageFolder\NorthernLights.png" />
+      </Component>
+      <Component Id="cmp6079962BB90EE6E67B4E2A966E665E0D" Directory="ImageFolder" Guid="{CB2B56A4-CE6B-455C-B606-8792CD07C065}">
+        <File Id="filC41FE4171E74D455FA3E445EA2BFEDD5" KeyPath="yes" Source="ImageFolder\Oktoberfest.png" />
+      </Component>
+      <Component Id="cmp86466C0B9C8DDF7E589449E5B1C32741" Directory="ImageFolder" Guid="{D3F491C1-2519-4856-BC17-FEE7A239AC0B}">
+        <File Id="filDBCB264762E9DE3272B2D7FA78C356C1" KeyPath="yes" Source="ImageFolder\PileatedWoodpecker.png" />
+      </Component>
+      <Component Id="cmpE35B5BC118D47D2FAC2701825E9E7ADB" Directory="ImageFolder" Guid="{136F6A44-F829-44F0-A8BF-15FE66CD0D83}">
+        <File Id="filE63900A6F52E029CDA8AA35BEC700F0E" KeyPath="yes" Source="ImageFolder\RacingTheStorm.png" />
+      </Component>
+      <Component Id="cmp5D5D742015EA4B5BBEFE6FB66242221C" Directory="ImageFolder" Guid="{7E6E9772-396F-430E-925F-1278725988C4}">
+        <File Id="filB2588EECA9C93F5D50883B22F29999E6" KeyPath="yes" Source="ImageFolder\Refridgeraiders.png" />
+      </Component>
+      <Component Id="cmp76D29567A617EDAB8EDC79721B98E011" Directory="ImageFolder" Guid="{8F028FDF-3AB9-4EC3-AE32-A41DFD9AE129}">
+        <File Id="filA4D69F6FFF30B1C9479A9DC4B72F4F6C" KeyPath="yes" Source="ImageFolder\RestoringAmericasForests1.png" />
+      </Component>
+      <Component Id="cmp36289690F13697311F2A92B9B00332FD" Directory="ImageFolder" Guid="{E39DB0AF-D9A7-49EC-9AA1-849339A5D5B6}">
+        <File Id="filD8A1E135DC86CCBB5D2C76519409FC3D" KeyPath="yes" Source="ImageFolder\RestoringAmericasForests2.png" />
+      </Component>
+      <Component Id="cmpE8275B049937D3B605C12441955D4C3E" Directory="ImageFolder" Guid="{97AA709F-B59D-43A1-9958-D03319BCE0C7}">
+        <File Id="fil6D339D8BA2ADFA01A58CEF7804E95840" KeyPath="yes" Source="ImageFolder\RestoringAmericasForests3.png" />
+      </Component>
+      <Component Id="cmp37EB1BD0CD09C574F40A7B676C4DBA9F" Directory="ImageFolder" Guid="{2C9DAADF-D0E3-4CF3-B02F-584FB5398282}">
+        <File Id="fil0067AA14356DC63328DBF13D9B691877" KeyPath="yes" Source="ImageFolder\RestoringAmericasForests4.png" />
+      </Component>
+      <Component Id="cmpA2A9F5DDAD6E75884F31635C57D2CE07" Directory="ImageFolder" Guid="{89676995-43A2-42F8-BEB0-BC1A0E7B28DB}">
+        <File Id="fil541BA941C25BEF03A6DBCA2DEDFCCD04" KeyPath="yes" Source="ImageFolder\RestoringAmericasForests5.png" />
+      </Component>
+      <Component Id="cmp44C65F741B6B7C96C3D35580D166150E" Directory="ImageFolder" Guid="{3BAEF2A2-7053-4B0F-B819-F1E2538FEEDF}">
+        <File Id="fil0156D2A39211D9805BC61A1AB29ED5ED" KeyPath="yes" Source="ImageFolder\RestoringOurPrairieGrasslands1.png" />
+      </Component>
+      <Component Id="cmp3CD7D93C1FFF1847282315FAD7F6C568" Directory="ImageFolder" Guid="{A518F2E6-FE7E-41C9-9CF9-5585DAE39632}">
+        <File Id="filE743DF7DF8CEC03FF8DFA0C9D0B13FE7" KeyPath="yes" Source="ImageFolder\RestoringOurPrairieGrasslands2.png" />
+      </Component>
+      <Component Id="cmp13911F535996E36B5ECA81C5B3D87079" Directory="ImageFolder" Guid="{6773A8F6-597A-4AB0-B813-86676F78A5B2}">
+        <File Id="fil7434E9B8B5A1F4AC832E828EC2EDF344" KeyPath="yes" Source="ImageFolder\RestoringOurPrairieGrasslands3.png" />
+      </Component>
+      <Component Id="cmpD5F47DEB2B8A7C8A709E3F3F0B8DFC15" Directory="ImageFolder" Guid="{4153A83F-91D7-4BC7-AB24-962ABFB173D6}">
+        <File Id="fil1C71825E3440EFEEF3F18617801A4317" KeyPath="yes" Source="ImageFolder\RestoringTheWolf.png" />
+      </Component>
+      <Component Id="cmp6A8E1F6930474406A5FC692D550CE21D" Directory="ImageFolder" Guid="{2966E1CA-49C8-47C0-ABAF-35EBE16F0CF5}">
+        <File Id="filA17C57957BC08602276B556CB61C26D7" KeyPath="yes" Source="ImageFolder\Resurrection.png" />
+      </Component>
+      <Component Id="cmp71929262722DB3DB982A4409EBA20F60" Directory="ImageFolder" Guid="{EBF03DA0-298C-4BC2-9452-056EBD767FC3}">
+        <File Id="filD4FB75D8C44F7459CD7D963E8EECE12A" KeyPath="yes" Source="ImageFolder\ReturnOfLakeMissoula1.png" />
+      </Component>
+      <Component Id="cmpC9D109B5DC9B09916270F7A326F53A47" Directory="ImageFolder" Guid="{88ADD455-17A8-43D1-A32F-2B966AD49B86}">
+        <File Id="fil225200825FE6A19FC880686CA9BF72FF" KeyPath="yes" Source="ImageFolder\ReturnOfLakeMissoula2.png" />
+      </Component>
+      <Component Id="cmpB9F195DF34649798560789A9FE275419" Directory="ImageFolder" Guid="{C355AF11-45A9-4FFB-899C-08204C2543EE}">
+        <File Id="filDC2EA93553850E442B7103A89AEBB0F9" KeyPath="yes" Source="ImageFolder\Ripple.png" />
+      </Component>
+      <Component Id="cmpFFCF8F644CEB8CDF9A3C4DD1C7F0E12C" Directory="ImageFolder" Guid="{DD0D1A42-1EF1-4C4F-9241-F1FB591342C4}">
+        <File Id="fil8D02662A2A9D0E1455357FA96AE4C323" KeyPath="yes" Source="ImageFolder\RockCreek.png" />
+      </Component>
+      <Component Id="cmp8DB58FF871655806B6035467829F9268" Directory="ImageFolder" Guid="{B3FAE0BC-ED67-43E0-BF44-591818676228}">
+        <File Id="filD87850070FF09B066DC9A38AA598F1F8" KeyPath="yes" Source="ImageFolder\RockCreek2000.png" />
+      </Component>
+      <Component Id="cmpBEDD9806AEBB2617A165682AFAC7B3B1" Directory="ImageFolder" Guid="{A6FE5906-59EB-4406-9734-202937A2C551}">
+        <File Id="filC2A1984133F8E5E23555DFBFD98E0D9B" KeyPath="yes" Source="ImageFolder\SnowballInHell.png" />
+      </Component>
+      <Component Id="cmp8A83C43F1F7CBD35B8607482FA0615CF" Directory="ImageFolder" Guid="{701C21EE-6E8A-405B-A61E-7A1124CB9CF0}">
+        <File Id="fil560C7564D913822A06F59E1B9828BAAF" KeyPath="yes" Source="ImageFolder\StealingFire.png" />
+      </Component>
+      <Component Id="cmp59191D34272CCBBE434B729A6360E020" Directory="ImageFolder" Guid="{8705AADD-A2A0-40B2-9183-0B47481789F3}">
+        <File Id="filE271B98F2D56FB453C48FEFC4C0D6F71" KeyPath="yes" Source="ImageFolder\SunsetOnNinepipes.png" />
+      </Component>
+      <Component Id="cmp697874AC36482B4FE280F1B0C75BF5B9" Directory="ImageFolder" Guid="{920786F8-88DF-4073-A6FC-40CDC4F35767}">
+        <File Id="fil3DC5EC9612191E496882BA6DF8EBFB01" KeyPath="yes" Source="ImageFolder\TellerWildlifeRefuge1.png" />
+      </Component>
+      <Component Id="cmp134062293904C91D94D61892874AF46C" Directory="ImageFolder" Guid="{345739C6-7246-4EB2-9041-1C07F469AD58}">
+        <File Id="fil70EB69A67998EFA9EAB2454AFBC8BC91" KeyPath="yes" Source="ImageFolder\TellerWildlifeRefuge2.png" />
+      </Component>
+      <Component Id="cmp022549A8BC4111C830E5C441FADE684D" Directory="ImageFolder" Guid="{C22C9E1C-9310-4B67-884D-147182F71E25}">
+        <File Id="filC827A97AF9FA86458B356FC1FDB5A040" KeyPath="yes" Source="ImageFolder\TellerWildlifeRefuge3.png" />
+      </Component>
+      <Component Id="cmpFBCC8ED02625BAA2E274F9715770A3BA" Directory="ImageFolder" Guid="{EE790A36-ED00-4341-B546-E4B68C530A74}">
+        <File Id="fil0756F8E23944F25E1A1268F025F718E1" KeyPath="yes" Source="ImageFolder\TieOneOn.png" />
+      </Component>
+      <Component Id="cmp78EEB285AED98C9B3C247003A85D6A9A" Directory="ImageFolder" Guid="{26966ABA-6C1C-44AD-A87F-E7E30399CCE0}">
+        <File Id="filF5E2D5C604106960FB508A1DE4753420" KeyPath="yes" Source="ImageFolder\WatchableWildlife.png" />
+      </Component>
+      <Component Id="cmp0D88BDE74E1206A4A2FEB63525A369AD" Directory="ImageFolder" Guid="{E6E321BA-F6A5-4AB8-B804-F19164CEB39C}">
+        <File Id="filCAAC4B2FBA4D24324329DE265D66B11D" KeyPath="yes" Source="ImageFolder\WatershedPreservation.png" />
+      </Component>
+      <Component Id="cmpC4055FA4A3DE65E7DCA5B15617D99509" Directory="ImageFolder" Guid="{F6530D31-B983-4545-98F4-914855B6A096}">
+        <File Id="fil8AE95439322D157207DF36CC6E69F9A7" KeyPath="yes" Source="ImageFolder\WesternTanagers.png" />
+      </Component>
+      <Component Id="cmpA819AC547419E45570EEDA96EECC686E" Directory="ImageFolder" Guid="{73BCCCD6-8C62-4F00-801B-B0857AB44D4B}">
+        <File Id="fil877BC5967BBE26BF1B904D48B232766B" KeyPath="yes" Source="ImageFolder\WhiteCliffsOfTheMissouri1.png" />
+      </Component>
+      <Component Id="cmpA5D6490A3D49DCF6698BF10C73D63B7C" Directory="ImageFolder" Guid="{C683CB6E-E849-4902-974C-8220C18C0FBA}">
+        <File Id="fil9A6372AD3266FF98C1B48CEE21A0251C" KeyPath="yes" Source="ImageFolder\WhiteCliffsOfTheMissouri2.png" />
+      </Component>
+      <Component Id="cmp0DBCE7606BC401A77DABA75FBA7EC8A8" Directory="ImageFolder" Guid="{47FBC269-5A34-4CF6-A23E-E2DB60498B0C}">
+        <File Id="filA989FAED33B21DBF019B897CA036BFB0" KeyPath="yes" Source="ImageFolder\Wildfire.png" />
+      </Component>
+      <Component Id="cmp6F00379A1689D9906719EEF243EDDDFC" Directory="ImageFolder" Guid="{1BEC90CD-4B03-42CA-BFDF-0D94550B8C57}">
+        <File Id="filE04CD02AA479A17F0A4BA50A51B3DA75" KeyPath="yes" Source="ImageFolder\Wildfire1.png" />
+      </Component>
+      <Component Id="cmp3CA06AA749FBAE8C50A2AC696286E612" Directory="ImageFolder" Guid="{40B6CE68-B73D-49F9-8DE9-89D05F883576}">
+        <File Id="fil302DB68EC7BC9EFBD7CC0E83C75C9E79" KeyPath="yes" Source="ImageFolder\Wildfire2.png" />
+      </Component>
+      <Component Id="cmpC44C058255B3099A74488F25D8F9ECEC" Directory="ImageFolder" Guid="{9914A197-1C11-4848-BD7D-B970FFD95470}">
+        <File Id="fil8ECE6DA48CF45252E173B93F41340F1F" KeyPath="yes" Source="ImageFolder\Wildfire3.png" />
+      </Component>
+      <Component Id="cmp1D9667FA1816F860EA5B5111E9B5CC84" Directory="ImageFolder" Guid="{BA658EE6-2112-4BF7-A936-9C60D0F0A38A}">
+        <File Id="fil8E9F488B60DE99DCF7F932B644FB5C2D" KeyPath="yes" Source="ImageFolder\Wildfire4.png" />
+      </Component>
+      <Component Id="cmp9515747E3F4C37FD762304FB296BC4C2" Directory="ImageFolder" Guid="{D756B259-1823-47E4-950E-0BF070905CCE}">
+        <File Id="filF21A7517E817717C6BCBED0B772BD4FD" KeyPath="yes" Source="ImageFolder\WildfiresOf2000.png" />
+      </Component>
+      <Component Id="cmpCAAED0F7569684F42B91FDC21DF88834" Directory="ImageFolder" Guid="{D8EF7F69-94B5-4641-8A78-AFB5D5E6885D}">
+        <File Id="fil680E6CEA3B6943F9498F56832E5FAE68" KeyPath="yes" Source="ImageFolder\WildflowersWildSkies.png" />
+      </Component>
+      <Component Id="cmp66494EE10CABE00DBCD1A4B1E79EB1D2" Directory="ImageFolder" Guid="{BC234F3B-2F51-4D35-BA4E-0CF2D754AC53}">
+        <File Id="fil06588ED3583D870EAAB30D06759CFDDB" KeyPath="yes" Source="ImageFolder\Yellowbells.png" />
+      </Component>
+      <Component Id="cmpDFBE1968AEBD736BE3F7D96D2ECC173E" Directory="ImageFolder" Guid="{67C371A9-CAE5-4BF5-8DAD-316E45F08C3B}">
+        <File Id="filFDA9DB6CB17F7771E815A1DFDC584C44" KeyPath="yes" Source="ImageFolder\YellowstoneMagic1.png" />
+      </Component>
+      <Component Id="cmpFAB12F360E115A59D5105643D44F5018" Directory="ImageFolder" Guid="{F3E031D7-9567-4284-8C4F-A9A7DFAF05AB}">
+        <File Id="filD4A7328681CAF311AA733A8641F0E5A8" KeyPath="yes" Source="ImageFolder\YellowstoneMagic2.png" />
+      </Component>
+      <Component Id="cmpCFAD11B6E6C67B7EC2FC1573DF80492E" Directory="ImageFolder" Guid="{01627933-30AE-4306-ADF0-1D016DEC18E4}">
+        <File Id="fil9B391DDE51C92D0D0EBD5E6A0218EAE2" KeyPath="yes" Source="ImageFolder\ZooCity1.png" />
+      </Component>
+      <Component Id="cmpA836D8668B0633828BED3A81C5E2D9AB" Directory="ImageFolder" Guid="{2D8B28D7-2377-4841-B62F-6E492C27AE19}">
+        <File Id="fil0BDFE63056340B527F9C43621F640517" KeyPath="yes" Source="ImageFolder\ZooCity2.png" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Component Id="cmpB6D261A6AD264e859ABA0C900BC79B5B}" Directory="Html" Guid="{5D8B430A-9AF2-46ac-8DE8-C1F779F243A6}">
+  <File Id="fil2A281FCB23774ec38424BF58F64959BD" KeyPath="yes" Source="DocFolder\en_US\Html\fireShape.png" />
+</Component>
+<Component Id="cmpEAA7BF9E951B4b74B965AEBA4A8769ED" Directory="Html" Guid="{EE6DB7B5-3840-4e2a-B6C9-0A7C2D5D287E}">
+  <File Id="filA4E846A596D1416492DB53358CB0C0D5" KeyPath="yes" Source="DocFolder\en_US\Html\fuelModelTable.html" />
+</Component>
+<Component Id="cmpB9A7412D5D684047AC91DF7251FC66C" Directory="Html" Guid="{45E93834-C27D-4653-98F3-2001B4AA641A}">
+  <File Id="filA4C8A6D211324f9f81A8295442C131AE" KeyPath="yes" Source="DocFolder\en_US\Html\spreadBackingOnly.png" />
+</Component>
+<Component Id="cmp331E6395EB5D4263B9D2317CF3FFA6CB" Directory="Html" Guid="{39BC6A27-C278-4cbe-8E0E-CABE9482E6D9}">
+  <File Id="fil6C45D881A91849d68537A49B087B7E94" KeyPath="yes" Source="DocFolder\en_US\Html\spreadFireFront.png" />
+</Component>
+<Component Id="cmp78782FBF86814867B23A4A98A452B9F0" Directory="Html" Guid="{FE8703FC-1EB1-4379-8D6F-D6485DC5318C}">
+  <File Id="filA0EA0E05314741e9B2C5601748C749FB" KeyPath="yes" Source="DocFolder\en_US\Html\spreadFireFrontFarsite.png" />
+</Component>
+<Component Id="cmp1EDB6FC9B405447dA4D43EA373F2F83C" Directory="Html" Guid="{1F18698E-7441-4552-A58C-0B00910D5681}">
+  <File Id="filD86DB64E35DF4687B9E0ACE37CBA1A44" KeyPath="yes" Source="DocFolder\en_US\Html\spreadFireFrontFL.png" />
+</Component>
+<Component Id="cmp42CFF2DE5FCF43519EF1DE447F445A7D" Directory="Html" Guid="{4E6170E2-3A0B-4ee4-89DF-43BA311FDCED}">
+  <File Id="filB3B0747723DF48f4ACAF2540C42B8BFC" KeyPath="yes" Source="DocFolder\en_US\Html\spreadFlankingOnly.png" />
+</Component>
+<Component Id="cmpEE81672DF28547e2830FD71FCE2B9664" Directory="Html" Guid="{D0D1AD84-47E8-466f-BED0-2FB96E9E93A5}">
+  <File Id="fil85247792843E4112ABAE4FB29CC06637" KeyPath="yes" Source="DocFolder\en_US\Html\spreadHeadingOnly.png" />
+</Component>
+<Component Id="cmpD914948BB7BF4077B65D1A4719CE7871" Directory="Html" Guid="{6D68A2EB-3034-48f0-81B9-C5A121C526E2}">
+  <File Id="filEE4CB4F8759E481f89D0D465E2765172" KeyPath="yes" Source="DocFolder\en_US\Html\spreadIgnitionPoint.png" />
+</Component>
+<Component Id="cmp55C5B0AE7D654b3aA8247BEE3F816885" Directory="Html" Guid="{0BF675BB-5065-47a9-A59A-3646B3BBE42E}">
+  <File Id="fil9EB478AD39CC4257A91C4C62FFAEC4E1" KeyPath="yes" Source="DocFolder\en_US\Html\spreadIgnitionPointFireFront.png" />
+</Component>
+<Component Id="cmp9A059BDBBBAE42809DD59077E5F2E4FD" Directory="Html" Guid="{888164D2-A2ED-4b98-A882-4681A23E6C6B}">
+  <File Id="fil2119662D85824f779D69FEC409897F76" KeyPath="yes" Source="DocFolder\en_US\Html\spreadIgnitionPointFL.png" />
+</Component>
+<Component Id="cmp93BE32E3401D4bd0888E388E3AE9E65A" Directory="Html" Guid="{C4E1367E-4849-4d7c-8BF8-DA44B60E5ED4}">
+  <File Id="fil04A808451ECA41ad8547B616D871AA02" KeyPath="yes" Source="DocFolder\en_US\Html\spreadIgnitionPointFLV5.png" />
+</Component>
+<Component Id="cmp710D8EED2F29424484B5FA63F68D9AB9" Directory="Html" Guid="{C4E1367E-4849-4d7c-8BF8-DA44B60E5ED4}">
+  <File Id="fil786E569876D74b7e8515C340B22E8009" KeyPath="yes" Source="DocFolder\en_US\Html\spreadIgnitionPointV5.png" />
+</Component>
+<Component Id="cmp805796CE65AA48c9AFBEC1CDAE73E186" Directory="Html" Guid="{D9E437A1-7275-4e0a-8333-E3135092D5A9}">
+  <File Id="fil54E53462CCF34f5aB4ACBB5301AA2A34" KeyPath="yes" Source="DocFolder\en_US\Html\windSlopeFireDir.png" />
+</Component>

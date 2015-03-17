@@ -1,0 +1,1133 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Fine Dead Fuel Moisture Tables Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Fine Dead Fuel Moisture Tables</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+
+<P>The fine dead fuel moisture calculation is based on the tables in <I>How to predict the spread and intensity of forest and range fires</I> (Rothermel 1983).  Only the daytime tables are provided, and there is no conversion to metric units.
+
+<P>This tool is included in BehavePlus only for completeness because the tables are used in the field by Fire Behavior Analysts.  They are not based on equations, so they are not readily linked with other modules in BehavePlus.
+
+<P>Fine dead fuel moisture values can be used for 1-h and 10-h fuel moisture.
+
+<P>You may save the current dialog values in an HTML file by pressing the Export button.  A file selection dialog allows you to save the contents in a new or existing file.
+
+<p>Fine dead fuel moisture content is the sum of a <I>reference fuel moisture</I> and a <I>moisture correction</I>.
+<P>
+The <I>reference fuel moisture</I> is a function of the dry bulb temperature and relative humidity, which are determined for the period of time in question either by measurement or forecast.  The site location may or may not be at the projection point.
+<P>
+The daytime fuel <I>moisture correction</I> value is a function of month, time of day, elevation difference, slope steepness, aspect, and shading. The dependence on month limits use of the tables to the mid-latitudes of the northern hemisphere.
+
+<P><I>Time of day</I> is the expected time when the projection point is used to estimate fire behavior; it is the same as that for the temperature and relative humidity estimates.
+
+<P><I>Elevation difference</I> is the difference between the projection point and the temperature/RH reference locations.  If the projection point is <strong>more than 2000 ft</strong> above or below the temperature/RH reference site, you will need to get a new forecast or reading.
+
+<P><I>Slope steepness</I> and <I>aspect</I> are for the projection point location.
+
+<P><I>Shading</I> indicates whether or not the fine dead fuels at the projection point are exposed to solar radiation.  Shading can be due to cloud cover, topography, and/or canopy cover. 
+
+<P><I>Description</I> is optional description text that is included in the exported HTML file.
+
+<P>The original tables from Rothermel 1983 are reproduced below:
+<blockquote> 
+  Rothermel, R. C. 1983. How to Predict the Spread and Intensity of Forest and Range Fires. USDA Forest Service General Technical Report INT-143. Ogden, UT. 168 pages.
+</blockquote>
+
+<p>
+<A NAME="Table1"></a><B>Table 1. Reference Fuel Moisture (Day Time 0800 - 1959)</B><br>
+<TABLE border="1" cellspacing="0" cellpadding="3">
+  <TR bgcolor="#CCCCCC">
+    <TD COLSPAN=22 ALIGN="center">
+    <strong>Relative Humidity (percent)</strong>    </TD>
+  <TR>
+  <TR>
+    <TD>Dry Bulb<BR>Temperature<BR>(<sup>o</sup>F)</TD>
+    <TD>0<BR>to<BR>4</TD>
+    <TD>5<BR>to<BR>9</TD>
+    <TD>10<BR>to<BR>14</TD>
+    <TD>15<BR>to<BR>19</TD>
+    <TD>20<BR>to<BR>24</TD>
+    <TD>25<BR>to<BR>29</TD>
+    <TD>30<BR>to<BR>34</TD>
+    <TD>35<BR>to<BR>39</TD>
+    <TD>40<BR>to<BR>44</TD>
+    <TD>45<BR>to<BR>49</TD>
+    <TD>50<BR>to<BR>54</TD>
+    <TD>55<BR>to<BR>59</TD>
+    <TD>60<BR>to<BR>64</TD>
+    <TD>65<BR>to<BR>69</TD>
+    <TD>70<BR>to<BR>74</TD>
+    <TD>75<BR>to<BR>79</TD>
+    <TD>80<BR>to<BR>84</TD>
+    <TD>85<BR>to<BR>89</TD>
+    <TD>90<BR>to<BR>94</TD>
+    <TD>95<BR>to<BR>99</TD>
+    <TD>1<BR>0<BR>0</TD>
+  </TR>
+  <TR>
+    <TD>10 - 29</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>7</TD>
+    <TD>8</TD>
+    <TD>8</TD>
+    <TD>8</TD>
+    <TD>9</TD>
+    <TD>9</TD>
+    <TD>10</TD>
+    <TD>11</TD>
+    <TD>12</TD>
+    <TD>12</TD>
+    <TD>13</TD>
+    <TD>13</TD>
+    <TD>14</TD>
+  </TR>
+  <TR>
+    <TD>30 - 49</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>7</TD>
+    <TD>7</TD>
+    <TD>7</TD>
+    <TD>8</TD>
+    <TD>9</TD>
+    <TD>9</TD>
+    <TD>10</TD>
+    <TD>10</TD>
+    <TD>11</TD>
+    <TD>12</TD>
+    <TD>13</TD>
+    <TD>13</TD>
+    <TD>13</TD>
+  </TR>
+  <TR>
+    <TD>50 - 69</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>6</TD>
+    <TD>7</TD>
+    <TD>7</TD>
+    <TD>8</TD>
+    <TD>8</TD>
+    <TD>9</TD>
+    <TD>9</TD>
+    <TD>10</TD>
+    <TD>11</TD>
+    <TD>12</TD>
+    <TD>12</TD>
+    <TD>12</TD>
+    <TD>13</TD>
+  </TR>
+  <TR>
+    <TD>70 - 89</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>7</TD>
+    <TD>7</TD>
+    <TD>8</TD>
+    <TD>8</TD>
+    <TD>8</TD>
+    <TD>9</TD>
+    <TD>10</TD>
+    <TD>10</TD>
+    <TD>11</TD>
+    <TD>12</TD>
+    <TD>12</TD>
+    <TD>13</TD>
+  </TR>
+  <TR>
+    <TD>90 - 109</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>7</TD>
+    <TD>7</TD>
+    <TD>8</TD>
+    <TD>8</TD>
+    <TD>8</TD>
+    <TD>9</TD>
+    <TD>10</TD>
+    <TD>10</TD>
+    <TD>11</TD>
+    <TD>12</TD>
+    <TD>12</TD>
+    <TD>13</TD>
+  </TR>
+  <TR>
+    <TD>110+</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>7</TD>
+    <TD>7</TD>
+    <TD>8</TD>
+    <TD>8</TD>
+    <TD>8</TD>
+    <TD>9</TD>
+    <TD>10</TD>
+    <TD>10</TD>
+    <TD>11</TD>
+    <TD>12</TD>
+    <TD>12</TD>
+    <TD>12</TD>
+  </TR>
+</TABLE>
+<br>
+<HR><p><A NAME="Table2"></a><B>Table 2. Dead Fuel Moisture Content Corrections (May Jun Jul)</B><br>
+<TABLE border="1" cellspacing="0" cellpadding="3">
+  <TR bgcolor="#CCCCCC">
+    <TD COLSPAN=20 ALIGN="center"><strong>
+        Exposed - less than 50% shading of surface fuels
+    </strong></TD>
+  <TR>
+  <TR bgcolor="#CCCCCC">
+    <TD COLSPAN=2 ALIGN="center">Terrain</TD>
+    <TD COLSPAN=3>0800 - 1000</TD>
+    <TD COLSPAN=3>1000 - 1200</TD>
+    <TD COLSPAN=3>1200 - 1400</TD>
+    <TD COLSPAN=3>1400 - 1600</TD>
+    <TD COLSPAN=3>1600 - 1800</TD>
+    <TD COLSPAN=3>1800 - 2000</TD>
+  </TR>
+  <TR>
+    <TD>Aspect</TD>
+    <TD>Slope</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+  </TR>
+  <TR>
+    <TD>North</TD>
+    <TD>&le; 30%</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+  </TR>
+  <TR>
+    <TD>North</TD>
+    <TD>&ge; 31%</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+  </TR>
+  <TR>
+    <TD>East</TD>
+    <TD>&le;  30%</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+  </TR>
+  <TR>
+    <TD>East</TD>
+    <TD>&ge; 31%</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>South</TD>
+    <TD>&le;  30%</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+  </TR>
+  <TR>
+    <TD>South</TD>
+    <TD>&ge; 31%</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+  </TR>
+  <TR>
+    <TD>West</TD>
+    <TD>&le;  30%</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+  </TR>
+  <TR>
+    <TD>West</TD>
+    <TD>&ge; 31%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+  </TR>
+  <TR bgcolor="#CCCCCC">
+    <TD COLSPAN=20 ALIGN="center"><strong>Shaded - greater than or equal to 50% shading of surface fuels</strong></TD>
+  <TR>
+  <TR>
+    <TD>North</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>5</TD>
+  </TR>
+  <TR>
+    <TD>East</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>South</TD>
+    <TD>&ge; 0% </TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>5</TD>
+  </TR>
+  <TR>
+    <TD>West</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+  </TR>
+</TABLE>
+<strong>Note:</strong><BR>
+B = 1000 - 2000 ft below site<BR>
+L = within 1000 ft of site elevation<BR>
+A = 1000 - 2000 ft above site<BR>
+<br><hr>
+<p>
+<A NAME="Table3"></a><B>Table 3. Dead Fuel Moisture Content Corrections (Feb Mar Apr / Aug Sep Oct)</B><br>
+<TABLE border="1" cellspacing="0" cellpadding="3">
+  <TR bgcolor="#CCCCCC">
+    <TD COLSPAN=20 ALIGN="center">
+    <strong>Exposed - less than 50% shading of surface fuels    </strong></TD>
+  </TR>
+  <TR bgcolor="#CCCCCC">
+    <TD COLSPAN=2 ALIGN="center">Terrain</TD>
+    <TD COLSPAN=3>0800 - 1000</TD>
+    <TD COLSPAN=3>1000 - 1200</TD>
+    <TD COLSPAN=3>1200 - 1400</TD>
+    <TD COLSPAN=3>1400 - 1600</TD>
+    <TD COLSPAN=3>1600 - 1800</TD>
+    <TD COLSPAN=3>1800 - 2000</TD>
+  </TR>
+  <TR>
+    <TD>Aspect</TD>
+    <TD>Slope</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+  </TR>
+  <TR>
+    <TD>North</TD>
+    <TD>&le; 30%</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+  </TR>
+  <TR>
+    <TD height="30">North</TD>
+    <TD>&ge; 31%</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+  </TR>
+  <TR>
+    <TD>East</TD>
+    <TD>&le; 30%</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+  </TR>
+  <TR>
+    <TD>East</TD>
+    <TD>&ge; 31%</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>South</TD>
+    <TD>&le; 30%</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+  </TR>
+  <TR>
+    <TD>South</TD>
+    <TD>&ge; 31%</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>0</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+  </TR>
+  <TR>
+    <TD>West</TD>
+    <TD>&le; 30%</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+  </TR>
+  <TR>
+    <TD>West</TD>
+    <TD>&ge; 31%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+  </TR>
+  <TR>
+    <TD COLSPAN=20 ALIGN="center" bgcolor="#CCCCCC"><strong>Shaded - greater than or equal to 50% shading of surface fuels</strong></TD>
+  <TR>
+  <TR>
+    <TD>North</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>East</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>South</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>West</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+</TABLE>
+<strong>Note:</strong><BR>
+B = 1000 - 2000 ft below site<BR>
+L = within 1000 ft of site elevation<BR>
+A = 1000 - 2000 ft above site<BR>
+<br><hr>
+<p>
+<A NAME="Table4"></a><B>Table 4. Dead Fuel Moisture Content Corrections (Nov Dec Jan)</B><br>
+<TABLE border="1" cellspacing="0" cellpadding="3">
+  <TR bgcolor="#CCCCCC">
+    <TD COLSPAN=20 ALIGN="center">
+    <strong>Exposed - less than 50% shading of surface fuels</strong></TD>
+  </TR>
+  <TR bgcolor="#CCCCCC">
+    <TD COLSPAN=2 ALIGN="center">Terrain</TD>
+    <TD COLSPAN=3>0800 - 1000</TD>
+    <TD COLSPAN=3>1000 - 1200</TD>
+    <TD COLSPAN=3>1200 - 1400</TD>
+    <TD COLSPAN=3>1400 - 1600</TD>
+    <TD COLSPAN=3>1600 - 1800</TD>
+    <TD COLSPAN=3>1800 - 2000</TD>
+  </TR>
+  <TR>
+    <TD>Aspect</TD>
+    <TD>Slope</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+    <TD>B</TD><TD>L</TD><TD>A</TD>
+  </TR>
+  <TR>
+    <TD>North</TD>
+    <TD>&le; 30%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>North</TD>
+    <TD>&ge; 31%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>East</TD>
+    <TD>&le; 30%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>East</TD>
+    <TD>&ge; 31%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>South</TD>
+    <TD>&le; 30%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>South</TD>
+    <TD>&ge; 31%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>1</TD>
+    <TD>1</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>West</TD>
+    <TD>&le; 30%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>West</TD>
+    <TD>&ge; 31%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>2</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>2</TD>
+    <TD>3</TD>
+    <TD>4</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR bgcolor="#CCCCCC">
+    <TD COLSPAN=20 ALIGN="center">
+    <strong>Shaded - greater than or equal to 50% shading of surface fuels</strong></TD>
+  <TR>
+  <TR>
+    <TD>North</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>East</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>South</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+  <TR>
+    <TD>West</TD>
+    <TD>&ge; 0%</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+    <TD>4</TD>
+    <TD>5</TD>
+    <TD>6</TD>
+  </TR>
+</TABLE>
+<strong>Note:</strong><BR>
+B = 1000 - 2000 ft below site<BR>
+L = within 1000 ft of site elevation<BR>
+A = 1000 - 2000 ft above site<BR>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

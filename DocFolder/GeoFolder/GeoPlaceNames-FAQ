@@ -1,0 +1,159 @@
+------------------------------------------
+BehavePlus Geographic Place Name Files FAQ
+------------------------------------------
+
+0.  Contents
+	1.  What are BehavePlus geographic place name files?
+	2.  What geographic place name files are available?
+	3.  What other data sets are available?
+	4.  What is the format of the geographic place name files?
+	5.  What is the "Special.geo" file.
+
+
+1.  What are BehavePlus geographic place name files?
+
+BehavePlus includes a Sun-Moon Calendar Tool that determines
+the date and time of seasonal and daily astronomical events
+for a specified location on the planet.  The calendar (invoked
+from the "Tools->Sun-moon calendar" menu option) depends upon
+precise geographic coordinates to determine sun and moon rise-
+set and civil dawn-dusk with about 1 minute accuracy (assuming
+an unobstructed view to the horizon).  The times are in
+agreement with those published by the US Naval Observatory.
+
+BehavePlus uses Geographic Place Name files (*.geo) to assign
+geographic coordinates to named locations on the planet.  Any
+file within the <INSTALLDIR>/DocFolder/GeoFolder directory with
+a ".geo" file extension is assumed to be a BehavePlus
+Geographic Place Name file and will automatically appear in the
+Calendar's Location Browse list.
+
+
+2.  What geographic place name files are available?
+
+BehavePlus is distributed with only 2 example geographic place
+name file; Montana.geo and Special.geo.
+
+Additional *.geo files for all 50 U.S. states, the District of
+Columbia, the Caribbean, and Oceania are packaged in the
+USGeoPlaces.exe setup program available from www.fire.org.
+
+Simply download and execute this file, being sure to specify the
+same installation directory as you did for BehavePlus, and the
+place name files will be installed in the appropriate folder and
+should appear in the Calendar's Location->Browse list.
+
+The files contain data for over 40,000 U.S. geographic names
+compiled from the USGS "U.S. Concise File" of major physical and
+cultural features in the U.S. and its territories.  The data
+sets are available from www.nmd-usgs.gov/www/gnis.
+
+
+3.  What other data sets are available?
+
+None.  But you are certainly invited to compile a geographic
+place name file for your country, state, province, etc. and
+share it with the rest of us!  One place to start looking for
+existing data is the USGS web site mentioned above, other
+geographic place name server sites, or simply by searching
+the world wide web.
+
+You can compile a file by country or by state/province.  You
+probably don't want a file with more than a few thousand names.
+
+Compile the data using the format described below.  When
+completed, be sure to let me know so we can share it with
+others via the www.fire.org web site.
+
+
+4.  What is the format of the geographic place name files?
+
+Geographic place name files are simple ASCII text files with
+one line per geographic location.  The record format is:
+
+Beg  End  Len  Description
+  1   50   50  Place name
+ 51   51    1  Blank
+ 52   60    9  Type (see below)
+ 61   61    1  Blank
+ 62   92   31  County, district
+ 93   93    1  Blank
+ 94  109   16  State, province
+110  110     1 Blank
+111  117    7  Latitude in "DDMMSSH" format where
+                   DD - degrees (pad with leading zeros)
+				   MM - minutes (pad with leading zeros)
+				   SS - seconds (pad with leading zeros)
+				   H - hemisphere "N" or "S" of equator
+118  125    8  Longitude in "DDDMMSSH" format where
+                   DDD - degrees (pad with leading zeros)
+				   MM - minutes (pad with leading zeros)
+				   SS - seconds (pad with leading zeros)
+				   H - hemisphere "W" or "E" of Greenwich Merid
+126  126    1  Blank
+127  131    5  Elevation (ft)
+                   Currently this is simply informational and
+				   is not used in any computations.  But since
+				   this could change in the future, if you wish
+				   to use meters, please append an "m" to the
+				   value; e.g. "1234m".
+132  133    2  Blank
+134  136    3  Standard time difference (hours) from Greenwich
+                   Mean Time.  Locations east of GMT generally
+				   have a negative value.
+
+
+Type names 9and their frequency of ocurrence) used by USGS are
+listed below, but you can always add your own.
+
+area (25)
+arroyo (11)
+bar (16)
+basin (43)
+bay (397)
+beach (2)
+bench (9)
+canal (15)
+cape (518)
+cemetery (1)
+channel (102)
+civil (3170)
+cliff (27)
+crater (4)
+dam (28)
+falls (20)
+flat (62)
+forest (177)
+gap (32)
+glacier (94)
+gut (4)
+harbor (17)
+island (574)
+lake (660)
+locale (27)
+other (1)
+park (535)
+pillar (3)
+plain (63)
+ppl (28542)
+range (709)
+reserve (207)
+reservoir (799)
+ridge (255)
+sea (10)
+stream (1861)
+summit (1077)
+swamp (42)
+trail (1)
+valley (144)
+woods (1)
+
+
+6.  What is the "Special.geo" file.
+
+Its just a small file of selected, often-used place names.  You
+can manually add your own locations to this file or copy them
+from one of the other files.
+
+
+End of FAQ.

@@ -1,0 +1,658 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Begin Header Template -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" >
+    <meta name="Author" content="BehavePlus6">
+    <title>Subhead HTML Export Test</title>
+    <style>
+      h3.bp2 { background-color: #9999ff; }
+      h3.bp2subhead { background-color: #ccccff; }
+      p.bp2  { background-color: #ffffff; }
+      td.bp2input { background-color: #cccccc; }
+      td.bp2masked { background-color: #ccccff; }
+      td.bp2hdr { background-color: #ccccff; }
+      td.bp2row0 { background-color: #ffffff; }
+      td.bp2row1 { background-color: #cccccc; }
+      td.bp2row0in { background-color: #ffffff; color: black }
+      td.bp2row1in { background-color: #cccccc; color: black }
+      td.bp2row0out { background-color: #ffffff; color: red }
+      td.bp2row1out { background-color: #cccccc; color: red }
+      span.bp2grp { font-weight: bold; color: #0000ff }
+    </style>
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td width="90" rowspan="2">
+        </td>
+        <td colspan="2" align="center" class="bp2input">
+          BehavePlus 6.0.0 (Build 609)
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <b>Subhead HTML Export Test</b><br />Head fire<br />Mon, Nov 18, 2013 at 12:57:40
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+<!-- End Header Template -->
+
+<!-- Begin Input Worksheet -->
+<p class="bp2">
+  <h3 class="bp2">Input Worksheet</h3>
+  <table cellspacing="2" cellpadding="5" border="0" width="100%">
+    <tr>
+      <td align="left" colspan="4">
+        <span class="bp2grp">Inputs: SURFACE</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="left" colspan="2">Input Variables</td>
+      <td class="bp2hdr" align="right">Units</td>
+      <td class="bp2hdr" align="left">Input Value(s)</td>
+    </tr>
+  <tr>
+    <td align="left" colspan="4">
+      <span class="bp2grp">Fuel/Vegetation, Surface/Understory</span>
+    </td>
+  </tr>
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td align="left" valign="top">Fuel Model</td>
+    <td align="right" valign="top">&nbsp;</td>
+    <td class="bp2input" align="left">1</td>
+  </tr>
+  <tr>
+    <td align="left" colspan="4">
+      <span class="bp2grp">Fuel Moisture</span>
+    </td>
+  </tr>
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td align="left" valign="top">1-h Moisture</td>
+    <td align="right" valign="top">%</td>
+    <td class="bp2input" align="left">2 4 6 8 10</td>
+  </tr>
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td align="left" valign="top">10-h Moisture</td>
+    <td align="right" valign="top">%</td>
+    <td class="bp2masked" align="left"></td>
+  </tr>
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td align="left" valign="top">100-h Moisture</td>
+    <td align="right" valign="top">%</td>
+    <td class="bp2masked" align="left"></td>
+  </tr>
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td align="left" valign="top">Live Herbaceous Moisture</td>
+    <td align="right" valign="top">%</td>
+    <td class="bp2masked" align="left"></td>
+  </tr>
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td align="left" valign="top">Live Woody Moisture</td>
+    <td align="right" valign="top">%</td>
+    <td class="bp2masked" align="left"></td>
+  </tr>
+  <tr>
+    <td align="left" colspan="4">
+      <span class="bp2grp">Weather</span>
+    </td>
+  </tr>
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td align="left" valign="top">Midflame Wind Speed (upslope)</td>
+    <td align="right" valign="top">mi/h</td>
+    <td class="bp2input" align="left">0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</td>
+  </tr>
+  <tr>
+    <td align="left" colspan="4">
+      <span class="bp2grp">Terrain</span>
+    </td>
+  </tr>
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td align="left" valign="top">Slope Steepness</td>
+    <td align="right" valign="top">%</td>
+    <td class="bp2input" align="left">0</td>
+  </tr>
+  <tr>
+    <td align="left" colspan="4">
+      <span class="bp2grp">Notes</span>
+    </td>
+  </tr>
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td align="left" colspan="3"></td>
+  </tr>
+  </table>
+</p>
+<!-- End Input Worksheet -->
+
+<!-- Begin Run Options -->
+<h3 class="bp2">Run Option Notes</h3>
+<p class="bp2">
+  <table cellspacing="2" cellpadding="5" border="0" width="100%">
+<tr><td>Maximum reliable effective wind speed limit IS imposed [SURFACE].</td></tr><tr><td>Fire spread is in the HEADING direction only [SURFACE].</td></tr><tr><td>Wind is blowing upslope [SURFACE].</td></tr><tr><td>Wind and spread directions are degrees clockwise from upslope [SURFACE].</td></tr><tr><td>Direction of the wind vector is the direction the wind is pushing the fire [SURFACE].</td></tr>  </table>
+</p>
+<!-- End Input Worksheet -->
+
+<!-- Begin 2-Way Output Table for Surface Rate of Spread -->
+<p class="bp2">
+  <h3 class="bp2subhead"><b>Head fire</b></h3>
+  <h3 class="bp2">Results for: Surface Rate of Spread (ch/h)</h3>
+  <table cellpadding="5" cellspacing="2" border="0">
+    <tr>
+      <td class="bp2hdr" align="center">
+        1-h
+      </td>
+      <td class="bp2hdr" colspan="11" align="center">
+        Midflame Wind Speed (upslope)
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        Moisture
+      </td>
+      <td class="bp2hdr" colspan="11" align="center">
+        mi/h
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        %
+      </td>
+      <td class="bp2hdr" align="center">
+         0
+      </td>
+      <td class="bp2hdr" align="center">
+         1
+      </td>
+      <td class="bp2hdr" align="center">
+         2
+      </td>
+      <td class="bp2hdr" align="center">
+         3
+      </td>
+      <td class="bp2hdr" align="center">
+         4
+      </td>
+      <td class="bp2hdr" align="center">
+         5
+      </td>
+      <td class="bp2hdr" align="center">
+         6
+      </td>
+      <td class="bp2hdr" align="center">
+         7
+      </td>
+      <td class="bp2hdr" align="center">
+         8
+      </td>
+      <td class="bp2hdr" align="center">
+         9
+      </td>
+      <td class="bp2hdr" align="center">
+         10
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        2
+      </td>
+      <td  class="bp2row0" align="center">
+        6.2
+      </td>
+      <td  class="bp2row0" align="center">
+        11.0
+      </td>
+      <td  class="bp2row0" align="center">
+        26.3
+      </td>
+      <td  class="bp2row0" align="center">
+        52.6
+      </td>
+      <td  class="bp2row0" align="center">
+        90.4
+      </td>
+      <td  class="bp2row0" align="center">
+        139.8
+      </td>
+      <td  class="bp2row0" align="center">
+        201.1
+      </td>
+      <td  class="bp2row0" align="center">
+        274.4
+      </td>
+      <td  class="bp2row0" align="center">
+        359.8
+      </td>
+      <td  class="bp2row0" align="center">
+        457.5
+      </td>
+      <td  class="bp2row0" align="center">
+        567.5
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        4
+      </td>
+      <td  class="bp2row1" align="center">
+        4.8
+      </td>
+      <td  class="bp2row1" align="center">
+        8.4
+      </td>
+      <td  class="bp2row1" align="center">
+        20.1
+      </td>
+      <td  class="bp2row1" align="center">
+        40.2
+      </td>
+      <td  class="bp2row1" align="center">
+        69.1
+      </td>
+      <td  class="bp2row1" align="center">
+        106.9
+      </td>
+      <td  class="bp2row1" align="center">
+        153.7
+      </td>
+      <td  class="bp2row1" align="center">
+        209.8
+      </td>
+      <td  class="bp2row1" align="center">
+        275.1
+      </td>
+      <td  class="bp2row1" align="center">
+        345.1
+      </td>
+      <td  class="bp2row1" align="center">
+        345.1
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        6
+      </td>
+      <td  class="bp2row0" align="center">
+        4.2
+      </td>
+      <td  class="bp2row0" align="center">
+        7.4
+      </td>
+      <td  class="bp2row0" align="center">
+        17.6
+      </td>
+      <td  class="bp2row0" align="center">
+        35.3
+      </td>
+      <td  class="bp2row0" align="center">
+        60.7
+      </td>
+      <td  class="bp2row0" align="center">
+        93.9
+      </td>
+      <td  class="bp2row0" align="center">
+        135.0
+      </td>
+      <td  class="bp2row0" align="center">
+        184.3
+      </td>
+      <td  class="bp2row0" align="center">
+        241.6
+      </td>
+      <td  class="bp2row0" align="center">
+        270.1
+      </td>
+      <td  class="bp2row0" align="center">
+        270.1
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        8
+      </td>
+      <td  class="bp2row1" align="center">
+        3.6
+      </td>
+      <td  class="bp2row1" align="center">
+        6.4
+      </td>
+      <td  class="bp2row1" align="center">
+        15.2
+      </td>
+      <td  class="bp2row1" align="center">
+        30.5
+      </td>
+      <td  class="bp2row1" align="center">
+        52.4
+      </td>
+      <td  class="bp2row1" align="center">
+        81.1
+      </td>
+      <td  class="bp2row1" align="center">
+        116.6
+      </td>
+      <td  class="bp2row1" align="center">
+        159.1
+      </td>
+      <td  class="bp2row1" align="center">
+        198.7
+      </td>
+      <td  class="bp2row1" align="center">
+        198.7
+      </td>
+      <td  class="bp2row1" align="center">
+        198.7
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        10
+      </td>
+      <td  class="bp2row0" align="center">
+        2.4
+      </td>
+      <td  class="bp2row0" align="center">
+        4.2
+      </td>
+      <td  class="bp2row0" align="center">
+        10.1
+      </td>
+      <td  class="bp2row0" align="center">
+        20.2
+      </td>
+      <td  class="bp2row0" align="center">
+        34.6
+      </td>
+      <td  class="bp2row0" align="center">
+        53.6
+      </td>
+      <td  class="bp2row0" align="center">
+        64.8
+      </td>
+      <td  class="bp2row0" align="center">
+        64.8
+      </td>
+      <td  class="bp2row0" align="center">
+        64.8
+      </td>
+      <td  class="bp2row0" align="center">
+        64.8
+      </td>
+      <td  class="bp2row0" align="center">
+        64.8
+      </td>
+    </tr>
+  </table>
+</p>
+<!-- End 2-Way Output Table for Surface Rate of Spread -->
+
+<!-- Begin 2-Way Output Table for Flame Length -->
+<p class="bp2">
+  <h3 class="bp2subhead"><b>Head fire</b></h3>
+  <h3 class="bp2">Results for: Flame Length (ft)</h3>
+  <table cellpadding="5" cellspacing="2" border="0">
+    <tr>
+      <td class="bp2hdr" align="center">
+        1-h
+      </td>
+      <td class="bp2hdr" colspan="11" align="center">
+        Midflame Wind Speed (upslope)
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        Moisture
+      </td>
+      <td class="bp2hdr" colspan="11" align="center">
+        mi/h
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        %
+      </td>
+      <td class="bp2hdr" align="center">
+         0
+      </td>
+      <td class="bp2hdr" align="center">
+         1
+      </td>
+      <td class="bp2hdr" align="center">
+         2
+      </td>
+      <td class="bp2hdr" align="center">
+         3
+      </td>
+      <td class="bp2hdr" align="center">
+         4
+      </td>
+      <td class="bp2hdr" align="center">
+         5
+      </td>
+      <td class="bp2hdr" align="center">
+         6
+      </td>
+      <td class="bp2hdr" align="center">
+         7
+      </td>
+      <td class="bp2hdr" align="center">
+         8
+      </td>
+      <td class="bp2hdr" align="center">
+         9
+      </td>
+      <td class="bp2hdr" align="center">
+         10
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        2
+      </td>
+      <td  class="bp2row0" align="center">
+        1.5
+      </td>
+      <td  class="bp2row0" align="center">
+        1.9
+      </td>
+      <td  class="bp2row0" align="center">
+        2.9
+      </td>
+      <td  class="bp2row0" align="center">
+        3.9
+      </td>
+      <td  class="bp2row0" align="center">
+        5.1
+      </td>
+      <td  class="bp2row0" align="center">
+        6.2
+      </td>
+      <td  class="bp2row0" align="center">
+        7.3
+      </td>
+      <td  class="bp2row0" align="center">
+        8.4
+      </td>
+      <td  class="bp2row0" align="center">
+        9.5
+      </td>
+      <td  class="bp2row0" align="center">
+        10.7
+      </td>
+      <td  class="bp2row0" align="center">
+        11.8
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        4
+      </td>
+      <td  class="bp2row1" align="center">
+        1.2
+      </td>
+      <td  class="bp2row1" align="center">
+        1.6
+      </td>
+      <td  class="bp2row1" align="center">
+        2.3
+      </td>
+      <td  class="bp2row1" align="center">
+        3.2
+      </td>
+      <td  class="bp2row1" align="center">
+        4.1
+      </td>
+      <td  class="bp2row1" align="center">
+        5.0
+      </td>
+      <td  class="bp2row1" align="center">
+        5.9
+      </td>
+      <td  class="bp2row1" align="center">
+        6.8
+      </td>
+      <td  class="bp2row1" align="center">
+        7.7
+      </td>
+      <td  class="bp2row1" align="center">
+        8.6
+      </td>
+      <td  class="bp2row1" align="center">
+        8.6
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        6
+      </td>
+      <td  class="bp2row0" align="center">
+        1.1
+      </td>
+      <td  class="bp2row0" align="center">
+        1.4
+      </td>
+      <td  class="bp2row0" align="center">
+        2.1
+      </td>
+      <td  class="bp2row0" align="center">
+        2.9
+      </td>
+      <td  class="bp2row0" align="center">
+        3.8
+      </td>
+      <td  class="bp2row0" align="center">
+        4.6
+      </td>
+      <td  class="bp2row0" align="center">
+        5.4
+      </td>
+      <td  class="bp2row0" align="center">
+        6.3
+      </td>
+      <td  class="bp2row0" align="center">
+        7.1
+      </td>
+      <td  class="bp2row0" align="center">
+        7.5
+      </td>
+      <td  class="bp2row0" align="center">
+        7.5
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        8
+      </td>
+      <td  class="bp2row1" align="center">
+        1.0
+      </td>
+      <td  class="bp2row1" align="center">
+        1.3
+      </td>
+      <td  class="bp2row1" align="center">
+        1.9
+      </td>
+      <td  class="bp2row1" align="center">
+        2.6
+      </td>
+      <td  class="bp2row1" align="center">
+        3.4
+      </td>
+      <td  class="bp2row1" align="center">
+        4.1
+      </td>
+      <td  class="bp2row1" align="center">
+        4.9
+      </td>
+      <td  class="bp2row1" align="center">
+        5.6
+      </td>
+      <td  class="bp2row1" align="center">
+        6.3
+      </td>
+      <td  class="bp2row1" align="center">
+        6.3
+      </td>
+      <td  class="bp2row1" align="center">
+        6.3
+      </td>
+    </tr>
+    <tr>
+      <td class="bp2hdr" align="center">
+        10
+      </td>
+      <td  class="bp2row0" align="center">
+        0.7
+      </td>
+      <td  class="bp2row0" align="center">
+        0.9
+      </td>
+      <td  class="bp2row0" align="center">
+        1.3
+      </td>
+      <td  class="bp2row0" align="center">
+        1.9
+      </td>
+      <td  class="bp2row0" align="center">
+        2.4
+      </td>
+      <td  class="bp2row0" align="center">
+        2.9
+      </td>
+      <td  class="bp2row0" align="center">
+        3.2
+      </td>
+      <td  class="bp2row0" align="center">
+        3.2
+      </td>
+      <td  class="bp2row0" align="center">
+        3.2
+      </td>
+      <td  class="bp2row0" align="center">
+        3.2
+      </td>
+      <td  class="bp2row0" align="center">
+        3.2
+      </td>
+    </tr>
+  </table>
+</p>
+<!-- End 2-Way Output Table for Flame Length -->
+
+<!-- Begin Footer Template -->
+        </td>
+        <td>&nbsp;</td>
+      </tr>    </table>    <h3 class="bp2">End</h3>
+  </body>
+<!-- End Footer Template -->
+</html>

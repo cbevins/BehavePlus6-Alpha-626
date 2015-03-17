@@ -1,0 +1,107 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Safety Zone Length (for Square) Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Safety Zone Length (for Square)</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P> Safety zone length is the length of one side of a square that is just large enough 
+  to protect the specified number of personnel and heavy equipment from radiant 
+  burn injury. 
+  Safety zone length is twice the safey zone radius, which is based on safety zone separation distance plus the radius of a circle that 
+  fits all personnel and equipment. This core area represents the only safe area 
+  of the safety zone; outside the core area persons may receive burns.
+<P>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC"> 
+    <td width="67" valign="top"> 
+      <p align="center"><strong>I/O</strong></p>
+    </td>
+    <td width="109" valign="top"> 
+      <p align="center"><strong>Module</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>If</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>Notes</strong></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top"> 
+      <p>Input</p>
+    </td>
+    <td width="109" valign="top">None</td>
+    <td width="207" valign="top"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top"> 
+      <p>Output</p>
+    </td>
+    <td width="109" valign="top"> 
+      <p>SAFETY</p>
+    </td>
+    <td width="207" valign="top"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="207" valign="top"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<P>
+The base safety zone size model is based on flame height. However,
+flame height cannot be predicted with current fire behavior models.
+Therefore, <I>Flame Length</I> is used in place of flame height in
+the SAFETY module, which gives a worst-case estimate of size.
+
+<p>The area of a circle is the smallest area that provides the required separation distance. A non-circular safety zone that provides the required protection on all sides will have a greater area than is calculated for a circular safety zone. 
+
+<p><table><tr><td><A NAME="safetyzonediagram_square.png"></a>
+	<IMG SRC="safetyzonediagram_square.png" ALT="Square Safety Zone Diagram"></td></tr></table>
+
+<p>Existing or natural safety zones (such as rockslides, barren areas, and some recently burned areas) are rarely circular or square. To be effective, a circle of the specified radius must fit within the existing safety zone. See the illustration below for an example of an existing safety zone (rockslide) that is not wide enough for the conditions specified (on the left). The safety zone on the right <i>is</i> adequate, because the circular safety zone is completely within the barrier.
+
+<p><table><tr><td><A NAME="safetyzonetoosmall_square.png"></a>
+	<IMG SRC="safetyzonetoosmall_square.png" ALT="Existing safety zone shape"></td></tr></table>
+
+<p>
+    <H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+
+    <UL>
+      <LI><A HREF="vSafetyZoneEquipmentArea.html">Area per Heavy Equipment</A></LI>
+      <LI><A HREF="vSafetyZonePersonnelArea.html">Area per Person</A></LI>
+      <LI><A HREF="vSafetyZoneSize.html">Circular Safety Zone Size</A></LI>
+	  <LI><A HREF="vSurfaceFireFlameLeng.html">Flame Length</A></LI>
+      <LI><A HREF="vSafetyZoneEquipmentNumber.html">Number of Heavy Equipment</A></LI>
+      <LI><A HREF="vSafetyZonePersonnelNumber.html">Number of Personnel</A></LI>
+      <LI><A HREF="vSafetyZoneRadius.html">Safety Zone Radius (for Circle)</A></LI>
+      <LI><A HREF="vSafetyZoneSepDist.html">Safety Zone Separation Distance</A></LI>
+      <LI><A HREF="vSafetyZoneSizeSquare.html">Square Safety Zone Size</A></LI>
+    </UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, June 28, 2013.</FONT>
+</BODY>
+</HTML>

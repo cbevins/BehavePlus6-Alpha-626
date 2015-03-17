@@ -1,0 +1,128 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Fuel Model Page</TITLE>
+  </HEAD>
+  <BODY>
+<TABLE WIDTH="100%">
+	<TR>
+		<TD width="100"><IMG SRC="logo90x90.png" ALT="BehavePlus Logo"></TD>
+		<TD ALIGN="left" VALIGN="center">
+			<H2><FONT COLOR="#ff5500">Fuel Model</FONT></H2>
+		</TD>
+	</TR>
+</TABLE>
+<HR>
+<P>A fuel model is a set of numerical values that describe the fuel inputs for Rothermel's mathematical model that predicts surface fire spread.
+
+<P>There are 53 standard fire behavior fuel models including the original 13 described by Anderson (1982), plus the forty defined by Scott and Burgan (2005). Custom fuel models can be developed and saved for later use. Standard and custom fuel models can be used with one of the three options for calculating a weighted surface rate of spread through two fuel models. BehavePlus also offers special case fuel models that require different input: palmetto-gallberry (Hough and Albini 
+1978) and western aspen (Brown and Simmerman 1986).
+
+<P> To view the parameters of a particular fuel model listed under the <b>Guide</b> button, right-click on its name and select <I>View parameters</I> from the menu. 
+
+<P>Information on <a href="#Standard">Standard</a> and <a href="#Custom">Custom</a> fuel models can be found below.
+
+<P>
+
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+		<td width="67" valign="top"><p align="center"><strong>I/O</strong></p></td>
+		<td width="109" valign="top"><p align="center"><strong>Module</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>If</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>Notes</strong></p></td>
+	</tr> 
+	<tr>
+		<td width="67" valign="top">Input</td>
+		<td width="109" valign="top">SURFACE</td>
+		<td width="207" valign="top">If <i>Fuel is entered as fuel models</i> or <i>two fuel models</i> is selected 
+			as an input option.</td>
+		<td width="207" valign="top">If <i>Fuel is entered as fuel parameter</i>s is selected as the input option, the assigned parameters can be saved as a custom fuel model.</td>
+	</tr>
+	<tr>
+		<td width="67" valign="top">Output</td>
+		<td width="109" valign="top">None</td>
+		<td width="207" valign="top">&nbsp;</td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr>
+</table>
+<H3><FONT COLOR="#ff5500"><a name="Standard"></a>Standard Fuel Models</FONT></H3>
+<p> Publications describing the standard fuel models with photographs are available on the BehavePlus 
+publications page of <B>www.firemodels.org</B>. 
+<ul>
+	<li>Anderson, H.E. (1982) Aids to determining fuel models for estimating fire behavior. General Technical Report INT-122. Ogden, UT: U.S. Department of Agriculture, Forest Service, Intermountain Forest and Range Experiment Station. 28 p.</li>
+	<li>Scott, J.H.; Burgan, R.E. (2005) Standard fire behavior fuel models: A comprehensive 
+set for use with Rothermel's surface fire spread model. General Technical Report RMRS-GTR-153. Fort Collins, CO: U.S. Department of Agriculture, Forest Service, Rocky Mountain Research Station. 80 p.</li>
+</ul> 
+<P>A <A HREF="fuelModelKey.html">fuel model key</A> for the 13 standard fuel models is taken from Rothermel, R.C. (1983) &quot;How to Predict the Spread and Intensity of Forest and Range Fires.&quot; 
+<P>Descriptions and photographs for the 13 standard fire behavior models are taken from Anderson (1982). 
+
+<p><B>Grass Group</B>
+<ul>
+	<LI><A HREF="fuelModel01.html">Fuel Model 1 -- Short Grass</A></LI>
+	<LI><A HREF="fuelModel02.html">Fuel Model 2 -- Timber Grass and Understory</A></LI>
+	<LI><A HREF="fuelModel03.html">Fuel Model 3 -- Tall Grass</A></LI>
+</ul>
+
+<p><B>Brush Group</B>
+<ul>
+	<LI><A HREF="fuelModel04.html">Fuel Model 4 -- Chaparral</A></LI>
+	<LI><A HREF="fuelModel05.html">Fuel Model 5 -- Brush</A></LI>
+	<LI><A HREF="fuelModel06.html">Fuel Model 6 -- Dormant Brush, Hardwood Slash</A></LI>
+	<LI><A HREF="fuelModel07.html"> Fuel Model 7 -- Southern Rough</A></LI>
+</ul>
+
+<p><B>Timber Group</B>
+<ul>
+	<LI><A HREF="fuelModel08.html">Fuel Model 8 -- Short Needle Litter</A></LI>
+	<LI><A HREF="fuelModel09.html"> Fuel Model 9 -- Long Neede or Hardwood Litter</A></LI>
+	<LI><A HREF="fuelModel10.html">Fuel Model 10 -- Timber Litter and Understory</A></LI>
+</ul>
+
+<p><B>Logging Slash Group</B>
+<ul>
+	<LI><A HREF="fuelModel11.html"> Fuel Model 11 -- Light Logging Slash</A></LI>
+	<LI><A HREF="fuelModel12.html"> Fuel Model 12 -- Medium Logging Slash</A></LI>
+	<LI><A HREF="fuelModel13.html"> Fuel Model 13 -- Heavy Logging Slash</A></LI>
+</ul>
+
+<p>
+<H3><FONT COLOR="#ff5500"><a name="Custom"></a>Custom Fuel Models</FONT></H3>
+<P> Custom fuel models can be developed and used within BehavePlus. To create a custom fuel model in BehavePlus, it is best to use the example worksheets specifically designed for fuel modeling: <b>FuelModeling.bpw</b> (English units) and <b>FuelModelingMetric.bpw</b> (metric units) by going to <b>File &gt; Open worksheet</b> and looking in the <b>ExampleWorksheets</b> folder. These worksheets allow greater precision in input data. You can also click on <B>Configure -> Modules selection</B> and press the Surface Fire Spread <B>Options</B> button. Under the <B>Fuel & Moisture</B> tab, activate the radio button titled <I>Fuel is entered as... fuel parameters.</I> The resulting input worksheet requests all the parameters needed to define a custom fuel model. 
+
+<P> Fuel model parameters that can be varied are: 
+<UL>
+	<LI>fuel load for each fuel particle diameter size class, live and dead </LI>
+	<LI>surface area-to-volume ratio for each fuel particle diameter size class, live and dead</LI>
+	<LI>fuel bed depth</LI>
+	<LI>heat content of the dead and live fuel</LI>
+	<LI>dead fuel moisture content of extinction</LI>
+</UL>
+
+<P> To save a custom fuel model, press <B>File -> Save as a fuel model &gt; BehavePlus format</B>. 
+
+<P>By default only the 53 standard fire behavior fuel models appear in the choices list under the <b>Guide</b> button. Custom fuel models do not appear in the list until they have been <i>attached</i> via <B>Configure -> Fuel model set selection</B>. The attached fuel models will then be accepted as valid inputs to the worksheet and will appear in the list under the <b>Guide</b> button. Custom fuel models must be attached with every new session of BehavePlus.
+
+<P>Once a custom fuel model has been saved in BehavePlus format, it can be saved in a format that can be read by NEXUS, FlamMap and FARSITE using <b>File -> Save as a fuel model &gt;FARSITE format, English</B> or <b>File -> Save as a fuel model &gt;FARSITE format, metric</B>. More information can be found in <a href="fuelExportDialog.html">Fuel Model Export</a>.
+
+
+<p><H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+<UL> 
+    <LI><A HREF="TwoFuelOptions.html">Two Fuel Model Options</A></LI>
+    <LI><A HREF="fuelExportDialog.html">Fuel Model Export</A></LI>
+    <LI><A HREF="attachFiles.html">Attach Fuel Model or Moisture Scenario Files</A></LI>
+  <LI><A HREF="PalmettoGallberryDetails.html">Palmetto-Gallberry Details</A></LI>
+	<LI><A HREF="WesternAspenDetails.html">Western Aspen Details</A></LI>
+</UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, June 27, 2013.</FONT>
+</BODY>
+</HTML>

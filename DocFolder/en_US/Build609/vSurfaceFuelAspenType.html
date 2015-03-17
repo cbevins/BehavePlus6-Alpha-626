@@ -1,0 +1,111 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Aspen Fuel Model Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+	      <H2><font color="#ff5500">Aspen Fuel Model</font></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P> There are five special case aspen fuel models (Brown and Simmerman 1986). Their use requires different 
+  user input than is required for standard or custom fuel models (Brown and Simmerman 1986).<br> <br> 
+<A NAME="Table1"></a>
+<b>Aspen Fuel Model Inputs</b><br>
+<table width="60%" border="1" cellspacing="0" cellpadding="5" >
+  <tr bgcolor="#CCCCCC">
+    <td><strong>Aspen Fuel Model </strong></td>
+    <td><strong>Fuel Bed Depth, ft </strong></td>
+    <td><strong>10-h Fuel Load, tons/ac </strong></td>
+  </tr>
+  <tr>
+    <td>Aspen/shrub</td>
+    <td>0.65</td>
+    <td>0.975</td>
+  </tr>
+  <tr>
+    <td>Aspen/tall forb </td>
+    <td>0.30</td>
+    <td>0.475</td>
+  </tr>
+  <tr>
+    <td>Aspen/low forb </td>
+    <td>0.18</td>
+    <td>1.035</td>
+  </tr>
+  <tr>
+    <td>Mixed/shrub</td>
+    <td>0.50</td>
+    <td>1.340</td>
+  </tr>
+  <tr>
+    <td>Mixed forb </td>
+    <td>0.18</td>
+    <td>1.115</td>
+  </tr>
+</table>
+<P>For all aspen fuel models, the following are constant:<ul>
+  <LI>Heat content = 8000 Btu/lb </LI>
+  <LI>Moisture of Extinction = 25% </LI>
+  <LI>1-h surface area-to-volume ratio = 109 ft<sup>2</sup> / ft<sup>3</sup> </LI>
+  <LI>Live Herbaceous surface-area-to-volume ratio = 2800 ft<sup>2</sup> / ft<sup>3</sup> </LI>
+  </UL>
+Aspen curing level is used to calculate 1-h fuel load, live herbaceous fuel load, live woody fuel load, 1-h SA/V, and live woody SA/V.
+<P> For more information on aspen fuel parameters, see <A HREF="WesternAspenDetails.html">Western Aspen Details</A>.
+<P> 
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC"> 
+    <td width="67" valign="top"> 
+      <p align="center"><strong>I/O</strong></p>
+    </td>
+    <td width="109" valign="top"> 
+      <p align="center"><strong>Module</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>If</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>Notes</strong></p>
+    </td>
+  </tr>
+  <tr> 
+    <td valign="top">Input</td>
+    <td width="109" valign="top">SURFACE</td>
+    <td width="207" valign="top">If <i>Fuel is entered as special case fuel model, western aspen</i> 
+        is selected as an input option</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top" height="28">Output</td>
+    <td width="109" valign="top" height="28">None</td>
+    <td width="207" valign="top" height="28">&nbsp;</td>
+    <td width="207" valign="top" height="28">&nbsp;</td>
+  </tr>
+</table>
+
+  <P>
+  <H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+<UL>
+     <LI><A HREF="vSurfaceFuelAspenCuring.html">Aspen Curing Level</A></LI>
+     <LI><A HREF="vSurfaceFireSeverityAspen.html">Aspen Fire Severity</A></LI>
+     <LI><A HREF="vTreeAspenMortalityRate.html">Probability of Aspen Mortality</A></LI>
+  </UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

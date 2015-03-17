@@ -1,0 +1,106 @@
+
+Fire Spread Vectors of Interest(Input) for Beta
+	vSurfaceFireVectorDirFromCompass (N,NE,E...)
+	vSurfaceFireVectorDirFromNorth	
+	vSurfaceFireVectorDirFromUpslope
+
+Fire Spread Vectors of Interest (input) for Psi
+	vSurfaceFireVectorPsiFromFire (Head,Flank,Rear)
+	vSurfaceFireVectorPsiFromUpslope
+	vSurfaceFireVectorPsiFromNorth
+
+Fire Spread Vectors of Interest (outputs) for Both Beta and Psi
+	vSurfaceFireVectorBeta - beta vector wrt head
+	vSurfaceFireMaxDirFromUpslope - head wrt upslope
+	vSurfaceFireMaxDirFromNorth - head wrt north
+
+
+
+Fire Spread Distances (output) for Both Beta and Psi
+	vSurfaceFireLineIntAtHead
+	vSurfaceFireSpreadAtBack
+	vSurfaceFireSpreadAtHead
+	vSurfaceFireFlameLengAtHead
+	vSurfaceFireDistAtBack
+	vSurfaceFireMapDistAtBack
+	vSurfaceFireDistAtHead
+	vSurfaceFireMapDistAtHead
+
+Fire Spread Distances (output) for Beta
+	vSurfaceFireLineIntAtVector
+	vSurfaceFireSpreadAtVector
+	vSurfaceFireFlameLengAtVector
+	vSurfaceFireDistAtVector
+	vSurfaceFireMapDistAtVector
+
+Fire Behavior (output) for Psi
+	1 = Added to xml variable definitions
+	2 = Added to xeqcalc.h
+	3 = Added to xeqcalc.cpp
+	
+	vSurfaceFireEllipseF       ... 123
+	vSurfaceFireEllipseG       ... 123
+	vSurfaceFireEllipseH       ... 123
+	vSurfaceFireVectorTheta    ... 123
+	vSurfaceFireVectorPsi      ... 123
+	vSurfaceFireLineIntAtPsi   ... 123
+	vSurfaceFireSpreadAtPsi    ... 123
+	vSurfaceFireDistAtPsi      ... 123
+	vSurfaceFireMapDistAtPsi   ... 123
+	vSurfaceFireFlameLengAtPsi ... 123
+
+Psi Functions
+	1 = Added to xml variable definitions
+	2 = Added to xeqcalc.h
+	3 = Commented assignment into xeqcalc.cpp
+	4 = Created functions in EqCalc and xfblib.cpp
+	
+	Highest priority
+	fSurfaceFireEllipseF                 ... 1234
+	fSurfaceFireEllipseG                 ... 1234
+	fSurfaceFireEllipseH                 ... 1234
+	fSurfaceFireVectorThetaFromBeta      ... 1234
+	fSurfaceFireVectorPsiFromTheta       ... 1234
+	fSurfaceFireSpreadAtPsi              ... 1234
+	fSurfaceFireLineIntAtPsi             ... 1234
+	fSurfaceFireFlameLengAtPsi           ... 1234
+	fSurfaceFireDistAtPsi                ... 123
+	fSurfaceFireMapDistAtPsi             ... 123
+
+	fSurfaceFireVectorBetaFromTheta      ... 123
+	fSurfaceFirevectorPsiFromFire        ... 123
+	fSurfaceFireVectorPsiFromNorth       ... 123
+	fSurfaceFireVectorPsiFromNorthRev    ... 123
+	fSurfaceFireVectorPsiFromUpslope     ... 123
+	fSurfaceFireVectorPsiFromUplslopeRev ... 123
+	fSurfaceFireVectorThetaFromPsi       ... 123
+	
+Output Controls
+	1 = Added to xml variable definitions
+	2 = Added to xeqcalcreconfig
+	3 = Added to SURFACE Module "Fire Front" tab
+	
+	surfaceCalcEllipseF					... 123
+	surfaceCalcEllipseG					... 123
+	surfaceCalcEllipseH					... 123
+	surfaceCalcVectorTheta				... 12
+	surfaceCalcVectorPsi				... 12
+	surfaceCalcFireSpreadAtPsi			... 123
+	surfaceCalcFireLineIntAtPsi			... 123
+	surfaceCalcFireFlameLengAtPsi		... 123
+	surfaceCalcFireDistAtPsi			... 123
+	surfaceCalcFireMapDistAtPsi			... 123
+ 
+ 
+ vSurfaceFireElapsedTime is used by                                   
+ 
+ -- vCrownFireSpreadDist		crownCalcCrownSpreadDist	CROWN
+ -- vSurfaceFireDistAtBack		sizeCalcFireDistAtBack		SIZE
+ -- vSurfaceFireDistAtHead		sizeCalcFireDistAtFront		SIZE
+ -- vSurfaceFireDistAtPsi		surfaceCalcFireDistAtPsi	SURFACE
+ -- vSurfaceFireDistAtVector	surfaceCalcFireDist			SURFACE
+ -- vSurfaceFireLengDist		sizeCalcFireLengDist		SIZE
+ -- vSurfaceFireShapeDiagram	sizeCalcFireShapeDiagram	SIZE
+ -- vSurfaceFireSpreadAtPsi		CONSTANT					SURFACE
+ -- vSurfaceFireWidthDist		sizeCalcFireWidthDist		SIZE
+

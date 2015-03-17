@@ -1,0 +1,93 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Moisture Scenario Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Moisture Scenario</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P> A fuel moisture scenario is a set of fuel moistures values representing moisture 
+  condition of the surface fuel: 1-h, 10-h, 100-h, live herbaceous, and live woody 
+  moisture. Fuel moisture scenarios are analogous to fuel models; they package a number 
+  of parameters into a labeled set. The user can define and save a moisture scenario 
+  for later use. 
+<p>Fuel moisture scenarios are useful for testing custom fuel models or for developing 
+  fire prescriptions. For example, a moisture scenario might be developed to represent 
+  a location's 90th-, 95th-, and 97th-percentile fire weather conditions.
+<p>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC"> 
+    <td width="67" valign="top"> 
+      <p align="center"><strong>I/O</strong></p>
+    </td>
+    <td width="109" valign="top"> 
+      <p align="center"><strong>Module</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>If</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>Notes</strong></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top">Input</td>
+    <td width="109" valign="top">SURFACE</td>
+    <td width="207" valign="top">If <i>Moisture is entered by moisture scenario</i> is selected as an 
+        input option.</td>
+    <td width="207" valign="top">Values entered when <i>Moisture is entered by 
+      individual size class</i> is selected can be <i>Saved as Moisture Scenario</i>.</td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top">Output</td>
+    <td width="109" valign="top">None</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+</table>
+
+<p>Fuel moisture scenarios are useful for testing custom fuel models. For example, moisture scenarios representing a location's 90th-, 95th-, and 97th-percentile fire weather conditions can be used to test a candidate fuel model's performance.  All three scenarios may be entered on the input worksheet to generate comparative tables and graphs (not
+possible using fuel moisture by size class).
+
+<P>To use a fuel moisture scenario, enter its name in the input field or press the guide button to select scenarios from the list.
+
+<P>Custom moisture scenarios can be developed and used within BehavePlus. To create a custom moisture scenario, click on <B>Configure -> Modules selection</B> and press the Surface Fire Spread <B>Options</B> button.  Under the <B>Fuel &
+Moisture</B> tab, activate the radio button titled <I>Moisture is entered by... individual size class.</I>  The resulting input worksheet requests all the parameters needed to define a custom moisture scenario.
+
+<P>To save the values as a custom moisture scenario, press <B>File -> Save As -> Moisture scenario</B>.
+
+<P>Before custom moisture scenarios can be used by BehavePlus, they must be <I>attached</I> to the run via <B>Configure -> Moisture scenario set selection</B>. The attached moisture scenarios will then be accepted as valid inputs
+to the worksheet and will appear in the list under the Guide button.
+
+<P>To view the parameters of a particular moisture scenario, right-click on its name and select <I>View parameters</I> from the context menu. 
+
+<P>
+<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+    <UL>
+      <LI><A HREF="vSurfaceFuelMoisDead1.html">1-h Moisture</A></LI>
+      <LI><A HREF="vSurfaceFuelMoisDead10.html">10-h Moisture</A></LI>
+      <LI><A HREF="vSurfaceFuelMoisDead100.html">100-h Moisture</A></LI>
+      <LI><A HREF="vSurfaceFuelMoisLiveHerb.html">Live Herbaceous Moisture</A></LI>
+      <LI><A HREF="vSurfaceFuelMoisLiveWood.html">Live Woody Moisture</A></LI>
+    </UL>
+<P>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

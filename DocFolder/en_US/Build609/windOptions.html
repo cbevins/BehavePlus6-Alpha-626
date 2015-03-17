@@ -1,0 +1,107 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus SURFACE Wind Speed Input Options Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">SURFACE Wind Speed Input Options</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR><P>
+
+
+
+This page controls the SURFACE Module's wind speed options.
+
+    <H3><FONT COLOR="#ff5500">Options</FONT></H3>
+
+<table border=1 cellspacing="0" cellpadding="10" >
+  <tr bgcolor="#CCCCCC"> 
+    <td colspan=3><b>Wind speed is entered as....</b> </td>
+  </tr>
+  <tr> 
+    <td rowspan="6">&nbsp;</td>
+    <td width="30%" valign="top"><i>midflame height.</i></td>
+    <td width="65%"> 
+		Wind speed at midflame height is entered on the worksheet.
+    </td>
+  </tr>
+  <tr> 
+    <td width="30%" valign="top"><i>20-ft wind and Input wind adjustment factor.</i></td>
+    <td width="65%"> 
+	<p> Wind speed at 20 feet above the vegetation and wind adjustment 
+      factor (WAF) are entered on the worksheet. WAF depends on sheltering of 
+      surface fuels from the wind, location on the terrain, and fuel model for 
+      exposed fuel.
+	<p> 20-ft wind * WAF = midflame wind.
+	</td>
+  </tr>
+  <tr> 
+    <td width="30%" valign="top"><i>20-ft wind and Calculated wind adjustment 
+      factor.</i></td>
+    <td width="65%"> Wind speed at 20 feet above the vegetation is entered on 
+      the worksheet and the wind adjustment factor is calculated from overstory 
+      description and fuel model for exposed fuel. The calculations do not take 
+      location in the terrain or surrounding vegetation into account.</td>
+  </tr>
+  <tr> 
+    <td width="30%" valign="top"><i>10-m wind and Input wind adjustment factor.</i></td>
+    <td width="65%"> Wind speed at 10 meters above the vegetation and wind adjustment 
+      factor are entered on the worksheet. 10-m wind is reduced to 20-ft wind. 
+      The wind adjustment factor is applied to 20-ft wind to get midflame wind.</td>
+  </tr>
+  <tr> 
+    <td width="30%" valign="top"><i>10-m wind and Calculated wind adjustment factor.</i></td>
+    <td width="65%"> Wind speed at 10 meters above the vegetation is entered on 
+      the worksheet and the wind adjustment factor is calculated. WAF is applied 
+      to 20-ft wind, which is estimated from 10-m wind.</td>
+  </tr>
+  <tr> 
+    <td colspan=3>&nbsp;</td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td colspan=3><b>Impose maximum reliable effective wind speed limit? ...</b></td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td width="30%"><i>Yes.</i></td>
+    <td width="65%"> When the effective wind speed exceeds a maximum reliable 
+      wind speed, which is a function of reaction intensity, the maximum reliable 
+      value is used in the calculations.</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td width="30%"><i>No.</i></td>
+    <td width="65%"> 
+      The value for effective wind speed is used, without imposing a limit. 
+    </td>
+  </tr>
+</table>
+
+<p>
+<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+    <UL>
+      <LI><A HREF="vWindSpeedAtMidflame.html">Midflame Wind Speed</A></LI>
+      <LI><A HREF="vWindSpeedAt10M.html">10-Meter Wind Speed</A></LI>
+      <LI><A HREF="vWindSpeedAt20Ft.html">20-Foot Wind Speed</A></LI>
+      <LI><A HREF="vWindAdjFactor.html">Wind Adjustment Factor</A></LI>
+    </UL>
+<P>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

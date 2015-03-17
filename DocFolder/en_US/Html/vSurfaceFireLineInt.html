@@ -1,0 +1,158 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Surface Fireline Intensity Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Surface Fireline Intensity</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P>Surface fireline intensity is the heat energy release per unit time from a one-foot 
+  (one-meter) wide section of the fuel bed extending from the front to the rear 
+  of the flaming zone of a surface fire. 
+  Fireline intensity is a function of rate of spread and heat per unit area, and 
+  is directly related to flame length.<br>
+  <br>
+  Fireline intensity and flame length are related to the heat felt by a person 
+  standing next to the flames.
+<p>For more information on fire spread direction options, see <A HREF="fireSpreadDirections.html">Fire Spread Directions</A>.
+<P>
+
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC"> 
+    <td width="58" valign="top"> 
+      <p align="center"><strong>I/O</strong></p>
+    </td>
+    <td width="118" valign="top"> 
+      <p align="center"><strong>Module</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>If</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>Notes</strong></p>
+    </td>
+  </tr>
+  <tr> 
+    <td rowspan="2" valign="top">Input</td>
+    <td width="118" valign="top">CROWN</td>
+    <td width="207" valign="top">If SURFACE is not also selected and if <i>Surface fire intensity is entered as fireline intensity </i> is selected as an input option.
+    </td>
+    <td width="207" valign="top">If SURFACE and CROWN are both selected, fireline intensity (flame length)  calculated in SURFACE is used by CROWN for the specified direction of spread.</td>
+  </tr>
+  <tr> 
+    <td width="118" valign="top">SCORCH</td>
+    <td width="207" valign="top">If SURFACE is not selected and if <i>Surface fire intensity is entered as fireline 
+        intensity</i> is selected as an input option.
+    </td>
+    <td width="207" valign="top">If SURFACE and SCORCH are both selected, fireline 
+      intensity (flame length) calculated in SURFACE is used by SCORCH for the specified direction of spread.</td>
+  </tr>
+  <tr> 
+    <td width="58" valign="top">Output</td>
+    <td width="118" valign="top">SURFACE</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<P>
+<table width="60%">
+	<tr>
+    	<td><A NAME="firelineintensity.png"></a>The flaming zone, or flaming segment, is the area for which fireline intensity and flame length are calculated.<br><img src="firelineintensity.png" alt="Fireline (Byram's) Intensity"></td>
+    </tr>
+	<tr>
+		<td><br><A NAME="spreadIgnitionPointFL.png"></a>When <i>Surface fire spread is Directions from IGNITON POINT. (FL based on flaming segment perpendicular to perimeter, improved V6 method)</i> is selected, the fireline intensity and flame length are based on the flaming segment perpendicular to the perimeter. This is the improved method, added in version 6.
+    <br><img src="spreadIgnitionPointFL.png" alt="Flaming Segment Perpendicular to Fire Front"></td>
+    </tr>
+		  <td><br><A NAME="spreadIgnitionPointFLV5.png"></a>When <i>Surface fire spread is Directions from Ignition Point. (FL based on flaming segment in direction from igntion point, method through V5)</i> is selected, the fireline intensity and flame length are based on the flaming segment in the direction from the ignition point. This is the method through version 5 and is included only for comparison and continuity.
+    <br><img src="spreadIgnitionPointFLV5.png" alt="Flaming Segment From Igntion Point through Fire Front"></td>
+    </tr>
+    </tr>
+		    <td><br><A NAME="spreadFireFrontFL.png"></a>When <i>Surface fire spread is Directions from FIRE FRONT.</i> is selected, the fire is a point source fire. The fireline intensity and flame length are based on the flaming segment in the direction of fire spread.<br><img src="spreadFireFrontFL.png" alt="Flaming Segment From Igntion Point through Fire Front"></td>
+    </tr>
+</table>
+  <P>
+  <table><tr><td><A NAME="SurfFLI.png"></a> <IMG SRC="SurfFLI.png" ALT="Crown Module Data Flow - Surface Fireline Intensity"></td></tr></table> 
+<p><A NAME="Table1"></a>
+<b>Fire Suppression Interpretation</b><br>
+<TABLE border="1" cellspacing="0" cellpadding="4">
+  <TR bgcolor="#CCCCCC">
+    <TH colspan="2">Flame<BR>Length<BR>(ft)</TH>
+    <TH colspan="2">Fireline<BR>Intensity<BR>(Btu/ft/s)</TH>
+    <TH rowspan="2">Interpretations</TH>
+  </TR>
+  <TR bgcolor="#CCCCCC">
+    <TH>(ft)</TH>
+    <TH>(m)</TH>
+    <TH>(Btu/ft/s)</TH>
+    <TH>(kJ/m/s)</TH>
+  </TR>
+  <TR>
+    <TD>Under 4</TD>
+	<TD>Under 1.2</TD>
+    <TD>Under 100</TD>
+    <TD>Under 350</TD>
+    <TD><ul><li>Fires can generally be attacked at the head or flanks by
+        persons using hand tools.</li>
+        <li>Hand line should hold the fire.</li></ul></TD>
+  </TR>
+  <TR>
+    <TD>4-8</TD>
+    <TD>1.2-2.4</TD>
+    <TD>100-500</TD>
+    <TD>350-1700</TD>
+    <TD>
+        <ul><li>Fires are too intense for direct attack on the head by persons
+        using hand tools.</li>
+        <li>Hand line cannot be relied on to hold the fire.</li>
+        <li>Equipment such as dozers, pumpers, and retardant aircraft
+        can be effective.</li></ul></TD>
+  </TR>
+  <TR>
+    <TD>8-11</TD>
+    <TD>2.4-3.4</TD>
+    <TD>500-1000</TD>
+    <TD>1700-3500</TD>
+    <TD><ul><li>Fires may present serious control problems --
+        torching out, crowning, and spotting.</li>
+        <li>Control efforts at the fire head will probably be ineffective.</li></ul></TD>
+  </TR>
+  <TR>
+    <TD>Over 11</TD>
+    <TD>Over 3.4</TD>
+    <TD>Over 1000</TD>
+    <TD>Over 3500</TD>
+    <TD>
+        <ul><li>Crowning, spotting, and major fire runs are probable.</li>
+        <li>Control efforts at head of fire are ineffective.</li></ul></TD>
+  </TR>
+</TABLE>
+<p>
+<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+  <UL>
+      <LI><A HREF="vSurfaceFireHeatPerUnitArea.html">Surface Fire Heat per Unit Area</A></LI>
+      <LI><A HREF="vSurfaceFireFlameLeng.html">Surface Flame Length</A></LI>
+      <LI><A HREF="vSurfaceFireSpread.html">Surface Rate of Spread</A></LI>
+      <LI><A HREF="vCrownFireTransToCrown.html">Transition to Crown Fire?</A></LI>
+  </UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, March 19, 2014.</FONT>
+</BODY>
+</HTML>

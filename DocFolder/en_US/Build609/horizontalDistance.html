@@ -1,0 +1,66 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Slope vs Horizontal Map Distance Tool Page</TITLE>
+  </HEAD>
+<BODY>
+<DIV>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+	      <H2><FONT color=#ff5500>Slope vs Horizontal Map Distance Tool</FONT></H2>
+		</TD>
+	  </TR>
+	</TABLE>
+<HR>
+
+
+<P>When you select the option <I>Display output distances in map units</I> from 
+the Module Selection dialog, the following <I>slope</I> distances (the distance along the ground) are converted 
+to <I>map</I> distances: 
+<UL>
+  <LI>Surface spread distance [SURFACE] 
+  <LI>Crown spread distance [CROWN]   
+  <LI>Forward spread distance [SIZE] 
+  <LI>Backing spread distance [SIZE] 
+  <LI>Fire length [SIZE] 
+  <LI>Maximum fire width [SIZE] 
+  <LI>Spotting distance [SPOT] </LI></UL>
+<P>Map distance is found by multiplying slope distance by the map scale. This 
+is not technically correct. But because of the many variables that exist in the 
+real world, the difference between slope distance and horizontal distance is 
+not critical.
+<p>We include this tool to do the conversion in case you want to make the correction 
+    before you plot a distance on a map. 
+<P>This plot shows the horizontal map distance from the calculated map distance, the maximum slope steepness, and the 
+direction of the distance with respect to upslope. This example is for a 
+calculated map distance of 3 cm or in. The largest difference is for very steep 
+slopes and for distances that are along the steepest part of the slope. 
+<table>
+	<tr>
+		<td><A NAME="projectionCurves.png"></a><img src="projectionCurves.png" alt="Calculated Map Distance"></td>
+	</tr>
+</table> 
+<P>This diagram illustrates the difference between slope distance and 
+horizontal distance for 45- and 30-degrees slopes. The slope distance in both cases is the same. 
+<table>
+  <tr>
+    <td><a name="projectionExample.png"></a><img src="projectionExample.png" alt="Map Distance Projection Example"></td>
+  </tr>
+</table>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, February 11, 2011.</FONT>
+</BODY>
+</HTML>

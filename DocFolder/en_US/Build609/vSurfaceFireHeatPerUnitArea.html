@@ -1,0 +1,101 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Heat per Unit Area Page</TITLE>
+  </HEAD>
+  <BODY>
+<TABLE WIDTH="100%">
+	<TR>
+		<TD width="100"> <IMG SRC="logo90x90.png" ALT="BehavePlus Logo"></TD>
+		<TD ALIGN="left" VALIGN="center"><H2><FONT COLOR="#ff5500">Heat per Unit Area</FONT></H2></TD>
+	</TR>
+</TABLE><HR>
+
+<P>Heat per unit area is the heat energy release per area (HPUA; square foot or square meter) within the flaming front of the surface fuel. Heat per unit area is not affected by wind, slope, or direction of spread. HPUA is calculated in Rothermel's (1972) surface fire spread model and is based on only the fine fuels that affect fire spread. Additional energy is released in the burnout phase of combustion, so care should be exercised when using heat per unit area to predict fire effects.
+
+<p>Surface fire heat per unit area is used to calculate crown fireline intensity and crown fire flame length according to Rothermel (1991). An alternative to using the HPUA calculated in SURFACE is to enter it directly into CROWN. Rothermel (1991) prepared a table of calculated heat per unit area values using the Burnout model, which produces values higher than those calculated by the surface fire spread model. These HPUA are available in the "Choices" list.
+
+<p>
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+		<td width="67" valign="top"><p align="center"><strong>I/O</strong></p></td>
+		<td width="109" valign="top"><p align="center"><strong>Module</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>If</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>Notes</strong></p></td>
+	</tr> 
+	<tr>
+		<td width="67" valign="top"><p>Input</p></td>
+		<td width="109" valign="top">CROWN</td>
+		<td width="207" valign="top"><p>If SURFACE is not selected and if Crown Fireline Intensity is calculated. </p></td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="67" valign="top"><p>Output</p></td>
+		<td width="109" valign="top"><p>SURFACE</p></td>
+		<td width="207" valign="top"><p>&nbsp;</p></td>
+		<td width="207" valign="top"><p>&nbsp;</p></td>
+	</tr>
+</table>
+
+<p><table><tr><td><A NAME="haulingchart.png"></a> 
+<IMG SRC="haulingchart.png" ALT="Surface Fire Characteristics Chart"> </td></tr></table>
+
+<p><br><A NAME="Table1"></a>
+<strong>Heat per Unit Area Calculated Using the Burnout Model</strong><br>
+  <table border="1" cellspacing="0" cellpadding="2">
+  <TR bgcolor="#CCCCCC">
+    <TH>Surface Heat <br>per Unit Area <br>(Btu/ft<sup>2</sup>)</TH>
+    <TH>Fuel Model plus <br>1000-h fuel</TH>
+  </TR>
+  <TR>
+    <TD>580</TD>
+    <TD>8</TD>
+  </TR>
+  <TR>
+    <TD>760</TD>
+    <TD>2</TD>
+  </TR>
+  <TR>
+    <TD>1050</TD>
+    <TD>9</TD>
+  </TR>
+  <TR>
+    <TD>1325</TD>
+    <TD>9 + 30 ton/ac</TD>
+  </TR>
+  <TR>
+    <TD>1325</TD>
+    <TD>10</TD>
+  </TR>
+  <TR>
+    <TD>1570</TD>
+    <TD>10 + 30 ton/ac</TD>
+  </TR>
+  <TR>
+    <TD>3430</TD>
+    <TD>12</TD>
+  </TR>
+</TABLE>
+
+
+<p>
+  <table><tr><td><A NAME="SurfaceHeatPerUnitArea.png"></a><IMG SRC="SurfaceHeatPerUnitArea.png" ALT="Crown Module Data Flow - Surface Heat per Unit Area"></td></tr></table> 
+
+<p>
+<H3><FONT COLOR="#ff5500">See Also</FONT> </H3>
+<UL>
+	<LI><A HREF="vCrownFireHeatPerUnitAreaCanopy.html">Canopy Heat per Unit Area</A></LI>
+	<LI><A HREF="vCrownFireHeatPerUnitArea.html">Crown Fire Heat per Unit Area</A></LI>
+</UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

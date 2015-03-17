@@ -1,0 +1,118 @@
+
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Fuel Model Type Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Fuel Model Type</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR><P>
+
+
+Fuel model type is <i>static</i> (S) or <i>dynamic</i> (D) for standard or custom fuel models. 
+Dynamic fuel models have a live herbaceous fuel component, a portion of which is 
+transferred into the dead herbaceous fuel load depending upon the live herbaceous 
+fuel moisture content; the lower the moisture content, the greater the load transfer.  
+The fuel load transfer portion can also be entered directly.
+
+<P>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC"> 
+    <td width="67" valign="top"> 
+      <p align="center"><strong>I/O</strong></p>
+    </td>
+    <td width="109" valign="top"> 
+      <p align="center"><strong>Module</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>If</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>Notes</strong></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top"> 
+      <p>Input</p>
+    </td>
+    <td width="109" valign="top">SURFACE</td>
+    <td width="207" valign="top"> 
+      <p>If <i>Fuel is entered as fuel parameters</i> is selected as an input option.</p>
+    </td>
+    <td width="207" valign="top">If <i>Fuel is entered as fuel models</i> then the value stored 
+	for the standard or custom fuel model is used in the calculations.</td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top"> 
+      <p>Output</p>
+    </td>
+    <td width="109" valign="top"> 
+      <p>None</p>
+    </td>
+    <td width="207" valign="top"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="207" valign="top"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+
+
+<p>The fuel load transfer equation is:
+<ul>
+    <li>fraction = 1.333 - 0.0111 moisture</li>
+</ul>
+where fraction is the fraction of live fuel load transferred
+from live herbaceous to the dead herbaceous fuel category,
+and moisture is the live herbaceous fuel moisture content (%).
+The following table shows some representative values.
+<p><p><A NAME="Table1"></A>
+<B>Live Herbaceous Fuel Load Transfer</B><br>
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr bgcolor="#CCCCCC">
+    <th>Live Herbaceous<br />
+    Moisture Content<br />(percent)</th>
+    <th>Live Herbaceous Load <br />
+      Transferred to Dead<br />(percent)</th>
+  </tr>
+  <tr><td align="center">120</td><td align="center">0.1</td></tr>
+  <tr><td align="center">110</td><td align="center">11.2</td></tr>
+  <tr><td align="center">100</td><td align="center">22.3</td></tr>
+  <tr><td align="center">90</td><td align="center">33.4</td></tr>
+  <tr><td align="center">80</td><td align="center">44.5</td></tr>
+  <tr><td align="center">70</td><td align="center">55.6</td></tr>
+  <tr><td align="center">60</td><td align="center">66.7</td></tr>
+  <tr><td align="center">50</td><td align="center">77.8</td></tr>
+  <tr><td align="center">40</td><td align="center">88.9</td></tr>
+  <tr><td align="center">30</td><td align="center">100.0</td></tr>
+</table>
+<P><H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+    <UL>
+      <LI><A HREF="vSurfaceFuelLoadDeadHerb.html">Dead Herbaceous Fuel Load</A></LI>
+      <LI><A HREF="vSurfaceFuelLoadTransferFraction.html">Fuel Load Transfer Portion</A></LI>
+      <LI><A HREF="vSurfaceFuelBedModel.html">Fuel Model</A></LI>
+      <LI><A HREF="vSurfaceFuelLoadLiveHerb.html">Live Herbaceous Fuel Load</A></LI>
+  </UL>
+
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,112 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Fire Spread Directions Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Fire Spread Directions</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P>BehavePlus version 6 (V6) offers new options on fire spread directions and associated rate of spread, fireline intensity, and flame length. The <b>SURFACE module &gt; Input Options &gt; Directions</b> tab allows specification of surface fire spread direction as heading, flanking, or backing. Spread directions can also be specified from the ignition point or from the fire front. These directions can be defined with respect to upslope or North.
+
+<p>On the Directions tab, <i>Surface fire spread is</i>
+<UL>
+      <LI><i>HEADING only (in direction of maximum spread).</i> <ul>
+        <li>Fire is spreading in the direction of maximum  spread, which is found from the combined effects of slope (assuming movement upslope) and wind (which can be upslope or specified on the worksheet as before..</LI></ul></LI>
+      <LI><i>FLANKING only (90 deg from head fire).</i> <ul><li>Fire is spreading in the direction 90 degrees from the head fire direction (which is not the same as 90 degrees from the ignition point).</LI></ul></LI>
+      <LI><i>BACKING only (180 deg from head fire).</i> <ul><li>Fire is spreading 180 degrees from the head fire.</LI></ul></LI>
+      <LI><i>Directions from FIRE FRONT.</i> <ul><li>Fire spread in specified directions from the FIRE FRONT is the fire spread rate in the direction perpendicular (normal) to the fire front. This can apply to either point source or line source fire.</LI></ul></LI>
+  <LI><i>Directions from IGNITION POINT. (FL based on flaming segment perpendicular to perimeter, improved V6 method)</i> <ul>
+    <li>Fire spread is from an ignition point to a point on the perimeter of an elliptically shaped fire.</LI></ul></LI>
+      <LI><i>Directions from Ignition Point. (FL based on flaming segment in direction from ignition point, method through V5)</i> 
+        <ul>
+          <li>Fire spread is from the ignition point to a point on the perimeter of an elliptically shaped fire.</LI>
+          <li>The Rate of spread calculation is the same as in the previous option. Flame length and fireline intensity calculations are different.</li>
+          <li>This option is included for continuity and comparison, but should not be used for calculating fire behavior.</ul></LI>
+    </UL>
+
+<p>Flame length (FL) is calculated from fireline intensity (FLI), which is found from rate of spread (ROS) and heat per unit area.
+<ul>
+	<li>Heading and backing FL and FLI are the same for version 5 (V5) and version 6 (V6). The fire characteristics chart relationships are valid, and the chart can be used for heading and backing fires.</li>
+    <li>Flanking fire is a special case of spread from the fire front, 90 degrees from the head fire.</li>
+    <li>For <i>Surface fire spread is Directions from FIRE FRONT</i>, FLI and FL use the ROS in the specified direction(s).</li>
+    <li>For <i>Surface fire spread is Directions from IGNITION POINT</i>, the V6 method first determines the spread direction beginning at the ignition point and determines point of interest on the perimeter defined in the direction specified on the worksheet.. BehavePlus then calculates FL and FLI for spread from the fire front, perpendicular to the perimeter.</li>
+    <li>For <i>Surface fire spread is Directions from Ignition Point</i>, the V5 method uses the ROS in the direction of spread from the ignition point, which is not tehcnically correct. 
+    	<ul>
+        	<li>This option is included for continuity and comparison and should not be used.</li>
+            <li>This is the calculation used in developing the fire characteristics chart relationships. Therefore, the fire characteristics chart should not be used for fires in directions <i>other than</i> heading and backing.</li>
+        </ul>
+    </li>
+</ul>
+
+<p><A NAME="Table1"></a>
+The following notes and digrams may be useful in understanding the changes to calculations in V6 using the options listed above.
+<table border="1" cellspacing="0" cellpadding="4" width="70%">
+	<TR bgcolor="#CCCCCC">
+    	<TH align="left">Input Option:<br><i>Surface fire spread is...</i></TH>
+    	<TH align="left">Notes and Diagrams</TH>
+	</TR>
+	<tr>
+    	<td><i>HEADING only (in direction of maximum spread).</i></td>
+        <td>The direction of maximum spread is calculated assuming upslope movement unless wind direction is other than upslope. If cross-slope wind is specified, the direction of maximum spread is found.<br><br><A NAME="spreadHeadingOnly.png"></a> 
+<IMG SRC="spreadHeadingOnly.png" ALT="Spread Direction for Heading Fire">
+<P> 
+</td>
+    </tr>
+	<tr>
+    	<td><i>FLANKING only (90 deg from head fire).</i></td>
+	    <td>Spread rate is calculated in a direction perpendicular to the direction of maximum spread (head fire). This is not the same as 90 degrees from the ignition point.<br><br><A NAME="spreadFlankingOnly.png"></a> 
+<IMG SRC="spreadFlankingOnly.png" ALT="Spread Direction for Flanking Fire"></td>
+	</tr>
+	<tr>
+    	<td><i>BACKING only (180 deg from head fire).</i></td>
+        <td>Backing spread is determined by the elliptical shape of the fire.<br><br><A NAME="spreadBackingOnly.png"></a> 
+<IMG SRC="spreadBackingOnly.png" ALT="Spread Direction for Backing Fire"></td>
+    </tr>
+    <tr>
+    	<td><i>Directions from FIRE FRONT.</i></td>
+        <td>Spread direction is perpendicular (normal) to the fire perimeter. This can apply to either a point source or a line source fire. Results are consistent with those from FARSITE.<br><br><A NAME="spreadFireFront.png"></a> 
+<IMG SRC="spreadFireFront.png" ALT="Spread Direction from Fire Front"><br><br><A NAME="spreadFireFrontFarsite.png"></a> 
+<IMG SRC="spreadFireFrontFarsite.png" ALT="Spread Direction from Fire Front, FARSITE method"></td>
+	</tr>
+    <tr>
+    	<td><i>Directions from IGNITON POINT. (FL based on flaming segment perpendicular to perimeter, improved V6 method)</i></td>
+        <td>This option assumes a point source fire. Fire spreads from the fire origin to the point on the perimeter. Calculations of flame length and fireline intensity are based on fire spread perpendicular (normal) to the fire perimeter. The term is capitalized to emphasize that this is the ignition point option that should be selected.<br><br><A NAME="spreadIgnitionPoint.png"></a> 
+<IMG SRC="spreadIgnitionPoint.png" ALT="Fire Spread from Ignition Point"><br><br><A NAME="spreadIgnitionPointFireFront.png"></a> 
+<IMG SRC="spreadIgnitionPointFireFront.png" ALT="Spread Direction Perpendicular to Fire Front"></td>
+    </tr>
+    <tr>
+    	<td><i>Directions from Ignition Point. (FL based on flaming segment in direction from igntion point, method through V5)</i></td>
+        <td>The surface rate of spread is the same for both ignition point options. The flame length and fireline intensity are calculated for direction of spread from the ignition point, not from the fire perimeter. This option is included only for continuity and comparison to the V5 method of calculating FL and FLI. It should not be used in calculating fire behavior.<br><br><A NAME="spreadIgnitionPointV5.png"></a> 
+<IMG SRC="spreadIgnitionPointV5.png" ALT="Spread Direction from Ignition Point through Fire Front"></td>
+    </tr>
+</table>
+
+<p>
+<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+
+    <UL>
+      <LI><A HREF="directionOptions.html">SURFACE Directions Input Options</A></LI>
+    </UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, February 27, 2014.</FONT>
+</BODY>
+</HTML>
+

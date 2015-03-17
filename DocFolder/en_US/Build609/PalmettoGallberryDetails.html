@@ -1,0 +1,227 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Palmetto-Gallberry Details Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Palmetto-Gallberry Details</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR><P>
+
+
+The Palmetto-Gallberry fuel option in BehavePlus allows entry of vegetation
+data for southern rough fuels.
+The equations of Hough and Albini (1978) are then used to create fuel
+inputs for live and dead fuel by size class to define surface fuel parameters.
+
+
+    <P>The Palmetto-Gallberry option assumes the following constants when
+    assigning fuel parameters:     
+    <P>
+  <A NAME="Table 1 Palmetto-Gallberry Fuel Constants"></a>
+<B>Table 1: Palmetto-Gallberry Fuel Constants</B><br>
+    <table cellpadding="2" cellspacing="0" border="1">
+  <tbody>
+    <tr bgcolor="#CCCCCC">
+      <td>
+      <b>Fuel Model Variable</b>
+      </td>
+      <td>
+      <b>Value</b>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      extinction moisture
+      </td>
+      <td>
+      40 percent
+      </td>
+    </tr>
+    <tr>
+      <td>
+      fuelbed depth
+      </td>
+      <td>
+      2/3 height of understory
+      </td>
+    </tr>
+    <tr>
+      <td>
+      low heat content
+      </td>
+      <td>
+      8300 Btu / lb
+      </td>
+    </tr>
+    <tr>
+      <td>
+      particle density, live fuel
+      </td>
+      <td>
+      46 lb / ft<SUP>3</SUP>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      particle density, dead fuel
+      </td>
+      <td>
+      30 lb / ft<SUP>3</SUP>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      total ash content, fraction
+      </td>
+      <td>
+      0.030
+      </td>
+    </tr>
+    <tr>
+      <td>
+      silica-free ash, live fuel, fraction
+      </td>
+      <td>
+      0.015
+      </td>
+    </tr>
+    <tr>
+      <td>
+      silica-free ash, dead fuel, fraction
+      </td>
+      <td>
+      0.010
+      </td>
+    </tr>
+    <tr>
+      <td>
+      SAV, foliage
+      </td>
+      <td>
+      2000 ft<SUP>2</SUP> / ft<SUP>3</SUP>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      SAV, 0-.25 inch dia. stems
+      </td>
+      <td>
+      350 ft<SUP>2</SUP> / ft<SUP>3</SUP>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      SAV, .25-1 inch dia. stems
+      </td>
+      <td>
+      140 ft<SUP>2</SUP> / ft<SUP>3</SUP>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<BR><BR>
+The following table indicates which input variables for the Palmetto-Gallberry
+option affect which fuel load classes:
+
+
+      <p>
+      <A NAME="Table2"></a>
+  <B>Table 2: Palmetto-Gallberry Input Variables Affecting Fuel Load by Class</B><br>
+<table cellpadding="5" cellspacing="0" border="1">
+  <tbody>
+    <tr bgcolor="#CCCCCC">
+      <td><b>Fuel Category</b></td>
+      <td align="center"><b>Age of<br>Rough</b></td>
+      <td align="center"><b>Overstory<BR>Basal Area</b></td>
+      <td align="center"><b>Height of<br>Understory</b></td>
+      <td align="center"><b>Palmetto<br>Coverage</b></td>
+    </tr>
+    <tr><td>Live Foliage</td>
+      <td align="center">X</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">X</td>
+      <td align="center">X</td>
+    </tr>
+    <tr>
+      <td>Live 0-.25 inch dia.</td>
+      <td align="center">X</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">X</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Live .25-1 inch dia.</td>
+      <td align="center">X</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">X</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Dead Foliage</td>
+      <td align="center">X</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">X</td>
+    </tr>
+    <tr>
+      <td>Dead 0-.25 inch dia.</td>
+      <td align="center">X</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">X</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Dead .25-1 inch dia.</td>
+      <td align="center">X</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">X</td>
+    </tr>
+    <tr>
+      <td>Litter Layer</td>
+      <td align="center">X</td>
+      <td align="center">X</td>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>    <H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+
+    <UL>
+      <LI><A HREF="vSurfaceFuelPalmettoAge.html">P-G Age of Rough</A></LI>
+      <LI><A HREF="vSurfaceFuelPalmettoLoadDead1.html">P-G Dead Fine Fuel Load</A></LI>
+      <LI><A HREF="vSurfaceFuelPalmettoLoadDeadFoliage.html">P-G Dead Foliage Fuel Load</A></LI>
+      <LI><A HREF="vSurfaceFuelPalmettoLoadDead10.html">P-G Dead Medium Fuel Load</A></LI>
+      <LI><A HREF="vSurfaceFuelPalmettoHeight.html">P-G Height of Understory</A></LI>
+      <LI><A HREF="vSurfaceFuelPalmettoLoadLitter.html">P-G Litter Fuel Load</A></LI>
+      <LI><A HREF="vSurfaceFuelPalmettoLoadLive1.html">P-G Live Fine Fuel Load</A></LI>
+      <LI><A HREF="vSurfaceFuelPalmettoLoadLiveFoliage.html">P-G Live Foliage Fuel Load</A></LI>
+      <LI><A HREF="vSurfaceFuelPalmettoLoadLive10.html">P-G Live Medium Fuel Load</A></LI>
+      <LI><A HREF="vSurfaceFuelPalmettoOverstoryBasalArea.html">P-G Overstory Basal Area</A></LI>
+      <LI><A HREF="vSurfaceFuelPalmettoCover.html">P-G Palmetto Coverage</A></LI>
+    </UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>
+

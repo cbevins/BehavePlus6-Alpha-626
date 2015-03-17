@@ -1,0 +1,107 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus SURFACE Directions Input Options Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">SURFACE Directions Input Options</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR><P>
+
+This page controls how the SURFACE Module treats wind and spread direction
+inputs.
+
+    <H3><FONT COLOR="#ff5500">Options</FONT></H3>
+
+
+<table border=1 cellspacing="0" cellpadding="10" >
+  <TR bgcolor="#CCCCCC">
+    <td colspan=3><b>Surface fire spread direction is....</b> </td>
+  </tr>
+  <tr> 
+    <td rowspan="2">&nbsp;</td>
+    <td width="30%" valign="top"><i>only in the direction of maximum spread.</i></td>
+    <td width="65%"> Only the spread rate for the direction of maximum spread 
+      is calculated. It is determined by slope and wind direction.</td>
+  </tr>
+  <tr> 
+    <td width="30%" valign="top"><i>in directions specified on the worksheet.</i></td>
+    <td width="65%"> Spread rate is calculated for the directions specified on 
+      the worksheet. </td>
+  </tr>
+  <tr> 
+    <td colspan=3><b>&nbsp;</b> </td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td colspan=3><b>Wind  is....</b> </td>
+  </tr>
+  <tr> 
+    <td rowspan="2">&nbsp;</td>
+    <td width="30%" valign="top"><i>on the worksheet.</i></td>
+    <td width="65%"> 
+      The wind direction is specified on the worksheet. 
+    </td>
+  </tr>
+  <tr> 
+    <td width="30%" valign="top"><i>upslope.</i></td>
+    <td width="65%"> The wind is assumed to be blowing upslope, so wind direction 
+      is not required as an input. This is a simple, often used case. The head 
+      fire is upslope with the wind.</td>
+  </tr>
+  <tr> 
+    <td colspan=3>&nbsp;</td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td colspan=3><b>Wind &amp; spread directions are....</b> </td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td width="30%" valign="top"><i>degrees clockwise from upslope (direction the wind is pushing the fire).</i></td>
+    <td width="65%">
+      <p>Wind direction is the direction the wind is pushing the fire relative 
+        to the upslope direction (NOT the direction from which the wind is blowing). 
+        This facilitates visualization of vectoring methods. 
+      <ul><li> Enter 0 degrees for an upslope wind.</li>
+	  <li> Enter 180 degrees for a downslope wind.</li>
+	  <li> Enter 90 degrees for a cross-slope wind blowing "left-to-right".</li>
+	  <li> Enter 270 degrees for a cross-slope wind blowing "right-to-left". </li></ul>
+    </td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td width="30%" valign="top"><i>degrees clockwise from north (direction from which the wind is blowing).</i></td>
+    <td width="65%"> 
+      <p> Wind direction is the direction from which the wind is blowing in a 
+      traditional sense. This selection also requires input of aspect. 
+	  <p> For example:      
+      <ul><li>Enter 0 degrees for a North Wind (the wind is blowing from the north 
+        and is pushing the fire to the south). </li>
+      <li>Enter 90 degrees for an East Wind (the wind is blowing from the east 
+        and is pushing the fire to the west). </li>
+      <li>Enter 180 degrees for a South Wind (the wind is blowing from the south 
+        and is pushing the fire to the north). </li>
+      <li> Enter 270 degrees for a West Wind (the wind is blowing from the west 
+        and is pushing the fire to the east). </li></ul>
+    </td>
+  </tr>
+</table>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

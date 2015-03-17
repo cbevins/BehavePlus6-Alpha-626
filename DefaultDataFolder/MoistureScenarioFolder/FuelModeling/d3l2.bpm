@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<!-- Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved. -->
+
+<BehavePlus type="Moisture Scenario" release="60000">
+  <property name="appDescription" value="D3L2 - Moderate dead, 2/3 cured herb (9,10,11,60,90)" />
+  <property name="appDeleteRunLogFile" value="true" />
+  <property name="appFixedFontColor" value="black" />
+  <property name="appFixedFontFamily" value="courier" />
+  <property name="appFixedFontSize" value="12" />
+  <property name="appLanguage" value="english" />
+  <property name="appPixmapCacheKSize" value="1024" />
+  <property name="appPropFontColor" value="black" />
+  <property name="appPropFontFamily" value="times" />
+  <property name="appPropFontSize" value="12" />
+  <property name="appShowBrowser" value="true" />
+  <property name="appShowPicture" value="true" />
+  <property name="appToolBarBigPixmaps" value="false" />
+  <property name="appToolBarTextLabels" value="false" />
+  <property name="calBackgroundColor" value="white" />
+  <property name="calBorderActive" value="true" />
+  <property name="calBorderColor" value="black" />
+  <property name="calBorderRound" value="4" />
+  <property name="calBorderWidth" value="1" />
+  <property name="calBoxColor" value="green" />
+  <property name="calBoxWidth" value="1" />
+  <property name="calCalendarActive" value="true" />
+  <property name="calCalendarMoonPhase" value="true" />
+  <property name="calCalendarMoonTimes" value="true" />
+  <property name="calCalendarSunTimes" value="true" />
+  <property name="calChartActive" value="true" />
+  <property name="calChartCivilDawn" value="true" />
+  <property name="calChartCivilDusk" value="true" />
+  <property name="calChartMoonRise" value="true" />
+  <property name="calChartMoonSet" value="true" />
+  <property name="calChartSunRise" value="true" />
+  <property name="calChartSunSet" value="true" />
+  <property name="calDecorationFontColor" value="black" />
+  <property name="calDecorationFontFamily" value="times" />
+  <property name="calDecorationFontSize" value="12" />
+  <property name="calFineFontFamily" value="times" />
+  <property name="calFineFontSize" value="10" />
+  <property name="calFooterColor" value="white" />
+  <property name="calGmtDiff" value="-9" />
+  <property name="calHeaderColor" value="white" />
+  <property name="calLatitude" value="62.5333" />
+  <property name="calLocationName" value="Yukon River, Alaska" />
+  <property name="calLongitude" value="163.9" />
+  <property name="calMoonTimeFontColor" value="blue" />
+  <property name="calNumberFontColor" value="black" />
+  <property name="calNumberFontFamily" value="times" />
+  <property name="calNumberFontSize" value="24" />
+  <property name="calRowBackgroundColor" value="lightCyan" />
+  <property name="calRowBackgroundColorActive" value="true" />
+  <property name="calSeasonsActive" value="true" />
+  <property name="calSunTimeFontColor" value="red" />
+  <property name="calTextFontColor" value="black" />
+  <property name="calTextFontFamily" value="times" />
+  <property name="calTextFontSize" value="12" />
+  <property name="calTitleFontColor" value="blue" />
+  <property name="calTitleFontFamily" value="times" />
+  <property name="calTitleFontSize" value="16" />
+  <property name="calValueFontColor" value="black" />
+  <property name="calValueFontFamily" value="courier" />
+  <property name="calValueFontSize" value="12" />
+  <property name="calZoneName" value="GMT -7: US Mountain Standard Time" />
+  <property name="containCalcCost" value="false" />
+  <property name="containCalcDiagram" value="false" />
+  <property name="containCalcLine" value="true" />
+  <property name="containCalcResourcesUsed" value="false" />
+  <property name="containCalcSize" value="true" />
+  <property name="containCalcStatus" value="true" />
+  <property name="containCalcTime" value="true" />
+  <property name="containConfMaxSteps" value="1000" />
+  <property name="containConfMinSteps" value="200" />
+  <property name="containConfRetry" value="true" />
+  <property name="containDiagramAttackFireColor" value="red" />
+  <property name="containDiagramAttackPerimColor" value="red" />
+  <property name="containDiagramAttackPerimWidth" value="1" />
+  <property name="containDiagramAxisColor" value="black" />
+  <property name="containDiagramAxisWidth" value="1" />
+  <property name="containDiagramBgColor" value="white" />
+  <property name="containDiagramCols" value="1" />
+  <property name="containDiagramFirelinePerimColor" value="black" />
+  <property name="containDiagramFirelinePerimWidth" value="3" />
+  <property name="containDiagramFrameColor" value="black" />
+  <property name="containDiagramFrameWidth" value="1" />
+  <property name="containDiagramLegendFontFamily" value="times" />
+  <property name="containDiagramLegendFontSize" value="8" />
+  <property name="containDiagramReportFireColor" value="green" />
+  <property name="containDiagramReportPerimColor" value="green" />
+  <property name="containDiagramReportPerimWidth" value="1" />
+  <property name="containDiagramRows" value="2" />
+  <property name="containDiagramTextFontColor" value="black" />
+  <property name="containDiagramTextFontFamily" value="times" />
+  <property name="containDiagramTextFontSize" value="10" />
+  <property name="containDiagramValueFontColor" value="black" />
+  <property name="containDiagramValueFontFamily" value="courier" />
+  <property name="containDiagramValueFontSize" value="10" />
+  <property name="containModuleActive" value="false" />
+  <property name="docDescriptionActive" value="true" />
+  <property name="docFireActive" value="false" />
+  <property name="docTrainingActive" value="false" />
+  <property name="graphActive" value="true" />
+  <property name="graphAxleColor" value="black" />
+  <property name="graphAxleWidth" value="1" />
+  <property name="graphBackgroundColor" value="white" />
+  <property name="graphBarColor" value="red" />
+  <property name="graphGridColor" value="yellow" />
+  <property name="graphGridWidth" value="1" />
+  <property name="graphLineColor" value="rainbow" />
+  <property name="graphLinePoints" value="100" />
+  <property name="graphLineWidth" value="3" />
+  <property name="graphRainbowColors" value="3" />
+  <property name="graphScaleHeight" value="0.5" />
+  <property name="graphScaleWidth" value="1.0" />
+  <property name="graphSubtitleFontColor" value="blue" />
+  <property name="graphSubtitleFontFamily" value="times" />
+  <property name="graphSubtitleFontSize" value="12" />
+  <property name="graphTextFontColor" value="black" />
+  <property name="graphTextFontFamily" value="times" />
+  <property name="graphTextFontSize" value="12" />
+  <property name="graphTitleActive" value="false" />
+  <property name="graphTitleFontColor" value="blue" />
+  <property name="graphTitleFontFamily" value="times" />
+  <property name="graphTitleFontSize" value="14" />
+  <property name="graphValueFontColor" value="black" />
+  <property name="graphValueFontFamily" value="times" />
+  <property name="graphValueFontSize" value="12" />
+  <property name="graphXOffset" value="0.0" />
+  <property name="graphXOriginAtZero" value="true" />
+  <property name="graphXVar1" value="true" />
+  <property name="graphXVar2" value="false" />
+  <property name="graphYOffset" value="0.0" />
+  <property name="graphYOriginAtZero" value="true" />
+  <property name="ignitionCalcIgnitionFirebrandProb" value="true" />
+  <property name="ignitionCalcIgnitionLightningProb" value="false" />
+  <property name="ignitionModuleActive" value="false" />
+  <property name="mapCalcDist" value="false" />
+  <property name="mortalityCalcBarkThickness" value="false" />
+  <property name="mortalityCalcTreeCrownLengScorched" value="false" />
+  <property name="mortalityCalcTreeCrownVolScorched" value="false" />
+  <property name="mortalityCalcTreeMortalityCount" value="false" />
+  <property name="mortalityCalcTreeMortalityRate" value="true" />
+  <property name="mortalityConfBarkDerived" value="true" />
+  <property name="mortalityConfBarkInput" value="false" />
+  <property name="mortalityModuleActive" value="false" />
+  <property name="pageBackgroundColor" value="white" />
+  <property name="pageBorderActive" value="true" />
+  <property name="pageBorderColor" value="black" />
+  <property name="pageBorderRound" value="4" />
+  <property name="pageBorderWidth" value="1" />
+  <property name="pageDecorationFontColor" value="black" />
+  <property name="pageDecorationFontFamily" value="times" />
+  <property name="pageDecorationFontSize" value="12" />
+  <property name="pageFooterColor" value="white" />
+  <property name="pageHeaderColor" value="white" />
+  <property name="pageMarginBottom" value="0.75" />
+  <property name="pageMarginLeft" value="0.75" />
+  <property name="pageMarginRight" value="0.75" />
+  <property name="pageMarginTop" value="0.75" />
+  <property name="pageSizeHeight" value="11.0" />
+  <property name="pageSizeWidth" value="8.5" />
+  <property name="scorchCalcScorchHt" value="true" />
+  <property name="scorchConfUseFireLineInt" value="false" />
+  <property name="scorchConfUseFlameLeng" value="true" />
+  <property name="scorchModuleActive" value="false" />
+  <property name="sizeCalcFireArea" value="true" />
+  <property name="sizeCalcFireDistAtBack" value="false" />
+  <property name="sizeCalcFireDistAtFront" value="false" />
+  <property name="sizeCalcFireLengDist" value="false" />
+  <property name="sizeCalcFireLengToWidth" value="false" />
+  <property name="sizeCalcFirePerimeter" value="true" />
+  <property name="sizeCalcFireShapeDiagram" value="false" />
+  <property name="sizeCalcFireWidthDist" value="false" />
+  <property name="sizeFireShapeBgColor" value="white" />
+  <property name="sizeFireShapeDiagramCols" value="2" />
+  <property name="sizeFireShapeDiagramRows" value="2" />
+  <property name="sizeFireShapeFireColor" value="red" />
+  <property name="sizeFireShapeFrameColor" value="black" />
+  <property name="sizeFireShapeFrameWidth" value="1" />
+  <property name="sizeFireShapeLegendFontFamily" value="times" />
+  <property name="sizeFireShapeLegendFontSize" value="8" />
+  <property name="sizeFireShapePerimColor" value="red" />
+  <property name="sizeFireShapePerimWidth" value="1" />
+  <property name="sizeFireShapeSlopeColor" value="green" />
+  <property name="sizeFireShapeSlopeWidth" value="2" />
+  <property name="sizeFireShapeTextFontColor" value="black" />
+  <property name="sizeFireShapeTextFontFamily" value="times" />
+  <property name="sizeFireShapeTextFontSize" value="10" />
+  <property name="sizeFireShapeValueFontColor" value="black" />
+  <property name="sizeFireShapeValueFontFamily" value="courier" />
+  <property name="sizeFireShapeValueFontSize" value="10" />
+  <property name="sizeFireShapeWindColor" value="blue" />
+  <property name="sizeFireShapeWindWidth" value="2" />
+  <property name="sizeModuleActive" value="false" />
+  <property name="spotCalcDistBurningPile" value="false" />
+  <property name="spotCalcDistSurfaceFire" value="false" />
+  <property name="spotCalcDistTorchingTrees" value="true" />
+  <property name="spotModuleActive" value="false" />
+  <property name="sunLocation" value="Missoula, MT USA" />
+  <property name="surfaceCalcFireCharacteristicsDiagram" value="false" />
+  <property name="surfaceCalcFireDist" value="false" />
+  <property name="surfaceCalcFireEffWind" value="false" />
+  <property name="surfaceCalcFireFlameLeng" value="true" />
+  <property name="surfaceCalcFireHeatPerUnitArea" value="true" />
+  <property name="surfaceCalcFireLineInt" value="true" />
+  <property name="surfaceCalcFireMaxDirDiagram" value="false" />
+  <property name="surfaceCalcFireMaxDirFromUpslope" value="true" />
+  <property name="surfaceCalcFireReactionInt" value="false" />
+  <property name="surfaceCalcFireSpread" value="true" />
+  <property name="surfaceCalcFireWindSpeedFlag" value="true" />
+  <property name="surfaceCalcFireWindSpeedLimit" value="false" />
+  <property name="surfaceCalcFuelLoadDeadHerb" value="false" />
+  <property name="surfaceCalcFuelLoadTransferFraction" value="false" />
+  <property name="surfaceCalcPalmettoBedDepth" value="false" />
+  <property name="surfaceCalcPalmettoLoadDead1" value="false" />
+  <property name="surfaceCalcPalmettoLoadDead10" value="false" />
+  <property name="surfaceCalcPalmettoLoadDeadFoliage" value="false" />
+  <property name="surfaceCalcPalmettoLoadLitter" value="false" />
+  <property name="surfaceCalcPalmettoLoadLive1" value="false" />
+  <property name="surfaceCalcPalmettoLoadLive10" value="false" />
+  <property name="surfaceCalcPalmettoLoadLiveFoliage" value="false" />
+  <property name="surfaceCalcSlopeReach" value="false" />
+  <property name="surfaceCalcSlopeRise" value="false" />
+  <property name="surfaceCalcSlopeSteepness" value="false" />
+  <property name="surfaceCalcWindAdjFactor" value="false" />
+  <property name="surfaceCalcWindSpeedAtMidflame" value="false" />
+  <property name="surfaceConfDegreesWrtNorth" value="false" />
+  <property name="surfaceConfDegreesWrtUpslope" value="true" />
+  <property name="surfaceConfFuelModels" value="true" />
+  <property name="surfaceConfFuelPalmettoGallberry" value="false" />
+  <property name="surfaceConfFuelParms" value="false" />
+  <property name="surfaceConfMoisLifeCat" value="false" />
+  <property name="surfaceConfMoisScenario" value="false" />
+  <property name="surfaceConfMoisTimeLag" value="true" />
+  <property name="surfaceConfSlopeDegrees" value="false" />
+  <property name="surfaceConfSlopeDerived" value="false" />
+  <property name="surfaceConfSlopeFraction" value="true" />
+  <property name="surfaceConfSlopeInput" value="true" />
+  <property name="surfaceConfSpreadDirInput" value="false" />
+  <property name="surfaceConfSpreadDirMax" value="true" />
+  <property name="surfaceConfWindDirInput" value="true" />
+  <property name="surfaceConfWindDirUpslope" value="false" />
+  <property name="surfaceConfWindSpeedAt10M" value="false" />
+  <property name="surfaceConfWindSpeedAt20Ft" value="false" />
+  <property name="surfaceConfWindSpeedAtMidflame" value="true" />
+  <property name="surfaceFireMaxDirDiagramBgColor" value="white" />
+  <property name="surfaceFireMaxDirDiagramCols" value="2" />
+  <property name="surfaceFireMaxDirDiagramFireColor" value="red" />
+  <property name="surfaceFireMaxDirDiagramFireWidth" value="2" />
+  <property name="surfaceFireMaxDirDiagramFrameColor" value="black" />
+  <property name="surfaceFireMaxDirDiagramFrameWidth" value="1" />
+  <property name="surfaceFireMaxDirDiagramLegendFontFamily" value="times" />
+  <property name="surfaceFireMaxDirDiagramLegendFontSize" value="8" />
+  <property name="surfaceFireMaxDirDiagramRows" value="2" />
+  <property name="surfaceFireMaxDirDiagramSlopeColor" value="green" />
+  <property name="surfaceFireMaxDirDiagramSlopeWidth" value="2" />
+  <property name="surfaceFireMaxDirDiagramTextFontColor" value="black" />
+  <property name="surfaceFireMaxDirDiagramTextFontFamily" value="times" />
+  <property name="surfaceFireMaxDirDiagramTextFontSize" value="10" />
+  <property name="surfaceFireMaxDirDiagramValueFontColor" value="black" />
+  <property name="surfaceFireMaxDirDiagramValueFontFamily" value="courier" />
+  <property name="surfaceFireMaxDirDiagramValueFontSize" value="10" />
+  <property name="surfaceFireMaxDirDiagramWindColor" value="blue" />
+  <property name="surfaceFireMaxDirDiagramWindWidth" value="2" />
+  <property name="surfaceModuleActive" value="false" />
+  <property name="tabActive" value="false" />
+  <property name="tabFontColor" value="black" />
+  <property name="tabFontFamily" value="times" />
+  <property name="tabFontSize" value="12" />
+  <property name="tabPosition" value="1" />
+  <property name="tabTabsPerPage" value="4" />
+  <property name="tabText" value="" />
+  <property name="tableActive" value="true" />
+  <property name="tableRowBackgroundColor" value="lightGray" />
+  <property name="tableRowBackgroundColorActive" value="true" />
+  <property name="tableRowUseVar1" value="true" />
+  <property name="tableRowUseVar2" value="false" />
+  <property name="tableSubtitleFontColor" value="blue" />
+  <property name="tableSubtitleFontFamily" value="times" />
+  <property name="tableSubtitleFontSize" value="14" />
+  <property name="tableTextFontColor" value="black" />
+  <property name="tableTextFontFamily" value="times" />
+  <property name="tableTextFontSize" value="12" />
+  <property name="tableTitleFontColor" value="blue" />
+  <property name="tableTitleFontFamily" value="times" />
+  <property name="tableTitleFontSize" value="16" />
+  <property name="tableValueFontColor" value="black" />
+  <property name="tableValueFontFamily" value="courier" />
+  <property name="tableValueFontSize" value="12" />
+  <property name="weatherCalcWthrDewPointTemp" value="false" />
+  <property name="weatherCalcWthrRelativeHumidity" value="true" />
+  <property name="weatherConfHumidityFromDewPoint" value="true" />
+  <property name="weatherConfHumidityFromWetBulbElev" value="false" />
+  <property name="weatherModuleActive" value="false" />
+  <property name="worksheetEntryFontColor" value="black" />
+  <property name="worksheetEntryFontFamily" value="courier" />
+  <property name="worksheetEntryFontSize" value="12" />
+  <property name="worksheetMaskColor" value="lightBlue" />
+  <property name="worksheetNoValueFontColor" value="lightGray" />
+  <property name="worksheetNotesActive" value="true" />
+  <property name="worksheetNotesLines" value="4" />
+  <property name="worksheetNotesText" value="" />
+  <property name="worksheetShowChoices" value="false" />
+  <property name="worksheetShowInputVars" value="false" />
+  <property name="worksheetShowOutputVars" value="true" />
+  <property name="worksheetTextFontColor" value="black" />
+  <property name="worksheetTextFontFamily" value="times" />
+  <property name="worksheetTextFontSize" value="12" />
+  <property name="worksheetTitleFontColor" value="blue" />
+  <property name="worksheetTitleFontFamily" value="times" />
+  <property name="worksheetTitleFontSize" value="14" />
+  <property name="worksheetValueFontColor" value="black" />
+  <property name="worksheetValueFontFamily" value="courier" />
+  <property name="worksheetValueFontSize" value="12" />
+  <variable name="vContainAttackBack" decimals="0" units="ch" value="" />
+  <variable name="vContainAttackDist" decimals="0" units="ch" value="" />
+  <variable name="vContainAttackHead" decimals="0" units="ch" value="" />
+  <variable name="vContainAttackTactic" code="" />
+  <variable name="vContainDiagram" code="" />
+  <variable name="vContainLine" decimals="1" units="ch" value="" />
+  <variable name="vContainPoints" decimals="0" units="" value="" />
+  <variable name="vContainReportBack" decimals="0" units="ch" value="" />
+  <variable name="vContainReportHead" decimals="0" units="ch" value="" />
+  <variable name="vContainReportRatio" decimals="1" units="ratio" value="" />
+  <variable name="vContainReportSize" decimals="1" units="ac" value="" />
+  <variable name="vContainReportSpread" decimals="1" units="ch/h" value="" />
+  <variable name="vContainResourceArrival" decimals="1" units="h" value="" />
+  <variable name="vContainResourceDuration" decimals="1" units="h" value="" />
+  <variable name="vContainResourceName" text="" />
+  <variable name="vContainResourceProd" decimals="1" units="ch/h" value="" />
+  <variable name="vContainResourcesUsed" decimals="0" units="" value="" />
+  <variable name="vContainSize" decimals="1" units="ac" value="" />
+  <variable name="vContainStatus" code="" />
+  <variable name="vContainTime" decimals="1" units="h" value="" />
+  <variable name="vContainXMax" decimals="0" units="ch" value="" />
+  <variable name="vContainXMin" decimals="0" units="ch" value="" />
+  <variable name="vContainYMax" decimals="0" units="ch" value="" />
+  <variable name="vDocDescription" text="D3L2 - Moderate dead, 2/3 cured herb (9,10,11,60,90)" />
+  <variable name="vDocFireAnalyst" text="" />
+  <variable name="vDocFireName" text="" />
+  <variable name="vDocFirePeriod" text="" />
+  <variable name="vDocTrainingCourse" text="" />
+  <variable name="vDocTrainingExercise" text="" />
+  <variable name="vDocTrainingTrainee" text="" />
+  <variable name="vIgnitionFirebrandFuelMois" decimals="0" units="%" value="" />
+  <variable name="vIgnitionFirebrandProb" decimals="0" units="%" value="" />
+  <variable name="vIgnitionLightningDuffDepth" decimals="1" units="in" value="" />
+  <variable name="vIgnitionLightningFuelMois" decimals="0" units="%" value="" />
+  <variable name="vIgnitionLightningFuelType" code="" />
+  <variable name="vIgnitionLightningProb" decimals="0" units="%" value="" />
+  <variable name="vMapContourCount" decimals="0" units="" value="" />
+  <variable name="vMapContourInterval" decimals="0" units="ft" value="" />
+  <variable name="vMapDist" decimals="2" units="in" value="" />
+  <variable name="vMapFraction" decimals="0" units="" value="" />
+  <variable name="vMapScale" decimals="4" units="in/mi" value="" />
+  <variable name="vSiteAspectDirFromCompass" code="" />
+  <variable name="vSiteAspectDirFromNorth" decimals="0" units="deg" value="" />
+  <variable name="vSiteElevation" decimals="0" units="ft" value="" />
+  <variable name="vSiteLatitude" decimals="3" units="deg" value="" />
+  <variable name="vSiteLongitude" decimals="3" units="deg" value="" />
+  <variable name="vSiteRidgeToValleyDist" decimals="1" units="mi" value="" />
+  <variable name="vSiteRidgeToValleyElev" decimals="0" units="ft" value="" />
+  <variable name="vSiteSlopeDegrees" decimals="0" units="deg" value="" />
+  <variable name="vSiteSlopeFraction" decimals="0" units="%" value="" />
+  <variable name="vSiteSlopeReach" decimals="0" units="ft" value="" />
+  <variable name="vSiteSlopeRise" decimals="0" units="ft" value="" />
+  <variable name="vSiteSunShading" decimals="0" units="%" value="" />
+  <variable name="vSiteTimeZone" code="" />
+  <variable name="vSiteUpslopeDirFromNorth" decimals="0" units="deg" value="" />
+  <variable name="vSpotDistBurningPile" decimals="1" units="mi" value="" />
+  <variable name="vSpotDistSurfaceFire" decimals="1" units="mi" value="" />
+  <variable name="vSpotDistTorchingTrees" decimals="1" units="mi" value="" />
+  <variable name="vSpotFireSource" code="" />
+  <variable name="vSpotMapDistBurningPile" decimals="2" units="in" value="" />
+  <variable name="vSpotMapDistSurfaceFire" decimals="2" units="in" value="" />
+  <variable name="vSpotMapDistTorchingTrees" decimals="2" units="in" value="" />
+  <variable name="vSpotTorchingTrees" decimals="0" units="" value="" />
+  <variable name="vSurfaceFireArea" decimals="1" units="ac" value="" />
+  <variable name="vSurfaceFireCharacteristicsDiagram" code="" />
+  <variable name="vSurfaceFireDistAtBack" decimals="1" units="ch" value="" />
+  <variable name="vSurfaceFireDistAtHead" decimals="1" units="ch" value="" />
+  <variable name="vSurfaceFireDistAtVector" decimals="1" units="ch" value="" />
+  <variable name="vSurfaceFireEccentricity" decimals="2" units="ratio" value="" />
+  <variable name="vSurfaceFireEffWindAtHead" decimals="1" units="mi/h" value="" />
+  <variable name="vSurfaceFireEffWindAtVector" decimals="1" units="mi/h" value="" />
+  <variable name="vSurfaceFireElapsedTime" decimals="1" units="h" value="" />
+  <variable name="vSurfaceFireFlameHtAtHead" decimals="1" units="ft" value="" />
+  <variable name="vSurfaceFireFlameHtAtVector" decimals="1" units="ft" value="" />
+  <variable name="vSurfaceFireFlameHtPile" decimals="1" units="ft" value="" />
+  <variable name="vSurfaceFireFlameLengAtHead" decimals="1" units="ft" value="" />
+  <variable name="vSurfaceFireFlameLengAtVector" decimals="1" units="ft" value="" />
+  <variable name="vSurfaceFireHeatPerUnitArea" decimals="0" units="Btu/ft2" value="" />
+  <variable name="vSurfaceFireLengDist" decimals="1" units="ch" value="" />
+  <variable name="vSurfaceFireLengMapDist" decimals="2" units="in" value="" />
+  <variable name="vSurfaceFireLengthToWidth" decimals="1" units="ratio" value="" />
+  <variable name="vSurfaceFireLineIntAtHead" decimals="0" units="Btu/ft/s" value="" />
+  <variable name="vSurfaceFireLineIntAtVector" decimals="0" units="Btu/ft/s" value="" />
+  <variable name="vSurfaceFireMapDistAtBack" decimals="2" units="in" value="" />
+  <variable name="vSurfaceFireMapDistAtHead" decimals="2" units="in" value="" />
+  <variable name="vSurfaceFireMapDistAtVector" decimals="2" units="in" value="" />
+  <variable name="vSurfaceFireMaxDirDiagram" code="" />
+  <variable name="vSurfaceFireMaxDirFromNorth" decimals="0" units="deg" value="" />
+  <variable name="vSurfaceFireMaxDirFromUpslope" decimals="0" units="deg" value="" />
+  <variable name="vSurfaceFireNoWindRate" decimals="1" units="ch/h" value="" />
+  <variable name="vSurfaceFirePerimeter" decimals="0" units="ch" value="" />
+  <variable name="vSurfaceFirePropagatingFlux" decimals="6" units="ratio" value="" />
+  <variable name="vSurfaceFireReactionInt" decimals="0" units="Btu/ft2/min" value="" />
+  <variable name="vSurfaceFireResidenceTime" decimals="2" units="min" value="" />
+  <variable name="vSurfaceFireScorchHtAtHead" decimals="0" units="ft" value="" />
+  <variable name="vSurfaceFireScorchHtAtVector" decimals="0" units="ft" value="" />
+  <variable name="vSurfaceFireShapeDiagram" code="" />
+  <variable name="vSurfaceFireSpreadAtBack" decimals="1" units="ch/h" value="" />
+  <variable name="vSurfaceFireSpreadAtHead" decimals="1" units="ch/h" value="" />
+  <variable name="vSurfaceFireSpreadAtVector" decimals="1" units="ch/h" value="" />
+  <variable name="vSurfaceFireVectorDirFromCompass" code="" />
+  <variable name="vSurfaceFireVectorDirFromNorth" decimals="0" units="deg" value="" />
+  <variable name="vSurfaceFireVectorDirFromUpslope" decimals="0" units="deg" value="" />
+  <variable name="vSurfaceFireWidthDist" decimals="1" units="ch" value="" />
+  <variable name="vSurfaceFireWidthMapDist" decimals="2" units="in" value="" />
+  <variable name="vSurfaceFireWindSpeedFlag" code="" />
+  <variable name="vSurfaceFireWindSpeedLimit" decimals="1" units="mi/h" value="" />
+  <variable name="vSurfaceFuelBedBetaRatio" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelBedBulkDensity" decimals="4" units="lbs/ft3" value="" />
+  <variable name="vSurfaceFuelBedCoverage1" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelBedDepth" decimals="2" units="ft" value="" />
+  <variable name="vSurfaceFuelBedHeatSink" decimals="1" units="Btu/ft3" value="" />
+  <variable name="vSurfaceFuelBedMextDead" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelBedMextLive" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelBedModel" code="" />
+  <variable name="vSurfaceFuelBedMoisDead" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelBedMoisLive" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelBedPackingRatio" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelBedSigma" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelDens0" decimals="1" units="lb/ft3" value="" />
+  <variable name="vSurfaceFuelDens1" decimals="1" units="lb/ft3" value="" />
+  <variable name="vSurfaceFuelDens2" decimals="1" units="lb/ft3" value="" />
+  <variable name="vSurfaceFuelDens3" decimals="1" units="lb/ft3" value="" />
+  <variable name="vSurfaceFuelDens4" decimals="1" units="lb/ft3" value="" />
+  <variable name="vSurfaceFuelDens5" decimals="1" units="lb/ft3" value="" />
+  <variable name="vSurfaceFuelDens6" decimals="1" units="lb/ft3" value="" />
+  <variable name="vSurfaceFuelDens7" decimals="1" units="lb/ft3" value="" />
+  <variable name="vSurfaceFuelDuffDepth" decimals="1" units="in" value="" />
+  <variable name="vSurfaceFuelHeat0" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeat1" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeat2" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeat3" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeat4" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeat5" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeat6" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeat7" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeatDead" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeatLive" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelLife0" code="" />
+  <variable name="vSurfaceFuelLife1" code="" />
+  <variable name="vSurfaceFuelLife2" code="" />
+  <variable name="vSurfaceFuelLife3" code="" />
+  <variable name="vSurfaceFuelLife4" code="" />
+  <variable name="vSurfaceFuelLife5" code="" />
+  <variable name="vSurfaceFuelLife6" code="" />
+  <variable name="vSurfaceFuelLife7" code="" />
+  <variable name="vSurfaceFuelLoad0" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoad1" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoad2" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoad3" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoad4" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoad5" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoad6" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoad7" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoadDead1" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoadDead10" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoadDead100" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoadDeadHerb" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoadLiveHerb" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoadLiveWood" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoadTransferEq" code="S" />
+  <variable name="vSurfaceFuelLoadTransferFraction" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMois0" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMois1" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMois2" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMois3" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMois4" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMois5" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMois6" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMois7" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMoisDead1" decimals="0" units="%" value="9" />
+  <variable name="vSurfaceFuelMoisDead10" decimals="0" units="%" value="10" />
+  <variable name="vSurfaceFuelMoisDead100" decimals="0" units="%" value="11" />
+  <variable name="vSurfaceFuelMoisDead1000" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMoisLifeDead" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMoisLifeLive" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMoisLiveHerb" decimals="0" units="%" value="60" />
+  <variable name="vSurfaceFuelMoisLiveWood" decimals="0" units="%" value="90" />
+  <variable name="vSurfaceFuelMoisScenario" code="" />
+  <variable name="vSurfaceFuelPalmettoAge" decimals="0" units="years" value="" />
+  <variable name="vSurfaceFuelPalmettoCover" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelPalmettoHeight" decimals="0" units="ft" value="" />
+  <variable name="vSurfaceFuelPalmettoLoadDead1" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelPalmettoLoadDead10" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelPalmettoLoadDeadFoliage" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelPalmettoLoadLitter" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelPalmettoLoadLive1" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelPalmettoLoadLive10" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelPalmettoLoadLiveFoliage" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelPalmettoOverstoryBasalArea" decimals="0" units="ft2/ac" value="" />
+  <variable name="vSurfaceFuelSavr0" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavr1" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavr2" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavr3" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavr4" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavr5" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavr6" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavr7" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavrDead1" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavrLiveHerb" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavrLiveWood" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSeff0" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelSeff1" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelSeff2" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelSeff3" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelSeff4" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelSeff5" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelSeff6" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelSeff7" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelStot0" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelStot1" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelStot2" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelStot3" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelStot4" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelStot5" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelStot6" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelStot7" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelTemp" decimals="0" units="oF" value="" />
+  <variable name="vTimeIntegerDate" decimals="0" units="" value="" />
+  <variable name="vTimeJulianDate" decimals="2" units="" value="" />
+  <variable name="vTreeBarkThickness" decimals="1" units="in" value="" />
+  <variable name="vTreeCount" decimals="0" units="per ac" value="" />
+  <variable name="vTreeCoverHt" decimals="0" units="ft" value="" />
+  <variable name="vTreeCrownBaseHt" decimals="1" units="ft" value="" />
+  <variable name="vTreeCrownLengFractionScorchedAtHead" decimals="0" units="%" value="" />
+  <variable name="vTreeCrownLengFractionScorchedAtVector" decimals="0" units="%" value="" />
+  <variable name="vTreeCrownLengScorchedAtHead" decimals="1" units="ft" value="" />
+  <variable name="vTreeCrownLengScorchedAtVector" decimals="1" units="ft" value="" />
+  <variable name="vTreeCrownRatio" decimals="2" units="fraction" value="" />
+  <variable name="vTreeCrownVolScorchedAtHead" decimals="0" units="%" value="" />
+  <variable name="vTreeCrownVolScorchedAtVector" decimals="0" units="%" value="" />
+  <variable name="vTreeDbh" decimals="0" units="in" value="" />
+  <variable name="vTreeHt" decimals="1" units="ft" value="" />
+  <variable name="vTreeMortalityCountAtHead" decimals="0" units="per ac" value="" />
+  <variable name="vTreeMortalityCountAtVector" decimals="0" units="per ac" value="" />
+  <variable name="vTreeMortalityRateAtHead" decimals="0" units="%" value="" />
+  <variable name="vTreeMortalityRateAtVector" decimals="0" units="%" value="" />
+  <variable name="vTreeSpecies" code="" />
+  <variable name="vTreeSpeciesSpot" code="" />
+  <variable name="vWindAdjFactor" decimals="2" units="ratio" value="" />
+  <variable name="vWindDirFromCompass" code="" />
+  <variable name="vWindDirFromNorth" decimals="0" units="deg" value="" />
+  <variable name="vWindDirFromUpslope" decimals="0" units="deg" value="" />
+  <variable name="vWindSpeedAt10M" decimals="0" units="mi/h" value="" />
+  <variable name="vWindSpeedAt20Ft" decimals="0" units="mi/h" value="" />
+  <variable name="vWindSpeedAtMidflame" decimals="1" units="mi/h" value="" />
+  <variable name="vWthrAirTemp" decimals="0" units="oF" value="" />
+  <variable name="vWthrDewPointTemp" decimals="0" units="oF" value="" />
+  <variable name="vWthrLightningStrikeType" code="" />
+  <variable name="vWthrRelativeHumidity" decimals="0" units="%" value="" />
+  <variable name="vWthrWetBulbTemp" decimals="0" units="oF" value="" />
+</BehavePlus>

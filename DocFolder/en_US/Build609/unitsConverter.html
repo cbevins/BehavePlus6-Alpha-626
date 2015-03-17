@@ -1,0 +1,1443 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Units Converter Tool Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Units Converter Tool</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR><P>
+
+This dialog converts a quantity between arbitrary units of measure.
+
+    <H3><FONT COLOR="#ff5500">Controls</FONT></H3>
+
+	<ul>
+    <li><B>From Amount</B><br>
+      Enter a single quantity to be converted.<br>
+      You may enter an integer or a real value.<br>
+      The real value may be in decimal or scientific notation.<br><br>
+    </li>
+	<li><B>From Units</B><br> 
+		Enter the input units of measure.<br>
+		You may use common abbreviations.<br> 
+        The following are all equivalent and acceptable: 
+      <UL>
+        <LI>pounds per foot2</LI>
+        <LI>lb/ft2</LI>
+        <LI>lb / ft2</LI>
+        <LI>lb ft-2</LI>
+        <LI>lb per ft2</LI><br><br>
+      </UL>
+    <li><B>Into Units</B>
+      <br> Enter the output units of measure.<br>
+	  You may use common abbreviations. <br>
+        The following are all equivalent and acceptable: 
+      <UL>
+        <LI> kilograms per meter2</LI>
+        <LI> kg/m2</LI>
+        <LI> kg / m2</LI>
+        <LI> kg m-2</LI>
+        <LI> kg per m2</LI><br><br>
+      </UL>
+    <li><B>Convert Button</B><br>
+      Press this button to attempt the conversion.<br>
+      If successful, the answer appears in the field to its right.<br>
+      If unsuccessful, an error message appears describing the problem.<br>
+	  Errors can result from unknown unit names or abbreviations or from an attempt 
+        to convert between incompatible units (such as from feet to kilograms). 
+</ul><p>
+    <H3><FONT COLOR="#ff5500">Known Units of Measure</FONT></H3>
+<P> The following table lists all the units known by the converter tool. The converter 
+  also understands most common abbreviations for the units. Note that unit names 
+  and abbreviations are case sensitive; for the most part, stick with lower case 
+  unless the units are named after a person. <BR><BR>
+<p>  <A NAME="Table1"></a>
+  <b>Units of Measure Names, Descriptions, and Base Units</b><br>
+<TABLE border="1" cellspacing="0" cellpadding="10">
+  <TR bgcolor="#CCCCCC">
+    <TH>Units Name</TH>
+    <TH>SI Base</TH>
+    <TH>Description</TH>
+  <TR>
+    <TD>"</TD>
+    <TD>rad</TD>
+    <TD>second (plane angle)</TD>
+  </TR>
+  <TR>
+    <TD>'</TD>
+    <TD>rad</TD>
+    <TD>minute (plane angle)</TD>
+  </TR>
+  <TR>
+    <TD>abampere</TD>
+    <TD>A</TD>
+    <TD>EMU of current [abampere]</TD>
+  </TR>
+  <TR>
+    <TD>abcoulomb</TD>
+    <TD>C</TD>
+    <TD>EMU of electric charge [abcoulomb]</TD>
+  </TR>
+  <TR>
+    <TD>abfarad</TD>
+    <TD>F</TD>
+    <TD>EMU of capacitance [abfarad]</TD>
+  </TR>
+  <TR>
+    <TD>abhenry</TD>
+    <TD>H</TD>
+    <TD>EMU of inductance [abhenry]</TD>
+  </TR>
+  <TR>
+    <TD>abmho</TD>
+    <TD>S</TD>
+    <TD>EMU of conductance [abmho]</TD>
+  </TR>
+  <TR>
+    <TD>abohm</TD>
+    <TD>ohm</TD>
+    <TD>EMU of resistance [abohm]</TD>
+  </TR>
+  <TR>
+    <TD>abvolt</TD>
+    <TD>V</TD>
+    <TD>EMU of electric potential [abvolt]</TD>
+  </TR>
+  <TR>
+    <TD>acre</TD>
+    <TD>m2</TD>
+    <TD>acre (based on international foot)</TD>
+  </TR>
+  <TR>
+    <TD>acreSurvey</TD>
+    <TD>m2</TD>
+    <TD>acre (based on U.S. survey foot)</TD>
+  </TR>
+  <TR>
+    <TD>acrefoot</TD>
+    <TD>m3</TD>
+    <TD>acre foot (based on international foot)</TD>
+  </TR>
+  <TR>
+    <TD>acrefootSurvey</TD>
+    <TD>m3</TD>
+    <TD>acre foot (based on U.S. survey foot)</TD>
+  </TR>
+  <TR>
+    <TD>ampere</TD>
+    <TD>A</TD>
+    <TD>electric current [ampere]</TD>
+  </TR>
+  <TR>
+    <TD>ampereHour</TD>
+    <TD>C</TD>
+    <TD>ampere hour [A h]</TD>
+  </TR>
+  <TR>
+    <TD>angstrom</TD>
+    <TD>m</TD>
+    <TD>angstrom</TD>
+  </TR>
+  <TR>
+    <TD>apDram</TD>
+    <TD>kg</TD>
+    <TD>dram (troy or apothecary)</TD>
+  </TR>
+  <TR>
+    <TD>are</TD>
+    <TD>m2</TD>
+    <TD>are [a] (agrarian area)</TD>
+  </TR>
+  <TR>
+    <TD>astronomicalUnit</TD>
+    <TD>m</TD>
+    <TD>astronomical unit [AU]</TD>
+  </TR>
+  <TR>
+    <TD>bar</TD>
+    <TD>Pa</TD>
+    <TD>bar [bar]</TD>
+  </TR>
+  <TR>
+    <TD>barn</TD>
+    <TD>m2</TD>
+    <TD>barn [b]</TD>
+  </TR>
+  <TR>
+    <TD>barrel</TD>
+    <TD>m3</TD>
+    <TD>barrel [bbl] (for petroleum, 42 U.S. gallons)</TD>
+  </TR>
+  <TR>
+    <TD>barye</TD>
+    <TD>N/m2</TD>
+    <TD>barye</TD>
+  </TR>
+  <TR>
+    <TD>becquerel</TD>
+    <TD>1/s</TD>
+    <TD>activity of a radionuclide [Bq]</TD>
+  </TR>
+  <TR>
+    <TD>biot</TD>
+    <TD>A</TD>
+    <TD>biot [Bi]</TD>
+  </TR>
+  <TR>
+    <TD>boardFoot</TD>
+    <TD>m3</TD>
+    <TD>board foot (1'x1'x1")</TD>
+  </TR>
+  <TR>
+    <TD>btu</TD>
+    <TD>J</TD>
+    <TD>British thermal unit</TD>
+  </TR>
+  <TR>
+    <TD>btu39F</TD>
+    <TD>J</TD>
+    <TD>British thermal unit (39 oF)</TD>
+  </TR>
+  <TR>
+    <TD>btu59F</TD>
+    <TD>J</TD>
+    <TD>British thermal unit (59 oF)</TD>
+  </TR>
+  <TR>
+    <TD>btu60F</TD>
+    <TD>J</TD>
+    <TD>British thermal unit (60 oF)</TD>
+  </TR>
+  <TR>
+    <TD>bushel</TD>
+    <TD>m3</TD>
+    <TD>bushel (U.S.) [bu]</TD>
+  </TR>
+  <TR>
+    <TD>cable</TD>
+    <TD>m</TD>
+    <TD>cable</TD>
+  </TR>
+  <TR>
+    <TD>cal15C</TD>
+    <TD>J</TD>
+    <TD>calorie (15 oC)</TD>
+  </TR>
+  <TR>
+    <TD>cal20C</TD>
+    <TD>J</TD>
+    <TD>calorie (20 oC)</TD>
+  </TR>
+  <TR>
+    <TD>caliber</TD>
+    <TD>m</TD>
+    <TD>caliber</TD>
+  </TR>
+  <TR>
+    <TD>calorie</TD>
+    <TD>J</TD>
+    <TD>mean calorie</TD>
+  </TR>
+  <TR>
+    <TD>candela</TD>
+    <TD>cd</TD>
+    <TD>luminous intensity [candela]</TD>
+  </TR>
+  <TR>
+    <TD>carat</TD>
+    <TD>kg</TD>
+    <TD>metric carat [metric carat]</TD>
+  </TR>
+  <TR>
+    <TD>centimeter</TD>
+    <TD>m</TD>
+    <TD>centimeter</TD>
+  </TR>
+  <TR>
+    <TD>centipoise</TD>
+    <TD>Pa s</TD>
+    <TD>centipoise [cP]</TD>
+  </TR>
+  <TR>
+    <TD>centistokes</TD>
+    <TD>m2/s</TD>
+    <TD>centistokes [cSt]</TD>
+  </TR>
+  <TR>
+    <TD>chain</TD>
+    <TD>m</TD>
+    <TD>chain [ch] (based on U.S. survey foot, or Gunter)</TD>
+  </TR>
+  <TR>
+    <TD>chainEnginer</TD>
+    <TD>m</TD>
+    <TD>chain (engineer or Ramden)</TD>
+  </TR>
+  <TR>
+    <TD>circularMil</TD>
+    <TD>m2</TD>
+    <TD>circular mil</TD>
+  </TR>
+  <TR>
+    <TD>class</TD>
+    <TD>class</TD>
+    <TD>class or other cardinal entity</TD>
+  </TR>
+  <TR>
+    <TD>clo</TD>
+    <TD>m2 K/W</TD>
+    <TD>clo</TD>
+  </TR>
+  <TR>
+    <TD>cmH2O</TD>
+    <TD>Pa</TD>
+    <TD>centimeter of water, conventional</TD>
+  </TR>
+  <TR>
+    <TD>cmH2O4oC</TD>
+    <TD>Pa</TD>
+    <TD>centimeter of water (4 oC)</TD>
+  </TR>
+  <TR>
+    <TD>cmHg</TD>
+    <TD>Pa</TD>
+    <TD>centimeter of mercury, conventional</TD>
+  </TR>
+  <TR>
+    <TD>cmHg0oC</TD>
+    <TD>Pa</TD>
+    <TD>centimeter of mercury (0 oC)</TD>
+  </TR>
+  <TR>
+    <TD>computerPica</TD>
+    <TD>m</TD>
+    <TD>pica (computer, 1/6 in)</TD>
+  </TR>
+  <TR>
+    <TD>computerPoint</TD>
+    <TD>m</TD>
+    <TD>point (computer, 1/72 in)</TD>
+  </TR>
+  <TR>
+    <TD>cord</TD>
+    <TD>m3</TD>
+    <TD>cord (128 ft3)</TD>
+  </TR>
+  <TR>
+    <TD>coulomb</TD>
+    <TD>A s</TD>
+    <TD>electric charge or quantitiy of electricity [C]</TD>
+  </TR>
+  <TR>
+    <TD>cubit</TD>
+    <TD>m</TD>
+    <TD>cubit</TD>
+  </TR>
+  <TR>
+    <TD>cuft</TD>
+    <TD>m3</TD>
+    <TD>cubic foot [cuft] (international)</TD>
+  </TR>
+  <TR>
+    <TD>cumeter</TD>
+    <TD>m3</TD>
+    <TD>volume [cubic meters]</TD>
+  </TR>
+  <TR>
+    <TD>cumile</TD>
+    <TD>m3</TD>
+    <TD>cubic mile (U.S. stature)</TD>
+  </TR>
+  <TR>
+    <TD>cup</TD>
+    <TD>m3</TD>
+    <TD>cup (U.S.)</TD>
+  </TR>
+  <TR>
+    <TD>curie</TD>
+    <TD>Bq</TD>
+    <TD>curie [Ci]</TD>
+  </TR>
+  <TR>
+    <TD>darcy</TD>
+    <TD>m2</TD>
+    <TD>permeability of porous solids (not area)</TD>
+  </TR>
+  <TR>
+    <TD>day</TD>
+    <TD>s</TD>
+    <TD>day (86,400 s)</TD>
+  </TR>
+  <TR>
+    <TD>daySidereal</TD>
+    <TD>s</TD>
+    <TD>day (sidereal)</TD>
+  </TR>
+  <TR>
+    <TD>debye</TD>
+    <TD>C m</TD>
+    <TD>debye [D]</TD>
+  </TR>
+  <TR>
+    <TD>decimeter</TD>
+    <TD>m</TD>
+    <TD>decimeter</TD>
+  </TR>
+  <TR>
+    <TD>degree</TD>
+    <TD>rad</TD>
+    <TD>degree [o] (plane angle)</TD>
+  </TR>
+  <TR>
+    <TD>denier</TD>
+    <TD>kg/m</TD>
+    <TD>denier</TD>
+  </TR>
+  <TR>
+    <TD>dram</TD>
+    <TD>kg</TD>
+    <TD>dram (avoirdupois)</TD>
+  </TR>
+  <TR>
+    <TD>dryPint</TD>
+    <TD>m3</TD>
+    <TD>pint (U.S. dry)</TD>
+  </TR>
+  <TR>
+    <TD>dryQt</TD>
+    <TD>m3</TD>
+    <TD>quart (U.S. dry)</TD>
+  </TR>
+  <TR>
+    <TD>dyne</TD>
+    <TD>N</TD>
+    <TD>dyne [dyn]</TD>
+  </TR>
+  <TR>
+    <TD>eV</TD>
+    <TD>J</TD>
+    <TD>electron volt [eV]</TD>
+  </TR>
+  <TR>
+    <TD>erg</TD>
+    <TD>J</TD>
+    <TD>erg [erg]</TD>
+  </TR>
+  <TR>
+    <TD>farad</TD>
+    <TD>C/V</TD>
+    <TD>capacitance [F]</TD>
+  </TR>
+  <TR>
+    <TD>faraday</TD>
+    <TD>C</TD>
+    <TD>faraday (based on carbon 12)</TD>
+  </TR>
+  <TR>
+    <TD>faradayChemical</TD>
+    <TD>C</TD>
+    <TD>faraday (chemical)</TD>
+  </TR>
+  <TR>
+    <TD>faradayPhysical</TD>
+    <TD>C</TD>
+    <TD>faraday (physical)</TD>
+  </TR>
+  <TR>
+    <TD>fathom</TD>
+    <TD>m</TD>
+    <TD>fathom (based on international foot)</TD>
+  </TR>
+  <TR>
+    <TD>fathomUS</TD>
+    <TD>m</TD>
+    <TD>fathom (based on U.S. survey foot)</TD>
+  </TR>
+  <TR>
+    <TD>fermi</TD>
+    <TD>m</TD>
+    <TD>fermi [fermi]</TD>
+  </TR>
+  <TR>
+    <TD>floz</TD>
+    <TD>kg</TD>
+    <TD>ounce [fl oz] (U.S. fluid)</TD>
+  </TR>
+  <TR>
+    <TD>flozUK</TD>
+    <TD>kg</TD>
+    <TD>ounce (Canadian and U.K. fluid, Imperial)</TD>
+  </TR>
+  <TR>
+    <TD>fluidDram</TD>
+    <TD>kg</TD>
+    <TD>dram (U.S. fluid)</TD>
+  </TR>
+  <TR>
+    <TD>footSurvey</TD>
+    <TD>m</TD>
+    <TD>foot (U.S. survey)</TD>
+  </TR>
+  <TR>
+    <TD>footcandle</TD>
+    <TD>lx</TD>
+    <TD>footcandle</TD>
+  </TR>
+  <TR>
+    <TD>footlambert</TD>
+    <TD>cd/m2</TD>
+    <TD>footlambert</TD>
+  </TR>
+  <TR>
+    <TD>fortnight</TD>
+    <TD>s</TD>
+    <TD>fortnight (14 days)</TD>
+  </TR>
+  <TR>
+    <TD>franklin</TD>
+    <TD>C</TD>
+    <TD>franklin [Fr]</TD>
+  </TR>
+  <TR>
+    <TD>freefall</TD>
+    <TD>m/s2</TD>
+    <TD>standard acceleration of free fall [ga]</TD>
+  </TR>
+  <TR>
+    <TD>ft</TD>
+    <TD>m</TD>
+    <TD>foot [ft] (international)</TD>
+  </TR>
+  <TR>
+    <TD>ftH2O</TD>
+    <TD>Pa</TD>
+    <TD>foot of water (conventional)</TD>
+  </TR>
+  <TR>
+    <TD>ftH2O39oF</TD>
+    <TD>Pa</TD>
+    <TD>foot of water (39.2 oF)</TD>
+  </TR>
+  <TR>
+    <TD>ftHg</TD>
+    <TD>Pa</TD>
+    <TD>foot of mercury (conventional)</TD>
+  </TR>
+  <TR>
+    <TD>furlong</TD>
+    <TD>m</TD>
+    <TD>furlong</TD>
+  </TR>
+  <TR>
+    <TD>gal</TD>
+    <TD>m/s2</TD>
+    <TD>gal [Gal] (galileo)</TD>
+  </TR>
+  <TR>
+    <TD>gallon</TD>
+    <TD>m3</TD>
+    <TD>gallon (U.S. liquid)</TD>
+  </TR>
+  <TR>
+    <TD>gallonDry</TD>
+    <TD>m3</TD>
+    <TD>gallon (U.S. dry)</TD>
+  </TR>
+  <TR>
+    <TD>gallonUK</TD>
+    <TD>m3</TD>
+    <TD>gallon, Canadian and U.K. (Imperial)</TD>
+  </TR>
+  <TR>
+    <TD>gamma</TD>
+    <TD>T</TD>
+    <TD>gamma (magnetic flux density)</TD>
+  </TR>
+  <TR>
+    <TD>gammaMass</TD>
+    <TD>kg</TD>
+    <TD>gamma (mass)</TD>
+  </TR>
+  <TR>
+    <TD>gauss</TD>
+    <TD>T</TD>
+    <TD>gauss [Gs] [G]</TD>
+  </TR>
+  <TR>
+    <TD>gilbert</TD>
+    <TD>A</TD>
+    <TD>gilbert [Gi]</TD>
+  </TR>
+  <TR>
+    <TD>gill</TD>
+    <TD>m3</TD>
+    <TD>gill [gi] (U.S.)</TD>
+  </TR>
+  <TR>
+    <TD>gillUK</TD>
+    <TD>m3</TD>
+    <TD>gill, Canadian and U.K. (Imperial)</TD>
+  </TR>
+  <TR>
+    <TD>gon</TD>
+    <TD>rad</TD>
+    <TD>grade [gon]</TD>
+  </TR>
+  <TR>
+    <TD>grain</TD>
+    <TD>kg</TD>
+    <TD>grain [gr]</TD>
+  </TR>
+  <TR>
+    <TD>gram</TD>
+    <TD>kg</TD>
+    <TD>gram</TD>
+  </TR>
+  <TR>
+    <TD>gray</TD>
+    <TD>J/kg</TD>
+    <TD>absorbed dose, specific energy (imparted), kerma [Gy]</TD>
+  </TR>
+  <TR>
+    <TD>hand</TD>
+    <TD>m</TD>
+    <TD>hand</TD>
+  </TR>
+  <TR>
+    <TD>hectare</TD>
+    <TD>m2</TD>
+    <TD>hectare [ha] (agrarian area)</TD>
+  </TR>
+  <TR>
+    <TD>henry</TD>
+    <TD>Wb/A</TD>
+    <TD>inductance [H]</TD>
+  </TR>
+  <TR>
+    <TD>hertz</TD>
+    <TD>1/s</TD>
+    <TD>frequency [Hz]</TD>
+  </TR>
+  <TR>
+    <TD>hogshead</TD>
+    <TD>m3</TD>
+    <TD>hogshead (U.S.)</TD>
+  </TR>
+  <TR>
+    <TD>horsepower</TD>
+    <TD>W</TD>
+    <TD>horsepower (electric)</TD>
+  </TR>
+  <TR>
+    <TD>horsepower550</TD>
+    <TD>W</TD>
+    <TD>horsepower (550 foot-lbf/s)</TD>
+  </TR>
+  <TR>
+    <TD>horsepowerBoiler</TD>
+    <TD>W</TD>
+    <TD>horsepower (boiler)</TD>
+  </TR>
+  <TR>
+    <TD>horsepowerMetric</TD>
+    <TD>W</TD>
+    <TD>horsepower (metric)</TD>
+  </TR>
+  <TR>
+    <TD>horsepowerUK</TD>
+    <TD>W</TD>
+    <TD>horsepower (U.K.)</TD>
+  </TR>
+  <TR>
+    <TD>horsepowerWater</TD>
+    <TD>W</TD>
+    <TD>horsepower (water)</TD>
+  </TR>
+  <TR>
+    <TD>hour</TD>
+    <TD>s</TD>
+    <TD>hour [h]</TD>
+  </TR>
+  <TR>
+    <TD>hourSidereal</TD>
+    <TD>s</TD>
+    <TD>hour (sidereal)</TD>
+  </TR>
+  <TR>
+    <TD>hundredweightLong</TD>
+    <TD>kg</TD>
+    <TD>hundredweight (long, 112 lb)</TD>
+  </TR>
+  <TR>
+    <TD>hundredweightShort</TD>
+    <TD>kg</TD>
+    <TD>hundredweight (short, 100 lb)</TD>
+  </TR>
+  <TR>
+    <TD>inH2O</TD>
+    <TD>Pa</TD>
+    <TD>inch of water (conventional)</TD>
+  </TR>
+  <TR>
+    <TD>inH2O39oF</TD>
+    <TD>Pa</TD>
+    <TD>inch of water (39.2 oF)</TD>
+  </TR>
+  <TR>
+    <TD>inH2O60oF</TD>
+    <TD>Pa</TD>
+    <TD>inch of water (60 oF)</TD>
+  </TR>
+  <TR>
+    <TD>inHg</TD>
+    <TD>Pa</TD>
+    <TD>inch of mercury (conventional)</TD>
+  </TR>
+  <TR>
+    <TD>inHg32oF</TD>
+    <TD>Pa</TD>
+    <TD>inch of mercury (32 oF)</TD>
+  </TR>
+  <TR>
+    <TD>inHg60oF</TD>
+    <TD>Pa</TD>
+    <TD>inch of mercury (60 oF)</TD>
+  </TR>
+  <TR>
+    <TD>inch</TD>
+    <TD>m</TD>
+    <TD>inch [in]</TD>
+  </TR>
+  <TR>
+    <TD>internationalTableBtu</TD>
+    <TD>J</TD>
+    <TD>International Table British thermal unit (after 1956)</TD>
+  </TR>
+  <TR>
+    <TD>internationalTableCalorie</TD>
+    <TD>J</TD>
+    <TD>International Table calorie [calIT] (after 1956)</TD>
+  </TR>
+  <TR>
+    <TD>joule</TD>
+    <TD>N m</TD>
+    <TD>energy, work, or quantity of heat [J]</TD>
+  </TR>
+  <TR>
+    <TD>kayser</TD>
+    <TD>1/m</TD>
+    <TD>kayser</TD>
+  </TR>
+  <TR>
+    <TD>kcalIT</TD>
+    <TD>W</TD>
+    <TD>kilocalorie, International Table (after 1956)</TD>
+  </TR>
+  <TR>
+    <TD>kcalTh</TD>
+    <TD>W</TD>
+    <TD>kilocalorie (thermochemical)</TD>
+  </TR>
+  <TR>
+    <TD>kelvin</TD>
+    <TD>K</TD>
+    <TD>thermodynamic temperature [Kelvin]</TD>
+  </TR>
+  <TR>
+    <TD>kilocalorie</TD>
+    <TD>W</TD>
+    <TD>kilocalorie (mean)</TD>
+  </TR>
+  <TR>
+    <TD>kilogram</TD>
+    <TD>kg</TD>
+    <TD>mass [kilogram]</TD>
+  </TR>
+  <TR>
+    <TD>kilogramforce</TD>
+    <TD>N</TD>
+    <TD>kilogram-force [kgf]</TD>
+  </TR>
+  <TR>
+    <TD>kilojoule</TD>
+    <TD>N m</TD>
+    <TD>energy, work, or quantity of heat [J]</TD>
+  </TR>
+  <TR>
+    <TD>kilometer</TD>
+    <TD>m</TD>
+    <TD>kilometer</TD>
+  </TR>
+  <TR>
+    <TD>kilowatt</TD>
+    <TD>J/s</TD>
+    <TD>power or radiant flux [W]</TD>
+  </TR>
+  <TR>
+    <TD>kip</TD>
+    <TD>N</TD>
+    <TD>kip (1 kip = 1000 lbf)</TD>
+  </TR>
+  <TR>
+    <TD>knot</TD>
+    <TD>m/s</TD>
+    <TD>knot</TD>
+  </TR>
+  <TR>
+    <TD>lambda</TD>
+    <TD>m3</TD>
+    <TD>lambda (volume)</TD>
+  </TR>
+  <TR>
+    <TD>lambert</TD>
+    <TD>cd/m2</TD>
+    <TD>lambert</TD>
+  </TR>
+  <TR>
+    <TD>langley</TD>
+    <TD>J/m2</TD>
+    <TD>langley</TD>
+  </TR>
+  <TR>
+    <TD>lb</TD>
+    <TD>kg</TD>
+    <TD>pound mass (avoirdupois)</TD>
+  </TR>
+  <TR>
+    <TD>lbTroy</TD>
+    <TD>kg</TD>
+    <TD>pound mass (troy or apothecary)</TD>
+  </TR>
+  <TR>
+    <TD>lbf</TD>
+    <TD>N</TD>
+    <TD>pound-force</TD>
+  </TR>
+  <TR>
+    <TD>league</TD>
+    <TD>m</TD>
+    <TD>league (international nautical)</TD>
+  </TR>
+  <TR>
+    <TD>leagueStatute</TD>
+    <TD>m</TD>
+    <TD>league (statute)</TD>
+  </TR>
+  <TR>
+    <TD>leagueUK</TD>
+    <TD>m</TD>
+    <TD>league (U.K nautical)</TD>
+  </TR>
+  <TR>
+    <TD>lightYear</TD>
+    <TD>m</TD>
+    <TD>light year</TD>
+  </TR>
+  <TR>
+    <TD>link</TD>
+    <TD>m</TD>
+    <TD>link (surveyor or gunter)</TD>
+  </TR>
+  <TR>
+    <TD>linkEngineer</TD>
+    <TD>m</TD>
+    <TD>link (engineer or ramden)</TD>
+  </TR>
+  <TR>
+    <TD>liter</TD>
+    <TD>m3</TD>
+    <TD>liter</TD>
+  </TR>
+  <TR>
+    <TD>lumen</TD>
+    <TD>cd sr</TD>
+    <TD>luminous flux [lm]</TD>
+  </TR>
+  <TR>
+    <TD>lux</TD>
+    <TD>lm/m2</TD>
+    <TD>illuminance [lx]</TD>
+  </TR>
+  <TR>
+    <TD>maxwell</TD>
+    <TD>Wb</TD>
+    <TD>maxwell [Mx]</TD>
+  </TR>
+  <TR>
+    <TD>meanBtu</TD>
+    <TD>J</TD>
+    <TD>mean British thermal unit [Btu]</TD>
+  </TR>
+  <TR>
+    <TD>meter</TD>
+    <TD>m</TD>
+    <TD>distance or length [meter]</TD>
+  </TR>
+  <TR>
+    <TD>miSurvey</TD>
+    <TD>m</TD>
+    <TD>mile (based U.S. survey foot)</TD>
+  </TR>
+  <TR>
+    <TD>microinch</TD>
+    <TD>m</TD>
+    <TD>microinch</TD>
+  </TR>
+  <TR>
+    <TD>micron</TD>
+    <TD>m</TD>
+    <TD>micron [mu]</TD>
+  </TR>
+  <TR>
+    <TD>mil</TD>
+    <TD>m</TD>
+    <TD>mil (0.001 in)</TD>
+  </TR>
+  <TR>
+    <TD>milAngle</TD>
+    <TD>rad</TD>
+    <TD>mil (plane angle)</TD>
+  </TR>
+  <TR>
+    <TD>mile</TD>
+    <TD>m</TD>
+    <TD>mile (U.S. statute)</TD>
+  </TR>
+  <TR>
+    <TD>millibar</TD>
+    <TD>Pa</TD>
+    <TD>millibar [mbar]</TD>
+  </TR>
+  <TR>
+    <TD>milligram</TD>
+    <TD>kg</TD>
+    <TD>milligram [mg]</TD>
+  </TR>
+  <TR>
+    <TD>millimeter</TD>
+    <TD>m</TD>
+    <TD>millimeter</TD>
+  </TR>
+  <TR>
+    <TD>minute</TD>
+    <TD>s</TD>
+    <TD>minute</TD>
+  </TR>
+  <TR>
+    <TD>minuteSidereal</TD>
+    <TD>s</TD>
+    <TD>minute (sidereal)</TD>
+  </TR>
+  <TR>
+    <TD>mmH2O</TD>
+    <TD>Pa</TD>
+    <TD>millimeter of water</TD>
+  </TR>
+  <TR>
+    <TD>mmHg</TD>
+    <TD>Pa</TD>
+    <TD>millimeter of mercury</TD>
+  </TR>
+  <TR>
+    <TD>mole</TD>
+    <TD>mol</TD>
+    <TD>amount of substance [mole]</TD>
+  </TR>
+  <TR>
+    <TD>month</TD>
+    <TD>s</TD>
+    <TD>month (mean calendar, 36,525 day Julian century)</TD>
+  </TR>
+  <TR>
+    <TD>mpg</TD>
+    <TD>m/m3</TD>
+    <TD>mile per gallon [mpg] (U.S.)</TD>
+  </TR>
+  <TR>
+    <TD>mph</TD>
+    <TD>m/s</TD>
+    <TD>mile per hour [mph]</TD>
+  </TR>
+  <TR>
+    <TD>nauticalMile</TD>
+    <TD>m</TD>
+    <TD>nautical mile</TD>
+  </TR>
+  <TR>
+    <TD>nauticalMileUK</TD>
+    <TD>m</TD>
+    <TD>mile (U.K. nautical)</TD>
+  </TR>
+  <TR>
+    <TD>newton</TD>
+    <TD>m kg/s</TD>
+    <TD>force [N]</TD>
+  </TR>
+  <TR>
+    <TD>oC</TD>
+    <TD>K</TD>
+    <TD>Celsius temperature [oC]</TD>
+  </TR>
+  <TR>
+    <TD>oF</TD>
+    <TD>K</TD>
+    <TD>degree Fahrenheit</TD>
+  </TR>
+  <TR>
+    <TD>oersted</TD>
+    <TD>A/m</TD>
+    <TD>oersted [Oe]</TD>
+  </TR>
+  <TR>
+    <TD>ohm</TD>
+    <TD>V/A</TD>
+    <TD>electric resistance [omega]</TD>
+  </TR>
+  <TR>
+    <TD>ounceTroy</TD>
+    <TD>kg</TD>
+    <TD>ounce mass (troy or apothecary)</TD>
+  </TR>
+  <TR>
+    <TD>ounceforce</TD>
+    <TD>N</TD>
+    <TD>ounce-force (avoirdupois)</TD>
+  </TR>
+  <TR>
+    <TD>oz</TD>
+    <TD>kg</TD>
+    <TD>ounce mass [oz] (avoirdupois)</TD>
+  </TR>
+  <TR>
+    <TD>pace</TD>
+    <TD>m</TD>
+    <TD>pace</TD>
+  </TR>
+  <TR>
+    <TD>parsec</TD>
+    <TD>m</TD>
+    <TD>parsec</TD>
+  </TR>
+  <TR>
+    <TD>pascal</TD>
+    <TD>N/m2</TD>
+    <TD>pressure or stress [Pa]</TD>
+  </TR>
+  <TR>
+    <TD>peck</TD>
+    <TD>m3</TD>
+    <TD>peck (U.S.)</TD>
+  </TR>
+  <TR>
+    <TD>pennyweight</TD>
+    <TD>kg</TD>
+    <TD>pennyweight</TD>
+  </TR>
+  <TR>
+    <TD>percent</TD>
+    <TD>dl</TD>
+    <TD>percent</TD>
+  </TR>
+  <TR>
+    <TD>perch</TD>
+    <TD>m</TD>
+    <TD>perch</TD>
+  </TR>
+  <TR>
+    <TD>perm</TD>
+    <TD>kg/(Pa s m2)</TD>
+    <TD>perm (0 oC)</TD>
+  </TR>
+  <TR>
+    <TD>phot</TD>
+    <TD>lx</TD>
+    <TD>phot [ph]</TD>
+  </TR>
+  <TR>
+    <TD>pica</TD>
+    <TD>m</TD>
+    <TD>pica (printers)</TD>
+  </TR>
+  <TR>
+    <TD>point</TD>
+    <TD>m</TD>
+    <TD>point (printers)</TD>
+  </TR>
+  <TR>
+    <TD>poise</TD>
+    <TD>Pa s</TD>
+    <TD>poise [P]</TD>
+  </TR>
+  <TR>
+    <TD>pole</TD>
+    <TD>m</TD>
+    <TD>pole</TD>
+  </TR>
+  <TR>
+    <TD>poundal</TD>
+    <TD>N</TD>
+    <TD>poundal</TD>
+  </TR>
+  <TR>
+    <TD>psi</TD>
+    <TD>Pa</TD>
+    <TD>pound-force per square inch</TD>
+  </TR>
+  <TR>
+    <TD>pt</TD>
+    <TD>m3</TD>
+    <TD>pint (U.S. liquid)</TD>
+  </TR>
+  <TR>
+    <TD>qt</TD>
+    <TD>m3</TD>
+    <TD>quart (U.S. liquid)</TD>
+  </TR>
+  <TR>
+    <TD>quad</TD>
+    <TD>J</TD>
+    <TD>quad (10^15 Btu IT)</TD>
+  </TR>
+  <TR>
+    <TD>radian</TD>
+    <TD>m/m</TD>
+    <TD>plane angle [rad]</TD>
+  </TR>
+  <TR>
+    <TD>rankine</TD>
+    <TD>K</TD>
+    <TD>Rankine temperature</TD>
+  </TR>
+  <TR>
+    <TD>ratio</TD>
+    <TD>dl</TD>
+    <TD>ratio</TD>
+  </TR>
+  <TR>
+    <TD>rayleigh</TD>
+    <TD>1/(m2 s)</TD>
+    <TD>rayleigh (rate of photon emission)</TD>
+  </TR>
+  <TR>
+    <TD>rd</TD>
+    <TD>Gy</TD>
+    <TD>rad (absorbed dose)</TD>
+  </TR>
+  <TR>
+    <TD>rem</TD>
+    <TD>Sv</TD>
+    <TD>rem</TD>
+  </TR>
+  <TR>
+    <TD>revolution</TD>
+    <TD>rad</TD>
+    <TD>revolution [r]</TD>
+  </TR>
+  <TR>
+    <TD>rhe</TD>
+    <TD>1/(Pa s)</TD>
+    <TD>reciprocal Pascal second [rhe]</TD>
+  </TR>
+  <TR>
+    <TD>rod</TD>
+    <TD>m</TD>
+    <TD>rod (based on U.S. survey foot)</TD>
+  </TR>
+  <TR>
+    <TD>roentgen</TD>
+    <TD>C/kg</TD>
+    <TD>roentgen [R]</TD>
+  </TR>
+  <TR>
+    <TD>rpm</TD>
+    <TD>rad/s</TD>
+    <TD>revolution per minute [rpm]</TD>
+  </TR>
+  <TR>
+    <TD>s</TD>
+    <TD>s</TD>
+    <TD>time [second]</TD>
+  </TR>
+  <TR>
+    <TD>sidereal</TD>
+    <TD>s</TD>
+    <TD>second (sidereal)</TD>
+  </TR>
+  <TR>
+    <TD>scruple</TD>
+    <TD>kg</TD>
+    <TD>scruple (apothecary)</TD>
+  </TR>
+  <TR>
+    <TD>section</TD>
+    <TD>m2</TD>
+    <TD>section (U.S. surveyor)</TD>
+  </TR>
+  <TR>
+    <TD>shake</TD>
+    <TD>s</TD>
+    <TD>shake</TD>
+  </TR>
+  <TR>
+    <TD>siderealYear</TD>
+    <TD>s</TD>
+    <TD>year (sidereal)</TD>
+  </TR>
+  <TR>
+    <TD>siemens</TD>
+    <TD>A/V</TD>
+    <TD>electric conductance [S]</TD>
+  </TR>
+  <TR>
+    <TD>sievert</TD>
+    <TD>J/kg</TD>
+    <TD>ambient dose equivalent [Sv]</TD>
+  </TR>
+  <TR>
+    <TD>skein</TD>
+    <TD>m</TD>
+    <TD>skein</TD>
+  </TR>
+  <TR>
+    <TD>slug</TD>
+    <TD>kg</TD>
+    <TD>slug</TD>
+  </TR>
+  <TR>
+    <TD>span</TD>
+    <TD>m</TD>
+    <TD>span</TD>
+  </TR>
+  <TR>
+    <TD>sqft</TD>
+    <TD>m2</TD>
+    <TD>square foot [sqft] (international)</TD>
+  </TR>
+  <TR>
+    <TD>sqmeter</TD>
+    <TD>m2</TD>
+    <TD>area [square meters]</TD>
+  </TR>
+  <TR>
+    <TD>sqmile</TD>
+    <TD>m2</TD>
+    <TD>square mile (U.S. statute)</TD>
+  </TR>
+  <TR>
+    <TD>standardAtmosphere</TD>
+    <TD>Pa</TD>
+    <TD>standard atmosphere [atm]</TD>
+  </TR>
+  <TR>
+    <TD>statampere</TD>
+    <TD>A</TD>
+    <TD>ESU of current [statampere]</TD>
+  </TR>
+  <TR>
+    <TD>statcoulomb</TD>
+    <TD>C</TD>
+    <TD>ESU of electric charge [statcoulomb]</TD>
+  </TR>
+  <TR>
+    <TD>statfarad</TD>
+    <TD>F</TD>
+    <TD>ESU of capacitance [statfarad]</TD>
+  </TR>
+  <TR>
+    <TD>stathenry</TD>
+    <TD>H</TD>
+    <TD>ESU of inductance [stathenry]</TD>
+  </TR>
+  <TR>
+    <TD>statmho</TD>
+    <TD>S</TD>
+    <TD>ESU of conductance [statmho]</TD>
+  </TR>
+  <TR>
+    <TD>statohm</TD>
+    <TD>ohm</TD>
+    <TD>ESU of resistance [statohm]</TD>
+  </TR>
+  <TR>
+    <TD>statvolt</TD>
+    <TD>V</TD>
+    <TD>ESU of electric potential [statvolt]</TD>
+  </TR>
+  <TR>
+    <TD>steradian</TD>
+    <TD>m2/m2</TD>
+    <TD>solid angle [sr]</TD>
+  </TR>
+  <TR>
+    <TD>stere</TD>
+    <TD>m3</TD>
+    <TD>stere [st]</TD>
+  </TR>
+  <TR>
+    <TD>stilb</TD>
+    <TD>cd/m2</TD>
+    <TD>stilb [sb]</TD>
+  </TR>
+  <TR>
+    <TD>stokes</TD>
+    <TD>m2/s</TD>
+    <TD>stoke [St]</TD>
+  </TR>
+  <TR>
+    <TD>t</TD>
+    <TD>kg</TD>
+    <TD>ton (metric)</TD>
+  </TR>
+  <TR>
+    <TD>tablespoon</TD>
+    <TD>m3</TD>
+    <TD>tablespoon</TD>
+  </TR>
+  <TR>
+    <TD>teaspoon</TD>
+    <TD>m3</TD>
+    <TD>teaspoon</TD>
+  </TR>
+  <TR>
+    <TD>technicalAtmosphere</TD>
+    <TD>Pa</TD>
+    <TD>technical atmosphere [at]</TD>
+  </TR>
+  <TR>
+    <TD>tesla</TD>
+    <TD>Wb/m2</TD>
+    <TD>magnetic flux density [T]</TD>
+  </TR>
+  <TR>
+    <TD>tex</TD>
+    <TD>kg/m</TD>
+    <TD>tex</TD>
+  </TR>
+  <TR>
+    <TD>thermEC</TD>
+    <TD>J</TD>
+    <TD>therm (EC)</TD>
+  </TR>
+  <TR>
+    <TD>thermUS</TD>
+    <TD>J</TD>
+    <TD>therm (U.S.)</TD>
+  </TR>
+  <TR>
+    <TD>thermochemicalBtu</TD>
+    <TD>J</TD>
+    <TD>thermochemical British thermal unit</TD>
+  </TR>
+  <TR>
+    <TD>thermochemicalCalorie</TD>
+    <TD>J</TD>
+    <TD>thermochemical calorie [calth]</TD>
+  </TR>
+  <TR>
+    <TD>ton</TD>
+    <TD>kg</TD>
+    <TD>ton (short, 2000 lb)</TD>
+  </TR>
+  <TR>
+    <TD>tonAssay</TD>
+    <TD>kg</TD>
+    <TD>ton (assay)</TD>
+  </TR>
+  <TR>
+    <TD>tonLong</TD>
+    <TD>kg</TD>
+    <TD>ton (long, 2240 lb)</TD>
+  </TR>
+  <TR>
+    <TD>tonRefridgeration</TD>
+    <TD>W</TD>
+    <TD>ton (refridgeration, 12,000 BTU IT/h)</TD>
+  </TR>
+  <TR>
+    <TD>tonRegister</TD>
+    <TD>m3</TD>
+    <TD>ton (register)</TD>
+  </TR>
+  <TR>
+    <TD>tonTnt</TD>
+    <TD>J</TD>
+    <TD>ton (TNT)</TD>
+  </TR>
+  <TR>
+    <TD>torr</TD>
+    <TD>Pa</TD>
+    <TD>torr</TD>
+  </TR>
+  <TR>
+    <TD>township</TD>
+    <TD>m2</TD>
+    <TD>township (U.S. surveyor)</TD>
+  </TR>
+  <TR>
+    <TD>tropicalYear</TD>
+    <TD>s</TD>
+    <TD>year (tropical)</TD>
+  </TR>
+  <TR>
+    <TD>uamu</TD>
+    <TD>kg</TD>
+    <TD>unified atomic mass unit</TD>
+  </TR>
+  <TR>
+    <TD>unitpole</TD>
+    <TD>Wb</TD>
+    <TD>unit pole</TD>
+  </TR>
+  <TR>
+    <TD>volt</TD>
+    <TD>W/A</TD>
+    <TD>electric potential, potential difference, electromotive force [V]</TD>
+  </TR>
+  <TR>
+    <TD>watt</TD>
+    <TD>J/s</TD>
+    <TD>power or radiant flux [W]</TD>
+  </TR>
+  <TR>
+    <TD>weber</TD>
+    <TD>V s</TD>
+    <TD>magnetic flux [Wb]</TD>
+  </TR>
+  <TR>
+    <TD>xu</TD>
+    <TD>m</TD>
+    <TD>x unit</TD>
+  </TR>
+  <TR>
+    <TD>yard</TD>
+    <TD>m</TD>
+   <TD>yard [yd]</TD>
+  </TR>
+  <TR>
+    <TD>year
+    <TD>s
+    <TD>year (calendar, 365 days)
+  </TR>
+</TABLE>
+   
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

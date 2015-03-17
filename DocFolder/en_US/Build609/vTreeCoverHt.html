@@ -1,0 +1,86 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Canopy Height Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Canopy Height</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P>Canopy height describes the stand as it affects calculation of the wind adjustment factor in SURFACE. If canopy height is less than 6 feet (1.8 meters), then the unsheltered WAF calculation is used.
+<P>In the CROWN Module, canopy height is multiplied by canopy bulk density to get crown load, which is used to calculate crown flame length.
+<P>In the MORTALITY module, canopy height is used to find tree crown length scorched, which is used to calculate probability of mortality.
+<p>Canopy height at the site of the fire may be different from downwind canopy height in the direction firebrands are carried. Downwind canopy height is used to calculate maximum spotting distance in SPOT and is the mean cover height in the downwind direction as it affects the distance a firebrand is carried. If the forest cover is open, a value of half the tree height should be entered.
+<P>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC"> 
+    <td width="67" valign="top"> 
+      <p align="center"><strong>I/O</strong></p>
+    </td>
+    <td width="109" valign="top"> 
+      <p align="center"><strong>Module</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>If</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>Notes</strong></p>
+    </td>
+  </tr>
+  <tr> 
+    <td rowspan="3" valign="top">Input</td>
+    <td width="109" valign="top">SURFACE</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">If wind adjustment factor is calculated.</td>
+  </tr>
+  <tr> 
+    <td width="109" valign="top">CROWN</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="109" valign="top">MORTALITY</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top">Output</td>
+    <td width="109" valign="top">None</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<P>
+<table><tr><td><A NAME="treecanopyheight.png"></a>
+      <IMG SRC="treecanopyheight.png" ALT="Canopy Height"></td></tr></table>
+<p>
+  <table><tr><td><A NAME="CrownCanopyVars.png"></a> <IMG SRC="CrownCanopyVars.png" ALT="Crown Module Data Flow - Canopy Height"></td></tr></table> 
+<p>
+<h3><FONT COLOR="#ff5500">See Also</FONT></h3>
+  <UL>
+      <LI><A HREF="vCrownFireFuelLoad.html">Crown Load</A></LI>
+<LI><A HREF="vTreeCoverHtDownwind.html">Downwind Canopy Height</A></LI>
+      <LI><A HREF="vTreeCrownLengScorched.html">Tree Crown Length Scorched</A></LI>
+<LI><A HREF="vTreeHt.html">Tree Height</A></LI>
+      <LI><A HREF="vWindAdjFactor.html">Wind Adjustment Factor</A></LI>
+  </UL>
+<P>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

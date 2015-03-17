@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment Id="Bp6_ComponentGroup_Executable_Fragment">
+
+    <ComponentGroup Id="Bp6_ComponentGroup_Executable">
+      
+      <Component Id='MainExecutable' Directory='BEHAVEPLUS6FOLDER' Guid='1E82E55F-4120-4D18-AFE0-DCC0A74EA676'>
+        
+        <File Id='BehavePlus6EXE'
+              Name='BehavePlus6.exe'
+              DiskId='1'
+              Source='Release\BehavePlus6.exe'
+              KeyPath='yes'>
+          
+          <Shortcut Id="startmenuBehavePlus6"
+                    Directory="ProgramMenuDir"
+                    Name="BehavePlus 6"
+                    WorkingDirectory='BEHAVEPLUS6FOLDER'
+                    Icon="BehavePlus6.exe"
+                    IconIndex="0"
+                    Advertise="yes" />
+
+          <Shortcut Id="desktopBehavePlus6"
+                    Directory="DesktopFolder"
+                    Name="BehavePlus 6"
+                    WorkingDirectory='BEHAVEPLUS6FOLDER'
+                    Icon="BehavePlus6.exe"
+                    IconIndex="0"
+                    Advertise="yes" />
+        </File> <!-- Id='BehavePlus6EXE' -->
+
+        <File Id="BehavePlus6XML"
+              Name="BehavePlus6.xml"
+              Source="BehavePlus6.xml" />
+
+        <File Id="msvcp71DLL"
+              Name="msvcp71.dll"
+              Source="DLL\msvcp71.dll" />
+
+        <File Id="msvcp71dDLL"
+              Name="msvcp71d.dll"
+              Source="DLL\msvcp71d.dll" />
+
+        <File Id="msvcr71DLL"
+              Name="msvcr71.dll"
+              Source="DLL\msvcr71.dll" />
+
+        <File Id="msvcr71dDLL"
+              Name="msvcr71d.dll"
+              Source="DLL\msvcr71d.dll" />
+
+        <File Id="qtmt338DLL"
+              Name="qt-mt338.dll"
+              Source="DLL\qt-mt338.dll" />
+
+        <RemoveFile Id='LogFile' On='uninstall' Name='BehavePlus.log' />
+        <RemoveFile Id='PropertyFile' On='uninstall' Directory='DefaultDataFolder' Name='property.xml' />
+        <RemoveFolder Id='ComposerFolder' On='uninstall'/>
+
+        <!-- The following section on file associations is courtesy of Sascha Beaumont, May 11, 2010 at
+        http://stackoverflow.com/questions/2772452/how-to-associate-application-with-existing-file-types-using-wix-installer
+        -->
+        <!-- Capabilities keys for Vista/7 "Set Program Access and Defaults" -->
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities"
+                       Name="ApplicationDescription"
+                       Value="BehavePlus6 Fire Behavior Modeling System"
+                       Type="string" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities"
+                       Name="ApplicationIcon"
+                       Value="[APPLICATIONFOLDER]BehavePlus6.exe,0"
+                       Type="string" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities"
+                       Name="ApplicationName"
+                       Value="BehavePlus 6"
+                       Type="string" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\DefaultIcon"
+                       Value="[APPLICATIONFOLDER]BehavePlus6.exe,1"
+                       Type="string" />
+
+        <!-- Fuel Model Files -->
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\FileAssociations"
+                       Name=".bpf"
+                       Value="BehavePlus6.Fuel"
+                       Type="string" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\MIMEAssociations"
+                       Name="application/bpf"
+                       Value="BehavePlus6.Fuel"
+                       Type="string" />
+        <!-- Run Files -->
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\FileAssociations"
+                       Name=".bpr"
+                       Value="BehavePlus6.Run"
+                       Type="string" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\MIMEAssociations"
+                       Name="application/bpr"
+                       Value="BehavePlus6.Run"
+                       Type="string" />
+        <!-- Moisture Files -->
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\FileAssociations"
+                       Name=".bpm"
+                       Value="BehavePlus6.Moisture"
+                       Type="string" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\MIMEAssociations"
+                       Name="application/bpm"
+                       Value="BehavePlus6.Moisture"
+                       Type="string" />
+        <!-- Units Files -->
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\FileAssociations"
+                       Name=".bpu"
+                       Value="BehavePlus6.Units"
+                       Type="string" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\MIMEAssociations"
+                       Name="application/bpu"
+                       Value="BehavePlus6.Units"
+                       Type="string" />
+        <!-- Worksheet Files -->
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\FileAssociations"
+                       Name=".bpw"
+                       Value="BehavePlus6.Worksheet"
+                       Type="string" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\MIMEAssociations"
+                       Name="application/bpw"
+                       Value="BehavePlus6.Worksheet"
+                       Type="string" />
+
+        <RegistryValue Root="HKLM" Key="SOFTWARE\BehavePlus6\Capabilities\shell\Open\command"
+                       Value="&quot;[APPLICATIONFOLDER]BehavePlus6.exe&quot; -open &quot;%1&quot;"
+                       Type="string" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\RegisteredApplications"
+                       Name="BehavePlus6"
+                       Value="SOFTWARE\BehavePlus6\Capabilities"
+                       Type="string" />
+
+        <!-- App Paths to support Start,Run -> "BehavePlus6" -->
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\BehavePlus6.exe"
+                       Value="[!BehavePlus6.exe]"
+                       Type="string" />
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\BehavePlus6.exe"
+                       Name="Path"
+                       Value="[APPLICATIONFOLDER]"
+                       Type="string" />
+
+        <!-- Extend to the "open with" list + Win7 jump menu pinning  -->
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Classes\Applications\BehavePlus6.exe\SupportedTypes"
+                       Name=".bpr"
+                       Value=""
+                       Type="string" />
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Classes\Applications\BehavePlus6.exe\shell\open"
+                       Name="BehavePlus6 Fire Modeling System"
+                       Value="BehavePlus6"
+                       Type="string" />
+
+        <!-- BehavePlus6.Fuel ProgID -->
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Classes\BehavePlus6.Fuel"
+                       Name="BehavePlus Custom Fuel Model File"
+                       Value="BehavePlus Custom Fuel Model File"
+                       Type="string" />
+        <ProgId Id="BehavePlus6.Fuel"
+                Description="BehavePlus Custom Fuel Model File"
+                Icon="BehavePlus6.exe"
+                Advertise="yes">
+          <Extension Id="bpf">
+            <Verb Id="open"
+                  Command="Open with BehavePlus6"
+                  Argument="-open &quot;%1&quot;" />
+            <MIME Advertise="yes"
+                  ContentType="application/bpf"
+                  Default="yes" />
+          </Extension>
+        </ProgId>
+
+        <!-- BehavePlus6.Moisture ProgID -->
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Classes\BehavePlus6.Moisture"
+                       Name="BehavePlus Custom Moisture Scenario File"
+                       Value="BehavePlus Custom Moisture Scenario File"
+                       Type="string" />
+        <ProgId Id="BehavePlus6.Moisture"
+                Description="BehavePlus Custom Moisture Scenario File"
+                Icon="BehavePlus6.exe"
+                Advertise="yes">
+          <Extension Id="bpm">
+            <Verb Id="open"
+                  Command="Open with BehavePlus6"
+                  Argument="-open &quot;%1&quot;" />
+            <MIME Advertise="yes"
+                  ContentType="application/bpm"
+                  Default="yes" />
+          </Extension>
+        </ProgId>
+
+        <!-- BehavePlus6.Run ProgID -->
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Classes\BehavePlus6.Run"
+                       Name="BehavePlus Saved Run File"
+                       Value="BehavePlus Saved Run File"
+                       Type="string" />
+        <ProgId Id="BehavePlus6.Run"
+                Description="BehavePlus Saved Run File"
+                Icon="BehavePlus6.exe"
+                Advertise="yes">
+          <Extension Id="bpr">
+            <Verb Id="open"
+                  Command="Open with BehavePlus6"
+                  Argument="-open &quot;%1&quot;" />
+            <MIME Advertise="yes"
+                  ContentType="application/bpr"
+                  Default="yes" />
+          </Extension>
+        </ProgId>
+
+        <!-- BehavePlus6.Units ProgID -->
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Classes\BehavePlus6.Units"
+                       Name="BehavePlus Custom Units File"
+                       Value="BehavePlus Custom Units File"
+                       Type="string" />
+        <ProgId Id="BehavePlus6.Units"
+                Description="BehavePlus Custom Units File"
+                Icon="BehavePlus6.exe"
+                Advertise="yes">
+          <Extension Id="bpu">
+            <Verb Id="open"
+                  Command="Open with BehavePlus6"
+                  Argument="-open &quot;%1&quot;" />
+            <MIME Advertise="yes"
+                  ContentType="application/bpu"
+                  Default="yes" />
+          </Extension>
+        </ProgId>
+
+        <!-- BehavePlus6.Worksheet ProgID -->
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Classes\BehavePlus6.Worksheet"
+                       Name="BehavePlus Input Worksheet Template File"
+                       Value="BehavePlus Input Worksheet Template File"
+                       Type="string" />
+        <ProgId Id="BehavePlus6.Worksheet"
+                Description="BehavePlus Input Worksheet Template File"
+                Icon="BehavePlus6.exe"
+                Advertise="yes">
+          <Extension Id="bpw">
+            <Verb Id="open"
+                  Command="Open with BehavePlus6"
+                  Argument="-open &quot;%1&quot;" />
+            <MIME Advertise="yes"
+                  ContentType="application/bpw"
+                  Default="yes" />
+          </Extension>
+        </ProgId>
+
+        <!-- Optional: add an 'Edit with BehavePlus6' to Windows Explorer 'right click'
+        even when the file is not associated -->
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Classes\SystemFileAssociations\.bpf\shell\edit.BehavePlus6.exe"
+                       Value="Edit with BehavePlus6"
+                       Type="string" />
+        <RegistryValue Root="HKLM"
+                       Key="SOFTWARE\Classes\SystemFileAssociations\.bpf\shell\edit.BehavePlus6.exe\command"
+                       Value="&quot;[APPLICATIONFOLDER]BehavePlus6.exe&quot; -open &quot;%1&quot;" Type="string" />
+
+      </Component> <!-- Id='MainExecutable' -->
+      
+      <Component Id="ProgramMenuDir"
+                 Directory="ProgramMenuDir"
+                 Guid="19B767A5-9272-4BB7-8786-890E49645CCB">
+        <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+        <RegistryValue
+            Root='HKCU'
+            Key='Software\[Manufacturer]\[ProductName]'
+            Type='string'
+            Value=''
+            KeyPath='yes' />
+      </Component>
+      <!-- Id='ProgramMenuDir' -->
+    </ComponentGroup>
+    
+  </Fragment>
+</Wix>

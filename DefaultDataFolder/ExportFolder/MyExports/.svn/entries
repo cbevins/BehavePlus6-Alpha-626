@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="30"
+   name=""
+   committed-date="2007-07-04T00:43:23.527241Z"
+   url="file:///home/svn/bp3/DefaultDataFolder/ExportFolder/MyExports"
+   last-author="cbevins"
+   kind="dir"
+   uuid="db783210-270d-0410-8adb-acbcd0d49c5e"
+   repos="file:///home/svn/bp3"
+   revision="67"/>
+<entry
+   committed-rev="30"
+   name="MyExports"
+   text-time="2007-08-15T20:50:21.000000Z"
+   committed-date="2007-07-04T00:43:23.527241Z"
+   checksum="5975c7207e32f0abe1a6a88b31569ca1"
+   last-author="cbevins"
+   kind="file"
+   prop-time="2007-08-15T20:50:21.000000Z"/>
+</wc-entries>

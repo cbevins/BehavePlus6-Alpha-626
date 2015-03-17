@@ -1,0 +1,139 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus SURFACE Fuel Input Options Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">SURFACE Fuel Input Options</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P>This page controls the input of fuel parameters into the SURFACE 
+  Module. 
+<H3><FONT COLOR="#ff5500">Options</FONT></H3>
+
+<TABLE border=1 cell cellspacing="0" CELLPADDING="10" >
+  <TR bgcolor="#CCCCCC"> 
+    <TD COLSPAN=3><b>Fuel is entered as....</b> </TD>
+  </TR>
+  <TR> 
+    <TD rowspan="7">&nbsp;</TD>
+    <TD width="30%" valign="top"><i>fuel models (standard or custom).</i></TD>
+    <TD width="65%"> 
+      <P> Standard or custom fuel models for the surface fire spread model. 
+      <P> Standard fuel models are the 13 from Anderson (1982) and the 40 from 
+        Scott and Burgan (2005). 
+      <p> Custom fuel models are developed using the fuel parameters option and 
+        saved for later use. 
+    </TD>
+  </TR>
+  <TR> 
+    <TD width="30%" valign="top"><I>fuel parameters (for custom fuel modeling).</I></TD>
+    <TD width="65%"> 
+      <P> The individual fuel parameters are required for fuel bed depth, extinction 
+        moisture content, heat of combustion, and loading and surface area-to-volume 
+        ratio by fuel particle size class. Fuel model parameters can be initialized 
+        to those of an existing fuel model. 
+      <P> This method is primarily used to develop custom fuel models, which are 
+        saved and reused. 
+    </TD>
+  </TR>
+  <TR> 
+    <TD width="30%" valign="top"><I>two fuel models, 2-dimensional expected spread (recommended).</I></TD>
+    <TD width="65%"> 
+      <P> 2-dimensional expected spread is the recommended method for calculating 
+        rate of spread through a mixture of two fuel models. The expected spread 
+        rate through the fuel complex is estimated by examining all possible spread 
+        paths through a matrix of the fuels, which allows the fire to burn around, 
+        rather than through, patches of slower burning fuels (Finney 2002). 
+      <P> The size of the fire is assumed to be much larger than the size of the 
+        fuel patches. The fire will therefore spread through many fuel patches. 
+      <P> See <A HREF="TwoFuelOptions.html">Two Fuel Model Options</A> for more 
+        information. 
+    </TD>
+  </TR>
+  <TR> 
+    <TD width="30%" valign="top"><I>two fuel models, harmonic mean.</I></TD>
+    <TD width="65%"> 
+      <P> The harmonic mean method is applicable to situations where the fire 
+        will burn through alternating bands of the two fuel types, such as burning 
+        up an elevation gradient or through a fuel modification zone. The fire 
+        must burn through one band to reach the next, and has no opportunity to 
+        spread around the slower burning fuel model. 
+      <P> This method assumes that the size of the fire is much larger than the 
+        size of the fuel bands, that the fire will spread through many fuel bands, 
+        and that it is unable to spread around them. This is not a common situation. 
+      <P> See <A HREF="TwoFuelOptions.html">Two Fuel Model Options</A> for more 
+        information. 
+    </TD>
+  </TR>
+  <TR> 
+    <TD width="30%" valign="top"><I>two fuel models, area weighted (like old BEHAVE).</I></TD>
+    <TD width="65%"> 
+      <P> The area weighted method was used for two fuels in the old BEHAVE system 
+        (Andrews 1986). This method simply weights the spread rate of each fuel 
+        model by its coverage. It may be appropriate if the size of the fire is 
+        small compared to the size of the fuel patches. 
+      <P> See <A HREF="TwoFuelOptions.html">Two Fuel Model Options</A> for more 
+        information. 
+    </TD>
+  </TR>
+  <TR> 
+    <TD width="30%" valign="top"><I>special case fuel model, palmetto-gallberry 
+      (Hough and Albini 1978).</I></TD>
+    <TD width="65%"> 
+      <P> A 'special case fuel model' for palmetto-gallberry was developed by 
+        Hough and Albini (1978). It is not a simple list of fuel parameters as 
+        are standard or custom fuel models. The age of palmetto-gallberry rough, 
+        palmetto coverage, understory height, and overstory basal area are used 
+        to calculate the fuel parameters needed by the surface fire spread model. 
+      <P> See <A HREF="PalmettoGallberryDetails.html">Palmetto-Gallberry Details</A> 
+        for more information. 
+    </TD>
+  </TR>
+  <TR> 
+    <TD width="30%" valign="top"><I>special case fuel model, western aspen 
+      (Brown and Simmerman 1986).</I></TD>
+    <TD width="65%"> 
+      <P> A 'special case fuel model' for western aspen was developed by 
+        Brown and Simmeramn (1986). It is not a simple list of fuel parameters 
+		as are standard or custom fuel models. There are five aspen fuel types. 
+		Aspen curing level is used to calculate parameters needed by the surface fire spread model.
+      <p>Probability
+	  of aspen mortality is available with this option. It is calculated from flame length, D.B.H., and fire severity (low or moderate+) according to Brown and DeByle (1987). This is different from the model used in the MORTALITY module. 
+      <P> See <A HREF="WesternAspenDetails.html">Western Aspen Details</A> 
+        for more information. 
+    </TD>
+  </TR>
+</TABLE>
+
+<P>
+
+
+<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+	<ul>
+	  <LI><A HREF="TwoFuelOptions.html">Two Fuel Model Options</A></LI>
+      <LI><A HREF="PalmettoGallberryDetails.html">Palmetto-Gallberry Details</A></LI>
+      <LI><A HREF="WesternAspenDetails.html">Western Aspen Details</A></LI>
+	</ul>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, July 13, 2011.</FONT>
+</BODY>
+</HTML>
+

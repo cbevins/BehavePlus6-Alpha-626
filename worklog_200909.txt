@@ -1,0 +1,30 @@
+
+2009-10-22 (2)
+
+-- Compiled and tested Build 289
+
+-- Created new Wise package to include FuelModelingMetric.bpw
+
+-- Updated BehavePlus5 to Build 289
+
+
+2009-10-19 (2)
+
+-- Created FuelModelingMetric.bpw and uploaded it to the ftp site.
+
+ 
+2009-09-30 (4)
+
+--	Created Wise installation package bp_288.exe and uploaded to FTP site.
+
+--  FuelModeling.bpw worksheet now displays 6 decimal places
+	for the fuel load variables.
+	(Issue 39, Decimals for Fuel Parameters).
+	
+--	Downloaded VariableRef.pdf dated 9/15/2009 into package folders.
+
+
+2009-09-29 (1)
+
+-- Create Wise script behaveplus288.wse.
+

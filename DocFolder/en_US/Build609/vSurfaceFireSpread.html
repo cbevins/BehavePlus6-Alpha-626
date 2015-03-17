@@ -1,0 +1,72 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Surface Rate of Spread Page</TITLE>
+  </HEAD>
+  <BODY>
+<TABLE WIDTH="100%">
+	<TR>
+		<TD width="100"><IMG SRC="logo90x90.png" ALT="BehavePlus Logo"></TD>
+		<TD ALIGN="left" VALIGN="center">
+			<H2><FONT COLOR="#ff5500">Surface Rate of Spread</FONT></H2>
+		</TD>
+	</TR>
+</TABLE>
+<HR>
+<P>Surface rate of spread is the &quot;speed&quot; the fire travels through the surface fuels. Surface fuels 
+include the litter, grass, brush and other dead and live vegetation within about 6 feet of the ground. 
+
+<P>A SURFACE module input option determines whether rate of spread calculations are done for the heading fire spread or for any other direction as specified on the worksheet.
+
+<P>The maximum rate of spread is the spread rate of the head fire. This value is used along with elapsed time to determine the size of an elliptically shaped fire in SIZE. The maximum spread rate is also 
+used by CONTAIN to model fire growth as suppression action is occurring.
+
+<P>The surface rate of spread prediction uses the Rothermel (1972) surface fire spread model, which assumes the weather, topography and fuel are constant and uniform for the elapsed time. The basic model is for a head fire spreading upslope with the wind. Adaptations have been made to allow calculations for other direction options. 
+
+<ul>
+	<li>Spread distance = rate of spread x elapsed time.</li>
+</ul>
+<P>
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+		<td width="67" valign="top"><p align="center"><strong>I/O</strong></p></td>
+		<td width="109" valign="top"><p align="center"><strong>Module</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>If</strong></p></td>
+		<td width="207" valign="top"> <p align="center"><strong>Notes</strong></p></td>
+	</tr> 
+	<tr>
+		<td rowspan="2" valign="top">Input</td>
+		<td width="109" valign="top">SIZE</td>
+		<td width="207" valign="top">If SURFACE is not selected</td>
+		<td width="207" valign="top"><P>The maximum (head fire) spread rate is used in SIZE. <p>If both SURFACE and SIZE are selected, the calculated maximum rate of spread is used in SIZE, even if it is not displayed as an output in SURFACE.</td>
+	</tr>
+	<tr>
+		<td width="109" valign="top">CONTAIN</td>
+		<td width="207" valign="top">If SURFACE is not selected</td>
+		<td width="207" valign="top">If both SURFACE and CONTAIN are selected, the calculated maximum (head fire) rate of spread is used in CONTAIN, even if it is not displayed as an output in SURFACE.
+		</td>
+	</tr> 
+	<tr>
+		<td width="67" valign="top">Output</td>
+		<td width="109" valign="top">SURFACE</td>
+		<td width="207" valign="top">&nbsp;</td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr>
+</table>
+<P>
+<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+<UL>
+	<LI><A HREF="vSurfaceFireVectorDir.html">Spread Direction</A></LI>
+</UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, September 8, 2010.</FONT>
+</BODY>
+</HTML>

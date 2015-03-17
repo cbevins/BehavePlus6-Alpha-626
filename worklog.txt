@@ -1,0 +1,2990 @@
+=============================
+Collin D. Bevins
+LLCP0044 CLIN 301
+Apr 22, 2014 - Jul 21, 2014
+9 hours
+=============================
+
+2014-07-17 (2.0h) [9.0 total]
+
+-- Reviewed the Scott & Reinhardt crown fire model papers
+	and specs for BP6.
+	
+-- Attempted to identify the code refactoring required to
+	implement the S&R model within the existing BP6 framework.
+
+-- Determined that new fuel model, surface fire, and crown fire
+	classes are the optimal solution to implementing S&R Crown
+	fire, with the added benefits of streamlining the current
+	2-fuel model hack used by BP6.  The new classes would also
+	form the bulk of the new BP6 online batch mode processor.
+		
+2014-07-16 (1.0h) [7.0 total]
+
+-- Added following function to xfblib.cpp:
+		double FBL_CrownFireCriticalSurfaceFireSpreadRate(
+			double criticalSurfaceFireIntensity,
+			double surfaceFireHpua );
+
+2014-07-15 (1.5 h) [6.0 total]
+
+-- Added <property name="crownConfApplyRothermelFinneyRos">
+-- Added <property name="surfaceConfApplyScottReinhardtRos">
+-- Added <property name="surfaceConfFuelChaparral">
+
+-- Attempted to track underlying cause of Issue #060FAH
+
+-- Added to EqCalc::maskInputs() [xeqcalsmask.cpp:325}
+    if ( prop->boolean( "crownModuleActive" ) )
+    {
+        vSurfaceFuelMoisDead100->m_isMasked = false;
+        vSurfaceFuelMoisDead10->m_isMasked = false;
+        vSurfaceFuelMoisDead1->m_isMasked = false;
+        vSurfaceFuelMoisLiveWood->m_isMasked = false;
+        vSurfaceFuelMoisLifeDead->m_isMasked = false;
+        vSurfaceFuelMoisLifeLive->m_isMasked = false;
+    }
+
+-- Tested worksheet behavior for various fuel moisture options
+	when Crown alone or with Surface is active.
+	
+-- RESOLVED ISSUE #060(b) - Moisture Options, CROWN
+
+
+2014-07-15 (1.5 h) [5.0 total]
+	
+-- Changed vSurfaceFireLineIntAtBeta
+	- label changed to 'Surface Fireline Intensity from Ignition Pt'
+	- hdr1 changed to 'Surface Fireline' and hrd2 to 'Int At Beta'
+-- Changed vSurfaceFireLineIntAtPsi
+	- label changed to "Surface Fireline Intensity from Fire Front"
+	- hdr1 changed to 'Surface Fireline' and hrd2 to 'Int At Psi'
+-- Changed vSurfaceFireLineIntAtVector	
+	- label changed to "Surface Fireline Intensity"
+	- hdr1 changed to "Surface" and hdr2 changed to "Fireline Int"
+-- Changed vSurfaceFireFlameLengAtBeta
+	- label changed to "Surface Flame Length from Ignition Pt"
+	- hdr1 changed to "Surface Flame" and hdr2 changed to "Len at Beta"
+-- Changed vSurfaceFireFlameLengAtPsi
+	- label changed to "Surface Flame Length from Fire Front"
+	- hdr1 changed to "Surface Flame" and hdr2 changed to "Len at Psi"
+-- Changed vSurfaceFireFlameLengAtVector
+	- label changed to "Surface Flame Length"
+	- hdr1 changed to "Surface" and hdr2 changed to "Flame Len"
+-- Changed vSurfaceFireSpreadAtBeta
+	- label changed to "Surface Rate of Spread from Ignition Pt"
+	- hdr1 changed to "Surface ROS" and hdr2 changed to "at Beta"
+-- Changed vSurfaceFireSpreadAtPsi
+	- label changed to "Surface Rate of Spread from Fire Front"
+	- hdr1 changed to "Surface ROS" and hdr2 changed to "at Psi"
+-- Changed vSurfaceFireSpreadAtHead:Label
+	- label changed to "Surface Rate of Spread (maximum)"
+	- hdr1 changed to "Surface ROS" and hdr2 changed to "at Head"
+-- Changed vSurfaceFireSpreadAtVector
+	- label changed to "Surface Rate of Spread"
+	- hdr1 changed to "Surface Rate" and hdr2 changed to "of Spread"
+-- Changed vSurfaceFireHeatPerUnitArea	
+	- label changed to "Surface heat per Unit Area"
+	- hdr1 changed to "Surface Heat" and hdr2 changed to "per Unit Area"
+-- Changed vSurfaceFireDistAtVector
+	- label changed to "Surface Spread Distance"
+	- hdr1 changed to "Surface" and hdr2 changed to "Spread Dist"
+
+-- Tested and verified above changes in Build 613.
+
+-- RESOLVED ISSUE #058FAH(b) - Change Variable Names
+
+	
+2014-07-14 (2.5 h) [3.5 total]
+
+-- Updated BehavePlus6.cpp to Build 613
+
+-- Recompiled debug version of initial Build 613	
+
+-- Created new wix_bp6_product_613.wxs for Build 613
+
+-- Updated wixcandle.bat with new license agreement file and build number
+
+-- Updated wixlight.bat with new build numbers
+
+-- Replaced the license agreement with the old-style BehavePlus6
+	PostcardWare license agreement.
+
+-- Added custom text the the installer's Exit Dialog.
+
+-- Created, compiled, linked, and tested new MSI installation package.
+
+-- RESOLVED ISSUE #065FAH - PostcardWare
+
+
+2014-06-02 (1 h) [1 total]
+
+-- Meetings with FAH to review all the Priority 2 change requests
+	for the next round of BehavePlus6 builds.
+	
+	
+=============================
+Collin D. Bevins
+LLCP0044 CLIN 301
+Mar 22, 2014 - Apr 21, 2014
+2 hours
+=============================
+
+2014-04-04 (2 h) [2 total]
+
+-- Received email from FAH regarding problems with Help system
+on Build 611.  Investigated and confirmed that problem exists
+for version installed directly from bp6_611.
+
+-- Determined cause of the problem was the missing UsersGuide.pdf
+which FAH had requested be removed from the package.  However,
+its presence is required for menus and help system.
+
+-- Added UsersGuide.pdf back into wix_bp6_component_docfolder.wxs
+and into BehavePlus6.xml.
+
+-- Updated BehavePlus6.cpp, wixcandle.bat, and wixlight.bat
+to Build 612.
+
+-- Created new wix_bp6_product_612.wxs file and updated GUIDs.
+
+-- Re-compiled entire Debug and Release source trees.
+
+-- Ran wixcandle and wixlight to produce bp6_612.msi.
+
+-- Performed test installation/deinstallation/installation cycle
+of bp6_612.msi
+
+-- Updated ReleaseNotes and uploaded it and bp6_612.msi
+to the DropBox download site.
+
+-- Sent an email to FAH indicating that Build 612 is ready for
+download and testing.
+
+
+=============================
+Collin D. Bevins
+LLCP0044 CLIN 301
+Feb 22, 2014 - Mar 23, 2014
+24 hours
+=============================
+
+2014-03-12 (3.0 h) [3.0 total]
+
+-- Received and reviewed email and attachments from FAH.
+Drafted and sent a response email to her.
+
+-- Sent another email to FAH containing this work log's entries
+pertaining to tree mortality changes from v5 to v6.
+
+
+-- In siunits.cpp, changed 'tonRefridgeration' to 'tonRefrigeration'.
+
+-- RESOLVED ISSUE #057FAH - Units Converter Typo.
+
+
+-- Created a new wix_bp6_product_611.wxs and changed the <Product Manufacturer=>
+and <Package Manufacturer=> to "US Forest Service and SEM LLC".
+Also updated the Upgrade GUID and version number.
+
+-- RESOLVED ISSUE #063FAH - Publisher for BehavePlus
+
+
+-- Changed the heading "Seasonal Dates & Moon Phases" to "Seasonal
+Dates and Moon Phases", as the ampersand apparently wasn't showing
+up on the browser used by PLA or FAH.
+
+-- RESOLVED ISSUE #062 - Calendar Tool Typo
+
+
+2014-03-13 (1.5 h) [4.5 total]
+
+-- Changed subtitles in xeqcalcreconfig.cpp back to "Head Fire",
+"Flanking Fire", and "Backing Fire".
+
+-- Added tests for length of the output subtitle heading so that
+it is only displayed if it has 1 or more characters, i.e., only if
+the Surface Module is active.  The following files were affected:
+	- updated bpcomposetable1.cpp (around lines 185 and 318).
+	- updated bpcomposetable2.cpp (around lines 298 and 642).
+	- updated bpcomposetable3.cpp (around lines 373 and 749).
+	- no need to change bpcomposeworksheet.cpp (around line 1092).
+	- updated bpcomposefirediagram.cpp (around line 397).
+	- updated bpcomposegraphs.cpp (around line 505).
+-- RESOLVED ISSUE #041aPLA - Add Heading Line (Change Capitalization)
+
+
+2014-03-13 (4.5) [9.0 total]
+
+-- Updated BehavePlus6.cpp to Build 611.
+
+-- Searched and reviewed WIX documentation for adding file associations
+(.bpr, .bpw, .bpf, .bpm) to Windows explorer.
+
+-- Updated wix_bp6_component_executable.wxs to include a new file
+association declaration for .bpr as an initial test.
+
+-- Iteratively modified wix_bp6_component_executable.wxs, uninstalled,
+and installed bp6_611.msi in an attempt to make file associations
+work with .bpr, ,etc.
+
+
+2014-03-14 (3.5 h) [12.5 total]
+
+-- Finally discovered the secret syntax to make launching of BP6 files
+from Windows Explorer by either (1) double clicking on the file
+name or (2) right clicking on the file name and (2a) selecting the
+"Open with BehavePlus6" options or the "Open with..." option.
+
+-- Added capability of launching BehavePlus6 when clicking on the following
+files extensions:
+    .bpf - custom fuel model files
+    .bpm - custom moisture scenarion files
+    .bpr - saved run files
+    .bpu - custom units files
+    .bpw - input worksheet template files	
+
+-- RESOLVED ISSUE #059FAH - Using Windows Open With.... Option
+
+
+2013-03-14 (1.5 h) [14.0 total]
+
+-- While testing the Windows Explorer application launch feature,
+discovered that all the SoCal##.bpf files contained references
+to 9 or so unknown variables.  I removed those references in all
+those files after ensuring they were indeed unused variables.
+
+-- While testing the Windows Explorer application launch feature,
+discovered that all the fuel moisture scenario files loaded with
+the same Description of "TSTMDL (3,4,5,70,70)" instead of the
+actual fuel moisture values.  I updated all 16 files so that the
+Description now lists the 5 fuel moistures in effect.
+
+
+2013-03-16 (3.0 h) [17.0 total]
+
+-- Updated the 3 MoistureScenarioFolder/TSTMDL files 1-Low.bpm,
+2-Med.bpm, and 3-High.bpm to version 6.
+
+-- Corrected TTSMDL to TSTMDL in wix_bp6_directory.wxs, whixh
+was causing Issue #056FAH - New Workspace Cannot be Created.
+
+-- Added a <RemoveFolder Id='DocFolder' On='uninstall'/> line in
+wix_bp6_component_executable.wxs to force its removal on uninstall.
+
+-- Added a GUID to "DocFolder\en_US\Html\ScottBurgan12102.png" in
+wix_bp6_component_docfolder.wxs so that it and DocFolder should now
+get removed during uninstall.
+
+-- Created new builds and uninstalled - reinstalled to verify.
+
+-- RESOLVED ISSUE #056FAH - New Workspace Cannot be Created.
+
+-- Made the following variable name changes:
+    "Heat per Unit Area" is now "Surface Heat per Unit Area"
+    "Fireline Intensity" is now "Surface Fireline Intensity"
+        and column headers are "Surface\nFireline Intensity"
+    "Flame Length" is now "Surface Flame Length"
+	    and column headers are "Surface\nFlame Length"
+	"Crown ROS" is now "Crown Rate of Spread"
+	    and column headers  are "Crown Rate\nof Spread"
+	The column header for Crown Flamne Length is now "Crown\nFlame Length"
+	
+-- RESOLVED ISSUE #058FAH - Change Variable names
+
+
+2013-03-17 (2.5 h) [19.5 total]
+
+-- Modified xeqcalcreconfig.cpp so that the CONTAIN Module
+honors the SURFACE Module Fuel Moisture settings, even when
+SURFACE Module is inactive.
+
+-- Tested and verified that the above changes work as expected.
+
+-- RESOLVED ISSUE #060FAH - Moisture Options, CROWN)
+
+
+2013-03-17 (1.5 h) [21 total]
+
+-- Created file Build611Files.wxs and entered into it the
+MSI package installer component declarations for the 12 new
+help png files (including 3 new GUIDs for each file).  These
+will be incoporated into the wix_bp6_component_docfolder.wxs
+once the actual files are received from FAH.
+
+-- Deleted UsersGuide.pdf from the file components list.
+
+
+2013-03-22 (1.5 h) [22.5 total]
+
+-- Downloaded, unzipped, and installed new help file manifest
+from FAH.
+
+-- Compared Build 609, Build610, and Build611 help file lists.
+
+-- Added new installer component declarations into Build611Files.wxs
+for fireSpread.png and fuelModeltable.html.
+
+-- Added the 14 new files to the BehavePlus6.xml manifest.
+
+-- RESOLVED ISSUE #061FAH - Help file Changes.
+
+
+2013-03-23 (1.5 h) [24 total]
+
+-- Recompiled debug and release versions of Build 611.
+
+-- Tested development version for complete installation files package.
+
+-- Compiled and linked the WXS files into new installation
+package bp6_611.msi.
+
+-- Performed test installation of Build 611 package installer
+(bp6_611.msi) and validated installation.
+
+-- Updated ReleaseNotes.txt.
+
+-- Uploaded bp6_611.msi to DropBox folder.
+
+-- Sent emails to FAH and PLA with download links to the
+ReleaseNotes.txt and bp6_611.msi files.
+
+
+=============================
+Collin D. Bevins
+LLCP0044 CLIN 201
+Nov 22, 2013 - Feb 21, 2014
+21 hours
+=============================
+
+2013-12-11 (1.0 h) [1.0 total]
+
+-- Backed up Build 609 files to folder Build609.
+
+-- Updated BehavePlus6.cpp to Build 610.
+
+-- Downloaded and reviewed 12 new issue requests from Pat and Faith Ann.
+
+-- Downloaded and unzipped the new Help files from Faith Ann.
+
+
+2013-12-12 (0.5 h) [1.5 total]
+
+-- Updated SURFACE Module P-G Outputs Note as requested in BehavePlus6.xml.
+
+-- RESOLVED ISSUE #019aFAH - Change Note for Aspen
+-- RESOLVED ISSUE #050aPLA - Aspen Output Note
+
+
+2013-12-12 (1.0 h) [2.5 total]
+
+-- Added a 'Caclulate' button (and asociated signls and slots) to the
+Relative Humidyt Tool's 'Dry Temp & Dew Point Temp' dialog.
+
+--	RESOLVED ISSUE #022aFAH - Relative Humidity Tool
+
+
+2013-12-12 (1.0 h) [3.5 total]
+
+--	Checked the version identifier on all the standard distribution
+WorksheetFolder/ExampleWorksheets files to ensure they are labeled as:
+<BehavePlus type="Worksheet" release="60000">
+
+--	Checked the version identifier on all the standard distribution
+RunFolder/ExampleRuns files to ensure they are labeled as:
+<BehavePlus type="Worksheet" release="60000">
+
+-- Loaded all the example Worksheet and Run files to ensure they do
+not create the Issue 024aFAH message.
+
+-- Verified that the file version displayed in the message comes
+directly from the file itself.
+
+-- Verified that BehavePlus 5 has been erroneously creating run and
+worksheet files with a release='4.00.00' identifier.
+
+-- Sent an email to FAH explaining how the message and version 
+number works.
+
+-- RESOLVED ISSUE 024aFAH - Warning message version number.
+
+
+2013-12-12 (0.5 h) [4.0 total]
+
+-- Modified the sortIn values of the vSurfaceFuelMois* variables so
+that all dead fuel moistures appear before all live fuel moistures
+on the input worksheets.
+
+-- RESOLVED ISSUE #030aFAH - Surface Module, New Fuel Moisture Option
+
+-- Added parenthesis to the SPOT Conflict Dialog radio button text.
+
+-- RESOLVED ISSUE #049aPLA - Restore SPOT Conflict Message.
+
+
+2013-12-12 (1.0 h) [5.0 total]
+
+-- The 'Fuel Model Number' and 'Fuel Model Code' variables are now
+set to constant, non-input condition during special case (Aspen and P-G)
+fuel modeling so they no longer appear on the input worksheet.
+
+-- RESOLVED ISSUE #033aFAH - FARSITE Fuel Model Export.
+
+
+2013-12-17 (4.0 h) [9.0 total]
+
+-- Modified BpDocument::composeDocumentation() in
+bpcomposedoc.cpp to check if it is the discrete variable code
+that is being displayed, and if so, to specially format it.
+
+-- Added code in EqApp::attachFuelModel() file xeqapp.cpp
+(around lines 528-546) that can be activated if Version 6
+is to prevent the loading of fuel models with duplicate
+model codes and/or numbers.  This code is activated by
+<property name="fuelModelPreventDuplicateNumbers" in the
+BehavePlus6.xml file.
+
+-- Added "EqApp:FuelModelNumberAlreadyExists" and
+"EqApp:FuelModelNumberAlreadyExists" to BehavePlus6.xml
+for the above tests.
+
+-- RESOLVED ISSUE 032bFAH - SURFACE Module, Fuel Model Selection
+
+
+2013-12-18 (1.0 h) [10.0 total]
+
+--	Confirmed that the change in answers in the Relative
+Humidity Tool when switching between English and metric units
+is due to accumulation of rounding errors.
+
+-- ADDRESSED BUT UNRESOLVED ISSUE 022bFAH - Relative Humidty Tool)
+
+-- Uninstalled and re-installed Build 609, but could not
+duplicate Issue 032bFAH where the fuel model Choices list
+gets scrambled.
+
+-- Saved a run using attached fuel models, then exited the
+program, restarted BehavePlsu, and reloaded the run, but
+could not duplicate the Issue 032bFAH where the "Invalid
+Input" dialog appears many times before allowing the user
+to make a correct entry.
+
+-- ADDRESSED BUT UNRESOLVED ISSUE 032bFAH - SURFACE Module,
+Fuel Model Selection
+
+
+2013-12-19 (4.0 h) [14.0 total]
+
+-- Attempted to adjust the height of the SURFACE Module
+configuration dialog by moving the WInd Direction button
+group from the Directions tab to the Wind tab.
+
+-- Wrote a report to FAH and PLA detailing all the addressed
+but unreolved issues with Build 609.  Emailed the report
+to both of them.
+
+
+2013-12-19 (2.0 h) [16.0 total]
+
+-- Determined that test introduced in v6 for when elapsed
+time is a constant (due to Psi-based calculations) is in
+error.  Elapsed time is now always requested whenever the
+SIZE module is active.
+
+-- RESOLVED ISSUE #053PLA - Elapsed Time Not Requested
+
+
+2013-12-19 (0.5 h) [16.5 total]
+
+-- Unzipped and moved the new V6 DocFolder files into the
+DocFolder/en_US/Html directory.
+
+-- Added all the new V6 HTML and image file names to
+BehavePlus6.xml manifest.
+
+
+2013-12-19 (1.5 h) [18.0 total]
+
+-- Created new wix_bp6_product_610.wix
+
+-- Updated wixcandle.bat and wixlight.bat to Build 610.
+
+-- Entered the 150 new files into wix_bp6_component_docfolder.wxs.
+
+-- Successful compile of wixcandle and wixlight.
+
+
+2014-01-16 (0.5 h) [18.5 total]
+
+-- Update ellipse.fire2.org to use the 'Fire Front' terminology as follows:
+   - Updated input table in ellipse/application/forms/Input.php
+   - Updated output tables in ellipse/application/views/scripts/index/
+     fancytable.phtml and simpletable.phtml
+   - Update output table headers in ellipse/application/Org/Fire/Ellipse/
+     Decorator.php
+   - Updated version to 'Build 008  2014-01-16' in
+     ellipse/application/layouts/scripts/layout.phtml
+
+-- RESOLVED ISSUE #055PLA - Calculator Terminology
+
+
+2014-01-16 (2.5 h) [21.0 total]
+
+-- Recompiled debug and release versions of Build 610
+
+-- Recompiled and linked the bp6_610.msi package
+
+-- Performed test installations/deinstallations of the
+   bp6_610.msi package
+
+-- Updated the Release Notes for Build 610.
+
+-- Uploaded bp6_610.msi and ReleaseNotes.txt to DropBox.
+
+-- Sent and email to FAH and PLA with links to the 
+   installation package and  release notes.
+
+
+
+=============================
+Collin D. Bevins
+LLCP0044 CLIN 201
+Sep 22, 2013 - Nov 21, 2013
+75 hours
+=============================
+
+2013-11-05 (4.5 h) [4.5 total]
+
+-- Added call to FuelModelList::fuelModelByModelNumber() inside
+EqCalc::unmaskFuelModelInputs() so checks for fuel models first by
+name and then by number.
+
+-- Added new function EqTree::tokenConvert() that is called by
+EqTree::initRowsFromStore() and EqTree::initColsFromStore()
+that checks if fuel model input tokens are actually fuel model
+numbers, and if so, converts the tokens to the fuel model name.
+
+-- Drawback of the above is that the fuel model number is now
+displayed as the fuel model name on output tables and graphs.
+Currently there is no evident way to carry the model number forward
+on output displays.
+
+
+2013-11-06 (2.0 h) [6.5 total]
+
+-- Added code to create 2 fuel models in the fuel model list if
+the fuel model name is not the fuel model number.  This nearly
+doubles the number of fuel models in the list, but at least fuel
+model labels '101' and 'gr1' get displayed, instead of always 'gr1'.
+
+-- Added "FuelBedModel:101" type translations to BehavePlus6.xml
+for all the Scott-Burgan models.
+
+-- Modified FuelModelDialog so that it only includes fuel models
+whose numbers differ from their codes, but still shows 1-13
+and SCALxx series.
+
+-- Resolved Issue 032FAH - SURFACE Module, Fuel Model Selection,
+to the extent that (1) users may enter fuel model numbers as well
+as codes into the worksheet, and (2) Fuel Model Choice Dialog
+headers use standard terminology.  The issue of assigning model
+numbers to custom fuel models is deferred to Issue #033.
+
+
+2013-11-07 (3.5 h) [10.0 total]
+
+-- Added two new variables to BehavePlus6.xml, xeqcalc.h, and
+xeqcalc.cpp:
+   vSurfaceFuelBedModelCode, "Fuel Model Code", text field
+   vSurfaceFuelBedModelNumber, "Fuel Model Number", continuous, 14-256
+
+-- Added the new variables as inputs/outputs in BehavePlus6.xml
+function definitions:
+  <function name="fSurfaceFuelBedIntermediates"
+    input="vSurfaceFuelBedModelCode"
+    input="vSurfaceFuelBedModelNumber"
+	... />
+  <function name="fSurfaceFuelBedModel"
+    input="vSurfaceFuelBedModel"
+    output="vSurfaceFuelBedModelCode"
+    output="vSurfaceFuelBedModelNumber"
+    ... />
+  <function name="fSurfaceFuelBedParms"
+    input="vSurfaceFuelBedModelCode"
+    input="vSurfaceFuelBedModelNumber"
+	... />
+
+-- The two new variables now get loaded into the equation tree
+within EqCalc::FuelBedModel() just like all the other fuel model vars.
+
+-- Added these two variables to the section EqCalc::reconfigureSurfaceModule()
+where vSurfaceFuelLoadTransferEq is hidden from the worksheet, under
+the assumption that they also need to be hidden whenever 'Fuel Model Type'
+needs to be hidden.
+
+-- Added code on EqVar::isValidString() to do special processing for
+the two new variables.
+
+-- Added the following lines to each of the SCALxx.bpf files:
+  <variable name="vSurfaceFuelBedModelCode" text="SCAL14" />
+  <variable name="vSurfaceFuelBedModelNumber" decimals="0" units="" value="14" />
+
+-- Modified FuelModel::loadBpf() to read in the Fuel Model Code and
+Fuel Model Number.
+
+-- Changed EqApp::attachFuelModel() to store the Fuel Model Number as the
+sort key instead of the Fuel Model Code (or filename).
+
+-- Changed EqApp constructor so that m_fuelModelList no longer adds
+leading zeros to fuel model numbers (around line 204).
+
+-- Modified BpDocument::fuelClicked() to append the name of the
+selected fuel model to the button text.
+
+-- Fixed the Initialize Fuel From Model Dialog to behave just
+as the new Fuel Selection Dialog.
+
+-- RESOLVED ISSUE #033FAH - FARSITE Fuel Model Export, Parts 1 and 2.
+
+
+2013-11-07 (4.0 h) [14.0 total]
+
+-- Sucessfully created a SURFACE Module Options Dialog that displays
+nested tabs.  There are two top-level tabs, "Input Options" and
+"Output Variables", with the usual SURFACE sub-tabs under each.
+
+-- RESOLVED ISSUE #039PLA - SURFACE Tabs.
+
+
+2013-11-07 (1.0 h) [15.00 total]
+
+-- Modified FuelModel::formatHtmlTable() to include display of
+metric fuel model values.
+
+-- RESOLVED ISSUE #033FAH - FARSITE Fuel Model Export, Part 5.
+
+
+2013-11-08 (1.0 h) [16.00 total]
+
+-- Updated the "File > Save as a fuel model > BehavePlus format"
+dialog to use the worksheet Fuel Model Code as the default file name.
+
+-- RESOLVED ISSUE #033FAH - FARSITE Fuel Model Export, Part 3.
+
+
+2013-11-08 (2.5 h) [18.50 total]
+
+-- Added to appwindow.h:
+    void slotDocumentExportFuelModelsFarsiteEnglish( void ) ;
+    void slotDocumentExportFuelModelsFarsiteMetric( void ) ;
+    int m_idFileExportFuelModelsFarsiteEnglish;   //!< File->Export->Fuel models->Farsite, ENglish menu item id
+    int m_idFileExportFuelModelsFarsiteMetric;   //!< File->Export->Fuel models->Farsite, metric menu item id
+
+-- Added new FARSITE menu items to to AppWindow::initMenuFile().
+We now have the required menu/submenu and signal/slot structure.
+
+-- Made the 3 fuel model dialogs (Fuel Model Dialog, Fuel Init Dialog,
+and Fuel Export Dialog) more consistent.
+
+-- Added fuel model export to FARSITE in either English and metric units
+in FARSITE-conformant format.
+
+-- RESOLVED ISSUE #033FAH - FARSITE Fuel Model Export, Part 4.
+
+
+2013-11-08 (0.5 h) [19.00 total]
+
+-- Fixed spelling errors and always show SURFACE Direction run options
+on the worksheet.
+
+-- RESOLVED ISSUE #037PLA - Direction Run Notes Option, Second Request)
+
+
+2013-11-08 (0.5 h) [19.50 total]
+
+-- Made word and capitalization changes to SURFACE Module Direction tab.
+
+-- RESOLVED ISSUE #046PLA - Direction Option Wording.
+
+
+2013-08-08 (1.0 h) [20.5 total]
+
+-- Made corresponding corrections to the ellipse.fire2.org calculator
+function _updateBetaWrtHeadFromTheta() in the file
+public_html/ellipse/library/Org/Fire/Ellipse/Calculator.php
+(around line 197).
+
+-- Updated the Ellipse Calculator to Build 007, 2013-11-08.
+
+-- RESOLVED ISSUE #040PLA - Fire Direction Calculator.
+
+
+2013-11-08 (2.5 h) [23.0 total]
+
+-- Build 3 worksheets similar to Pat's (#045PLA) but with outputs
+displayed to 6 decimal places, to determine what role rounding may
+be playing in the reported issue.  These were saved as run files
+FlankTest1.bpr (HEADING), FlankTest2.bpr (FLANKING), and
+FlankTest3.bpr (FIRE FRONT with spread direction at head, both
+flanks, and back of fire).  The results show that the reported
+issue is due solely to the rounding of inputs/outputs between the
+3 separate runs that were reported as the issue.
+
+-- I sent an email to Pat explaining the results of this investigation,
+and included the 3 run files for her reference.
+
+-- RESOLVED ISSUE #045PLA - Flanking ROS Check.
+
+
+2013-11-11 (2.0 h) [25.0 total]
+
+-- Added a SURFACE Fire Direction tab sub-title to the following output
+pages:
+	- Simple output lists (bpcomposetable1.cpp)
+	- One-way tables (bpcomposetable2.cpp)
+	- Two-way tables (bpcomposetable3.cpp)
+	- Graphs (bpcomposegraphs.cpp)
+	- Fire direction diagram (bpcomposefiredirdiagram.cpp)
+	
+-- RESOLVED ISSUE #041PLA - Add Heading Line
+
+
+2013-11-12 (3.5 h) [28.5 total]
+
+-- Revised bpcomposefiredirdiagram.cpp so that it shows the Spread
+Direction vector and legend for all 6 SURFACE Fire Direction
+options (and a double vector for the Flanking option).
+
+-- RESOLVED ISSUE #042PLA - Add Direction Vector
+
+
+2013-11-13 (2.5 h) [31.0 total]
+
+-- Examined the submitted Issue #043PLA - Contain Diagram Scale
+Problem, re-created the run files that reproduce the reported
+issue, and performed thorough code examination of
+bpcomposecontaindiagram.cpp, using the debugger to step through
+and examine all the scaling algorithms and factors.
+
+-- Aside from the cluttered labels on the x-axis of the issue
+example, I determined that all scaling was being performed
+properly under the current 'feature' contraint.  The current
+feature ensures that, if a run has 1 or 2 input range variables
+resulting in more than 1 containment diagram, then all the
+diagrams should use the same scaling to facilitate user visual
+comparison.
+
+-- I drafted an email to Pat and Faith Ann explaining the above
+feature, and asking if they want the feature revised so that
+each containment diagram within a run gets its own, optimum
+scaling.
+
+-- I also reduced the maximum number of tic marks from 12 to 7
+to reduce potential axis label clutter.
+
+-- RESOLVED ISSUE #043PLA - Contain Diagram Scale Problem
+
+
+2013-11-13 (3.0 h) [34 total]
+
+-- Renamed all text like "Forward Spread Distance" to
+"Heading Spread Distance" in BehavePlus6.xml.
+
+-- Added three new variables and two new method declarations
+to the BehavePlus6.xml file and EqVar class:
+   - EqVar *vSurfaceFireDistAtFlank
+   - EqVar *vSurfaceFireMapDistAtFlank
+   - EqVar *vSurfaceFireSpreadAtFlank
+   - EqFun *fSurfaceFireDistAtFlank;
+   - EqFun *fSurfaceFireMapDistAtFlank;
+   - EqFun *fSurfaceFireSpreadAtFlank;
+   
+-- Added the following methods to xeqcalc.cpp and xeqcalc.h:
+   - void EqCalc::FireDistAtFlank( void )   
+   - void EqCalc::FireMapDistAtFlank( void )
+   - void EqCalc::FireSpreadAtFlank( void )
+   
+-- Added following to BehavePlus.xml:
+   - <function name="fSurfaceFireDistAtFlank" ...
+   - <function name="fSurfaceFireMapDistAtFlank" ...
+   - <function name="fSurfaceFireSpreadAtFlank"
+      input="vSurfaceFireSpreadAtHead"
+      input="vSurfaceFireSpreadAtBack"
+      input="vSurfaceFireLengthToWidth"
+      output="vSurfaceFireSpreadAtFlank" />
+      
+-- Added "sizeCalcFireDistAtFlank" control to BehavePlus6.xml.
+
+-- Added new logic to EqCalc::reconfigureSizeModule().
+
+-- Added checkbox to SIZE Output Variables tab for
+Flanking Spread Distance.
+
+-- Created a new (temporary, NEEDS TO BE EDITED) HTML help file
+DocFolder/en_US/Html/vSurfaceFireDistAtFlank.html.
+
+-- Reset the 3 output display control default values to
+'false' for the 3 intermediate ellipse variables (f, g, h).
+   
+-- Tested code using spread units and map units.
+
+-- NOTE that it would now be very easy to add Flanking ROS
+and Backing ROS to the SURFACE Basic Outputs.
+
+-- RESOLVED ISSUE #044PLA - Flanking Spread Distance in SIZE
+
+
+2013-11-13 (2.0 h) [36.0 total]
+
+-- Created three new HTML doc files in DocFolder/en_US/Html and
+added them to the BehavePlus6.xml and wix_bp6_component_docfolder.wxs
+files in anticipation of creating Build 607:
+   - vSurfaceFuelBedModelCode.html
+   - vSurfaceFuelBedModelNumber.html
+   - vSurfaceFireDistAtFlank.html
+
+-- TO DO: update the HTML files listed above with appropriate content.
+
+-- Created wix_bp6_product_607.wxs and updated wixcandle.bat and
+wixlight.bat to produce bp6_607.msi.
+
+-- Created bp6_607.msi, and ran a test installation
+
+-- Uploaded bp6_607.msi to DropBox.
+
+-- Updated ReleaseNotes.txt and uploaded them to DropBox.
+
+-- Sent an email announcement of Build 607, with DropBox links,
+to Pat and Faith Ann.
+
+
+2013-11-13 (3.5 h) [39.5 total]
+
+-- Updated appwindow.cpp and BehavePlus6.cpp to Build 608.
+
+-- Developed an HTML table of spotting model input/output
+variables and sort orders to better introduce a complementary
+set of variables for the Active Crown spotting model.
+
+-- Assigned new variable names and sort-in sort-out numbers
+for Active Crown Spotting Model.
+
+
+2013-11-14 (1.5 h) [41 total]
+
+-- Received Pat's report of installation issues with Build 607.
+The Build apparently does not include the necessary DLL libraries.
+
+-- Updated wix_bp6_component_executable.wxs to include:
+   - msvcp71.dll
+   - msvcp71d.dll
+   - msvcd71.dll
+   - msvcr71d.dll
+   - qt-mt338.dll
+   
+-- Created a new wix_bp6_product_608 and updated wixcandle.bat
+and wixlight.bat.
+
+-- Compiled new debig and release versions of BehavePlus6.exe
+Build 608 that included them in the new bp6_608.msi package.
+
+-- Performed a test installation to ensure the required
+software DLL libraries are being installed.
+
+-- Uploaded bp6_608.msi and updated ReleaseNotes.txt to DropBox,
+and sent email to Pat and Faith Ann with download links.
+
+
+2013-11-15 (5.0 h) [46 total]
+  
+-- Added 7 new variable definitions in BehavePlus6.xml
+to support Active Crown Fire model:
+   - vCrownFireCanopyHt
+   - vSpotDistActiveCrown
+   - vSpotEmberDiamAtSurface   
+   - vSpotFirebrandHtActiveCrown
+   - vSpotFlameHtActiveCrown   
+   - vSpotFlatDistActiveCrown
+   - vSpotMapDistActiveCrown
+
+-- Added 6 new variable HTML help file entries in BehavePlus6.xml
+to support Active Crown Fire model:
+   - vCrownFireCanopyHt.html
+   - vSpotDistActiveCrown.html
+   - vSpotEmberDiamAtSurface.html
+   - vSpotFirebrandHtActiveCrown.html
+   - vSpotFlameHtActiveCrown.html
+   - vSpotFlatDistActiveCrown.html
+
+-- Created initial 6 HTML help files for above in /DocFolder/en_US/Html
+
+-- Added 2 new function definitions in BehavePlus6.xml
+   - <function name="fSpotDistActiveCrown" ...
+   - <function name="fSpotMapDistActiveCrown" ...
+
+-- Added 7 new variable and 2 new function definitions to xeqcalc.h
+and xeqcalc.cpp.  Also added to EqCalc methods these new methods:
+   - void SpotDistActiveCrown( void );
+   - void SpotMapDistActiveCrown( void );
+   
+-- Added new controls to BehavePlus6.xml:
+   - spotCalcDistActiveCrown
+   - spotCalcFirebrandDriftActiveCrown (currently unused)
+   - spotCalcFirebrandHtActiveCrown
+   - spotCalcFlameHtActiveCrown
+   - spotCalcFlatDistActiveCrown
+   - spotCalcWindSpeedAtCanopyTop (currently unused)
+   
+-- Updated ModulesDialog::spotOptions() to display the new active crown
+spot distance variable, and a new tab to display the crown fire
+spot model intermediate outputs.
+
+-- Updated EqCalc::reconfigureSpotModule().
+
+-- Tested and debugged all of the above.  We now have a working
+user interface for the Crown SPot Module.
+
+
+2013-11-18 (0.5 h) [46.5 total]
+
+-- Made additional word changes to SURFACE fire spread direction
+Run Options so they match the SURFACE Direction Tab text changes
+caused by Issue #046PLA.
+
+-- RESOLVED ISSUE #037bPLA - Direction Run Option Notes
+
+
+2013-11-18 (0.5 h) [47.0 total]
+
+-- Made additional word changes to SURFACE Direction tab text
+and line breaks.
+
+-- RESOLVED ISSUE #046aPLA - Direction Option Wording
+
+
+2013-11-18 (0.5 h) [47.5 total]
+
+-- Changed the <function module='' /> declaration for the new
+SIZE module variables to 'size' so that the correct producer
+function is displayed [SIZE] with the Output Variable list.
+
+-- RESOLVED ISSUE #044aPLA - Flanking Spread Direction in SIZE.
+
+
+2013-11-18 (1.5 h) [49.0 total]
+
+
+-- Changed EqCalc::getSubtitle() so a blank string is returned
+if the SURFACE Module is not active.
+
+-- Changed capitalization of SURFACE output table sub titles
+as requested.
+
+-- Added the SURFACE Module subtitle to the top header of the
+exported HTML file for the 3 styles of output (simple listing,
+1-way table, and 2-way table).
+
+-- Added the SURFACE Module subtitle just before each result list
+or table in the exported HTML file for the 3 styles of output
+(simple listing, 1-way table, and 2-way table).
+
+-- RESOLVED ISSUE #041aPLA - Add Heading Line
+
+
+2013-11-18 (3.5 h) [52.5 total]
+
+-- Developed new directory structure for new models (processors)
+such as the Active Crown Spotting Model.
+
+-- Reviewed Albini's FORTRAN code to determine best architecture
+for developing a C++ version.
+
+-- Created SemFireCrownPlumeBoundaryProcessor.[h|cpp] files in
+a first attempt to add in active crown fire spotting functionality.
+
+
+2013-11-19 (5.0) [57.5 total]
+
+-- Refactored the above code into a new class defined in files
+SemFireCrownFirebrandProcessor.[h\cpp]
+
+-- Added in Albini's model algorithms, optimized for single ember
+diameter loft height computation by starting from the flame tip
+and building the plume as needed until the loft height is reached.
+
+
+2013-11-20 (7.0 h) [64.5 total]
+
+-- Began debugging the crown fire class.  Uncovered some unexpected
+behavior in Albini's adjustment for wind speed at the top of the
+canopy.  Composed an email describing the potential issue and sent
+it to Faith Ann and Pat for their consideration.
+
+-- Investigated difference between Albini and the new model in the
+plume layer selected as the drop out layer.  Determined that
+Albini's algorithm selects 1 layer too low.  Because 'qreq' is based
+on just the upper boundary zb, it can be satisifed in a layer
+that has both an upper and lower boundary 'q' > 'qreq', which
+additionally throws off the ensuing interpolation.
+
+-- I made an adjustment for the above issue by calculating 'qreq'
+on the average of the upper and lower boundary z levels at each layer.
+It now looks like qLower <= q <= qUpper is satisfied for the
+selected plume layer.
+
+-- Reviewed and revised above approach and it doesn't always work.
+Now we just use the lower boundary conditions of the highest plume
+layer that can loft the ember.
+ 
+-- Made corresponding adjustment in dist2a FORTRAN code.
+
+-- Added units editing controls for following variables:
+   - vCrownFireCanopyHt
+   - vSpotDistActiveCrown
+   - vSpotFirebrandHtActiveCrown
+   - vSpotFlameHtActiveCrown   
+   - vSpotFlatDistActiveCrown
+   - vSpotMapDistActiveCrown
+   - vSurfaceFireDistAtFlank
+   - vSurfaceFireMapDistAtFlank
+   - vSurfaceFireSpreadAtFlank
+But NOT for:
+   - vSpotEmberDiamAtSurface   
+
+-- Because FAH wants user to enter crown fire flame length rather
+than crown fireline intensity (when CROWN module is inactive),
+we must:
+   1 apply the user's crown fire flame length to derive a
+     fireline intensity,
+   2 submit the fireline intensity to the crown fire spotting model,
+   3 which calculates a flame ht above the canopy.
+Note that the user's input flame length will differ
+from the output flame height.
+
+-- Sent an email to FAH for interpretation on meaning of the
+Crown Flame Lenbgth variable.
+
+-- Added following function to xfblib.[cpp|h]:
+double FBL_CrownFireFireIntensityFromFlameLength( double crownFireFlameLength )
+
+-- Added <function name="fCrownFireLineIntFromFlameLeng" ... >
+to BehavePlus6.xml.
+
+-- Added EqCalc::CrownFireLineIntensityFromFlameLength()
+to xeqcalc.[cpp|h].
+
+-- Modified EqCalc::reconfigureSpotModule() to check if any active
+crown spotting results are requested when the CROWN Module is
+inactive, and if so, to activate the function that back calculates
+Crown Fireline Intensity from user input Crown Flame Length.
+
+-- Performed testing of the BP6 worksheet interface and compared
+results with parallel runs using 'dist' and 'dist2a' programs.
+
+2013-11-20 (0.5 h) [65.0 total]
+
+-- Responded to FAH email on definition of Crown Flame Length,
+and described how we work around it.
+
+-- Sent a new email to FAH asking if it is necessary to
+display the 'Downwind Canopy Height' and 'Downwind Canopy
+Cover' variables on the worksheet if JUST Active Crown Spot
+variables are being requested (i.e., no Burning Pile, Surface
+Fire, or Torching Tree spotting is being requested).
+
+
+2013-11-21 (1.5 h) [66.5 total]
+
+-- Printed and reviewed 4 new Build 608 issues from Pat.
+
+-- Made wording changes to SAFETY Run Option Note
+
+-- RESOLVED ISSUE #047PLA - SAFETY Run Option Note
+
+-- Made capitalization changes to the conflict2 dialog.
+
+-- RESOLVED ISSUE #048PLA - Wind Conflict Format.
+
+-- Made wording changes to the Aspen Output Note.
+
+-- RESOLVED ISSUE #050PLA - Aspen Output Note
+
+-- Modified Conflict1Dialog::store() in conflictdialog.cpp to
+test for and reset all six V6 fire spread direction options
+within the SURFACE/SPOT Conflict dialog.
+
+-- Modified EqCalc::conflict1() in xeqcalcmask.cpp to
+test if any of the 5 surface fire spotting model outputs
+are being requested by the user.
+
+-- Changed the wording of the SURFACE/SPOT conflict dialog
+to reflect V6 spread directions.
+
+-- Re-activated the SURFACE/SPOT COnflict dialog for V6.
+
+-- RESOLVED ISSUE #049 - Restore SPOT Conflict Message
+
+
+2013-11-21 (6.0 h) [72.5 total]
+
+-- After communicating with FAH, determined that Downwind
+Cover Ht and Downwind Canopy Cover are not required for
+the Active Crown Fire Spotting Model.
+
+-- Removed following inputs from fSpotDistActiveCrown:
+    input="vTreeCoverHtDownwind"
+    input="vTreeCanopyCoverDownwind"
+
+-- Removed the downwind variables from EqCalc::SpotDistActiveCrown().
+
+-- Performed 4 series of run comparisons between BP6 and Albini's code
+	- Range of canopy heights
+	- Range of wind speeds
+	- Range of flame lengths/fireline intensities
+	- Range of ember diameters
+These tests showed agreement between the two programs at precisions
+at least as good as 6 significant digits.
+	
+-- Found an issue in Albini's SUBROUTINE flame() with the lines:
+        con = 7.791e-03 * fikwpm / ( utop * htop )
+        yhigh = exp( con )
+If 'con' exceeds about 40, the binary search never finishes because
+yhigh is on the order 1.0e20.  The program doesn not finish even
+if yhigh is declared as REAL(8).
+However, this problem does not appear to arise in BehavePlus6.
+
+
+2013-11-21 (1.0 h) [73.5 total]
+
+-- Received and reviewed Issue #051PLA
+
+-- Reviewed code to determine where and when the Choices button
+is displayed.  Determined best approach to resolving the issue.
+
+-- Removed the "Choices" button for the following variable by
+removing the following wizard assignments in BehavePlus6.xml:
+   - vSurfaceFireVectorDirFromUpslope wizard="CompassUpslopeWizard"
+   - vSurfaceFireVectorDirFromNorth wizard="compassNorthWizard"
+   
+-- RESOLVED ISSUE #051PLA - Spread Direction Choise
+   
+   
+2013-11-21 (1.5 h) [75.0 total]
+
+-- Updated the ReleaseNotes.txt file.
+
+-- Recompiled both the debug and release versions of Build 609.
+
+-- Created new WIX scripts and batch files for Build 609.
+
+-- Added the 6 new HTML files to the wix_bp6_component_docfolder.wxs:
+   - vCrownFireCanopyHt.html
+   - vSpotDistActiveCrown.html
+   - vSpotEmberDiamAtSurface.html
+   - vSpotFirebrandHtActiveCrown.html
+   - vSpotFlameHtActiveCrown.html
+   - vSpotFlatDistActiveCrown.html
+   
+-- Created new bp6_609.msi and performed a test installation.
+
+-- Uploaded bp6_609.msi and ReleaseNotes.txt to the DropBox
+download site.   
+
+-- Sent an email to Pat and Faith Ann with links to the downloads.
+
+ 
+=============================
+Collin D. Bevins
+LLCP0044 CLIN 201
+Aug 22, 2013 - Sep 21, 2013
+46 hours
+=============================
+
+2013-09-02 (1 h) [1 total]
+
+--	Updated BehavePlus6.cpp as 'Build 606'.
+
+--	Ran the new Windows installer program for Build 605 for use
+as the benchmark in verifying and testing the Build 606 change
+requests.
+
+--	Duplicated Issues #018FAH - Help Window Graph Variable Names.
+
+--	Identified cause at lines 157-168 in rundialog.cpp.
+Modified the coder to display the correct set of variable labels.
+
+--	Ran latest version of Build 606 to verify that issues was resolved.
+
+--	RESOLVED ISSUE #018FAH - Help Window Graph Variable Names
+
+
+
+2013-09-02 (0.25 h) [1.25 total]
+
+--	Duplicated, fixed, and tested new NOTES text in the 'Aspen Outputs'
+and 'PG-Outputs' tabs under the Configure > Module selection > SURFACE
+Options menu.
+
+--	RESOLVED ISSUE #019FAH - Change Note for Aspen
+
+
+
+2013-09-02 (1 h) [2.25 total]
+
+--	Downloaded BehavePlus 5.0 Design and Features paper into
+DocFolder/en_US/Html/FeaturesPaper.pdf
+
+--	Added featuresPaperFile() and featuresPaperFilePath() methods
+and variables to FileSystem class.
+
+--	Added slotHelpFeaturesPaper() method to AppWindow class.
+
+--	Added 'Features Paper' transaltion text and 'FeaturesPaper.pdf'
+file to the BehavePlus6.xml file.
+
+--	Created wix_bp6_product_606.wxs WIX script file.
+
+--	Added FeaturesPaper.pdf to wix_bp6_component_docfolder.wxs
+WIX script.
+
+--	Changed the Help menu to display 'Features Paper' instead of
+'Users Guide'.
+
+--	RESOLVED ISSUE #020FAH - BehavePlus Help Document.
+
+
+2013-09-02 (0.5 h) [2.75 total]
+
+--	Modified bpcomposepage.cpp so that the page map diagram in the
+upper left corner draws an 'X' to show the position of the currently
+display page.
+
+--	RESOLVED ISSUE #021FAH - Multi-Page Tabe Format: Change
+Symbolization of Current Page
+
+
+2013-09-02 (2.0 h) [4.75 total]
+
+--	Modified the Relative Humidity tool to force user's to press the
+"Calculate" button before the outputs are updated.  Whenever the user
+changes any of the input values, the output fields turn a light blue
+color to indicate that they are invalid.  Once the 'Calculate' button
+is pressed and the outputs are updated, the output fields turn white
+again.
+
+--	RESOLVED ISSUE #022FAH - Relative Humidity Tool
+
+
+2013-09-02 (0.25 h) [5.00 total]
+
+--	Updated the FOFEM bark thickness coefficient for Douglas-fir, western
+larch, and ponderosa pine from 0.065 to 0.063.
+
+--	RESOLVED ISSUE #023HAF - Change in Bark Thickness Equation
+
+
+2013-09-06 (1 h) [6.00 total]
+
+-- Added new longleaf pine bark thickness equation and logic to 
+FBL_TreeBarkThicknessFofem().
+
+-- Added new longleaf pine mortality equation and logic to
+FBL_TreeMortalityFofem().
+
+--	Wrote an email to FAH with questions about minimum mortality
+values.
+
+--	RESOLVED ISSUE #025FAH - Mortality Module, New Longleaf Pine
+Mortality Model
+
+
+2013-09-06 (1.75 h) [7.75 total]
+
+--	Modified the FofemSpeciesStruct in xfblib.cpp to include both
+FOFEM v5 and v6 abbreviations.
+
+--	Added the new 207 FOFEM v6 species codes to FofemSpecies[].
+
+--	Added the 13 new species to FofemSpecies[] in xfblib.cpp.
+
+
+2013-09-09 (2.25 h) [10.00 total]
+
+--	Updated the TreeSpeciesFofem list in BehavePlus6.xml to the
+206 revised, 13 new, and 2 deleted FOFEM v6 codes.
+
+--	Updated the individual tree species names and codes on
+BehavePlus6.xml to the 206 revised, 13 new, and 2 deleted
+FOFEM v6 codes.
+
+--	RESOLVED ISSUE #024FAH - Change in MORTALITY Species Codes for
+Consistency with FOFEM6.
+
+
+2013-09-09 (3 h) [13.00 total]
+
+--	Updated the mortality and bark thickness equation numbers in 
+the FofemSpeciesStruct in xfblib.cpp to use the FOFEM v6 numbers.
+
+--	Updated EqCalc::TreeMortalityRateFofemHoodAtVector() to use the
+new FOFEM v6 mortality equation numbers (which are the Hood equations)
+
+--	Refactored the new longleaf pine mortality equation within
+FBL_TreeMortalityFofem().
+
+-- Refactored the new FOFEM v6 and Hood mortality equations within
+FBL_TreeMortalityHood().
+
+--	RESOLVED ISSUE #027FAH - Change Equation Numbers for Consistency
+with FOFEM v6.
+
+
+2013-09-10 (4.5 h) [17.50 total]
+
+--	In order to perform FOFEM tree species codes conversions between
+v5 and v6, needed to refactor the BehavePlus FOFEM code.
+	
+--	Created Fofem6Species class to hold v5 and v6 species codes,
+scientific names, common names, and the bark thickness and mortality
+equation numbers.
+
+--	Created Fofem6BarkThicness class to return bark thickness
+given either the FOFEM6 species code or the equation number.
+
+--	Created Fofem6Mortality class to return tree mortality probability
+given either the FOFEM6 species code or mortality equation number.
+
+--	Created EqCalc::TreeMortalityRateFofem6AtVector() to be the new
+processor for EqCalc equation tree.
+
+
+2013-09-11 (4.5 h) [22.00 total]
+
+--	Created fTreeMortalityRateFofem6AtVector and hooked it into the
+equation tree.
+
+--	Created EqCalc::BarkThicknessFofem6() and fBarkThicknessFofem6
+and hooked it up as the new processor for the EqCalc equation tree.
+
+--	Verified that all the correct tree mortality equations are being
+called using the new FOFEM6 species codes.
+
+-- Verified that the correct bark thickness equations are being
+called using the new FOFEM6 species codes.
+
+--	Verified that all the species without the new specific mortality
+equations are producing the same mortality results as in BP5.
+
+--	Completed debugging and alpha testing of new FOFEM v6 species
+codes, bark thickness equations, and mortality equations.
+
+
+2013-09-11 (2.0 h) [24.00 total]
+
+--	Changed the vTreeSpeciesSpot codes in BehavePlus6.xml to use
+FOFEM v6 species codes.
+
+--	Updated the run/worksheet XML parser so that whenever it detects
+FOFEM v5 species codes, they automatically get converted to FOFEM v6
+species codes.
+
+--	RESOLVED ISSUE #026 - SPOT Module, Changes to Species Codes
+
+
+
+2013-09-11 (2.0 h) [26.00 total]
+
+--	Added vTreeCanopyCoverDownwind.html to BehavePlus6.xml file list.
+
+--	Added <itemList name='CanopyCoverDownwind" ...> to
+BehavePlus6.xml.
+
+--	Added <variable name="vTreeCanopyCoverDownwind" ...> to
+BehavePlus6.xml.
+
+--	Added vTreeCanopyCoverDownwind as an input parameter to
+FBL_SpotDistanceFromBurningPile(), FBL_SpotDistanceFromSurfaceFire(),
+and FBL_SpotDistanceFromTorchingTrees(), and within each of these
+methods the downwind cover height is divided by 2 if the downwind
+canopy is open.
+
+--	vTreeCanopyCoverDownwind is masked (blue) when
+vTreeCoverHtDownwind is greater than zero.
+
+--	Copied all the new html files from FAH into the
+DocFolder/en_US/Html folder.
+
+--	RESOLVED ISSUE #028FAH - Downwind Canopy Open/Closed
+
+
+2013-09-12 (2.75 h) [28.75 total]
+
+--	Created new variables vSafetyZoneLength and vSafetyZoneSizeSquare
+in BehavePlus6.xml, xeqcalc.cpp, and xeqcalc.h.
+
+--	Created new FBL_SafetyZoneLength() in xfblib.cpp.
+
+--	Updated EqCalc::SafetyZoneRadius().
+
+--	Update fSafeyZoneRadius definition in BehavePlus6.xml to include
+outputs for vSafetyZoneLength and vSafetyZoneSizeSquare.
+
+--	Added safetyCalcLength and safetyCalcSizeSquare in
+BehavePlus6.xml for controlling these output variables.
+
+--	Added safetyCalcLength and safetyCalcSizeSquare checkboxes
+to the SAFETY Module.
+
+--	Added logic to xeqcalreconfigure.cpp.
+
+--	Tested results.
+
+--	RESOLVED ISSUE #029FAH - Safety Zone Size (Square)
+
+
+2013-09-12 (2.25 h) [31.0 total]
+
+--	Created new control variable "surfaceConfMoisDeadHerbWood"
+in BehavePlus6.xml.
+
+-- Added text "PropertyTabDialog:Surface:Mois:DeadHerbWood"
+in BehavePlus6.xml.
+
+--	Added a radio control for the new Moisture category in
+modulesdialog.cpp.
+
+--	Added EqFun* fSurfaceFuelMoisDeadHerbStem and
+FuelMoisDeadHerbWood() declarations to xeqcalc.cpp and xeqcalc.h.
+
+--	Added <function name="fSurfaceFuelMoisDeadHerbWood" />
+definition to BehavePlus6.xml.
+
+--	Performed alpha tests to ensure the option and the blue
+masking works as expected.
+
+-- RESOLVED ISSUE #030FAH - Surface Module, New Moisture Option
+
+
+2013-09-16 (0.5 h) [31.5 total]
+
+--	Reviewed emails from FAH and PLA
+
+--	Reviewed 4 new issues from PLA.
+
+--	Sent brief status report via email to FAH and PLA.
+
+
+2013-09-17 (1 h) [32.5 total]
+
+--	In response to email request from FAH, created RunOptions.cpp
+and RunOptions.xml snippets and sent them to her.
+
+
+2013-09-18 (1.75 h) [34.25 total]
+
+--	Added the new help file declarations in BehavePlus6.xml for:
+	vTreeCanopyCoverDownwind.html
+	vSafetyZoneLength.html
+	vSafetyZoneSize_Square.html
+	
+--	Added the following variables to the unitseditdialog.cpp:
+	vSafetyZoneLength.html
+	vSafetyZoneSize_Square.html
+	
+--	Added new file declarations into the
+wix_bp6_component_docfolder.wxs for:
+	vTreeCanopyCoverDownwind.html
+	vSafetyZoneLength.html
+	vSafetyZoneSize_Square.html
+	FeaturesPaper.pdf
+	
+
+2013-09-17 (0.75) [35.0 total]
+
+--	Attempted to resolve Issue #031FAH where PLA receives an
+error message when exiting BehavePlus that it was unable to
+open DefaultDataFolder\property.xml for writing.
+I was unable to duplicate this condition.
+
+--	Updated the error message displayed when BehavePlus cannot
+open a file for output.  The new message reminds the user that
+BehavePlus must be installed in a folder for which they have
+WRITE permission.
+
+--	ADDRESSED (but did not resolve) ISSUE #031FAH - Error
+Message on Exiting Behave.
+
+
+2013-09-17 (1 h) [36 total]
+
+--	Updated the BP6 Build 606 WIX scripts, created new BP6
+Build 606 installation package, and tested installation.
+
+
+2013-09-18 (0.5 h) [36.5 total]
+
+--	Made SURFACE Directions tab text and radio button order
+changes as requested.
+
+--	RESOLVED ISSUE #035PLA - Directions Tab Text.
+
+
+2013-09-18 (0.5 h) [37 total]
+
+--	Added "BpDocument:Worksheet:RunOptions:WindSpecifiedDirections"
+to BehavePlus6.xml and added display logic to bpcomposeworksheet.cpp.
+
+--	RESOLVED ISSUE #037PLA - Direction Run Option Note.
+
+
+2013-09-18 (3.5 h) [40.5 total]
+
+--	Tracked down cause of Issue #036PLA, Psi calculation error, 
+made corrections in FBL_SurfaceFireEllipseBetaFromThetaRadians(),
+and verified that the example from PLA now works as expected.
+
+--	RESOVED ISSUE #036PLA - Psi Calculation Error
+
+
+2013-09-18 (1.5 h) [41.5 total]
+
+--	Within FBL_SurfaceFireForwardSpreadRate() added limit to
+maximum RoS so that it never exceeds the effective wind speed
+when EWS >= 88 ft/min.
+
+--	Verified that results are as specified by PLA.
+
+--	RESOLVED ISSUE #038PLA - ROS <= EWS)
+
+
+2013-09-18 (1.0 h) [42.5 total]
+
+--	Updated the ReleaseNotes.txt file.
+
+--	Created and tested a new BP6 Build 606 installation package.
+
+--	Uploaded the installation package to DropBox, and sent a
+download link to PLA and FAH in an email.
+
+--	RELEASE BehavePlus 6 Build 606
+
+
+2013-09-19 (3.5 h) [46 total]
+
+--	Begin working on refactoring code to address Issue #032FAH -
+Surface Module, Fuel Model Selection.
+
+--	Created FuelModel *FuelModelList::fuelModelByModelNumber()
+in fuelmodel.h and fuelmodel.cpp.
+
+--	Created FuelModelDialog() class from GuideDialog.cpp,
+and added moc_fueldialog.cpp build rules to Visual Studio.
+We now have a stand-alone fuel model guide we can customize
+separately from all the other input guide dialogs.
+
+--	Modified BpDocument::guideClicked() to detect if the Fuel
+Model guide button was pressed, and if so, to call
+FuelModelDialog() instead of GuideDialog().
+
+--	Modified FuelModelDialog column headers and stripped leading
+zeros from the displayed fuel model ('sort') numbers.
+
+--	Changed EqVar.isValidItemName() to handle vSurfaceFuelBedModel
+cases specially (around lines 685), BUT THIS DOESN'T WORK YET!
+
+
+=============================
+Collin D. Bevins
+LLCP0044
+Jul 22, 2013 - Aug 21, 2013
+55 hours
+=============================
+
+2013-07-23 (2)
+
+--	Worked on Wix script to detect USFS computers and set the
+default installation path accordingly.
+
+
+2013-07-24 (4)
+
+--	Completed wix_bp6_dialog_installdir.wxs.
+
+--	Added ability to clean up leftover working files
+when uninstalled.
+	
+--	Completed testing of installation script for both
+USFS and non-USFS machines.
+	
+2013-07-24 (2)
+
+--	Loaded and unzipped Albini's crown spotting FORTRAN code 
+onto the BehavePlus development machine.
+	
+--	Performed quick review of code structure.
+
+--	Compiled and ran WIND.EXE
+
+--	Compiled and ran PLUMPLT.EXE
+
+--	Compiled and ran PLTDRIFT.EXE
+
+--	Compiled and ran DIST.EXE
+
+
+2013-07-26 (4.5)
+
+--	Began developing user interface for Albini's Crown Fire Spotting
+Model Calculator.  This is a tab view containing:
+	- an inputs tabb with a form of min/max/step spin boxes for
+		entering all run inputs
+	- an outputs tab with a QTableView for displaying all outputs
+	
+--	Added buttons to Calculate and Quit with signal/slot callbacks
+to display the results table.
+
+
+2013-08-02 (3.5)
+
+--	Added resizeable layout for Albini's Crown Fire Spotting Distance
+input tab form.
+	
+--	Added resizeable output and column-specific formatting to the
+output tab results table.
+	
+--	Added a progress bar that is displayed during calculation.
+
+
+2013-08-03 (1.0)
+
+--	Created basic class method/data structure for
+Albini spot model.
+
+
+2013-08-04 (5.0)
+
+--	Translated Albini's DIST.FOR FORTRAN model into the
+C++ Qt Spot class.
+
+--	Achieved successful compilation of Spot class.
+
+
+2013-08-05 (8.0)
+
+--	Located MinGw fortran compiler and supporting run time
+libraries, recompiled DIST.FOR and performed a few test runs.
+	
+--	Verified that the C++ Spot class is producing numbers
+identical to Albini's FORTRAN model.
+	
+--	Determined that Albini's FORTRAN model is not producing a
+monotonic relationship between increasing ember diameter size
+and decreasing vertical loft.  I reported this issue to Faith
+Ann Heinsch via email.
+	
+--	Refactored the MainWindow and Spot classes for uniform naming
+convention.
+	
+--	Refactored the results display table.
+
+--	Added units selector radio box to the input form and added
+signal/slot cnnections to update the input units labels.
+	
+--	Added run counter to the input form and added signal/slot
+connections to dynamically update it.
+
+
+2013-08-06 (3.0)
+
+--	In resposne to an email from FAH, I began investigating the
+underlying cause of the the non-monotonic inverse relationship
+between ember diameter and crown fire spotting distance.
+
+--	Modified Albini's DIST2.FOR code to print intermediate
+results to help identify when the non-monotonic behavior occurs.
+
+--	Isolated a case demonstrating the above issue.  The unexpected
+increase in spotting distance when the ember diameter increases
+occurs when the ember's loft hieght decreases to a lower vertical
+plume layer.
+
+
+2013-08-07 (6.5)
+
+--	Created newer dist2.for that provides:
+	- more detailed intermediate output on the plume and firebrand
+		loft characteristics,
+	- produces cvs files of plume and firebrand loft characteristics
+		for viewing, plotting, and printing in MS Excel,
+	- has additional comments documenting variables and processes,
+	- allows the user to specify plume layer depth as an input parameter,
+	- includes all the various code modules in a single file.
+Completed testing and debugging of dist2.
+
+
+2013-08-08 (5.0)
+
+--	Wrote a report to FAH on the causes of the non-mononic behavior.
+
+--	Fixed a bug in Albini's zi interpolation code which resulted in
+a reduced magnitude of the problem, but did not fix the underlying cause.
+This new program is	named 'dist2b' (for dist2 Bevins interpolation),
+and the original is now named 'dist2a' (for dist2 Albini interpolation).
+	
+--	Created a new program, 'dist3', that for every ember diameter,
+dynamically builds and 'climbs' the plume until it finds the drop
+out height.  This results in the expected monotonic behavior between
+ember diameter and loft height.  There is still a discontinuous jump
+between plume height layers, but that is mitigated by reducing the
+vertical step size from 0.20 m to 0.001 m.
+	
+--	Created a zip file with dist, dist2a, dist2b, and dist3 executables,
+source code, and supporting runtime libraries.  Also included example
+output Excel files demonstrating the issues and fixes.
+
+
+2013-08-09 (4.5)
+
+--	Cleaned up the code in dist, dist2a, dist2b, and dist3.
+
+--	Re-drafted the report to FAH to better explain the issues and fixes.
+	
+--	Recreated the output files demonstrating the model issues.
+
+--	Recreated the zip file and sent it along with the report to FAH.
+
+
+2013-08-18 (2.0)
+
+--	Began identifing the various models within Albini's crown fire model
+(wind speed profiles, plume layers, flame tip, within-plume loft height
+ and distance, down-wind spotting distance) and developing code to
+ support the calculator requested by FAH.
+ 
+ 
+ 2013-08-19 (4.0)
+ 
+ --	 Developed supporting Variant classes formodeling the crown fire behavior.
+ 
+
+=============================
+Collin D. Bevins
+LLCP0044
+Sep 22, 2012 - Jul 21, 2013
+27 hours
+=============================
+
+2013-05-08 (2.5)
+
+--	Met with Pat Andrews and Faith Ann Heinsch at Fire Lab to discuss
+	work roles, project coordination, task request and review procedures,
+	and possible updates/upgrades for BehavePlus 6.	
+
+
+2013-07-15 (1.5)
+
+--	Met with Faith Ann Heinsch to go over her set of change requests
+	to be implemented on BehavePlus6.
+	- Faith Ann submitted Issues #018FAH through #035FAH to be resolved
+	- Collin added the issue of upgrading from the old, deprecated,
+		unsupported Wise INstallation System to the new Wix system that
+		produces Microsoft Installer .msi packages.
+
+2013-07-16 (3)
+
+--	Begin migration of BehavePlus installation from the Wise Installation
+	System to the Microsoft Installer system using the Wix Tools.
+	This way the new installation package & process gets tested with
+	each new Build submitted to testers.
+	
+--	Downloaded the Wix Tools for creating .msi installation	packages
+	for BehavePlus 6 and installed them on the development computer.
+
+--	Reviewed the Wix documentation and began BehavePlus6 script development.
+
+
+2013-07-17 (7)
+
+--	Began initial development and testing of BehavePlus6 Wix scripts
+	for creating MSI installation packages.
+
+
+2013-07-18 (2)
+
+--	Continued development and testing of BehavePlus Wic scripts.
+
+
+2013-07-19 (6)
+	
+--	Developed and tested the following BehavePlus6 Wix scripts:
+	- wix_bp6_product_605.wxs ^
+	- wix_bp6_directory.wxs ^
+	- wix_bp6_feature.wxs ^
+	- wix_bp6_component_executable.wxs ^
+	- wix_bp6_component_datafolder.wxs ^
+	- wix_bp6_component_docfolder.wxs ^
+	- wix_bp6_component_imagefolder.wxs
+	
+--	Worked on getting the above bare-bones installation scripts to
+	 correctly install at the expected locations, and to result in
+	a successful BehavePlus6 startup.
+	
+--	Verified that BehavePlus6 installation now results in a 
+	successful BehavePlus6 launch at the following install sites:
+	- c:\Behave\BehavePlus6
+	- c:\Users\Owner\BehavePlus
+	- Dekstop Icon
+	- Program Menu Dir (i.e., Win 8 Applications Search)
+
+--	Verified that BehavePlus6 installation does NOT work below
+	C:\ProgramFiles because new files (e.g., log, composer, etc)
+	cannot be created without Admin privilege.
+
+--	We now have a successful bare-bones BehavePlus6 installation
+	package.  The next step is to develop the user interface portion
+	of the installer script to detect USFS computers, provide
+	additional installation guidance, use BehavePlus images, etc.
+
+
+2013-07-20 (3)
+
+--	Began working on Wix installer dialogs by for a BehavePlus
+	branded installation package by creating the Wildfire images
+	that appear as the dialog banners and images.
+	
+--	Created the following Wix dialog scripts:
+	- wix_bp6_ui.wxs
+	- wix_bp6_dialog_welcome.wxs
+	- wix_bp6_dialog_licenseagreement.wxs
+	- wix_bp6_dialog_installdir.wxs
+
+
+2013-07-21 (2)
+
+--	Created the following Wix dialog script to display an infomration
+	dialog if the package contains a pre-release version:
+	- wix_bp6_dialog_prerelease.wxs
+
+
+=============================
+Collin D. Bevins
+LLCP0044
+Aug 22 - Sep 21, 2012
+54 hours
+=============================
+
+2012-09-10 (4) (54)
+
+--	Perform full Debug rebuild of Build 605.
+
+--	Perform full Release rebuild of Build 605.
+
+--	Created new Wise installation generator script behaveplus605.wse.
+
+--	Used Wise to create BehavePlus 6.0.0 Build 605 installation package.
+
+--	Performed test installation of Build 605.
+
+--	Uploaded Build 605 to DropBox site.
+
+--	Notified Pat of availability of Build 605.
+
+
+2012-09-06 (9)
+
+--	Debugged weighted fuel modeling
+
+--	Ensure individual (unweighted) beta/psi ros/fli/fl are not
+	displayed as output variables from the "Intermediate Dir"
+	tab for weighted fuel runs.
+	
+	
+2012-09-05 (2)
+
+--	Began working on 2-fuel implementation of Beta/Psi.
+
+
+2012-09-05 (3)
+
+--	Verified Case 1 results against BP 5.0.5.
+
+--	Verified Case 2 results against Case 1 results.
+
+--	Verified Case 3 results against Case 2 results.
+
+--	Verified Case 3 results against ellipse.fire2.org calculator
+
+--	Verified Head, Back, and Flank results.
+
+--	Issue #014a -- FL-Normal is resolved.
+
+--	Removed Psi-based ROS, FLI, and FL from the prescription shading table
+
+--	Issue #17 -- Lables is resolved.
+
+
+2012-09-04 (3.5)
+
+--	Resolved bug where Spread at Psi wasn't getting calculated.
+	Need to actually duplicate FireSpreadAtBeta as FireSPreadAtVectorFromBeta
+	and duplicate FireSpreadAtPsi as FireSpreadAtvectorFromPsi in order to
+	force full calulcations (simply copying either vSurfaceFireSpreadAtBeta or
+	vSurfaceFireSpreadAtPsi into vsurfaceFireSpreadAtVector doesn't work).
+	
+--	Added *AtBeta and *AtPsi variables to the unitseditdialog.cpp.
+
+--	Created benchmark Beta-based run from BP 5.0.5.
+
+--	Created benchmark BP 6.0.0 run as "Case 1: Fire spread from Ignition Pt Version 5"
+
+--	Verified that Case 1 results match the BP 5.0.5 results over all 360 degrees
+	of spread direction and saved in an excel file for further analysis.
+
+--	Created benchmark BP 6.0.0 run as "Case 2: Fire spread from Ignition Pt Version 6"
+	and saved its spreadsheet output file for further analysis.
+
+--	Created benchmark BP 6.0.0 run as "Case 3: Fire spread from Fire Front Version 6"
+	and saved its spreadsheet output file for further analysis.
+
+
+2012-09-03 (4.5)
+
+--	Debugged to obtained correct results for Beta, Psi, and final ROS, FLI, FL,
+	and DIST for Case 1: Fire Spread from Ignition Pt as per Version 5.
+
+--	Debugged to obtained correct results for Beta, Psi, and final ROS, FLI, FL,
+	and DIST for Case 2: Fire Spread from Ignition Pt as per Version 6.
+	
+	
+2012-08-30 (2)
+
+--	Started debugging the old reconfigure() code.
+
+
+2012-08-29 (4)
+
+--	Continued refactoring reconfiguration code.
+
+
+2012-08-28 (5.5)
+
+--	Began refactoring reconfigure() code.
+
+
+2012-08-27 (6.5)
+
+--	Continued flow charting the analysis results to get
+	correct flow of control
+
+--	Re-designed all the functions and flows based upon the analysis.
+
+--	Created new FireDistAtBeta in xeqcalc.cpp.
+
+--	There are now only 2 places where functions are activated/
+	deactivated based upon Beta/Psi:
+	--	The user input variable vSurfaceFireVectorDirFromUpslope gets
+		assigned to vSurfaceFireVectorBetaFromUpslope or
+		to vSUrfaceFireVectorPsiFromUpslope depending upon whether
+		user has selected Beta-based or Psi-based direction.
+	--	The vSurfaceFireSpreadAtVector is assigned from either
+		vSurfaceFireSpreadAtBeta or vSurfaceFireSpreadAtPsi based upon
+		whether beta-based or psi-based directions.
+	--	All other beta and psi intermediates are always calculated.
+	
+--	Created new fSurfaceFireDistAtBeta as EqCalc::FireDistAtBeta()
+	to produce new vSurfaceFireDistAtBeta.
+
+--	Created new fSurfaceFireMapDistAtBeta as EqCalc::FireMapDistAtBeta()
+	to produce new vSurfaceFireMapDistAtBeta.
+	
+--	Created new fSurfaceFireSpreadAtBeta as EqCalc::FireSpreadATBeta()
+	to produce new vSurfaceFireSpreadAtBeta.
+	
+--	Created new fSurfaceFireSpreadAtVectorFromBeta as
+	EqCalc::FireSpreadAtVectorFromBeta() to produce
+	vSurfaceFireSpreadAtVector when using beta-based directions.
+	
+--	Created new fSurfaceFireSpreadAtVectorFromPsi as
+	EqCalc::FireSPreadAtVectorFromPsi() to produce
+	vSurfaceFireSpreadAtVector when using psi-based directions.
+
+
+2012-08-26 (4)
+
+--	Performed analysis of current and required variables to accomplish
+	Issues #014 and #017 simulatenously.
+	
+	
+2012-08-24 (6)
+	
+--	Created the following new variables:
+	-- vSurfaceFireLineIntAtBeta to assume the role of vSurfaceFireLineIntAtVector
+	-- vSurfaceFireFlameLengAtBeta to assume the role of vSurfaceFireFlameLengAtVector
+	
+--	Created a new function fSurfaceFireLineIntAtBeta:
+	-- input vSurfaceFireSpreadAtVector,
+	-- input vSurfaceFireReactionInt,
+	-- input vSurfaceFireResidenceTime,
+	-- output vSurfaceFireLineIntAtBeta
+
+--	Created a new function fSurfaceFireLineIntAtPsi:
+	-- input vSurfaceFireSpreadAtPsi,
+	-- input vSurfaceFireReactionInt,
+	-- input vSurfaceFireResidenceTime,
+	-- output vSurfaceFireLineIntAtPsi
+		
+--	Created new function fSurfaceFireLineIntAtVectorFromBeta
+	-- input vSurfaceFireLineIntAtBeta
+	-- output vSurfaceFireLineIntAtVector
+		
+--	Created new function fSurfaceFireLineIntAtVectorFromPsi
+	-- input vSurfaceFireLineIntAtPsi
+	-- output vSurfaceFireLineIntAtVector
+
+--	Removed function fSurfaceFireLineIntAtVector
+
+--	vSurfaceFireLineIntAtVector will now be assigned the value of either
+	vSurfaceFireLineIntAtBeta or vSurfaceFireLineIntAtPsi, depending on
+	the Surface Directions tab configuration.  This is done by calling
+	either fSurfaceFireLineIntAtVectorFromPsi or fSurfaceFireLineIntAtVectorFromBeta.
+	
+--	All downstream variables that depended on vSurfaceFireLineIntAtVector
+	continue to use it as before; but it can now hold either a Beta-based
+	or a Psi-based fireline intensity depending on the Surface Module Directions
+	tab configuration.
+	
+-- Created a new function fSurfaceFireFlameLengAtBeta:
+	-- input vSurfaceFireLineIntAtBeta
+	-- output vSurfaceFireFlameLengAtBeta
+	
+-- Created a new function fSurfaceFireFlameLengAtPsi:
+	-- input vSurfaceFireLineIntAtPsi
+	-- output vSurfaceFireFlameLengAtPsi
+
+--	fSurfaceFireLineIntAtVector remains the same as before:
+	-- input vSurfaceFireLineIntAtVector
+	-- output vSurfaceFireFlameLengAtVector
+
+
+=============================
+Collin D. Bevins
+LLCP0044
+Jul 22 - Aug 21, 2012
+4 hours
+=============================
+
+2012-08-21 (0.5)
+
+--	Reviewed Pat's response to the Issue #14 diagnosis.
+
+
+2012-08-20 (3.5 h)
+
+--	Composed a diagnostic analysis of Issue #14a "FL-Normal" and
+	emailed it to Pat.
+
+--	Modified the wording and ordering of the SURFACE Module Directions tab
+	(Issue #016 - Directions Tab)
+	
+--	Modified the various Run Options as requested
+	(Issue #015 - Run Option Notes)
+
+	
+=============================
+Collin D. Bevins
+LLCP0044
+May 22 - Jun 21, 2012
+25 hours
+=============================
+	
+2012-06-04 (3)
+
+--	Sent an email to Pat with Build 604 download link.
+
+--	Uploaded bp_604.exe to public Drop Box.
+
+--	Executed the installation script and tested the installed program
+	to verify Build 604 installs and runs ok.
+	
+--	Compiled the Wise installation script into an installation package.
+
+--	Created new behaveplus604.wse Wise installation script
+
+--	Rebuilt and tested Build 604 Release version.
+
+--	Rebuilt and tested Build 604 Debug version.
+
+--	Added a Run Option Note when fire spread is from the Ignition Point
+	to indicate if fireline intensity and flame length are based on Beta.
+	
+--	Verified that Psi-based spread, fireline intensity, and flame length
+	are under Units Dialog control.
+
+
+2012-06-01 (4)
+	
+--	Added a lot of code to bpdocument.cpp (line 2155) to accomodate the
+	multiple pairing and syncing of the rx variables  and their ranges for:
+	-- fire spread, fireline intensity, and flame length
+	-- vs head, beta, and psi.
+	
+--	Added following Rx vars to EqTree constructor (xeqtree.cpp line 237):
+    -- m_rxVarList->add( m_eqCalc->vSurfaceFireSpreadAtPsi ) ;
+    -- m_rxVarList->add( m_eqCalc->vSurfaceFireLineIntAtPsi ) ;
+    -- m_rxVarList->add( m_eqCalc->vSurfaceFireFlameLengAtPsi ) ;
+
+--	Wind/Slope/Spread Direction diagram now only shows wind, slope,
+	and direction of maximum spread.
+	
+--	Removed "Beta" and "Psi" prefixes from variable labels for:
+	-- vSurfaceFireDistAtPsi
+	-- vSurfaceFireFlameLengAtPsi
+	-- vSurfaceFireLineIntAtPsi
+	-- vSurfaceFireMapDistAtPsi
+	-- vSurfaceFireVectorPsiFromFire
+	
+	-- vSurfaceFireDistAtVector
+	-- vSurfaceFireFlameLengAtVector
+	-- vSurfaceFireLineIntAtVector
+	-- vSurfaceFireMapDistAtVector
+	-- vSurfaceFireVectorDirFromCompass
+	-- vSurfaceFireVectorDirFromNorth
+	-- vSurfaceFireVectorDirFromUpslope
+	
+	Note that the "Beta" and "Psi" designation has been left in
+	place for the column header labels of these variables.
+	
+--	Made worksheet Psi fire spread direction label respond to
+	"from north" v "from upslope" options.
+	
+--	Changed the run options are requested by Pat's notes
+	of 3/19/2012 and 3/22/2012.
+	
+
+2012-05-31 (5)
+
+--	Verified That all vector directions, RoS, FLI, and FL values
+	match the Build 602 benchmark for:
+	-- fire spread in specified directions from Ignition Pt (Beta FLI & FL)
+	-- fire spread in specified directions from Ignition Pt (Psi FLI & FL)
+	-- fire spread in specified directions from Fire Front
+	-- fire spread at head only
+	-- fire spread at back only
+	-- fire spread at flank only
+	
+--	Completed fixing all the Beta, Theta, and Psi vector issues
+	pertaining to compass wrap-around (or lack thereof).
+	
+	
+2012-05-30 (3)
+
+--	Made adjustments to quadrant boundaries in
+	FBL_SurfaceFireEllipseBetaFromThetaRadians() to ensure a smooth
+	transition across boundaries.  The previous boundaries were off
+	by about 4-5 degrees.
+	
+--	Resolved quadrant issue, which was located in
+	FBL_SurfaceFireEllipseThetaFromPsiRadians() where the qudrant tests:
+		if ( psiRadians <= 0.5 * M_PI )
+		else if ( psiRadians > 0.5* M_PI && psiradians <= 1.5 * M_PI )
+		else if ( psiRadians > 1.5 * M_PI )
+	needed to be changed to:
+		if ( psiRadians < 0.5 * M_PI )
+		else if ( psiRadians >= 0.5* M_PI && psiRadians < 1.5 * M_PI )
+		else if ( psiRadians >= 1.5 * M_PI )
+	
+2012-05-29 (4)
+
+--	There is an error in the function that genberates Beta from Psi;
+	we need to make appropriate quadrant adjustments.
+
+--	Updated the EqCalc::reconfigureSurfaceModule() function to output
+	the Beta vector if the Psi vector already is the row header column and
+	'Psi-vector' is selected as ouput from the 'Intermediate Dir' tab.
+	That is, we will get Psi and Beta vectors, rather than redundant
+	Psi vectors in the first 2 columns.
+
+--	Updated the EqCalc::reconfigureSurfaceModule() function to properly
+	generate 'Fire Spread is from Fire Front' variables.
+
+--	Confirmed that the 'Fire Spread from Ignition Point (Psi FLI & FL)'
+	option produces the same Beta RoS, Beta FLI, and Beta FL as the
+	Build 603 benchmark.
+
+--	Updated the EqCalc::reconfigureSurfaceModule() function to properly
+	generate Psi-based FLI and FL.
+
+--	Confirmed that the 'Fire Spread from Ignition Point (Beta FLI & FL)'
+	option produces the same Beta RoS, Beta FLI, and Beta FL as the
+	Build 603 benchmark.
+
+--	Updated the EqCalc::reconfigureSurfaceModule() function to use the newly
+	developed functions and flow.
+	
+--	Created EqCalc::FireVectorPsiFromUpslope() as required from
+	the flow diagram.
+
+--	Reconstructed the parallel flow of Beta and Psi functions and
+	their deivation of Beta and Psi variables depending upon
+	SURFACE Module configurations and outputs.
+	
+	
+2010-05-25 (4)
+
+--	Added following to xeqcalc.cpp and xeqcalc.h:
+	--	void EqCalc::FireVectorBetaFromTheta()
+	--	void EqCalc::FireVectorThetaFromPsi()
+
+--	Added to xfblib.cpp and xfblib.h:
+	--  double FBL_SurfaceFireEllipseBetaFromThetaDegrees()
+	--  double FBL_SurfaceFireEllipseBetaFromThetaRadians()
+	--	double FBL_SurfaceFireEllipseThetaFromPsiDegrees()
+	--  double FBL_SurfaceFireEllipseThetaFromPsiRadians()
+
+--	Results of spread from Ignition Pt (Beta) match previous
+	builds as expected.  Other runs have issues to be resolved.
+	Need a way to go from psi-based input directions to beta-based.
+	
+--	Ran preliminary tests of spread from Ignition Pt (Beta),
+	Ignition Pt (Psi), and Fire Front.
+	
+	
+2010-05-24 (2)
+
+--	Made the "wind limit" run option the first to be displayed on the worksheet.
+
+--	Added run options to display the fire spread direction.
+
+--	Fixed bug where, when starting BP6, the worksheet has no input fields.
+
+=============================
+Collin D. Bevins
+LLCP0044
+Mar 22 - May 21, 2012
+19 hours
+=============================
+
+2012-05-10 (7)
+
+--	Obtained successful compilation and linking, and ready for very initial,
+	preliminary testing and debugging.
+	
+--	Implemented new interface dependencies in EqCalc::reconfigureSurfaceModule()
+	by adding/changing several hundred lines of code.
+
+--	Added EqCalc::FireLineIntAtVectorFromPsi() and fSurfaceFireLineIntAtVectorFromPsi
+	to xeqcalc.cpp and xeqcalc.h.
+
+--	Modified EqCalc::FireLineIntAtPsi() to take vSurfaceFireReactionInt and
+	vSurfaceFireResidenceTime instead of vSurfaceFireLineIntAtVector
+	to avoid circular dependency when swapping vSurfaceFireLineIntAtPsi into
+	vSurfaceFireLineIntAtVector.  This circular dependency is manifested
+	when the user selects beta-based (Igntion Point) directions, but wants
+	psi-based (Fire Front) fireline intensity and flame length.  That's because
+	vSurfaceFireLineIntAtPsi used to take vSurfaceFireLineIntAtVector as input.
+	
+--	Worked on the beta-psi dependencies and worksheet
+	configuration issues associated with the new user interface options.
+	
+	
+2012-05-09 (5)
+
+--	To make the SURFACE Directions tab easier to fit and read,
+	--	disabled Pat's last button box
+	--	added the following text keys for the Spread Direction:
+		-- PropertyTabDialog:Surface:Dir:Spread:PointSourcePsi
+		-- PropertyTabDialog:Surface:Dir:Spread:PointSourceBeta
+	--	Added following configuration variables to BehavePlus6.xml:
+		-- surfaceConfSpreadDirPointSourcePsi (true)
+		-- surfaceConfSpreadDirPointSourceBeta (false)
+	
+--	Modified ModulesDialog::surfaceOptions() to use the new
+	SURFACE "Directions" tab.
+
+--	Added following text keys for SURFACE "Directions" tab:
+	-- PropertyTabDialog:Surface:Dir:Spread:Head
+	-- PropertyTabDialog:Surface:Dir:Spread:Back
+	-- PropertyTabDialog:Surface:Dir:Spread:Flank
+	-- PropertyTabDialog:Surface:Dir:Spread:PointSource
+	-- PropertyTabDialog:Surface:Dir:Spread:FireFront
+	-- PropertyTabDialog:Surface:Dir:Beta:Caption
+	-- PropertyTabDialog:Surface:Dir:Beta:Beta
+	-- PropertyTabDialog:Surface:Dir:Beta:Psi
+	
+--	Added following configuration variables to BehavePlus6.xml:
+	-- surfaceConfSpreadDirHead (true)
+	-- surfaceConfSpreadDirBack (false)
+	-- surfaceConfSpreadDirFlank (false)
+	-- surfaceConfSpreadDirPointSource (false)
+	-- surfaceConfSpreadDirFireFront (false)
+	-- surfaceConfSpreadDirBetaBeta (false)
+	-- surfaceConfSpreadDirBetaPsi (true)
+
+--	Removed SURFACE "Basic Outputs" tab "Fire Characteristics Chart"
+	as requested on Pat's notes of 3/19/2012.
+	
+--	Changed SURFACE "Basic Outputs" tab from "Beta Spread Distance
+	from Ignition Pt" to "Surface Spread Distance" as requested
+	on Pat's notes of 3/19/2012.
+	
+--	Changed SURFACE "Fire Front Outputs" tab to "Intermediate Dir"
+	(BehavePlus6.xml and moduelesdialog.cpp) as requested on Pat's
+	notes from 3/19/2012.
+
+
+2012-05-08 (1)
+
+--	Disabled the vSurfaceFireEffWindAtVector variable within
+	EqCalc::reconfigureSurfaceModule() so that only the effective
+	wind speed at the fire head is displayed.
+	(Issue #013 - Effective WInd Speed)
+
+--	This appears to resolve Issue 012 - Fire Front Input Variables
+
+
+2012-05-07 (6)
+
+--	Inside EqCalc::reconfigureSurfaceModule() the vSurfaceFireElapsedTime
+	is set as a constant 1 for all Psi-related computations.  But it is
+	reset to an input variable if any of the following are requested as outputs:
+		Variable Name				Worksheet toggle name		Module
+	 -- vCrownFireSpreadDist		crownCalcCrownSpreadDist	CROWN
+	 -- vSurfaceFireDistAtBack		sizeCalcFireDistAtBack		SIZE
+	 -- vSurfaceFireDistAtHead		sizeCalcFireDistAtFront		SIZE
+	 -- vSurfaceFireDistAtPsi		surfaceCalcFireDistAtPsi	SURFACE
+	 -- vSurfaceFireDistAtVector	surfaceCalcFireDist			SURFACE
+	 -- vSurfaceFireLengDist		sizeCalcFireLengDist		SIZE
+	 -- vSurfaceFireShapeDiagram	sizeCalcFireShapeDiagram	SIZE
+	 -- vSurfaceFireWidthDist		sizeCalcFireWidthDist		SIZE
+
+--	Activated fSurfaceFireDistAtPsi and fSurfaceFireMapDistAtPsi.
+
+--	Created EqCalc::FireDistAtPsi()
+
+--	Created EqCalc::FireMapDistAtPsi()
+
+--	Issue #011 - Length to Width Ratio Error EXPLAINED
+	When using the SURFACE Module, the wind speed limit is applied
+	for each fuel model used.  This limits the effective wind speed,
+	which limits the length-to-width ratio.
+	
+	When SURFACE is off and SIZE is active, there is no wind speed limit,
+	so the efective wind and length-to-width ratio continue to increase
+	with wind speed.
+	(Issue #011 - Lenth-to-Width Ratio Error)
+
+--	Modified QString EqApp::findProducerModule( const QString &varName )
+	in xeqapp.cpp to test for vSurfaceFireLengthToWidth and
+	vSurfaceFireDistAtHead, and force their module to be "SIZE".
+	(Issue #010 - Module name with output variables).
+
+--	Updated BehavePlus6.cpp to Build 604.
+
+
+=============================
+Collin D. Bevins
+LLCP0044
+Feb 22 - Mar 21, 2012
+20.0 hours
+=============================
+
+2012-03-20 (3)
+
+--	Meeting with Pat Andrews at Fire Lab to discuss BP6 status
+	and next development steps (1:45p-4:45p).
+
+2012-03-14 (1)
+
+-- Email exchanges with Pat during the month.
+
+
+2012-03-13 (3.5)
+
+--	Uploaded bp_603.exe and Ellipse_1.bpr to public DropBox folder
+	and notified Pat ANdrews of its availability.
+	
+--	Tested install package and resulting installation.
+
+--	Successfully compiled the Wise behaveplus603.wse script.
+
+--	Recompiled the Release version from the Debug version.
+
+--	Copied latest Wise script (i.e. BP 5.0.5) into BP6 directory
+	and modified it for BehavePlus 6.0.0 Build 603 as behaveplus603.wse.
+
+--	Created new 6.0.0 splash page.
+	
+	
+2012-03-12 (3)
+
+--	Added all the new output variables to the UnitsEditDialog (unitseditdialog.cpp).
+
+--	Performed manual comparison of beta and psi outputs at 1-degree inervals
+	for [0..360] degrees between BP6 and the online calculator fir l/w==2.
+	
+--	Renumbered all the new variables' sortIn and sortOut assignments such
+	that beta and psi outputs appear next to each other in output tables.
+
+
+2012-03-10 (6)
+
+--	Updated xcalcreconfig.cpp EqCalc::reconfigureSurfaceModule()
+	to implement the new SURFACE Module "Fire Front" tab controls.
+	
+--	Added a new SURFACE Module 'Fire Front' Tab with the following output variables:
+	-- surfaceCalcEllipseF
+	-- surfaceCalcEllipseG
+	-- surfaceCalcEllipseH
+	-- surfaceCalcVectorTheta
+	-- surfaceCalcVectorPsi
+	-- surfaceCalcFireSpreadAtPsi
+	-- surfaceCalcFireLineIntAtPsi
+	-- surfaceCalcFireFlameLengAtPsi
+	-- surfaceCalcFireDistAtPsi
+	-- surfaceCalcFireMapDistAtPsi (implicit)
+
+
+2012-02-22 (3.5)
+
+--	BehavePlus6.exe successfully compiles and runs and produces the
+	desired sets of outputs.  Still have to see if the output values
+	themselves are correct.
+
+--	Modified xeqcalreconfig.cpp so that, if the SPOT Module is not active,
+	all the required variables to compute Psi are still automatically
+	calculated with a constant elapsed time of 1.
+	
+--	Changed labels of all Beta-Psi-Theta variables in BehavePlus6.xml
+	to make them more prominent in the output tables.
+
+
+=============================
+Collin D. Bevins
+LLCP0044
+Oct 22, 2011 - Feb 21, 2012
+22.5 hours
+=============================
+
+2012-01-30 (2)
+
+--	BehavePlus6.exe successfully compiles and runs.
+
+--	Added reconfiguration logic for new Psi-related output
+	variables to xreconfig.cpp, forcing all new variables
+	to be displayed.
+	
+--	Added the following calculate (i.e., output) definition to BehavePlus6.xml:
+	-- surfaceCalcFireSpreadAtPsi
+	-- surfaceCalcFireLineIntAtPsi
+	-- surfaceCalcFireFlameLengAtPsi
+	-- surfaceCalcFireDistAtPsi
+	-- surfaceCalcFireMapDistAtPsi
+
+2012-01-29 (4)
+
+--	BehavePlus6.exe successfully compiles and runs.
+
+--	Added the following functions to xeqcalc.cpp:
+	-- EqCalc::FireEllipseF()
+	-- EqCalc::FireEllipseG()
+	-- EqCalc::FireEllipseH()
+	-- EqCalc::FireVectorThetaFromBeta()
+	-- EqCalc::FireVectorPsiFromTheta()
+	-- EqCalc::FireSpreadAtPsi()
+	-- EqCalc::FireLineIntAtPsi()
+	-- EqCalc::FireFlameLengAtPsi()
+
+--  Added following functions to xfblib.cpp and xfblib.h:
+	-- FBL_SurfaceFireFirelineIntensityAtPsi()
+	
+	
+2012-01-28 (2)
+
+--	BehavePlus6.exe successfully compiles and runs.
+--	Added all the new variables (listed below) and functions to xeqcalc.h.
+--	Added assignments for all the new variables (listed below) to xeqcalc.cpp.
+--	Added stub assignments for all new functions (listed below) to xeqcalc.cpp.
+
+
+2012-01-27 (4)
+
+--	BehavePlus6.exe successfully reads the updated BehavePlus6.xml and runs.
+
+--	Added the following variable definitions into the BehavePlus6.xml file.
+	-- vSurfaceFireEllipseF
+	-- vSurfaceFireEllipseG
+	-- vSurfaceFireEllipseH
+	-- vSurfaceFireVectorTheta
+	-- vSurfaceFireVectorPsi
+	-- vSurfaceFireLineIntAtPsi
+	-- vSurfaceFireSpreadAtPsi
+	-- vSurfaceFireDistAtPsi
+	-- vSurfaceFireMapDistAtPsi
+	-- vSurfaceFireFlameLengAtPsi
+
+--	Added the following function dependency definitions
+	into the BehavePlus6.xml file:
+	-- fSurfaceFireDistAtPsi
+	-- fSurfaceFireMapDistAtPsi
+	-- fSurfaceFireEllipseF
+	-- fSurfaceFireEllipseG
+	-- fSurfaceFireEllipseH
+	-- fSurfaceFireLineFlameLengAtPsi
+	-- fSurfaceFireLineIntAtPsi
+	-- fSurfaceFireSpreadAtPsi
+	-- fSurfaceFireVectorBetaFromTheta
+	-- fSurfaceFireVectorPsi
+	-- fSurfaceFirevectorPsiFromFire
+	-- fSurfaceFireVectorPsiFromNorth
+	-- fSurfaceFireVectorPsiFromNorthRev
+	-- fSurfaceFireVectorPsiFromUpslope
+	-- fSurfaceFireVectorPsiFromUplslopeRev
+	-- fSurfaceFireVectorTheta
+	-- fSurfaceFireVectorThetaFromPsi
+	-- fSurfaceFireVectorBetaFromTheta
+
+--	Added the following calculate definition to BehavePlus6.xml:
+	-- surfaceCalcEllipseF
+	-- surfaceCalcEllipseG
+	-- surfaceCalcEllipseH
+	-- surfaceCalcVectorTheta
+	-- surfaceCalcVectorPsi
+		
+2012-01-26 (2)
+
+--	Reviewed Ellipse Calculator and the various fire direction and behavior
+	variables needed to produce Beta-v-Psi results in BehavePlus6 for
+	initial testing and review.
+
+
+2012-01-25 (0.5)
+
+--	Updated all the standard run/worksheet files to release 6
+	to silence the version notification at startup.
+	
+
+2012-01-24 (6)
+	
+--	Successfully compiled new Build 603 using new BehavePlus6.xml and using the
+	'BehavePlus6' names and conventions, but is operationally identical to Build 307.	
+	
+--	Performed a file-by-file diff comparison between Builds 307 and 602
+	to develop an up-to-date, merged Build 603.
+	Any Build 307 files that were newer than Build 602 files were examined
+	and copied to Build 603.  If there were significant edits in the
+	Build 602 version, it was preserved as a separate file with '602'
+	added to the filename.
+	Updated files from Build 307 transferred over to the new Build 603:
+	-- bpcomposegraphs.cpp
+	-- bpcomposehaulingchart.cpp
+	-- bpcomposetable2.cpp
+	-- bpcomposetable3.cpp
+	-- bpcomposeworksheet.cpp (preserved a copy as bpcomposeworksheet602.cpp)
+	-- bpdocentry.cpp
+	-- bpdocentry.h
+	-- bpdocument.cpp (had to rename all 'BehavePlus5' text to 'BehavePlus6')
+		(also preserved a copy as bpdocument602.cpp).
+	-- bpfile.cpp
+	-- graphaxle.cpp
+	-- graphaxle.h
+	-- graphlimitsdialog.cpp
+	-- guidedialog.cpp
+	-- humiditydialog.cpp
+	-- humiditydialog.h
+	-- module.cpp (preserved a copy as module602.cpp
+		since it added parms to the constructor)
+	-- module.h (preserved a copy as module602.h
+		since it added parms to the constructor)
+	-- modulesdialog.cpp (preserved as modulesdialog602.cpp)
+	-- propertydialog.cpp
+	-- propertydialog.h
+	-- realspinbox.cpp
+	-- realspinbox.h
+	-- xeqapp.cpp (preserved as xeqapp602.cpp as it uses 602 module constructor)
+	-- xeqapp.h (preserved as xeqapp602.h as it uses 602 module constructor)
+	-- xeqappparser.cpp (preserved as xeqappparser602.cpp as it uses 602 module constructor)--
+	-- xeqcalc.cpp NEEDS TO HAVE NEW VARIABLES AND FUNCTIONS ADDED
+	-- xeqcalc.h (preserved as xeqcalc602.cpp) HAS NEW VARIABLE & FUNCTION NAMES
+	-- xeqcalcmask.cpp
+	-- xeqcalcreconfig.cpp (preserved as xeqcalcreconfig.cpp with big changes at line
+		186, 752, 1121-1293
+	-- xeqtree.cpp 
+	-- xfblib.cpp (preserved as xfblib602.cpp)
+	-- xfblib.h (preserved as xfblib602.h)
+
+--	Set up a new project, directory, and file structure to begin
+	development of BehavePlus6 based on the most recent stable
+	release of BehavePlus5  Release 5.0.5 (Build 307).
+	
+	This will also incorporate any progress made on the previous
+	BehavePlus6 attempts in Builds 601 and 602 from Aug, 2010.
+	
+	The first BehavePlus6 Build number will now be Build 603.
+	
+
+2011-11-08 (2.0)
+
+-	Met with Pat Andrews to discuss issues with expanding V5 to include
+	computation of ROS at angle 'psi'and to base flame length on those
+	values.
+	
+
+=====================
+Jul 22 - Aug 21, 2010
+=====================
+
+2010-08-04 (8)
+
+--	Worked on the 'Distance Variables' issue.
+
+
+2010-08-03 (8)
+
+--	Worked on the 'Distance Variables' issue.
+
+
+2010-08-02 (8)
+
+--  Created vSurfaceFireDirectionVariables.html
+
+--	In modulesdialog.cpp, commented out the Surface Basic Outputs options for
+	-- surfaceCalcFireDistAtBeta
+	-- surfaceCalcFireDistAtPsi
+	-- surfaceCalcFireVector
+	-- surfaceCalcFireVectorBeta
+	-- surfaceCalcFireVectorPsi
+	and added
+	-- surfaceCalcDirectionVariables
+
+--	Added vSurfaceFireDirectionVariables to eqcalc.cpp.
+
+--	Added vSurfaceFireDirectionVariables, SurfaceFireDirectionVariables,
+	and surfaceCalcDirectionVariables to the xml file.
+
+--	Fixed bug when using dynamic fuel models in "two fuel model"
+	runs after.  Added call to FuelLoadTransferFraction() right after
+	call to FuelBedParms() inside FuelBedWeighted() [around line 4410].
+	(BehavePlus5 Issue 052 - Two fuel gives different answers).
+
+--	Removed Pat's Pi/4 modification to the wind adjustment factor
+	at her request dated 08/02/2010
+	(Issue 008 - WInd Adjustment Factor)
+	
+
+2010-07-28 (8)
+
+--	RoS from Line Source is now > 0 when l/w ratio is 1
+	(i.e., when ellipse factor g is zero).
+	(Issue 009 - ROS from line for circle is zero)
+	
+--	Wind adjustment factor is now multiplied by Pi/4 to account
+	for gaps in square horizontal packing of circular crowns.
+	(Issue 008 - Wind Adjustment Factor)
+	
+--	Issue 005 - Run Notes
+	--	Point Source or Line Source run note always appears first
+	--	Changed wording of Point Source and Line Source run notes
+	--	Removed run note for fire spread in heading/flanking/backing
+	--	Removed Conflict1Dialog check for Surface-Spot linkage
+	--	Added max flame lengt run note for Surface-Spot linkage
+	
+--	Made all the requested word changes
+	(Issue 004 - Wording Difference)
+	
+--	Fixed floating point precision error in GuideDialog
+	by adding a delta of .000001 to the upper limit test.
+	(Issue 003 - Number of Data Points [part 2 of 2]
+	
+--	Increased default Parser::m_maxTokens from 300 to 400.
+	(Issue 003 Number of Data Points [part 1 of 2]
+	
+--	Restore Modules Dialog to single Options button per Module.
+	(Issue 002 - Module Selection )
+	
+--	Added "Click on the Guide button to see valid input"
+	to the Invalid Input dialog.
+	(Issue 001 - Error message )
+	
+--	Updated BehavePlus to Build 602
+
+
+=====================
+May 22 - Jun 21, 2010 (2)
+=====================
+
+--	Meeting with Pat to discuss Build 601
+
+
+=====================
+Apr 22 - May 21, 2010
+=====================
+
+2010-05-20 (8)
+
+--	Build Wise installation script and package for Build 601.
+
+--	Debug and fix quadrant adjustments by changing test
+	for beta <= 90 to beta < 90 in
+	FBL_SurfaceFireEllipseThetaFromPsiDegrees()
+	
+--	Apply quadrant adjustments for beta and theta.
+
+
+2010-05-19 (8)
+
+--	Have Pat double check the quadrant adjustment for Beta from Theta
+	(used in FBL_SurfaceFireEllipseBetaFromThetaDegrees)
+
+--	Fixed the quandrant adjustments for compass degrees.
+
+
+2010-05-18 (8)
+
+--  Spread rate and direction values for beta from psi are wrong
+	at 90 ane 180 degrees.
+
+--	Ended by working through the new reconfiguration logic
+
+--	We now have everything in place to do forward and reverse chains for:
+		betaFromNorth	(vSurfaceFireVectorDirFromNorth)
+		betaFromUpslope (vSurfaceFireVectorDirFromUplsope)
+		betaFromHead	(vSurfaceFireVectorBeta)
+		thetaFromHead	(vSurfaceFireVectorTheta)
+		psiFromHead		(vSurfaceFireVectorPsi)
+		psiFromUpslope	(vSurfaceFireVectorPsiFromUpslope)
+		psiFromNorth	(vSurfaceFireVectorPsiFromNorth)
+	
+--	Added two new function definitions to the XML file:
+	- <function name="fSurfaceFireVectorThetaFromPsi"
+	- <function name="fSurfaceFireVectorBetaFromTheta"
+
+--	Added two new functions to EqCalc:
+	- void EqCalc::FireVectorBetaFromTheta( void )
+	- void EqCalc::FireVectorThetaFromPsi( void )
+
+--	Added the two pairs of reverse-psi functions to the FBL:
+	- double FBL_SurfaceFireEllipseBetaFromThetaDegrees( double f, double g, double h, double thetaDegrees )
+	- double FBL_SurfaceFireEllipseBetaFromThetaRadians( double f, double g, double h, double thetaRadians )
+	- double FBL_SurfaceFireEllipseThetaFromPsiDegrees( double f, double h, double psiDegrees )
+	- double FBL_SurfaceFireEllipseThetaFromPsiRadians( double f, double h, double psiRadians )
+	
+--	Developed a set of reverse-psi calculations in the Fire_Ellipse project
+	and validated them with CppUnit testing:
+	- double Bevins_Fire_Ellipse::calculateBetaFromTheta( double theta ) const
+	- double Bevins_Fire_Ellipse::calculateThetaFromPsi( double psi ) const
+	
+--	Added two new functions to EqCalc:
+	- void EqCalc::FireVectorPsiFromUpslopeRev( void )
+	- void EqCalc::FireVectorPsiFromNorthRev( void )
+	
+--	Added 2 function definitions to the XML file:
+	- <function name="fSurfaceFireVectorPsiFromNorthRev"
+	- <function name="fSurfaceFireVectorPsiFromUpslopeRev"
+	
+--	More Viso diagramming of vector inputs and outputs.
+
+
+2010-05-17 (8)
+
+--	Developed Visio diagrams of wind/fire/slope vector variables,
+	procedures, and dependencies.  Attempting to work out the
+	input dependencies vs the output dependencies, and what can be
+	requested by the user as output and under which configurations.
+	
+	
+2010-05-14 (8)
+
+--	Effective wind speed is always output for the fire head, never for a vector.
+
+--	Fire Characteristics Chart uses spread rate from fire front
+
+--	Got indentation working on the Surface Module Basic Outputs tab.
+
+--	Performed basic testing of the 3 fire spread direction options when the
+	wind direction is up/cross/down and when wind & spread are wrt upslope.
+	This verified that the correct input sets appear on the worksheet,
+	that the correct values are produced, and that only output variables
+	that are actually calculated appear in the tables.
+	
+--	Implemented the Surface Module Directions option for "Fire spread is
+	calculated only in the heading, flanking, and/or backing direction."
+	
+--	Implemented the Surface Module Directions option for "Wind direction is
+	only for upslope, cross-slope, and/or down-slope.
+
+	
+2010-05-13 (8)
+
+--	Changed the Run Options that get displayed.
+
+--	Implemented the implicit range variables for "Surface fire direction is
+	only for heading, flanking, and/or backing" and for "Wind direction is only
+	for up-slope, cross-slope, and/or down-slope".
+	
+	Implemented within EqTree::validateInputs() (around lines 2104-2142).
+		
+--	Added checks and messages to ensure that the implicit range variables
+	created by the SURFACE Input options Heading/Flanking/Backing and
+	Upslope/CrossSlope/DownSlope don't create more than two range variables.
+	
+	
+2010-05-12 (8)
+
+--	Changed the Surface Options Directions Tab to include
+	3 spread direction options,
+	2 wind direction options, and
+	3 wind & spread direction options
+	
+--	Added new output control variables to XML:
+	- surfaceCalcFireSpreadAtBeta (true)
+	- surfaceCalcFireSpreadAtPsi (true)
+	- surfaceCalcFireDistAtBeta (false)
+	- surfaceCalcFireDistAtPsi (false)
+	- surfaceCalcFireVector (false)
+	- surfaceCalcFireVectorBeta (false)
+	- surfaceCalcFireVectorPsi (false)
+
+	
+2010-05-11 (8)
+
+--	Split the Surface Module "Fuels & Moisture" tab into two separate tabs.
+	Renamed the "Intermediates" tab to "Intermediate Outputs".
+	
+--	Split the module Options pages into Inputs and Outputs pages,
+	as appropriate.
+	
+--  Updated the ModulesDialog class to optionally display "Inputs" and
+	"Outputs" buttons.
+	
+--	Updated EqApp to use the new Modules constructor.
+
+--	Updated the Module class to take additional inputs and outputs
+	boolean arguments.
+	
+--	Updated the XML parser to parse the <Module> "inputs" and "outputs" attributes.
+
+--	Added "inputs" and "outputs" attrtibutes to the <Module> element
+	in BehavePlus6.xml, to indicate whether there should be an input
+	and/or output button displayed in the Modules Dialog.
+
+
+2010-05-10 (8)
+
+--	Re-labeled old XML variables
+	- vSurfaceFireDistAtVector now labeled "Spread Distance from Igntition Pt"
+	- vSurfaceFireMapDistAtVector now labeled "Map Spread Dist from Igntition Pt"
+	- vSurfaceFireSpreadAtVector now labeled "RoS from Ignition Pt"
+	- vSurfaceFireVectorDirFromNorth now labeled "Spread Dir from Ignition Pt (north)"
+	- vSurfaceFireVectorDirFromUpslope now labeled "Spread Dir from Ignition Pt (upslope)"
+
+-- Created 2 new functions in EqCalc.cpp:
+	- FireDistAtPsi()
+	- FireMapDistAtPsi()
+
+--	Created 2 new XML function definitions:
+	- fSurfaceFireDistAtPsi
+	- fSurfaceFireMapDistAtPsi
+	
+--	Created 3 new XML variables:
+	- vSurfaceFireDistAtPsi labeled "Spread Distance from Fire Front"
+	- vSurfaceFireMapDistAtPsi labeled "Map Spread Dist from Fire Front"
+	- vWindDirFromTerrain labeled "Wind Direction"
+		a discrete variable with ItemList WindDirection(0=Up, 1=Cross, 2=Down)
+		
+--	Implemented spread rate at Psi functionality and confirmed outputs
+	against the Bevins_Fire_Ellipse_Tests project.
+	
+	
+2010-05-09 (8)
+
+-- Created new functions in EqCalc.cpp:
+	- FireEllipseF()
+	- FireEllipseG()
+	- FireEllipseH()
+	- FireSpreadAtPsi()
+	- FireVectorPsi()
+	- FireVectorPsiFromFire()
+	- FireVectorPsiFromUpslope()
+	- FireVectorTheta()
+	
+--	Added the new variable and function declarations and initialization
+	code to xeqcalc.h and xeqcalc.cpp.
+	
+--	Created 8 new XML function definitions:
+	- fSurfaceFireEllipseF
+	- fSurfaceFireEllipseG
+	- fSurfaceFireEllipseH
+	- fSurfaceFireSpreadAtPsi
+	- fSurfaceFireVectorPsi
+	- fSurfaceFireVectorPsiFromFire
+	- fSurfaceFireVectorPsiFromUpslope
+	- fSurfaceFireVectorTheta labeled
+
+--	Created 8 new XML variable definitions:
+	- vSurfaceFireEllipseF labeled "Fire Ellipse F"
+	- vSurfaceFireEllipseG labeled "Fire Ellipse G"
+	- vSurfaceFireEllipseH labeled "Fire Ellipse H"
+	- vSurfaceFireSpreadAtPsi labeled "RoS from Fire Front"
+	- vSurfaceFireVectorPsiFromFire labeled "Surface Spread Direction"
+		a discrete variable with ItemList FireDirection(0=heading, 1=Flanking, 2=Backing)
+	- vSurfaceFireVectorPisFromNorth labeled "Spread Dir from Fire Front (from north)"
+	- vSurfaceFireVectorPisFromUplslope labeled "Spread Dir from Fire Front (from upslope)"
+	- vSurfaceFireVectorTheta labeled "Spread Dir from Ellipse Center".
+
+--	Continued work on flow charts.
+
+
+2010-05-06 (4)
+
+--	Developed Visio flowcharts of fire elliptical growth variables.
+
+
+2010-05-05 (4)
+
+--	Developed and tested fire elliptical growth equations.
+
+
+2010-05-03 (6)
+
+--	Created new VS project to test fire ellipitcal growth
+	computations.
+
+
+2010-04-29 (4)
+
+--	Created a Wise script for Build 600 using the new source file
+	locations.  Performed installation to validate.
+	
+--	Updated the BehavePlus5* file names to BehavePlus6*,
+	including text in the License.txt and Readme.txt files.
+
+--	Created new BehavePlus6 program icon, resource files,
+	and startup/installation screen image.  Recompiled the
+	resource files.
+ 
+--	Created new Visual Studio 2008 Project for BehavePlus6
+	and copied all the BehavePlus 5.0.1 source and distribution
+	files into it as its baseline.
+
+--	Updated the BehavePlus 5.0.1 Build 298 Wise script to use
+	its new source file loactions.  Rebuilt and tested the new
+	bp_298.exe package.
+
+--	Reorganized BP into separate BehavePlu4, BehavePlus5, and BehavePlu6
+	directory structure with their own Visual Studio project files.
+	
+
+=====================
+Mar 22 - Apr 21, 2010
+=====================
+
+2010-04-21 (2)
+
+--  Recompiled debug and release version to ensure they start out
+	identical to Build 298.
+
+--	Updated all references from BehavePlus5 to BehavePlus6 with
+	designation as Build 600.
+
+--	Created new VC project for BehavePlus6 and copied in
+	all the V5 Build 298 files.

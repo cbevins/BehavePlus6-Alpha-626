@@ -1,0 +1,90 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Western Aspen Details Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Western Aspen Details</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR><P>The Western Aspen fuel option in  BehavePlus implements the fuel modeling from Brown and Simmerman (1986) and the  aspen mortality model from Brown and DeByle (1987). Probability of aspen mortality is included with this  option rather than in the MORTALITY module because it is a different model with  different input requirements. Flame  length, DBH, and fire severity (low or moderate+) are used to calculate aspen mortality.
+
+    <P>Following are constants for all aspen fuel models:
+  <ul>
+	<li>Live and dead heat content = 8000 Btu/lb</li>
+	<li>Moisture of extinction = 25%</li>
+	<li>10-h SA/V = 109 ft<sup>2</sup> / ft<sup>3</sup></li>
+	<li>Live herbaceous SA/V = 2800ft<sup>2</sup> / ft<sup>3</sup></li>
+  </ul>
+
+  
+    <P>
+<a name="Table1"></a>
+<table width="60%" border="1" cellspacing="0" cellpadding="5" >
+<caption align="left"><b>Aspen Fuel Models</b></caption>
+  <tr bgcolor="#CCCCCC">
+    <th>Aspen Fuel Model</th>
+    <th>Fuel Bed Depth, ft</th>
+    <th>10-h Fuel Load, tons/ac</th>
+  </tr>
+  <tr>
+    <td>Aspen/shrub</td>
+    <td>0.65</td>
+    <td>0.975</td>
+  </tr>
+  <tr>
+    <td>Aspen/tall forb </td>
+    <td>0.30</td>
+    <td>0.475</td>
+  </tr>
+  <tr>
+    <td>Aspen/low forb </td>
+    <td>0.18</td>
+    <td>1.035</td>
+  </tr>
+  <tr>
+    <td>Mixed/shrub</td>
+    <td>0.50</td>
+    <td>1.340</td>
+  </tr>
+  <tr>
+    <td>Mixed forb </td>
+    <td>0.18</td>
+    <td>1.115</td>
+  </tr>
+</table>
+
+    <P>Aspen curing level is used to calculate the following for each of the 5 aspen fuel models: 
+<ul>
+<li>1-h fuel load</li>
+<li>Live herbaceous fuel load</li>
+<li>Live woody fuel load</li>
+<li>1-h SA/V</li>
+<li>Live woody SA/V</li>
+</ul>
+<P><H3><FONT COLOR="#ff5500">See Also</FONT>  </H3>
+<UL>
+     <LI><A HREF="vSurfaceFuelAspenCuring.html">Aspen Curing Level</A></LI>
+     <LI><A HREF="vSurfaceFireSeverityAspen.html">Aspen Fire Severity</A></LI>
+     <LI><A HREF="vSurfaceFuelAspenType.html">Aspen Fuel Model</A></LI>
+  <LI><A HREF="vTreeAspenMortalityRate.html">Probability of Aspen Mortality</A></LI>
+  </UL>
+<P>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,147 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Wind Adjustment Factor Page</TITLE>
+  </HEAD>
+  <BODY>
+<TABLE WIDTH="100%">
+	<TR>
+		<TD width="100"><IMG SRC="logo90x90.png" ALT="BehavePlus Logo"></TD>
+		<TD ALIGN="left" VALIGN="center">
+			<H2><FONT COLOR="#ff5500">Wind Adjustment Factor</FONT></H2>
+		</TD>
+	</TR>
+</TABLE>
+<HR>
+<P> Wind adjustment factor (WAF) is a value between 0 and 1 used to adjust the wind speed at 20-ft above the vegetation to midflame wind speed. 
+<ul>
+	<li>midflame wind speed = 20-ft wind speed * WAF.</li>
+</ul>
+Wind adjustment factor depends on sheltering of fuels from the wind. If fuels are not sheltered from the wind, WAF is a function of fuel bed depth. If 
+fuels are sheltered from the wind, WAF is not affected by the surface fuel model. Sheltering is determined by canopy cover and by position on the slope. If WAF is calculated, then the user should be cautious of terrain and canopy features that are not input. It might be preferable to use judgment to enter WAF directly. 
+<P>
+<table border="1" cellspacing="0" cellpadding="2">
+	<tr bgcolor="#CCCCCC">
+		<td width="67" valign="top"><p align="center"><strong>I/O</strong></p></td>
+		<td width="109" valign="top"><p align="center"><strong>Module</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>If</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>Notes</strong></p></td>
+	</tr> 
+	<tr>
+		<td width="67" valign="top">Input</td>
+		<td width="109" valign="top">SURFACE</td>
+		<td width="207" valign="top">If <i>Wind speed is entered as 20-ft (or 10-m) wind and Input wind adjustment factor</i> is selected as an input option.</td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr> 
+	<tr>
+		<td width="67" valign="top">Output</td>
+		<td width="109" valign="top">SURFACE</td>
+		<td width="207" valign="top">If <i>Wind speed is entered as 20-ft (or 10-m) wind and Calculated wind adjustment factor</i> is selected as an input option.</td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr>
+</table>
+<P> If <I>Wind speed is entered as 10-m wind and wind adjustment factor</I> is selected, then the 10-m wind speed is divided by 1.15 to get 20-ft wind speed. The wind adjustment factor is then applied to the 20-ft wind speed. 
+<P>
+<table><tr><td><A NAME="sheltering.png"></a> <IMG border="1" SRC="sheltering.png" ALT="Exposure of Various Fuels to Wind"></td></tr></table>
+<p>
+<A NAME="Table1"></a>
+<B>Wind Adjustment Factor</B><br>
+<TABLE  border="1" cellspacing="0" cellpadding="2"> 
+	<TR BGCOLOR="#cccccc"> 
+		<TH>Surface fuel<br>sheltering<br>from the wind</TH>
+		<TH>Wind<br>Adjustment<br>Factor<br>(WAF)</TH>
+		<TH>Fuel Model</TH>
+	</TR>
+	<TR>
+		<TD rowspan="3" ALIGN="left" valign="top"><b>Unsheltered</b>
+        	<ul>
+            	<li>Surface fuels not sheltered from the wind</li>
+                <li>No overstory</li>
+                <li>Sparse overstory</li>
+                <li>Timber that has lost its foliage</li>
+                <li>Timber on high ridges where trees offer little sheltering</li>
+            </ul>
+        </TD>
+		<TD ALIGN="center">0.5</TD>
+		<TD ALIGN="left">
+			<UL>
+				<LI>4, 13</LI>
+				<LI>GR7, GR8, GR9</LI>
+				<LI>SH4, SH5, SH7, SH8, SH9</LI>
+			</UL>
+			<p align="center">(depth &lt;&nbsp;0.9&nbsp;ft, &lt;&nbsp;0.3&nbsp;m)</p>
+        </TD>
+	</TR> 
+	<TR>
+		<TD ALIGN="center">0.4</TD>
+		<TD ALIGN="left">
+			<UL>
+				<LI>1, 2, 3,  5, 6, 7, 10, 11, 12</LI>
+				<LI>GR2, GR3, GR4, GR5, GR6</LI>
+				<LI>GS1, GS2, GS3, GS4</LI>
+				<LI>SH1, SH2, SH3, SH6</LI>
+				<LI>TU2, TU3, TU5</LI>
+				<LI>SB1, SB2, SB3, SB4</LI>
+            </UL>
+			<p align="center">(depth 0.9&nbsp;-&nbsp;2.7&nbsp;ft, 0.3&nbsp;-&nbsp;0.8&nbsp;m)</p>
+	</TR>
+	<TR>
+		<TD ALIGN="center">0.3</TD>
+		<TD ALIGN="left">
+			<UL>
+				<LI>8, 9</LI>
+				<LI>GR1</LI>
+				<LI>TU1, TU4</LI>
+                <LI>TL1, TL2, TL3, TL4, TL5, TL6, TL7, TL8, TL9</LI>
+			</UL>
+			<p align="center">(depth &gt;&nbsp;2.7&nbsp;ft, &gt;&nbsp;0.8&nbsp;m)</p>
+		</TD>
+    </TR>
+	<TR>
+		<TD ALIGN="left" valign="top"><b>Partially sheltered</b>
+           	<ul>
+            	<li>Patchy timber</li>
+                <li>Timber at midslope or higher with wind blowing directly at the slope</li>
+            </ul>
+		</TD>
+		<TD ALIGN="center">0.3</TD>
+		<TD ALIGN="left">
+			<UL>
+				<LI>All fuel models</LI>
+			</UL></TD>
+	</TR> 
+	<TR>
+		<TD rowspan="2" ALIGN="left" valign="top"><b>Fully Sheltered</b>
+           	<ul>
+            	<li>Standing timber on flat or gentle slope</li>
+                <li>Standing timber near base of mountain with steep slopes</li>
+            </ul>
+        </TD>
+		<TD ALIGN="center">0.2</TD>
+		<TD ALIGN="left">
+			<UL>
+				<LI><b>Open stands.</b> All fuel models</LI>
+			</UL></TD>
+	</TR>
+	<TR>
+		<TD ALIGN="center">0.1</TD>
+		<TD ALIGN="left">
+			<UL>
+				<LI><b>Dense stands.</b> All fuel models</LI>
+			</UL></TD>
+	</TR>
+</TABLE>
+
+<P>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, April 25, 2011.</FONT>
+</BODY>
+</HTML>

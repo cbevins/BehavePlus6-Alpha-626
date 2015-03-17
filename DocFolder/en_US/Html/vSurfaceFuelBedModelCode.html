@@ -1,0 +1,64 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Fuel Model Code Page</TITLE>
+  </HEAD>
+  <BODY>
+<TABLE WIDTH="100%">
+	<TR>
+		<TD width="100"><IMG SRC="logo90x90.png" ALT="BehavePlus Logo"></TD>
+		<TD ALIGN="left" VALIGN="center">
+			<H2><FONT COLOR="#ff5500">Fuel Model Code</FONT></H2>
+		</TD>
+	</TR>
+</TABLE>
+<HR>
+<P>Fuel models are described in a three-part naming scheme, including 
+<UL>
+<li>fuel model <b>code</b>, which is a 1-7 character identifier such as <tt>1</tt> or <tt>gr1</tt>; and</li>
+<li>fuel model <b>number</b>, which is an integer in the range 1-256.</li>
+<li>fuel model <b>name</b>, which is a longer description of the fuel model.
+</UL>
+<p>The fuel model code is a 1-7 character identifier that facilitates communication and can be used as an input to some fire modeling systems, including BehavePlus. The fuel model code and number are identical for the original 13 fuel models described by Anderson (1982). The Scott and Burgan (2005) fuel models are grouped by fire-carrying type, such as GR (grass) or TU (timber-understory) followed by a number. The higher the number, the greater the heat per unit area. Custom fuel models require a code and number so that they can be exported for use in the FARSITE format.
+<p>
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+		<td width="67" valign="top"><p align="center"><strong>I/O</strong></p></td>
+		<td width="109" valign="top"><p align="center"><strong>Module</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>If</strong></p></td>
+		<td width="207" valign="top"><p align="center"><strong>Notes</strong></p></td>
+	</tr> 
+	<tr>
+		<td width="67" valign="top">Input</td>
+		<td width="109" valign="top">SURFACE</td>
+		<td width="207" valign="top">If <i>Fuel is entered as fuel parameters (for custom fuel modeling</i> is selected 
+			as an input option.</td>
+		<td width="207" valign="top">If <i>Fuel is entered as fuel parameter</i>s is selected as the input option, the assigned parameters can be saved as a custom fuel model.</td>
+	</tr>
+	<tr>
+		<td width="67" valign="top">Output</td>
+		<td width="109" valign="top">None</td>
+		<td width="207" valign="top">&nbsp;</td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr>
+</table>
+
+<p><H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+<UL> 
+    <LI><A HREF="vSurfaceFuelBedModel.html">Fuel Model</A></LI>
+    <LI><A HREF="vSurfaceFuelBedModelNumber.html">Fuel Model Number</A></LI>
+    <LI><A HREF="fuelExportDialog.html">Fuel Model Export</A></LI>
+</UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, February 25, 2014.</FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment Id="Bp6_Directory_Fragment">
+
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+      
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="BehavePlus 6">
+        </Directory>  <!-- Id='ProgramMenuDir' -->
+      </Directory>  <!-- Id='ProgramMenuFolder' -->
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+
+      <Directory Id='INSTALLDIR' Name='Behave'>
+          <Directory Id='BEHAVEPLUS6FOLDER' Name='BehavePlus6'>
+
+            <Directory Id='DocFolder' Name='DocFolder'>
+              <Directory Id='GeoFolder' Name='GeoFolder'>
+              </Directory>  <!-- GeoFolder -->
+              <Directory Id='en_US' Name='en_US'>
+                <Directory Id='Html' Name='Html' />
+              </Directory>  <!-- en_US -->
+            </Directory> <!-- DocFolder -->
+
+            <Directory Id='ImageFolder' Name='ImageFolder' />
+
+            <Directory Id='DefaultDataFolder' Name='DefaultDataFolder'>
+              <Directory Id='CaptureFolder' Name='CaptureFolder' >
+                <Directory Id='MyScreenCaptures' Name='MyScreenCaptures' />
+              </Directory>  <!--  CaptureFolder -->
+              <Directory Id='ComposerFolder' Name='ComposerFolder' />
+              <Directory Id='ExportFolder' Name='ExportFolder' >
+                <Directory Id='MyExports' Name='MyExports' />
+              </Directory>  <!-- ExportFolder -->
+              <Directory Id='FuelModelFolder' Name='FuelModelFolder' >
+                <Directory Id='MyFuelModels' Name='MyFuelModels' />
+                <Directory Id='SoCalifornia' Name='SoCalifornia' />
+              </Directory>  <!-- FuelModelFolder -->
+              <Directory Id='MoistureScenarioFolder' Name='MoistureScenarioFolder' >
+                <Directory Id='FuelModeling' Name='FuelModeling' />
+                <Directory Id='MyMoistureScenarios' Name='MyMoistureScenarios' />
+                <Directory Id='TSTMDL' Name='TSTMDL' />
+              </Directory> <!-- MoistureScenarioFolder -->
+              <Directory Id='RunFolder' Name='RunFolder' >
+                <Directory Id='ExampleRuns' Name='ExampleRuns' />
+                <Directory Id='MyRuns' Name='MyRuns' />
+              </Directory>  <!-- RunFolder -->
+              <Directory Id='UnitsSetFolder' Name='UnitsSetFolder' >
+                <Directory Id='MyUnitsSets' Name='MyUnitsSets' />
+              </Directory> <!-- UnitsSetsFolder -->
+              <Directory Id='WorksheetFolder' Name='WorksheetFolder' >
+                <Directory Id='ExampleWorksheets' Name='ExampleWorksheets' />
+                <Directory Id='MyWorksheets' Name='MyWorksheets' />
+              </Directory> <!-- WorksheetFolder -->
+            </Directory>  <!-- DefaultDataFolder -->
+            
+          </Directory> <!-- Id='INSTALLDIR' Name=BehavePlus6 -->
+      </Directory> <!-- ID='ProgramFilesFolder' Name='PFiles' -->
+    </Directory> <!-- Id='TARGETDIR' -->
+  </Fragment>
+</Wix>

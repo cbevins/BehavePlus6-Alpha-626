@@ -1,0 +1,138 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Flame Length Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Flame Length</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P>The flame length of a spreading surface fire within the flaming front is measured from midway in the active flaming combustion zone to the average tip of the flames.
+<p>"Flame length is an elusive parameter that exists in the eye of the beholder. It is a poor quantity to use in a scientific or engineering sense, but it is so readily apparent to fireline personnel and so readily conveys a sense of fire intensity that it is worth featuring as a primary fire variable." (Rothermel 1991). </p>
+<p>Fireline intensity and the flame length are related to the heat felt by a person standing next to the flames. Flame length is calculated from fireline intensity, which is a function of rate of spread and heat per unit area.</p>
+<p>Flame length is used as a worst-case estimation of flame height for safety zone size calculations in SAFETY. The head fire flame length is always used.
+</p>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC"> 
+    <td width="67" valign="top"> 
+      <p align="center"><strong>I/O</strong></p>
+    </td>
+    <td width="109" valign="top"> 
+      <p align="center"><strong>Module</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>If</strong></p>
+    </td>
+    <td width="207" valign="top"> 
+      <p align="center"><strong>Notes</strong></p>
+    </td>
+  </tr>
+  <tr> 
+    <td rowspan="4" valign="top">Input</td>
+    <td width="109" valign="top">CROWN</td>
+    <td width="207" valign="top">If SURFACE is not selected and if <i>Surface fire intensity is entered 
+        as flame length</i> is selected as an input option.</p>
+    </td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="109" valign="top">SCORCH</td>
+    <td width="207" valign="top">If SURFACE is not selected and if <i>Fire intensity is entered as flame 
+        length</i> is selected as an input option.</p>
+    </td>
+    <td width="207" valign="top">If SURFACE and SCORCH are both selected, the 
+      flame length in the direction of fire spread is calculated in SURFACE and used by SCORCH.</td>
+  </tr>
+  <tr> 
+    <td width="109" valign="top">SAFETY</td>
+    <td width="207" valign="top">If SURFACE is not selected.</td>
+    <td width="207" valign="top">If SURFACE and SAFETY are both selected, the 
+      flame for the head fire is used to estimate safety zone size (even if another 
+      spread direction is specified on the worksheet).</td>
+  </tr>
+  <tr> 
+    <td width="109" valign="top">SPOT</td>
+    <td width="207" valign="top">If SURFACE is not selected and spotting distance from a wind-driven surface 
+        fire is calculated.</td>
+    <td width="207" valign="top">If SURFACE and SPOT are both selected, the flame 
+      length is for the head fire, in the direction of maximum spread.</td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top">Output</td>
+    <td width="109" valign="top">SURFACE</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+</table>
+<P>
+  <table><tr><td><A NAME="flamelength.png"></a> <IMG SRC="flamelength.png" ALT="Flame Length and Active Flaming Zone"></td></tr></table> 
+  <P>
+  <table><tr><td><A NAME="haulingchart.png"></a> <IMG SRC="haulingchart.png" ALT="Surface Fire Characteristics Chart"></td></tr></table> <P>
+
+<A NAME="Table1"></a>
+<b>Fire Suppression Interpretation</b><br>
+<TABLE border="1" cellspacing="0" cellpadding="2">
+  <TR bgcolor="#CCCCCC">
+    <TH>Flame<BR>Length<BR>(ft)</TH>
+    <TH>Fireline<BR>Intensity<BR>(Btu/ft/s)</TH>
+    <TH>Interpretations</TH>
+  </TR>
+  <TR>
+    <TD>Under 4</TD>
+    <TD>Under 100</TD>
+    <TD><ul><li>Fires can generally be attacked at the head or flanks by
+        persons using hand tools.</li>
+        <li>Hand line should hold the fire.</li></ul></TD>
+  </TR>
+  <TR>
+    <TD>4-8</TD>
+    <TD>100-500</TD>
+    <TD>
+        <ul><li>Fires are too intense for direct attack on the head by persons
+        using hand tools.</li>
+        <li>Hand line cannot be relied on to hold the fire.</li>
+        <li>Equipment such as dozers, pumpers, and retardant aircraft
+        can be effective.</li></ul></TD>
+  </TR>
+  <TR>
+    <TD>8-11</TD>
+    <TD>500-1000</TD>
+    <TD><ul><li>Fires may present serious control problems --
+        torching out, crowning, and spotting.</li>
+        <li>Control efforts at the fire head will probably be ineffective.</li></ul></TD>
+  </TR>
+  <TR>
+    <TD>Over 11</TD>
+    <TD>Over 1000</TD>
+    <TD>
+        <ul><li>Crowning, spotting, and major fire runs are probable.</li>
+        <li>Control efforts at head of fire are ineffective.</li></ul></TD>
+  </TR>
+</TABLE>
+
+
+    <p><H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+
+    <UL>
+      <LI><A HREF="vSurfaceFireLineInt.html">Fireline Intensity</A></LI>
+    </UL>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
+</BODY>
+</HTML>

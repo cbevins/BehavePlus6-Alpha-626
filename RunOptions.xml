@@ -1,0 +1,262 @@
+<!--
+Faith Ann -
+
+This is the text keys and content for all the Run Options.
+I pulled them all from the BehavePlus6.xml file which is installed
+along with BehavePlus6.exe (they are from lines 22660 to 22800 or so).
+
+At the end of this file is the Conflict related text.
+
+-->
+<translate key="BpDocument:Worksheet:RunOptions:Caption"
+  en_US="Run Option Notes"
+  pt_PT="OPÇÕES DE SIMULAÇÃO"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:CalcMapDist"
+  en_US="Output distances are also displayed in map units [MAP]."
+  pt_PT="As distâncias são indicadas em unidades da carta [MAPA]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:None"
+  en_US="None"
+  pt_PT="Nenhum"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:Contain:Single1"
+  en_US="Suppression input is for a single resource [CONTAIN];"
+  pt_PT="Dado de entrada de supressão é para um único recurso [Contenção];"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:Contain:Single2"
+  en_US="    multiple values can be entered for any input variable."
+  pt_PT="    Dados da variável de entrada podem ser valores múltiplos."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:Contain:Multiple1"
+  en_US="Suppression input is for multiple resources [CONTAIN];"
+  pt_PT="Dado de entrada de supressão é para recursos múltiplos [Contenção];"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:Contain:Multiple2"
+  en_US="    for each resource, identified by a Resource Name, a single value"
+  pt_PT="    para cada recurso, identificado pelo seu nome, um valor único"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:Contain:Multiple3"
+  en_US="    is specified for each resource item (line production rates, etc)."
+  pt_PT="    é especificada para cada recurso (velocidade de produção de linha, etc)."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SurfaceSafety1"
+  en_US="Safety zone calculations are based on the flame length"
+  pt_PT="Altura da chama seleccionada como descritor de intensidade para o módulo de segurança"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SurfaceSafety2"
+  en_US="    in the direction of maximum spread [SAFETY]."
+  pt_PT="    na direcção de velocidade máxima [SEGURANÇA]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SafetyFlameLeng"
+  en_US="Flame length is used as a worst-case estimate of flame height [SAFETY]."
+  pt_PT="O comprimento da chama é utilizado como altura da chama para descrever situação extrema [SEGURANÇA]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:PointFire1"
+  en_US="'Surface rate of spread' and 'surface spread distance' are for"
+  pt_PT="??? 'Surface rate of spread' and 'surface spread distance' are for"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:PointFire2"
+  en_US="    specified directions from the ignition point to the perimeter"
+  pt_PT="???     specified directions from the ignition point to the perimeter"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:PointFire3"
+  en_US="    of an elliptically shaped point source fire."
+  pt_PT="???     of an elliptically shaped point source fire."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:LineFire1"
+  en_US="'Surface rate of spread' and 'surface spread distance' are from"
+  pt_PT="??? 'Surface rate of spread' and 'surface spread distance' are from"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:LineFire2"
+  en_US="    a line source fire, in the specified directions,"
+  pt_PT="???     a line source fire, in the specified directions,"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:LineFire3"
+  en_US="    which are perpendicular to the fire line."
+  pt_PT="???     which are perpendicular to the fire line."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:MaxSpreadDir"
+  en_US="Calculations are only for the direction of maximum spread [SURFACE]."
+  pt_PT="As simulações são somente para a direcção de propagação máxima [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadDirHead"
+  en_US="Fire spread is in the HEADING direction only [SURFACE]."
+  pt_PT="Fire spread is in the HEADING direction only [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadDirBack"
+  en_US="Fire spread is in the BACKING direction only [SURFACE]."
+  pt_PT="Fire spread is in the BACKING direction only [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadDirFlank"
+  en_US="Fire spread is in the FLANKING direction only [SURFACE]."
+  pt_PT="Fire spread is in the FLANKING direction only [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadDirPointSourceBeta"
+  en_US="Fire spread is in the specified directions from the IGNITION PT [SURFACE]."
+  pt_PT="Fire spread is in the directions from the IGNITION PT [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadDirPointSourceBeta2"
+  en_US="Fireline intensity and flame length are based on the flaming segment"
+  pt_PT="Fire spread is in the directions from the IGNITION PT [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadDirPointSourceBeta3"
+  en_US="    in direction from ignition pt (method through v5)."
+    pt_PT="Fire spread is in the directions from the IGNITION PT [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadDirPointSourcePsi"
+en_US="Fire spread is in the specified directions from the IGNITION PT [SURFACE]."
+pt_PT="Fire spread is in the directions from the IGNITION PT [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadDirPointSourcePsi2"
+    en_US="Fireline intensity and flame length are based on the flaming segment"
+    pt_PT="Fire spread is in the directions from the IGNITION PT [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadDirPointSourcePsi3"
+      en_US="     perpendicular to perimeter (recommended)."
+      pt_PT="Fire spread is in the directions from the IGNITION PT [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadDirFireFront"
+  en_US="Fire spread is in the specified directions from the FIRE FRONT [SURFACE]."
+pt_PT="Fire spread is in the specified directions from the FIRE FRONT [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpecifiedSpreadDir"
+  en_US="Calculations are for the specified spread directions [SURFACE]."
+  pt_PT="As simulações são para as direcções de propagação especificadas [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadCalculations1"
+  en_US="Fireline intensity, flame length, and spread distance are always"
+  pt_PT="Intensidade da frente de chamas, comprimento da chama, e distância de propagação são sempre"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpreadCalculations2"
+  en_US="    for the direction of the spread calculations [SURFACE]."
+  pt_PT="    para a direcção de propagação calculada [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:Wind:Limit:Applied"
+  en_US="Maximum reliable effective wind speed limit IS imposed [SURFACE]."
+  pt_PT="??? Maximum reliable effective wind speed limit IS imposed [SURFACE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:Wind:Limit:NotApplied"
+  en_US="Maximum reliable effective wind speed limit is NOT imposed [SURFACE]."
+  pt_PT="??? Maximum reliable effective wind speed limit is NOT imposed [SURFACE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:WindUpslope"
+  en_US="Wind is blowing upslope [SURFACE]."
+  pt_PT="Direcção do vento é a subir encosta [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:WindSpreadFromUpslope"
+  en_US="Wind and spread directions are degrees clockwise from upslope [SURFACE]."
+  pt_PT="Direcção do vento e de propagação em graus na direcção de máximo declive [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:WindTo"
+  en_US="Direction of the wind vector is the direction the wind is pushing the fire [SURFACE]."
+  pt_PT="A direcção do vento é a direcção que o vento está a empurrar o fogo [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:WindSpreadFromNorth"
+  en_US="Wind and spread directions are degrees clockwise from north [SURFACE]."
+  pt_PT="Direcção do vento e de propagação em graus a partir do norte [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:WindFrom"
+  en_US="Wind direction is the direction from which the wind is blowing [SURFACE]."
+  pt_PT="A direcção do vento é a direcção de onde o vento é originário [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:TwoFuel:2Dimensional"
+  en_US="Two fuel model weighting method: two-dimensional spread [SURFACE]."
+  pt_PT="Método ponderado para dois modelos de combustível: propagação bi-dimensional [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:TwoFuel:HarmonicMean"
+  en_US="Two fuel model weighting method: harmonic mean [SURFACE]."
+  pt_PT="Método ponderado para dois modelos de combustível: média harmónica [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:TwoFuel:AreaWeighted"
+  en_US="Two fuel model weighting method: area-weighted [SURFACE]."
+  pt_PT="Método ponderado para dois modelos de combustível: ponderação por área [SUPERFÍCIE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpecialFuel:Aspen1"
+  en_US="A special case fuel model is used: western aspen"
+  pt_PT="??? A special case fuel model is used: western aspen"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpecialFuel:Aspen2"
+  en_US="    (Brown and Simmerman 1986) [SURFACE]."
+  pt_PT="??? (Brown and Simmerman 1986) [SURFACE]."
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpecialFuel:PG1"
+  en_US="A special case fuel model is used: palmetto-gallberry"
+  pt_PT="??? A special case fuel model is used: palmetto-gallberry"
+  />
+<translate key="BpDocument:Worksheet:RunOptions:SpecialFuel:PG2"
+  en_US="    (Hough and Albini 1978) [SURFACE]."
+  pt_PT="??? (Hough and Albini 1978) [SURFACE]."
+  />
+
+
+<!-- ConflictDialog Text -->
+<translate key="ConflictDialog:Caption"
+  en_US="Input Conflict"
+  pt_PT="Conflito nos dados de entrada"
+  />
+<translate key="ConflictDialog:Group:Caption"
+  en_US="To resolve the conflict"
+  pt_PT="Para resolver o conflito"
+  />
+<translate key="ConflictDialog1:Button0"
+  en_US="configure the SURFACE Module
+to &quot;Rate of spread is calculated
+only in the direction of
+maximum spread&quot;."
+  pt_PT="configurar o módulo SUPERFÍCIE
+para &quot;velocidade de propagação calculada somente na
+direcção de máxima propagação&quot;."
+  />
+<translate key="ConflictDialog1:Button1"
+  en_US="de-activate the SPOT Module."
+  pt_PT="Desactivar as variáveis de saída do módulo SALTOS."
+  />
+<translate key="ConflictDialog2:Button0"
+  en_US="configure the SURFACE Module
+to use 20-ft wind speed,
+INPUT wind adj factor, and
+return to the input worksheet."
+  en_PT="configurar o módulo SUPERFÍCIE
+para utilizar a velocidade do vento a 6.1 m,
+o factor de ajuste do vento, e
+voltar à folha de entrada."
+  />
+<translate key="ConflictDialog2:Button1"
+  en_US="configure the SURFACE Module
+to use 20-ft wind speed,
+CALCULATE wind adj factor, and
+return to the input worksheet."
+  en_PT="configurar o módulo SUPERFÍCIE 
+para utilizar a velocidade do vento a 6.1 m,
+CALCULAR factor de ajuste do vento, e
+voltar à folha de entrada."
+  />
+<translate key="ConflictDialog2:Button2"
+  en_US="configure the SURFACE Module
+to use 10-m wind speed,
+INPUT wind adj factor, and
+return to the input worksheet."
+  en_PT="configurar o módulo SUPERFÍCIE
+para utilizar a velocidade do vento a 10 m,
+o factor de ajuste do vento, e
+voltar à folha de entrada."
+  />
+<translate key="ConflictDialog2:Button3"
+  en_US="configure the SURFACE Module
+to use 10-m wind speed,
+CALCULATE wind adj factor, and
+return to the input worksheet."
+  en_PT="configurar o módulo SUPERFÍCIE 
+para utilizar a velocidade do vento a 6.1 m,
+CALCULAR factor de ajuste do vento, e
+voltar à folha de entrada."
+  />
+<translate key="ConflictDialog2:Button4"
+  en_US="de-activate the SPOT or
+CROWN Modules and
+continue with the run."
+  en_PT="desativar os módulos 
+SALTOS ou COPAS e
+continue com a simulação."
+  />

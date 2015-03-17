@@ -1,0 +1,25 @@
+We have the following AtVector variables defined:
+
+--	vSurfaceFireDist		no	AtHead	AtBack	AtVector	AtPsi
+--	vSurfaceFireEffWind			AtHead			AtVector
+--	vSurfaceFireFlameAngle						AtVector
+--	vSurfaceFireFlameHt							AtVector
+--	vSurfaceFireFlameLeng		AtHead			AtVector	AtPsi
+--	vSurfaceFireLineInt			AtHead			AtVector	AtPsi
+--	vSurfaceFireMapDist			AtHead	AtBack	AtVector	AtPsi
+--	vSurfaceFireScorchHt						AtVector
+--	vSurfaceFireSpread			AtHead	AtBack	AtVector	AtPsi
+
+--	vTreeCrownLengFractionScorched			AtVector
+--	vTreeCrownLengScorched					AtVector
+--	vTreeCrownVolScorched					AtVector
+
+--	vTreeMortalityCount						AtVector
+--	vTreeMortalityRateAspen					AtVector
+--	vTreeMortalityRate						AtVector
+
+--	vSurfaceFireVectorBeta
+--	vSurfaceFireVectorPsi
+--	vSurfaceFireVectorTheta
+
+In a different order:

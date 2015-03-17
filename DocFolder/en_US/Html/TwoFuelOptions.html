@@ -1,0 +1,147 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Two Fuel Model Options Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Two Fuel Model Options</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P> The two-fuel model options are useful for areas that clearly consist of two 
+  different fuel models rather than a single, homogenous fuel model. These two 
+  fuel models are designated as "first" and "second". The coverage is entered 
+  for the "first" fuel model only. The coverage of the "second" fuel model is 
+  the remainder, with the total being 100%. 
+<P>
+The two fuel model options work with standard or custom fuel models, but
+not with the <I>palmetto-gallberry</I>, <I>western aspen</I>, or <I>fuel parameters</I> options.
+    <H3><FONT COLOR="#ff5500">Options</FONT></H3>
+
+<TABLE border=1 CELLPADDING="10" cellspacing="0" dwcopytype="CopyTableRow" >
+  <TR bgcolor="#CCCCCC"> 
+    <TD COLSPAN=3><b>Fuel is entered as....</b> </TD>
+  </TR>
+  <TR> 
+    <TD rowspan="3">&nbsp;</TD>
+    <TD width="30%" valign="top"><I>Two fuel models, 2-dimensional expected spread (recommended).</I></TD>
+    <TD width="65%"> 
+      <P> This is the preferred method for two fuel models. The expected spread 
+        rate through the fuel complex is estimated by examining all possible spread 
+        paths through a matrix of fuels, which allows the fire to burn around, 
+        rather than through, patches of slower burning fuels (see Finney 2002). 
+      <P> This method assumes that the size of the fire is much larger than the 
+        size of the fuel patches (that is, that the fire will spread through many 
+        fuel patches). It may be more accurate in situations where one fuel type 
+        is much flashier than the other, and the distribution pattern of the fuels 
+        gives the fire the opportunity to burn around slower burning fuel patches 
+        (such as randomly arranged patches). 
+    </TD>
+  </TR>
+  <TR> 
+    <TD width="30%" valign="top"><I>Two fuel models, harmonic mean.</I></TD>
+    <TD width="65%"> 
+      <P> This method is applied to situations where the fire will burn through 
+        alternating bands of the two fuel types (such as burning up an elevation 
+        gradient or through a fuel modification zone). That is, the fire must 
+        burn through one band to reach the next, and has no opportunity to spread 
+        around the slower burning fuel model. 
+      <p> This method assumes that the size of the fire is much larger than the 
+        size of the fuel bands, the fire will spread through many fuel bands, 
+        and the fire is unable to spread around them. This is not a common situation. 
+    </TD>
+  </TR>
+  <TR> 
+    <TD width="30%" valign="top"><I>Two fuel models, area weighted (like old BEHAVE).</I></TD>
+    <TD width="65%"> 
+      <P> This method is appropriate when considering the average spread rate 
+        of many fires located on a fuelscape composed of any arrangement of two 
+        fuel models if the size of the fire is small compared to the size of the 
+        fuel patches (this is, there is no spread between fuel patches). 
+      <p> This method simply weights the spread rate of each fuel model by its 
+        coverage. It is identical to the old BEHAVE method.
+    </TD>
+  </TR>
+</TABLE>
+<br>
+
+<P> For all of the two fuel model options, fire behavior is reported according 
+  to the table below. If you would like to see the actual fire behavior for each fuel 
+  model, create a Run for each fuel model. 
+<P> The primary purpose of the two fuel model option is to provide weighted rate 
+  of spread. It is not appropriate to weight fire intensity values or their derivatives 
+  such as flame length or scorch height. The table below lists the rules used to report 
+  results for the two fuel model option. Variables on the Intermediate and Fuel Output tabs are not available.<BR>
+  <p>
+  <A NAME="Table1"></a>
+<B>Fire Behavior Outputs Using the Two Fuel Model Options</B><br>
+<TABLE border=1 CELLPADDING="10" cellspacing="0" >
+    <TR BGCOLOR="#cccccc">
+      <TH>Output Variable</TH>
+      <TH>Two Fuel Model Option Output</TH>
+    </TR>
+    <TR>
+      <TD>Surface Rate of Spread</TD>
+      <TD>Weighted spread rate, method depends on the option.</TD>
+    </TR>
+    <TR>
+      <TD>Heat per Unit Area</TD>
+      <TD>Higher of the calculated values for the two fuel models.</TD>
+    </TR>
+    <TR>
+      <TD>Fireline Intensity</TD>
+      <TD>Higher of the calculated values for the two fuel models.</TD>
+    </TR>
+    <TR>
+      <TD>Flame Length</TD>
+      <TD>Higher of the calculated values for the two fuel models.</TD>
+    </TR>
+    <TR>
+      <TD>Reaction Intensity</TD>
+      <TD>Higher of the calculated values for the two fuel models.</TD>
+    </TR>
+    <TR>
+      <TD>Direction of Maximum Spread</TD>
+      <TD>First fuel model calculated value.</TD>
+    </TR>
+    <TR>
+      <TD>Wind Adjustment Factor</TD>
+      <TD>First fuel model calculated value.</TD>
+    </TR>
+    <TR>
+      <TD>Effective Wind Speed</TD>
+      <TD>First fuel model calculated value.</TD>
+    </TR>
+    <TR>
+      <TD>Effective Wind Speed Limit</TD>
+      <TD>Lower of the calculated values for the two fuel models.</TD>
+    </TR>
+    <TR>
+      <TD>Maximum Effective Wind Speed Exceeded?</TD>
+      <TD>Yes, if either of the two is exceeded.</TD>
+    </TR>
+    <TR>
+      <TD>Surface Spread Distance</TD>
+      <TD>Computed from the weighted spread rate.</TD>
+    </TR>
+</TABLE>
+
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR><FONT SIZE=2>BehavePlus On-Line Documentation, August 31, 2010.</FONT>
+</BODY>
+</HTML>

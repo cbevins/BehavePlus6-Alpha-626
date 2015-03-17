@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment Id="Bp6_Feature_Fragment">
+    
+    <!-- Installed Features and Components -->
+    <Feature Id='Bp6_Feature'
+               Title='BehavePlus [Version]'
+               Description='The complete BehavePlus 6 package.'
+               Display='expand'
+               ConfigurableDirectory='BEHAVEPLUS6FOLDER'
+               Level='1'>
+
+      <!-- wix_bp6_componentgroup_executable.wxs -->
+      <ComponentGroupRef Id='Bp6_ComponentGroup_Executable'/>
+      
+      <!-- wix_bp6_componentgroup_docfolder.wxs -->
+      <ComponentGroupRef Id='Bp6_ComponentGroup_DocFolder'/>
+      
+      <!-- wix_bp6_componentgroup_datafolder.wxs -->
+      <ComponentGroupRef Id='Bp6_ComponentGroup_DefaultDataFolder'/>
+      
+      <!-- wix_bp6_componentgroup_imagefolder.wxs -->
+      <ComponentGroupRef Id='Bp6_ComponentGroup_ImageFolder'/>
+      
+    </Feature> <!-- Id='Bp6_Feature' -->
+
+  </Fragment>
+</Wix>

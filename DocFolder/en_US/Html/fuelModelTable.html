@@ -1,0 +1,902 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Fuel Model Table of Parameters Page</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+          <H2><FONT COLOR="#ff5500">Fuel Model Table of Parameters</FONT></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+    <P>
+
+Fuel model parameters, listed in the table below, vary for each model and include: fuel load, fuel model type, surface area-to-volume ratio (SA/V), fuel bed depth, moisture of extinction, and fuel particle heat content. Fuel model parameters not listed are constant for the entire set and include the following:
+<ul>
+	<li>10-hr SA/V = 109 1/ft</li>
+    <li>100-hr SA/V ratio = 30 1/ft</li>
+    <li>Total fuel particle mineral content = 5.55 percent</li>
+    <li>Effective (silica-free) mineral content = 1.00 percent</li>
+    <li>Oven-dry fuel particle density = 32 lb/ft<sup>3</sup></li>
+</ul>
+
+Metric equivalents for each fuel model can be found in two ways:
+<ol>
+	<li>Open the example worksheet entitled &quot;FuelModelingMetric.bpw&quot; and select &quot;Initialize from a Fuel Model.&quot;</li>
+    <li>Click on the Guide button next to Fuel Model on any worksheet containing the SURFACE module, right-click on a fuel model, and select &quot;View parameters.&quot; Both English and metric units are contained in this file.</li>
+</ol> 
+      
+  <A NAME="Table1"></a>          
+  <H3><FONT COLOR="#ff5500">Fuel Model Parameters (Anderson, 1982; Scott and Burgan 2005)</FONT></H3>
+
+<TABLE border="1" cellspacing="2" cellpadding="6">
+  <TR VALIGN=bottom>
+    <TD rowspan="2"><b>Fuel<br>model<br>code</b></TD>
+    <TD colspan="5" align="center"><b>Fuel load (t/ac)</b></TD>
+    <TD rowspan="2" align="center"><b>Fuel<br>model<br>type<sup>a</sup></b></TD>
+    <TD colspan="3" align="center"><b>SA/V ratio (1/ft)<sup>b</sup></b></TD>
+    <TD rowspan="2" align="center"><b>Fuel<br>bed<br>depth<br>(ft)</b></TD>
+    <TD rowspan="2" align="center"><b>Dead fuel<br>extinction<br>moisture<br>(percent)</b></TD>
+    <TD rowspan="2" align="center"><b>Heat<br>content<br>(BTU/lb)<sup>c</sup></b></TD>
+  </TR>
+  <TR VALIGN=bottom>
+    <TD align="center"><b>1-hr</b></TD>
+    <TD align="center"><b>10-hr</b></TD>
+    <TD align="center"><b>100-hr</b></TD>
+    <TD align="center"><b>Live<br>herb</b></TD>
+    <TD align="center"><b>Live<br>woody</b></TD>
+    <TD align="center"><b>Dead<br>1-hr</b></TD>
+    <TD align="center"><b>Live<br>herb</b></TD>
+    <TD align="center"><b>Live<br>woody</b></TD>
+  </TR>
+  <tr>
+  	<td colspan="13"><b>Grass Fuel Type</b>
+  </tr>
+  <TR>
+  	<TD align="left">1</TD>
+    <TD align="center">0.74</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">3500</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">12</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">2</TD>
+    <TD align="center">2.00</TD>
+  	<TD align="center">1.00</TD>
+    <TD align="center">0.50</TD>
+  	<TD align="center">0.50</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">3000</TD>
+  	<TD align="center">1500</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">3</TD>
+    <TD align="center">3.01</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">2.5</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gr1 (101)</TD>
+    <TD align="center">0.10</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.30</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">2200</TD>
+  	<TD align="center">2000</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">0.4</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gr2 (102)</TD>
+    <TD align="center">0.10</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">1.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gr3 (103)</TD>
+    <TD align="center">0.10</TD>
+  	<TD align="center">0.40</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">1.50</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center">1300</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">2.0</TD>
+    <TD align="center">30</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gr4 (104)</TD>
+    <TD align="center">0.25</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">1.90</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">2.0</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gr5 (105)</TD>
+    <TD align="center">0.40</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">2.50</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">1800</TD>
+  	<TD align="center">1600</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">1.5</TD>
+    <TD align="center">40</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gr6 (106)</TD>
+    <TD align="center">0.10</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">3.40</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">2200</TD>
+  	<TD align="center">2000</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">1.5</TD>
+    <TD align="center">40</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gr7 (107)</TD>
+    <TD align="center">1.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">5.40</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">3.0</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gr8 (108)</TD>
+    <TD align="center">0.50</TD>
+  	<TD align="center">1.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">7.30</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center">1300</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">4.0</TD>
+    <TD align="center">30</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gr9 (109)</TD>
+    <TD align="center">1.00</TD>
+  	<TD align="center">1.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">9.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">1800</TD>
+  	<TD align="center">1600</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+
+  	<TD align="center">5.0</TD>
+    <TD align="center">40</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <tr>
+  	<td colspan="13"><b>Grass-Shrub Fuel Type</b>
+  </tr>
+  <TR>
+  	<TD align="left">gs1 (121)</TD>
+    <TD align="center">0.20</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.50</TD>
+    <TD align="center">0.65</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center">1800</TD>
+    <TD align="center">1800</TD>
+  	<TD align="center">0.9</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gs2 (122)</TD>
+    <TD align="center">0.50</TD>
+  	<TD align="center">0.50</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.60</TD>
+    <TD align="center">1.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center">1800</TD>
+    <TD align="center">1800</TD>
+  	<TD align="center">1.5</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gs3 (123)</TD>
+    <TD align="center">0.30</TD>
+  	<TD align="center">0.25</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">1.45</TD>
+    <TD align="center">1.25</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">1800</TD>
+  	<TD align="center">1600</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center">1.8</TD>
+    <TD align="center">40</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">gs4 (124)</TD>
+    <TD align="center">1.90</TD>
+  	<TD align="center">0.30</TD>
+    <TD align="center">0.10</TD>
+  	<TD align="center">3.40</TD>
+    <TD align="center">7.10</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">1800</TD>
+  	<TD align="center">1600</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center">2.1</TD>
+    <TD align="center">40</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <tr>
+  	<td colspan="13"><b>Shrub Fuel Type</b>
+  </tr>
+  <TR>
+  	<TD align="left">4</TD>
+    <TD align="center">5.01</TD>
+  	<TD align="center">4.01</TD>
+    <TD align="center">2.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">5.01</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center">6.0</TD>
+    <TD align="center">20</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">5</TD>
+    <TD align="center">1.00</TD>
+  	<TD align="center">0.50</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">2.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center">2.0</TD>
+    <TD align="center">20</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">6</TD>
+    <TD align="center">1.50</TD>
+  	<TD align="center">2.50</TD>
+    <TD align="center">2.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">1750</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">2.5</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">7</TD>
+    <TD align="center">1.13</TD>
+  	<TD align="center">1.87</TD>
+    <TD align="center">1.50</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.37</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">1750</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center">2.5</TD>
+    <TD align="center">40</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sh1 (141)</TD>
+    <TD align="center">0.25</TD>
+  	<TD align="center">0.25</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.15</TD>
+    <TD align="center">1.30</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center">1800</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sh2 (142)</TD>
+    <TD align="center">1.35</TD>
+  	<TD align="center">2.40</TD>
+    <TD align="center">0.75</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">3.85</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sh3 (143)</TD>
+    <TD align="center">0.45</TD>
+  	<TD align="center">3.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">6.20</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center">1400</TD>
+  	<TD align="center">2.4</TD>
+    <TD align="center">40</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sh4 (144)</TD>
+    <TD align="center">0.85</TD>
+  	<TD align="center">1.15</TD>
+    <TD align="center">0.20</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">2.55</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center"><p>3.0</p></TD>
+    <TD align="center">30</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sh5 (145)</TD>
+    <TD align="center">3.60</TD>
+  	<TD align="center">2.10</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">2.90</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">750</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center">6.0</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sh6 (146)</TD>
+    <TD align="center">2.90</TD>
+  	<TD align="center">1.45</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">1.40</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">750</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center">2.0</TD>
+    <TD align="center">30</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sh7 (147)</TD>
+    <TD align="center">3.50</TD>
+  	<TD align="center">5.30</TD>
+    <TD align="center">2.20</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">3.40</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">750</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center">6.0</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sh8 (148)</TD>
+    <TD align="center">2.05</TD>
+  	<TD align="center">3.40</TD>
+    <TD align="center">0.85</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">4.35</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">750</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center">3.0</TD>
+    <TD align="center">40</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sh9 (149)</TD>
+    <TD align="center">4.50</TD>
+  	<TD align="center">2.45</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">1.55</TD>
+    <TD align="center">7.00</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">750</TD>
+  	<TD align="center">1800</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center">4.4</TD>
+    <TD align="center">40</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <tr>
+  	<td colspan="13"><b>Timber-Understory Fuel Type</b>
+  </tr>
+  <TR>
+  	<TD align="left">tu1 (161)</TD>
+    <TD align="center">0.20</TD>
+  	<TD align="center">0.90</TD>
+    <TD align="center">1.50</TD>
+  	<TD align="center">0.20</TD>
+    <TD align="center">0.90</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center">1800</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center">0.6</TD>
+    <TD align="center">20</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tu2 (162)</TD>
+    <TD align="center">0.95</TD>
+  	<TD align="center">1.80</TD>
+    <TD align="center">1.25</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.20</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center">1600</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">30</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tu3 (163)</TD>
+    <TD align="center">1.10</TD>
+  	<TD align="center">0.15</TD>
+    <TD align="center">0.25</TD>
+  	<TD align="center">0.65</TD>
+    <TD align="center">1.10</TD>
+  	<TD align="center">dynamic</TD>
+    <TD align="center">1800</TD>
+  	<TD align="center">1600</TD>
+    <TD align="center">1400</TD>
+  	<TD align="center">1.3</TD>
+    <TD align="center">30</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tu4 (164)</TD>
+    <TD align="center">4.50</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">2.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2300</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center">0.5</TD>
+    <TD align="center">12</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tu5 (165)</TD>
+    <TD align="center">4.00</TD>
+  	<TD align="center">4.00</TD>
+    <TD align="center">3.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">3.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center">750</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <tr>
+  	<td colspan="13"><b>Timber Litter Fuel Type</b>
+  </tr>
+  <TR>
+  	<TD align="left">8</TD>
+    <TD align="center">1.50</TD>
+  	<TD align="center">1.00</TD>
+    <TD align="center">2.50</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">0.2</TD>
+    <TD align="center">30</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">9</TD>
+    <TD align="center">2.92</TD>
+  	<TD align="center">0.41</TD>
+    <TD align="center">0.15</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2500</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">0.2</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">10</TD>
+    <TD align="center">3.01</TD>
+  	<TD align="center">2.00</TD>
+    <TD align="center">5.01</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">2.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tl1 (181)</TD>
+    <TD align="center">1.00</TD>
+  	<TD align="center">2.20</TD>
+    <TD align="center">3.60</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">0.2</TD>
+    <TD align="center">30</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tl2 (182)</TD>
+    <TD align="center">1.40</TD>
+  	<TD align="center">2.30</TD>
+    <TD align="center">2.20</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">0.2</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tl3 (183)</TD>
+    <TD align="center">0.50</TD>
+  	<TD align="center">2.20</TD>
+    <TD align="center">2.80</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">0.3</TD>
+    <TD align="center">20</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tl4 (184)</TD>
+    <TD align="center">0.50</TD>
+  	<TD align="center">1.50</TD>
+    <TD align="center">4.20</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">0.4</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tl5 (185)</TD>
+    <TD align="center">1.15</TD>
+    <TD align="center">2.50</TD>
+  	<TD align="center">4.40</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">0.6</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tl6 (186)</TD>
+    <TD align="center">2.40</TD>
+    <TD align="center">1.20</TD>
+  	<TD align="center">1.20</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">0.3</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tl7 (187)</TD>
+    <TD align="center">0.30</TD>
+    <TD align="center">1.40</TD>
+  	<TD align="center">8.10</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">0.4</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tl8 (188)</TD>
+    <TD align="center">5.80</TD>
+    <TD align="center">1.40</TD>
+  	<TD align="center">1.10</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">1800</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">0.3</TD>
+    <TD align="center">35</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">tl9 (189)</TD>
+    <TD align="center">6.65</TD>
+    <TD align="center">3.30</TD>
+  	<TD align="center">4.15</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">1800</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">0.6</TD>
+    <TD align="center">35</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <tr>
+  	<td colspan="13"><b>Slash-Blowdown Fuel Type</b>
+  </tr>
+  <TR>
+  	<TD align="left">11</TD>
+    <TD align="center">1.50</TD>
+  	<TD align="center">4.51</TD>
+    <TD align="center">5.51</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">15</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">12</TD>
+    <TD align="center">4.01</TD>
+  	<TD align="center">14.03</TD>
+    <TD align="center">16.53</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">2.3</TD>
+    <TD align="center">20</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">13</TD>
+    <TD align="center">7.01</TD>
+  	<TD align="center">23.04</TD>
+    <TD align="center">28.05</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">1500</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1500</TD>
+    <TD align="center" bgcolor="#CCCCCC">1500</TD>
+  	<TD align="center">3.0</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sb1 (201)</TD>
+    <TD align="center">1.50</TD>
+  	<TD align="center">3.00</TD>
+    <TD align="center">11.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sb2 (202)</TD>
+    <TD align="center">4.50</TD>
+  	<TD align="center">4.25</TD>
+    <TD align="center">4.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">1.0</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sb3 (203)</TD>
+    <TD align="center">5.50</TD>
+  	<TD align="center">2.75</TD>
+    <TD align="center">3.00</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">1.2</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <TR>
+  	<TD align="left">sb4 (204)</TD>
+    <TD align="center">5.25</TD>
+  	<TD align="center">3.50</TD>
+    <TD align="center">5.25</TD>
+  	<TD align="center">0.00</TD>
+    <TD align="center">0.00</TD>
+  	<TD align="center">static</TD>
+    <TD align="center">2000</TD>
+  	<TD align="center" bgcolor="#CCCCCC">1800</TD>
+    <TD align="center" bgcolor="#CCCCCC">1600</TD>
+  	<TD align="center">2.7</TD>
+    <TD align="center">25</TD>
+  	<TD align="center">8000</TD>
+  </TR>
+  <tr>
+  	<td colspan="13">
+    	<sup>a</sup> Fuel model type "dynamic" only applies to the Scott and Burgan (2005) fuel models that contain live herbaceous load.<br>
+        <sup>b</sup> A fill value typical of the fuel model was assigned in cases where there is no load in a particular fuel class or category, but it is shaded in gray to show that it is not used.<br>
+        <sup>c</sup> The same heat content was applied to both live and deal fuel categories.
+    </td>
+  </tr>
+
+</TABLE>
+<p>
+<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+
+    <UL>
+      <LI><A HREF="vSurfaceFuelBedModel.html">Fuel Model</A></LI>
+      <LI><A HREF="fuelModelKey.html">Fuel Model Key</A></LI>
+      <LI><A HREF="fuelModelCrosswalk.html">Fuel Model Crosswalk</A></LI>
+    </UL>
+
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, March 3, 2014.</FONT>
+</BODY>
+</HTML>
