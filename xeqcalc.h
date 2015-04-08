@@ -1,16 +1,17 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalc.h
- *  \version BehavePlus4
- *  \author Copyright (C) 2002-2009 by Collin D. Bevins.  All rights reserved.
+ *  \version BehavePlus6
+ *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree calculator interface.
  */
-
 #ifndef _XEQCALC_H_
 /*! \def _XEQCALC_H_
     \brief Prevent redundant includes.
  */
 #define _XEQCALC_H_ 1
+
+#include "Bp6Globals.h"
 
 // Custom class references
 class BpDocument;
@@ -19,6 +20,9 @@ class EqTree;
 class EqVar;
 class FuelModel;
 class PropertyDict;
+
+#include "Bp6SurfaceFire.h"
+#include "Bp6CrownFire.h"
 
 // Qt include files
 #include <qstring.h>
@@ -39,6 +43,7 @@ class EqCalc
 // Public methods
 public:
     EqCalc( EqTree *eqTree ) ;
+	bool closeEnough( const char* what, double v5, double v6, double delta=0.0000001 );
     bool conflict1( void ) const ;
     bool conflict2( void ) const ;
     FuelModel *currentFuelModel( int id ) ;
@@ -109,20 +114,41 @@ public:
     EqVar *vContainXMax;
     EqVar *vContainXMin;
     EqVar *vContainYMax;
+
     EqVar *vCrownFireActiveCrown;
     EqVar *vCrownFireActiveRatio;
+	EqVar *vCrownFireActiveFireArea;
+	EqVar *vCrownFireActiveFlameLeng;
+	EqVar *vCrownFireActiveHeatPerUnitArea;
+	EqVar *vCrownFireActiveSpreadDist;
+	EqVar *vCrownFireActiveFireLineInt;
+	EqVar *vCrownFireActiveFirePerimeter;
+	EqVar *vCrownFireActiveSpreadRate;
+    EqVar *vCrownFireActiveFireWidth;
     EqVar *vCrownFireArea;
+	EqVar *vCrownFireCanopyFractionBurned;
 	EqVar *vCrownFireCanopyHt;
     EqVar *vCrownFireCritCrownSpreadRate;
     EqVar *vCrownFireCritSurfFireInt;
     EqVar *vCrownFireCritSurfFlameLeng;
+    EqVar *vCrownFireCritSurfSpreadRate;
     EqVar *vCrownFireFlameLeng;
     EqVar *vCrownFireFuelLoad;
+	EqVar *vCrownFireActiveCritSurfSpreadRate;
+	EqVar *vCrownFireActiveCritOpenWindSpeed;
     EqVar *vCrownFireHeatPerUnitArea;
     EqVar *vCrownFireHeatPerUnitAreaCanopy;
     EqVar *vCrownFireLengthToWidth;
     EqVar *vCrownFireLineInt;
-    EqVar *vCrownFirePerimeter;
+	EqVar *vCrownFirePassiveFireArea;
+	EqVar *vCrownFirePassiveFlameLeng;
+	EqVar *vCrownFirePassiveHeatPerUnitArea;
+	EqVar *vCrownFirePassiveSpreadDist;
+	EqVar *vCrownFirePassiveFireLineInt;
+	EqVar *vCrownFirePassiveFirePerimeter;
+	EqVar *vCrownFirePassiveSpreadRate;
+    EqVar *vCrownFirePassiveFireWidth;
+	EqVar *vCrownFirePerimeter;
     EqVar *vCrownFirePowerOfFire;
     EqVar *vCrownFirePowerOfWind;
     EqVar *vCrownFirePowerRatio;
@@ -133,6 +159,7 @@ public:
     EqVar *vCrownFireTransToCrown;
     EqVar *vCrownFireType;
     EqVar *vCrownFireWindDriven;
+
     EqVar *vDocDescription;
     EqVar *vDocFireAnalyst;
     EqVar *vDocFireName;
@@ -412,8 +439,10 @@ public:
     EqFun *fCrownFirePowerOfWind;
     EqFun *fCrownFirePowerRatio;
     EqFun *fCrownFireSpreadDist;
+    EqFun *fCrownFireSpreadDistV6;
     EqFun *fCrownFireSpreadMapDist;
     EqFun *fCrownFireSpreadRate;
+    EqFun *fCrownFireSpreadRateV6;
     EqFun *fCrownFireTransRatioFromFireIntAtVector;
     EqFun *fCrownFireTransRatioFromFlameLengAtVector;
     EqFun *fCrownFireTransToCrown;
@@ -566,8 +595,10 @@ public:
     void CrownFireTransRatioFromFireIntAtVector( void );
     void CrownFireTransRatioFromFlameLengAtVector( void );
     void CrownFireSpreadDist( void );
+    void CrownFireSpreadDistV6( void );
     void CrownFireSpreadMapDist( void );
-    void CrownFireSpreadRate( void );
+    void CrownFireSpreadRate( void );				// Deprecated, historical
+    void CrownFireSpreadRateV6( void );
     void CrownFireTransToCrown( void );
     void CrownFireType( void );
     void CrownFireWindDriven( void );
@@ -680,7 +711,7 @@ public:
     void TreeMortalityRateFofemAtVector( void );	//!> Deprecated, historical
     void TreeMortalityRateFofem2AtVector( void );	//!> Deprecated, historical
     void TreeMortalityRateFofem6AtVector( void );
-    void TreeMortalityRateFofemHoodAtVector( void );	//!> Deprecated, historical
+    void TreeMortalityRateFofemHoodAtVector( void );//!> Deprecated, historical
     void WindDirFromNorth( void );
     void WindDirFromUpslope( void );
     void WindAdjFactor( void );
@@ -692,6 +723,9 @@ public:
     void WthrRelativeHumidity( void );
     void WthrSummerSimmerIndex( void );
     void WthrWindChillTemp( void );
+
+	Bp6CrownFire*   m_Bp6CrownFire;
+	Bp6SurfaceFire* m_Bp6SurfaceFire;
 };
 
 #endif

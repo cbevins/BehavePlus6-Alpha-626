@@ -282,6 +282,8 @@ static const char *FuelFractionVars[] =
     "vSurfaceFuelLoadTransferFraction",
     "vSurfaceFuelBedDeadFraction",
     "vTreeCanopyCrownFraction",
+	"vSurfaceFuelBedLiveFraction",
+	"vSurfaceFuelBedDeadFraction",
     NULL
 };
 
@@ -346,6 +348,7 @@ static const char *WindSpeedVars[] =
     "vSurfaceFireEffWindAtHead",
     "vSurfaceFireEffWindAtVector",
     "vSurfaceFireWindSpeedLimit",
+	"vCrownFireActiveCritOpenWindSpeed",
     NULL
 };
 
@@ -438,25 +441,33 @@ static const char *FireSurfaceSpreadVars[] =
 
 static const char *FireCrownSpreadVars[] =
 {
-    "vCrownFireSpreadRate",
+	"vCrownFireActiveCritSurfSpreadRate",
+	"vCrownFireActiveSpreadRate",
     "vCrownFireCritCrownSpreadRate",
-    NULL
+	"vCrownFireCritSurfSpreadRate",
+	"vCrownFirePassiveSpreadRate",
+    "vCrownFireSpreadRate",
+	NULL
 };
 
 static const char *FireHpuaVars[] =
 {
+	"vCrownFireActiveHeatPerUnitArea",
     "vCrownFireHeatPerUnitArea",
     "vCrownFireHeatPerUnitAreaCanopy",
+	"vCrownFirePassiveHeatPerUnitArea",
     "vSurfaceFireHeatPerUnitArea",
-    NULL
+NULL
 };
 
 static const char *FireLineIntVars[] =
 {
+    "vCrownFireActiveFireLineInt",
     "vCrownFireCritSurfFireInt",
     "vCrownFireLineInt",
-    "vSurfaceFireLineIntAtHead",
+    "vCrownFirePassiveFireLineInt",
     "vSurfaceFireLineIntAtBeta",
+    "vSurfaceFireLineIntAtHead",
     "vSurfaceFireLineIntAtPsi",
     "vSurfaceFireLineIntAtVector",
     NULL
@@ -464,17 +475,19 @@ static const char *FireLineIntVars[] =
 
 static const char *FireFlameLengthVars[] =
 {
+    "vCrownFireActiveFlameLeng",
     "vCrownFireCritSurfFlameLeng",
     "vCrownFireFlameLeng",
-    "vSurfaceFireFlameLengAtHead",
-    "vSurfaceFireFlameLengAtBeta",
-    "vSurfaceFireFlameLengAtPsi",
-    "vSurfaceFireFlameLengAtVector",
-    "vSurfaceFireFlameHtAtVector",
-    "vSurfaceFireFlameHtPile",
-    "vSurfaceFireScorchHtAtVector",
+    "vCrownFirePassiveFlameLeng",
     "vSpotFlameHtActiveCrown",
     "vSpotFlameHtTorchingTrees",
+    "vSurfaceFireFlameHtAtVector",
+    "vSurfaceFireFlameHtPile",
+    "vSurfaceFireFlameLengAtBeta",
+    "vSurfaceFireFlameLengAtHead",
+    "vSurfaceFireFlameLengAtPsi",
+    "vSurfaceFireFlameLengAtVector",
+    "vSurfaceFireScorchHtAtVector",
     NULL
 };
 
@@ -502,6 +515,10 @@ static const char *FireRxIntVars[] =
 
 static const char *FireDistVars[] =
 {
+    "vCrownFireActiveFireWidth",
+    "vCrownFireActiveSpreadDist",
+    "vCrownFirePassiveFireWidth",
+    "vCrownFirePassiveSpreadDist",
     "vCrownFireSpreadDist",
     "vSurfaceFireDistAtHead",
     "vSurfaceFireDistAtBack",
@@ -522,7 +539,9 @@ static const char *FireAreaVars[] =
     "vContainAttackSize",
     "vContainReportSize",
     "vContainSize",
+    "vCrownFireActiveFireArea",
     "vCrownFireArea",
+    "vCrownFirePassiveFireArea",
     "vSurfaceFireArea",
     NULL
 };
@@ -530,6 +549,8 @@ static const char *FireAreaVars[] =
 static const char *FirePerimeterVars[] =
 {
     "vContainAttackPerimeter",
+    "vCrownFireActiveFirePerimeter",
+    "vCrownFirePassiveFirePerimeter",
     "vCrownFirePerimeter",
     "vSurfaceFirePerimeter",
     NULL
@@ -560,6 +581,7 @@ static const char *FireRatioVars[] =
 
 static const char *TreeScorchRatioVars[] =
 {
+	"vCrownFireCanopyFractionBurned",
     "vTreeCrownVolScorchedAtVector",
     "vTreeCrownLengFractionScorchedAtVector",
     "vTreeMortalityRateAtVector",

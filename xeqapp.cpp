@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqapp.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree application class methods.
  */
@@ -988,7 +988,14 @@ EqTree *EqApp::newEqTree( const QString &treeName, const QString &fileName,
     {
         eqTree->readXmlFile( fileName );
     }
-    return( eqTree );
+    
+	FILE* csv;
+    if ( ( csv = fopen( "BehavePlus6Vars.csv", "w" ) ) && false )
+    {
+		eqTree->printVarCsv( csv );
+		fclose( csv );
+	}
+	return( eqTree );
 }
 
 //------------------------------------------------------------------------------

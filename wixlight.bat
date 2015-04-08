@@ -1,5 +1,5 @@
-light -ext WixUIExtension -out bp6_613.msi ^
-wix_bp6_product_613.wixobj ^
+light -ext WixUIExtension -out bp6_614.msi ^
+wix_bp6_product_614.wixobj ^
 wix_bp6_directory.wixobj ^
 wix_bp6_feature.wixobj ^
 wix_bp6_component_executable.wixobj ^

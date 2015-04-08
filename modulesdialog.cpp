@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file modulesdialog.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BehavePlus Module Selection dialog methods.
  *
@@ -391,7 +391,7 @@ void ModulesDialog::containOptions( void )
 
 void ModulesDialog::crownOptions( void )
 {
-    PropertyPage *p;
+    PropertyPage *p, *p1;
     QButtonGroup *bg;
     // Create the tabbed dialog
     PropertyTabDialog *dialog = new PropertyTabDialog( m_bp, m_bp->property(),
@@ -413,8 +413,125 @@ void ModulesDialog::crownOptions( void )
                   bg );
     bg->setFixedHeight( bg->sizeHint().height() );
     bg->setMinimumWidth( bg->sizeHint().width()+20 );
-    // Add the "Spread Outputs" page
-    p = dialog->addPage( "PropertyTabDialog:Crown:SpreadOutputs:Tab", 1, 1,
+ 	// Add the "Rothermel Crown" page
+    p = dialog->addPage( "PropertyTabDialog:Crown:RothermelOutputs:Tab", 1, 1,
+                         "Wildfire2.png",
+                         "Wildfire",
+                         "selectOutput.html" );
+	p1 = p;
+    addOutput( p, "crownCalcCrownFireType",
+                  "vCrownFireType",
+                  0, 0, 0, 0 );
+    addOutput( p, "crownCalcTransitionToCrown",
+                  "vCrownFireTransToCrown",
+                  1, 0, 1, 0 );
+    addOutput( p, "crownCalcActiveCrown",
+                  "vCrownFireActiveCrown",
+                  2, 0, 2, 0 );
+    addOutput( p, "crownCalcCrownSpreadRate",
+                  "vCrownFireSpreadRate",
+                  3, 0, 3, 0 );
+    addOutput( p, "crownCalcFireLineInt",
+                  "vCrownFireLineInt",
+                  4, 0, 4, 0 );
+    addOutput( p, "crownCalcFlameLeng",
+                  "vCrownFireFlameLeng",
+                  5, 0, 5, 0 );
+    addOutput( p, "crownCalcHeatPerUnitArea",
+                  "vCrownFireHeatPerUnitArea",
+                  6, 0, 6, 0 );
+    addOutput( p, "crownCalcFireLengthToWidth",
+                  "vCrownFireLengthToWidth",
+                  7, 0, 7, 0 );
+    addOutput( p, "crownCalcCrownSpreadDist",
+                  "vCrownFireSpreadDist",
+                  8, 0, 8, 0 );
+    addOutput( p, "crownCalcFireArea",
+                  "vCrownFireArea",
+                  9, 0, 9, 0 );
+    addOutput( p, "crownCalcFirePerimeter",
+                  "vCrownFirePerimeter",
+                  10, 0, 10, 0 );
+	// Add the "Passive Crown" page
+    p = dialog->addPage( "PropertyTabDialog:Crown:PassiveOutputs:Tab", 1, 1,
+                         "Wildfire3.png",
+                         "Wildfire",
+                         "selectOutput.html" );
+    addOutput( p, "crownCalcPassiveSpreadRate",
+                  "vCrownFirePassiveSpreadRate",
+                  0, 0, 0, 0 );
+    addOutput( p, "crownCalcPassiveFireLineInt",
+                  "vCrownFirePassiveFireLineInt",
+                  1, 0, 1, 0 );
+    addOutput( p, "crownCalcPassiveFlameLeng",
+                  "vCrownFirePassiveFlameLeng",
+                  2, 0, 2, 0 );
+    addOutput( p, "crownCalcPassiveHeatPerUnitArea",
+                  "vCrownFirePassiveHeatPerUnitArea",
+                  3, 0, 3, 0 );
+    addOutput( p, "crownCalcPassiveSpreadDist",
+                  "vCrownFirePassiveSpreadDist",
+                  4, 0, 4, 0 );
+    addOutput( p, "crownCalcPassiveFireArea",
+                  "vCrownFirePassiveFireArea",
+                  5, 0, 5, 0 );
+    addOutput( p, "crownCalcPassiveFirePerimeter",
+                  "vCrownFirePassiveFirePerimeter",
+                  6, 0, 6, 0 );
+	// Add the "Active Crown" page
+    p = dialog->addPage( "PropertyTabDialog:Crown:ActiveOutputs:Tab", 1, 1,
+                         "Wildfire1.png",
+                         "Wildfire",
+                         "selectOutput.html" );
+    addOutput( p, "crownCalcActiveSpreadRate",
+                  "vCrownFireActiveSpreadRate",
+                  0, 0, 0, 0 );
+    addOutput( p, "crownCalcActiveFireLineInt",
+                  "vCrownFireActiveFireLineInt",
+                  1, 0, 1, 0 );
+    addOutput( p, "crownCalcActiveFlameLeng",
+                  "vCrownFireActiveFlameLeng",
+                  2, 0, 2, 0 );
+    addOutput( p, "crownCalcActiveHeatPerUnitArea",
+                  "vCrownFireActiveHeatPerUnitArea",
+                  3, 0, 3, 0 );
+    addOutput( p, "crownCalcActiveSpreadDist",
+                  "vCrownFireActiveSpreadDist",
+                  4, 0, 4, 0 );
+    addOutput( p, "crownCalcActiveFireArea",
+                  "vCrownFireActiveFireArea",
+                  5, 0, 5, 0 );
+    addOutput( p, "crownCalcActiveFirePerimeter",
+                  "vCrownFireActiveFirePerimeter",
+                  6, 0, 6, 0 );
+    addOutput( p, "crownCalcPowerOfFire",
+                  "vCrownFirePowerOfFire",
+                  7, 0, 7, 0 );
+    addOutput( p, "crownCalcPowerOfWind",
+                  "vCrownFirePowerOfWind",
+                  8, 0, 8, 0 );
+    addOutput( p, "crownCalcPowerRatio",
+                  "vCrownFirePowerRatio",
+                  9, 0, 9, 0 );
+    addOutput( p, "crownCalcWindDriven",
+                  "vCrownFireWindDriven",
+                  10, 0, 10, 0 );
+	// Add the "Crown Canopy" page
+    p = dialog->addPage( "PropertyTabDialog:Crown:CrownCanopyOutputs:Tab", 1, 1,
+                         "Wildfire3.png",
+                         "Wildfire",
+                         "selectOutput.html" );
+    addOutput( p, "crownCalcFuelLoad",
+                  "vCrownFireFuelLoad",
+                  0, 0, 0, 0 );
+    addOutput( p, "crownCalcHeatPerUnitAreaCanopy",
+                  "vCrownFireHeatPerUnitAreaCanopy",
+                  1, 0, 1, 0 );
+    addOutput( p, "crownCalcCanopyFractionBurned",
+                  "vCrownFireCanopyFractionBurned",
+                  2, 0, 2, 0 );
+	// Add the "Intermediates" page
+    p = dialog->addPage( "PropertyTabDialog:Crown:IntermediateOutputs:Tab", 1, 1,
                          "Wildfire2.png",
                          "Wildfire",
                          "selectOutput.html" );
@@ -424,75 +541,27 @@ void ModulesDialog::crownOptions( void )
     addOutput( p, "crownCalcCriticalSurfaceFlameLeng",
                   "vCrownFireCritSurfFlameLeng",
                   1, 0, 1, 0 );
+    addOutput( p, "crownCalcCritSurfSpreadRate",
+                  "vCrownFireCritSurfSpreadRate",
+                  2, 0, 2, 0 );
     addOutput( p, "crownCalcTransitionRatio",
                   "vCrownFireTransRatio",
-                  2, 0, 2, 0 );
-    addOutput( p, "crownCalcTransitionToCrown",
-                  "vCrownFireTransToCrown",
                   3, 0, 3, 0 );
-    addOutput( p, "crownCalcCrownSpreadRate",
-                  "vCrownFireSpreadRate",
-                  4, 0, 4, 0 );
     addOutput( p, "crownCalcCriticalCrownSpreadRate",
                   "vCrownFireCritCrownSpreadRate",
-                  5, 0, 5, 0 );
+                  4, 0, 4, 0 );
     addOutput( p, "crownCalcActiveRatio",
                   "vCrownFireActiveRatio",
-                  6, 0, 6, 0 );
-    addOutput( p, "crownCalcActiveCrown",
-                  "vCrownFireActiveCrown",
-                  7, 0, 7, 0 );
-    addOutput( p, "crownCalcCrownFireType",
-                  "vCrownFireType",
-                  8, 0, 8, 0 );
-    addOutput( p, "crownCalcCrownSpreadDist",
-                  "vCrownFireSpreadDist",
-                  9, 0, 9, 0 );
-    addOutput( p, "crownCalcFireArea",
-                  "vCrownFireArea",
-                  10, 0, 10, 0 );
-    addOutput( p, "crownCalcFirePerimeter",
-                  "vCrownFirePerimeter",
-                  11, 0, 11, 0 );
-    addOutput( p, "crownCalcFireLengthToWidth",
-                  "vCrownFireLengthToWidth",
-                  12, 0, 12, 0 );
-    dialog->showPage( p );
-    
-	// Add the "Intensity Outputs" page
-    p = dialog->addPage( "PropertyTabDialog:Crown:IntensityOutputs:Tab", 1, 1,
-                         "Wildfire3.png",
-                         "Wildfire",
-                         "selectOutput.html" );
-    addOutput( p, "crownCalcFireLineInt",
-                  "vCrownFireLineInt",
-                  0, 0, 0, 0 );
-    addOutput( p, "crownCalcFlameLeng",
-                  "vCrownFireFlameLeng",
-                  1, 0, 1, 0 );
-    addOutput( p, "crownCalcPowerOfFire",
-                  "vCrownFirePowerOfFire",
-                  2, 0, 2, 0 );
-    addOutput( p, "crownCalcPowerOfWind",
-                  "vCrownFirePowerOfWind",
-                  3, 0, 3, 0 );
-    addOutput( p, "crownCalcPowerRatio",
-                  "vCrownFirePowerRatio",
-                  4, 0, 4, 0 );
-    addOutput( p, "crownCalcWindDriven",
-                  "vCrownFireWindDriven",
                   5, 0, 5, 0 );
-    addOutput( p, "crownCalcFuelLoad",
-                  "vCrownFireFuelLoad",
+    addOutput( p, "crownCalcActiveCritOpenWindSpeed",
+                  "vCrownFireActiveCritOpenWindSpeed",
                   6, 0, 6, 0 );
-    addOutput( p, "crownCalcHeatPerUnitAreaCanopy",
-                  "vCrownFireHeatPerUnitAreaCanopy",
+    addOutput( p, "crownCalcActiveCritSurfSpreadRate",
+                  "vCrownFireActiveCritSurfSpreadRate",
                   7, 0, 7, 0 );
-    addOutput( p, "crownCalcHeatPerUnitArea",
-                  "vCrownFireHeatPerUnitArea",
-                  8, 0, 8, 0 );
-    // Show then delete the dialog.
+   // Show then delete the dialog.
     dialog->resize( sizeHint() );
+    dialog->showPage( p1 );
     dialog->exec();
     delete dialog;  dialog = 0;
     return;

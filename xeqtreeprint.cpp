@@ -1338,6 +1338,50 @@ void EqTree::printSummary( FILE *fptr ) const
 /*! \brief Prints the EqTree's local m_varDict variable dictionary.
  */
 
+void EqTree::printVarCsv( FILE *fptr ) const
+{
+    QDictIterator<EqVar> it( *m_varDict );
+    EqVar *v;
+    while( it.current() )
+    {
+        v = (EqVar *) it.current();
+		fprintf( fptr, "\"%s\",\"6\",\"'%s\",\"'%s\",\"%s\",\"%s\",\"%s\",",
+			v->m_name.latin1(),
+			v->m_inpOrder.latin1(),
+			v->m_outOrder.latin1(),
+			v->m_label ? v->m_label->latin1() : "NONE",
+			v->m_hdr0  ? v->m_hdr0->latin1()  : "NONE",
+			v->m_hdr1  ? v->m_hdr1->latin1()  : "NONE" );
+		// Display continuous variable parameters
+		if ( v->isContinuous() )
+		{
+			fprintf( fptr, "\"%s\",%f,%f,",
+				v->m_nativeUnits.latin1(),
+				v->m_nativeMinimum,
+				v->m_nativeMaximum );
+		}
+	    // Display discrete variable values
+		else if ( v->isDiscrete() )
+		{
+			fprintf( fptr, "discrete,,," );
+	    }
+		// Display text variable values
+		else if ( v->isText() )
+		{
+			fprintf( fptr, "text,,," );
+	    }
+		fprintf( fptr, "\"%s\",\"%s\"\n",
+			v->m_help.latin1(),
+			v->m_desc ? v->m_desc->latin1() : "NONE" );
+        ++it;
+    }
+    return;
+}
+
+//------------------------------------------------------------------------------
+/*! \brief Prints the EqTree's local m_varDict variable dictionary.
+ */
+
 void EqTree::printVarDict( FILE *fptr ) const
 {
     fprintf( fptr, "\n-------------------------------------------------\n" );

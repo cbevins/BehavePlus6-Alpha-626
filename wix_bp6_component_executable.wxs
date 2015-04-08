@@ -11,22 +11,6 @@
               DiskId='1'
               Source='Release\BehavePlus6.exe'
               KeyPath='yes'>
-          
-          <Shortcut Id="startmenuBehavePlus6"
-                    Directory="ProgramMenuDir"
-                    Name="BehavePlus 6"
-                    WorkingDirectory='BEHAVEPLUS6FOLDER'
-                    Icon="BehavePlus6.exe"
-                    IconIndex="0"
-                    Advertise="yes" />
-
-          <Shortcut Id="desktopBehavePlus6"
-                    Directory="DesktopFolder"
-                    Name="BehavePlus 6"
-                    WorkingDirectory='BEHAVEPLUS6FOLDER'
-                    Icon="BehavePlus6.exe"
-                    IconIndex="0"
-                    Advertise="yes" />
         </File> <!-- Id='BehavePlus6EXE' -->
 
         <File Id="BehavePlus6XML"
@@ -264,8 +248,34 @@
                        Key="SOFTWARE\Classes\SystemFileAssociations\.bpf\shell\edit.BehavePlus6.exe\command"
                        Value="&quot;[APPLICATIONFOLDER]BehavePlus6.exe&quot; -open &quot;%1&quot;" Type="string" />
 
+        <!-- Directory="StartMenuFolder" installs to the Win8 Start page -->
+        <!-- Directory="ProgramMenuFolder" installs to the Win8 Start page -->
+        <Shortcut Id="startmenuBehavePlus6"
+                  Directory="StartMenuFolder"
+                  Name="BehavePlus 6"
+                  WorkingDirectory='BEHAVEPLUS6FOLDER'
+                  Icon="BehavePlus6.exe"
+                  IconIndex="0"
+                  Advertise="yes" />
+
       </Component> <!-- Id='MainExecutable' -->
-      
+
+      <Component Id="desktopShortcut" Guid="99AFC218-1979-4fde-8A2F-88AE6D4C44FA"
+                 Directory="DesktopFolder">
+        <!-- Directory="DesktopFolder" installs to the Taskbar Desktop Menu AND a desktop icon -->
+        <Condition>INSTALLDESKTOPSHORTCUT</Condition>
+        <Shortcut Id="desktopBehavePlus6"
+                  Directory="DesktopFolder"
+                  Name="BehavePlus 6"
+                  WorkingDirectory='BEHAVEPLUS6FOLDER'
+                  Icon="BehavePlus6.exe"
+                  IconIndex="0"
+                  Target="[#BehavePlus6EXE]" />
+        <RegistryValue Root="HKCU"
+                       Key="Software\[Manufacturer]\[ProductName]"
+                       Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+                 
       <Component Id="ProgramMenuDir"
                  Directory="ProgramMenuDir"
                  Guid="19B767A5-9272-4BB7-8786-890E49645CCB">
@@ -276,8 +286,8 @@
             Type='string'
             Value=''
             KeyPath='yes' />
-      </Component>
-      <!-- Id='ProgramMenuDir' -->
+      </Component>  <!-- Id='ProgramMenuDir' -->
+
     </ComponentGroup>
     
   </Fragment>

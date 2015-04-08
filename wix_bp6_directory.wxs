@@ -9,7 +9,11 @@
         </Directory>  <!-- Id='ProgramMenuDir' -->
       </Directory>  <!-- Id='ProgramMenuFolder' -->
 
-      <Directory Id="DesktopFolder" Name="Desktop" />
+      <Directory Id="DesktopFolder" Name="Desktop">
+      </Directory>
+
+      <Directory Id="StartMenuFolder" Name="StartMenu">
+      </Directory>
 
       <Directory Id='INSTALLDIR' Name='Behave'>
           <Directory Id='BEHAVEPLUS6FOLDER' Name='BehavePlus6'>

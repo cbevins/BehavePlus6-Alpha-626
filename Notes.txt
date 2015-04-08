@@ -1,3 +1,7 @@
+--------------------------------------------------------------------------------
+
+SECTION 1
+
 We have the following AtVector variables defined:
 
 --	vSurfaceFireDist		no	AtHead	AtBack	AtVector	AtPsi
@@ -22,4 +26,337 @@ We have the following AtVector variables defined:
 --	vSurfaceFireVectorPsi
 --	vSurfaceFireVectorTheta
 
-In a different order:
+--------------------------------------------------------------------------------
+
+SECTION 2
+
+Eqcalc::FuelBedWeighted() calling sequence and FBL calls
+
+for ( int i=0; i<2; i++ )
+    FuelBedParms();									// none
+    if ( prop->boolean( "surfaceConfMoisLifeCat" ) )
+        FuelMoisLifeClass();						// none
+    else if ( prop->boolean( "surfaceConfMoisDeadHerbWood" ) )
+        FuelMoisDeadHerbWood();						// none
+    else if ( prop->boolean( "surfaceConfMoisScenario" ) )
+        FuelMoisScenarioModel();					// none
+    FuelMoisTimeLag();								// none
+	FuelLoadTransferFraction();						// FBL_HerbaceousFuelLoadCuredFraction()
+    FuelBedIntermediates();							// FBL_SurfaceFuelBedIntermediates()
+    FuelBedHeatSink();								// FBL_SurfaceFuelBedHeatSink()
+    FirePropagatingFlux();							// FBL_SurfaceFirePropagatingFlux()
+    FireReactionInt();								// FBL_SurfaceFireReactionIntensity()
+    FireNoWindRate();								// FBL_SurfaceFireNoWindNoSlopeSpreadRate()
+	if ( prop->boolean( "surfaceConfWindSpeedAt10MCalc" )
+	  || prop->boolean( "surfaceConfWindSpeedAt20FtCalc" ) )
+		WindAdjFactor();							// FBL_WindAdjustmentFactor()
+	if ( prop->boolean( "surfaceConfWindSpeedAt10M" )
+	  || prop->boolean( "surfaceConfWindSpeedAt10MCalc" ) )
+		WindSpeedAt20Ft();							// FBL_WindSpeedAt20Ft()
+	if ( ! prop->boolean( "surfaceConfWindSpeedAtMidflame" ) )
+		WindSpeedAtMidflame();						// none
+    FireSpreadAtHead();								// FBL_SurfaceFireForwardSpreadRate()
+	FireDistAtHead();								// none
+    FireLengthToWidth();							// FBL_SurfaceFireLengthToWidthRatio()
+    FireEccentricity();								// FBL_SurfaceFireEccentricity()
+	if ( beta_vector )
+		FireVectorBetaFromUpslope();				// FBL_SurfaceFireVectorBeta()
+	else	// Psi-based directions
+		if ( prop->boolean( "surfaceConfSpreadDirHead" ) )
+ 			vSurfaceFireVectorPsi->update( 0. );
+		else if ( prop->boolean( "surfaceConfSpreadDirBack" ) )
+ 			vSurfaceFireVectorPsi->update( 180. );
+		else if ( prop->boolean( "surfaceConfSpreadDirFlank" ) )
+	 		vSurfaceFireVectorPsi->update( 90. );
+		else if ( prop->boolean( "surfaceConfSpreadDirFireFront" ) )
+			FireVectorPsiFromUpslope();				// FBL_SurfaceFireVectorBeta()
+		FireVectorThetaFromPsi();					// FBL_SurfaceFireEllipseThetaFromPsiDegrees()
+		FireVectorBetaFromTheta();					// FBL_SurfaceFireEllipseBetaFromThetaDegrees()
+	FireSpreadAtVectorFromBeta();					// FBL_SurfaceFireSpreadRateAtBeta()
+	FireSpreadAtBeta();								// FBL_SurfaceFireSpreadRateAtBeta()
+	FireSpreadAtBack();								// FBL_SurfaceFireBackingSpreadRate()
+	FireDistAtBack();								// none
+	FireLengDist();									// none
+	FireEllipseF();									// FBL_SurfaceFireEllipseF()
+	FireEllipseG();									// FBL_SurfaceFireEllipseG()
+	FireWidthDist();								// FBL_SurfaceFireWidth()
+	FireEllipseH();									// FBL_SurfaceFireEllipseH()
+	if ( beta_vector )
+		FireVectorThetaFromBeta();					// FBL_SurfaceFireEllipseThetaFromBetaDegrees()
+		FireVectorPsiFromTheta();					// FBL_SurfaceFireEllipsePsiFromThetaDegrees()
+	FireSpreadAtPsi();								// FBL_SurfaceFireExpansionRateAtPsi()
+	if ( psi_ros )
+		FireSpreadAtVectorFromPsi();				// FBL_SurfaceFireExpansionRateAtPsi()
+    FireResidenceTime();							// FBL_SurfaceFireResidenceTime()
+	if ( psi_fli )
+		FireLineIntAtVectorFromPsi();				// FBL_SurfaceFireFirelineIntensity()
+	else
+		FireLineIntAtVectorFromBeta();				// FBL_SurfaceFireFirelineIntensity()
+    FireHeatPerUnitArea();							// FBL_SurfaceFireHeatPerUnitArea()
+    FireLineIntAtHead();							// FBL_SurfaceFireFirelineIntensity()
+	FireLineIntAtBeta();							// FBL_SurfaceFireFirelineIntensity()
+	FireLineIntAtPsi();								// FBL_SurfaceFireFirelineIntensity()
+    FireFlameLengAtHead();							// FBL_SurfaceFireFlameLength()
+    FireFlameLengAtVector();						// FBL_SurfaceFireFlameLength()
+	FireFlameLengAtBeta();							// FBL_SurfaceFireFlameLength()
+	FireFlameLengAtPsi();							// FBL_SurfaceFireFlameLength()
+	FireEffWindAtVector();							// FBL_SurfaceFireEffectiveWindSpeedAtVector()
+}
+
+--------------------------------------------------------------------------------
+
+SECTION 3
+
+In C++ source code:
+- Variant ownership is defined in a base class such as StandardFuelModelModule
+- Variant configuration is defined in a derived class for each config type:
+	- StandardFuelModelFromCatalog
+	- StandardFuelModelFromInput
+
+Possible BP Calling Sequence
+
+Fm = FuelMoisture
+Fp = FuelParticle
+Fpc = FuelParticleCollection
+Sfm = StandardFuelModel
+
+#-------------------------------------------------------------------------------
+#	Fuel Moisture
+#-------------------------------------------------------------------------------
+
+define FuelMoistureCatalog
+	extends CatalogModule
+	# define the record fields, which must be defined elsewhere
+	field CatalogKey
+	field FuelMoistureTag
+	field FuelMoistureDead1Hour
+	field FuelMoistureDead10Hour
+	field FuelMoistureDead100Hour
+	field FuelMoistureLiveHerb
+	field FuelMoistureLiveWood
+end
+
+define FuelMoistureCatalogKey
+	extends CatalogKeyVariant
+	catalog FuelMoistureCatalog
+end
+
+define FuelMoisture
+	extends BoundedQuantityVariant
+	units "ratio"
+	min 0.01
+	max 5.0
+	init 1.0
+end
+
+define FuelMoistureDeadFuel
+	extends FuelMoisture
+	max 1.0
+	assign this from FuelMoisture
+end
+
+define FuelMoistureLiveFuel
+	extends FuelMoisture
+	assign this from FuelMoisture
+end
+
+define FuelMoistureLiveHerb
+	extends FuelMoistureLiveFuel
+	assign this from FuelMoistureLiveFuel
+end
+
+define StandardFuelModelLiveHerbMoisture
+	extends FuelMoistureLiveHerb
+	# direct assignment from ONE OF these external references
+	assign this from FuelMoistureLiveHerb
+	assign this from FuelMoistureLiveFuel
+	# OR derived from a catalog key lookup
+	derive this from FuelMoistureCatalogKey
+end
+
+#-------------------------------------------------------------------------------
+#	Fuel 
+#-------------------------------------------------------------------------------
+
+define FuelBedDepth
+	extends BoundedQuantityVariant
+	units "ft"
+	min 0.1
+	max 10.0
+	init 1.0
+end
+
+StandardFuelModelDepth
+	extends FuelBedDepth
+	# override parent attributes as required
+	max 6.0
+	# it is possible to update this variant from ONE OF these
+	derive this from StandardFuelModelCatalogKey
+	assign this from FuelBedDepth
+end
+
+define StandardFuelModelCatalog
+	extends CatalogModule
+	# these field names must be defined somewhere
+	field CatalogKey
+	field StandardFuelModelTag
+	field StandardFuelModelLabel
+	field StandardFuelModelNumber
+	field StandardFuelModelDepth
+	field StandardFuelModelDeadMext
+	field StandardFuelModelCureMethod
+	field StandardFuelModelDead1HourLoad
+	field StandardFuelModelDead10HourLoad
+	field StandardFuelModelDead100HourLoad
+	field StandardFuelModelTotalHerbLoad
+	field StandardFuelModelTotalWoodLoad
+	field StandardFuelModelDead1HourSavr
+	field StandardFuelModelLiveHerbSavr
+	field StandardFuelModelLiveWoodSavr
+	field StandardFuelModelDeadHeat
+	field StandardFuelModelLiveHeat
+end
+
+define StandardFuelModelCatalogKey
+	extends CatalogKeyVariant
+	catalog StandardFuelModelCatalog
+end
+
+define StandardFuelModelModule
+	extends ModuleVariant
+	# this mode owns the following variants:
+	owns StandardFuelModelDepth
+	owns StandardFuelModelDeadExt
+	owns StandardFuelModelDead1HourLoad
+	owns StandardFuelModelDead1HourSavr
+	owns StandardFuelModelDead10HourLoad
+	owns StandardFuelModelDead100HourLoad
+	owns StandardFuelModelTotalHerbLoad
+	owns StandardFuelModelLiveHerbSavr
+	owns StandardFuelModelLiveWoodLoad
+	owns StandardFuelModelLiveWoodSavr
+	owns StandardFuelModelCureMethod
+	owns StandardFuelModelLiveHerbLoad
+	owns StandardFuelModelCuredHerbLoad
+end
+
+define StandardFuelModelFromCatalog
+	configures StandardFuelModelModule
+	# requires the following external references
+	references StandardFuelModelCatalogKey StandardFuelModelLiveHerbMoisture
+	# generates update() methods using catalog key lookup
+	derive StandardFuelModelDepth from StandardFuelModelCatalogKey
+	derive StandardFuelModelDeadExt from StandardFuelModelCatalogKey
+	derive StandardFuelModelDead1HourLoad from StandardFuelModelCatalogKey
+	derive StandardFuelModelDead1HourSavr from StandardFuelModelCatalogKey
+	derive StandardFuelModelDead10HourLoad from StandardFuelModelCatalogKey
+	derive StandardFuelModelDead100HourLoad from StandardFuelModelCatalogKey
+	derive StandardFuelModelTotalHerbLoad from StandardFuelModelCatalogKey
+	derive StandardFuelModelLiveHerbSavr from StandardFuelModelCatalogKey
+	derive StandardFuelModelLiveWoodLoad from StandardFuelModelCatalogKey
+	derive StandardFuelModelLiveWoodSavr from StandardFuelModelCatalogKey
+	derive StandardFuelModelCureMethod from StandardFuelModelCatalogKey
+	# generates update() methods using local StandardFuelModelTotalHerbLoad and external StandardFuelModelLiveHerbMoisture
+	derive StandardFuelModelLiveHerbLoad from StandardFuelModelTotalHerbLoad StandardFuelModelLiveHerbMoisture
+	derive StandardFuelModelCuredHerbLoad from StandardFuelModelTotalHerbLoad StandardFuelModelLiveHerbMoisture
+end
+
+define StandardFuelModelFromInput
+	configures StandardFuelModelModule
+	# requires the following external references
+	references StandardFuelModelLiveHerbMoisture
+	# input values can be initialized from the following catalog key
+	initialize from StandardFuelModelCatalogKey
+	# a client must call the set() method on each of these variants
+	input StandardFuelModelDepth
+	input StandardFuelModelDeadExt
+	input StandardFuelModelDead1HourLoad
+	input StandardFuelModelDead1HourSavr
+	input StandardFuelModelDead10HourLoad
+	input StandardFuelModelDead100HourLoad
+	input StandardFuelModelTotalHerbLoad
+	input StandardFuelModelLiveHerbSavr
+	input StandardFuelModelTotalWoodLoad
+	input StandardFuelModelLiveWoodSavr
+	input StandardFuelModelCureMethod
+	# generates update() methods using local StandardFuelModelTotalHerbLoad and external StandardFuelModelLiveHerbMoisture
+	derive StandardFuelModelLiveHerbLoad from StandardFuelModelTotalHerbLoad StandardFuelModelLiveHerbMoisture
+	derive StandardFuelModelCuredHerbLoad from StandardFuelModelTotalHerbLoad StandardFuelModelLiveHerbMoisture
+end
+
+define FuelParticleModule
+	extends ModuleVariant
+	# this mosule owns the following variants
+	owns FuelParticleLife
+	owns FuelParticleForm
+	owns FuelParticleLoad
+	owns FuelParticleSavr
+	owns FuelParticleHeat
+	owns FuelParticleDens
+	owns FuelParticleStot
+	owns FuelParticleSeff
+	owns FuelParticleArea from FuelParticleLoad FuelParticleSavr
+	owns FuelParticleEhn from FuelParticleSavr
+	owns FuelParticleDiam from FuelParticleSavr
+	owns FuelParticleSize from FuelParticleSavr
+	owns FuelParticleVol from FuelParticleLoad FuelParticleSavr FuelParticleDens
+end
+	
+define FuelParticleDead1Hour
+	configures FuelParticleModule
+	# requires the following external references
+	references StandardFuelModelModule
+	set	FuelParticleLife to "Dead"
+	set FuelParticleForm to "DeadDown"
+	assign FuelParticleLoad from StandardFuelModelModule.StandardFuelModelDead1HourLoad
+	assign FuelParticleSavr from StandardFuelModelModule.StandardFuelModelDead1HourSavr
+	set FuelParticleDens to 32.
+	assign FuelParticleHeat from StandardFuelModelModule.StandardFuelModelDeadHeat
+	set FuelParticleStot to 0.0555
+	set FuelParticleSeff to 0.01
+end
+
+define FuelParticleDeadHerb
+	configures FuelParticleModule
+	# requires the following external references
+	references StandardFuelModelModule
+	set	FuelParticleLife to "Dead"
+	set FuelParticleForm to "Herb"
+	assign FuelParticleLoad from StandardFuelModelModule.StandardFuelModelDeadHerbLoad
+	assign FuelParticleSavr from StandardFuelModelModule.StandardFuelModelLiveHerbSavr
+	set FuelParticleDens to 32.
+	assign FuelParticleHeat from SurfaceFuelModule StandardFuelModelDeadHeat
+	set FuelParticleStot to 0.0555
+	set FuelParticleSeff to 0.01
+end
+
+define FuelParticleCollection
+	extends ModuleVariant
+	owns FuelBedDepth
+	owns FuelBedDeadMext
+	collection FuelParticleModule
+end
+	
+define FuelParticleCollectionFromStandardFuelModelModule
+	extends FuelParticleCollection
+	references StandardFuelModelModule
+	# add particles that get their values from a StandardFuelModelModule
+	add FuelParticleDead1Hour references StandardFuelModelModule
+	add FuelParticleDead10Hour references StandardFuelModelModule
+	add FuelParticleDead100Hour references StandardFuelModelModule
+	add FuelParticleLiveHerbHour references StandardFuelModelModule
+	add FuelParticleLiveWood references StandardFuelModelModule
+	add FuelParticleDeadHerb references StandardFuelModelModule
+end
+			
+define FuelParticleCollectionFromChaparralFuelModelModule
+	extends FuelParticleCollection
+	references ChapparalFuelModelModule
+	# add paricles that get their values from a ChaparralFuelModelModule
+	add FuelParticleDead1Hour references ChaparralFuelModelModule
+	add FuelParticleDead10Hour references ChaparralFuelModelModule
+	add FuelParticleDead100Hour references ChaparralFuelModelModule
+	add FuelParticleLiveHerbHour references ChaparralFuelModelModule
+	add FuelParticleLiveWood references ChaparralFuelModelModule
+	add FuelParticleDeadHerb references ChaparralFuelModelModule
+end

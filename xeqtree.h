@@ -83,6 +83,7 @@ public:
     void   printResults1( FILE *fptr ) const ;
     void   printResults2( FILE *fptr ) const ;
     void   printSummary( FILE *fptr ) const ;
+    void   printVarCsv( FILE *fptr ) const ;
     void   printVarDict( FILE *fptr ) const ;
     void   printVariables( FILE *fptr ) const ;
     bool   readXmlFile( const QString &fileName, bool unitsOnly=false ) ;

@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xfblib.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Fire behavior C API library.
  *
@@ -16,12 +16,16 @@
  */
 
 // Custom include files
+#include "Bp6Globals.h"
 #include "xfblib.h"
+#include "Bp6CrownFire.h"
+#include "Bp6SurfaceFire.h"
 
 // Standard include files
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef INCLUDE_V5_CODE
 //------------------------------------------------------------------------------
 //  This bunch of fuel bed intermediate variables are derived in
 //  FBL_FuelBedIntermediates() but used in FBL_FuelBedHeatSink(),
@@ -47,11 +51,14 @@ static double m_liveMextK;          //!< Live moisture of extinction constant
 // Set in FBL_FuelBedIntermediates(), used in FBL_SurfaceFireReactionIntensity().
 static double m_lifeRxK[MAX_CATS];  //!< Reaction intensity constant by life category
 
-// Set in FBL_SurfaceFuelBedIntermediates(), used in FBL_SurfaceFireSpreadAtHead().
+// Set in FBL_SurfaceFuelBedIntermediates(), used in FBL_SurfaceFireForwardSpreadRate().
 static double m_slopeK;             //!< Slope constant K (see Rothermel 1972)
+// Set in FBL_SurfaceFuelBedIntermediates(), used in FBL_SurfaceFireForwardSpreadRate()
+// and in FBL_SurfaceFireEffectiveWindSpeedAtVector()
 static double m_windB;              //!< Wind constant B (see Rothermel 1972)
 static double m_windE;              //!< Wind constant E (see Rothermel 1972)
 static double m_windK;              //!< Wind constant K (see Rothermel 1972)
+#endif
 
 //------------------------------------------------------------------------------
 //  FOFEM tree species and equations
@@ -950,136 +957,58 @@ double FBL_CrownFirePowerRatio( double firePower, double windPower )
  *
  *  \return Crown fire average spread rate (ft/min).
  */
-
 double FBL_CrownFireSpreadRate( double windAt20Ft, double mc1, double mc10,
         double mc100, double mcWood )
 {
-    //--------------------------------------------------------------------------
-    // Step 1: Create the crown fuel model (fire behavior fuel model 10)
-    //--------------------------------------------------------------------------
-
-    static double depth     = 1.0;
-    static double deadFuelMext = 0.25;
-    static int    particles = 4;
-    static int    life[4] = {     0,     0,     0,     2 };
-    static double load[4] = { 0.138, 0.092, 0.230, 0.092 };
-    static double savr[4] = { 2000.,  109.,   30., 1500. };
-    static double heat[4] = { 8000., 8000., 8000., 8000. };
-    static double dens[4] = {  32.0,  32.0,  32.0,  32.0 };
-    static double stot[4] = { .0555, .0555, .0555, .0555 };
-    static double seff[4] = { .0100, .0100, .0100, .0100 };
+	double aspect              = 180.;
+    double slopeFraction       = 0.0;
+    double windDirFromUpslope  = 0.0;
+    double midflameWindSpeed   = 0.4 * windAt20Ft;
+	bool   applyWindSpeedLimit = true;
     double mois[4];
     mois[0] = mc1;
     mois[1] = mc10;
     mois[2] = mc100;
     mois[3] = mcWood;
 
-    //--------------------------------------------------------------------------
-    // Step 2: this is a major hack ....
-    // Since the crown fire spread may be calculated as part of a linked
-    // simulation with surface fire spread, we have to save and then restore
-    // state for the surface fire variables.
-    // This is the save part
-    //--------------------------------------------------------------------------
-    int    x_particles = m_particles;          //!< Number of fuel particles
-    double x_liveMextK = m_liveMextK;
-    double x_slopeK    = m_slopeK;  //!< Slope constant K (see Rothermel 1972)
-    double x_windB     = m_windB;   //!< Wind constant B (see Rothermel 1972)
-    double x_windE     = m_windE;   //!< Wind constant E (see Rothermel 1972)
-    double x_windK     = m_windK;   //!< Wind constant K (see Rothermel 1972)
-    int    x_life[MAX_PARTS];       //!< Fuel particle life category
-    double x_aWtg[MAX_PARTS];       //!< Fuel particle area weighting factor
-    double x_load[MAX_PARTS];       //!< Fuel particle fuel load (lb/ft2)
-    double x_sigK[MAX_PARTS];       //!< Fuel particle surface area-to-volume ratio (ft2/ft3)
-    double x_lifeAwtg[MAX_CATS];    //!< Life category weighting factor
-    double x_lifeFine[MAX_CATS];    //!< Fine fuel ratio by life category
-    double x_lifeRxK[MAX_CATS];     //!< Reaction intensity constant by life category
-    int i;
-    for ( i=0; i<MAX_PARTS; i++ )
-    {
-        x_life[i] = m_life[i];
-        x_aWtg[i] = m_aWtg[i];
-        x_load[i] = m_load[i];
-        x_sigK[i] = m_sigK[i];		// WAS m_sigK[MAX_PARTS];
-    }
-    for ( i=0; i<MAX_CATS; i++ )
-    {
-        x_lifeAwtg[i] = m_lifeAwtg[i];
-        x_lifeFine[i] = m_lifeFine[i];
-        x_lifeRxK[i]  = m_lifeRxK[i];
-    }
+#ifdef INCLUDE_OLD_CROWN_REFACTOR
+	Bp6CrownFuelBedIntermediates fb;
+	double beta = fb.getPackingRatio();
+	double sigma = fb.getSigma();
+	double propFlux = fb.getPropagatingFlux();
 
-    //--------------------------------------------------------------------------
-    // Step 3: Determine fire behavior.
-    //--------------------------------------------------------------------------
-    double fuelBedBulkDensity  = 0.0;   // Returned by FBL_SurfaceFuelBedIntermediates()
-    double fuelBedPackingRatio = 0.0;   // Returned by FBL_SurfaceFuelBedIntermediates()
-    double fuelBedBetaRatio    = 0.0;   // Returned by FBL_SurfaceFuelBedIntermediates()
-    double sigma = FBL_SurfaceFuelBedIntermediates( depth, deadFuelMext,
-        particles, life, load, savr, heat, dens, stot, seff,
-        &fuelBedBulkDensity, &fuelBedPackingRatio, &fuelBedBetaRatio );
+	Bp6SurfaceFuelHeatSink hs = Bp6SurfaceFuelHeatSink( &fb, mois );
+	double heatSink = hs.getHeatSink();
 
-    double deadFuelMois = 0.0;  // Returned by FBL_SurfaceFuelBedHeatSink()
-    double liveFuelMois = 0.0;  // Returned by FBL_SurfaceFuelBedHeatSink()
-    double liveFuelMext = 0.0;  // Returned by FBL_SurfaceFuelBedHeatSink()
+	Bp6SurfaceFireReactionIntensity rx = Bp6SurfaceFireReactionIntensity( &hs );
+	double rxInt = rx.getTotalRxInt();
 
-    double heatSink = FBL_SurfaceFuelBedHeatSink( fuelBedBulkDensity,
-        deadFuelMext, mois, &deadFuelMois, &liveFuelMois, &liveFuelMext );
+	double ros0 = FBL_SurfaceFireNoWindNoSlopeSpreadRate( rxInt,
+		propFlux, heatSink ) ;
 
-    double reactionIntensity = FBL_SurfaceFireReactionIntensity(
-        deadFuelMois, deadFuelMext, liveFuelMois, liveFuelMext ) ;
+	Bp6SurfaceFireForwardSpreadRate sr = Bp6SurfaceFireForwardSpreadRate(
+		&fb, ros0, rxInt, slopeFraction, midflameWindSpeed, windDirFromUpslope );
+	double rosMax = sr.getMaxSpreadRate();
+    double crownRosOld = 3.34 * rosMax;
+#endif
 
-    double propagatingFlux = FBL_SurfaceFirePropagatingFlux(
-        fuelBedPackingRatio, sigma ) ;
+	// V6 Refactor
+	Bp6CrownFire cf;
+	cf.setMoisture( mois );
+	cf.setSite(
+		slopeFraction,
+		aspect,
+		88.*midflameWindSpeed,
+		windDirFromUpslope,
+		applyWindSpeedLimit );
+	double crownRos = cf.getActiveCrownFireRos();
 
-    double ros0 = FBL_SurfaceFireNoWindNoSlopeSpreadRate( reactionIntensity,
-        propagatingFlux, heatSink ) ;
-
-    double slopeFraction      = 0.0;
-    double windDirFromUpslope = 0.0;
-    double midflameWindSpeed  = 0.4 * windAt20Ft;
-    double maxDirFromUpslope  = 0.0;    // Returned by FBL_SurfaceFireForwardSpreadRate()
-    double effectiveWindSpeed = 0.0;    // Returned by FBL_SurfaceFireForwardSpreadRate()
-    double windSpeedLimit     = 0.0;    // Returned by FBL_SurfaceFireForwardSpreadRate()
-    int    windLimitExceeded  = 0;      // Returned by FBL_SurfaceFireForwardSpreadRate()
-    double windFactor         = 0.0;    // Returned by FBL_SurfaceFireForwardSpreadRate()
-    double slopeFactor        = 0.0;    // Returned by FBL_SurfaceFireForwardSpreadRate()
-    double ros = FBL_SurfaceFireForwardSpreadRate( ros0, reactionIntensity,
-        slopeFraction, midflameWindSpeed, windDirFromUpslope,
-        &maxDirFromUpslope, &effectiveWindSpeed, &windSpeedLimit,
-        &windLimitExceeded, &windFactor, &slopeFactor );
-
-    // Rothermel 1991
-    double crownRos = 3.34 * ros;
-
-    //double residenceTime = FBL_SurfaceFireResidenceTime( sigma );
-    //double firelineIntensity = FBL_SurfaceFireFirelineIntensity( ros,
-    //    reactionIntensity, residenceTime ) ;
-    //double flameLength = FBL_SurfaceFireFlameLength( firelineIntensity ) ;
-
-    //--------------------------------------------------------------------------
-    // Step 4: this is the rest of the major hack .... restore the state.
-    //--------------------------------------------------------------------------
-    m_particles = x_particles;
-    m_liveMextK = x_liveMextK;
-    m_slopeK    = x_slopeK;
-    m_windB     = x_windB;
-    m_windE     = x_windE;
-    m_windK     = x_windK;
-    for ( i=0; i<MAX_PARTS; i++ )
-    {
-        m_life[i] = x_life[i];
-        m_aWtg[i] = x_aWtg[i];
-        m_load[i] = x_load[i];
-        m_sigK[i] = x_sigK[i];		// WAS x_sigK[MAX_PARTS];
-    }
-    for ( i=0; i<MAX_CATS; i++ )
-    {
-        m_lifeAwtg[i] = x_lifeAwtg[i];
-        m_lifeFine[i] = x_lifeFine[i];
-        m_lifeRxK[i]  = x_lifeRxK[i];
-    }
-    //fprintf( stderr, "ros0=%f,  ros=%f,  crownRos=%f\n", ros0, ros, crownRos );
+#ifdef INCLUDE_OLD_CROWN_REFACTOR
+	if ( fabs( crownRos-crownRosOld ) > 1.0e-7 )
+	{
+		printf( "\n*** crown fire ros v6=%g, old=%g\n", crownRos, crownRosOld );
+	}
+#endif
     return( crownRos );
 }
 
@@ -1962,6 +1891,7 @@ double FBL_SurfaceFireEccentricity( double lengthWidthRatio )
           : ( 0.0 ) );
 }
 
+#ifdef INCLUDE_V5_CODE
 //------------------------------------------------------------------------------
 /*! \brief Performs a reverse calculation of the effective wind speed
  *  along some fire spread vector.
@@ -1980,7 +1910,6 @@ double FBL_SurfaceFireEccentricity( double lengthWidthRatio )
  *  \return Effective wind speed (combined wind-slope effect) at the same
  *  vector as the \a vectorSpreadRate (mi/h).
  */
-
 double FBL_SurfaceFireEffectiveWindSpeedAtVector( double noWindSpreadRate,
                 double vectorSpreadRate )
 {
@@ -1993,6 +1922,7 @@ double FBL_SurfaceFireEffectiveWindSpeedAtVector( double noWindSpreadRate,
     // Convert from ft/min t0 mi/h.
     return( effWind / 88. );
 }
+#endif
 
 //------------------------------------------------------------------------------
 /*! \brief Calculates the fire ellipse angle 'beta' in degrees given 'theta' in degrees.
@@ -2593,6 +2523,7 @@ double FBL_SurfaceFireFlameLength( double firelineIntensity )
           : ( 0.45 * pow( firelineIntensity, 0.46 ) ) );
 }
 
+#ifdef INCLUDE_V5_CODE
 //------------------------------------------------------------------------------
 /*! \brief Calculates the fire's forward spread rate in the direction of
  *  maximum spread.
@@ -2788,6 +2719,7 @@ double FBL_SurfaceFireForwardSpreadRate(
     //fprintf( stderr, "rosMax=%f\n", rosMax );
     return( rosMax );
 }
+#endif
 
 //------------------------------------------------------------------------------
 /*! \brief Calculates the fire's heat per unit area.
@@ -3029,6 +2961,7 @@ double FBL_SurfaceFirePropagatingFlux( double fuelBedPackingRatio,
     return( propagatingFlux );
 }
 
+#ifdef INCLUDE_V5_CODE
 //------------------------------------------------------------------------------
 /*! \brief Calculates the fire's reaction intensity from the dead and live
  *  fuel moisture contents and extinction moisture contents.
@@ -3078,6 +3011,7 @@ double FBL_SurfaceFireReactionIntensity( double deadMois, double deadMext,
     }
     return( rxInt );
 }
+#endif
 
 //------------------------------------------------------------------------------
 /*! \brief Calculates the fire's residence time.
@@ -3206,6 +3140,7 @@ double FBL_SurfaceFireWidth( double fireLength, double lengthWidthRatio )
           : ( fireLength / lengthWidthRatio ) );
 }
 
+#ifdef INCLUDE_V5_CODE
 //------------------------------------------------------------------------------
 /*! \brief Calculates the fuel bed heat sink from the current fuel bed
  *  intermediates and moisture conditions.
@@ -3284,7 +3219,9 @@ double FBL_SurfaceFuelBedHeatSink( double bulkDensity, double deadMext,
     //fprintf( stderr, "heatSink = %f\n", rbQig );
     return( rbQig );
 }
+#endif
 
+#ifdef INCLUDE_V5_CODE
 //------------------------------------------------------------------------------
 /*! \brief Calculates surface fuel bed intermediate variables that depend only
  *  on fuel bed arrangement and particle properties.
@@ -3572,6 +3509,7 @@ double FBL_SurfaceFuelBedIntermediates(
     //fprintf( stderr, "sigma=%f\n", sigma );
     return( sigma );
 }
+#endif
 
 //------------------------------------------------------------------------------
 /*! \brief Calculates the fuel temperature using the BEHAVE FIRE2 subroutine

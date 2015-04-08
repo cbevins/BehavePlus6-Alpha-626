@@ -188,31 +188,36 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
     }
 
     // First activate all module functions that are not user configurable
-    fCrownFireActiveCrown->m_active = true;
-    fCrownFireActiveRatio->m_active = true;
-    fCrownFireArea->m_active = true;
-    fCrownFireCritCrownSpreadRate->m_active = true;
-    fCrownFireCritSurfFireInt->m_active = true;
-    fCrownFireCritSurfFlameLeng->m_active = true;
-    fCrownFireLengthToWidth->m_active = true;
-    fCrownFirePerimeter->m_active = true;
-    fCrownFireSpreadDist->m_active = true;
-    fCrownFireSpreadMapDist->m_active = true;
-    fCrownFireSpreadRate->m_active = true;
-    fCrownFireTransToCrown->m_active = true;
+	// For V6, we've replcaed these...
+	bool toggle = false;
+    fCrownFireActiveCrown->m_active = toggle;
+    fCrownFireActiveRatio->m_active = toggle;
+    fCrownFireArea->m_active = toggle;
+    fCrownFireCritCrownSpreadRate->m_active = toggle;
+    fCrownFireCritSurfFireInt->m_active = toggle;
+    fCrownFireCritSurfFlameLeng->m_active = toggle;
+    fCrownFireLengthToWidth->m_active = toggle;
+    fCrownFirePerimeter->m_active = toggle;
+    fCrownFireSpreadDist->m_active = toggle;
+    fCrownFireSpreadRate->m_active = toggle;
+    fCrownFireTransToCrown->m_active = toggle;
     fCrownFireTransRatioFromFireIntAtVector->m_active = false;
-    fCrownFireTransRatioFromFireIntAtVector->m_active = false;
-    fCrownFireType->m_active = true;
+    fCrownFireType->m_active = toggle;
 
-    fCrownFireFlameLeng->m_active = true;
-    fCrownFireFuelLoad->m_active = true;
-    fCrownFireHeatPerUnitArea->m_active = true;
-    fCrownFireHeatPerUnitAreaCanopy->m_active = true;
-    fCrownFireLineInt->m_active = true;
-    fCrownFirePowerOfFire->m_active = true;
-    fCrownFirePowerOfWind->m_active = true;
-    fCrownFirePowerRatio->m_active = true;
-    fCrownFireWindDriven->m_active = true;
+    fCrownFireFlameLeng->m_active = toggle;
+    fCrownFireFuelLoad->m_active = toggle;
+    fCrownFireHeatPerUnitArea->m_active = toggle;
+    fCrownFireHeatPerUnitAreaCanopy->m_active = toggle;
+    fCrownFireLineInt->m_active = toggle;
+    fCrownFirePowerOfFire->m_active = toggle;
+    fCrownFirePowerOfWind->m_active = toggle;
+    fCrownFirePowerRatio->m_active = toggle;
+    fCrownFireWindDriven->m_active = toggle;
+
+    fCrownFireSpreadMapDist->m_active = true;
+	// ... with these
+	fCrownFireSpreadRateV6->m_active = true;
+	fCrownFireSpreadDistV6->m_active = true;
 
 	// Build 611 uses SURFACE Module fuel moisture settings
     fSurfaceFuelMoisTimeLag->m_active = true;
@@ -236,6 +241,18 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
     // ... else if not linked to the Surface Module...
     else // if ( ! surfaceModuleActive )
     {
+		// NOTE - when not linked to Surface Module, we cannot calculate
+		// many of the Scoot & Reinhardt variables, which are within
+		// Bp6CrownFire to:
+		//  - vCrownFireActiveCritOpenWindSpeed = 0
+		//  - vCrownFireActiveCritSurfSpreadRate = 0
+		//	- vCrownFireCanopyFractionBurned = 0
+		// and all passive crown fire values default to surface fire values
+		//	- vCrownFirePassiveFlameLeng = vSurfaceFireFlameLeng
+		//	- vCrownFirePassiveHeatPerUnitArea = vSurfaceFireHeatPerUnitArea
+		//	- vCrownFirePassiveFireLineInt = vSurfaceFireLineInt
+		//	- vCrownFirePassiveSpreadRate = vSurfaceFireSPreadAtHead
+
         // Option 1: Surface fire intensity is entered as
         // Choice 1: flame length.
         if ( prop->boolean( "crownConfUseFlameLeng" ) )
@@ -343,6 +360,49 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
         vCrownFireSpreadMapDist->m_isUserOutput =
             prop->boolean( "crownCalcCrownSpreadDist" );
     }
+	// V6 output variables
+	vCrownFireCanopyFractionBurned->m_isUserOutput =
+		prop->boolean( "crownCalcCanopyFractionBurned" );
+    vCrownFireCritSurfSpreadRate->m_isUserOutput =
+		prop->boolean( "crownCalcCritSurfSpreadRate" );
+	vCrownFireActiveCritSurfSpreadRate->m_isUserOutput =
+				prop->boolean( "crownCalcActiveCritSurfSpreadRate" );
+	vCrownFireActiveCritOpenWindSpeed->m_isUserOutput =
+		prop->boolean( "crownCalcActiveCritOpenWindSpeed" );
+
+	vCrownFireActiveFireArea->m_isUserOutput =
+		prop->boolean( "crownCalcActiveFireArea" );
+	vCrownFireActiveSpreadDist->m_isUserOutput =
+		prop->boolean( "crownCalcActiveSpreadDist" );
+	vCrownFireActiveFlameLeng->m_isUserOutput = 
+		prop->boolean( "crownCalcActiveFlameLeng" );
+	vCrownFireActiveHeatPerUnitArea->m_isUserOutput =
+		prop->boolean( "crownCalcActiveHeatPerUnitArea" );
+	vCrownFireActiveFireLineInt->m_isUserOutput =
+		prop->boolean( "crownCalcActiveFireLineInt" );
+	vCrownFireActiveFirePerimeter->m_isUserOutput =
+		prop->boolean( "crownCalcActiveFirePerimeter" );
+	vCrownFireActiveSpreadRate->m_isUserOutput =
+		prop->boolean( "crownCalcActiveSpreadRate" );
+	vCrownFireActiveFireWidth->m_isUserOutput =
+		prop->boolean( "crownCalcActiveFireWidth" );
+
+	vCrownFirePassiveFireArea->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveFireArea" );
+	vCrownFirePassiveSpreadDist->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveSpreadDist" );
+	vCrownFirePassiveFlameLeng->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveFlameLeng" );
+	vCrownFirePassiveHeatPerUnitArea->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveHeatPerUnitArea" );
+	vCrownFirePassiveFireLineInt->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveFireLineInt" );
+	vCrownFirePassiveFirePerimeter->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveFirePerimeter" );
+	vCrownFirePassiveSpreadRate->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveSpreadRate" );
+	vCrownFirePassiveFireWidth->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveFireWidth" );
     return;
 }
 
@@ -768,7 +828,7 @@ void EqCalc::reconfigureSpotModule( PropertyDict *prop, int /* release */ )
     // If the CROWN Module is NOT active ...
     if ( ! prop->boolean( "crownModuleActive" ) )
     {
-		// And the user wants some active cxrown fire spotting results
+		// And the user wants some active crown fire spotting results
         if ( prop->boolean( "spotCalcDistActiveCrown" )
 		 || prop->boolean( "spotCalcFirebrandHtActiveCrown" )
 		 || prop->boolean( "spotCalcFlameHtActiveCrown" )
@@ -778,6 +838,10 @@ void EqCalc::reconfigureSpotModule( PropertyDict *prop, int /* release */ )
 			fCrownFireLineIntFromFlameLeng->m_active = true;
 		}
 	}
+
+	// FAH wants this to be a constant
+    vSpotEmberDiamAtSurface->m_isConstant = true;
+	vSpotEmberDiamAtSurface->update( 1.0 );			// 1 mm is the minimum value
 
     // Output variables
     vSpotDistActiveCrown->m_isUserOutput =

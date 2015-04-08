@@ -1,5 +1,232 @@
 =============================
 Collin D. Bevins
+LLCP0044
+Mar 22 - Apr 21, 2015
+?? hours
+=============================
+
+2015-04-08
+
+
+2015-04-07 (5.0 hours) [57.0 total]
+
+--	Reconfigured the Wix builder scripts to include a checkbox
+	for optional installation of the dekstop icon.
+	
+	
+2015-04-06 (7.0 hours) [52.0 totral]
+
+--	Drafted a "BehavePlus6, Build 614, Detailed Release Notes"
+	document to better explain ongoing issues with the BehavePlus6
+	development line and with the S&R crown model implementation.
+	
+--	Developed a spreadsheet of all Version 5 and 6
+	variables names and their associated labels, column
+	headers, sort orders, and value ranges.  Variables
+	introdued in Version 6 are highlighted in green,
+	while Version 5 variables whose abels or column
+	headers have changed in Version 6 are highlighted
+	in yellow.  This may serve as a working document
+	for further refining nomenclature and identifying
+	documentation to be updated.
+
+--	Added EqTree::printVarCvs() to both BehavePlus5 and
+	BehavePlus6 to generate comparative csv files of the
+	variable names, labels, column headers, and sort orders.
+	This should document all new variables as well as all
+	changes in V5 variable labels and column headers.
+	
+--	Made the Active Crown Spot Distance variable "Viable
+	Ember Diameter" into a contant at 1mm as per FAH request.
+	
+--	Updated BehavePlus6.cpp and appwindow.cpp to "Build 614".
+
+--	Updated wix_bp6_component_docfolder.wxs to include the 17 new
+	variable help files and generated 3 GUIDs for each.
+	
+--	Create wix_bp6_product_614.wxs and updated wixcandle.bat
+	and wixlight.bat.
+
+
+2015-04-05 (4.0 h) [45.0 total]
+
+--	Added boolean variables in BehavePlus6.xml to control
+	i/o of the 18 new crown fire variables.
+	
+--	Updated EqCalc::reconfig to use the new boolean variables.
+
+--	Modified the Crown Module configuration dialog so that it
+	now has 1 input and 6 output option tabs.
+
+--	Created skeletal html help files for the new 18 crown variables.
+
+--	Performed alpha testing of above changes.
+
+--	Revised Crown Module configuration module to move the
+	power of the wind/fire variables into the Active Crown page.
+		
+	
+2015-04-01
+
+--	Finished developing new label scheme and implementing
+	changes in BehavePlus6.xml.
+	
+	
+2015-03-31 (3.0 h) [41.0 total]
+
+--	Developed a revised scheme for labeling variable rows and
+	columns that better distinguished between the numerous new
+	variable introduced in V6 by more clearly and consistently
+	identifying the variable source (surface, crown, etc)
+	and attribute (Ros, FLI, FL, etc).
+	
+--	Implemented the revised naming schem for the Crown Fire
+	variables within BehavePlus6.xml.
+	
+	
+2015-03-30 (3.0 h) [38.0 total] 
+
+--	Created spreadsheet listing the V5 surface and crown fire
+	variable names, labels, and ordering, and then a
+	recommended set of V6 variable ordering and labels.
+	
+	
+2015-03-28 (5.0 h) [35.0 total]
+
+--	After analyzing Nexus runs, determined that it was actually
+	using O'active as the wind speed to determine R'sa using
+	the *surface fuel* model, and not Fuel Model 10 as indicated
+	in FAH notes.
+	
+--	Made code corrections and continued comparison testing with Nexus.
+
+--	Unable to duplicate the Nexus O'active derivation.  Traced cause
+	back to the term (epsilon * Qig)/(Ir * CBD), which BP6
+	calculates as 15.7874 but Nexus uses 14.0595.
+	
+--	Downloaded Nexus 'source' code from Joe Scott, but it doesn't contain
+	any actual computational source code on which to perform any
+	comparisons.
+	
+
+2015-03-27 (8.0 h) [30.0 total]
+
+--	Worked on debugging the Scott & Reinhardt O'active feature
+	by making comparison runs with Nexus v 2.1.
+	
+	
+2015-03-26 (2.0 h) [22.0 total]
+
+--	Met with FAH at Fire Lab about Scott & Reinhardt crown fire
+	model and other BP6 implementation issues.
+	
+	
+2015-03-25 (6.0 h) [20.0 total]
+
+--  Continued refactoring Bp6CrownFire and adapting
+	EqCalc::CriwnFireSpreadRate() to use it.
+	
+--	Completed implementing the new Bp6CrownFire and Bp6SurfaceFire
+	into EqCalc for a running demo build.
+	
+	
+2015-03-24 (6.0 h) [14.0 total]
+
+-- Start incorporating Bp6SurfaceFire into the EqCal structure.
+
+-- Added following BehavePlus6.xml variables:
+	vCrownFireCanopyFractionBurned
+    vCrownFireCritSurfSpreadRate
+	vCrownFireFullCanopyWindSpeedAt20Ft
+	vCrownFireFullCanopySpreadRate
+	vCrownFireLength
+	vCrownFireWidth
+	vCrownFirePassiveFlameLeng
+	vCrownFirePassiveHeatPerUnitArea
+	vCrownFirePassiveLineInt
+	vCrownFirePassiveSpreadRate
+
+
+2015-03-22 (8.0 h) [8.0 total]
+
+-- Completed coding and testing Bp6SurfaceFire class.
+
+-- Completed coding and testing Bp6CrownFire class.
+
+
+=============================
+Collin D. Bevins
+LLCP0044 CLIN 301
+Nov 22, 2014 - Mar 21, 2015
+21 hours
+=============================
+
+2015-03-21 (6.0 h) [21.0 total]
+
+--	Continued work on Bp6SurfaceFire.
+
+--	Continued work on Bp6CrownFire, adding the new Scott & Reinhardt
+	variables.
+	
+	
+2015-03-20 (4.0 h) [15.0 total]
+
+--  Created the BpCrownFire class which extends Bp6SurfaceFire
+	to replace the previous crown fire code.
+	
+--	Updated the following EqCalc methods to use the new clases:
+	- FireEffWindAtVector
+	- FireReactionInt
+	- FireSpreadAtHead
+	- FuelBedHeatSink
+	- FuelBedIntermediates
+	
+--	Added Bp6Globals.h to define INCLUDE_V5_CODE and INCLUDE_V6_CODE
+
+--	Put INCLUDE_V5_CODE guards around following items in xfblib.cpp:
+	- All global m_* variables declarations
+	- FBL_SurfaceFireEffectiveWindSpeedAtVector()
+	- FBL_SurfaceFireForwardSpreadRate()
+	- FBL_SurfaceFireReactionIntensity()
+	- FBL_SurfaceFuelBedHeatSink()
+	- FBL_FuelLife()
+	- FBL_SurfaceFuelBedIntermediates()
+	
+--	Tested changes
+
+	
+2015-03-19 (6.0 h) [11.0 total]
+
+--	Created the Bp6CrownFuelBedIntermediates class to replace the
+	xfblib.cpp function double FBL_CrownFireSpreadRate().
+	
+--	Created the Bp6SurfaceFire class to replace all the functions
+	in xfblib that use shared gloabl variables (m_*):
+	FBL_CrownFireSPreadRate
+	FBL_SurfaceFireEffectiveWindSpeedAtVector
+	FBL_SurfaceFireForwardSpreadRate
+	FBL_SurfaceFireReactionIntensity
+	FBL_SurfaceFuelBedHeatSink
+	FBL_SurfaceFuelBedIntermediates
+	
+2015-03-18 (4.0 h) [5.0 total]
+
+-- Created Bp6SurfaceFireForwardSpreadRate class to replace the
+	xfblib.cpp function double FBL_SurfaceFireForwardSpreadRate().
+
+-- Created Bp6FuelBedIntermediates class to replace the
+	xfblib.cpp function double FBL_FuelBedIntermediates().
+
+
+2015-03-17 (1.0 h)
+
+-- Created a centralized GIT repository for BehavePlus6 on BitBucket
+and added, committed, and pushed all the Build 613 source and data
+files onto it.
+
+
+=============================
+Collin D. Bevins
 LLCP0044 CLIN 301
 Apr 22, 2014 - Jul 21, 2014
 9 hours

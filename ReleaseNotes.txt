@@ -1,5 +1,33 @@
 ---------------------------------------
-Build 613
+Build 614 - April 8, 2015
+---------------------------------------
+
+--	The installation package now has a checkbox on the
+	Folder Destination dialog that allows optional
+	installation of a BehavePlu6 icon on the user's desktop.
+	
+--	Scott & Reinhardt (2005) crown fire model variables
+	are now	included within the Crown Module.  This
+	introduces 21 new variables into BehavePlus.
+
+--	The Crown Module configuration dialog now has 1 tab
+	for its single input option and 5 tabs for the various
+	outputs variables now available.
+
+--	Most surface, crown, moisture, fuel, and site variables
+	now have updated labels and/or column headers to better
+	disambiguate between their various modules and fire types
+	(surface, canopy, crown, active crown, passive crown, etc)
+	and to provide a more structured and consistent
+	nomenclature.
+	
+--	The Active Crown Fire Spotting Module now sets the
+	minimum viable ember diameter to a constant 1 mm
+	rather than ask the user to provide a value.
+	
+
+---------------------------------------
+Build 613 - July 15, 2014
 ---------------------------------------
 
 --	The 'Surface' adjective has been added to the surface
@@ -15,6 +43,7 @@ Build 613
 --	The installer license agreement now specifies that
 	BehavePlus6 is PostcardWare, just as it was for BehavePlus5.
 	(Issue #065FAH - PostcardWare)
+
 	
 ---------------------------------------
 Build 612 - April 4, 2014

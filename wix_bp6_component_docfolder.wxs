@@ -1067,14 +1067,44 @@
       <Component Id="cmp0D8C184849C4506393F87DBAA1FC5D58" Directory="Html" Guid="{3255DAD3-6F26-4742-9EBC-2BDEEA9BA995}">
         <File Id="filFEFADE570EFCFA120999DF06C6CC655A" KeyPath="yes" Source="DocFolder\en_US\Html\vContainTime.html" />
       </Component>
+      <Component Id="cmp6A5A4DB752EF4414B4BC496A24C988E8" Directory="Html" Guid="{41649100-6F01-4caf-AD7E-BC7956C43834}">
+        <File Id="fil1137A2D0CA7E42ea93F3EB9AF20C0222" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveCritOpenWindSpeed.html" />
+      </Component>
+      <Component Id="cmp522A24021F7744f69669B141DFC29011" Directory="Html" Guid="{FFE24AE0-4AF3-43f0-AEE1-989B927BD9AA}">
+        <File Id="fil8AC11E683B8D4F609713997CA1E8247A" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveCritSurfSpreadRate.html" />
+      </Component>
       <Component Id="cmp09B97028FE402AC6BAEA73BD4B6ED017" Directory="Html" Guid="{4D6A89A2-9926-40A0-9899-A07721C213EE}">
         <File Id="filE9A05FC2CE66E33AD6CD6F2C7D4A3939" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveCrown.html" />
+      </Component>
+      <Component Id="cmp34A163938CAE40379A31239D8730DD32" Directory="Html" Guid="{4D1F9113-F812-449f-93F1-76F9D309EFC5}">
+        <File Id="filB693D3DE56C54734A7EA16F5FDDCE510" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveFireArea.html" />
+      </Component>
+      <Component Id="cmpA226A3808DFF4FB682A5CB94C8A5E236" Directory="Html" Guid="{F8F7ECAA-554F-4823-8D6B-82D2A243DB30}">
+        <File Id="fil35950A14ABFD404B99753726B8210374" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveFireLineInt.html" />
+      </Component>
+      <Component Id="cmpCB3F2F32ADCC45B4A3FBD2682E8A8518" Directory="Html" Guid="{23A982F4-8B38-4d24-A964-B18F1F6F18FC}">
+        <File Id="fil2CA6A09DAE4041C0951617610E4AD7BE" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveFirePerimeter.html" />
+      </Component>
+      <Component Id="cmpCCDAB2ABB3DD4538854FC7622EB2F320" Directory="Html" Guid="{10345F9C-6BDC-49a0-8636-CC584132AB73}">
+        <File Id="filE6BC721F78A24DFBB14453C18E105966" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveFlameLeng.html" />
+      </Component>
+      <Component Id="cmpB03ECA018508416D87F213E77C368C99" Directory="Html" Guid="{3614D910-5109-4e66-8457-8AAA0FB0C6C4}">
+        <File Id="fil8F7FCFF950D341478F8C542F2EAB359C" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveHeatPerUnitArea.html" />
       </Component>
       <Component Id="cmpAAB032C8E979E9C71DA445A8BD5E91A6" Directory="Html" Guid="{7B4D38EB-9A14-4E1C-BE8F-DF0C6AA9A617}">
         <File Id="fil50C3049617FCA0D434BB86FC818EFC59" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveRatio.html" />
       </Component>
+      <Component Id="cmp65797DF98ED740D4BFEB16AAB6C9EEB9" Directory="Html" Guid="{4880AAE5-8BAE-4399-A063-5C5BC1BAC7E2}">
+        <File Id="filB06BCDB157E14B50856EE9185BB1B17C" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveSpreadDist.html" />
+      </Component>
+      <Component Id="cmpF7F536EBD3E746DAA7248BE0642D115C" Directory="Html" Guid="{D56594C1-C5C9-4ed6-B6A4-4C907E9DA872}">
+        <File Id="fil7E834CB5E7F14B08BAFDF11F4E18AAEE" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireActiveSpreadRate.html" />
+      </Component>
       <Component Id="cmp8E96B6BF9D06E5E0878C1573458143BA" Directory="Html" Guid="{839A1BB4-D91D-4614-A80C-80F078379F29}">
         <File Id="filA0480A74001AC4FE9851B4AD75308FE8" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireArea.html" />
+      </Component>
+      <Component Id="cmpC7E961609CC04E6DAE6AC37EC73174DD" Directory="Html" Guid="{C1F2B547-223B-4dc2-AC7B-F9C2EC01151B}">
+        <File Id="filC853D192B520483185B978CB96FFB17F" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireCanopyFractionBurned.html" />
       </Component>
       <Component Id="cmpE8EA013E082C449E9694C6ACCD2A5DED" Directory="Html" Guid="{0DAFB303-8A4B-41b3-904B-AC05B4CE6B89}">
         <File Id="fil891B0B1E2B2A410ABD23CA98B0409623" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireCanopyHt.html" />
@@ -1105,6 +1135,27 @@
       </Component>
       <Component Id="cmp96C9A9FB92E52A2B4F813C178127E558" Directory="Html" Guid="{2A983C0C-7F3D-4C57-B2CD-70D59A17DE2F}">
         <File Id="fil3A3128D87357A1B211BDB34581BFF174" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireLineInt.html" />
+      </Component>
+      <Component Id="cmp198444FF6C88460D86476BCFE8E43386" Directory="Html" Guid="{DCB468DC-634F-45a9-90EE-6A5E2B5D9B5C}">
+        <File Id="filEF06CDCAFF4B4D979FD4BA80AD035016" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFirePassiveFireArea.html" />
+      </Component>
+      <Component Id="cmp64169A7E053A44289EA228AE9F6EAAAA" Directory="Html" Guid="{1AB4793A-88CB-41ec-9EFF-BAEBA59DDB40}">
+        <File Id="fil426D2CEA93E746B580E8C46AEA59FAF5" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFirePassiveFireLineInt.html" />
+      </Component>
+      <Component Id="cmpF6867DF46673412099D9308AD1680C79" Directory="Html" Guid="{FE4BF8F0-5A2B-45b3-9C7B-728C90CDC11E}">
+        <File Id="filE64D6086219E4507BCBA7A499596F470" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFirePassiveFirePerimeter.html" />
+      </Component>
+      <Component Id="cmp2DFED2F4D3E44C4DA15E8A27E9278801" Directory="Html" Guid="{9A9877A7-28E2-4719-829A-48D390B77B27}">
+        <File Id="fil70546D3052484AFBB48D4ABF66DC657D" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFirePassiveFlameLeng.html" />
+      </Component>
+      <Component Id="cmp6E2D9AD90F194572AE4BC9F6E3CFCFE7" Directory="Html" Guid="{AF0813FA-4303-497a-A0B2-25124128E9E1}">
+        <File Id="filF6EE5251DAF74331B3893F66181A3E2B" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFirePassiveHeatPerUnitArea.html" />
+      </Component>
+      <Component Id="cmp8D4CE774F1D84FF991039A71325F979C" Directory="Html" Guid="{020BD985-8F77-4afa-B13B-F5ABB7CCC8E8}">
+        <File Id="fil64567CE20BD24101B900D77B2498D3CE" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFirePassiveSpreadDist.html" />
+      </Component>
+      <Component Id="cmpBB65218D4ABB4ADABF95930116B7D633" Directory="Html" Guid="{FA72334A-0465-492a-AA24-6C570A96C1F4}">
+        <File Id="fil4479C24A7AD94C1D993C5AA88EEE418A" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFirePassiveSpreadRate.html" />
       </Component>
       <Component Id="cmpD33D8FF5F875D236B474B62EAF2C3D43" Directory="Html" Guid="{0231027A-9234-4252-AF4A-2E0F8F6DF973}">
         <File Id="filE7508E2DB97C95F3A0AB974EA15DDF9D" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFirePerimeter.html" />

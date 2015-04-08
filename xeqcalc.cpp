@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalc.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree calculator interface.
  *
@@ -29,6 +29,7 @@
  */
 
 // Custom include files
+#include "Bp6Globals.h"
 #include "appmessage.h"
 #include "appsiunits.h"
 #include "apptranslator.h"
@@ -59,6 +60,15 @@
 static const int MaxParts = 8;
 static char Margin[] = { "        " };
 
+bool EqCalc::closeEnough( const char* what, double v5, double v6, double delta )
+{
+	if ( fabs( v5-v6 ) > delta )
+	{
+		printf( "\n\n*** %s v5=%g,  v6=%g\n", what, v5, v6 );
+		return false;
+	}
+	return true;
+}
 //------------------------------------------------------------------------------
 /*! \brief Convenience routine to get a pointer to the FuelModel
  *  of the current vSurfaceFuelBedModel (if not doing two fuel model weighting)
@@ -1330,15 +1340,77 @@ void EqCalc::CrownFirePowerRatio( void )
  *      vSurfaceFireElapsedTime ( min )
  */
 
+void EqCalc::CrownFireSpreadDistV6( void )
+{
+	CrownFireSpreadDist();
+}
 void EqCalc::CrownFireSpreadDist( void )
 {
     // Access current input values
-    double cros    = vCrownFireSpreadRate->m_nativeValue;
     double elapsed = vSurfaceFireElapsedTime->m_nativeValue;
+
+#ifdef INCLUDE_V5_CODE
+    double cros    = vCrownFireSpreadRate->m_nativeValue;
     // Calculate results
     double dist = cros * elapsed;
     // Store results
     vCrownFireSpreadDist->update( dist );
+#endif
+
+#ifdef INCLUDE_V6_CODE
+	//--------------------------------------------------------------------------
+	// Bp6CrownFire::setTime()
+	//--------------------------------------------------------------------------
+	// submit the inputs
+	m_Bp6CrownFire->setTime( elapsed );
+	// collect the outputs
+	double activeArea	= m_Bp6CrownFire->getActiveCrownFireArea();
+	double activeLength = m_Bp6CrownFire->getActiveCrownFireLength();
+	double activePerim	= m_Bp6CrownFire->getActiveCrownFirePerimeter();
+	double activeWidth	= m_Bp6CrownFire->getActiveCrownFireWidth();
+	double passiveArea	= m_Bp6CrownFire->getPassiveCrownFireArea();
+	double passiveLength= m_Bp6CrownFire->getPassiveCrownFireLength();
+	double passivePerim	= m_Bp6CrownFire->getPassiveCrownFirePerimeter();
+	double passiveWidth = m_Bp6CrownFire->getPassiveCrownFireWidth();
+	int    fireType     = m_Bp6CrownFire->getFinalFireType();
+	double finalArea, finalLength, finalPerim;
+	if ( fireType == 0 || fireType == 2 )
+	{
+		m_Bp6SurfaceFire->setTime( elapsed );
+		finalArea   = m_Bp6SurfaceFire->getFireArea();
+		finalLength = m_Bp6SurfaceFire->getFireLength();
+		finalPerim  = m_Bp6SurfaceFire->getFirePerimeter();
+	}
+	else if ( fireType == 1 )
+	{
+		finalArea	= m_Bp6CrownFire->getPassiveCrownFireArea();
+		finalLength	= m_Bp6CrownFire->getPassiveCrownFireLength();
+		finalPerim	= m_Bp6CrownFire->getPassiveCrownFirePerimeter();
+	}
+	else if ( fireType == 3 )
+	{
+		finalArea	= m_Bp6CrownFire->getActiveCrownFireArea();
+		finalLength	= m_Bp6CrownFire->getActiveCrownFireLength();
+		finalPerim	= m_Bp6CrownFire->getActiveCrownFirePerimeter();
+	}
+    // Store results
+	vCrownFireActiveFireArea->update( activeArea );
+	vCrownFireActiveSpreadDist->update( activeLength );
+	vCrownFireActiveFirePerimeter->update( activePerim );
+	vCrownFireActiveFireWidth->update( activeWidth );
+
+	vCrownFirePassiveFireArea->update( passiveArea );
+	vCrownFirePassiveSpreadDist->update( passiveLength );
+	vCrownFirePassiveFirePerimeter->update( passivePerim );
+	vCrownFirePassiveFireWidth->update( passiveWidth );
+
+	vCrownFireSpreadDist->update( finalLength );
+	vCrownFirePerimeter->update( finalPerim );
+	vCrownFireArea->update( finalArea );
+#ifdef INCLUDE_V5_CODE
+	closeEnough( "crownFireSpreadDist", dist, activeLeng );
+#endif
+#endif
     // Log results
     if( m_log )
     {
@@ -1406,6 +1478,10 @@ void EqCalc::CrownFireSpreadMapDist( void )
  *      vSurfaceFuelMoisLiveWood (lb/lb)
  *      vWindSpeedAt20Ft (ft/min)
  */
+void EqCalc::CrownFireSpreadRateV6( void )
+{
+	CrownFireSpreadRate();
+}
 
 void EqCalc::CrownFireSpreadRate( void )
 {
@@ -1415,10 +1491,169 @@ void EqCalc::CrownFireSpreadRate( void )
     double mc100    = vSurfaceFuelMoisDead100->m_nativeValue;
     double mcWood   = vSurfaceFuelMoisLiveWood->m_nativeValue;
     double wind20Ft = vWindSpeedAt20Ft->m_nativeValue;
+
+#ifdef INCLUDE_V5_CODE
     // Calculate results
     double cros = FBL_CrownFireSpreadRate( wind20Ft, mc1, mc10, mc100, mcWood );
     // Store results
     vCrownFireSpreadRate->update( cros );
+#endif
+
+#ifdef INCLUDE_V6_CODE
+	// V6 Refactor
+	//--------------------------------------------------------------------------
+	// Bp6CrownFire::setMoisture()
+	//--------------------------------------------------------------------------
+	// collect the inputs
+    double mois[4];
+    mois[0] = mc1;
+    mois[1] = mc10;
+    mois[2] = mc100;
+    mois[3] = mcWood;
+	// submit the inputs
+	m_Bp6CrownFire->setMoisture( mois );
+
+	//--------------------------------------------------------------------------
+	// Bp6CrownFire::setWind()
+	//--------------------------------------------------------------------------
+	// submit the inputs
+	m_Bp6CrownFire->setWind( 88. * wind20Ft );
+	// collect the outputs
+	double activeRos = m_Bp6CrownFire->getActiveCrownFireRos();
+	// Store the results
+    vCrownFireActiveSpreadRate->update( activeRos );
+
+	//--------------------------------------------------------------------------
+	// Bp6CrownFire::setCanopy()
+	//--------------------------------------------------------------------------
+	// collect the inputs
+    double canopyBulk = vTreeCanopyBulkDens->m_nativeValue;
+    double canopyHt   = vTreeCoverHt->m_nativeValue;
+	double canopyBase = vTreeCrownBaseHt->m_nativeValue;
+    double foliarMc   = vTreeFoliarMois->m_nativeValue;
+	// submit the inputs
+	m_Bp6CrownFire->setCanopy( canopyHt, canopyBase, canopyBulk, foliarMc );
+	// collect the outputs
+	double activeRatio		= m_Bp6CrownFire->getActiveCrownFireRatio();
+	double canopyFuelLoad	= m_Bp6CrownFire->getCanopyFuelLoad();
+	double canopyHpua		= m_Bp6CrownFire->getCanopyHpua();
+	double critCrownRos		= m_Bp6CrownFire->getCriticalCrownFireRos();
+	double critSurfFlame	= m_Bp6CrownFire->getCriticalSurfaceFireFlame();
+	double critSurfFli		= m_Bp6CrownFire->getCriticalSurfaceFireFli();
+	double crownLwRatio		= m_Bp6CrownFire->getCrownFireLwRatio();
+	double powerWind		= m_Bp6CrownFire->getPowerWind();
+	// Store the results
+    vCrownFireActiveRatio->update( activeRatio );
+    vCrownFireFuelLoad->update( canopyFuelLoad );
+    vCrownFireHeatPerUnitAreaCanopy->update( canopyHpua );
+    vCrownFireCritCrownSpreadRate->update( critCrownRos );
+    vCrownFireCritSurfFlameLeng->update( critSurfFlame );
+    vCrownFireCritSurfFireInt->update( critSurfFli );
+	vCrownFireLengthToWidth->update( crownLwRatio );
+    vCrownFirePowerOfWind->update( powerWind );
+
+	//--------------------------------------------------------------------------
+	// Bp6CrownFire::setSurfaceFire()
+	//--------------------------------------------------------------------------
+	// If SURFACE module is active, provide its spread and heat
+    PropertyDict *prop = m_eqTree->m_propDict;
+	if ( prop->boolean( "surfaceModuleActive" ) )
+	{
+		// submit the Bp6SurfaceFire object
+		m_Bp6CrownFire->setSurfaceFire( m_Bp6SurfaceFire );
+	}
+	// Otherwise get the user input values for ros, fli, hpua
+	else
+	{
+		// collect the inputs
+        double surfaceRos  = vSurfaceFireSpreadAtHead->m_nativeValue;
+		double surfaceHpua = vSurfaceFireHeatPerUnitArea->m_nativeValue;
+		double surfaceFli = 0.;
+		if ( prop->boolean( "crownConfUseFlameLeng" ) )
+		{
+			double surfaceFlame = vSurfaceFireFlameLengAtVector->m_nativeValue;
+			surfaceFli = FBL_SurfaceFireFirelineIntensity( surfaceFlame );
+		}
+		else // if ( prop->boolean( "crownConfUseFlameLeng" )
+		{
+			surfaceFli = vSurfaceFireLineIntAtVector->m_nativeValue;
+		}
+		// submit the inputs
+		m_Bp6CrownFire->setSurfaceFire( surfaceRos, surfaceFli, surfaceHpua );
+	}
+	// collect outputs
+	double activeFlame	= m_Bp6CrownFire->getActiveCrownFireFlame();
+	double activeFli	= m_Bp6CrownFire->getActiveCrownFireFli();
+	double activeHpua	= m_Bp6CrownFire->getActiveCrownFireHpua();
+	double critSurfRos	= m_Bp6CrownFire->getCriticalSurfaceFireRos();
+	double cfb			= m_Bp6CrownFire->getCrownFractionBurned();
+	double finalFlame	= m_Bp6CrownFire->getFinalFireFlame();
+	double finalFli		= m_Bp6CrownFire->getFinalFireFli();
+	double finalHpua	= m_Bp6CrownFire->getFinalFireHpua();
+	double finalRos		= m_Bp6CrownFire->getFinalFireRos();
+	int    finalFireType= m_Bp6CrownFire->getFinalFireType();
+	bool   isActiveFire = m_Bp6CrownFire->isActiveCrownFire();
+	bool   isCrownFire	= m_Bp6CrownFire->isCrownFire();
+	bool   isPassiveFire= m_Bp6CrownFire->isPassiveCrownFire();
+	bool   isSurfaceFire= m_Bp6CrownFire->isSurfaceFire();
+	bool   isPlumeDom	= m_Bp6CrownFire->isPlumeDominated();
+	bool   isWindDriven = m_Bp6CrownFire->isWindDriven();
+	double fullCrownU20 = m_Bp6CrownFire->getFullCrownFireU20();
+	double fullCrownRos = m_Bp6CrownFire->getFullCrownFireRos();
+	double passiveFlame = m_Bp6CrownFire->getPassiveCrownFireFlame();
+	double passiveFli	= m_Bp6CrownFire->getPassiveCrownFireFli();
+	double passiveHpua	= m_Bp6CrownFire->getPassiveCrownFireHpua();
+	double passiveRos	= m_Bp6CrownFire->getPassiveCrownFireRos();
+	double powerFire	= m_Bp6CrownFire->getPowerFire();
+	double powerRatio	= m_Bp6CrownFire->getPowerRatio();
+	double transRatio	= m_Bp6CrownFire->getTransRatio();
+	// NOTE - when not linked to Surface Module, we cannot calculate
+	// many of the Scoot & Reinhardt variables, which are within
+	// Bp6CrownFire to:
+	//  - vCrownFireActiveCritOpenWindSpeed = 0
+	//  - vCrownFireActiveCritSurfSpreadRate = 0
+	//	- vCrownFireCanopyFractionBurned = 0
+	// and all passive crown fire values default to surface fire values
+	//	- vCrownFirePassiveFlameLeng = vSurfaceFireFlameLeng
+	//	- vCrownFirePassiveHeatPerUnitArea = vSurfaceFireHeatPerUnitArea
+	//	- vCrownFirePassiveFireLineInt = vSurfaceFireLineInt
+	//	- vCrownFirePassiveSpreadRate = vSurfaceFireSPreadAtHead
+
+	// Store the results
+	vCrownFireCanopyFractionBurned->update( cfb );
+    vCrownFireCritSurfSpreadRate->update( critSurfRos );
+
+	vCrownFireActiveCritSurfSpreadRate->update( fullCrownRos );
+	vCrownFireActiveCritOpenWindSpeed->update( fullCrownU20 );
+
+	vCrownFireTransRatio->update( transRatio );
+	vCrownFireTransToCrown->updateItem( isCrownFire ? 1 : 0 );
+	vCrownFireActiveCrown->updateItem( isActiveFire ? 1 : 0 );
+    vCrownFireType->updateItem( finalFireType );
+	vCrownFireWindDriven->updateItem( isWindDriven ? 1 : 0 );
+
+	vCrownFirePowerOfFire->update( powerFire );
+    vCrownFirePowerRatio->update( powerRatio );
+
+    vCrownFireActiveFlameLeng->update( activeFlame );
+    vCrownFireActiveHeatPerUnitArea->update( activeHpua );
+    vCrownFireActiveFireLineInt->update( activeFli );
+
+	vCrownFirePassiveFlameLeng->update( passiveFlame );
+	vCrownFirePassiveHeatPerUnitArea->update( passiveHpua );
+	vCrownFirePassiveFireLineInt->update( passiveFli );
+	vCrownFirePassiveSpreadRate->update( passiveRos );
+
+    vCrownFireSpreadRate->update( finalRos );
+    vCrownFireHeatPerUnitArea->update( finalHpua );
+    vCrownFireLineInt->update( finalFli );
+    vCrownFireFlameLeng->update( finalFlame );
+
+#ifdef INCLUDE_V5_CODE
+	closeEnough( "crownFireSpreadRate", cros, activeCrownFireRos );
+#endif
+#endif
+
     // Log results
     if( m_log )
     {
@@ -2076,12 +2311,26 @@ void EqCalc::FireEllipseH ( void )
 void EqCalc::FireEffWindAtVector( void )
 {
     // Access current input values
-    double ros0    = vSurfaceFireNoWindRate->m_nativeValue;
     double rosV    = vSurfaceFireSpreadAtVector->m_nativeValue;
+
+#ifdef INCLUDE_V5_CODE
+    double ros0    = vSurfaceFireNoWindRate->m_nativeValue;
     // Calculate results
     double effWind = FBL_SurfaceFireEffectiveWindSpeedAtVector( ros0, rosV );
     // Store results
     vSurfaceFireEffWindAtVector->update( effWind );
+#endif
+
+#ifdef INCLUDE_V6_CODE
+	// V6 Refactor
+	double effWindV6 = m_Bp6SurfaceFire->getEffectiveWindSpeedAtVector( rosV );
+    // Store results
+    vSurfaceFireEffWindAtVector->update( effWindV6 );
+#ifdef INCLUDE_V5_CODE
+	closeEnough( "effWindAtVector", effWind, effWindV6 );
+#endif
+#endif
+
     // Log results
     if( m_log )
     {
@@ -3117,6 +3366,7 @@ void EqCalc::FirePropagatingFlux( void )
 
 void EqCalc::FireReactionInt( void )
 {
+#ifdef INCLUDE_V5_CODE
     // Access current input values
     double deadMext = vSurfaceFuelBedMextDead->m_nativeValue;
     double deadMois = vSurfaceFuelBedMoisDead->m_nativeValue;
@@ -3131,6 +3381,24 @@ void EqCalc::FireReactionInt( void )
     vSurfaceFireReactionInt->update( rxInt );
     vSurfaceFireReactionIntDead->update( rxIntDead );
     vSurfaceFireReactionIntLive->update( rxIntLive );
+#endif
+
+#ifdef INCLUDE_V6_CODE
+	// V6 Refactor
+	double rxIntV6 = m_Bp6SurfaceFire->getTotalRxInt();
+	double rxIntDeadV6 = m_Bp6SurfaceFire->getDeadRxInt();
+	double rxIntLiveV6 = m_Bp6SurfaceFire->getLiveRxInt();
+    // Store results
+    vSurfaceFireReactionInt->update( rxIntV6 );
+    vSurfaceFireReactionIntDead->update( rxIntDeadV6 );
+    vSurfaceFireReactionIntLive->update( rxIntLiveV6 );
+#ifdef INCLUDE_V5_CODE
+	closeEnough( "rxInt", rxInt, rxIntV6 );
+	closeEnough( "rxIntDead", rxIntDead, rxIntDeadV6 );
+	closeEnough( "rxIntLive", rxIntLive, rxIntLiveV6 );
+#endif
+#endif
+
     // Log results
     if( m_log )
     {
@@ -3526,6 +3794,7 @@ void EqCalc::FireSpreadAtHead( void )
         applyWindLimit = false;
     }
 
+#ifdef INCLUDE_V5_CODE
     // Calculate results
     double dirMax, effWind, maxWind, windFactor, slopeFactor;
     int windLimit;
@@ -3540,6 +3809,38 @@ void EqCalc::FireSpreadAtHead( void )
     vSurfaceFireWindSpeedFlag->updateItem( windLimit );
     vSurfaceFireWindFactor->update( windFactor );
     vSurfaceFireSlopeFactor->update( slopeFactor );
+#endif
+
+#ifdef INCLUDE_V6_CODE
+	// V6 Refactor
+	double aspect		 =  vSiteAspectDirFromNorth->m_nativeValue;
+	m_Bp6SurfaceFire->setSite( slope, aspect, 88.*windSpeed, windDir, applyWindLimit );
+	double rosMaxV6      = m_Bp6SurfaceFire->getSpreadRateAtHead();
+	double dirMaxV6      = m_Bp6SurfaceFire->getHeadDirFromUpslope();
+	double effWindV6     = m_Bp6SurfaceFire->getEffectiveWindSpeed() / 88.;
+	double maxWindV6     = m_Bp6SurfaceFire->getWindSpeedLimit() / 88.;
+	int    windLimitV6   = m_Bp6SurfaceFire->getWindLimitExceeded() ? 1 : 0;
+	double windFactorV6  = m_Bp6SurfaceFire->getWindFactor();
+	double slopeFactorV6 = m_Bp6SurfaceFire->getSlopeFactor();
+    // Store results
+    vSurfaceFireSpreadAtHead->update( rosMaxV6 );
+    vSurfaceFireMaxDirFromUpslope->update( dirMaxV6 );
+    vSurfaceFireEffWindAtHead->update( effWindV6 );
+    vSurfaceFireWindSpeedLimit->update( maxWindV6 );
+    vSurfaceFireWindSpeedFlag->updateItem( windLimitV6 );
+    vSurfaceFireWindFactor->update( windFactorV6 );
+    vSurfaceFireSlopeFactor->update( slopeFactorV6 );
+#ifdef INCLUDE_V5_CODE
+	closeEnough( "rosMax", rosMax, rosMaxV6 );
+	closeEnough( "dirMax", dirMax, dirMaxV6 );
+	closeEnough( "effWind", effWind, effWindV6 );
+	closeEnough( "maxWind", maxWind, maxWindV6 );
+	closeEnough( "windLimit", windLimit, windLimitV6 );
+	closeEnough( "windFactor", windFactor, windFactorV6 );
+	closeEnough( "slopeFactor", slopeFactor, slopeFactorV6 );
+#endif
+#endif
+
     // Log results
     if( m_log )
     {
@@ -4307,6 +4608,7 @@ void EqCalc::FuelBedHeatSink( void )
     {
         mois[p] = vSurfaceFuelMois[p]->m_nativeValue;
     }
+#ifdef INCLUDE_V5_CODE
     // Calculate results
     double deadMois, liveMois, liveMext;
     double bulkDensity = vSurfaceFuelBedBulkDensity->m_nativeValue;
@@ -4318,6 +4620,28 @@ void EqCalc::FuelBedHeatSink( void )
     vSurfaceFuelBedMoisLive->update( liveMois );
     vSurfaceFuelBedMextLive->update( liveMext );
     vSurfaceFuelBedHeatSink->update( rbQig );
+#endif
+
+#ifdef INCLUDE_V6_CODE
+	// V6 REFACTOR
+	m_Bp6SurfaceFire->setMoisture( mois );
+	double deadMoisV6 = m_Bp6SurfaceFire->getDeadMois();
+	double liveMoisV6 = m_Bp6SurfaceFire->getLiveMois();
+	double liveMextV6 = m_Bp6SurfaceFire->getLiveMext();
+	double rbQigV6    = m_Bp6SurfaceFire->getRbQig();
+    // Store results
+    vSurfaceFuelBedMoisDead->update( deadMoisV6 );
+    vSurfaceFuelBedMoisLive->update( liveMoisV6 );
+    vSurfaceFuelBedMextLive->update( liveMextV6 );
+    vSurfaceFuelBedHeatSink->update( rbQigV6 );
+#ifdef INCLUDE_V5_CODE
+	closeEnough( "deadMois", deadMois, deadMoisV6 );
+	closeEnough( "liveMois", liveMois, liveMoisV6 );
+	closeEnough( "liveMext", liveMext, liveMextV6 );
+	closeEnough( "rbQig", rbQig, rbQigV6 );
+#endif
+#endif
+
     // Log results
     if( m_log )
     {
@@ -4427,27 +4751,51 @@ void EqCalc::FuelBedIntermediates ( void )
     // Fuel bed intermediates
     double depth    = vSurfaceFuelBedDepth->m_nativeValue;
     double deadMext = vSurfaceFuelBedMextDead->m_nativeValue;
+
+#ifdef INCLUDE_V5_CODE
     double bulkDensity, packingRatio, betaRatio;
     double sigma = FBL_SurfaceFuelBedIntermediates( depth, deadMext, MaxParts,
         life, load, savr, heat, dens, stot, seff,
         &bulkDensity, &packingRatio, &betaRatio );
     //double betaOpt = packingRatio / betaRatio;
-
-//printf( "%-4.4s %6.1f %6.4f %6.4f %6.4f %6.4f\n",
-//  vSurfaceFuelBedModel->activeItemName().latin1(),
-//  sigma, bulkDensity, packingRatio, betaOpt, betaRatio );
-
     // Store results
     vSurfaceFuelBedSigma->update( sigma );
     vSurfaceFuelBedBulkDensity->update( bulkDensity );
     vSurfaceFuelBedPackingRatio->update( packingRatio );
     vSurfaceFuelBedBetaRatio->update( betaRatio );
+#endif
+
+#ifdef INCLUDE_V6_CODE
+	// V6 REFACTOR
+	m_Bp6SurfaceFire->setFuel( depth, deadMext, MaxParts,
+        life, load, savr, heat, dens, stot, seff );
+	double sigmaV6 = m_Bp6SurfaceFire->getSigma();
+	double bulkDensityV6 = m_Bp6SurfaceFire->getBulkDensity();
+	double packingRatioV6 = m_Bp6SurfaceFire->getPackingRatio();
+	double betaRatioV6 = m_Bp6SurfaceFire->getBetaRatio();
+    // Store results
+    vSurfaceFuelBedSigma->update( sigmaV6 );
+    vSurfaceFuelBedBulkDensity->update( bulkDensityV6 );
+    vSurfaceFuelBedPackingRatio->update( packingRatioV6 );
+    vSurfaceFuelBedBetaRatio->update( betaRatioV6 );
+#ifdef INCLUDE_V5_CODE
+	closeEnough( "sigma", sigma, sigmaV6 );
+	closeEnough( "bulkDensity", bulkDensity, bulkDensityV6 );
+	closeEnough( "packingRatio", packingRatio, packingRatioV6 );
+	closeEnough( "betaRatio", betaRatio, betaRatioV6 );
+#endif
+#endif
+
     vSurfaceFuelBedDeadFraction->update( deadFraction );
     vSurfaceFuelBedLiveFraction->update( 1. - deadFraction );
     vSurfaceFuelLoadDeadHerb->update( load[DeadHerb] );
     vSurfaceFuelLoadUndeadHerb->update( load[LiveHerb] );
     vSurfaceFuelLoadDead->update( deadLoad );
     vSurfaceFuelLoadLive->update( liveLoad );
+
+//printf( "%-4.4s %6.1f %6.4f %6.4f %6.4f %6.4f\n",
+//  vSurfaceFuelBedModel->activeItemName().latin1(),
+//  sigma, bulkDensity, packingRatio, betaOpt, betaRatio );
     // Log results
     if( m_log )
     {
@@ -8100,6 +8448,9 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     m_eqTree(eqTree),
     m_log(0)
 {
+	m_Bp6SurfaceFire		= new Bp6SurfaceFire();
+	m_Bp6CrownFire			= new Bp6CrownFire();
+
     vContainAttackBack       = m_eqTree->getVarPtr( "vContainAttackBack" );
     vContainAttackDist       = m_eqTree->getVarPtr( "vContainAttackDist" );
     vContainAttackHead       = m_eqTree->getVarPtr( "vContainAttackHead" );
@@ -8130,30 +8481,50 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     vContainXMin             = m_eqTree->getVarPtr( "vContainXMin" );
     vContainYMax             = m_eqTree->getVarPtr( "vContainYMax" );
 
-    vCrownFireActiveCrown         = m_eqTree->getVarPtr( "vCrownFireActiveCrown" );
-    vCrownFireActiveRatio         = m_eqTree->getVarPtr( "vCrownFireActiveRatio" );
-    vCrownFireArea                = m_eqTree->getVarPtr( "vCrownFireArea" );
-    vCrownFireCanopyHt            = m_eqTree->getVarPtr( "vCrownFireCanopyHt" );
-    vCrownFireCritCrownSpreadRate = m_eqTree->getVarPtr( "vCrownFireCritCrownSpreadRate" );
-    vCrownFireCritSurfFireInt     = m_eqTree->getVarPtr( "vCrownFireCritSurfFireInt" );
-    vCrownFireCritSurfFlameLeng   = m_eqTree->getVarPtr( "vCrownFireCritSurfFlameLeng" );
-    vCrownFireFlameLeng           = m_eqTree->getVarPtr( "vCrownFireFlameLeng" );
-    vCrownFireFuelLoad            = m_eqTree->getVarPtr( "vCrownFireFuelLoad" );
-    vCrownFireHeatPerUnitArea     = m_eqTree->getVarPtr( "vCrownFireHeatPerUnitArea" );
-    vCrownFireHeatPerUnitAreaCanopy = m_eqTree->getVarPtr( "vCrownFireHeatPerUnitAreaCanopy" );
-    vCrownFireLengthToWidth       = m_eqTree->getVarPtr( "vCrownFireLengthToWidth" );
-    vCrownFireLineInt             = m_eqTree->getVarPtr( "vCrownFireLineInt" );
-    vCrownFirePerimeter           = m_eqTree->getVarPtr( "vCrownFirePerimeter" );
-    vCrownFirePowerOfFire         = m_eqTree->getVarPtr( "vCrownFirePowerOfFire" );
-    vCrownFirePowerOfWind         = m_eqTree->getVarPtr( "vCrownFirePowerOfWind" );
-    vCrownFirePowerRatio          = m_eqTree->getVarPtr( "vCrownFirePowerRatio" );
-    vCrownFireSpreadDist          = m_eqTree->getVarPtr( "vCrownFireSpreadDist" );
-    vCrownFireSpreadMapDist       = m_eqTree->getVarPtr( "vCrownFireSpreadMapDist" );
-    vCrownFireSpreadRate          = m_eqTree->getVarPtr( "vCrownFireSpreadRate" );
-    vCrownFireTransRatio          = m_eqTree->getVarPtr( "vCrownFireTransRatio" );
-    vCrownFireTransToCrown        = m_eqTree->getVarPtr( "vCrownFireTransToCrown" );
-    vCrownFireType                = m_eqTree->getVarPtr( "vCrownFireType" );
-    vCrownFireWindDriven          = m_eqTree->getVarPtr( "vCrownFireWindDriven" );
+    vCrownFireActiveCrown				= m_eqTree->getVarPtr( "vCrownFireActiveCrown" );
+    vCrownFireActiveRatio				= m_eqTree->getVarPtr( "vCrownFireActiveRatio" );
+	vCrownFireActiveFireArea				= m_eqTree->getVarPtr( "vCrownFireActiveFireArea" );
+	vCrownFireActiveFlameLeng			= m_eqTree->getVarPtr( "vCrownFireActiveFlameLeng" );
+	vCrownFireActiveHeatPerUnitArea		= m_eqTree->getVarPtr( "vCrownFireActiveHeatPerUnitArea" );
+	vCrownFireActiveSpreadDist				= m_eqTree->getVarPtr( "vCrownFireActiveSpreadDist" );
+	vCrownFireActiveFireLineInt				= m_eqTree->getVarPtr( "vCrownFireActiveFireLineInt" );
+	vCrownFireActiveFirePerimeter			= m_eqTree->getVarPtr( "vCrownFireActiveFirePerimeter" );
+	vCrownFireActiveSpreadRate			= m_eqTree->getVarPtr( "vCrownFireActiveSpreadRate" );
+	vCrownFireActiveFireWidth				= m_eqTree->getVarPtr( "vCrownFireActiveFireWidth" );
+    vCrownFireArea						= m_eqTree->getVarPtr( "vCrownFireArea" );
+	vCrownFireCanopyFractionBurned		= m_eqTree->getVarPtr( "vCrownFireCanopyFractionBurned" );
+    vCrownFireCanopyHt					= m_eqTree->getVarPtr( "vCrownFireCanopyHt" );
+    vCrownFireCritCrownSpreadRate		= m_eqTree->getVarPtr( "vCrownFireCritCrownSpreadRate" );
+    vCrownFireCritSurfFireInt			= m_eqTree->getVarPtr( "vCrownFireCritSurfFireInt" );
+    vCrownFireCritSurfFlameLeng			= m_eqTree->getVarPtr( "vCrownFireCritSurfFlameLeng" );
+    vCrownFireCritSurfSpreadRate		= m_eqTree->getVarPtr( "vCrownFireCritSurfSpreadRate" );
+    vCrownFireFlameLeng					= m_eqTree->getVarPtr( "vCrownFireFlameLeng" );
+    vCrownFireFuelLoad					= m_eqTree->getVarPtr( "vCrownFireFuelLoad" );
+	vCrownFireActiveCritSurfSpreadRate		= m_eqTree->getVarPtr( "vCrownFireActiveCritSurfSpreadRate" );
+	vCrownFireActiveCritOpenWindSpeed = m_eqTree->getVarPtr( "vCrownFireActiveCritOpenWindSpeed" );
+	vCrownFireHeatPerUnitArea			= m_eqTree->getVarPtr( "vCrownFireHeatPerUnitArea" );
+    vCrownFireHeatPerUnitAreaCanopy		= m_eqTree->getVarPtr( "vCrownFireHeatPerUnitAreaCanopy" );
+	vCrownFireLengthToWidth				= m_eqTree->getVarPtr( "vCrownFireLengthToWidth" );
+    vCrownFireLineInt					= m_eqTree->getVarPtr( "vCrownFireLineInt" );
+	vCrownFirePassiveFireArea				= m_eqTree->getVarPtr( "vCrownFirePassiveFireArea" );
+	vCrownFirePassiveFlameLeng			= m_eqTree->getVarPtr( "vCrownFirePassiveFlameLeng" );
+	vCrownFirePassiveHeatPerUnitArea	= m_eqTree->getVarPtr( "vCrownFirePassiveHeatPerUnitArea" );
+	vCrownFirePassiveSpreadDist				= m_eqTree->getVarPtr( "vCrownFirePassiveSpreadDist" );
+	vCrownFirePassiveFireLineInt			= m_eqTree->getVarPtr( "vCrownFirePassiveFireLineInt" );
+	vCrownFirePassiveFirePerimeter			= m_eqTree->getVarPtr( "vCrownFirePassiveFirePerimeter" );
+	vCrownFirePassiveSpreadRate			= m_eqTree->getVarPtr( "vCrownFirePassiveSpreadRate" );
+	vCrownFirePassiveFireWidth				= m_eqTree->getVarPtr( "vCrownFirePassiveFireWidth" );
+	vCrownFirePerimeter					= m_eqTree->getVarPtr( "vCrownFirePerimeter" );
+    vCrownFirePowerOfFire				= m_eqTree->getVarPtr( "vCrownFirePowerOfFire" );
+    vCrownFirePowerOfWind				= m_eqTree->getVarPtr( "vCrownFirePowerOfWind" );
+    vCrownFirePowerRatio				= m_eqTree->getVarPtr( "vCrownFirePowerRatio" );
+    vCrownFireSpreadDist				= m_eqTree->getVarPtr( "vCrownFireSpreadDist" );
+    vCrownFireSpreadMapDist				= m_eqTree->getVarPtr( "vCrownFireSpreadMapDist" );
+    vCrownFireSpreadRate				= m_eqTree->getVarPtr( "vCrownFireSpreadRate" );
+    vCrownFireTransRatio				= m_eqTree->getVarPtr( "vCrownFireTransRatio" );
+    vCrownFireTransToCrown				= m_eqTree->getVarPtr( "vCrownFireTransToCrown" );
+    vCrownFireType						= m_eqTree->getVarPtr( "vCrownFireType" );
+    vCrownFireWindDriven				= m_eqTree->getVarPtr( "vCrownFireWindDriven" );
 
     vDocDescription      = m_eqTree->getVarPtr( "vDocDescription" );
     vDocFireAnalyst      = m_eqTree->getVarPtr( "vDocFireAnalyst" );
@@ -8173,37 +8544,37 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     vIgnitionLightningFuelType  = m_eqTree->getVarPtr( "vIgnitionLightningFuelType" );
     vIgnitionLightningProb      = m_eqTree->getVarPtr( "vIgnitionLightningProb" );
 
-    vMapContourCount    = m_eqTree->getVarPtr( "vMapContourCount" );
-    vMapContourInterval = m_eqTree->getVarPtr( "vMapContourInterval" );
-    vMapDist            = m_eqTree->getVarPtr( "vMapDist" );
-    vMapFraction        = m_eqTree->getVarPtr( "vMapFraction" );
-    vMapScale           = m_eqTree->getVarPtr( "vMapScale" );
+    vMapContourCount			= m_eqTree->getVarPtr( "vMapContourCount" );
+    vMapContourInterval			= m_eqTree->getVarPtr( "vMapContourInterval" );
+    vMapDist					= m_eqTree->getVarPtr( "vMapDist" );
+    vMapFraction				= m_eqTree->getVarPtr( "vMapFraction" );
+    vMapScale					= m_eqTree->getVarPtr( "vMapScale" );
 
-    vSafetyZoneEquipmentArea   = m_eqTree->getVarPtr( "vSafetyZoneEquipmentArea" );
-    vSafetyZoneEquipmentNumber = m_eqTree->getVarPtr( "vSafetyZoneEquipmentNumber" );
-    vSafetyZonePersonnelArea   = m_eqTree->getVarPtr( "vSafetyZonePersonnelArea" );
-    vSafetyZonePersonnelNumber = m_eqTree->getVarPtr( "vSafetyZonePersonnelNumber" );
-    vSafetyZoneLength          = m_eqTree->getVarPtr( "vSafetyZoneLength" );
-    vSafetyZoneRadius          = m_eqTree->getVarPtr( "vSafetyZoneRadius" );
-    vSafetyZoneSepDist         = m_eqTree->getVarPtr( "vSafetyZoneSepDist" );
-    vSafetyZoneSize            = m_eqTree->getVarPtr( "vSafetyZoneSize" );
-    vSafetyZoneSizeSquare      = m_eqTree->getVarPtr( "vSafetyZoneSizeSquare" );
+    vSafetyZoneEquipmentArea	= m_eqTree->getVarPtr( "vSafetyZoneEquipmentArea" );
+    vSafetyZoneEquipmentNumber	= m_eqTree->getVarPtr( "vSafetyZoneEquipmentNumber" );
+    vSafetyZonePersonnelArea	= m_eqTree->getVarPtr( "vSafetyZonePersonnelArea" );
+    vSafetyZonePersonnelNumber	= m_eqTree->getVarPtr( "vSafetyZonePersonnelNumber" );
+    vSafetyZoneLength			= m_eqTree->getVarPtr( "vSafetyZoneLength" );
+    vSafetyZoneRadius			= m_eqTree->getVarPtr( "vSafetyZoneRadius" );
+    vSafetyZoneSepDist			= m_eqTree->getVarPtr( "vSafetyZoneSepDist" );
+    vSafetyZoneSize				= m_eqTree->getVarPtr( "vSafetyZoneSize" );
+    vSafetyZoneSizeSquare		= m_eqTree->getVarPtr( "vSafetyZoneSizeSquare" );
 
-    vSiteAspectDirFromCompass = m_eqTree->getVarPtr( "vSiteAspectDirFromCompass" );
-    vSiteAspectDirFromNorth   = m_eqTree->getVarPtr( "vSiteAspectDirFromNorth" );
-    vSiteElevation            = m_eqTree->getVarPtr( "vSiteElevation" );
-    vSiteLatitude             = m_eqTree->getVarPtr( "vSiteLatitude" );
-    vSiteLongitude            = m_eqTree->getVarPtr( "vSiteLongitude" );
-    vSiteRidgeToValleyDist    = m_eqTree->getVarPtr( "vSiteRidgeToValleyDist" );
-    vSiteRidgeToValleyElev    = m_eqTree->getVarPtr( "vSiteRidgeToValleyElev" );
-    vSiteRidgeToValleyMapDist = m_eqTree->getVarPtr( "vSiteRidgeToValleyMapDist" );
-    vSiteSlopeDegrees         = m_eqTree->getVarPtr( "vSiteSlopeDegrees" );
-    vSiteSlopeFraction        = m_eqTree->getVarPtr( "vSiteSlopeFraction" );
-    vSiteSlopeReach           = m_eqTree->getVarPtr( "vSiteSlopeReach" );
-    vSiteSlopeRise            = m_eqTree->getVarPtr( "vSiteSlopeRise" );
-    vSiteSunShading           = m_eqTree->getVarPtr( "vSiteSunShading" );
-    vSiteTimeZone             = m_eqTree->getVarPtr( "vSiteTimeZone" );
-    vSiteUpslopeDirFromNorth  = m_eqTree->getVarPtr( "vSiteUpslopeDirFromNorth" );
+    vSiteAspectDirFromCompass	= m_eqTree->getVarPtr( "vSiteAspectDirFromCompass" );
+    vSiteAspectDirFromNorth		= m_eqTree->getVarPtr( "vSiteAspectDirFromNorth" );
+    vSiteElevation				= m_eqTree->getVarPtr( "vSiteElevation" );
+    vSiteLatitude				= m_eqTree->getVarPtr( "vSiteLatitude" );
+    vSiteLongitude				= m_eqTree->getVarPtr( "vSiteLongitude" );
+    vSiteRidgeToValleyDist		= m_eqTree->getVarPtr( "vSiteRidgeToValleyDist" );
+    vSiteRidgeToValleyElev		= m_eqTree->getVarPtr( "vSiteRidgeToValleyElev" );
+    vSiteRidgeToValleyMapDist	= m_eqTree->getVarPtr( "vSiteRidgeToValleyMapDist" );
+    vSiteSlopeDegrees			= m_eqTree->getVarPtr( "vSiteSlopeDegrees" );
+    vSiteSlopeFraction			= m_eqTree->getVarPtr( "vSiteSlopeFraction" );
+    vSiteSlopeReach				= m_eqTree->getVarPtr( "vSiteSlopeReach" );
+    vSiteSlopeRise				= m_eqTree->getVarPtr( "vSiteSlopeRise" );
+    vSiteSunShading				= m_eqTree->getVarPtr( "vSiteSunShading" );
+    vSiteTimeZone				= m_eqTree->getVarPtr( "vSiteTimeZone" );
+    vSiteUpslopeDirFromNorth	= m_eqTree->getVarPtr( "vSiteUpslopeDirFromNorth" );
 
     vSpotCoverHtBurningPile        = m_eqTree->getVarPtr( "vSpotCoverHtBurningPile" );
     vSpotCoverHtSurfaceFire        = m_eqTree->getVarPtr( "vSpotCoverHtSurfaceFire" );
@@ -8513,8 +8884,10 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     fCrownFirePowerOfWind         = m_eqTree->setEqFunAddress( "fCrownFirePowerOfWind", &EqCalc::CrownFirePowerOfWind );
     fCrownFirePowerRatio          = m_eqTree->setEqFunAddress( "fCrownFirePowerRatio", &EqCalc::CrownFirePowerRatio );
     fCrownFireSpreadDist          = m_eqTree->setEqFunAddress( "fCrownFireSpreadDist", &EqCalc::CrownFireSpreadDist );
+    fCrownFireSpreadDistV6        = m_eqTree->setEqFunAddress( "fCrownFireSpreadDistV6", &EqCalc::CrownFireSpreadDistV6 );
     fCrownFireSpreadMapDist       = m_eqTree->setEqFunAddress( "fCrownFireSpreadMapDist", &EqCalc::CrownFireSpreadMapDist );
     fCrownFireSpreadRate          = m_eqTree->setEqFunAddress( "fCrownFireSpreadRate", &EqCalc::CrownFireSpreadRate );
+    fCrownFireSpreadRateV6        = m_eqTree->setEqFunAddress( "fCrownFireSpreadRateV6", &EqCalc::CrownFireSpreadRateV6 );
     fCrownFireTransRatioFromFireIntAtVector = m_eqTree->setEqFunAddress( "fCrownFireTransRatioFromFireIntAtVector", &EqCalc::CrownFireTransRatioFromFireIntAtVector );
     fCrownFireTransRatioFromFlameLengAtVector = m_eqTree->setEqFunAddress( "fCrownFireTransRatioFromFlameLengAtVector", &EqCalc::CrownFireTransRatioFromFlameLengAtVector );
     fCrownFireTransToCrown        = m_eqTree->setEqFunAddress( "fCrownFireTransToCrown", &EqCalc::CrownFireTransToCrown );

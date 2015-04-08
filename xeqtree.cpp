@@ -135,6 +135,7 @@ EqTree::EqTree( EqApp *eqApp, const QString &name, int funCount, int funPrime,
         // Get the EqApp's version of the EqFun
         f = m_eqApp->m_fun[id];
         // Create a new EqFun
+		const char* name = f->m_name;
         EqFun *funPtr = new EqFun( f->m_name, (PFV) 0, f->m_inputs,
             f->m_outputs, f->m_releaseFrom, f->m_releaseThru, f->m_module );
         checkmem( __FILE__, __LINE__, funPtr, "EqFun funPtr", 1 );
@@ -720,6 +721,7 @@ EqVar *EqTree::getVarPtr( const QString &name ) const
     if ( ! varPtr )
     // This code block should never be executed!
     {
+		const char* aname = name.ascii();
         QString text("");
         translate( text, "EqTree:VariableNameUnknown", name );
         bomb( text );

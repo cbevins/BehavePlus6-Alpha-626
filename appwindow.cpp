@@ -1,5 +1,6 @@
 //------------------------------------------------------------------------------
 /*! \file appwindow.cpp
+ *		Build 614 2015-04-08
  *		Build 613 2014-07-14
  *		Build 612 2014-04-04
  *		Build 611 2014-03-13
@@ -8,7 +9,7 @@
  *		Build 606 2013-09-02
  *		Build 604 2012-07-07
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief AppWindow class definition.  This class creates the main
  *  application window including its workspace, menu bar, menu system,
