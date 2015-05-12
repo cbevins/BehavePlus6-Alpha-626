@@ -722,11 +722,11 @@ void Bp6SurfaceFire::resetFuelOutput()
     // Initialize particle intermediates
     for ( int p=0; p<MaxParts; p++ )
     {
-		m_aWtg[MaxParts] = 0.;
-		m_sigK[MaxParts] = 0.;
-		m_area[MaxParts] = 0.;
-		m_size[MaxParts] = 0;
-		m_sWtg[MaxParts] = 0.;
+		m_aWtg[p] = 0.;
+		m_sigK[p] = 0.;
+		m_area[p] = 0.;
+		m_size[p] = 0;
+		m_sWtg[p] = 0.;
     }
     // Initialize all fuel bed intermediates
     for ( int l=0; l<MaxCats; l++)
