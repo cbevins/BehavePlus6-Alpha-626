@@ -930,7 +930,7 @@ void ModulesDialog::surfaceOptions( void )
 	dialog->addTab( outTab, "Output Variables" );
 
 	//--------------------------------------------------------------------------
-    // Add the "Fuel" page 1
+    // Add the "Inputs" - "Fuel" tab 1
     p = dialog->addPage( "PropertyTabDialog:Surface:Fuel:Tab",
 						 1, 1,	// allow group boxes to spread vertically to fill entire pane
                          "RestoringAmericasForests1.png",
@@ -962,10 +962,13 @@ void ModulesDialog::surfaceOptions( void )
     p->addRadio( "surfaceConfFuelAspen",
                  "PropertyTabDialog:Surface:Fuel:Aspen",
                   bg );
+    p->addRadio( "surfaceConfFuelChaparral",
+                 "PropertyTabDialog:Surface:Fuel:Chaparral",
+                  bg );
     bg->setFixedHeight( bg->sizeHint().height() );
 
 	//--------------------------------------------------------------------------
-    // Add the "Moisture" page 2
+    // Add the "Inputs" - "Moisture" tab 2
 	row = 0;
     p = dialog->addPage( "PropertyTabDialog:Surface:Mois:Tab",
 						 1, 1,	// allow group boxes to spread vertically to fill entire pane
@@ -1003,7 +1006,7 @@ void ModulesDialog::surfaceOptions( void )
     bg->setFixedHeight( bg->sizeHint().height() );
 
  	//--------------------------------------------------------------------------
-   // Add the "Wind Speed" page 3
+   // Add the "Inputs" - "Wind Speed" tab 3
 	row = 0;
     QString label= ( appWindow()->m_release < 20000 )
                    ? "PropertyTabDialog:Surface:Wind:Tab"
@@ -1060,7 +1063,7 @@ void ModulesDialog::surfaceOptions( void )
     bg->setFixedHeight( bg->sizeHint().height() );
 
 	//--------------------------------------------------------------------------
-    // Add the "Slope" page 4
+    // Add the "Input Options" - "Slope" tab 4
     p = dialog->addPage( "PropertyTabDialog:Surface:Slope:Tab",
 						 1, 1,	// allow group boxes to spread vertically to fill entire pane
                          "GoingToTheSun.png",
@@ -1091,7 +1094,7 @@ void ModulesDialog::surfaceOptions( void )
     bg->setFixedHeight( bg->sizeHint().height() );
 
 	//--------------------------------------------------------------------------
-    // Add the "Directions" page 5
+    // Add the "Input Options" - "Directions" tab 5
 	row = 0;
     label= ( appWindow()->m_release < 20000 )
            ? "PropertyTabDialog:Surface:Dir:Tab"
@@ -1166,7 +1169,82 @@ if ( false )
 }
 
 	//--------------------------------------------------------------------------
-    // Add the "Basic Outputs" page 6a
+    // Add the "Input Options" - "Chaparral" tab 6
+    p = dialog->addPage( "PropertyTabDialog:Surface:Chaparral:Tab",
+						 1, 1,	// allow group boxes to spread vertically to fill entire pane
+                         "GoingToTheSun.png",
+                         "Going To The Sun",
+                         "chaparralOptions.html" );
+	inTab->addTab( p, "Chaparral" );
+ 
+	// Add the "Total Load" button group "Total fuel load is" ...
+    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:TotalLoad:Caption",
+                     0, 0, 0, 0 );
+    p->addRadio( "surfaceConfFuelChaparralTotalLoadFromInput",
+		"PropertyTabDialog:Surface:Chaparral:TotalLoad:Input",
+                 bg );
+    p->addRadio( "surfaceConfFuelChaparralTotalLoadFromAgeType",
+		"PropertyTabDialog:Surface:Chaparral:TotalLoad:AgeType",
+                 bg );
+    bg->setFixedHeight( bg->sizeHint().height() );
+ 
+	// Add the "Depth" button group "Depth is" ...
+    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:Depth:Caption",
+                     1, 0, 1, 0 );
+    p->addRadio( "surfaceConfFuelChaparralDepthFromInput",
+		"PropertyTabDialog:Surface:Chaparral:Depth:Input",
+                 bg );
+    p->addRadio( "surfaceConfFuelChaparralDepthFromAgeType",
+		"PropertyTabDialog:Surface:Chaparral:Depth:AgeType",
+                 bg );
+    bg->setFixedHeight( bg->sizeHint().height() );
+ 
+	// Add the "Dead fuel fraction" button group "Dead fuel fraction is" ...
+    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:DeadFraction:Caption",
+                     2, 0, 2, 0 );
+    p->addRadio( "surfaceConfFuelChaparralDeadFractionFromInput",
+		"PropertyTabDialog:Surface:Chaparral:DeadFraction:Input",
+                 bg );
+    p->addRadio( "surfaceConfFuelChaparralDeadFractionFromAge",
+		"PropertyTabDialog:Surface:Chaparral:DeadFraction:Age",
+                 bg );
+    bg->setFixedHeight( bg->sizeHint().height() );
+ 
+	// Add the "Live Heat" button group "Live fuel heat content is" ...
+    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:HeatLive:Caption",
+                     3, 0, 3, 0 );
+    p->addRadio( "surfaceConfFuelChaparralHeatLiveFromInput",
+		"PropertyTabDialog:Surface:Chaparral:HeatLive:Input",
+                 bg );
+    p->addRadio( "surfaceConfFuelChaparralHeatLiveFromDays",
+		"PropertyTabDialog:Surface:Chaparral:HeatLive:Days",
+                 bg );
+    bg->setFixedHeight( bg->sizeHint().height() );
+ 
+	// Add the "Live Moisture" button group "Live fuel moisture content is" ...
+    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:MoisLive:Caption",
+                     4, 0, 4, 0 );
+    p->addRadio( "surfaceConfFuelChaparralMoisLiveFromInput",
+		"PropertyTabDialog:Surface:Chaparral:MoisLive:Input",
+                 bg );
+    p->addRadio( "surfaceConfFuelChaparralMoisLiveFromDays",
+		"PropertyTabDialog:Surface:Chaparral:MoisLive:Days",
+                 bg );
+    bg->setFixedHeight( bg->sizeHint().height() );
+ 
+	// Add the "Days Since May 1" button group "Days since May 1 is" ...
+    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:Days:Caption",
+                     5, 0, 5, 0 );
+    p->addRadio( "surfaceConfFuelChaparralDaysFromInput",
+		"PropertyTabDialog:Surface:Chaparral:Days:Input",
+                 bg );
+    p->addRadio( "surfaceConfFuelChaparralDaysFromDate",
+		"PropertyTabDialog:Surface:Chaparral:Days:Date",
+                 bg );
+    bg->setFixedHeight( bg->sizeHint().height() );
+
+	//--------------------------------------------------------------------------
+    // Add the "Output Variables" - "Basic Outputs" tab 1
 	bool threeTabs = true;
     int r = 0;
     label= ( appWindow()->m_release < 20000 )
@@ -1211,7 +1289,7 @@ if ( false )
     //              r, 0, r, 0 ); r++;
 
 	//--------------------------------------------------------------------------
-    // Add the "Intermediate Dir" page 6b
+    // Add the "Output Variables" - "Intermediate Directions" tab 2
 	r = 0;
 	label = "PropertyTabDialog:Surface:FireFront:Tab";
 	p = dialog->addPage( label,
@@ -1249,7 +1327,7 @@ if ( false )
                   r, 0, r, 0 ); r++;
 
 	//--------------------------------------------------------------------------
-	// Add the "Wind Outputs" page 7
+	// Add the "Output Variables" - "Wind" tab 3
 	if ( threeTabs )
 	{
 		dialog->showPage( p );	// display the previous tab by default
@@ -1288,7 +1366,7 @@ if ( false )
                   r, 0, r, 0 ); r++;
 
 	//--------------------------------------------------------------------------
-	// Add the "Slope Outputs" page 8
+	// Add the "Output Variables" - "Slope" tab 4
 	if ( threeTabs )
 	{
 	    r = 0;
@@ -1315,7 +1393,7 @@ if ( false )
 	}    
 
 	//--------------------------------------------------------------------------
-    // Add the "Intermediates" page 9
+    // Add the "Output Variables" - "Intermediates" tab 5
     r = 0;
     p = dialog->addPage( "PropertyTabDialog:Surface:Intermediates:Tab20000",
 						gridRows, 1,  // pack items vertically as if there will be 20 rows
@@ -1367,7 +1445,7 @@ if ( false )
                   r, 0, r, 0 ); r++;
 
 	//--------------------------------------------------------------------------
-    // Add the "Fuel Outputs" page 10
+    // Add the "Output Variables" - "Fuel" tab 6
     if ( appWindow()->m_release >= 20000 )
     {
         r = 0;
@@ -1407,7 +1485,7 @@ if ( false )
     }
 
 	//--------------------------------------------------------------------------
-    // Add the "Aspen Fuels" page 11
+    // Add the "Output Variables" - "Aspen" tab 7
     if ( appWindow()->m_release >= 20000 )
     {
         r = 0;
@@ -1462,7 +1540,7 @@ if ( false )
     }
 
 	//--------------------------------------------------------------------------
-    // Add the "P-G Fuels" page 12
+    // Add the "Output Variables" - "Palmeto-Gallberry" tab 8
     if ( appWindow()->m_release >= 20000 )
     {
         r = 0;
@@ -1505,6 +1583,85 @@ if ( false )
         p->addLabel( "!",
                       r, 0, r, 0 ); r++;
         p->addLabel( "PropertyTabDialog:Surface:PalmettoOutputs:Note2",
+                      r, 0, r, 0 ); r++;
+    }
+	//--------------------------------------------------------------------------
+    // Add the "Output Variables" - "Chaparral" tab 9
+    if ( appWindow()->m_release >= 20000 )
+    {
+        r = 0;
+        // NOTE: to overcome Qt layout bug (which groups all check boxes into
+        // a single groupbox "row" ), start header at row 1 and declare an
+        // additional grid row
+        p = dialog->addPage( "PropertyTabDialog:Surface:ChaparralOutputs:Tab",
+                              gridRows, 1,  // pack items vertically as if there will be 20 rows
+                             "PileatedWoodpecker.png",
+                             "Pileated Woodpeckers",
+                             "selectOutput.html" );
+		outTab->addTab( p, "Chaparral" );
+
+        p->addLabel( "PropertyTabDialog:Surface:ChaparralOutputs:Note",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralDepth",
+                      "vSurfaceFuelChaparralDepth",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralDeadFuelFraction",
+                      "vSurfaceFuelChaparralDeadFuelFraction",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadTotal",
+                      "vSurfaceFuelChaparralLoadTotal",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadTotalDead",
+                      "vSurfaceFuelChaparralLoadTotalDead",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadTotalLive",
+                      "vSurfaceFuelChaparralLoadTotalLive",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadDead1",
+                      "vSurfaceFuelChaparralLoadDead1",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadDead2",
+                      "vSurfaceFuelChaparralLoadDead2",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadDead3",
+                      "vSurfaceFuelChaparralLoadDead3",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadDead4",
+                      "vSurfaceFuelChaparralLoadDead4",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadLiveLeaf",
+                      "vSurfaceFuelChaparralLoadLiveLeaf",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadLive1",
+                      "vSurfaceFuelChaparralLoadLive1",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadLive2",
+                      "vSurfaceFuelChaparralLoadLive2",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadLive3",
+                      "vSurfaceFuelChaparralLoadLive3",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralLoadLive4",
+                      "vSurfaceFuelChaparralLoadLive4",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralDaysSinceMay1",
+                      "vSurfaceFuelChaparralDaysSinceMay1",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralHeatLiveLeaf",
+                      "vSurfaceFuelChaparralHeatLiveLeaf",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralHeatLiveStem",
+                      "vSurfaceFuelChaparralHeatLiveStem",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralMoisLiveLeaf",
+                      "vSurfaceFuelChaparralMoisLiveLeaf",
+                      r, 0, r, 0 ); r++;
+        addOutput( p, "surfaceCalcChaparralMoisLiveStem",
+                      "vSurfaceFuelChaparralMoisLiveStem",
+                      r, 0, r, 0 ); r++;
+        p->addLabel( "!",
+                      r, 0, r, 0 ); r++;
+        p->addLabel( "PropertyTabDialog:Surface:ChaparralOutputs:Note2",
                       r, 0, r, 0 ); r++;
     }
 

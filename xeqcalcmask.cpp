@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalcmask.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Routines to mask/unmask EqCalc input variables.
  *
@@ -273,6 +273,16 @@ void EqCalc::maskInputs( void )
         }
         else if ( prop->boolean( "surfaceConfFuelAspen" ) )
         {
+            vSurfaceFuelMoisDead10->m_isMasked = false;
+            vSurfaceFuelMoisDead1->m_isMasked = false;
+            vSurfaceFuelMoisLiveHerb->m_isMasked = false;
+            vSurfaceFuelMoisLiveWood->m_isMasked = false;
+            vSurfaceFuelMoisLifeDead->m_isMasked = false;
+            vSurfaceFuelMoisLifeLive->m_isMasked = false;
+        }
+        else if ( prop->boolean( "surfaceConfFuelChaparral" ) )
+        {
+            vSurfaceFuelMoisDead100->m_isMasked = false;
             vSurfaceFuelMoisDead10->m_isMasked = false;
             vSurfaceFuelMoisDead1->m_isMasked = false;
             vSurfaceFuelMoisLiveHerb->m_isMasked = false;

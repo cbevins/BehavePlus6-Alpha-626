@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalcreconfig.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Reconfigures the EqFun m_active and the EqVar m_isUserOutput flags
  *  to reflect the current configuration options, outputs, & properties.
@@ -1156,6 +1156,142 @@ void EqCalc::reconfigureSurfaceModule( PropertyDict *prop, int /* release */ )
         vTreeMortalityRateAspenAtVector->m_isUserOutput =
             prop->boolean( "surfaceCalcAspenMortality" );
     }
+    //--------------------------------------------------------------------------
+    // Choice 1.8: dynamic Chaparral fuel models
+    //--------------------------------------------------------------------------
+    else if ( prop->boolean( "surfaceConfFuelChaparral" ) )
+    {
+        // Use Chaparral versions of these functions:
+        fSurfaceFuelChaparralModel->m_active = true;
+        fSurfaceFuelChaparralParms->m_active = true;
+		// Fuel depth options
+		if ( prop->boolean( "surfaceConfFuelChaparralDepthFromAgeType" ) )
+		{
+			fSurfaceFuelChaparralDepth->m_active = true;
+		}
+		else // if ( prop->boolean( "surfaceConfFuelChaparralDepthFromInput" ) )
+		{
+			fSurfaceFuelChaparralDepth->m_active = false;
+		}
+		// Total fuel load options
+		if ( prop->boolean( "surfaceConfFuelChaparralTotalLoadFromAgeType" ) )
+		{
+			fSurfaceFuelChaparralLoadTotal->m_active = true;
+		}
+		else // if ( prop->boolean( "surfaceConfFuelChaparralTotalLoadFromInput" ) )
+		{
+			fSurfaceFuelChaparralLoadTotal->m_active = false;
+		}
+		// Dead fuel fraction option
+		if ( prop->boolean( "surfaceConfFuelChaparralDeadFractionFromAge" ) )
+		{
+			fSurfaceFuelChaparralDeadFuelFraction->m_active = true;
+		}
+		else // if ( prop->boolean( "surfaceConfFuelChaparralDeadFractionFromInput" ) )
+		{
+			fSurfaceFuelChaparralDeadFuelFraction->m_active = false;
+		}
+		// Live heat of combustion option
+		if ( prop->boolean( "surfaceConfFuelChaparralHeatLiveFromDays" ) )
+		{
+			fSurfaceFuelChaparralHeatLiveLeaf->m_active = true;
+			fSurfaceFuelChaparralHeatLiveStem->m_active = true;
+		}
+		else // if ( prop->boolean( "surfaceConfFuelChaparralHeatLiveFromDays" ) )
+		{
+			fSurfaceFuelChaparralHeatLiveLeaf->m_active = false;
+			fSurfaceFuelChaparralHeatLiveStem->m_active = false;
+		}
+		// Live fuel moisture content option
+		if ( prop->boolean( "surfaceConfFuelChaparralMoisLiveFromDays" ) )
+		{
+			fSurfaceFuelChaparralMoisLiveLeaf->m_active = true;
+			fSurfaceFuelChaparralMoisLiveStem->m_active = true;
+		}
+		else // if ( prop->boolean( "surfaceConfFuelChaparralMoisLiveFromDays" ) )
+		{
+			fSurfaceFuelChaparralMoisLiveLeaf->m_active = false;
+			fSurfaceFuelChaparralMoisLiveStem->m_active = false;
+		}
+		// Days since May 1st option
+		if ( prop->boolean( "surfaceConfFuelChaparralDaysFromDate" ) )
+		{
+			fSurfaceFuelChaparralDaysSinceMay1->m_active = true;
+		}
+		else // if ( prop->boolean( "surfaceConfFuelChaparralDaysFromDate" ) )
+		{
+			fSurfaceFuelChaparralDaysSinceMay1->m_active = false;
+		}
+
+		// Keep this off the worksheet
+		vSurfaceFuelBedModelCode->m_isUserInput   = false;	// added in Build 610
+		vSurfaceFuelBedModelCode->m_isConstant    = true;	// added in Build 610
+		vSurfaceFuelBedModelNumber->m_isUserInput = false;	// added in Build 610
+		vSurfaceFuelBedModelNumber->m_isConstant  = true;	// added in Build 610
+
+        // Output variables
+        vSurfaceFuelChaparralAge->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralAge" );
+        vSurfaceFuelChaparralDaysSinceMay1->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralDaysSinceMay1" );
+        vSurfaceFuelChaparralDepth->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralDepth" );
+        vSurfaceFuelChaparralDeadFuelFraction->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralDeadFuelFraction" );
+        vSurfaceFuelChaparralHeatLiveLeaf->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralHeatLiveLeaf" );
+        vSurfaceFuelChaparralHeatLiveStem->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralHeatLiveStem" );
+        vSurfaceFuelChaparralLoadDead1->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadDead1" );
+        vSurfaceFuelChaparralLoadDead2->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadDead2" );
+        vSurfaceFuelChaparralLoadDead3->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadDead3" );
+        vSurfaceFuelChaparralLoadDead4->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadDead4" );
+        vSurfaceFuelChaparralLoadLive1->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadLive1" );
+        vSurfaceFuelChaparralLoadLive2->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadLive2" );
+        vSurfaceFuelChaparralLoadLive3->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadLive3" );
+        vSurfaceFuelChaparralLoadLive4->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadLive4" );
+        vSurfaceFuelChaparralLoadLiveLeaf->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadLiveLeaf" );
+        vSurfaceFuelChaparralLoadTotal->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadTotal" );
+        vSurfaceFuelChaparralLoadTotalDead->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadTotalDead" );
+        vSurfaceFuelChaparralLoadTotalLive->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralLoadTotalLive" );
+        vSurfaceFuelChaparralMoisLiveLeaf->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralMoisLiveLeaf" );
+        vSurfaceFuelChaparralMoisLiveStem->m_isUserOutput =
+            prop->boolean( "surfaceCalcChaparralMoisLiveStem" );
+
+		if ( prop->boolean( "surfaceConfFuelChaparralDeadFractionFromInput" )
+		  && prop->boolean( "surfaceConfFuelChaparralDepthFromInput" )
+		  && prop->boolean( "surfaceConfFuelChaparralTotalLoadFromInput" ) )
+		{
+			fSurfaceFuelChaparralAgeFromDepth->m_active = true;
+		}
+    }
+
+    //--------------------------------------------------------------------------
+    // Option 2: Dynamic curing load transfer is:
+    //--------------------------------------------------------------------------
+
+    //--------------------------------------------------------------------------
+    // Choice 2.1: Dynamic fuel load transfer is calculated
+    //             from live herbaceous fuel moisture
+    //--------------------------------------------------------------------------
+    if ( prop->boolean( "surfaceConfLoadTransferCalc" ) )
+    {
+        vSurfaceFuelLoadTransferFraction->m_isUserInput = false;
+        fSurfaceFuelLoadTransferFraction->m_active = true;
+    }
 
     //--------------------------------------------------------------------------
     // Option 2: Dynamic curing load transfer is:
@@ -1181,7 +1317,8 @@ void EqCalc::reconfigureSurfaceModule( PropertyDict *prop, int /* release */ )
 
     // Never do load transfer for Palmetto-Gallberry or Western Aspen
     if ( prop->boolean( "surfaceConfFuelPalmettoGallberry" )
-      || prop->boolean( "surfaceConfFuelAspen" ) )
+      || prop->boolean( "surfaceConfFuelAspen" )
+      || prop->boolean( "surfaceConfFuelChaparral" ) )
     {
         vSurfaceFuelLoadTransferEq->m_isConstant = true;
         vSurfaceFuelLoadTransferEq->updateItem( 0 );
@@ -1226,6 +1363,15 @@ void EqCalc::reconfigureSurfaceModule( PropertyDict *prop, int /* release */ )
         // Must derive time lag fuel moisture from moistures scenario
         fSurfaceFuelMoisScenarioModel->m_active = true;
     }
+    //--------------------------------------------------------------------------
+    // Choice 3.5: Chaparral live fuel moisture is calculated
+    //--------------------------------------------------------------------------
+
+	if ( prop->boolean( "surfaceConfFuelChaparral" )
+	  && prop->boolean( "surfaceConfFuelChaparralMoisLiveFromDays" ) )
+    {
+		fSurfaceFuelMoisLiveChaparral->m_active = true;
+	}
 
     //--------------------------------------------------------------------------
     // Option 4: Wind speed is entered as:

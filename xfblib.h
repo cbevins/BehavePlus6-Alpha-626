@@ -112,6 +112,51 @@ double FBL_AspenSavrLiveWoody(
             int typeIndex,
             double curing ) ;
 
+double FBL_ChaparralDaysSinceMay1(
+			int month,
+			int day );
+
+double FBL_ChaparralAgeFromDepth(
+			double depth,
+			bool   isChamise );
+
+double FBL_ChaparralDeadFuelFraction(
+			double age,
+			bool   isAvereage=true) ;
+
+double FBL_ChaparralDepth(
+			double age,
+			bool   isChamise );
+
+double FBL_ChaparralHeatLiveLeaf(
+			double daysSinceMay1 );
+
+double FBL_ChaparralHeatLiveStem(
+			double daysSinceMay1 );
+
+double FBL_ChaparralLiveExtinctionMoisture(
+			bool   isChamise );
+
+double FBL_ChaparralLoadDead(
+			double totalLoad,
+			double deadLoadFraction,
+			int    size );
+
+double FBL_ChaparralLoadLive(
+			double totalLoad,
+			double deadLoadFraction,
+			int    size );
+
+double FBL_ChaparralMoistureLiveLeaf(
+			double daysSinceMay1 );
+
+double FBL_ChaparralMoistureLiveStem(
+			double daysSinceMay1 );
+
+double FBL_ChaparralTotalFuelLoad(
+			double age,
+			bool   isChamise );
+
 double FBL_CompassConstrainDegrees(
             double degrees ) ;
 

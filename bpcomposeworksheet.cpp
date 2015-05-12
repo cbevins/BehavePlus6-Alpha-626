@@ -1329,6 +1329,7 @@ void BpDocument::runOptions( QString* runOpt, int& nOptions )
                 translate( runOpt[nOptions++],
                     "BpDocument:Worksheet:RunOptions:TwoFuel:AreaWeighted" );
             }
+			// Special case fuel model options
             else if ( property()->boolean( "surfaceConfFuelPalmettoGallberry" ) )
             {
                 translate( runOpt[nOptions++],
@@ -1342,6 +1343,13 @@ void BpDocument::runOptions( QString* runOpt, int& nOptions )
                     "BpDocument:Worksheet:RunOptions:SpecialFuel:Aspen1" );
                 translate( runOpt[nOptions++],
                     "BpDocument:Worksheet:RunOptions:SpecialFuel:Aspen2" );
+            }
+            else if ( property()->boolean( "surfaceConfFuelChaparral" ) )
+            {
+                translate( runOpt[nOptions++],
+                    "BpDocument:Worksheet:RunOptions:SpecialFuel:Chaparral1" );
+                translate( runOpt[nOptions++],
+                    "BpDocument:Worksheet:RunOptions:SpecialFuel:Chaparral2" );
             }
             // Directions Page
             if ( property()->boolean( "surfaceConfSpreadDirHead" ) )	// Option 1 of 6

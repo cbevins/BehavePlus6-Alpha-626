@@ -57,7 +57,7 @@
 #include <string.h>
 #include <math.h>
 
-static const int MaxParts = 8;
+static const int MaxParts = 10;
 static char Margin[] = { "        " };
 
 bool EqCalc::closeEnough( const char* what, double v5, double v6, double delta )
@@ -4474,9 +4474,9 @@ void EqCalc::FuelAspenModel( void )
         fprintf( m_log, "%s  i vSurfaceFuelAspenCuring %g %s\n", Margin,
             vSurfaceFuelAspenCuring->m_nativeValue,
             vSurfaceFuelAspenCuring->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSurfaceFireSeverityAspen %d %s\n", Margin,
-            vSurfaceFireSeverityAspen->activeItemDataIndex(),
-            vSurfaceFireSeverityAspen->activeItemName().latin1() );
+        fprintf( m_log, "%s  i vSurfaceFuelAspenType %d %s\n", Margin,
+            vSurfaceFuelAspenType->activeItemDataIndex(),
+            vSurfaceFuelAspenType->activeItemName().latin1() );
         fprintf( m_log, "%s  o vSurfaceFuelBedDepth %g %s\n", Margin,
             vSurfaceFuelBedDepth->m_nativeValue,
             vSurfaceFuelBedDepth->m_nativeUnits.latin1() );
@@ -4536,43 +4536,32 @@ void EqCalc::FuelAspenModel( void )
 
 void EqCalc::FuelAspenParms( void )
 {
+	// Initialize to default values
+    for ( int i = 0; i < MaxParts; i++ )
+    {
+		vSurfaceFuelLife[i]->updateItem( FuelLifeType_DeadTimeLag );
+        vSurfaceFuelDens[i]->update( 32.0 );
+        vSurfaceFuelHeat[i]->update( 8000. );
+		vSurfaceFuelLoad[i]->update( 0. );
+		vSurfaceFuelSavr[i]->update( 30.0 );
+        vSurfaceFuelSeff[i]->update( 0.010 );
+        vSurfaceFuelStot[i]->update( 0.055 );
+    }
     // Assign life values
     vSurfaceFuelLife[0]->updateItem( FuelLifeType_DeadTimeLag ); // Dead 0.0 - 0.25"
     vSurfaceFuelLife[1]->updateItem( FuelLifeType_DeadTimeLag ); // Dead 0.25 - 1.0"
     vSurfaceFuelLife[2]->updateItem( FuelLifeType_LiveHerb );    // Live herbaceous
     vSurfaceFuelLife[3]->updateItem( FuelLifeType_LiveWood );    // Live woody
-    vSurfaceFuelLife[4]->updateItem( FuelLifeType_DeadTimeLag ); // Unused
-    vSurfaceFuelLife[5]->updateItem( FuelLifeType_DeadTimeLag ); // Unused
-    vSurfaceFuelLife[6]->updateItem( FuelLifeType_DeadTimeLag ); // Unused
-    vSurfaceFuelLife[7]->updateItem( FuelLifeType_DeadTimeLag ); // Unused
     // Assign load values
     vSurfaceFuelLoad[0]->update( vSurfaceFuelAspenLoadDead1->m_nativeValue );
     vSurfaceFuelLoad[1]->update( vSurfaceFuelAspenLoadDead10->m_nativeValue );
     vSurfaceFuelLoad[2]->update( vSurfaceFuelAspenLoadLiveHerb->m_nativeValue );
     vSurfaceFuelLoad[3]->update( vSurfaceFuelAspenLoadLiveWoody->m_nativeValue );
-    vSurfaceFuelLoad[4]->update( 0. );
-    vSurfaceFuelLoad[5]->update( 0. );
-    vSurfaceFuelLoad[6]->update( 0. );
-    vSurfaceFuelLoad[7]->update( 0. );
     // Assign savr values
     vSurfaceFuelSavr[0]->update( vSurfaceFuelAspenSavrDead1->m_nativeValue );
     vSurfaceFuelSavr[1]->update( vSurfaceFuelAspenSavrDead10->m_nativeValue );
     vSurfaceFuelSavr[2]->update( vSurfaceFuelAspenSavrLiveHerb->m_nativeValue );
     vSurfaceFuelSavr[3]->update( vSurfaceFuelAspenSavrLiveWoody->m_nativeValue );
-    vSurfaceFuelSavr[4]->update( 30.0 );
-    vSurfaceFuelSavr[5]->update( 30.0 );
-    vSurfaceFuelSavr[6]->update( 30.0 );
-    vSurfaceFuelSavr[7]->update( 30.0 );
-    // Assign heat and stot values
-    for ( int i = 0;
-          i < MaxParts;
-          i++ )
-    {
-        vSurfaceFuelDens[i]->update( 32.0 );
-        vSurfaceFuelHeat[i]->update( 8000. );
-        vSurfaceFuelSeff[i]->update( 0.010 );
-        vSurfaceFuelStot[i]->update( 0.055 );
-    }
     // Log results
     if( m_log )
     {
@@ -4624,10 +4613,18 @@ void EqCalc::FuelBedHeatSink( void )
 
 #ifdef INCLUDE_V6_CODE
 	// V6 REFACTOR
-	m_Bp6SurfaceFire->setMoisture( mois );
+	// If using Rothermel & Philpot chaparral fuel models ...
+	double liveMextChaparral = 0.;
+    PropertyDict *prop = m_eqTree->m_propDict;
+    if ( prop->boolean( "surfaceConfFuelChaparral" ) )
+	{
+		int typeIndex = vSurfaceFuelChaparralType->activeItemDataIndex();
+		liveMextChaparral = (typeIndex==0) ? 0.65 : 0.74;
+	}
+	m_Bp6SurfaceFire->setMoisture( mois, liveMextChaparral );
 	double deadMoisV6 = m_Bp6SurfaceFire->getDeadMois();
 	double liveMoisV6 = m_Bp6SurfaceFire->getLiveMois();
-	double liveMextV6 = m_Bp6SurfaceFire->getLiveMext();
+	double liveMextV6 = m_Bp6SurfaceFire->getLiveMextApplied();
 	double rbQigV6    = m_Bp6SurfaceFire->getRbQig();
     // Store results
     vSurfaceFuelBedMoisDead->update( deadMoisV6 );
@@ -5713,6 +5710,493 @@ void EqCalc::FuelBedWeighted( void )
     }
     return;
 }
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralDaysSinceMay1
+ *
+ *  Dependent Variables (Outputs)
+ *      vSurfaceFuelChaparralDaysSinceMay1 (days)
+ *
+ *  Independent Variables (Inputs)
+ *      vSurfaceFuelChaparralMonthOfyear (months)
+ *      vSurfaceFuelChaparralDayOfMonth (days)
+ */
+void EqCalc::FuelChaparralDaysSinceMay1( void )
+{
+    // Access current input values
+    int mon = vSurfaceFuelChaparralMonthOfYear->activeItemDataIndex() + 1;
+    int day = int( vSurfaceFuelChaparralDayOfMonth->m_nativeValue + 0.0001 );
+	// Calculate days since May 1
+	int days = FBL_ChaparralDaysSinceMay1( mon, day );
+    // Update
+    vSurfaceFuelChaparralDaysSinceMay1->update( days );
+
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralDaysSinceMay1() 2 1\n", Margin );
+        fprintf( m_log, "%s  i vSurfaceFuelChaparralDayOfMonth %g %s\n", Margin,
+            vSurfaceFuelChaparralDayOfMonth->m_nativeValue,
+            vSurfaceFuelChaparralDayOfMonth->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vSurfaceFuelChaparralMonthOfYear %g %s\n", Margin,
+            vSurfaceFuelChaparralMonthOfYear->m_nativeValue,
+            vSurfaceFuelChaparralMonthOfYear->m_nativeUnits.latin1() );
+       fprintf( m_log, "%s  o vSurfaceFuelChaparralDaysSinceMay1 %g %s\n", Margin,
+            vSurfaceFuelChaparralDaysSinceMay1->m_nativeValue,
+            vSurfaceFuelChaparralDaysSinceMay1->m_nativeUnits.latin1() );
+	}
+	return;
+}
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralAgeFromDepth
+ *
+ *  Dependent Variables (Outputs)
+ *      vSurfaceFuelChaparralAge (years)
+ *
+ *  Independent Variables (Inputs)
+ *      vSurfaceFuelChaparralDepth( ft)
+ *      vSurfaceFuelChaparralType (discrete)
+ */
+void EqCalc::FuelChaparralAgeFromDepth( void )
+{
+    // Access current input values
+    double depth = vSurfaceFuelChaparralDepth->m_nativeValue;
+    int    typeIndex = vSurfaceFuelChaparralType->activeItemDataIndex();
+	// Calculate result
+	double age = FBL_ChaparralAgeFromDepth( depth, (typeIndex == 0) );
+    // Update
+    vSurfaceFuelChaparralAge->update( age );
+
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralAge() 2 1\n", Margin );
+        fprintf( m_log, "%s  i vSurfaceFuelChaparralDepth %g %s\n", Margin,
+            vSurfaceFuelChaparralDepth->m_nativeValue,
+            vSurfaceFuelChaparralDepth->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vSurfaceFuelChaparralType %d %s\n", Margin,
+            vSurfaceFuelChaparralType->activeItemDataIndex(),
+            vSurfaceFuelChaparralType->activeItemName().latin1() );
+		fprintf( m_log, "%s  o vSurfaceFuelChaparralAge %g %s\n", Margin,
+            vSurfaceFuelChaparralAge->m_nativeValue,
+            vSurfaceFuelChaparralAge->m_nativeUnits.latin1() );
+	}
+	return;
+}
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralDeadFuelFraction
+ *
+ *  Dependent Variables (Outputs)
+ *      vSurfaceFuelChaparralDeadFuelFraction (ratio)
+ *
+ *  Independent Variables (Inputs)
+ *      vSurfaceFuelChaparralAge (years)
+ */
+void EqCalc::FuelChaparralDeadFuelFraction( void )
+{
+    // Access current input values
+    double age = vSurfaceFuelChaparralAge->m_nativeValue;
+	// Calculate result
+	double fraction = FBL_ChaparralDeadFuelFraction( age );
+    // Update
+    vSurfaceFuelChaparralDeadFuelFraction->update( fraction );
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralDeadFuelFraction() 1 1\n", Margin );
+		fprintf( m_log, "%s  1 vSurfaceFuelChaparralAge %g %s\n", Margin,
+            vSurfaceFuelChaparralAge->m_nativeValue,
+            vSurfaceFuelChaparralAge->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralDeadFuelFraction %g %s\n", Margin,
+            vSurfaceFuelChaparralDeadFuelFraction->m_nativeValue,
+            vSurfaceFuelChaparralDeadFuelFraction->m_nativeUnits.latin1() );
+	}
+	return;
+}
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralDepth
+ *
+ *  Dependent Variables (Outputs)
+ *      vSurfaceFuelChaparralDepth (ft)
+ *
+ *  Independent Variables (Inputs)
+ *      vSurfaceFuelChaparralAge (years)
+ *		vSurfaceFuelChaparralType (discrete)
+ */
+void EqCalc::FuelChaparralDepth( void )
+{
+    // Access current input values
+    double age = vSurfaceFuelChaparralAge->m_nativeValue;
+    int    typeIndex = vSurfaceFuelChaparralType->activeItemDataIndex();
+	// Calculate result
+	double depth = FBL_ChaparralDepth( age, (typeIndex == 0) );
+    // Update
+    vSurfaceFuelChaparralDepth->update( depth );
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralDepth() 2 1\n", Margin );
+		fprintf( m_log, "%s  1 vSurfaceFuelChaparralAge %g %s\n", Margin,
+            vSurfaceFuelChaparralAge->m_nativeValue,
+            vSurfaceFuelChaparralAge->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vSurfaceFuelChaparralType %d %s\n", Margin,
+            vSurfaceFuelChaparralType->activeItemDataIndex(),
+            vSurfaceFuelChaparralType->activeItemName().latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralDepth %g %s\n", Margin,
+            vSurfaceFuelChaparralDepth->m_nativeValue,
+            vSurfaceFuelChaparralDepth->m_nativeUnits.latin1() );
+	}
+	return;
+}
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralHeatLiveLeaf
+ *
+ *  Dependent Variables (Outputs)
+ *      vSurfaceFuelChaparralHeatLiveLeaf (btu/lb)
+ *
+ *  Independent Variables (Inputs)
+ *      vSurfaceFuelChaparralDaysSinceMay1 (days)
+ */
+void EqCalc::FuelChaparralHeatLiveLeaf( void )
+{
+    // Access current input values
+    double days = vSurfaceFuelChaparralDaysSinceMay1->m_nativeValue;
+	// Calculate result
+	double heat = FBL_ChaparralHeatLiveLeaf( days );
+    // Update
+    vSurfaceFuelChaparralHeatLiveLeaf->update( heat );
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralHeatLiveLeaf() 1 1\n", Margin );
+		fprintf( m_log, "%s  1 vSurfaceFuelChaparralDaysSinceMay1 %g %s\n", Margin,
+            vSurfaceFuelChaparralDaysSinceMay1->m_nativeValue,
+            vSurfaceFuelChaparralDaysSinceMay1->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralHeatLiveLeaf %g %s\n", Margin,
+            vSurfaceFuelChaparralHeatLiveLeaf->m_nativeValue,
+            vSurfaceFuelChaparralHeatLiveLeaf->m_nativeUnits.latin1() );
+	}
+	return;
+}
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralHeatLiveStem
+ *
+ *  Dependent Variables (Outputs)
+ *      vSurfaceFuelChaparralHeatLiveStem (btu/lb)
+ *
+ *  Independent Variables (Inputs)
+ *      vSurfaceFuelChaparralDaysSinceMay1 (days)
+ */
+void EqCalc::FuelChaparralHeatLiveStem( void )
+{
+    // Access current input values
+    double days = vSurfaceFuelChaparralDaysSinceMay1->m_nativeValue;
+	// Calculate result
+	double heat = FBL_ChaparralHeatLiveStem( days );
+    // Update
+    vSurfaceFuelChaparralHeatLiveStem->update( heat );
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralHeatLiveStem() 1 1\n", Margin );
+		fprintf( m_log, "%s  1 vSurfaceFuelChaparralDaysSinceMay1 %g %s\n", Margin,
+            vSurfaceFuelChaparralDaysSinceMay1->m_nativeValue,
+            vSurfaceFuelChaparralDaysSinceMay1->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralHeatLiveStem %g %s\n", Margin,
+            vSurfaceFuelChaparralHeatLiveStem->m_nativeValue,
+            vSurfaceFuelChaparralHeatLiveStem->m_nativeUnits.latin1() );
+	}
+	return;
+}
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralLoadTotal
+ *
+ *  Dependent Variables (Outputs)
+ *      vSurfaceFuelChaparralLoadTotal (lb/ft2)
+ *
+ *  Independent Variables (Inputs)
+ *      vSurfaceFuelChaparralAge (years)
+ *		vSurfaceFuelChaparralType (discrete)
+ */
+void EqCalc::FuelChaparralLoadTotal( void )
+{
+    // Access current input values
+    double age = vSurfaceFuelChaparralAge->m_nativeValue;
+    int    typeIndex = vSurfaceFuelChaparralType->activeItemDataIndex();
+	// Calculate result
+	double load = FBL_ChaparralTotalFuelLoad( age, (typeIndex == 0) );
+    // Update
+    vSurfaceFuelChaparralLoadTotal->update( load );
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralLoadTotal() 2 1\n", Margin );
+		fprintf( m_log, "%s  1 vSurfaceFuelChaparralAge %g %s\n", Margin,
+            vSurfaceFuelChaparralAge->m_nativeValue,
+            vSurfaceFuelChaparralAge->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vSurfaceFuelChaparralType %d %s\n", Margin,
+            vSurfaceFuelChaparralType->activeItemDataIndex(),
+            vSurfaceFuelChaparralType->activeItemName().latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralLoadTotal %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadTotal->m_nativeValue,
+            vSurfaceFuelChaparralLoadTotal->m_nativeUnits.latin1() );
+	}
+	return;
+}
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralMoisLiveLeaf
+ *
+ *  Dependent Variables (Outputs)
+ *      vSurfaceFuelChaparralMoisLiveLeaf (btu/lb)
+ *
+ *  Independent Variables (Inputs)
+ *      vSurfaceFuelChaparralDaysSinceMay1 (days)
+ */
+void EqCalc::FuelChaparralMoisLiveLeaf( void )
+{
+    // Access current input values
+    double days = vSurfaceFuelChaparralDaysSinceMay1->m_nativeValue;
+	// Calculate result
+	double heat = FBL_ChaparralMoistureLiveLeaf( days );
+    // Update
+    vSurfaceFuelChaparralMoisLiveLeaf->update( heat );
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralMoisLiveLeaf() 1 1\n", Margin );
+		fprintf( m_log, "%s  1 vSurfaceFuelChaparralDaysSinceMay1 %g %s\n", Margin,
+            vSurfaceFuelChaparralDaysSinceMay1->m_nativeValue,
+            vSurfaceFuelChaparralDaysSinceMay1->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralMoisLiveLeaf %g %s\n", Margin,
+            vSurfaceFuelChaparralMoisLiveLeaf->m_nativeValue,
+            vSurfaceFuelChaparralMoisLiveLeaf->m_nativeUnits.latin1() );
+	}
+	return;
+
+}
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralMoisLiveStem
+ *
+ *  Dependent Variables (Outputs)
+ *      vSurfaceFuelChaparralMoisLiveStem (btu/lb)
+ *
+ *  Independent Variables (Inputs)
+ *      vSurfaceFuelChaparralDaysSinceMay1 (days)
+ */
+void EqCalc::FuelChaparralMoisLiveStem( void )
+{
+    // Access current input values
+    double days = vSurfaceFuelChaparralDaysSinceMay1->m_nativeValue;
+	// Calculate result
+	double heat = FBL_ChaparralMoistureLiveStem( days );
+    // Update
+    vSurfaceFuelChaparralMoisLiveStem->update( heat );
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralMoisLiveStem() 1 1\n", Margin );
+		fprintf( m_log, "%s  1 vSurfaceFuelChaparralDaysSinceMay1 %g %s\n", Margin,
+            vSurfaceFuelChaparralDaysSinceMay1->m_nativeValue,
+            vSurfaceFuelChaparralDaysSinceMay1->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralMoisLiveStem %g %s\n", Margin,
+            vSurfaceFuelChaparralMoisLiveStem->m_nativeValue,
+            vSurfaceFuelChaparralMoisLiveStem->m_nativeUnits.latin1() );
+	}
+	return;
+}
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralModel
+ *
+ *  Dependent Variables (Outputs)
+ *		vSurfaceFuelChaparralLoadDead1 (lb/ft2)
+ *		vSurfaceFuelChaparralLoadDead2 (lb/ft2)
+ *		vSurfaceFuelChaparralLoadDead3 (lb/ft2)
+ *		vSurfaceFuelChaparralLoadDead4 (lb/ft2)
+ *		vSurfaceFuelChaparralLoadLiveLeaf (lb/ft2)
+ *		vSurfaceFuelChaparralLoadLive1 (lb/ft2)
+ *		vSurfaceFuelChaparralLoadLive2 (lb/ft2)
+ *		vSurfaceFuelChaparralLoadLive3 (lb/ft2)
+ *		vSurfaceFuelChaparralLoadLive4 (lb/ft2)
+ *		vSurfaceFuelChaparralLoadTotalDead (lb/ft2)
+ *		vSurfaceFuelChaparralLoadTotalLive (lb/ft2)
+ *
+ *  Independent Variables (Inputs)
+ *		vSurfaceFuelChaparralDeadFuelFraction (fraction)
+ *		vSurfaceFuelChaparralLoadTotal (lb/ft2)
+*/
+
+void EqCalc::FuelChaparralModel( void )
+{
+    // Access current input values
+	double fraction  = vSurfaceFuelChaparralDeadFuelFraction->m_nativeValue;
+	double totalLoad = vSurfaceFuelChaparralLoadTotal->m_nativeValue;
+    // Calculate
+	double totalDead = fraction * totalLoad;
+	double totalLive = ( 1. - fraction ) * totalLoad;
+    double loadDead1 = FBL_ChaparralLoadDead( totalLoad, fraction, 0 );
+    double loadDead2 = FBL_ChaparralLoadDead( totalLoad, fraction, 1 );
+    double loadDead3 = FBL_ChaparralLoadDead( totalLoad, fraction, 2 );
+    double loadDead4 = FBL_ChaparralLoadDead( totalLoad, fraction, 3 );
+    double loadLiveLeaf = FBL_ChaparralLoadLive( totalLoad, fraction, 0 );
+    double loadLive1 = FBL_ChaparralLoadLive( totalLoad, fraction, 1 );
+    double loadLive2 = FBL_ChaparralLoadLive( totalLoad, fraction, 2 );
+    double loadLive3 = FBL_ChaparralLoadLive( totalLoad, fraction, 3 );
+    double loadLive4 = FBL_ChaparralLoadLive( totalLoad, fraction, 4 );
+	// Sanity checks
+	double sanityDead = loadDead1 + loadDead2 + loadDead3 + loadDead4;
+	double sanityLive = loadLive1 + loadLive2 + loadLive3 + loadLive4 + loadLiveLeaf;
+	loadLive4 = totalLive - loadLiveLeaf - loadLive1 - loadLive2 - loadLive3;
+	loadLive4 = (loadLive4 < 0. ) ? 0. : loadLive4;
+	double sanityTotal = sanityDead + sanityLive;
+    // Update
+    vSurfaceFuelChaparralLoadTotalDead->update( totalLoad * fraction );
+    vSurfaceFuelChaparralLoadTotalLive->update( totalLoad * ( 1. - fraction ) );
+    vSurfaceFuelChaparralLoadDead1->update( loadDead1 );
+    vSurfaceFuelChaparralLoadDead2->update( loadDead2 );
+    vSurfaceFuelChaparralLoadDead3->update( loadDead3 );
+    vSurfaceFuelChaparralLoadDead4->update( loadDead4 );
+    vSurfaceFuelChaparralLoadLive1->update( loadLive1 );
+    vSurfaceFuelChaparralLoadLive2->update( loadLive2 );
+    vSurfaceFuelChaparralLoadLive3->update( loadLive3 );
+    vSurfaceFuelChaparralLoadLive4->update( loadLive4 );
+    vSurfaceFuelChaparralLoadLiveLeaf->update( loadLiveLeaf );
+
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralModel() 2 11\n", Margin );
+        fprintf( m_log, "%s  i vSurfaceFuelChaparralDeadFuelFraction %g %s\n", Margin,
+            vSurfaceFuelChaparralDeadFuelFraction->m_nativeValue,
+            vSurfaceFuelChaparralDeadFuelFraction->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vSurfaceFuelChaparralLoadTotal %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadTotal->m_nativeValue,
+            vSurfaceFuelChaparralLoadTotal->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralLoadDead1 %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadDead1->m_nativeValue,
+            vSurfaceFuelChaparralLoadDead1->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralLoadDead2 %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadDead2->m_nativeValue,
+            vSurfaceFuelChaparralLoadDead2->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralLoadDead3 %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadDead3->m_nativeValue,
+            vSurfaceFuelChaparralLoadDead3->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralLoadDead4 %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadDead4->m_nativeValue,
+            vSurfaceFuelChaparralLoadDead4->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralLoadLiveLeaf %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadLiveLeaf->m_nativeValue,
+            vSurfaceFuelChaparralLoadLiveLeaf->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralLoadLive1 %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadLive1->m_nativeValue,
+            vSurfaceFuelChaparralLoadLive1->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralLoadLive2 %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadLive2->m_nativeValue,
+            vSurfaceFuelChaparralLoadLive2->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralLoadLive3 %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadLive3->m_nativeValue,
+            vSurfaceFuelChaparralLoadLive3->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelChaparralLoadLive4 %g %s\n", Margin,
+            vSurfaceFuelChaparralLoadLive4->m_nativeValue,
+            vSurfaceFuelChaparralLoadLive4->m_nativeUnits.latin1() );
+    }
+    return;
+}
+
+//------------------------------------------------------------------------------
+/*! \brief FuelChaparralParms
+ *
+ *  Dependent Variables (Outputs)
+ *		vSurfaceFuelBedDepth (ft)
+ *		vSurfaceFuelBedMextDead (ratio)
+ *      vSurfaceFuelDens# (lb/ft3)
+ *      vSurfaceFuelHeat# (Btu/lb)
+ *      vSurfaceFuelLife# (category)
+ *      vSurfaceFuelLoad# (lb/ft2)
+ *      vSurfaceFuelSavr# (ft2/ft3)
+ *      vSurfaceFuelSeff# (fraction)
+ *      vSurfaceFuelStot# (fraction)
+ *
+ *  Independent Variables (Inputs)
+ *		vSurfaceFuelChaparralDepth (ft)
+ *		vSurfaceFuelChaparralHeatLiveLeaf (btu/lb)
+ *		vSurfaceFuelChaparralHeatLiveStem (btu/lb)
+ *      vSurfaceFuelChaparralLoadDead1 (lb/ft2)
+ *      vSurfaceFuelChaparralLoadDead2 (lb/ft2)
+ *      vSurfaceFuelChaparralLoadDead3 (lb/ft2)
+ *      vSurfaceFuelChaparralLoadDead4 (lb/ft2)
+ *      vSurfaceFuelChaparralLoadLiveLeaf (lb/ft2)
+ *      vSurfaceFuelChaparralLoadLive1 (lb/ft2)
+ *      vSurfaceFuelChaparralLoadLive2 (lb/ft2)
+ *      vSurfaceFuelChaparralLoadLive3 (lb/ft2)
+ *      vSurfaceFuelChaparralLoadLive4 (lb/ft2)
+ */
+
+void EqCalc::FuelChaparralParms( void )
+{
+	// Initialize to default values
+    for ( int i = 0; i < MaxParts; i++ )
+    {
+		vSurfaceFuelLife[i]->updateItem( FuelLifeType_DeadTimeLag );
+        vSurfaceFuelDens[i]->update( 46.0 );
+        vSurfaceFuelHeat[i]->update( 8000. );
+		vSurfaceFuelLoad[i]->update( 0. );
+		vSurfaceFuelSavr[i]->update( 1.0 );
+        vSurfaceFuelSeff[i]->update( 0.015 );
+        vSurfaceFuelStot[i]->update( 0.055 );
+    }
+	// Assign live leaf density and silica-free content
+	vSurfaceFuelDens[4]->update( 32.0 );
+	vSurfaceFuelSeff[4]->update( 0.035 );
+
+	// Assign depth and extinction moisture
+    double depth = vSurfaceFuelChaparralDepth->m_nativeValue;
+    vSurfaceFuelBedDepth->update( depth );
+    vSurfaceFuelBedMextDead->update( 0.3 );
+    // Assign life values
+    vSurfaceFuelLife[0]->updateItem( FuelLifeType_DeadTimeLag ); // Dead 640 0.075"
+    vSurfaceFuelLife[1]->updateItem( FuelLifeType_DeadTimeLag ); // Dead 127 0.378"
+    vSurfaceFuelLife[2]->updateItem( FuelLifeType_DeadTimeLag ); // Dead  61 0.787"
+    vSurfaceFuelLife[3]->updateItem( FuelLifeType_DeadTimeLag ); // Dead  27 1.778"
+    vSurfaceFuelLife[4]->updateItem( FuelLifeType_LiveHerb );    // Live leaf 2200 0.0218"
+    vSurfaceFuelLife[5]->updateItem( FuelLifeType_LiveWood );    // Live 640 0.075"
+    vSurfaceFuelLife[6]->updateItem( FuelLifeType_LiveWood );    // Live 127 0.378"
+    vSurfaceFuelLife[7]->updateItem( FuelLifeType_LiveWood );    // Live  61 0.787"
+    vSurfaceFuelLife[8]->updateItem( FuelLifeType_LiveWood );    // Live  27 1.778"
+    // Assign load values
+    vSurfaceFuelLoad[0]->update( vSurfaceFuelChaparralLoadDead1->m_nativeValue );
+    vSurfaceFuelLoad[1]->update( vSurfaceFuelChaparralLoadDead2->m_nativeValue );
+    vSurfaceFuelLoad[2]->update( vSurfaceFuelChaparralLoadDead3->m_nativeValue );
+    vSurfaceFuelLoad[3]->update( vSurfaceFuelChaparralLoadDead4->m_nativeValue );
+    vSurfaceFuelLoad[4]->update( vSurfaceFuelChaparralLoadLiveLeaf->m_nativeValue );
+    vSurfaceFuelLoad[5]->update( vSurfaceFuelChaparralLoadLive1->m_nativeValue );
+    vSurfaceFuelLoad[6]->update( vSurfaceFuelChaparralLoadLive2->m_nativeValue );
+    vSurfaceFuelLoad[7]->update( vSurfaceFuelChaparralLoadLive3->m_nativeValue );
+    vSurfaceFuelLoad[8]->update( vSurfaceFuelChaparralLoadLive4->m_nativeValue );
+    // Assign savr values
+    vSurfaceFuelSavr[0]->update( 640. );	// Dead
+    vSurfaceFuelSavr[1]->update( 127. );	// Dead
+    vSurfaceFuelSavr[2]->update(  61. );	// Dead
+    vSurfaceFuelSavr[3]->update(  27. );	// Dead
+    vSurfaceFuelSavr[4]->update( 2200. );	// Live leaf
+    vSurfaceFuelSavr[5]->update( 640. );	// Live stem
+    vSurfaceFuelSavr[6]->update( 127. );	// Live stem
+    vSurfaceFuelSavr[7]->update(  61. );	// Live stem
+    vSurfaceFuelSavr[8]->update(  27. );	// Live stem
+	// Assign heat values
+    double heatLeaf = vSurfaceFuelChaparralHeatLiveLeaf->m_nativeValue;
+    double heatStem = vSurfaceFuelChaparralHeatLiveStem->m_nativeValue;
+	vSurfaceFuelHeat[4]->update( heatLeaf ); // Live leaf
+    vSurfaceFuelHeat[5]->update( heatStem ); // Live stem
+    vSurfaceFuelHeat[6]->update( heatStem ); // Live stem
+    vSurfaceFuelHeat[7]->update( heatStem ); // Live stem
+    vSurfaceFuelHeat[8]->update( heatStem ); // Live stem
+
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelChaparralParms() 0 0\n", Margin );
+    }
+    return;
+}
 
 //------------------------------------------------------------------------------
 /*! \brief FuelLoadTransferFraction
@@ -5894,6 +6378,52 @@ void EqCalc::FuelMoisLifeClass( void )
         fprintf( m_log, "%s  o vSurfaceFuelMoisDead1000 %g %s\n", Margin,
             vSurfaceFuelMoisDead1000->m_nativeValue,
             vSurfaceFuelMoisDead1000->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelMoisLiveHerb %g %s\n", Margin,
+            vSurfaceFuelMoisLiveHerb->m_nativeValue,
+            vSurfaceFuelMoisLiveHerb->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFuelMoisLiveWood %g %s\n", Margin,
+            vSurfaceFuelMoisLiveWood->m_nativeValue,
+            vSurfaceFuelMoisLiveWood->m_nativeUnits.latin1() );
+    }
+    return;
+}
+//------------------------------------------------------------------------------
+/*! \brief FuelMoisLiveChaparral
+ *
+ *  Dependent Variables (Outputs)
+ *      vSurfaceFuelMoisLiveHerb (fraction)
+ *      vSurfaceFuelMoisLiveWood (fraction)
+ *
+ *  Independent Variables (Inputs)
+ *      vSurfaceFuelChaparralMoisLiveLeaf (fraction)
+ *      vSurfaceFuelChaparralMoisLiveStem (fraction)
+ */
+
+void EqCalc::FuelMoisLiveChaparral( void )
+{
+    // Access current input values
+    double leaf = vSurfaceFuelChaparralMoisLiveLeaf->m_nativeValue;
+    double stem = vSurfaceFuelChaparralMoisLiveStem->m_nativeValue;
+
+	// Update the outputs
+    vSurfaceFuelMoisLiveHerb->update( leaf );
+    vSurfaceFuelMoisLiveHerb->m_store.setNum( vSurfaceFuelMoisLiveHerb->m_displayValue,
+        'f', vSurfaceFuelMoisLiveHerb->m_displayDecimals );
+
+    vSurfaceFuelMoisLiveWood->update( stem );
+    vSurfaceFuelMoisLiveWood->m_store.setNum( vSurfaceFuelMoisLiveWood->m_displayValue,
+        'f', vSurfaceFuelMoisLiveWood->m_displayDecimals );
+
+    // Log results
+    if( m_log )
+    {
+        fprintf( m_log, "%sbegin proc FuelMoisLiveChaparral() 2 2\n", Margin );
+        fprintf( m_log, "%s  i vSurfaceFuelChaparralMoisLiveLeaf %g %s\n", Margin,
+            vSurfaceFuelChaparralMoisLiveLeaf->m_nativeValue,
+            vSurfaceFuelChaparralMoisLiveLeaf->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vSurfaceFuelChaparralMoisLiveStem %g %s\n", Margin,
+            vSurfaceFuelChaparralMoisLiveStem->m_nativeValue,
+            vSurfaceFuelChaparralMoisLiveStem->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  o vSurfaceFuelMoisLiveHerb %g %s\n", Margin,
             vSurfaceFuelMoisLiveHerb->m_nativeValue,
             vSurfaceFuelMoisLiveHerb->m_nativeUnits.latin1() );
@@ -8703,6 +9233,30 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     vSurfaceFuelBedPackingRatio = m_eqTree->getVarPtr( "vSurfaceFuelBedPackingRatio" );
     vSurfaceFuelBedSigma        = m_eqTree->getVarPtr( "vSurfaceFuelBedSigma" );
 
+    vSurfaceFuelChaparralAge			= m_eqTree->getVarPtr( "vSurfaceFuelChaparralAge" );
+    vSurfaceFuelChaparralDayOfMonth		= m_eqTree->getVarPtr( "vSurfaceFuelChaparralDayOfMonth" );
+    vSurfaceFuelChaparralDaysSinceMay1  = m_eqTree->getVarPtr( "vSurfaceFuelChaparralDaysSinceMay1" );
+    vSurfaceFuelChaparralDeadFuelFraction=m_eqTree->getVarPtr( "vSurfaceFuelChaparralDeadFuelFraction" );
+    vSurfaceFuelChaparralDepth			= m_eqTree->getVarPtr( "vSurfaceFuelChaparralDepth" );
+    vSurfaceFuelChaparralHeatLiveLeaf	= m_eqTree->getVarPtr( "vSurfaceFuelChaparralHeatLiveLeaf" );
+    vSurfaceFuelChaparralHeatLiveStem	= m_eqTree->getVarPtr( "vSurfaceFuelChaparralHeatLiveStem" );
+    vSurfaceFuelChaparralLoadDead1		= m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadDead1" );
+    vSurfaceFuelChaparralLoadDead2		= m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadDead2" );
+    vSurfaceFuelChaparralLoadDead3		= m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadDead3" );
+    vSurfaceFuelChaparralLoadDead4		= m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadDead4" );
+    vSurfaceFuelChaparralLoadLiveLeaf	= m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadLiveLeaf" );
+    vSurfaceFuelChaparralLoadLive1		= m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadLive1" );
+    vSurfaceFuelChaparralLoadLive2		= m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadLive2" );
+    vSurfaceFuelChaparralLoadLive3		= m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadLive3" );
+    vSurfaceFuelChaparralLoadLive4		= m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadLive4" );
+    vSurfaceFuelChaparralLoadTotal		= m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadTotal" );
+    vSurfaceFuelChaparralLoadTotalDead  = m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadTotalDead" );
+    vSurfaceFuelChaparralLoadTotalLive  = m_eqTree->getVarPtr( "vSurfaceFuelChaparralLoadTotalLive" );
+    vSurfaceFuelChaparralMoisLiveLeaf	= m_eqTree->getVarPtr( "vSurfaceFuelChaparralMoisLiveLeaf" );
+    vSurfaceFuelChaparralMoisLiveStem	= m_eqTree->getVarPtr( "vSurfaceFuelChaparralMoisLiveStem" );
+    vSurfaceFuelChaparralMonthOfYear	= m_eqTree->getVarPtr( "vSurfaceFuelChaparralMonthOfYear" );
+    vSurfaceFuelChaparralType			= m_eqTree->getVarPtr( "vSurfaceFuelChaparralType" );
+
     vSurfaceFuelDens[0] = m_eqTree->getVarPtr( "vSurfaceFuelDens0" );
     vSurfaceFuelDens[1] = m_eqTree->getVarPtr( "vSurfaceFuelDens1" );
     vSurfaceFuelDens[2] = m_eqTree->getVarPtr( "vSurfaceFuelDens2" );
@@ -8968,34 +9522,49 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     fSurfaceFireSpreadAtFlank     = m_eqTree->setEqFunAddress( "fSurfaceFireSpreadAtFlank", &EqCalc::FireSpreadAtFlank );
     fSurfaceFireSpreadAtHead      = m_eqTree->setEqFunAddress( "fSurfaceFireSpreadAtHead", &EqCalc::FireSpreadAtHead );
     fSurfaceFireSpreadAtPsi       = m_eqTree->setEqFunAddress( "fSurfaceFireSpreadAtPsi", &EqCalc::FireSpreadAtPsi );
-    fSurfaceFireSpreadAtVectorFromBeta = m_eqTree->setEqFunAddress( "fSurfaceFireSpreadAtVectorFromBeta", &EqCalc::FireSpreadAtVectorFromBeta );
-    fSurfaceFireSpreadAtVectorFromPsi  = m_eqTree->setEqFunAddress( "fSurfaceFireSpreadAtVectorFromPsi", &EqCalc::FireSpreadAtVectorFromPsi );
-    fSurfaceFireVectorBetaFromTheta = m_eqTree->setEqFunAddress( "fSurfaceFireVectorBetaFromTheta", &EqCalc::FireVectorBetaFromTheta );
-    fSurfaceFireVectorBetaFromUpslope = m_eqTree->setEqFunAddress( "fSurfaceFireVectorBetaFromUpslope", &EqCalc::FireVectorBetaFromUpslope );
-    fSurfaceFireVectorDirFromNorth = m_eqTree->setEqFunAddress( "fSurfaceFireVectorDirFromNorth", &EqCalc::FireVectorDirFromNorth );
-    fSurfaceFireVectorDirFromUpslope = m_eqTree->setEqFunAddress( "fSurfaceFireVectorDirFromUpslope", &EqCalc::FireVectorDirFromUpslope );
-    fSurfaceFireVectorPsiFromTheta = m_eqTree->setEqFunAddress( "fSurfaceFireVectorPsiFromTheta", &EqCalc::FireVectorPsiFromTheta );
-    fSurfaceFireVectorPsiFromUpslope = m_eqTree->setEqFunAddress( "fSurfaceFireVectorPsiFromUpslope", &EqCalc::FireVectorPsiFromUpslope );
-    fSurfaceFireVectorThetaFromBeta = m_eqTree->setEqFunAddress( "fSurfaceFireVectorThetaFromBeta", &EqCalc::FireVectorThetaFromBeta );
-    fSurfaceFireVectorThetaFromPsi = m_eqTree->setEqFunAddress( "fSurfaceFireVectorThetaFromPsi", &EqCalc::FireVectorThetaFromPsi );
-    fSurfaceFireWidthDist         = m_eqTree->setEqFunAddress( "fSurfaceFireWidthDist", &EqCalc::FireWidthDist );
-    fSurfaceFireWidthMapDist      = m_eqTree->setEqFunAddress( "fSurfaceFireWidthMapDist", &EqCalc::FireWidthMapDist );
+    fSurfaceFireSpreadAtVectorFromBeta	= m_eqTree->setEqFunAddress( "fSurfaceFireSpreadAtVectorFromBeta", &EqCalc::FireSpreadAtVectorFromBeta );
+    fSurfaceFireSpreadAtVectorFromPsi	= m_eqTree->setEqFunAddress( "fSurfaceFireSpreadAtVectorFromPsi", &EqCalc::FireSpreadAtVectorFromPsi );
+    fSurfaceFireVectorBetaFromTheta		= m_eqTree->setEqFunAddress( "fSurfaceFireVectorBetaFromTheta", &EqCalc::FireVectorBetaFromTheta );
+    fSurfaceFireVectorBetaFromUpslope	= m_eqTree->setEqFunAddress( "fSurfaceFireVectorBetaFromUpslope", &EqCalc::FireVectorBetaFromUpslope );
+    fSurfaceFireVectorDirFromNorth		= m_eqTree->setEqFunAddress( "fSurfaceFireVectorDirFromNorth", &EqCalc::FireVectorDirFromNorth );
+    fSurfaceFireVectorDirFromUpslope	= m_eqTree->setEqFunAddress( "fSurfaceFireVectorDirFromUpslope", &EqCalc::FireVectorDirFromUpslope );
+    fSurfaceFireVectorPsiFromTheta		= m_eqTree->setEqFunAddress( "fSurfaceFireVectorPsiFromTheta", &EqCalc::FireVectorPsiFromTheta );
+    fSurfaceFireVectorPsiFromUpslope	= m_eqTree->setEqFunAddress( "fSurfaceFireVectorPsiFromUpslope", &EqCalc::FireVectorPsiFromUpslope );
+    fSurfaceFireVectorThetaFromBeta		= m_eqTree->setEqFunAddress( "fSurfaceFireVectorThetaFromBeta", &EqCalc::FireVectorThetaFromBeta );
+    fSurfaceFireVectorThetaFromPsi		= m_eqTree->setEqFunAddress( "fSurfaceFireVectorThetaFromPsi", &EqCalc::FireVectorThetaFromPsi );
+    fSurfaceFireWidthDist		= m_eqTree->setEqFunAddress( "fSurfaceFireWidthDist", &EqCalc::FireWidthDist );
+    fSurfaceFireWidthMapDist	= m_eqTree->setEqFunAddress( "fSurfaceFireWidthMapDist", &EqCalc::FireWidthMapDist );
 
     fSurfaceFuelAspenModel = m_eqTree->setEqFunAddress( "fSurfaceFuelAspenModel", &EqCalc::FuelAspenModel );
     fSurfaceFuelAspenParms = m_eqTree->setEqFunAddress( "fSurfaceFuelAspenParms", &EqCalc::FuelAspenParms );
-    fSurfaceFuelBedHeatSink = m_eqTree->setEqFunAddress( "fSurfaceFuelBedHeatSink", &EqCalc::FuelBedHeatSink );
+
+	fSurfaceFuelBedHeatSink		 = m_eqTree->setEqFunAddress( "fSurfaceFuelBedHeatSink", &EqCalc::FuelBedHeatSink );
     fSurfaceFuelBedIntermediates = m_eqTree->setEqFunAddress( "fSurfaceFuelBedIntermediates", &EqCalc::FuelBedIntermediates );
-    fSurfaceFuelBedModel = m_eqTree->setEqFunAddress( "fSurfaceFuelBedModel", &EqCalc::FuelBedModel );
-    fSurfaceFuelBedParms = m_eqTree->setEqFunAddress( "fSurfaceFuelBedParms", &EqCalc::FuelBedParms );
-    fSurfaceFuelBedWeighted = m_eqTree->setEqFunAddress( "fSurfaceFuelBedWeighted", &EqCalc::FuelBedWeighted );
-    fSurfaceFuelLoadTransferFraction = m_eqTree->setEqFunAddress( "fSurfaceFuelLoadTransferFraction", &EqCalc::FuelLoadTransferFraction );
-    fSurfaceFuelMoisDeadHerbWood = m_eqTree->setEqFunAddress( "fSurfaceFuelMoisDeadHerbWood", &EqCalc::FuelMoisDeadHerbWood );
-    fSurfaceFuelMoisLifeClass = m_eqTree->setEqFunAddress( "fSurfaceFuelMoisLifeClass", &EqCalc::FuelMoisLifeClass );
-    fSurfaceFuelMoisScenarioModel = m_eqTree->setEqFunAddress( "fSurfaceFuelMoisScenarioModel", &EqCalc::FuelMoisScenarioModel );
-    fSurfaceFuelMoisTimeLag = m_eqTree->setEqFunAddress( "fSurfaceFuelMoisTimeLag", &EqCalc::FuelMoisTimeLag );
-    fSurfaceFuelPalmettoModel = m_eqTree->setEqFunAddress( "fSurfaceFuelPalmettoModel", &EqCalc::FuelPalmettoModel );
-    fSurfaceFuelPalmettoParms = m_eqTree->setEqFunAddress( "fSurfaceFuelPalmettoParms", &EqCalc::FuelPalmettoParms );
-    fSurfaceFuelTemp = m_eqTree->setEqFunAddress( "fSurfaceFuelTemp", &EqCalc::FuelTemp );
+    fSurfaceFuelBedModel		 = m_eqTree->setEqFunAddress( "fSurfaceFuelBedModel", &EqCalc::FuelBedModel );
+    fSurfaceFuelBedParms		 = m_eqTree->setEqFunAddress( "fSurfaceFuelBedParms", &EqCalc::FuelBedParms );
+    fSurfaceFuelBedWeighted		 = m_eqTree->setEqFunAddress( "fSurfaceFuelBedWeighted", &EqCalc::FuelBedWeighted );
+
+	fSurfaceFuelChaparralAgeFromDepth		= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralAgeFromDepth", &EqCalc::FuelChaparralAgeFromDepth );
+	fSurfaceFuelChaparralDaysSinceMay1		= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralDaysSinceMay1", &EqCalc::FuelChaparralDaysSinceMay1 );
+    fSurfaceFuelChaparralDeadFuelFraction	= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralDeadFuelFraction", &EqCalc::FuelChaparralDeadFuelFraction );
+    fSurfaceFuelChaparralDepth				= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralDepth", &EqCalc::FuelChaparralDepth );
+    fSurfaceFuelChaparralHeatLiveLeaf		= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralHeatLiveLeaf", &EqCalc::FuelChaparralHeatLiveLeaf );
+    fSurfaceFuelChaparralHeatLiveStem		= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralHeatLiveStem", &EqCalc::FuelChaparralHeatLiveStem );
+    fSurfaceFuelChaparralLoadTotal			= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralLoadTotal", &EqCalc::FuelChaparralLoadTotal );
+	fSurfaceFuelChaparralModel				= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralModel", &EqCalc::FuelChaparralModel );    
+    fSurfaceFuelChaparralMoisLiveLeaf		= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralMoisLiveLeaf", &EqCalc::FuelChaparralMoisLiveLeaf );
+    fSurfaceFuelChaparralMoisLiveStem		= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralMoisLiveStem", &EqCalc::FuelChaparralMoisLiveStem );
+    fSurfaceFuelChaparralParms				= m_eqTree->setEqFunAddress( "fSurfaceFuelChaparralParms", &EqCalc::FuelChaparralParms );
+
+	fSurfaceFuelLoadTransferFraction= m_eqTree->setEqFunAddress( "fSurfaceFuelLoadTransferFraction", &EqCalc::FuelLoadTransferFraction );
+    fSurfaceFuelMoisDeadHerbWood	= m_eqTree->setEqFunAddress( "fSurfaceFuelMoisDeadHerbWood", &EqCalc::FuelMoisDeadHerbWood );
+    fSurfaceFuelMoisLifeClass		= m_eqTree->setEqFunAddress( "fSurfaceFuelMoisLifeClass", &EqCalc::FuelMoisLifeClass );
+    fSurfaceFuelMoisLiveChaparral   = m_eqTree->setEqFunAddress( "fSurfaceFuelMoisLiveChaparral", &EqCalc::FuelMoisLiveChaparral );
+    fSurfaceFuelMoisScenarioModel	= m_eqTree->setEqFunAddress( "fSurfaceFuelMoisScenarioModel", &EqCalc::FuelMoisScenarioModel );
+    fSurfaceFuelMoisTimeLag			= m_eqTree->setEqFunAddress( "fSurfaceFuelMoisTimeLag", &EqCalc::FuelMoisTimeLag );
+    fSurfaceFuelPalmettoModel		= m_eqTree->setEqFunAddress( "fSurfaceFuelPalmettoModel", &EqCalc::FuelPalmettoModel );
+    fSurfaceFuelPalmettoParms		= m_eqTree->setEqFunAddress( "fSurfaceFuelPalmettoParms", &EqCalc::FuelPalmettoParms );
+    fSurfaceFuelTemp				= m_eqTree->setEqFunAddress( "fSurfaceFuelTemp", &EqCalc::FuelTemp );
 
     fTimeJulianDate = m_eqTree->setEqFunAddress( "fTimeJulianDate", &EqCalc::TimeJulianDate );
 

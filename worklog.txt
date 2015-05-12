@@ -1,20 +1,207 @@
 =============================
 Collin D. Bevins
 LLCP0044
-Mar 22 - Apr 21, 2015
+Apr 22 - May 21, 2015
 ?? hours
 =============================
 
-2015-04-08
+2015-05-12 (4.0 hours) [21.0 total]
+
+--	Committed Build615 to git repository on bitbucket.org
+
+--	Composed email with download links for FAH.
+
+--	Updated the ReleaseNotes.txt and uploaded them to DropBox.
+
+--	Uploaded installation package to DropBox.
+
+--	Created a new installation package bp_615.msi
+
+--	Added the 12 new HTML help files to wix_bp6_component_docfolder.wxs.
+
+--	Created wix_bp6_product_615.wxs and updated wixcandle.bat
+	and wixlight.bat.
+	
+--	Verified that the surface fire model is correctly using Weise's
+	fixed live fuel moisture content of extinction when using the
+	special case chaparral fuel models.
+	
+--	Added ability to estimate (and output) chaparral age from fuel
+	depth IF fuel depth, total load, and dead fuel fraction are all
+	worksheet inputs.
 
 
-2015-04-07 (5.0 hours) [57.0 total]
+2015-05-11 (7.0 hours) [17.0 total]
+
+--	Note 1 - The live leaf heat content equation in Rothermel & Philpot
+	does not yield the curve displayed in Figure 4.
+	
+	Note 2 - There is no appreciable fire spread until age 25,
+	when calculated live extinction moisture (60%) first exceeds the
+	estimated live fuel moisture (52%).  R&P do not state what they
+	used for live fuel extinction moisture (or if it was calculated internally).
+	
+	Note 3 - In the calculation of total load from age,
+	Cohen always uses a factor of 0.0347 whereas R&P use 0.0315.
+	
+	Note 4 - In the calculation of live leaf moisture content, Cohen uses
+	a factor of 0.0726 whereas R&P use 0.726.  For Sep 4, Cohen produces
+	84.9% while R&P produces 54.6% live leaf moisture content.
+	
+	Note 5 - Cohen uses a dead extinction moisture 0f 30& while R&P use 20%.
+	
+	Note 6 - Cohen days since May 1st code contains the statement
+		IF (IMONTH .LT. F) IMONTH=11
+	which causes indeterminant behavior.
+	
+	Note 7 - Cohen's algorithm for calculating days since May 1st prdouces
+	150 for Sep 30, but 91 for October 1.  So, all live heat and moisture
+	contents are suspect or indeterminant.
+	
+	Note 8 - Cohen's SUBROUTINE INOPT() first sets total load for Mixed Brush and
+	then for Chamise> But the code fails to branch after setting the Mixed Brush
+	total load,	so all loads are actually for Chamise.
+	
+	Note 9 : Cohen's SUBROUTINE INOPT() has the statement:
+		AMF (2.1) = FMNLV
+	which causes indeterminant behavior for live leaf fuel moisture.
+	
+--	Added all the Chaparral quantity variables to the UnitsEditDialog
+	so users can control units of measure and decimal places.
+	
+--	Added a Run Option for Chaparral special case fule models.
+
+--	Added un/masking of dead fuel moisture inputs for chaparral
+
+--	Corrected several of Cohen's factors back to R&P and FAH values
+
+--	Perform preliminary validation of outputs against R&P figures and
+	equations.
+
+--	Adjusted xfblib.cpp and Bp6SurfaceFire.cpp to accept Weise's fixed live
+	fuel moisture of extinction values when processing chaparral fuels.
+	
+--	Verified that BEHAVE 4.4 uses ehn = exp(-138/savr) for live fuel particels
+
+
+2015-05-09 (2.0 hours) [10.0 total]
+
+--	Created EqCalc::FuelChaparralModel()
+
+--	Created EqCalc::FuelChaparralParms();
+
+--	Created EqCalc::FuelChaparralAgeFromDepth();
+
+
+2015-05-08 (4.0 hours) [8.0 total]
+
+--	Added all the chaparral fuel options and variables
+	to the EqCalc::reconfigureSurface() method.
+	
+--	Created stub html files to DocFOlder/en_US/html:
+	vSurfaceFuelChaparralAge.html
+	vSurfaceFuelChaparralDate.html
+	vSurfaceFuelChaparralDaysSinceMay1.html
+	vSurfaceFuelChaparralDeadFuelFraction.html
+	vSurfaceFuelChaparralDepth.html
+	vSurfaceFuelChaparralHeatLive.html
+	vSurfaceFuelChaparralLoadDead.html
+	vSurfaceFuelChaparralLoadLive.html
+	vSurfaceFuelChaparralLoadTotal.html
+	vSurfaceFuelChaparralMoisLive.html
+	vSurfaceFuelChaparralType.html
+
+	
+2015-05-07 (4.0 hours) [4.0 total]
+
+--	Added all the dialog text, configuration switches, and
+	calculation flags to BehavePlus6.xml.
+	
+--	Created the "Input Options" > "Chaparral" tab page and
+	created the "Outoput Variables" > "Chaparral" tab page
+	for the SURFACE configuration dialog.
+	
+--	Created stub chaparralOptions.html
+
+
+=============================
+Collin D. Bevins
+LLCP0044
+Mar 22 - Apr 21, 2015
+74.0 hours
+=============================
+
+2015-04-10 (3.5 hours) [74.0 total]
+
+--	Added following functions to BehavePlus6.xml, xeqcalc.h, xeqcalc.cpp:
+	fSurfaceFuelChaparralDaysSinceMay1
+    fSurfaceFuelChaparralDeadFuelFraction
+    fSurfaceFuelChaparralDepth
+    fSurfaceFuelChaparralHeatLiveLeaf
+    fSurfaceFuelChaparralHeatLiveStem
+    fSurfaceFuelChaparralLoadTotal
+	fSurfaceFuelChaparralModel
+    fSurfaceFuelChaparralMoistureLiveLeaf
+    fSurfaceFuelChaparralMoistureLiveStem
+    fSurfaceFuelChaparralParms
+    
+--	Added following functions to EqCalc:
+    void FuelChaparralDaysSinceMay1( void );
+    void FuelChaparralDeadFuelFraction( void );
+    void FuelChaparralDepth( void );
+    void FuelChaparralHeatLiveLeaf( void );
+    void FuelChaparralHeatLiveStem( void );
+    void FuelChaparralLoadTotal( void );
+    void FuelChaparralModel( void );
+    void FuelChaparralMoistureLiveLeaf( void );
+    void FuelChaparralMoistureLiveStem( void );
+    void FuelChaparralParms( void );
+
+2015-04-09 (5.0 hours) [70.5 total]
+
+--	Developed names, labels, and sort orders for the 23
+	new Chaparral Fuel Model variables.
+
+--	Added new FBL_* functions to xfblib.cpp and xfblib.h.
+
+--	Added new variables to EqCalc.
+
+--	Added variable definitions to BehavePlus6.xml.
+
+
+2015-04-08 (3.5 hours) [65.5 total]
+
+--	Create git branch build615 to begin development
+	of the Rothermel/Philpot/Cohen chaparral fuel model.
+	
+--	Created 3 classes that implement the chaparral fuel model:
+	- Bp6ChaparralFuel
+	- Bp6ChaparralFuelChamise
+	- Bp6ChaparralFuelMixedBrush
+
+
+2015-04-08 (4.0 hours) [62.0 total]
+
+--	Created final Build 614 installation package (bp6_614.msi)
+
+--	Merged Build 614 branch into local master and pushed
+	it onto the central repository master
+	
+--	Completed the "BehavePlus6, Build 614, Detailed Release Notes".
+
+--	Uploaded the bp6_614.msi and ReleaseNotes.txt onto DropBox.
+
+--	Drafted and sent an email to FAH with attached documents
+	and links to the DropBox downloads.
+
+
+2015-04-07 (5.0 hours) [58.0 total]
 
 --	Reconfigured the Wix builder scripts to include a checkbox
 	for optional installation of the dekstop icon.
 	
 	
-2015-04-06 (7.0 hours) [52.0 totral]
+2015-04-06 (7.0 hours) [53.0 totral]
 
 --	Drafted a "BehavePlus6, Build 614, Detailed Release Notes"
 	document to better explain ongoing issues with the BehavePlus6
@@ -48,7 +235,7 @@ Mar 22 - Apr 21, 2015
 	and wixlight.bat.
 
 
-2015-04-05 (4.0 h) [45.0 total]
+2015-04-05 (4.0 h) [46.0 total]
 
 --	Added boolean variables in BehavePlus6.xml to control
 	i/o of the 18 new crown fire variables.
@@ -66,7 +253,7 @@ Mar 22 - Apr 21, 2015
 	power of the wind/fire variables into the Active Crown page.
 		
 	
-2015-04-01
+2015-04-01 (1.0 hour) [42.0 total]
 
 --	Finished developing new label scheme and implementing
 	changes in BehavePlus6.xml.
@@ -261,7 +448,7 @@ Apr 22, 2014 - Jul 21, 2014
 
 -- Attempted to track underlying cause of Issue #060FAH
 
--- Added to EqCalc::maskInputs() [xeqcalsmask.cpp:325}
+-- Added to EqCalc::maskInputs() [xeqcalcmask.cpp:325}
     if ( prop->boolean( "crownModuleActive" ) )
     {
         vSurfaceFuelMoisDead100->m_isMasked = false;

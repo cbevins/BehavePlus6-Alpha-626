@@ -1,0 +1,47 @@
+<HTML>
+  <HEAD>
+    <TITLE>BehavePlus Chaparral Live Fuel Load</TITLE>
+  </HEAD>
+  <BODY>
+    <TABLE WIDTH="100%">
+      <TR>
+        <TD width="100">
+          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
+        </TD>
+        <TD ALIGN="left" VALIGN="center">
+	      <H2><font color="#ff5500">Chaparral Live Fuel Load</font></H2>
+        </TD>
+      </TR>
+    </TABLE>
+    <HR>
+<P>
+The Rothermel and Philpot (1973) dynamic chaparral fuel model uses the
+dead fuel fraction to split the total chaparral fuel load into dead and live
+fuel portions.</P>
+<p>
+The total live fuel load is then partitioned as follows where
+w is the total chaparral fuel load and f is the dead fuel fraction:
+</p>
+<table>
+<tr><th>Size</th><th>Sa/Vol</th><th>Diam</th><th>Load</th></tr>
+<tr><th>Class</th><th>(1/ft)</th><th>(in)</th><th>Fraction</th></tr>
+<tr><td>1</td><td>640</td><td>0.075</td><td>w*(0.2416 - 0.256*f)</td></tr>
+<tr><td>2</td><td>127</td><td>0.378</td><td>w*(0.1918 - 0.256*f)</td></tr>
+<tr><td>3</td><td>61</td><td>0.787</td><td>w*(0.2648 - 0.050*f)</td></tr>
+<tr><td>4</td><td>27</td><td>1.778</td><td>w*(0.1036 - 0.114*f)</td></tr>
+<tr><td>5</td><td>2200</td><td>0.0218</td><td>w*(0.1957 - 0.305*f)</td></tr>
+</table>
+<p>
+<H3><FONT COLOR="#ff5500">Links</FONT></H3>
+  <UL>
+      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
+      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
+      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
+      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
+      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
+  </UL>
+ 
+<HR>
+<FONT SIZE=2>BehavePlus On-Line Documentation, May 8, 2015.</FONT>
+</BODY>
+</HTML>
