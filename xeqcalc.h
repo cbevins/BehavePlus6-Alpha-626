@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalc.h
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree calculator interface.
  */
@@ -328,6 +328,29 @@ public:
     EqVar *vSurfaceFuelBedMoisLive;
     EqVar *vSurfaceFuelBedPackingRatio;
     EqVar *vSurfaceFuelBedSigma;
+	EqVar *vSurfaceFuelChaparralAge;
+	EqVar *vSurfaceFuelChaparralDayOfMonth;
+	EqVar *vSurfaceFuelChaparralDaysSinceMay1;
+	EqVar *vSurfaceFuelChaparralDeadFuelFraction;
+	EqVar *vSurfaceFuelChaparralDepth;
+	EqVar *vSurfaceFuelChaparralHeatLiveLeaf;
+	EqVar *vSurfaceFuelChaparralHeatLiveStem;
+	EqVar *vSurfaceFuelChaparralLoadDead1;
+	EqVar *vSurfaceFuelChaparralLoadDead2;
+	EqVar *vSurfaceFuelChaparralLoadDead3;
+	EqVar *vSurfaceFuelChaparralLoadDead4;
+	EqVar *vSurfaceFuelChaparralLoadLiveLeaf;
+	EqVar *vSurfaceFuelChaparralLoadLive1;
+	EqVar *vSurfaceFuelChaparralLoadLive2;
+	EqVar *vSurfaceFuelChaparralLoadLive3;
+	EqVar *vSurfaceFuelChaparralLoadLive4;
+	EqVar *vSurfaceFuelChaparralLoadTotal;
+	EqVar *vSurfaceFuelChaparralLoadTotalDead;
+	EqVar *vSurfaceFuelChaparralLoadTotalLive;
+	EqVar *vSurfaceFuelChaparralMoisLiveLeaf;
+	EqVar *vSurfaceFuelChaparralMoisLiveStem;
+	EqVar *vSurfaceFuelChaparralMonthOfYear;
+	EqVar *vSurfaceFuelChaparralType;
     EqVar *vSurfaceFuelDens[8];
     EqVar *vSurfaceFuelHeat[8];
     EqVar *vSurfaceFuelHeatDead;
@@ -537,9 +560,21 @@ public:
     EqFun *fSurfaceFuelBedModel;
     EqFun *fSurfaceFuelBedParms;
     EqFun *fSurfaceFuelBedWeighted;
+	EqFun *fSurfaceFuelChaparralAgeFromDepth;
+    EqFun *fSurfaceFuelChaparralDaysSinceMay1;
+    EqFun *fSurfaceFuelChaparralDeadFuelFraction;
+    EqFun *fSurfaceFuelChaparralDepth;
+    EqFun *fSurfaceFuelChaparralHeatLiveLeaf;
+    EqFun *fSurfaceFuelChaparralHeatLiveStem;
+    EqFun *fSurfaceFuelChaparralLoadTotal;
+    EqFun *fSurfaceFuelChaparralModel;
+    EqFun *fSurfaceFuelChaparralMoisLiveLeaf;
+    EqFun *fSurfaceFuelChaparralMoisLiveStem;
+    EqFun *fSurfaceFuelChaparralParms;
     EqFun *fSurfaceFuelLoadTransferFraction;
     EqFun *fSurfaceFuelMoisDeadHerbWood;
     EqFun *fSurfaceFuelMoisLifeClass;
+    EqFun *fSurfaceFuelMoisLiveChaparral;
     EqFun *fSurfaceFuelMoisScenarioModel;
     EqFun *fSurfaceFuelMoisTimeLag;
     EqFun *fSurfaceFuelPalmettoModel;
@@ -670,9 +705,21 @@ public:
     void FuelBedModel( void );
     void FuelBedParms( void );
     void FuelBedWeighted( void );
+    void FuelChaparralAgeFromDepth( void );
+    void FuelChaparralDaysSinceMay1( void );
+    void FuelChaparralDeadFuelFraction( void );
+    void FuelChaparralDepth( void );
+    void FuelChaparralHeatLiveLeaf( void );
+    void FuelChaparralHeatLiveStem( void );
+    void FuelChaparralLoadTotal( void );
+    void FuelChaparralModel( void );
+    void FuelChaparralMoisLiveLeaf( void );
+    void FuelChaparralMoisLiveStem( void );
+    void FuelChaparralParms( void );
     void FuelLoadTransferFraction( void );
     void FuelMoisDeadHerbWood( void );
     void FuelMoisLifeClass( void );
+	void FuelMoisLiveChaparral( void );
     void FuelMoisScenarioModel( void );
     void FuelMoisTimeLag( void );
     void FuelPalmettoModel( void );

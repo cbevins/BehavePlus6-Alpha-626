@@ -99,47 +99,99 @@ double Bp6SurfaceFire::getParticleSwtg( int particleIndex ) const
 	return m_sWtg[particleIndex];
 }
 
-// Fuel life category member variable accessors
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) total surface area (ft2).
+ *	\param lifeCat 0=dead, 1=live
+ */
 double Bp6SurfaceFire::getLifeArea( int lifeCat ) const
 {
 	return m_lifeArea[lifeCat];
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) surface area weighting factor (fraction).
+ *	\param lifeCat 0=dead, 1=live
+ */
 double Bp6SurfaceFire::getLifeAwtg( int lifeCat ) const
 {
 	return m_lifeAwtg[lifeCat];
 }
-double Bp6SurfaceFire::getLifeEtas( int lifeCat ) const
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) mineral damping coefficient (fraction).
+ *	\param lifeCat 0=dead, 1=live
+ */
+double Bp6SurfaceFire::getLifeEtaS( int lifeCat ) const
 {
 	return m_lifeEtaS[lifeCat];
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) mass of fuel that must be
+ *	heated to ignition (i.e., load * effective heating number).
+ *
+ *  Used to calculate the live fuel moisture content of extinction.
+ *
+ *	\param lifeCat 0=dead, 1=live
+ */
 double Bp6SurfaceFire::getLifeFine( int lifeCat ) const
 {
 	return m_lifeFine[lifeCat];
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) weighted heat of combustion (btu/lb).
+  *	\param lifeCat 0=dead, 1=live
+*/
 double Bp6SurfaceFire::getLifeHeat( int lifeCat ) const
 {
 	return m_lifeHeat[lifeCat];
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) size-class weighted fuel load (lb/ft2).
+ *	\param lifeCat 0=dead, 1=live
+ */
 double Bp6SurfaceFire::getLifeLoad( int lifeCat ) const
 {
 	return m_lifeLoad[lifeCat];
 }
-double Bp6SurfaceFire::getLifeRxK( int lifeCat ) const
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) dry fuel reaction intensity
+ *		(btu/ft2/min); i.e., the reaction intensity \a before the moisture damping
+ *		coefficient is applied.
+ *	\param lifeCat 0=dead, 1=live
+ */
+double Bp6SurfaceFire::getLifeRxDry( int lifeCat ) const
 {
-	return m_lifeRxK[lifeCat];
+	return m_lifeRxDry[lifeCat];
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) weighted surface area-to-volume ratio (1/ft).
+ *	\param lifeCat 0=dead, 1=live
+*/
 double Bp6SurfaceFire::getLifeSavr( int lifeCat ) const
 {
 	return m_lifeSavr[lifeCat];
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) weighted effective (silica-free)
+ *	mineral content (fraction).
+ *	\param lifeCat 0=dead, 1=live
+ */
 double Bp6SurfaceFire::getLifeSeff( int lifeCat ) const
 {
 	return m_lifeSeff[lifeCat];
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) weighted total mineral content (fraction).
+ *	\param lifeCat 0=dead, 1=live
+*/
 double Bp6SurfaceFire::getLifeStot( int lifeCat ) const
 {
 	return m_lifeStot[lifeCat];
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) size class weighting factor
+ *	by size class (fraction).
+ *	\param lifeCat 0=dead, 1=live
+ *	\param size Size class index [0..5]
+*/
 double Bp6SurfaceFire::getLifeSwtg( int lifeCat, int size ) const
 {
 	return m_lifeSwtg[lifeCat][size];
@@ -242,10 +294,14 @@ double  Bp6SurfaceFire::getDeadMois() const
 {
 	return m_deadMois;
 }
-double  Bp6SurfaceFire::getDeadRxK() const
+double  Bp6SurfaceFire::getDeadRxDry() const
 {
-	return m_lifeRxK[DeadCat];
+	return m_lifeRxDry[DeadCat];
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the ratio of the water mass / fuel mass that must be heated
+ *	to ignition (used to derive the live fuel moisture content of extinction).
+ */
 double  Bp6SurfaceFire::getFdMois() const
 {
 	return m_fdmois;
@@ -254,30 +310,72 @@ double  Bp6SurfaceFire::getHeatSink() const
 {
 	return m_rbQig;
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) fuel moisture content of extinction (ratio).
+ *	\param lifeCat 0=dead, 1=live
+*/
 double Bp6SurfaceFire::getLifeMext( int lifeCat ) const
 {
-	return ( lifeCat == DeadCat ) ? m_deadMext : m_liveMext;
+	return ( lifeCat == DeadCat ) ? m_deadMext : m_liveMextApplied;
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the life category (dead or live) weighted fuel moisture content (ratio).
+ *	\param lifeCat 0=dead, 1=live
+*/
 double Bp6SurfaceFire::getLifeMois( int lifeCat ) const
 {
 	return ( lifeCat == DeadCat ) ? m_deadMois : m_liveMois;
 }
-double  Bp6SurfaceFire::getLiveMext() const
+//------------------------------------------------------------------------------
+/*!	\brief Returns the live fuel moisture content of extinction (ratio) that was
+ *	applied in the derivation of the live fuel moisture damping coefficient.
+ *
+ *	If m_liveMextChaparral > 0.5, then it is applied.  This should only occur if
+ *	dynamic chaparral fuel models (Rothermel & Philpot 1973) are being used,
+ *	in which case Weise et al recommend 0.65 for chamise and 0.74 for mixed brush.
+ *
+ *	If m_liveMextChaparral < 0.5, then m_liveMextCalculated is applied.
+*/
+double  Bp6SurfaceFire::getLiveMextApplied() const
 {
-	return m_liveMext;
+	return m_liveMextApplied;
+}
+//------------------------------------------------------------------------------
+/*!	\brief Returns the \a calculated live fuel moisture content of extinction (ratio).
+*/
+double  Bp6SurfaceFire::getLiveMextCalculated() const
+{
+	return m_liveMextCalculated;
+}
+//------------------------------------------------------------------------------
+/*!	\brief Returns the \a chaparral live fuel moisture content of extinction (ratio).
+ *
+ *	If m_liveMextChaparral > 0.5, then it is applied.  This should only occur if
+ *	dynamic chaparral fuel models (Rothermel & Philpot 1973) are being used,
+ *	in which case Weise et al recommend 0.65 for chamise and 0.74 for mixed brush.
+ *
+ *	If m_liveMextChaparral < 0.5, then m_liveMextCalculated is applied.
+*/
+double  Bp6SurfaceFire::getLiveMextChaparral() const
+{
+	return m_liveMextChaparral;
 }
 double  Bp6SurfaceFire::getLiveMois() const
 {
 	return m_liveMois;
 }
-double  Bp6SurfaceFire::getLiveRxK() const
+double  Bp6SurfaceFire::getLiveRxDry() const
 {
-	return m_lifeRxK[LiveCat];
+	return m_lifeRxDry[LiveCat];
 }
 double  Bp6SurfaceFire::getRbQig() const
 {
 	return m_rbQig;
 }
+//------------------------------------------------------------------------------
+/*!	\brief Returns the ratio of the mass of water within the mass of fuel that
+ *	must be heated to ignition (used to derive the live fuel moisture content of extinction).
+ */
 double  Bp6SurfaceFire::getWfmd() const
 {
 	return m_wfmd;
@@ -639,7 +737,7 @@ void Bp6SurfaceFire::resetFuelOutput()
         m_lifeFine[l] = 0.;
         m_lifeHeat[l] = 0.;
         m_lifeLoad[l] = 0.;
-        m_lifeRxK[l]  = 0.;
+        m_lifeRxDry[l]  = 0.;
         m_lifeSavr[l] = 0.;
         m_lifeSeff[l] = 0.;
         m_lifeStot[l] = 0.;
@@ -667,13 +765,15 @@ void Bp6SurfaceFire::resetMoistureOutput()
     m_wfmd     = 0.;
     m_deadMois = 0.;
     m_liveMois = 0.;
-	m_liveMext = 0.;
     m_deadEtaM = 0.;
 	m_deadRxInt = 0.;
 	m_liveEtaM   = 0.;
 	m_liveRxInt  = 0.;
 	m_totalRxInt = 0.;
 	m_ros0       = 0.;
+	m_liveMextApplied = 0.;
+	m_liveMextCalculated = 0.;
+	m_liveMextChaparral = 0.;
 }
 //------------------------------------------------------------------------------
 void Bp6SurfaceFire::resetSiteInput()
@@ -739,6 +839,7 @@ void Bp6SurfaceFire::resetTimeOutput()
 void Bp6SurfaceFire::resetTimeOutputExtension()
 {
 }
+
 //------------------------------------------------------------------------------
 void Bp6SurfaceFire::setFuel(
 	double depth,		// fuel bed depth (ft)
@@ -746,9 +847,9 @@ void Bp6SurfaceFire::setFuel(
 	int    particles,	// number of particles in following arrays
 	int    *life,		// array of fuel particle life codes
 	double *load,		// array of fuel particle loads (lb/ft2)
-	double *savr,		// array fo fuel aprticle surface area-to-volume rations (ft3/ft2)
-	double *heat,		// array fo fuel particle low heat of combustions (btu/lb)
-	double *dens,		// array fo fuel particle densities (lb/ft3)
+	double *savr,		// array of fuel aprticle surface area-to-volume rations (ft3/ft2)
+	double *heat,		// array of fuel particle low heat of combustions (btu/lb)
+	double *dens,		// array of fuel particle densities (lb/ft3)
 	double *stot,		// array of fuel particle total Silica contents (lb/lb)
 	double *seff )		// array of fuel particle effective Silica contents (lb/lb)
 {
@@ -772,8 +873,13 @@ void Bp6SurfaceFire::setFuel(
 }
 
 //------------------------------------------------------------------------------
+/*!
+ *	\param chaparralLiveMext Weise, et al. uses 0.65 for chamise and 0.74 for mixed brush.
+ *	If liveMext is 0., then live fuel extinction moisture is calculated internally.
+*/
 void Bp6SurfaceFire::setMoisture(
-		double* mois	// array of fuel particle moisture contents (lb/lb)
+		double* mois,// array of fuel particle moisture contents (lb/lb)
+		double chaparralLiveMext	// Rothermel & Philpot chaparral live mext
 	)
 {
 	resetMoistureOutput();
@@ -782,6 +888,7 @@ void Bp6SurfaceFire::setMoisture(
 	{
 		m_mois[p] = mois[p];
 	}
+	m_liveMextChaparral = chaparralLiveMext;
 	updateMoisture();
 }
 
@@ -931,12 +1038,12 @@ void Bp6SurfaceFire::updateFuel()
         {
             m_lifeEtaS[l] = 1.0;
         }
-        m_lifeRxK[l] = m_gammaOpt
+        m_lifeRxDry[l] = m_gammaOpt
 			* m_lifeLoad[l] * ( 1. - m_lifeStot[l] )	// net fuel loading 
 			* m_lifeHeat[l]
 			* m_lifeEtaS[l];
     }
-    //  Fine dead and fine live fuel factors.
+    //  Mass of dead and live fuel that must be heated to ignition
     for ( int p=0; p<m_particles; p++ )
     {
         int l = fuelLife( m_life[p] );
@@ -982,6 +1089,8 @@ void Bp6SurfaceFire::updateMoisture()
         int lifeCat = fuelLife( m_life[p] );
         if ( lifeCat == DeadCat )
         {
+			// Mass of water within the mass of fuel that must be heated to ignition
+			// Used to derive the live fuel moisture content of extinction
             m_wfmd     += m_mois[p] * m_sigK[p] * m_load[p];
             m_deadMois += m_aWtg[p] * m_mois[p];
         }
@@ -998,17 +1107,22 @@ void Bp6SurfaceFire::updateMoisture()
 	m_rbQig *= m_bulkDensity;
 
     // Compute live fuel extinction moisture.
-	m_liveMext = m_deadMext;
+	m_liveMextCalculated = m_deadMext;
     if ( nLive )
     {
 		double deadFine = m_lifeFine[DeadCat];
+		// Ratio of water mass to fuel mass that must be heated to ignition
+		// Used to derive the live fuel moisture content of extinction
         m_fdmois = ( deadFine < m_smidgen ) ? ( 0.0 ) : ( m_wfmd / deadFine );
 
-        m_liveMext = ( m_deadMext < m_smidgen ) ? ( 0.0 )
+        m_liveMextCalculated = ( m_deadMext < m_smidgen ) ? ( 0.0 )
                  : ( ( m_liveMextK * ( 1.0 - m_fdmois / m_deadMext ) ) - 0.226 );
     }
-    m_liveMext = ( m_liveMext < m_deadMext ) ? ( m_deadMext ) : ( m_liveMext );
-    
+    m_liveMextCalculated = ( m_liveMextCalculated < m_deadMext )
+		                 ? ( m_deadMext ) : ( m_liveMextCalculated );
+	m_liveMextApplied = ( m_liveMextChaparral > 0.5 )
+		              ? m_liveMextChaparral : m_liveMextCalculated;
+
 	// Hack requested by Pat Andrews
     //if ( m_liveMext > 4.00 )
     //{
@@ -1022,14 +1136,14 @@ void Bp6SurfaceFire::updateMoisture()
         m_deadEtaM = 1.0 - 2.59*r + 5.11*r*r - 3.52*r*r*r;
 	}
 
-    if ( m_liveMext >= m_smidgen && ( ( r = m_liveMois / m_liveMext ) ) < 1. )
+    if ( m_liveMextApplied >= m_smidgen && ( ( r = m_liveMois / m_liveMextApplied ) ) < 1. )
 	{
 		m_liveEtaM = 1.0 - 2.59*r + 5.11*r*r - 3.52*r*r*r;
 	}
 
     // Combine moisture damping with rx factor to get total reaction int.
-    m_deadRxInt  = m_lifeRxK[DeadCat] * m_deadEtaM;
-    m_liveRxInt  = m_lifeRxK[LiveCat] * m_liveEtaM;
+    m_deadRxInt  = m_lifeRxDry[DeadCat] * m_deadEtaM;
+    m_liveRxInt  = m_lifeRxDry[LiveCat] * m_liveEtaM;
     m_totalRxInt = m_deadRxInt + m_liveRxInt;
 
 	// No-wind, no-slope spread rate

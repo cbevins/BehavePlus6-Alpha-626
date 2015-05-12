@@ -1,4 +1,13 @@
 ---------------------------------------
+Build 615 - May 12, 2015
+---------------------------------------
+
+--	The SURFACE Module now includes the special case
+	Chaparral fuel model based on Rothermel & Philpot (1973).
+	(Issue #066FAH - Adding Chaparral Special Case Fuel Model
+	to SURFACE)
+
+---------------------------------------
 Build 614 - April 8, 2015
 ---------------------------------------
 

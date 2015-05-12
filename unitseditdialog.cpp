@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file unitseditdialog.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2012 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Units editor dialog methods.
  */
@@ -157,13 +157,24 @@ static const char *FuelCrownVars[] =
     NULL
 };
 
-
 static const char *FuelLoadVars[] =
 {
     "vSurfaceFuelAspenLoadDead1",
     "vSurfaceFuelAspenLoadDead10",
     "vSurfaceFuelAspenLoadLiveHerb",
     "vSurfaceFuelAspenLoadLiveWoody",
+	"vSurfaceFuelChaparralLoadDead1",
+	"vSurfaceFuelChaparralLoadDead2",
+	"vSurfaceFuelChaparralLoadDead3",
+	"vSurfaceFuelChaparralLoadDead4",
+	"vSurfaceFuelChaparralLoadLive1",
+	"vSurfaceFuelChaparralLoadLive2",
+	"vSurfaceFuelChaparralLoadLive3",
+	"vSurfaceFuelChaparralLoadLive4",
+	"vSurfaceFuelChaparralLoadLiveLeaf",
+	"vSurfaceFuelChaparralLoadTotal",
+	"vSurfaceFuelChaparralLoadTotalDead",
+	"vSurfaceFuelChaparralLoadTotalLive",
     "vSurfaceFuelLoadDead",
     "vSurfaceFuelLoadDead1",
     "vSurfaceFuelLoadDead10",
@@ -216,6 +227,7 @@ static const char *FuelSavrVars[] =
 static const char *FuelUnderstoryDepthVars[] =
 {
     "vSurfaceFuelBedDepth",
+	"vSurfaceFuelChaparralDepth",
     "vSurfaceFuelPalmettoHeight",
     NULL
 };
@@ -241,6 +253,8 @@ static const char *FuelMoisVars[] =
     "vSurfaceFuelBedMextLive",
     "vSurfaceFuelBedMoisDead",
     "vSurfaceFuelBedMoisLive",
+	"vSurfaceFuelChaparralMoisLiveLeaf",
+	"vSurfaceFuelChaparralMoisLiveStem",
     "vSurfaceFuelMois0",
     "vSurfaceFuelMois1",
     "vSurfaceFuelMois2",
@@ -257,6 +271,8 @@ static const char *FuelMoisVars[] =
 
 static const char *FuelHeatVars[] =
 {
+	"vSurfaceFuelChaparralHeatLiveLeaf",
+	"vSurfaceFuelChaparralHeatLiveStem",
     "vSurfaceFuelHeatDead",
     "vSurfaceFuelHeatLive",
     "vSurfaceFuelHeat0",
@@ -279,6 +295,7 @@ static const char *FuelHeatSinkVars[] =
 static const char *FuelFractionVars[] =
 {
     "vSurfaceFuelAspenCuring",
+	"vSurfaceFuelChaparralDeadFuelFraction",
     "vSurfaceFuelLoadTransferFraction",
     "vSurfaceFuelBedDeadFraction",
     "vTreeCanopyCrownFraction",

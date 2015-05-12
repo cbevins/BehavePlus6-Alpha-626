@@ -33,11 +33,11 @@ public:
 	// Fuel life category member variable accessors
 	double getLifeArea( int lifeCat ) const;
 	double getLifeAwtg( int lifeCat ) const;
-	double getLifeEtas( int lifeCat ) const;
+	double getLifeEtaS( int lifeCat ) const;
 	double getLifeFine( int lifeCat ) const;
 	double getLifeHeat( int lifeCat ) const;
 	double getLifeLoad( int lifeCat ) const;
-	double getLifeRxK( int lifeCat ) const;
+	double getLifeRxDry( int lifeCat ) const;
 	double getLifeSavr( int lifeCat ) const;
 	double getLifeSeff( int lifeCat ) const;
 	double getLifeStot( int lifeCat ) const;
@@ -71,14 +71,16 @@ public:
 
 	// Fuel moisture dependent member variable accessors
 	double getDeadMois() const;
-	double getDeadRxK() const;
+	double getDeadRxDry() const;
 	double getFdMois() const;
 	double getHeatSink() const;
 	double getLifeMext( int lifeCat ) const;
 	double getLifeMois( int lifeCat ) const;
-	double getLiveMext() const;
+	double getLiveMextApplied() const;
+	double getLiveMextCalculated() const;
+	double getLiveMextChaparral() const;
 	double getLiveMois() const;
-	double getLiveRxK() const;
+	double getLiveRxDry() const;
 	double getRbQig() const;
 	double getWfmd() const;
 	double getDeadEtaM() const;
@@ -143,7 +145,9 @@ public:
 		double *stot,
 		double *seff );
 
-	virtual void setMoisture( double* mois );
+	virtual void setMoisture(
+		double* mois,
+		double  liveMextChaparral=0. );
 
 	virtual void setSite(
         double slopeFraction,			// rise/reach
@@ -211,20 +215,20 @@ protected:
 
 protected:
 	// constants
-	double m_pi;					// close to diameter / radius
-	double m_smidgen;				// close to zero
-	double m_infinity;				// close to infinity
+	double	m_pi;					// close to diameter / radius
+	double	m_smidgen;				// close to zero
+	double	m_infinity;				// close to infinity
 	// fuel inputs
-	double  m_depth;				// fuel bed depth (ft)
-	double  m_deadMext;				// fuel bed dead fuel moisture of extinction (lb water / lb ovendry fuel)
-	int		m_particles;			// fuel bed number of fuel particle types
-	int     m_life[MaxParts];		// fuel particle life category (DeadCat or LiveCat)
-	double  m_load[MaxParts];		// fuel particle ovendry load (lb/ft2)
-	double  m_savr[MaxParts];		// fuel particle surface area-to-volume ratio (ft3/ft2)
-	double  m_heat[MaxParts];		// fuel particle low heat of combustion (btu/lb)
-	double  m_dens[MaxParts];		// fuel particle density (lb/ft3)
-	double  m_stot[MaxParts];		// fuel particle total Silica content (lb si / lb fuel)
-	double  m_seff[MaxParts];		// fuel particle effective silica content (lb si / lb fuel)
+	double m_depth;					// fuel bed depth (ft)
+	double m_deadMext;				// fuel bed dead fuel moisture of extinction (lb water / lb ovendry fuel)
+	int	   m_particles;				// fuel bed number of fuel particle types
+	int    m_life[MaxParts];		// fuel particle life category (DeadCat or LiveCat)
+	double m_load[MaxParts];		// fuel particle ovendry load (lb/ft2)
+	double m_savr[MaxParts];		// fuel particle surface area-to-volume ratio (ft3/ft2)
+	double m_heat[MaxParts];		// fuel particle low heat of combustion (btu/lb)
+	double m_dens[MaxParts];		// fuel particle density (lb/ft3)
+	double m_stot[MaxParts];		// fuel particle total Silica content (lb si / lb fuel)
+	double m_seff[MaxParts];		// fuel particle effective silica content (lb si / lb fuel)
     // fuel particle intermediates
     double m_area[MaxParts];		// fuel particle surface area (ft2)
 	double m_aWtg[MaxParts];		// fuel particle surface area weighting factor (dl)
@@ -238,7 +242,7 @@ protected:
 	double m_lifeFine[MaxCats];		//
     double m_lifeHeat[MaxCats];		// life category weighted heat of combustion (btu/lb)
     double m_lifeLoad[MaxCats];		// life category fuel load (lb/ft2)
-	double m_lifeRxK[MaxCats];		// life category reaction intensity WITHOUT moisture damping (btu/ft/min)
+	double m_lifeRxDry[MaxCats];	// life category reaction intensity WITHOUT moisture damping (btu/ft/min)
     double m_lifeSavr[MaxCats];		// life category weighted surface area-to-volume ration (ft3/ft2)
     double m_lifeSeff[MaxCats];		// life category weighted effective SIlica content (lb Si / lb fuel)
     double m_lifeStot[MaxCats];		// life category weighted total Silica content (lb Si / lb fuel )
@@ -273,7 +277,9 @@ protected:
     double m_wfmd;
 	double m_deadMois;				// fuel bed weighted dead fuel moisture content (lb water / lb dead fuel)
 	double m_liveMois;				// fuel bed weighted live fuel moisture content (lb water / lb live fuel)
-	double m_liveMext;				// live fuel moisture of extinction (lb/lb)
+	double m_liveMextApplied;		// live fuel moisture of extinction (lb/lb)
+	double m_liveMextCalculated;	// live fuel moisture of extinction (lb/lb)
+	double m_liveMextChaparral;		// live fuel moisture of extinction (lb/lb)
     double m_deadEtaM;				// dead fuel moisture damping coefficient (dl) [eq 29]
 	double m_deadRxInt;				// dead fuel reaction intensity (btu/ft2/min) [eq 27]
 	double m_liveEtaM;				// live fuel moisture damping coefficient (dl) [eq 29]
