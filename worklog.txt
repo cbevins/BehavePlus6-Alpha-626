@@ -2,8 +2,62 @@
 Collin D. Bevins
 LLCP0044
 Apr 22 - May 21, 2015
-?? hours
+54 hours
 =============================
+
+2015-06-19  (4.0 hours) [54.0 total]
+
+--	Created BatchRun.cpp, BatchRunTests.cpp, and ApplicationTests.cpp
+
+2015-06-18 (3.0 hours) [50.0 total]
+
+--	Created RothermelFire.cpp and RothermelFireTests.cpp
+
+
+2015-05-16 (2.0 hours) [47.0 total]
+
+--	Created the following classes:
+	- FuelBedCrownFire and FuelbedCrownFireTests
+	- CrownFireCanopy and CrownFireCanopytests
+	
+2015-05-15 (4.0 hours) [45.0 total]
+
+--	Created following classes:
+	- BatchRunInput
+	- BatchRunOutput
+	- FuelModelCatalog and FuelModelcatalogTests
+	- ApplicationTests.cpp
+	
+2015-05-14 (8.0 hours) [41.0 total]
+
+--	Refactored the BatchBehave C++ code and tests for the following classes:
+	- FireTerrain and FireTerrainTests
+	- FireWind and FireWindTests
+	- FuelBed and FireBedTests
+	- FuelModelStandard and FuelModelStandardTests
+	- FuelMoisture and FuelMoistureTests
+	- FuelParticle and FuelParticlesTests
+	- Pod
+	- SurfaceFire and SurfaceFireTests
+
+2015-05-13 (8.0 hours) [33.0 total]
+
+-- Developed BatchBehave code and tests for following classes:
+	- FireTerrain
+	- FireWind
+	- FuelBed
+	- FuelMoisture
+	- SurfaceFire
+
+2015-05-12 (4.0 hours) [25.0 total]
+
+--	Responded via email to FAH questions on help files.
+
+--	Set up a Qt project for BatchBehave library,
+	test suite, and application.
+
+--	Developed FuelParticl class with tests.
+
 
 2015-05-12 (4.0 hours) [21.0 total]
 
