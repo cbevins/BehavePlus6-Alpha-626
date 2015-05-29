@@ -5,13 +5,24 @@ May 22 - Jun 21, 2015
 ?? hours
 =============================
 
+2015-05-29 (1.5 hours) [3.5 total]
+
+--	Made changes to Crown module configuration dialogs as specified
+	in FAH PPT.
+	
+--	Aded Run Options for the Crown module.
+
+--	Wrote an email to FAH explaining changes I made to her CROWN
+	Module change request PPT.
+	
+	
 2015-05-29 (2.0 hours) [2.0 total]
 
--- Created git repository branch "build615".
+--	Created git repository branch "build615".
 
--- Updated BehavePlus6.cpp and appwindow.cpp to Build 616.
+--	Updated BehavePlus6.cpp and appwindow.cpp to Build 616.
 
--- Made all the variable label and header text changes inside
+--	Made all the variable label and header text changes inside
 	BehavePlus6.xml as per BehavePlusVars5and6_FAH_SendTo_CB.xlsx.
 
 --	Committed changes.

@@ -1467,6 +1467,21 @@ void BpDocument::runOptions( QString* runOpt, int& nOptions )
         }
     } // End surfaceModuleActive
 
+    // Crown Module run options
+    if ( property()->boolean( "crownModuleActive" ) )
+    {
+		if ( property()->boolean( "crownConfModelRothermel" ) )
+		{
+	        translate( runOpt[nOptions++],
+		        "BpDocument:Worksheet:RunOptions:Crown:Rothermel" );
+		}
+		else if ( property()->boolean( "crownConfModelScotteReinhardt" ) )
+		{
+	        translate( runOpt[nOptions++],
+		        "BpDocument:Worksheet:RunOptions:Crown:ScottReinhardt" );
+		}
+    }
+
     // Safety Module run options
     if ( property()->boolean( "safetyModuleActive" ) )
     {

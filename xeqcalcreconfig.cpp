@@ -314,38 +314,38 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
         prop->boolean( "crownCalcActiveCrown" );
     vCrownFireActiveRatio->m_isUserOutput =
         prop->boolean( "crownCalcActiveRatio" );
-    vCrownFireArea->m_isUserOutput =
-        prop->boolean( "crownCalcFireArea" );
+    vCrownFireArea->m_isUserOutput = false;
+        //prop->boolean( "crownCalcFireArea" );
     vCrownFireCritCrownSpreadRate->m_isUserOutput =
         prop->boolean( "crownCalcCriticalCrownSpreadRate" );
     vCrownFireCritSurfFireInt->m_isUserOutput =
         prop->boolean( "crownCalcCriticalSurfaceIntensity" );
     vCrownFireCritSurfFlameLeng->m_isUserOutput =
         prop->boolean( "crownCalcCriticalSurfaceFlameLeng" );
-    vCrownFireFlameLeng->m_isUserOutput =
-        prop->boolean( "crownCalcFlameLeng" );
+    vCrownFireFlameLeng->m_isUserOutput = false;
+        //prop->boolean( "crownCalcFlameLeng" );
     vCrownFireFuelLoad->m_isUserOutput =
         prop->boolean( "crownCalcFuelLoad" );
-    vCrownFireHeatPerUnitArea->m_isUserOutput =
-        prop->boolean( "crownCalcHeatPerUnitArea" );
+    vCrownFireHeatPerUnitArea->m_isUserOutput = false;
+        //prop->boolean( "crownCalcHeatPerUnitArea" );
     vCrownFireHeatPerUnitAreaCanopy->m_isUserOutput =
         prop->boolean( "crownCalcHeatPerUnitAreaCanopy" );
     vCrownFireLengthToWidth->m_isUserOutput =
         prop->boolean( "crownCalcFireLengthToWidth" );
-    vCrownFireLineInt->m_isUserOutput =
-        prop->boolean( "crownCalcFireLineInt" );
-	vCrownFirePerimeter->m_isUserOutput =
-        prop->boolean( "crownCalcFirePerimeter" );
+    vCrownFireLineInt->m_isUserOutput = false;
+        //prop->boolean( "crownCalcFireLineInt" );
+	vCrownFirePerimeter->m_isUserOutput = false;
+        //prop->boolean( "crownCalcFirePerimeter" );
     vCrownFirePowerOfFire->m_isUserOutput =
         prop->boolean( "crownCalcPowerOfFire" );
     vCrownFirePowerOfWind->m_isUserOutput =
         prop->boolean( "crownCalcPowerOfWind" );
     vCrownFirePowerRatio->m_isUserOutput =
         prop->boolean( "crownCalcPowerRatio" );
-    vCrownFireSpreadDist->m_isUserOutput =
-        prop->boolean( "crownCalcCrownSpreadDist" );
-    vCrownFireSpreadRate->m_isUserOutput =
-        prop->boolean( "crownCalcCrownSpreadRate" );
+    vCrownFireSpreadDist->m_isUserOutput = false;
+        //prop->boolean( "crownCalcCrownSpreadDist" );
+    vCrownFireSpreadRate->m_isUserOutput = false;
+        //prop->boolean( "crownCalcCrownSpreadRate" );
     vCrownFireTransRatio->m_isUserOutput =
         prop->boolean( "crownCalcTransitionRatio" );
     vCrownFireTransToCrown->m_isUserOutput =
@@ -363,11 +363,13 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
 	// V6 output variables
 	vCrownFireCanopyFractionBurned->m_isUserOutput =
 		prop->boolean( "crownCalcCanopyFractionBurned" );
-    vCrownFireCritSurfSpreadRate->m_isUserOutput =
+	// TO BE MADE FALSE!!
+    vCrownFireCritSurfSpreadRate->m_isUserOutput =	// false;
 		prop->boolean( "crownCalcCritSurfSpreadRate" );
-	vCrownFireActiveCritSurfSpreadRate->m_isUserOutput =
-				prop->boolean( "crownCalcActiveCritSurfSpreadRate" );
-	vCrownFireActiveCritOpenWindSpeed->m_isUserOutput =
+	vCrownFireActiveCritSurfSpreadRate->m_isUserOutput = false;
+		//prop->boolean( "crownCalcActiveCritSurfSpreadRate" );
+	// TO BE MADE FALSE!!
+	vCrownFireActiveCritOpenWindSpeed->m_isUserOutput = // false;
 		prop->boolean( "crownCalcActiveCritOpenWindSpeed" );
 
 	vCrownFireActiveFireArea->m_isUserOutput =

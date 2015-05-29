@@ -345,6 +345,7 @@ QLabel *PropertyPage::addLabel( const QString &labelKey,
     // Create the QLabel
     QLabel *widget = new QLabel( label, m_frame, labelKey );
     Q_CHECK_PTR( widget );
+    widget->setFixedHeight( widget->sizeHint().height() );
     // Add the widget to the grid layout
     m_grid->addMultiCellWidget( widget, rowBeg, rowEnd, colBeg, colEnd, align );
     // Return the address of the newly created QRadioButton

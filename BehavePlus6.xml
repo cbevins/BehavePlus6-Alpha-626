@@ -23319,6 +23319,18 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="30000"
     releaseThru="99999"
   />
+  <property name="crownConfModelRothermel"
+    type="Boolean"
+    value="true"
+    releaseFrom="30000"
+    releaseThru="99999"
+  />
+  <property name="crownConfModelScottReinhardt"
+    type="Boolean"
+    value="false"
+    releaseFrom="30000"
+    releaseThru="99999"
+  />
   <property name="crownConfUseFlameLeng"
     type="Boolean"
     value="true"
@@ -25657,6 +25669,10 @@ do mapa de partículas em combustão com origem num fogo de superfície"
   />
 
   <!-- TRANSLATOR KEYS AND MESSAGES -->
+  <translate key="BlankLine"
+    en_US=""
+    pt_PT=""
+  />
 
   <!-- AboutDialog Text -->
   <translate key="AboutBehavePlus:Caption"
@@ -27045,6 +27061,14 @@ NOTE:  You can open this HTML file using Excel, and subsequently save it as an .
   <translate key="BpDocument:Worksheet:RunOptions:Contain:Multiple3"
     en_US="    is specified for each resource item (line production rates, etc)."
     pt_PT="    é especificada para cada recurso (velocidade de produção de linha, etc)."
+  />
+  <translate key="BpDocument:Worksheet:RunOptions:Crown:Rothermel"
+    en_US="Crown fire method uses Rothermel (1991)."
+    pt_PT="Crown fire method uses Rothermel (1991)."
+  />
+  <translate key="BpDocument:Worksheet:RunOptions:Crown:ScottReinhardt"
+    en_US="Crown fire method uses Scott and Reinhardt (2001)."
+    pt_PT="Crown fire method uses Scott and Reinhardt (2001)."
   />
   <translate key="BpDocument:Worksheet:RunOptions:SurfaceSafety1"
     en_US="Safety zone calculations are always based on flame length of the"
@@ -28899,25 +28923,37 @@ para eixo dos Y"
     en_US="fireline intensity."
     pt_PT="intensidade linear da frente de chamas."
   />
-  <translate key="PropertyTabDialog:Crown:RothermelOutputs:Tab"
-    en_US="Rothermel Crown Fire"
-    pt_PT="??? Rothermel Crown"
+  <translate key="PropertyTabDialog:Crown:Inputs:Model:Caption"
+    en_US="Crown fire is calculated using"
+    pt_PT=""
   />
-  <translate key="PropertyTabDialog:Crown:PassiveOutputs:Tab"
-    en_US="Passive Crown Fire"
-    pt_PT="??? Passive Crown"
+  <translate key="PropertyTabDialog:Crown:Inputs:Model:Rothermel"
+    en_US="Rothermel (1991)."
+    pt_PT=""
   />
-  <translate key="PropertyTabDialog:Crown:ActiveOutputs:Tab"
-    en_US="Active Crown Fire"
-    pt_PT="??? Active Crown"
+  <translate key="PropertyTabDialog:Crown:Inputs:Model:ScottReinhardt"
+    en_US="Scott and Reinhardt (2001)."
+    pt_PT=""
   />
-  <translate key="PropertyTabDialog:Crown:CrownCanopyOutputs:Tab"
-    en_US="Crown Canopy Outputs"
-    pt_PT="??? Crown Canopy"
+  <translate key="PropertyTabDialog:Crown:BasicOutputs:Tab"
+    en_US="Basic Outputs"
+    pt_PT="??? Basic Outputs"
+  />
+  <translate key="PropertyTabDialog:Crown:FireTypeOutputs:Tab"
+    en_US="Fire Type Outputs"
+    pt_PT="??? Fire Type Outputs"
+  />
+  <translate key="PropertyTabDialog:Crown:SizeOutputs:Tab"
+    en_US="Size Outputs"
+    pt_PT="??? Size Outputs"
+  />
+  <translate key="PropertyTabDialog:Crown:CanopyOutputs:Tab"
+    en_US="Canopy Outputs"
+    pt_PT="??? Canopy Outputs"
   />
   <translate key="PropertyTabDialog:Crown:IntermediateOutputs:Tab"
     en_US="Intermediate Outputs"
-    pt_PT="??? Intermediates"
+    pt_PT="??? Intermediate Outputs"
   />
   <!-- PropertyTabDialog Contain Text -->
   <translate key="PropertyTabDialog:Contain:Caption"
