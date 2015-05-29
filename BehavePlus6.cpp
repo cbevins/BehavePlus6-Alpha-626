@@ -38,7 +38,7 @@ extern __declspec(dllimport) int qt_ntfs_permission_lookup;
 // NOTE: to save the splsh page in a file, see line 275
 static QString Program( "BehavePlus" );
 static QString Version( "6.0.0" );
-static QString Build( "Build 615" );
+static QString Build( "Build 616" );
 static QString ReleaseNote( "" );
 static QString SplashFile( "BehavePlus6.bmp" );
 //static QString SplashFile( "splash294.bmp" );

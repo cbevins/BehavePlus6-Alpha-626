@@ -7136,8 +7136,8 @@
     default="0"
   />
   <translate key="vContainAttackPerimeter:Label"
-    en_US="Perimeter at Initial Attack"
-    pt_PT="??? Perimeter at Initial Attack"
+    en_US="Fire Perimeter at Initial Attack"
+    pt_PT="??? Fire Perimeter at Initial Attack"
   />
   <translate key="vContainAttackPerimeter:Desc"
     en_US="Fire perimeter at time of initial attack."
@@ -7232,7 +7232,7 @@
     pt_PT="Custo total dos meios de combate utilizados."
   />
   <translate key="vContainCost:Hdr0"
-    en_US="Res"
+    en_US="Resource"
     pt_PT="Recursos"
   />
   <translate key="vContainCost:Hdr1"
@@ -7290,7 +7290,7 @@
     pt_PT="??? Contain simulation is stopped after this fire heading spread distance is exceeded."
   />
   <translate key="vContainLimitDist:Hdr0"
-    en_US="Distance"
+    en_US="Spread Dist"
     pt_PT="Distância"
   />
   <translate key="vContainLimitDist:Hdr1"
@@ -7383,11 +7383,11 @@
     pt_PT="Distância da retaguarda do fogo aquando da informação."
   />
   <translate key="vContainReportBack:Hdr0"
-    en_US="Backing"
+    en_US="Backing Dist"
     pt_PT="Propagação do fogo contra o vento e/ou declive"
   />
   <translate key="vContainReportBack:Hdr1"
-    en_US="Distance"
+    en_US="at Report"
     pt_PT="Distância"
   />
 
@@ -7414,11 +7414,11 @@
     pt_PT="Distância à frente do incêndio aquando da informação."
   />
   <translate key="vContainReportHead:Hdr0"
-    en_US="Heading"
+    en_US="Heading Dist"
     pt_PT="À frente"
   />
   <translate key="vContainReportHead:Hdr1"
-    en_US="Distance"
+    en_US="at Report"
     pt_PT="Distância"
   />
 
@@ -7445,11 +7445,11 @@
     pt_PT="Rácio comprimento-largura do incêndio aquando da informação."
   />
   <translate key="vContainReportRatio:Hdr0"
-    en_US="Report"
+    en_US="L/W Ratio"
     pt_PT="Informação"
   />
   <translate key="vContainReportRatio:Hdr1"
-    en_US="L/W Ratio"
+    en_US="at Report"
     pt_PT="Rácio C/L"
   />
 
@@ -7476,11 +7476,11 @@
     pt_PT="Dimensão do incêndio aquando da informação."
   />
   <translate key="vContainReportSize:Hdr0"
-    en_US="Report"
+    en_US="Fire Size"
     pt_PT="Informação"
   />
   <translate key="vContainReportSize:Hdr1"
-    en_US="Size"
+    en_US="at Report"
     pt_PT="Dimensão"
   />
 
@@ -7499,7 +7499,7 @@
     default="1.0"
   />
   <translate key="vContainReportSpread:Label"
-    en_US="Surface Rate of Spread (maximum)"
+    en_US="Surface Fire Rate of Spread (maximum)"
     pt_PT="Velocidade de propagação (máxima) da frente aquando da informação"
   />
   <translate key="vContainReportSpread:Desc"
@@ -7507,11 +7507,11 @@
     pt_PT="Velocidade de propagação da frente aquando da informação."
   />
   <translate key="vContainReportSpread:Hdr0"
-    en_US="Report"
+    en_US="Surface ROS"
     pt_PT="Informação"
   />
   <translate key="vContainReportSpread:Hdr1"
-    en_US="Spread"
+    en_US="at Report"
     pt_PT="Propagação"
   />
 
@@ -7543,7 +7543,7 @@
     pt_PT="Meio de combate"
   />
   <translate key="vContainResourceArrival:Hdr1"
-    en_US="Arrival"
+    en_US="Arrival Time"
     pt_PT="Chegada"
   />
 
@@ -7639,7 +7639,7 @@
     pt_PT="Meio de combate"
   />
   <translate key="vContainResourceHourCost:Hdr1"
-    en_US="Hour Cost"
+    en_US="Hourly Cost"
     pt_PT="Custo horário"
   />
 
@@ -7716,7 +7716,7 @@
     pt_PT="Número de meios utilizados no combate ao incêndio."
   />
   <translate key="vContainResourcesUsed:Hdr0"
-    en_US="Res"
+    en_US="Resources"
     pt_PT="Meios"
   />
   <translate key="vContainResourcesUsed:Hdr1"
@@ -7747,7 +7747,7 @@
     pt_PT="Área circunscrita aquando de contenção/fuga."
   />
   <translate key="vContainSize:Hdr0"
-    en_US="Contain"
+    en_US="Contained"
     pt_PT="Conter"
   />
   <translate key="vContainSize:Hdr1"
@@ -7930,12 +7930,12 @@
     pt_PT=""
   />
   <translate key="vCrownFireActiveCritOpenWindSpeed:Hdr0"
-    en_US="Active Crown"
-    pt_PT="Active Crown"
+    en_US="Critical"
+    pt_PT="Critical"
   />
   <translate key="vCrownFireActiveCritOpenWindSpeed:Hdr1"
-    en_US="Critical Windspeed"
-    pt_PT="Critical Windspeed"
+    en_US="Open WS"
+    pt_PT="Open WS"
   />
 
   <variable name="vCrownFireActiveCritSurfSpreadRate"
@@ -7954,20 +7954,20 @@
     wizard=""
   />
   <translate key="vCrownFireActiveCritSurfSpreadRate:Label"
-    en_US="Active Crown Critical Surface Fire ROS"
-    pt_PT="Full Canopy Crown Spread Rate"
+    en_US="Critical Surface ROS, Active Crown Fire"
+    pt_PT="Critical SUrface ROS, Active Crown Fire"
   />
   <translate key="vCrownFireActiveCritSurfSpreadRate:Desc"
     en_US="Scott-Reinhardt R'sa"
     pt_PT="Scott-Reinhardt R'sa"
   />
   <translate key="vCrownFireActiveCritSurfSpreadRate:Hdr0"
-    en_US="Active Crown"
-    pt_PT="Active Crown"
+    en_US="Critical"
+    pt_PT="Critical"
   />
   <translate key="vCrownFireActiveCritSurfSpreadRate:Hdr1"
-    en_US="Critical Surface ROS"
-    pt_PT="Critical Surface ROS"
+    en_US="Surface ROS"
+    pt_PT="Surface ROS"
   />
 
   <variable name="vCrownFireActiveCrown"
@@ -7992,8 +7992,8 @@
     pt_PT="Crown Fire"
   />
   <translate key="vCrownFireActiveCrown:Hdr1"
-    en_US="Is Active Crown?"
-    pt_PT="Is Active Crown?"
+    en_US="Is Active?"
+    pt_PT="Is Active?"
   />
 
   <variable name="vCrownFireActiveFireArea"
@@ -8055,8 +8055,8 @@
     pt_PT="Active Crown"
   />
   <translate key="vCrownFireActiveFireLineInt:Hdr1"
-    en_US="Fireline Intensity"
-    pt_PT="Fireline Intensity"
+    en_US="FLI"
+    pt_PT="FLI"
   />
 
   <variable name="vCrownFireActiveFirePerimeter"
@@ -8086,8 +8086,8 @@
     pt_PT="???Crown Incêndio"
   />
   <translate key="vCrownFireActiveFirePerimeter:Hdr1"
-    en_US="Fire Perimeter"
-    pt_PT="Fire Perímetro"
+    en_US="Fire Perim"
+    pt_PT="Fire Perím"
   />
 
   <variable name="vCrownFireActiveFireWidth"
@@ -8148,8 +8148,8 @@
     pt_PT="Active Crown"
   />
   <translate key="vCrownFireActiveFlameLeng:Hdr1"
-    en_US="Flame Length"
-    pt_PT="Flame Length"
+    en_US="FL"
+    pt_PT="FL"
   />
 
   <variable name="vCrownFireActiveHeatPerUnitArea"
@@ -8179,7 +8179,7 @@
     pt_PT="Active Crown"
   />
   <translate key="vCrownFireActiveHeatPerUnitArea:Hdr1"
-    en_US="Heat per Unit Area"
+    en_US="HPUA"
     pt_PT="??? Unidade de área"
   />
 
@@ -8198,7 +8198,7 @@
     default="1.00"
   />
   <translate key="vCrownFireActiveRatio:Label"
-    en_US="Crown Fire Active Crowning Ratio"
+    en_US="Active Ratio"
     pt_PT="Rácio activo"
   />
   <translate key="vCrownFireActiveRatio:Desc"
@@ -8206,11 +8206,11 @@
     pt_PT="Rácio de fogo de copas activo."
   />
   <translate key="vCrownFireActiveRatio:Hdr0"
-    en_US="Crown Fire"
+    en_US="Active"
     pt_PT="Activo"
   />
   <translate key="vCrownFireActiveRatio:Hdr1"
-    en_US="Active Crown Ratio"
+    en_US="Ratio"
     pt_PT="Rácio"
   />
 
@@ -8261,7 +8261,7 @@
     wizard=""
   />
   <translate key="vCrownFireActiveSpreadRate:Label"
-    en_US="Active Crown Rate of Spread"
+    en_US="Active Crown Fire Rate of Spread"
     pt_PT="Active Propagação de copas"
   />
   <translate key="vCrownFireActiveSpreadRate:Desc"
@@ -8273,7 +8273,7 @@
     pt_PT="Copas"
   />
   <translate key="vCrownFireActiveSpreadRate:Hdr1"
-    en_US="rate of Spread"
+    en_US="ROS"
     pt_PT="Vel. fogo"
   />
 
@@ -8300,7 +8300,7 @@
     pt_PT="Dimensão de um incêndio com forma elíptica sob condições ambientais uniformes."
   />
   <translate key="vCrownFireArea:Hdr0"
-    en_US="Crown Fire"
+    en_US="Crown"
     pt_PT="???Crown"
   />
   <translate key="vCrownFireArea:Hdr1"
@@ -8323,20 +8323,20 @@
   default="0.0"
   />
   <translate key="vCrownFireCanopyFractionBurned:Label"
-    en_US="Crown Fire Canopy Fraction Burned"
-    pt_PT="Crown Fire Canopy Fraction Burned"
+    en_US="Canopy Fraction Burned"
+    pt_PT="Canopy Fraction Burned"
   />
   <translate key="vCrownFireCanopyFractionBurned:Desc"
     en_US="The crown canopy fraction burned."
     pt_PT="The crown canopy fraction burned."
   />
   <translate key="vCrownFireCanopyFractionBurned:Hdr0"
-    en_US="Crown Fire"
-    pt_PT="Crown Fire"
+    en_US="Canopy"
+    pt_PT="Canopy"
   />
   <translate key="vCrownFireCanopyFractionBurned:Hdr1"
-    en_US="Canopy Burned"
-    pt_PT="Canopy Burned"
+    en_US="Fraction Burned"
+    pt_PT="Fraction Burned"
   />
 
   <variable name="vCrownFireCanopyHt"
@@ -8386,7 +8386,7 @@
     wizard=""
   />
   <translate key="vCrownFireCritCrownSpreadRate:Label"
-    en_US="Crown Fire ROS for Active Crowning"
+    en_US="Critical Crown Fire Rate of Spread"
     pt_PT="Velocidade Crítica Para Fogos de Copas"
   />
   <translate key="vCrownFireCritCrownSpreadRate:Desc"
@@ -8394,11 +8394,11 @@
     pt_PT="Velocidade de propagação crítica para fogos de copas."
   />
   <translate key="vCrownFireCritCrownSpreadRate:Hdr0"
-    en_US="Crown Fire"
+    en_US="Critical"
     pt_PT="Crítica"
   />
   <translate key="vCrownFireCritCrownSpreadRate:Hdr1"
-    en_US="Crit Active Crown ROS"
+    en_US="Crown ROS"
     pt_PT="Velocidade de propagação de fogos de copas"
   />
 
@@ -8418,7 +8418,7 @@
     wizard=""
   />
   <translate key="vCrownFireCritSurfFireInt:Label"
-    en_US="Crown Fire Critical Surface Fireline Intensity"
+    en_US="Critical Surface Fireline Intensity"
     pt_PT="Intensidade de Superfície Crítica"
   />
   <translate key="vCrownFireCritSurfFireInt:Desc"
@@ -8426,11 +8426,11 @@
     pt_PT="Intensidade de superfície crítica (Byram&apos;s) intensidade para modelação do comportamento de fogos de copas."
   />-
   <translate key="vCrownFireCritSurfFireInt:Hdr0"
-    en_US="Crown Fire"
+    en_US="Critical"
     pt_PT="Crítica"
   />
   <translate key="vCrownFireCritSurfFireInt:Hdr1"
-    en_US="Critical Surf Intensity"
+    en_US="Surface FLI"
     pt_PT="Int. superfície"
   />
 
@@ -8450,7 +8450,7 @@
     wizard=""
   />
   <translate key="vCrownFireCritSurfFlameLeng:Label"
-    en_US="Crown Fire Critical Surface Flame Length"
+    en_US="Critical Surface Fire Flame Length"
     pt_PT="Comprimento de Chamas Crítico"
   />
   <translate key="vCrownFireCritSurfFlameLeng:Desc"
@@ -8458,11 +8458,11 @@
     pt_PT="Comprimento de chamas crítico para modelação do comportamento de fogos de copas."
   />
   <translate key="vCrownFireCritSurfFlameLeng:Hdr0"
-    en_US="Crown Fire"
+    en_US="Critical"
     pt_PT="Crítica"
   />
   <translate key="vCrownFireCritSurfFlameLeng:Hdr1"
-    en_US="Critical Surf Flame Leng"
+    en_US="Surface FL"
     pt_PT="Comp chama"
   />
 
@@ -8482,19 +8482,19 @@
     wizard=""
   />
   <translate key="vCrownFireCritSurfSpreadRate:Label"
-    en_US="Crown Fire Critical Surface Spread Rate"
-    pt_PT="Crown Fire Critical Surface Spread Rate"
+    en_US="Critical Surface Fire ROS, Crown Fire Initiation"
+    pt_PT="Critical Surface Fire ROS, Crown Fire Initiation"
   />
   <translate key="vCrownFireCritSurfSpreadRate:Desc"
     en_US="Critical surface fire spread rate to achieve crowning. (R'initiation)"
     pt_PT="Critical surface fire spread rate to achieve crowning."
   />
   <translate key="vCrownFireCritSurfSpreadRate:Hdr0"
-    en_US="Crown Fire"
+    en_US="Critical"
     pt_PT="Crítical"
   />
   <translate key="vCrownFireCritSurfSpreadRate:Hdr1"
-    en_US="Critical Surface ROS"
+    en_US="Surface ROS"
     pt_PT="Surface RoS"
   />
 
@@ -8521,8 +8521,8 @@
     pt_PT="??? Comprimento da chama na cabeça do incêndio."
   />
   <translate key="vCrownFireFlameLeng:Hdr0"
-    en_US="Crown Fire"
-    pt_PT="Crown Fire"
+    en_US="Crown"
+    pt_PT="Crown"
   />
   <translate key="vCrownFireFlameLeng:Hdr1"
     en_US="Flame Length"
@@ -8552,8 +8552,8 @@
     pt_PT="??? Crown fire fuel load"
   />
   <translate key="vCrownFireFuelLoad:Hdr0"
-    en_US="Crown Canopy"
-    pt_PT="Crown Canopy"
+    en_US="Crown"
+    pt_PT="Crown"
   />
   <translate key="vCrownFireFuelLoad:Hdr1"
     en_US="Fuel Load"
@@ -8583,11 +8583,11 @@
     pt_PT="??? Crown Energia potencial libertada por unidade de área no incêndio."
   />
   <translate key="vCrownFireHeatPerUnitArea:Hdr0"
-    en_US="Crown Fire"
-    pt_PT="??? Crown Energia"
+    en_US="Crown"
+    pt_PT="??? Crown"
   />
   <translate key="vCrownFireHeatPerUnitArea:Hdr1"
-    en_US="Heat per Unit Area"
+    en_US="HPUA"
     pt_PT="??? Unidade de área"
   />
 
@@ -8606,7 +8606,7 @@
     default="0"
   />
   <translate key="vCrownFireHeatPerUnitAreaCanopy:Label"
-    en_US="Crown Canopy Heat per Unit Area"
+    en_US="Canopy Heat per Unit Area"
     pt_PT="??? Canopy Energia libertada por unidade de área"
   />
   <translate key="vCrownFireHeatPerUnitAreaCanopy:Desc"
@@ -8614,7 +8614,7 @@
     pt_PT="??? Crown Energia potencial libertada por unidade de área no incêndio."
   />
   <translate key="vCrownFireHeatPerUnitAreaCanopy:Hdr0"
-    en_US="Crown Canopy"
+    en_US="Canopy"
     pt_PT="??? Canopy Energia"
   />
   <translate key="vCrownFireHeatPerUnitAreaCanopy:Hdr1"
@@ -8669,7 +8669,7 @@
     wizard=""
   />
   <translate key="vCrownFireLineInt:Label"
-    en_US="Crown Fire Fireline Intensity"
+    en_US="Crown Fireline Intensity"
     pt_PT="??? Final Fireline Intensity"
   />
   <translate key="vCrownFireLineInt:Desc"
@@ -8677,12 +8677,12 @@
     pt_PT="Crown Intensidade (Byram&apos;s) da frente de chamas na cabeça do incêndio."
   />
   <translate key="vCrownFireLineInt:Hdr0"
-    en_US="Crown Fire"
-    pt_PT="??? Crown Fire"
+    en_US="Crown"
+    pt_PT="??? Crown"
   />
   <translate key="vCrownFireLineInt:Hdr1"
-    en_US="Fireline Intensity"
-    pt_PT="??? Fireline Intensity"
+    en_US="FLI"
+    pt_PT="??? FLI"
   />
 
   <variable name="vCrownFirePassiveFireArea"
@@ -8744,8 +8744,8 @@
     pt_PT="Passive Crown"
   />
   <translate key="vCrownFirePassiveFireLineInt:Hdr1"
-    en_US="Fireline Intensity"
-    pt_PT="Fireline Intensity"
+    en_US="FLI"
+    pt_PT="FLI"
   />
 
   <variable name="vCrownFirePassiveFirePerimeter"
@@ -8775,8 +8775,8 @@
     pt_PT="???Crown Incêndio"
   />
   <translate key="vCrownFirePassiveFirePerimeter:Hdr1"
-    en_US="Fire Perimeter"
-    pt_PT="Fire Perímetro"
+    en_US="Fire Perim"
+    pt_PT="Fire Perím"
   />
 
   <variable name="vCrownFirePassiveFireWidth"
@@ -8794,8 +8794,8 @@
     default="0"
   />
   <translate key="vCrownFirePassiveFireWidth:Label"
-    en_US="Passive Crown Spread Width"
-    pt_PT="Passive Crown Spread Width"
+    en_US="Passive Crown Fire Spread Width"
+    pt_PT="Passive Crown Fire Spread Width"
   />
   <translate key="vCrownFirePassiveFireWidth:Desc"
     en_US="Width of an elliptical crown fire under uniform conditions."
@@ -8825,7 +8825,7 @@
     default="0.0"
   />
   <translate key="vCrownFirePassiveFlameLeng:Label"
-    en_US="Passive Crown Flame Length"
+    en_US="Passive Crown Fire Flame Length"
     pt_PT="Passive Crown Comprimento da chama"
   />
   <translate key="vCrownFirePassiveFlameLeng:Desc"
@@ -8837,8 +8837,8 @@
     pt_PT="Passive Crown"
   />
   <translate key="vCrownFirePassiveFlameLeng:Hdr1"
-    en_US="Flame Length"
-    pt_PT="Flame Length"
+    en_US="FL"
+    pt_PT="FL"
   />
 
   <variable name="vCrownFirePassiveHeatPerUnitArea"
@@ -8868,7 +8868,7 @@
     pt_PT="Passive Crown"
   />
   <translate key="vCrownFirePassiveHeatPerUnitArea:Hdr1"
-    en_US="Heat per Unit Area"
+    en_US="HPUA"
     pt_PT="??? Unidade de área"
   />
 
@@ -8887,8 +8887,8 @@
     default="0"
   />
   <translate key="vCrownFirePassiveSpreadDist:Label"
-    en_US="Passive Crown Spread Distance"
-    pt_PT="Passive Crown Spread Distance"
+    en_US="Passive Crown Fire Spread Distance"
+    pt_PT="Passive Crown Fire Spread Distance"
   />
   <translate key="vCrownFirePassiveSpreadDist:Desc"
     en_US="Forward length of an elliptical crown fire under uniform conditions."
@@ -8931,7 +8931,7 @@
     pt_PT="Copas"
   />
   <translate key="vCrownFirePassiveSpreadRate:Hdr1"
-    en_US="Rate of Spread"
+    en_US="ROS"
     pt_PT="Vel. fogo"
   />
 
@@ -8962,7 +8962,7 @@
     pt_PT="???Crown Incêndio"
   />
   <translate key="vCrownFirePerimeter:Hdr1"
-    en_US="Fire Perimeter"
+    en_US="Perimeter"
     pt_PT="Perímetro"
   />
 
@@ -8981,7 +8981,7 @@
     default="0"
   />
   <translate key="vCrownFirePowerOfFire:Label"
-    en_US="Crown Fire Power of the Fire"
+    en_US="Power of the Fire"
     pt_PT="??? Power of the Fire"
   />
   <translate key="vCrownFirePowerOfFire:Desc"
@@ -8989,11 +8989,11 @@
     pt_PT="??? Crown fire power of the fire"
   />
   <translate key="vCrownFirePowerOfFire:Hdr0"
-    en_US="Crown Fire"
+    en_US="Power of"
     pt_PT="??? Power of"
   />
   <translate key="vCrownFirePowerOfFire:Hdr1"
-    en_US="Power of the Fire"
+    en_US="the Fire"
     pt_PT="??? the Fire"
   />
 
@@ -9012,7 +9012,7 @@
     default="0"
   />
   <translate key="vCrownFirePowerOfWind:Label"
-    en_US="Crown Fire Power of the Wind"
+    en_US="Power of the Wind"
     pt_PT="??? Power of the Wind"
   />
   <translate key="vCrownFirePowerOfWind:Desc"
@@ -9020,11 +9020,11 @@
     pt_PT="??? Crown fire power of the wind"
   />
   <translate key="vCrownFirePowerOfWind:Hdr0"
-    en_US="Crown Fire"
+    en_US="Power of"
     pt_PT="??? Power of"
   />
   <translate key="vCrownFirePowerOfWind:Hdr1"
-    en_US="Power of the Wind"
+    en_US="the Wind"
     pt_PT="??? the Wind"
   />
 
@@ -9043,7 +9043,7 @@
     default="0"
   />
   <translate key="vCrownFirePowerRatio:Label"
-    en_US="Crown Fire Power Ratio"
+    en_US="Power Ratio"
     pt_PT="??? Power Ratio"
   />
   <translate key="vCrownFirePowerRatio:Desc"
@@ -9051,11 +9051,11 @@
     pt_PT="??? Crown fire ratio of power-of-the-fire to power-of-the-wind"
   />
   <translate key="vCrownFirePowerRatio:Hdr0"
-    en_US="Crown Fire"
+    en_US="Power"
     pt_PT="??? Power"
   />
   <translate key="vCrownFirePowerRatio:Hdr1"
-    en_US="Fire/Wind Power Ratio"
+    en_US="Ratio"
     pt_PT="??? Ratio"
   />
 
@@ -9170,7 +9170,7 @@
     default="1.00"
   />
   <translate key="vCrownFireTransRatio:Label"
-    en_US="Crown Fire Surface-to-Crown Transition Ratio"
+    en_US="Transition Ratio"
     pt_PT="Rácio de Transição"
   />
   <translate key="vCrownFireTransRatio:Desc"
@@ -9178,11 +9178,11 @@
     pt_PT="Rácio para transição de fogo de copas."
   />
   <translate key="vCrownFireTransRatio:Hdr0"
-    en_US="Crown Fire"
+    en_US="Transition"
     pt_PT="Transição"
   />
   <translate key="vCrownFireTransRatio:Hdr1"
-    en_US="Transition Ratio"
+    en_US="Ratio"
     pt_PT="Rácio"
   />
 
@@ -9204,11 +9204,11 @@
     pt_PT="Transição para propagação de copas."
   />
   <translate key="vCrownFireTransToCrown:Hdr0"
-    en_US="Crown Fire"
+    en_US="Transition to"
     pt_PT="Transição"
   />
   <translate key="vCrownFireTransToCrown:Hdr1"
-    en_US="Transitions to Crown?"
+    en_US="Crown Fire?"
     pt_PT="para copas?"
   />
 
@@ -9222,7 +9222,7 @@
     sortOut="02:090:1"
   />
   <translate key="vCrownFireType:Label"
-    en_US="Fire Type"
+    en_US="Crown Fire Type"
     pt_PT="Tipo de Fogo"
   />
   <translate key="vCrownFireType:Desc"
@@ -9230,7 +9230,7 @@
     pt_PT="Tipo de fogo"
   />
   <translate key="vCrownFireType:Hdr0"
-    en_US="Crown Fire"
+    en_US="Crown"
     pt_PT="Fogo"
   />
   <translate key="vCrownFireType:Hdr1"
@@ -9248,7 +9248,7 @@
     sortOut="02:540:1"
   />
   <translate key="vCrownFireWindDriven:Label"
-    en_US="Wind-driven Fire?"
+    en_US="Wind-Driven Crown Fire?"
     pt_PT="??? Wind-driven Fire?"
   />
   <translate key="vCrownFireWindDriven:Desc"
@@ -9256,11 +9256,11 @@
     pt_PT="??? Fogo de wind-driven (sim ou não)."
   />
   <translate key="vCrownFireWindDriven:Hdr0"
-    en_US="Crown Fire"
+    en_US="Wind-Driven"
     pt_PT="??? Wind"
   />
   <translate key="vCrownFireWindDriven:Hdr1"
-    en_US="Wind Driven?"
+    en_US="Crown Fire?"
     pt_PT="??? Driven?"
   />
 
@@ -9439,7 +9439,7 @@
     default="0.10"
   />
   <translate key="vIgnitionFirebrandFuelMois:Label"
-    en_US="1-h Moisture"
+    en_US="1-h Fuel Moisture"
     pt_PT="Humidade de 1-h TR"
   />
   <translate key="vIgnitionFirebrandFuelMois:Desc"
@@ -9447,8 +9447,8 @@
     pt_PT="Humidade dos combustíveis finos mortos (1-h) para cálculo de probabilidade de ignição por partícula em combustão."
   />
   <translate key="vIgnitionFirebrandFuelMois:Hdr0"
-    en_US="1-h"
-    pt_PT="1-h"
+    en_US="1-h Fuel"
+    pt_PT="1-h Fuel"
   />
   <translate key="vIgnitionFirebrandFuelMois:Hdr1"
     en_US="Moisture"
@@ -9538,7 +9538,7 @@ por partícula em combustão"
     default="0.10"
   />
   <translate key="vIgnitionLightningFuelMois:Label"
-    en_US="100-h Moisture"
+    en_US="100-h Fuel Moisture"
     pt_PT="Humidade de 100-h TR"
   />
   <translate key="vIgnitionLightningFuelMois:Desc"
@@ -9546,8 +9546,8 @@ por partícula em combustão"
     pt_PT="Humidade dos combustíveis grossos mortos (100-h) para cálculo de probabilidade de ignição por raio."
   />
   <translate key="vIgnitionLightningFuelMois:Hdr0"
-    en_US="100-h"
-    pt_PT="100-h"
+    en_US="100-h Fuel"
+    pt_PT="100-h Fuel"
   />
   <translate key="vIgnitionLightningFuelMois:Hdr1"
     en_US="Moisture"
@@ -9680,6 +9680,37 @@ por relâmpago"
     pt_PT="Número"
   />
 
+  <variable name="vSafetyZoneLength"
+    type="continuous"
+    releaseFrom="20000"
+    releaseThru="99999"
+    help="vSafetyZoneLength.html"
+    sortIn="08:999:9"
+    sortOut="03:031:1"
+    nativeUnits="ft" nativeDecimals="0"
+    englishUnits="ft" englishDecimals="0"
+    metricUnits="m" metricDecimals="0"
+    minimum="0.0"
+    maximum="1000.0"
+    default="0.0"
+  />
+  <translate key="vSafetyZoneLength:Label"
+    en_US="Safety Zone Length (for Square)"
+    pt_PT="Safety Zone Length (for Square)"
+  />
+  <translate key="vSafetyZoneLength:Desc"
+    en_US="Required safety zone length for a swuare zone."
+    pt_PT="Raio requerido para a zona de segurança."
+  />
+  <translate key="vSafetyZoneLength:Hdr0"
+    en_US="Safety Zone"
+    pt_PT="Zona"
+  />
+  <translate key="vSafetyZoneLength:Hdr1"
+    en_US="Length"
+    pt_PT="Length"
+  />
+
   <variable name="vSafetyZonePersonnelArea"
     type="continuous"
     releaseFrom="20000"
@@ -9766,43 +9797,12 @@ por relâmpago"
     pt_PT="Raio requerido para a zona de segurança."
   />
   <translate key="vSafetyZoneRadius:Hdr0"
-    en_US="Zone"
+    en_US="Safety Zone"
     pt_PT="Zona"
   />
   <translate key="vSafetyZoneRadius:Hdr1"
     en_US="Radius"
     pt_PT="Raio"
-  />
-
-  <variable name="vSafetyZoneLength"
-    type="continuous"
-    releaseFrom="20000"
-    releaseThru="99999"
-    help="vSafetyZoneLength.html"
-    sortIn="08:999:9"
-    sortOut="03:031:1"
-    nativeUnits="ft" nativeDecimals="0"
-    englishUnits="ft" englishDecimals="0"
-    metricUnits="m" metricDecimals="0"
-    minimum="0.0"
-    maximum="1000.0"
-    default="0.0"
-  />
-  <translate key="vSafetyZoneLength:Label"
-    en_US="Safety Zone Length (for Square)"
-    pt_PT="Safety Zone Length (for Square)"
-  />
-  <translate key="vSafetyZoneLength:Desc"
-    en_US="Required safety zone length for a swuare zone."
-    pt_PT="Raio requerido para a zona de segurança."
-  />
-  <translate key="vSafetyZoneLength:Hdr0"
-    en_US="Zone"
-    pt_PT="Zona"
-  />
-  <translate key="vSafetyZoneLength:Hdr1"
-    en_US="Length"
-    pt_PT="Length"
   />
 
   <variable name="vSafetyZoneSepDist"
@@ -9859,11 +9859,11 @@ por relâmpago"
     pt_PT="Dimensão requerida para a zona de segurança."
   />
   <translate key="vSafetyZoneSize:Hdr0"
-    en_US="Circle"
+    en_US="Safety Zone"
     pt_PT="Zona"
   />
   <translate key="vSafetyZoneSize:Hdr1"
-    en_US="Zone Size"
+    en_US="Size (Circle)"
     pt_PT="Dimensão"
   />
 
@@ -9890,11 +9890,11 @@ por relâmpago"
     pt_PT="Dimensão requerida para a zona de segurança."
   />
   <translate key="vSafetyZoneSizeSquare:Hdr0"
-    en_US="Square"
+    en_US="Safety Zone"
     pt_PT="Zona"
   />
   <translate key="vSafetyZoneSizeSquare:Hdr1"
-    en_US="Zone Size"
+    en_US="Size (Square)"
     pt_PT="Dimensão"
   />
 
@@ -9921,7 +9921,7 @@ por relâmpago"
     pt_PT="Dimensão de um incêndio com forma elíptica sob condições ambientais uniformes."
   />
   <translate key="vSurfaceFireArea:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Incêndio"
   />
   <translate key="vSurfaceFireArea:Hdr1"
@@ -9979,11 +9979,11 @@ por relâmpago"
     pt_PT="Distância percorrida pela frente contra o vento e/ou declive"
   />
   <translate key="vSurfaceFireDistAtBack:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Propagação do fogo contra o vento e/ou declive"
   />
   <translate key="vSurfaceFireDistAtBack:Hdr1"
-    en_US="Backing Spread Distance"
+    en_US="Backing Spread Dist"
     pt_PT="Distância"
   />
 
@@ -10014,7 +10014,7 @@ por relâmpago"
       pt_PT=""
   />
   <translate key="vSurfaceFireDistAtBeta:Hdr1"
-      en_US="Distance from Ignit Pt"
+      en_US="Dist from Ignition Pt"
       pt_PT=""
   />
 
@@ -10041,11 +10041,11 @@ por relâmpago"
     pt_PT="Distância percorrida na direcção de máxima propagação."
   />
   <translate key="vSurfaceFireDistAtFlank:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface Flanking"
     pt_PT="Flanking"
   />
   <translate key="vSurfaceFireDistAtFlank:Hdr1"
-    en_US="Flanking Spread Distance"
+    en_US="Spread Distance"
     pt_PT="Distância"
   />
 
@@ -10073,11 +10073,11 @@ por relâmpago"
     pt_PT="Distância percorrida na direcção de máxima propagação."
   />
   <translate key="vSurfaceFireDistAtHead:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface Heading"
     pt_PT="Em frente"
   />
   <translate key="vSurfaceFireDistAtHead:Hdr1"
-    en_US="Heading Spread Distance"
+    en_US="Spread Distance"
     pt_PT="Distância"
   />
 
@@ -10104,7 +10104,7 @@ por relâmpago"
     pt_PT=""
   />
   <translate key="vSurfaceFireDistAtPsi:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface Spread"
     pt_PT=""
   />
   <translate key="vSurfaceFireDistAtPsi:Hdr1"
@@ -10135,7 +10135,7 @@ por relâmpago"
       pt_PT=""
   />
   <translate key="vSurfaceFireDistAtVector:Hdr0"
-      en_US="Surface Fire"
+      en_US="Surface"
       pt_PT=""
   />
   <translate key="vSurfaceFireDistAtVector:Hdr1"
@@ -10445,11 +10445,11 @@ por relâmpago"
     pt_PT="Altura da chama contínua em resíduos empilhados."
   />
   <translate key="vSurfaceFireFlameHtPile:Hdr0"
-    en_US="Flame"
+    en_US="Burning Pile"
     pt_PT="Chama"
   />
   <translate key="vSurfaceFireFlameHtPile:Hdr1"
-    en_US="Height"
+    en_US="Flame Height"
     pt_PT="Altura"
   />
 
@@ -10476,11 +10476,11 @@ por relâmpago"
     pt_PT="Comprimento da chama em local especifico da frente."
   />
   <translate key="vSurfaceFireFlameLengAtBeta:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface FL"
     pt_PT="Chama"
   />
   <translate key="vSurfaceFireFlameLengAtBeta:Hdr1"
-    en_US="Flame from Ignit Pt"
+    en_US="from Ignit Pt"
     pt_PT="Comprimento"
   />
 
@@ -10507,7 +10507,7 @@ por relâmpago"
     pt_PT="Comprimento da chama na cabeça do incêndio."
   />
   <translate key="vSurfaceFireFlameLengAtHead:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Chama"
   />
   <translate key="vSurfaceFireFlameLengAtHead:Hdr1"
@@ -10569,7 +10569,7 @@ por relâmpago"
     pt_PT="Comprimento da chama em local especifico da frente."
   />
   <translate key="vSurfaceFireFlameLengAtVector:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Chama"
   />
   <translate key="vSurfaceFireFlameLengAtVector:Hdr1"
@@ -10601,7 +10601,7 @@ por relâmpago"
     pt_PT="Energia potencial libertada por unidade de área no incêndio."
   />
   <translate key="vSurfaceFireHeatPerUnitArea:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Energia"
   />
   <translate key="vSurfaceFireHeatPerUnitArea:Hdr1"
@@ -10624,7 +10624,7 @@ por relâmpago"
     default="0"
   />
   <translate key="vSurfaceFireHeatSource:Label"
-    en_US="Surface Fire Heat Source"
+    en_US="Heat Source"
     pt_PT="??? Heat Source"
   />
   <translate key="vSurfaceFireHeatSource:Desc"
@@ -10632,11 +10632,11 @@ por relâmpago"
     pt_PT="???"
   />
   <translate key="vSurfaceFireHeatSource:Hdr0"
-    en_US="Surface Fire"
+    en_US="Heat"
     pt_PT="??? Heat"
   />
   <translate key="vSurfaceFireHeatSource:Hdr1"
-    en_US="Heat Source"
+    en_US="Source"
     pt_PT="??? Source"
   />
 
@@ -10725,7 +10725,7 @@ por relâmpago"
     pt_PT="Razão comprimento-largura de um incêndio com forma elíptica a propagar-se em condições uniformes."
   />
   <translate key="vSurfaceFireLengthToWidth:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Comp/largura"
   />
   <translate key="vSurfaceFireLengthToWidth:Hdr1"
@@ -10789,7 +10789,7 @@ por relâmpago"
     pt_PT="Intensidade (Byram&apos;s) da frente de chamas na cabeça do incêndio."
   />
   <translate key="vSurfaceFireLineIntAtHead:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Frente de chamas"
   />
   <translate key="vSurfaceFireLineIntAtHead:Hdr1"
@@ -10853,7 +10853,7 @@ por relâmpago"
     pt_PT="Intensidade (Byram&apos;s) da frente de chamas em direcção especificada."
   />
   <translate key="vSurfaceFireLineIntAtVector:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Frente de chamas"
   />
   <translate key="vSurfaceFireLineIntAtVector:Hdr1"
@@ -10884,7 +10884,7 @@ por relâmpago"
     pt_PT="Distância em unidades do mapa da propagação na retaguarda do incêndio"
   />
   <translate key="vSurfaceFireMapDistAtBack:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Propagação do fogo contra o vento e/ou declive"
   />
   <translate key="vSurfaceFireMapDistAtBack:Hdr1"
@@ -10977,7 +10977,7 @@ por relâmpago"
     pt_PT="Distância percorrida em unidades do mapa na direcção de máxima propagação."
   />
   <translate key="vSurfaceFireMapDistAtHead:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Frontal"
   />
   <translate key="vSurfaceFireMapDistAtHead:Hdr1"
@@ -11039,7 +11039,7 @@ por relâmpago"
     pt_PT="Distância percorrida em unidades do mapa na direcção especificada."
   />
   <translate key="vSurfaceFireMapDistAtVector:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT=""
   />
   <translate key="vSurfaceFireMapDistAtVector:Hdr1"
@@ -11103,11 +11103,11 @@ por relâmpago"
     pt_PT="Direcção de máxima propagação medida em graus a partir do norte e no sentido da deslocação dos ponteiros do relógio."
   />
   <translate key="vSurfaceFireMaxDirFromNorth:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface Dir"
     pt_PT="Direcção"
   />
   <translate key="vSurfaceFireMaxDirFromNorth:Hdr1"
-    en_US="Dir of Maximum ROS"
+    en_US="Max ROS (from N)"
     pt_PT="de Max propag."
   />
 
@@ -11140,11 +11140,11 @@ por relâmpago"
     pt_PT="Direcção de máxima propagação, medida em graus a partir da direcção de máximo declive e no sentido da deslocação dos ponteiros do relógio."
   />
   <translate key="vSurfaceFireMaxDirFromUpslope:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface Dir"
     pt_PT="Direcção"
   />
   <translate key="vSurfaceFireMaxDirFromUpslope:Hdr1"
-    en_US="Dir of Maximum ROS"
+    en_US="Max ROS (from up)"
     pt_PT="de Max propag."
   />
 
@@ -11171,11 +11171,11 @@ por relâmpago"
     pt_PT="Velocidade de propagação com vento e declive nulos."
   />
   <translate key="vSurfaceFireNoWindRate:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface ROS"
     pt_PT="Vento nulo"
   />
   <translate key="vSurfaceFireNoWindRate:Hdr1"
-    en_US="ROS No Wind-Slope"
+    en_US="No Wind-Slope"
     pt_PT="propagação"
   />
 
@@ -11202,7 +11202,7 @@ por relâmpago"
     pt_PT="Perímetro total de um incêndio de forma elíptica a propagar-se sobre condições hómogeneas."
   />
   <translate key="vSurfaceFirePerimeter:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Incêndio"
   />
   <translate key="vSurfaceFirePerimeter:Hdr1"
@@ -11233,7 +11233,7 @@ por relâmpago"
     pt_PT="Rácio do fluxo de propagação do fogo ratio"
   />
   <translate key="vSurfaceFirePropagatingFlux:Hdr0"
-    en_US="Surface Fire"
+    en_US="Surface"
     pt_PT="Propagação"
   />
   <translate key="vSurfaceFirePropagatingFlux:Hdr1"
@@ -11256,7 +11256,7 @@ por relâmpago"
     default="0"
   />
   <translate key="vSurfaceFireReactionInt:Label"
-    en_US="Surface Fire Reaction Intensity"
+    en_US="Surface Reaction Intensity"
     pt_PT="Intensidade de Reacção"
   />
   <translate key="vSurfaceFireReactionInt:Desc"
@@ -11264,11 +11264,11 @@ por relâmpago"
     pt_PT="Intensidade de reacção do fogo (energia libertada por unidade de área e tempo)."
   />
   <translate key="vSurfaceFireReactionInt:Hdr0"
-    en_US="Surface Fire"
+    en_US="Reaction"
     pt_PT="Reacção"
   />
   <translate key="vSurfaceFireReactionInt:Hdr1"
-    en_US="Reaction Intensity"
+    en_US="Intensity"
     pt_PT="Intensidade"
   />
 
@@ -11287,7 +11287,7 @@ por relâmpago"
     default="0"
   />
   <translate key="vSurfaceFireReactionIntDead:Label"
-    en_US="Surface Fire Dead Fuel Reaction Intensity"
+    en_US="Dead Fuel Reaction Intensity"
     pt_PT="???? Dead Fuel Intensidade de Reacção"
   />
   <translate key="vSurfaceFireReactionIntDead:Desc"
@@ -11295,11 +11295,11 @@ por relâmpago"
     pt_PT="??? Dead Fuel intensidade de reacção do fogo (energia libertada por unidade de área e tempo)."
   />
   <translate key="vSurfaceFireReactionIntDead:Hdr0"
-    en_US="Surface Fire"
+    en_US="Dead Fuel"
     pt_PT="??? Dead Reac"
   />
   <translate key="vSurfaceFireReactionIntDead:Hdr1"
-    en_US="Dead Fuel Reaction Int"
+    en_US="Reaction Intensity"
     pt_PT="Intensidade"
   />
 
@@ -11318,7 +11318,7 @@ por relâmpago"
     default="0"
   />
   <translate key="vSurfaceFireReactionIntLive:Label"
-    en_US="Surface Fire Live Fuel Reaction Intensity"
+    en_US="Live Fuel Reaction Intensity"
     pt_PT="???? Live Fuel Intensidade de Reacção"
   />
   <translate key="vSurfaceFireReactionIntLive:Desc"
@@ -11326,11 +11326,11 @@ por relâmpago"
     pt_PT="??? Live Fuel intensidade de reacção do fogo (energia libertada por unidade de área e tempo)."
   />
   <translate key="vSurfaceFireReactionIntLive:Hdr0"
-    en_US="Surface Fire"
+    en_US="Live Fuel"
     pt_PT="??? Live Reac"
   />
   <translate key="vSurfaceFireReactionIntLive:Hdr1"
-    en_US="Live Fuel Reaction Int"
+    en_US="Reaction Intensity"
     pt_PT="Intensidade"
   />
 
@@ -11349,7 +11349,7 @@ por relâmpago"
     default="0.00"
   />
   <translate key="vSurfaceFireResidenceTime:Label"
-    en_US="Surface Fire Flame Residence Time"
+    en_US="Flame Residence Time"
     pt_PT="Tempo de Residência"
   />
   <translate key="vSurfaceFireResidenceTime:Desc"
@@ -11357,11 +11357,11 @@ por relâmpago"
     pt_PT="Tempo requerido para a frente de chamas passar por um ponto no chão."
   />
   <translate key="vSurfaceFireResidenceTime:Hdr0"
-    en_US="Surface Fire"
+    en_US="Flame"
     pt_PT="Residência"
   />
   <translate key="vSurfaceFireResidenceTime:Hdr1"
-    en_US="Flame Residence Time"
+    en_US="Residence Time"
     pt_PT="Tempo"
   />
 
@@ -11406,7 +11406,7 @@ por relâmpago"
     default="0"
   />
   <translate key="vSurfaceFireScorchHtAtVector:Label"
-    en_US="Surface Fire Scorch Height"
+    en_US="Scorch Height"
     pt_PT="Altura de dessecação"
   />
   <translate key="vSurfaceFireScorchHtAtVector:Desc"
@@ -11414,11 +11414,11 @@ por relâmpago"
     pt_PT="Altura de dessecação da folhagem arbórea em direcção especificada."
   />
   <translate key="vSurfaceFireScorchHtAtVector:Hdr0"
-    en_US="Surface Fire"
+    en_US="Scorch"
     pt_PT="Dessecação"
   />
   <translate key="vSurfaceFireScorchHtAtVector:Hdr1"
-    en_US="Scorch Height"
+    en_US="Height"
     pt_PT="Altura de"
   />
 
@@ -11464,7 +11464,7 @@ por relâmpago"
     default="0.0"
   />
   <translate key="vSurfaceFireSlopeFactor:Label"
-    en_US="Surface Fire Slope Factor"
+    en_US="Slope Factor"
     pt_PT="??? Slope Factor"
   />
   <translate key="vSurfaceFireSlopeFactor:Desc"
@@ -11472,11 +11472,11 @@ por relâmpago"
     pt_PT="??? Maximum spread rate factor attributable to the slope"
   />
   <translate key="vSurfaceFireSlopeFactor:Hdr0"
-    en_US="Surface Fire"
+    en_US="Slope"
     pt_PT="??? Slope"
   />
   <translate key="vSurfaceFireSlopeFactor:Hdr1"
-    en_US="Slope Factor"
+    en_US="Factor"
     pt_PT="??? Factor"
   />
 
@@ -11495,7 +11495,7 @@ por relâmpago"
     default="0.0"
   />
   <translate key="vSurfaceFireSpreadAtBack:Label"
-    en_US="Surface Fire Backing Spread Rate"
+    en_US="Surface Fire Backing Rate of Spread"
     pt_PT="Velocidade de propagação do fogo contra o vento e/ou declive"
   />
   <translate key="vSurfaceFireSpreadAtBack:Desc"
@@ -11507,7 +11507,7 @@ por relâmpago"
     pt_PT="Propagação do fogo contra o vento e/ou declive"
   />
   <translate key="vSurfaceFireSpreadAtBack:Hdr1"
-    en_US="ROS at Back"
+    en_US="Backing ROS"
     pt_PT="Propagação"
   />
 
@@ -11569,7 +11569,7 @@ por relâmpago"
     pt_PT="Velocidade de propagação"
   />
   <translate key="vSurfaceFireSpreadAtFlank:Hdr1"
-    en_US="ROS at Flank"
+    en_US="Flanking ROS"
     pt_PT="at Flank"
   />
 
@@ -11604,7 +11604,7 @@ por relâmpago"
     pt_PT="Velocidade de propagação"
   />
   <translate key="vSurfaceFireSpreadAtHead:Hdr1"
-    en_US="ROS at Head"
+    en_US="Heading ROS"
     pt_PT="(máxima)"
   />
 
@@ -11687,7 +11687,7 @@ por relâmpago"
     wizard="compassUpslopeWizard"
   />
   <translate key="vSurfaceFireVectorBeta:Label"
-    en_US="Surface Fire Spread Dir from Ignition Pt"
+    en_US="Surface Fire Spread Direction (from Ignition Pt)"
     pt_PT="??? Spread Dir from Ignition Pt (from head)"
   />
   <translate key="vSurfaceFireVectorBeta:Desc"
@@ -11758,7 +11758,7 @@ por relâmpago"
     pt_PT=""
   />
   <translate key="vSurfaceFireVectorDirFromNorth:Hdr1"
-    en_US="wrt North"
+    en_US="from North"
     pt_PT=""
   />
 
@@ -11791,7 +11791,7 @@ por relâmpago"
     pt_PT=""
   />
   <translate key="vSurfaceFireVectorDirFromUpslope:Hdr1"
-    en_US="wrt Upslope"
+    en_US="from Upslope"
     pt_PT=""
   />
 
@@ -12045,11 +12045,11 @@ por relâmpago"
     pt_PT="??? Maximum spread rate factor attributable to the wind"
   />
   <translate key="vSurfaceFireWindFactor:Hdr0"
-    en_US="Surface Fire"
+    en_US="Wind"
     pt_PT="??? Wind"
   />
   <translate key="vSurfaceFireWindFactor:Hdr1"
-    en_US="Wind Factor"
+    en_US="Factor"
     pt_PT="??? Factor"
   />
 
@@ -12071,11 +12071,11 @@ por relâmpago"
     pt_PT="Marca indicadora de que a velocidade máxima do vento recomendada foi excedida."
   />
   <translate key="vSurfaceFireWindSpeedFlag:Hdr0"
-    en_US="Surface Fire"
+    en_US="Max Eff Wind"
     pt_PT="Velocidade do vento máxima"
   />
   <translate key="vSurfaceFireWindSpeedFlag:Hdr1"
-    en_US="Max Eff Wind Exceeded"
+    en_US="Exceeded?"
     pt_PT="Excedida"
   />
 
@@ -12102,11 +12102,11 @@ por relâmpago"
     pt_PT="Velocidade do vento a meia altura da chama máxima aconcelhável para um fogo desta intensidade."
   />
   <translate key="vSurfaceFireWindSpeedLimit:Hdr0"
-    en_US="Surface Fire"
+    en_US="Eff Wind"
     pt_PT="Velocidade do vento máxima"
   />
   <translate key="vSurfaceFireWindSpeedLimit:Hdr1"
-    en_US="Eff Wind Speed Limit"
+    en_US="Speed Limit"
     pt_PT="Velocidade limite"
   />
 
@@ -12133,7 +12133,7 @@ por relâmpago"
     pt_PT="Aspen curing level"
   />
   <translate key="vSurfaceFuelAspenCuring:Hdr0"
-    en_US="Aspen Fuel"
+    en_US="Aspen"
     pt_PT="??? Curing"
   />
   <translate key="vSurfaceFuelAspenCuring:Hdr1"
@@ -12157,7 +12157,7 @@ por relâmpago"
     wizard="fuelLoadDead1Wizard"
   />
   <translate key="vSurfaceFuelAspenLoadDead1:Label"
-    en_US="Aspen Fuel Dead 1-h Load"
+    en_US="Aspen 1-h Fuel Load"
     pt_PT="??? 1-h Fuel Load"
   />
   <translate key="vSurfaceFuelAspenLoadDead1:Desc"
@@ -12165,11 +12165,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis com 1-h TR."
   />
   <translate key="vSurfaceFuelAspenLoadDead1:Hdr0"
-    en_US="Aspen Fuel"
+    en_US="Aspen"
     pt_PT="1-h"
   />
   <translate key="vSurfaceFuelAspenLoadDead1:Hdr1"
-    en_US="Dead 1-h Load"
+    en_US="1-h Load"
     pt_PT="Carga"
   />
 
@@ -12189,7 +12189,7 @@ por relâmpago"
     wizard="fuelLoadDead10Wizard"
   />
   <translate key="vSurfaceFuelAspenLoadDead10:Label"
-    en_US="Aspen Fuel Dead 10-h Load"
+    en_US="Aspen 10-h Fuel Load"
     pt_PT="??? 10-h Fuel Load"
   />
   <translate key="vSurfaceFuelAspenLoadDead10:Desc"
@@ -12197,11 +12197,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis com 10-h TR."
   />
   <translate key="vSurfaceFuelAspenLoadDead10:Hdr0"
-    en_US="Apsen Fuel"
+    en_US="Apsen"
     pt_PT="10-h"
   />
   <translate key="vSurfaceFuelAspenLoadDead10:Hdr1"
-    en_US="Dead 10-h Load"
+    en_US="10-h Load"
     pt_PT="Carga"
   />
 
@@ -12221,7 +12221,7 @@ por relâmpago"
     wizard="fuelLoadLiveWizard"
   />
   <translate key="vSurfaceFuelAspenLoadLiveHerb:Label"
-    en_US="Aspen Fuel Live Herbaceous Load"
+    en_US="Aspen Live Herbaceous Fuel Load"
     pt_PT="??? Live Herbaceous Fuel Load"
   />
   <translate key="vSurfaceFuelAspenLoadLiveHerb:Desc"
@@ -12229,11 +12229,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis herbáceos vivos."
   />
   <translate key="vSurfaceFuelAspenLoadLiveHerb:Hdr0"
-    en_US="Aspen Fuel"
+    en_US="Aspen Live"
     pt_PT="Herb"
   />
   <translate key="vSurfaceFuelAspenLoadLiveHerb:Hdr1"
-    en_US="Live Herb Load"
+    en_US="Herb Load"
     pt_PT="Carga"
   />
 
@@ -12253,7 +12253,7 @@ por relâmpago"
     wizard="fuelLoadLiveWizard"
   />
   <translate key="vSurfaceFuelAspenLoadLiveWoody:Label"
-    en_US="Aspen Fuel Live Woody Load"
+    en_US="Aspen Live Woody Fuel Load"
     pt_PT="??? Live Woody Fuel Load"
   />
   <translate key="vSurfaceFuelAspenLoadLiveWoody:Desc"
@@ -12261,11 +12261,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis arbustivos vivos."
   />
   <translate key="vSurfaceFuelAspenLoadLiveWoody:Hdr0"
-    en_US="Aspen Fuel"
+    en_US="Aspen Live"
     pt_PT="Woody"
   />
   <translate key="vSurfaceFuelAspenLoadLiveWoody:Hdr1"
-    en_US="Live Woody Load"
+    en_US="Woody Load"
     pt_PT="Carga"
   />
 
@@ -12285,7 +12285,7 @@ por relâmpago"
     wizard="fuelSavrDead1Wizard"
   />
   <translate key="vSurfaceFuelAspenSavrDead1:Label"
-    en_US="Aspen Fuel Dead 1-h SA/V"
+    en_US="Aspen 1-h SA/V"
     pt_PT="??? 1-h SA/V"
   />
   <translate key="vSurfaceFuelAspenSavrDead1:Desc"
@@ -12293,11 +12293,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis com 1-h TR."
   />
   <translate key="vSurfaceFuelAspenSavrDead1:Hdr0"
-    en_US="Aspen Fuel"
+    en_US="Aspen"
     pt_PT="1-h"
   />
   <translate key="vSurfaceFuelAspenSavrDead1:Hdr1"
-    en_US="Dead 1-h SA/V"
+    en_US="1-h SA/V"
     pt_PT="SA/V"
   />
 
@@ -12317,7 +12317,7 @@ por relâmpago"
     wizard="fuelSavrDead10Wizard"
   />
   <translate key="vSurfaceFuelAspenSavrDead10:Label"
-    en_US="Aspen Fuel Dead 10-h SA/V"
+    en_US="Aspen 10-h SA/V"
     pt_PT="??? 10-h SA/V"
   />
   <translate key="vSurfaceFuelAspenSavrDead10:Desc"
@@ -12325,11 +12325,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis com 10-h TR."
   />
   <translate key="vSurfaceFuelAspenSavrDead10:Hdr0"
-    en_US="Aspen Fuel"
+    en_US="Aspen"
     pt_PT="10-h"
   />
   <translate key="vSurfaceFuelAspenSavrDead10:Hdr1"
-    en_US="Dead 10-h SA/V"
+    en_US="10-h SA/V"
     pt_PT="SA/V"
   />
 
@@ -12349,7 +12349,7 @@ por relâmpago"
     wizard="fuelSavrLiveWizard"
   />
   <translate key="vSurfaceFuelAspenSavrLiveHerb:Label"
-    en_US="Aspen Fuel Live Herbaceous SA/V"
+    en_US="Aspen Live Herbaceous SA/V"
     pt_PT="??? Live Herbaceous SA/V"
   />
   <translate key="vSurfaceFuelAspenSavrLiveHerb:Desc"
@@ -12357,11 +12357,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis herbáceos vivos."
   />
   <translate key="vSurfaceFuelAspenSavrLiveHerb:Hdr0"
-    en_US="Aspen Fuel"
+    en_US="Aspen Live"
     pt_PT="Herb"
   />
   <translate key="vSurfaceFuelAspenSavrLiveHerb:Hdr1"
-    en_US="Live Herb SA/V"
+    en_US="Herb SA/V"
     pt_PT="SA/V"
   />
 
@@ -12381,7 +12381,7 @@ por relâmpago"
     wizard="fuelSavrLiveWizard"
   />
   <translate key="vSurfaceFuelAspenSavrLiveWoody:Label"
-    en_US="Aspen Fuel Live Woody SA/V"
+    en_US="Aspen Live Woody SA/V"
     pt_PT="??? Live Woody SA/V"
   />
   <translate key="vSurfaceFuelAspenSavrLiveWoody:Desc"
@@ -12389,11 +12389,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis arbustivos vivos."
   />
   <translate key="vSurfaceFuelAspenSavrLiveWoody:Hdr0"
-    en_US="Aspen Fuel"
+    en_US="Aspen Live"
     pt_PT="Woody"
   />
   <translate key="vSurfaceFuelAspenSavrLiveWoody:Hdr1"
-    en_US="Live Woody SA/V"
+    en_US="Woody SA/V"
     pt_PT="SA/V"
   />
 
@@ -12415,11 +12415,11 @@ por relâmpago"
     pt_PT="??? Aspen fuel type"
   />
   <translate key="vSurfaceFuelAspenType:Hdr0"
-    en_US="Aspen Fuel"
+    en_US="Aspen"
     pt_PT="??? Aspen"
   />
   <translate key="vSurfaceFuelAspenType:Hdr1"
-    en_US="Model"
+    en_US="Fuel Model"
     pt_PT="??? Model"
   />
 
@@ -12438,7 +12438,7 @@ por relâmpago"
     default="0.0000"
   />
   <translate key="vSurfaceFuelBedBetaRatio:Label"
-    en_US="Surface Fuel Relative Packing Ratio"
+    en_US="Relative Packing Ratio"
     pt_PT="??? Relative Packing Ratio"
   />
   <translate key="vSurfaceFuelBedBetaRatio:Desc"
@@ -12446,11 +12446,11 @@ por relâmpago"
     pt_PT="Razão entre a compactação do estrato combustível e a compactação óptima"
   />
   <translate key="vSurfaceFuelBedBetaRatio:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Relative"
     pt_PT="??? Relative"
   />
   <translate key="vSurfaceFuelBedBetaRatio:Hdr1"
-    en_US="Relative Packing Ratio"
+    en_US="Packing Ratio"
     pt_PT="??? Pack Ratio"
   />
 
@@ -12469,7 +12469,7 @@ por relâmpago"
     default="0.0000"
   />
   <translate key="vSurfaceFuelBedBulkDensity:Label"
-    en_US="Surface Fuel Bulk Density"
+    en_US="Bulk Density"
     pt_PT="Massa volúmica do estrato combustível"
   />
   <translate key="vSurfaceFuelBedBulkDensity:Desc"
@@ -12477,11 +12477,11 @@ por relâmpago"
     pt_PT="Massa volúmica do estrato de combustível de superfície."
   />
   <translate key="vSurfaceFuelBedBulkDensity:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Bulk"
     pt_PT="Massa"
   />
   <translate key="vSurfaceFuelBedBulkDensity:Hdr1"
-    en_US="Bulk Density"
+    en_US="Density"
     pt_PT="Volúmica"
   />
 
@@ -12532,7 +12532,7 @@ por relâmpago"
     default="0.0000"
   />
   <translate key="vSurfaceFuelBedDeadFraction:Label"
-    en_US="Surface Fuel Dead Load Portion"
+    en_US="Dead Fuel Load Portion"
     pt_PT="??? Dead Fuel Load Portion"
   />
   <translate key="vSurfaceFuelBedDeadFraction:Desc"
@@ -12540,11 +12540,11 @@ por relâmpago"
     pt_PT="??? Fuel bed dead fuel fraction."
   />
   <translate key="vSurfaceFuelBedDeadFraction:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Dead Fuel"
     pt_PT="??? Percent"
   />
   <translate key="vSurfaceFuelBedDeadFraction:Hdr1"
-    en_US="Dead Load Portion"
+    en_US="Load Portion"
     pt_PT="??? Dead Fuel"
   />
 
@@ -12564,7 +12564,7 @@ por relâmpago"
     wizard="fuelBedDepthWizard"
   />
   <translate key="vSurfaceFuelBedDepth:Label"
-    en_US="Surface Fuel Bed Depth"
+    en_US="Fuel Bed Depth"
     pt_PT="Espessura do estrato combustível"
   />
   <translate key="vSurfaceFuelBedDepth:Desc"
@@ -12572,11 +12572,11 @@ por relâmpago"
     pt_PT="Espessura do estrato combustível de superfície."
   />
   <translate key="vSurfaceFuelBedDepth:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Fuel Bed"
     pt_PT="Combustível"
   />
   <translate key="vSurfaceFuelBedDepth:Hdr1"
-    en_US="Bed Depth"
+    en_US="Depth"
     pt_PT="Espessura"
   />
 
@@ -12595,7 +12595,7 @@ por relâmpago"
     default="1.0"
   />
   <translate key="vSurfaceFuelDuffDepth:Label"
-    en_US="Surface Fuel Duff &amp; Litter Depth"
+    en_US="Duff &amp; Litter Depth"
     pt_PT="Espessura da folhada inferior &amp; e superior"
   />
   <translate key="vSurfaceFuelDuffDepth:Desc"
@@ -12603,11 +12603,11 @@ por relâmpago"
     pt_PT="Espessuras da folhada inferior e superior."
   />
   <translate key="vSurfaceFuelDuffDepth:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Duff/Litter"
     pt_PT="Folhada inferior/folhada superior"
   />
   <translate key="vSurfaceFuelDuffDepth:Hdr1"
-    en_US="Duff/Litter Depth"
+    en_US="Depth"
     pt_PT="Espessura"
   />
 
@@ -12626,7 +12626,7 @@ por relâmpago"
     default="0.000"
   />
   <translate key="vSurfaceFuelBedHeatSink:Label"
-    en_US="Surface Fuel Heat Sink"
+    en_US="Heat Sink"
     pt_PT="Sumidouro de calor do estrato de combustível"
   />
   <translate key="vSurfaceFuelBedHeatSink:Desc"
@@ -12634,11 +12634,11 @@ por relâmpago"
     pt_PT="Energia necessária por unidade de volume do leito combustível para alcançar o ponto de ignição."
   />
   <translate key="vSurfaceFuelBedHeatSink:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Heat"
     pt_PT="Calor"
   />
   <translate key="vSurfaceFuelBedHeatSink:Hdr1"
-    en_US="Heat Sink"
+    en_US="Sink"
     pt_PT="Sumidouro"
   />
 
@@ -12657,7 +12657,7 @@ por relâmpago"
     default="0.0000"
   />
   <translate key="vSurfaceFuelBedLiveFraction:Label"
-    en_US="Surface Fuel Live Load Portion"
+    en_US="Live Fuel Load Portion"
     pt_PT="??? Live Fuel Load Portion"
   />
   <translate key="vSurfaceFuelBedLiveFraction:Desc"
@@ -12665,11 +12665,11 @@ por relâmpago"
     pt_PT="??? Fuel bed live fuel fraction."
   />
   <translate key="vSurfaceFuelBedLiveFraction:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Fuel"
     pt_PT="??? Percent"
   />
   <translate key="vSurfaceFuelBedLiveFraction:Hdr1"
-    en_US="Live Load Portion"
+    en_US="Load Portion"
     pt_PT="??? Live Fuel"
   />
 
@@ -12689,7 +12689,7 @@ por relâmpago"
     wizard="fuelBedMextDeadWizard"
   />
   <translate key="vSurfaceFuelBedMextDead:Label"
-    en_US="Surface Fuel Dead Moisture of Extinction"
+    en_US="Dead Fuel Moisture of Extinction"
     pt_PT="Humidade de extinção dos combustíveis mortos"
   />
   <translate key="vSurfaceFuelBedMextDead:Desc"
@@ -12697,11 +12697,11 @@ por relâmpago"
     pt_PT="Humidade dos combustíveis mortos a partir do qual o fogo deixa de se propagar neste estrato."
   />
   <translate key="vSurfaceFuelBedMextDead:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Dead Fuel"
     pt_PT="Combustíveis mortos"
   />
   <translate key="vSurfaceFuelBedMextDead:Hdr1"
-    en_US="Dead Mois Extinct"
+    en_US="Mois Extn"
     pt_PT="Humidade de extinção dos combustíveis mortos"
   />
 
@@ -12720,7 +12720,7 @@ por relâmpago"
     default="3.00"
   />
   <translate key="vSurfaceFuelBedMextLive:Label"
-    en_US="Surface Fuel Live Moisture of Extinction"
+    en_US="Live Fuel Moisture of Extinction"
     pt_PT="Humidade de extinção dos combustíveis vivos"
   />
   <translate key="vSurfaceFuelBedMextLive:Desc"
@@ -12728,11 +12728,11 @@ por relâmpago"
     pt_PT="Humidade dos combustíveis vivos a partir do qual o fogo deixa de se propagar neste estrato."
   />
   <translate key="vSurfaceFuelBedMextLive:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Fuel"
     pt_PT="Estrato combustível"
   />
   <translate key="vSurfaceFuelBedMextLive:Hdr1"
-    en_US="Live Mois Extinct"
+    en_US="Mois Extn"
     pt_PT="Humidade de extinção dos combustíveis vivos"
   />
 
@@ -12885,7 +12885,7 @@ por relâmpago"
     default="0.10"
   />
   <translate key="vSurfaceFuelBedMoisDead:Label"
-    en_US="Surface Fuel Characteristic Dead Moisture"
+    en_US="Characteristic Dead Fuel Moisture"
     pt_PT="Humidade do combustível morto no estrato combustível"
   />
   <translate key="vSurfaceFuelBedMoisDead:Desc"
@@ -12893,11 +12893,11 @@ por relâmpago"
     pt_PT="Humidade médio dos combustíveis ajustado pela área superfícial"
   />
   <translate key="vSurfaceFuelBedMoisDead:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Charac Dead"
     pt_PT="??? Estrato de combustível"
   />
   <translate key="vSurfaceFuelBedMoisDead:Hdr1"
-    en_US="Dead Fuel Moisture"
+    en_US="Fuel Moisture"
     pt_PT="???Humidade dos combustíveis mortos"
   />
 
@@ -12916,7 +12916,7 @@ por relâmpago"
     default="2.00"
   />
   <translate key="vSurfaceFuelBedMoisLive:Label"
-    en_US="Surface Fuel Characteristic Live Moisture"
+    en_US="Characteristic Live Fuel Moisture"
     pt_PT="Humidade dos combustíveis vivos"
   />
   <translate key="vSurfaceFuelBedMoisLive:Desc"
@@ -12924,11 +12924,11 @@ por relâmpago"
     pt_PT=" Humidade dos combustíveis mortos ponderado pela área superficial."
   />
   <translate key="vSurfaceFuelBedMoisLive:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Charac Live"
     pt_PT="Estrato de combustível"
   />
   <translate key="vSurfaceFuelBedMoisLive:Hdr1"
-    en_US="Live Fuel Moisture"
+    en_US="Fuel Moisture"
     pt_PT="Humidade dos combustíveis vivos"
   />
 
@@ -12947,7 +12947,7 @@ por relâmpago"
     default="0.0000"
   />
   <translate key="vSurfaceFuelBedPackingRatio:Label"
-    en_US="Surface Fuel Packing Ratio"
+    en_US="Packing Ratio"
     pt_PT="Razão de compactação do estrato combustível"
   />
   <translate key="vSurfaceFuelBedPackingRatio:Desc"
@@ -12955,11 +12955,11 @@ por relâmpago"
     pt_PT="Proporção do estrato combustível ocupado por partículas de combustível."
   />
   <translate key="vSurfaceFuelBedPackingRatio:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Packing"
     pt_PT="Estrato combustível"
   />
   <translate key="vSurfaceFuelBedPackingRatio:Hdr1"
-    en_US="Packing Ratio"
+    en_US="Ratio"
     pt_PT="Compactação"
   />
 
@@ -12978,7 +12978,7 @@ por relâmpago"
     default="32"
   />
   <translate key="vSurfaceFuelBedSigma:Label"
-    en_US="Surface Fuel Characteristic SA/V"
+    en_US="Characteristic SA/V"
     pt_PT="Razão superfície-vol do estrato combustível"
   />
   <translate key="vSurfaceFuelBedSigma:Desc"
@@ -12986,13 +12986,14 @@ por relâmpago"
     pt_PT=" Razão superfície-volume ponderada para o estrato combustível."
   />
   <translate key="vSurfaceFuelBedSigma:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Charac"
     pt_PT="Estrato Combustível"
   />
   <translate key="vSurfaceFuelBedSigma:Hdr1"
     en_US="SA/V"
     pt_PT="SA/V"
   />
+  
   <variable name="vSurfaceFuelChaparralAge"
     type="continuous"
     releaseFrom="20000"
@@ -14350,7 +14351,7 @@ por relâmpago"
     wizard="fuelHeatWizard"
   />
   <translate key="vSurfaceFuelHeatDead:Label"
-    en_US="Surface Fuel Dead Heat Content"
+    en_US="Dead Fuel Heat Content"
     pt_PT="Poder calorífico do combustível morto"
   />
   <translate key="vSurfaceFuelHeatDead:Desc"
@@ -14358,11 +14359,11 @@ por relâmpago"
     pt_PT="Poder calorífico inferior dos combustíveis mortos no estrato superficial de combustível"
   />
   <translate key="vSurfaceFuelHeatDead:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Dead Fuel"
     pt_PT="Morto"
   />
   <translate key="vSurfaceFuelHeatDead:Hdr1"
-    en_US="Dead Heat Content"
+    en_US="Heat Content"
     pt_PT="Poder caloríf"
   />
 
@@ -14382,7 +14383,7 @@ por relâmpago"
     wizard="fuelHeatWizard"
   />
   <translate key="vSurfaceFuelHeatLive:Label"
-    en_US="Surface Fuel Live Heat Content"
+    en_US="Live Fuel Heat Content"
     pt_PT="Poder calorífico do combustível vivo"
   />
   <translate key="vSurfaceFuelHeatLive:Desc"
@@ -14390,11 +14391,11 @@ por relâmpago"
     pt_PT="Poder calorífico inferior dos combustíveis vivos no estrato combustível de superfície"
   />
   <translate key="vSurfaceFuelHeatLive:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Fuel"
     pt_PT="Vivo"
   />
   <translate key="vSurfaceFuelHeatLive:Hdr1"
-    en_US="Live Heat Content"
+    en_US="Heat Content"
     pt_PT="Poder caloríf"
   />
 
@@ -14983,7 +14984,7 @@ por relâmpago"
     default="0.0000"
   />
   <translate key="vSurfaceFuelLoadDead:Label"
-    en_US="Surface Fuel Total Dead Load"
+    en_US="Total Dead Fuel Load"
     pt_PT="??? Total Dead Fuel Load"
   />
   <translate key="vSurfaceFuelLoadDead:Desc"
@@ -14991,11 +14992,11 @@ por relâmpago"
     pt_PT="??? Total Dead Fuel Load"
   />
   <translate key="vSurfaceFuelLoadDead:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Total"
     pt_PT="??? Total"
   />
   <translate key="vSurfaceFuelLoadDead:Hdr1"
-    en_US="Total Dead Load"
+    en_US="Dead Load"
     pt_PT="??? Dead Load"
   />
 
@@ -15015,7 +15016,7 @@ por relâmpago"
     wizard="fuelLoadDead1Wizard"
   />
   <translate key="vSurfaceFuelLoadDead1:Label"
-    en_US="Surface Fuel Dead 1-h Load"
+    en_US="1-h Fuel Load"
     pt_PT="Carga de combustível com 1-h TR"
   />
   <translate key="vSurfaceFuelLoadDead1:Desc"
@@ -15023,11 +15024,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis com 1-h TR."
   />
   <translate key="vSurfaceFuelLoadDead1:Hdr0"
-    en_US="Surface Fuel"
+    en_US="1-h"
     pt_PT="1-h"
   />
   <translate key="vSurfaceFuelLoadDead1:Hdr1"
-    en_US="Dead 1-h Load"
+    en_US="Load"
     pt_PT="Carga"
   />
 
@@ -15047,7 +15048,7 @@ por relâmpago"
     wizard="fuelLoadDead10Wizard"
   />
   <translate key="vSurfaceFuelLoadDead10:Label"
-    en_US="Surface Fuel Dead 10-h Load"
+    en_US="10-h Fuel Load"
     pt_PT="Carga de combustível com 10-h TR"
   />
   <translate key="vSurfaceFuelLoadDead10:Desc"
@@ -15055,11 +15056,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis com 10-h TR."
   />
   <translate key="vSurfaceFuelLoadDead10:Hdr0"
-    en_US="Surface Fuel"
+    en_US="10-h"
     pt_PT="10-h"
   />
   <translate key="vSurfaceFuelLoadDead10:Hdr1"
-    en_US="Dead 10-h Load"
+    en_US="Load"
     pt_PT="Carga"
   />
 
@@ -15079,7 +15080,7 @@ por relâmpago"
     wizard="fuelLoadDead100Wizard"
   />
   <translate key="vSurfaceFuelLoadDead100:Label"
-    en_US="Surface Fuel Dead 100-h Load"
+    en_US="100-h Fuel Load"
     pt_PT="Carga de combustível com 100-h TR"
   />
   <translate key="vSurfaceFuelLoadDead100:Desc"
@@ -15087,11 +15088,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis com 100-h TR."
   />
   <translate key="vSurfaceFuelLoadDead100:Hdr0"
-    en_US="Surface Fuel"
+    en_US="100-h"
     pt_PT="100-h"
   />
   <translate key="vSurfaceFuelLoadDead100:Hdr1"
-    en_US="Dead 100-h Load"
+    en_US="Load"
     pt_PT="Carga"
   />
 
@@ -15111,7 +15112,7 @@ por relâmpago"
     wizard="fuelLoadDeadWizard"
   />
   <translate key="vSurfaceFuelLoadDeadHerb:Label"
-    en_US="Surface Fuel Cured Herbaceous Load"
+    en_US="Dead Herbaceous Fuel Load"
     pt_PT="Carga de combustível herbáceo morto"
   />
   <translate key="vSurfaceFuelLoadDeadHerb:Desc"
@@ -15119,11 +15120,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis herbáceos mortos."
   />
   <translate key="vSurfaceFuelLoadDeadHerb:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Dead Herb"
     pt_PT="Morto"
   />
   <translate key="vSurfaceFuelLoadDeadHerb:Hdr1"
-    en_US="Cured Herb Load"
+    en_US="Fuel Load"
     pt_PT="Herbáceos"
   />
 
@@ -15142,7 +15143,7 @@ por relâmpago"
     default="0.0000"
   />
   <translate key="vSurfaceFuelLoadUndeadHerb:Label"
-    en_US="Surface Fuel Uncured Herb Load"
+    en_US="Live Fuel Load Remainder"
     pt_PT="??? Undead Herbaceous Fuel Load"
   />
   <translate key="vSurfaceFuelLoadUndeadHerb:Desc"
@@ -15150,11 +15151,11 @@ por relâmpago"
     pt_PT="??? Undead Herbaceous Fuel Load"
   />
   <translate key="vSurfaceFuelLoadUndeadHerb:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Herb"
     pt_PT="??? Live"
   />
   <translate key="vSurfaceFuelLoadUndeadHerb:Hdr1"
-    en_US="Uncured Herb Load"
+    en_US="Remainder"
     pt_PT="Herbáceos"
   />
 
@@ -15173,7 +15174,7 @@ por relâmpago"
     default="0.0000"
   />
   <translate key="vSurfaceFuelLoadLive:Label"
-    en_US="Surface Fuel Total Live Load"
+    en_US="Total Live Fuel Load"
     pt_PT="??? Total Live Fuel Load"
   />
   <translate key="vSurfaceFuelLoadLive:Desc"
@@ -15181,11 +15182,11 @@ por relâmpago"
     pt_PT="??? Total Live Fuel Load"
   />
   <translate key="vSurfaceFuelLoadLive:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Total Live"
     pt_PT="??? Total"
   />
   <translate key="vSurfaceFuelLoadLive:Hdr1"
-    en_US="Total Live Load"
+    en_US="Fuel Load"
     pt_PT="??? Live Load"
   />
 
@@ -15205,7 +15206,7 @@ por relâmpago"
     wizard="fuelLoadLiveWizard"
   />
   <translate key="vSurfaceFuelLoadLiveHerb:Label"
-    en_US="Surface Fuel Total Herbaceous Load"
+    en_US="Live Herbaceous Fuel Load"
     pt_PT="Carga de combustível herbáceo vivo"
   />
   <translate key="vSurfaceFuelLoadLiveHerb:Desc"
@@ -15213,11 +15214,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis herbáceos vivos."
   />
   <translate key="vSurfaceFuelLoadLiveHerb:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Herb"
     pt_PT="Vivos"
   />
   <translate key="vSurfaceFuelLoadLiveHerb:Hdr1"
-    en_US="Total Herb Load"
+    en_US="Fuel Load"
     pt_PT="Herbáceos"
   />
 
@@ -15237,7 +15238,7 @@ por relâmpago"
     wizard="fuelLoadLiveWizard"
   />
   <translate key="vSurfaceFuelLoadLiveWood:Label"
-    en_US="Surface Fuel Live Woody Load"
+    en_US="Live Woody Fuel Load"
     pt_PT="Carga de combustível arbustivo vivo"
   />
   <translate key="vSurfaceFuelLoadLiveWood:Desc"
@@ -15245,11 +15246,11 @@ por relâmpago"
     pt_PT="Carga de combustíveis arbustivos vivos."
   />
   <translate key="vSurfaceFuelLoadLiveWood:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Woody"
     pt_PT="Vivo"
   />
   <translate key="vSurfaceFuelLoadLiveWood:Hdr1"
-    en_US="Live Woody Load"
+    en_US="Fuel Load"
     pt_PT="Arbustivo"
   />
 
@@ -15271,11 +15272,11 @@ por relâmpago"
     pt_PT="Equação para transferência da carga de combustíveis herbáceos."
   />
   <translate key="vSurfaceFuelLoadTransferEq:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Fuel"
     pt_PT="Combustível"
   />
   <translate key="vSurfaceFuelLoadTransferEq:Hdr1"
-    en_US="Model Type"
+    en_US="Type"
     pt_PT="Tipo"
   />
 
@@ -15295,7 +15296,7 @@ por relâmpago"
     default="0.00"
   />
   <translate key="vSurfaceFuelLoadTransferFraction:Label"
-    en_US="Surface Fuel Cured Herb Portion"
+    en_US="Fuel Load Transfer Portion"
     pt_PT="Transferência da Carga de Combustível"
   />
   <translate key="vSurfaceFuelLoadTransferFraction:Desc"
@@ -15303,11 +15304,11 @@ por relâmpago"
     pt_PT="Proporção de combustível vivo transferido para a categoria morta."
   />
   <translate key="vSurfaceFuelLoadTransferFraction:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Fuel Load"
     pt_PT="Carga de Combustível"
   />
   <translate key="vSurfaceFuelLoadTransferFraction:Hdr1"
-    en_US="Cured Herb Portion"
+    en_US="Transferred"
     pt_PT="Transferida"
   />
 
@@ -15636,7 +15637,7 @@ por relâmpago"
     default="0.10"
   />
   <translate key="vSurfaceFuelMoisDead1:Label"
-    en_US="Surface Fuel Dead 1-h Moisture"
+    en_US="1-h Fuel Moisture"
     pt_PT="Humidade de combustíveis com 1-h TR"
   />
   <translate key="vSurfaceFuelMoisDead1:Desc"
@@ -15644,11 +15645,11 @@ por relâmpago"
     pt_PT="Humidade dos combustíveis mortos com 1-h TR (menos de 0.64&quot; de diâmetro)."
   />
   <translate key="vSurfaceFuelMoisDead1:Hdr0"
-    en_US="Surface Fuel"
+    en_US="1-h Fuel"
     pt_PT="1-h"
   />
   <translate key="vSurfaceFuelMoisDead1:Hdr1"
-    en_US="Dead 1-h Moisture"
+    en_US="Moisture"
     pt_PT="Humidade"
   />
 
@@ -15667,7 +15668,7 @@ por relâmpago"
     default="0.10"
   />
   <translate key="vSurfaceFuelMoisDead10:Label"
-    en_US="Surface Fuel Dead 10-h Moisture"
+    en_US="10-h Fuel Moisture"
     pt_PT="Humidade de combustíveis com 10-h TR"
   />
   <translate key="vSurfaceFuelMoisDead10:Desc"
@@ -15675,11 +15676,11 @@ por relâmpago"
     pt_PT="Humidade dos combustíveis mortos com 10-h TR (diâmetro entre 0.64-2.54&quot;)."
   />
   <translate key="vSurfaceFuelMoisDead10:Hdr0"
-    en_US="Surface Fuel"
+    en_US="10-h Fuel"
     pt_PT="10-h"
   />
   <translate key="vSurfaceFuelMoisDead10:Hdr1"
-    en_US="Dead 10-h Moisture"
+    en_US="Moisture"
     pt_PT="Humidade"
   />
 
@@ -15698,7 +15699,7 @@ por relâmpago"
     default="0.10"
   />
   <translate key="vSurfaceFuelMoisDead100:Label"
-    en_US="Surface Fuel Dead 100-h Moisture"
+    en_US="100-h Fuel Moisture"
     pt_PT="Humidade de combustíveis mortos com 100-h TR"
   />
   <translate key="vSurfaceFuelMoisDead100:Desc"
@@ -15706,11 +15707,11 @@ por relâmpago"
     pt_PT="Humidade dos combustíveis com 100-h TR (diâmetro entre 2.54-7.62&quot;)."
   />
   <translate key="vSurfaceFuelMoisDead100:Hdr0"
-    en_US="Surface Fuel"
+    en_US="100-h"
     pt_PT="100-h"
   />
   <translate key="vSurfaceFuelMoisDead100:Hdr1"
-    en_US="Dead 100-h Moisture"
+    en_US="Fuel Moisture"
     pt_PT="Humidade"
   />
 
@@ -15729,7 +15730,7 @@ por relâmpago"
     default="0.10"
   />
   <translate key="vSurfaceFuelMoisDead1000:Label"
-    en_US="Surface Fuel Dead 1000-h Moisture"
+    en_US="1000-h Fuel Moisture"
     pt_PT="Humidade de combustíveis com 1000-h TR"
   />
   <translate key="vSurfaceFuelMoisDead1000:Desc"
@@ -15737,11 +15738,11 @@ por relâmpago"
     pt_PT=" Humidade dos combustíveis mortos com 1000-h TR (diâmetro superior a 7.64&quot;)."
   />
   <translate key="vSurfaceFuelMoisDead1000:Hdr0"
-    en_US="Surface Fuel"
+    en_US="1000-h"
     pt_PT="1000-h"
   />
   <translate key="vSurfaceFuelMoisDead1000:Hdr1"
-    en_US="Dead 1000-h Moisture"
+    en_US="Fuel Moisture"
     pt_PT="Humidade"
   />
 
@@ -15760,7 +15761,7 @@ por relâmpago"
     default="0.10"
   />
   <translate key="vSurfaceFuelMoisLifeDead:Label"
-    en_US="Surface Fuel Dead Fuel Moisture"
+    en_US="Dead Fuel Moisture"
     pt_PT="Humidade do combustível morto"
   />
   <translate key="vSurfaceFuelMoisLifeDead:Desc"
@@ -15768,11 +15769,11 @@ por relâmpago"
     pt_PT="Humidade do combustível morto (todas as dimensões)"
   />
   <translate key="vSurfaceFuelMoisLifeDead:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Dead Fuel"
     pt_PT="Combustível morto"
   />
   <translate key="vSurfaceFuelMoisLifeDead:Hdr1"
-    en_US="Dead Fuel Moisture"
+    en_US="Fuel Moisture"
     pt_PT="Humidade"
   />
 
@@ -15792,7 +15793,7 @@ por relâmpago"
     wizard="liveHerbMoistureWizard"
   />
   <translate key="vSurfaceFuelMoisLifeLive:Label"
-    en_US="Surface Fuel Live Fuel Moisture"
+    en_US="Live Fuel Moisture"
     pt_PT="Humidade dos combustíveis vivos"
   />
   <translate key="vSurfaceFuelMoisLifeLive:Desc"
@@ -15800,11 +15801,11 @@ por relâmpago"
     pt_PT="Humidade dos combustíveis vivos (todos os tipos)"
   />
   <translate key="vSurfaceFuelMoisLifeLive:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Fuel"
     pt_PT="Combustível vivo"
   />
   <translate key="vSurfaceFuelMoisLifeLive:Hdr1"
-    en_US="Live Fuel Moisture"
+    en_US="Fuel Moisture"
     pt_PT="Humidade"
   />
 
@@ -15824,7 +15825,7 @@ por relâmpago"
     wizard="liveHerbMoistureWizard"
   />
   <translate key="vSurfaceFuelMoisLiveHerb:Label"
-    en_US="Surface Fuel Live Herbaceous Moisture"
+    en_US="Live Herbaceous Fuel Moisture"
     pt_PT="Humidade dos combustíveis herbáceos vivos"
   />
   <translate key="vSurfaceFuelMoisLiveHerb:Desc"
@@ -15832,11 +15833,11 @@ por relâmpago"
     pt_PT="Humidade dos combustíveis herbáceos vivos."
   />
   <translate key="vSurfaceFuelMoisLiveHerb:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Herb"
     pt_PT="Herbáceos vivos"
   />
   <translate key="vSurfaceFuelMoisLiveHerb:Hdr1"
-    en_US="Live Herb Moisture"
+    en_US="Moisture"
     pt_PT="Humidade"
   />
 
@@ -15856,7 +15857,7 @@ por relâmpago"
     wizard="liveWoodMoistureWizard"
   />
   <translate key="vSurfaceFuelMoisLiveWood:Label"
-    en_US="Surface Fuel Live Woody Moisture"
+    en_US="Live Woody Fuel Moisture"
     pt_PT="Humidade dos combustíveis arbustivos vivos"
   />
   <translate key="vSurfaceFuelMoisLiveWood:Desc"
@@ -15864,11 +15865,11 @@ por relâmpago"
     pt_PT="Humidade dos combustíveis arbustivos vivos."
   />
   <translate key="vSurfaceFuelMoisLiveWood:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Woody"
     pt_PT="Arbustivos vivos"
   />
   <translate key="vSurfaceFuelMoisLiveWood:Hdr1"
-    en_US="Live Woody Moisture"
+    en_US="Moisture"
     pt_PT="Humidade"
   />
 
@@ -15882,7 +15883,7 @@ por relâmpago"
     sortOut="01:999:9"
   />
   <translate key="vSurfaceFuelMoisScenario:Label"
-    en_US="Surface Fuel Moisture Scenario"
+    en_US="Moisture Scenario"
     pt_PT="Cenário de humidade de combustíveis"
   />
   <translate key="vSurfaceFuelMoisScenario:Desc"
@@ -15890,11 +15891,11 @@ por relâmpago"
     pt_PT="Modelo de cenário de humidade de combustíveis."
   />
   <translate key="vSurfaceFuelMoisScenario:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Moisture"
     pt_PT="Humidade"
   />
   <translate key="vSurfaceFuelMoisScenario:Hdr1"
-    en_US="Moisture Scenario"
+    en_US="Scenario"
     pt_PT="Cenário"
   />
 
@@ -15922,11 +15923,11 @@ por relâmpago"
     pt_PT="Idade (anos) do sub-coberto de Serenoa repens - Ilex glabra "
   />
   <translate key="vSurfaceFuelPalmettoAge:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G Age"
     pt_PT="sub-coberto"
   />
   <translate key="vSurfaceFuelPalmettoAge:Hdr1"
-    en_US="Age of Rough"
+    en_US="of Rough"
     pt_PT="Idade"
   />
 
@@ -15954,11 +15955,11 @@ por relâmpago"
     pt_PT="Grau de cobertura do sub-coberto de Serenoa repens - Ilex glabra"
   />
   <translate key="vSurfaceFuelPalmettoCover:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G Rough"
     pt_PT="sub-coberto"
   />
   <translate key="vSurfaceFuelPalmettoCover:Hdr1"
-    en_US="Rough Cover"
+    en_US="Cover"
     pt_PT="Cobertura"
   />
 
@@ -15985,11 +15986,11 @@ por relâmpago"
     pt_PT="Altura do sub-coberto de Serenoa repens - Ilex glabra."
   />
   <translate key="vSurfaceFuelPalmettoHeight:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G Understory"
     pt_PT="Sub-coberto"
   />
   <translate key="vSurfaceFuelPalmettoHeight:Hdr1"
-    en_US="Understory Height"
+    en_US="Height"
     pt_PT="Altura"
   />
 
@@ -16016,11 +16017,11 @@ por relâmpago"
     pt_PT="Carga de combustível fino morto (0-0.6 mm) em P-G."
   />
   <translate key="vSurfaceFuelPalmettoLoadDead1:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G Dead"
     pt_PT="Morto"
   />
   <translate key="vSurfaceFuelPalmettoLoadDead1:Hdr1"
-    en_US="Dead Fine Load"
+    en_US="Fine Load"
     pt_PT="Fino"
   />
 
@@ -16047,11 +16048,11 @@ por relâmpago"
     pt_PT="Carga de combustível médio morto (0.6-2.5 mm) no complexo P-G."
   />
   <translate key="vSurfaceFuelPalmettoLoadDead10:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G Dead"
     pt_PT="Morto"
   />
   <translate key="vSurfaceFuelPalmettoLoadDead10:Hdr1"
-    en_US="Dead Medium Load"
+    en_US="Medium Load"
     pt_PT="Médio"
   />
 
@@ -16078,11 +16079,11 @@ por relâmpago"
     pt_PT="Carga de folhagem morta no complexo P-G."
   />
   <translate key="vSurfaceFuelPalmettoLoadDeadFoliage:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G Dead"
     pt_PT="Morto"
   />
   <translate key="vSurfaceFuelPalmettoLoadDeadFoliage:Hdr1"
-    en_US="Dead Foliage Load"
+    en_US="Foliage Load"
     pt_PT="Folhagem"
   />
 
@@ -16109,7 +16110,7 @@ por relâmpago"
     pt_PT="Carga de folhada no complexo P-G."
   />
   <translate key="vSurfaceFuelPalmettoLoadLitter:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G"
     pt_PT="Folhada sup"
   />
   <translate key="vSurfaceFuelPalmettoLoadLitter:Hdr1"
@@ -16140,11 +16141,11 @@ por relâmpago"
     pt_PT="Carga de combustível fino vivo (0-0.6 mm) no complexo P-G."
   />
   <translate key="vSurfaceFuelPalmettoLoadLive1:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G Live"
     pt_PT="Vivo"
   />
   <translate key="vSurfaceFuelPalmettoLoadLive1:Hdr1"
-    en_US="Live Fine Load"
+    en_US="Fine Load"
     pt_PT="Fino"
   />
 
@@ -16171,11 +16172,11 @@ por relâmpago"
     pt_PT="Carga de combustível médio vivo (0.6-2.5 mm) no complexo P-G."
   />
   <translate key="vSurfaceFuelPalmettoLoadLive10:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G Live"
     pt_PT="Vivo"
   />
   <translate key="vSurfaceFuelPalmettoLoadLive10:Hdr1"
-    en_US="Live Medium Load"
+    en_US="Medium Load"
     pt_PT="Médio"
   />
 
@@ -16202,11 +16203,11 @@ por relâmpago"
     pt_PT="Carga de folhagem viva no complexo P-G."
   />
   <translate key="vSurfaceFuelPalmettoLoadLiveFoliage:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G Live"
     pt_PT="Viva"
   />
   <translate key="vSurfaceFuelPalmettoLoadLiveFoliage:Hdr1"
-    en_US="Live Foliage Load"
+    en_US="Foliage Load"
     pt_PT="Folhagem"
   />
 
@@ -16234,11 +16235,11 @@ por relâmpago"
     pt_PT="Área basal do povoamento florestal"
   />
   <translate key="vSurfaceFuelPalmettoOverstoryBasalArea:Hdr0"
-    en_US="P-G Fuel"
+    en_US="P-G Overstory"
     pt_PT="Estrato arbóreo"
   />
   <translate key="vSurfaceFuelPalmettoOverstoryBasalArea:Hdr1"
-    en_US="Overstory Basal Area"
+    en_US="Basal Area"
     pt_PT="Área basal"
   />
 
@@ -17189,7 +17190,7 @@ por relâmpago"
     wizard="fuelSavrDead1Wizard"
   />
   <translate key="vSurfaceFuelSavrDead1:Label"
-    en_US="Surface Fuel Dead 1-h SA/V"
+    en_US="1-h Fuel SA/V"
     pt_PT="Relação superfície-vol para combustíveis com 1-h TR"
   />
   <translate key="vSurfaceFuelSavrDead1:Desc"
@@ -17197,11 +17198,11 @@ por relâmpago"
     pt_PT="Relação superfície-volume para combustíveis mortos com 1-h TR"
   />
   <translate key="vSurfaceFuelSavrDead1:Hdr0"
-    en_US="Surface Fuel"
+    en_US="1-h"
     pt_PT="1-h"
   />
   <translate key="vSurfaceFuelSavrDead1:Hdr1"
-    en_US="Dead 1-h SA/V"
+    en_US="SA/V"
     pt_PT="S/V"
   />
 
@@ -17221,7 +17222,7 @@ por relâmpago"
     wizard="fuelSavrLiveWizard"
   />
   <translate key="vSurfaceFuelSavrLiveHerb:Label"
-    en_US="Surface Fuel Live Herbaceous SA/V"
+    en_US="Live Herbaceous Fuel SA/V"
     pt_PT="Relação superfície-vol para combustíveis herbáceos vivos"
   />
   <translate key="vSurfaceFuelSavrLiveHerb:Desc"
@@ -17229,11 +17230,11 @@ por relâmpago"
     pt_PT="Relação superfície-volume para combustíveis herbáceos vivos"
   />
   <translate key="vSurfaceFuelSavrLiveHerb:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Herb"
     pt_PT="Herbáceos"
   />
   <translate key="vSurfaceFuelSavrLiveHerb:Hdr1"
-    en_US="Live Herb SA/V"
+    en_US="SA/V"
     pt_PT="S/V"
   />
 
@@ -17253,7 +17254,7 @@ por relâmpago"
     wizard="fuelSavrLiveWizard"
   />
   <translate key="vSurfaceFuelSavrLiveWood:Label"
-    en_US="Surface Fuel Live Woody SA/V"
+    en_US="Live Woody Fuel SA/V"
     pt_PT="Relação superfície-vol para combustíveis lenhosos vivos"
   />
   <translate key="vSurfaceFuelSavrLiveWood:Desc"
@@ -17261,11 +17262,11 @@ por relâmpago"
     pt_PT="Relação superfície-volume para combustíveis lenhosos arbustivos vivos"
   />
   <translate key="vSurfaceFuelSavrLiveWood:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Live Woody"
     pt_PT="Arbustivos"
   />
   <translate key="vSurfaceFuelSavrLiveWood:Hdr1"
-    en_US="Live Woody SA/V"
+    en_US="SA/V"
     pt_PT="S/V"
   />
 
@@ -17284,7 +17285,7 @@ por relâmpago"
     default="68"
   />
   <translate key="vSurfaceFuelTemp:Label"
-    en_US="Surface Fuel Fine Fuel Temperature"
+    en_US="Fine Fuel Temperature"
     pt_PT="Temperatura dos combustíveis finos"
   />
   <translate key="vSurfaceFuelTemp:Desc"
@@ -17292,11 +17293,11 @@ por relâmpago"
     pt_PT="Temperatura dos combustíveis finos"
   />
   <translate key="vSurfaceFuelTemp:Hdr0"
-    en_US="Surface Fuel"
+    en_US="Fuel"
     pt_PT="Combust"
   />
   <translate key="vSurfaceFuelTemp:Hdr1"
-    en_US="Fine Fuel Temp"
+    en_US="Temp"
     pt_PT="Temp"
   />
 
@@ -17474,11 +17475,11 @@ por relâmpago"
     pt_PT="Direcção do declive descendente, em graus."
   />
   <translate key="vSiteAspectDirFromCompass:Hdr0"
-    en_US="Site"
+    en_US="Aspect"
     pt_PT="Exposição"
   />
   <translate key="vSiteAspectDirFromCompass:Hdr1"
-    en_US="Aspect"
+    en_US=""
     pt_PT=""
   />
 
@@ -17507,11 +17508,11 @@ por relâmpago"
     pt_PT="Azimute (graus a partir do norte no sentido da deslocação dos ponteiros do relógio) da direcção descendente do declive."
   />
   <translate key="vSiteAspectDirFromNorth:Hdr0"
-    en_US="Site"
+    en_US="Aspect"
     pt_PT="Exposição"
   />
   <translate key="vSiteAspectDirFromNorth:Hdr1"
-    en_US="Aspect"
+    en_US=""
     pt_PT=""
   />
 
@@ -17538,11 +17539,11 @@ por relâmpago"
     pt_PT="Altitude do local acima do nível médio do mar."
   />
   <translate key="vSiteElevation:Hdr0"
-    en_US="Site"
+    en_US="Elevation"
     pt_PT="Local"
   />
   <translate key="vSiteElevation:Hdr1"
-    en_US="Elevation"
+    en_US=""
     pt_PT="Altit"
   />
 
@@ -17569,11 +17570,11 @@ por relâmpago"
     pt_PT="Latitude do local em graus Oeste (+) ou Este (-) do Meridiano de Greenwich."
   />
   <translate key="vSiteLatitude:Hdr0"
-    en_US="Site Location"
+    en_US="Latitude"
     pt_PT="Local"
   />
   <translate key="vSiteLatitude:Hdr1"
-    en_US="Latitude"
+    en_US=""
     pt_PT="Lat"
   />
 
@@ -17600,11 +17601,11 @@ por relâmpago"
     pt_PT="Longitude do local em graus Norte (+) ou Sul (-) do equador."
   />
   <translate key="vSiteLongitude:Hdr0"
-    en_US="Site Location"
+    en_US="Longitude"
     pt_PT="Local"
   />
   <translate key="vSiteLongitude:Hdr1"
-    en_US="Longitude"
+    en_US=""
     pt_PT="Long"
   />
 
@@ -17631,7 +17632,7 @@ por relâmpago"
     pt_PT="Distância horizontal entre a base do vale e ponto mais elevado da linha de cumeada."
   />
   <translate key="vSiteRidgeToValleyDist:Hdr0"
-    en_US="Ridge-to-Valley"
+    en_US="Ridge-Valley"
     pt_PT="Vale-Cumeada"
   />
   <translate key="vSiteRidgeToValleyDist:Hdr1"
@@ -17662,7 +17663,7 @@ por relâmpago"
     pt_PT="Distância vertical entre a base do vale e ponto mais elevado da linha de cumeada."
   />
   <translate key="vSiteRidgeToValleyElev:Hdr0"
-    en_US="Ridge-to-Valley"
+    en_US="Ridge-Valley"
     pt_PT="Vale-Cumeada"
   />
   <translate key="vSiteRidgeToValleyElev:Hdr1"
@@ -17693,7 +17694,7 @@ por relâmpago"
     pt_PT="Distância horizontal expressa em unidades da mapa entre a base do vale e ponto mais elevado da linha de cumeada."
   />
   <translate key="vSiteRidgeToValleyMapDist:Hdr0"
-    en_US="Ridge-to-Valley"
+    en_US="Ridge-Valley"
     pt_PT="Vale-Cumeada"
   />
   <translate key="vSiteRidgeToValleyMapDist:Hdr1"
@@ -17717,7 +17718,7 @@ por relâmpago"
     wizard="slopeDegreesWizard"
   />
   <translate key="vSiteSlopeDegrees:Label"
-    en_US="Site Slope Steepness"
+    en_US="Slope Steepness"
     pt_PT="Declive da encosta"
   />
   <translate key="vSiteSlopeDegrees:Desc"
@@ -17725,11 +17726,11 @@ por relâmpago"
     pt_PT="Ângulo da encosta em graus."
   />
   <translate key="vSiteSlopeDegrees:Hdr0"
-    en_US="Site Slope"
+    en_US="Slope"
     pt_PT="Declive"
   />
   <translate key="vSiteSlopeDegrees:Hdr1"
-    en_US="Steepness"
+    en_US=""
     pt_PT=""
   />
 
@@ -17749,7 +17750,7 @@ por relâmpago"
     wizard="slopeFractionWizard"
   />
   <translate key="vSiteSlopeFraction:Label"
-    en_US="Site Slope Steepness"
+    en_US="Slope Steepness"
     pt_PT="Declive da encosta"
   />
   <translate key="vSiteSlopeFraction:Desc"
@@ -17757,11 +17758,11 @@ por relâmpago"
     pt_PT="Ângulo do terreno expresso em "
   />
   <translate key="vSiteSlopeFraction:Hdr0"
-    en_US="Site Slope"
+    en_US="Slope"
     pt_PT="Declive"
   />
   <translate key="vSiteSlopeFraction:Hdr1"
-    en_US="Steepness"
+    en_US=""
     pt_PT=""
   />
 
@@ -17780,7 +17781,7 @@ por relâmpago"
     default="0"
   />
   <translate key="vSiteSlopeReach:Label"
-    en_US="Site Slope Horizontal Distance"
+    en_US="Slope Horizontal Distance"
     pt_PT="Comprimento horizontal da encosta"
   />
   <translate key="vSiteSlopeReach:Desc"
@@ -17788,11 +17789,11 @@ por relâmpago"
     pt_PT="Comprimento horizontal da encosta no mapa."
   />
   <translate key="vSiteSlopeReach:Hdr0"
-    en_US="Site Slope"
+    en_US="Slope"
     pt_PT="Horiz"
   />
   <translate key="vSiteSlopeReach:Hdr1"
-    en_US="Horizontal Dist"
+    en_US="Distance"
     pt_PT="Dist"
   />
 
@@ -17811,7 +17812,7 @@ por relâmpago"
     default="0"
   />
   <translate key="vSiteSlopeRise:Label"
-    en_US="Site Slope Elevation Change"
+    en_US="Slope Elevation Change"
     pt_PT="Distância vertical da encosta"
   />
   <translate key="vSiteSlopeRise:Desc"
@@ -17819,7 +17820,7 @@ por relâmpago"
     pt_PT="Comprimento vertical da encosta no mapa."
   />
   <translate key="vSiteSlopeRise:Hdr0"
-    en_US="Site Slope"
+    en_US="Slope"
     pt_PT="Elevação"
   />
   <translate key="vSiteSlopeRise:Hdr1"
@@ -17842,7 +17843,7 @@ por relâmpago"
     default="0.00"
   />
   <translate key="vSiteSunShading:Label"
-    en_US="Site Fuel Shading from the Sun"
+    en_US="Fuel Shading from the Sun"
     pt_PT="Sombreamento do combustível"
   />
   <translate key="vSiteSunShading:Desc"
@@ -17850,11 +17851,11 @@ por relâmpago"
     pt_PT="Sombreamento do combustível por núvens e estrato arbóreo"
   />
   <translate key="vSiteSunShading:Hdr0"
-    en_US="Site"
+    en_US="Fuel Shading"
     pt_PT="Combustível"
   />
   <translate key="vSiteSunShading:Hdr1"
-    en_US="Fuel Shading"
+    en_US="from Sun"
     pt_PT="Sombreamento"
   />
 
@@ -17868,7 +17869,7 @@ por relâmpago"
     sortOut="99:999:9"
   />
   <translate key="vSiteTimeZone:Label"
-    en_US="Site Time Zone"
+    en_US="Time Zone"
     pt_PT="Fuso horário"
   />
   <translate key="vSiteTimeZone:Desc"
@@ -17876,11 +17877,11 @@ por relâmpago"
     pt_PT="Designação do fuso horário tal como EST, CST, MST, PST, EDT, MDT, CDT, PDT, etc"
   />
   <translate key="vSiteTimeZone:Hdr0"
-    en_US="Site Location"
+    en_US="Time"
     pt_PT="Horário"
   />
   <translate key="vSiteTimeZone:Hdr1"
-    en_US="Time Zone"
+    en_US="Zone"
     pt_PT="Fuso"
   />
 
@@ -17901,7 +17902,7 @@ por relâmpago"
     wizard="compassNorthWizard"
   />
   <translate key="vSiteUpslopeDirFromNorth:Label"
-    en_US="Site Upslope Direction (from north)"
+    en_US="Upslope Direction (from north)"
     pt_PT="Direcção do máximo declive (em relação ao norte)"
   />
   <translate key="vSiteUpslopeDirFromNorth:Desc"
@@ -17909,11 +17910,11 @@ por relâmpago"
     pt_PT="Azimute (graus a partir do norte no sentido da deslocação dos ponteiros do relógio) da direcção ascendente do declive."
   />
   <translate key="vSiteUpslopeDirFromNorth:Hdr0"
-    en_US="Site Slope"
+    en_US="Upslope Dir"
     pt_PT="Declive ascendente"
   />
   <translate key="vSiteUpslopeDirFromNorth:Hdr1"
-    en_US="Upslope Direction"
+    en_US="from North"
     pt_PT="Direcção"
   />
 
@@ -17948,7 +17949,7 @@ a Burning Pile"
     pt_PT="??? Cover height used to determine maximum spotting distance from a burning pile."
   />
   <translate key="vSpotCoverHtBurningPile:Hdr0"
-    en_US="Pile Burn"
+    en_US="Burning Pile"
     pt_PT="Pile Burn"
   />
   <translate key="vSpotCoverHtBurningPile:Hdr1"
@@ -17985,7 +17986,7 @@ a Wind Driven Surface Fire"
     pt_PT="??? Cover height used to determine maximum spotting distance from a surface fire."
   />
   <translate key="vSpotCoverHtSurfaceFire:Hdr0"
-    en_US="Surf Fire"
+    en_US="Surface Fire"
     pt_PT="??? Surf Fire"
   />
   <translate key="vSpotCoverHtSurfaceFire:Hdr1"
@@ -18022,15 +18023,13 @@ Torching Trees"
     pt_PT="??? Cover height used to determine maximum spotting distance from torching trees."
   />
   <translate key="vSpotCoverHtTorchingTrees:Hdr0"
-    en_US="Torch Trees"
+    en_US="Torching Tree"
     pt_PT="??? Torch Trees"
   />
   <translate key="vSpotCoverHtTorchingTrees:Hdr1"
     en_US="Cover Ht"
     pt_PT="??? Cover Ht"
   />
-
-  <!--  -->
 
   <variable name="vSpotDistActiveCrown"
     type="continuous"
@@ -18098,7 +18097,7 @@ combustão com origem em resíduos empilhados"
     pt_PT="Distância de projecção máxima de partículas em combustão com origem em resíduos empilhados."
   />
   <translate key="vSpotDistBurningPile:Hdr0"
-    en_US="Pile Burn"
+    en_US="Burning Pile"
     pt_PT="Combustão de resíduos empilhados"
   />
   <translate key="vSpotDistBurningPile:Hdr1"
@@ -18135,7 +18134,7 @@ combustão de um fogo de superfície"
     pt_PT="Distância de projecção máxima de partículas em combustão com origem num fogo de superfície."
   />
   <translate key="vSpotDistSurfaceFire:Hdr0"
-    en_US="Surf Fire"
+    en_US="Surface Fire"
     pt_PT="Fogo de superfície"
   />
   <translate key="vSpotDistSurfaceFire:Hdr1"
@@ -18172,7 +18171,7 @@ combustão de árvores em chamas"
     pt_PT="Distância de projecção máxima de partículas em combustão com origem em árvores em chamas."
   />
   <translate key="vSpotDistTorchingTrees:Hdr0"
-    en_US="Torch Tree"
+    en_US="Torching Tree"
     pt_PT="Árvore em chamas"
   />
   <translate key="vSpotDistTorchingTrees:Hdr1"
@@ -18209,7 +18208,7 @@ a Wind Driven Surface Fire"
     pt_PT="??? Maximum firebrand drift distance from a wind-driven surface fire."
   />
   <translate key="vSpotFirebrandDriftSurfaceFire:Hdr0"
-    en_US="Surf Fire"
+    en_US="Surface Fire"
     pt_PT="Fogo de superfície"
   />
   <translate key="vSpotFirebrandDriftSurfaceFire:Hdr1"
@@ -18314,7 +18313,7 @@ a Burning Pile"
     pt_PT="??? Maximum firebrand height from a burning pile."
   />
   <translate key="vSpotFirebrandHtBurningPile:Hdr0"
-    en_US="Pile Burn"
+    en_US="Burning Pile"
     pt_PT="Combustão de resíduos empilhados"
   />
   <translate key="vSpotFirebrandHtBurningPile:Hdr1"
@@ -18388,7 +18387,7 @@ Torching Trees"
     pt_PT="??? Maxiumum firebrand height from torching trees."
   />
   <translate key="vSpotFirebrandHtTorchingTrees:Hdr0"
-    en_US="Torching Trees"
+    en_US="Torching Tree"
     pt_PT="Árvore em chamas"
   />
   <translate key="vSpotFirebrandHtTorchingTrees:Hdr1"
@@ -18563,7 +18562,7 @@ Torching Trees"
     pt_PT="??? Flat Terrain Spot Dist from Active Crown Fire"
   />
   <translate key="vSpotFlatDistActiveCrown:Label:Wrapped"
-    en_US="Flat Terrain Spotting Distance from
+    en_US="Flat Terrain Spot Distance from
 Active Crown Fire"
     pt_PT="??? Flat Terrain Spotting Distance from
 Active Crown Fire"
@@ -18610,7 +18609,7 @@ a Burning Pile"
     pt_PT="??? Flat terrain maximum spotting distance from a burning pile."
   />
   <translate key="vSpotFlatDistBurningPile:Hdr0"
-    en_US="Pile Burn"
+    en_US="Burning Pile"
     pt_PT="Combustão de resíduos empilhados"
   />
   <translate key="vSpotFlatDistBurningPile:Hdr1"
@@ -18684,7 +18683,7 @@ Torching Trees"
     pt_PT="??? Flat terrain maximum spotting distance from torching trees."
   />
   <translate key="vSpotFlatDistTorchingTrees:Hdr0"
-    en_US="Torching Trees"
+    en_US="Torching Tree"
     pt_PT="Árvore em chamas"
   />
   <translate key="vSpotFlatDistTorchingTrees:Hdr1"
@@ -18778,7 +18777,7 @@ combustão com origem em Active Crown Fire"
     pt_PT="Distância de projecção máxima de partículas em combustão com origem em resíduos empilhados, expressa em unidades do mapa."
   />
   <translate key="vSpotMapDistBurningPile:Hdr0"
-    en_US="Pile Burn"
+    en_US="Burning Pile"
     pt_PT="Combustão de resíduos empilhados"
   />
   <translate key="vSpotMapDistBurningPile:Hdr1"
@@ -18810,7 +18809,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     pt_PT="Distância de projecção máxima expressa em unidades do mapa de partículas em combustão com origem num fogo de superfície."
   />
   <translate key="vSpotMapDistSurfaceFire:Hdr0"
-    en_US="Surf Fire"
+    en_US="Surface Fire"
     pt_PT="Fogo de superfície"
   />
   <translate key="vSpotMapDistSurfaceFire:Hdr1"
@@ -18841,7 +18840,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     pt_PT="Distância de projecção máxima expressa em unidades do mapa de partículas em combustão com origem em árvores em chamas."
   />
   <translate key="vSpotMapDistTorchingTrees:Hdr0"
-    en_US="Torch Tree"
+    en_US="Torching Tree"
     pt_PT="Árvore em chamas"
   />
   <translate key="vSpotMapDistTorchingTrees:Hdr1"
@@ -19242,11 +19241,11 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     pt_PT="Fracção do comprimento da copa dessecada no vector de propagação do fogo especificado."
   />
   <translate key="vTreeCrownLengFractionScorchedAtVector:Hdr0"
-    en_US="Scorched"
+    en_US="Crown Length"
     pt_PT="Dessecada"
   />
   <translate key="vTreeCrownLengFractionScorchedAtVector:Hdr1"
-    en_US="Crown Leng"
+    en_US="Scorched"
     pt_PT="Comp copa"
   />
 
@@ -19273,11 +19272,11 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     pt_PT="Comprimento da copa dessecada no vector de propagação do fogo especificado."
   />
   <translate key="vTreeCrownLengScorchedAtVector:Hdr0"
-    en_US="Scorched"
+    en_US="Crown Length"
     pt_PT="Dessecada"
   />
   <translate key="vTreeCrownLengScorchedAtVector:Hdr1"
-    en_US="Crown Leng"
+    en_US="Scorched"
     pt_PT="Comp copa"
   />
 
@@ -19336,11 +19335,11 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     pt_PT="Volume da copa dessecada no vector de propagação"
   />
   <translate key="vTreeCrownVolScorchedAtVector:Hdr0"
-    en_US="Scorched"
+    en_US="Crown Volume"
     pt_PT="dessecada"
   />
   <translate key="vTreeCrownVolScorchedAtVector:Hdr1"
-    en_US="Crown Vol"
+    en_US="Scorched"
     pt_PT="Vol copa"
   />
 
@@ -19491,7 +19490,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     pt_PT="Probabilidade de árvores morrerem devido a efeitos do fogo na direcção de propagação especificada."
   />
   <translate key="vTreeMortalityRateAspenAtVector:Hdr0"
-    en_US="Aspen"
+    en_US="Prob of Aspen"
     pt_PT="??? Aspen"
   />
   <translate key="vTreeMortalityRateAspenAtVector:Hdr1"
@@ -19548,7 +19547,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     pt_PT="Espécie arbórea para modelo de mortalidade"
   />
   <translate key="vTreeSpecies:Hdr0"
-    en_US="Mort Tree"
+    en_US="Mortality Tree"
     pt_PT="Árv mort"
   />
   <translate key="vTreeSpecies:Hdr1"
@@ -19662,7 +19661,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     pt_PT="??? WAF"
   />
   <translate key="vWindAdjMethod:Hdr1"
-    en_US="Calculation"
+    en_US="Calc"
     pt_PT="??? Calculation"
   />
 
@@ -19743,11 +19742,11 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     pt_PT="??? Wind source direction as upslope, cross-slope, and/or down-slope."
   />
   <translate key="vWindDirFromTerrain:Hdr0"
-    en_US="Wind"
+    en_US="Wind Dir"
     pt_PT="??? Wind"
   />
   <translate key="vWindDirFromTerrain:Hdr1"
-    en_US="Direction"
+    en_US=""
     pt_PT="??? Direction"
   />
 
@@ -19850,7 +19849,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     pt_PT="6 metros"
   />
   <translate key="vWindSpeedAt20Ft:Hdr1"
-    en_US="Wind"
+    en_US="Wind Speed"
     pt_PT="velocidade do vento"
   />
 

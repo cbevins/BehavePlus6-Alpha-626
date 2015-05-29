@@ -1,6 +1,25 @@
 =============================
 Collin D. Bevins
 LLCP0044
+May 22 - Jun 21, 2015
+?? hours
+=============================
+
+2015-05-29 (2.0 hours) [2.0 total]
+
+-- Created git repository branch "build615".
+
+-- Updated BehavePlus6.cpp and appwindow.cpp to Build 616.
+
+-- Made all the variable label and header text changes inside
+	BehavePlus6.xml as per BehavePlusVars5and6_FAH_SendTo_CB.xlsx.
+
+--	Committed changes.
+
+
+=============================
+Collin D. Bevins
+LLCP0044
 Apr 22 - May 21, 2015
 54 hours
 =============================
