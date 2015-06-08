@@ -1,9 +1,37 @@
 =============================
 Collin D. Bevins
-LLCP0044
+LLCP0044 - BehavePlus6 Task
 May 22 - Jun 21, 2015
 ?? hours
 =============================
+
+2015-06-08 (2.0 hours) [7.5 total]
+
+--	Connected the Rothermel Crown Fire model QRadioButton
+	toggled(bool) signal to the 7 passive crown fire output
+	variable QCheckBox setDisabled() slots.
+	
+--	Ensure that the 7 passive crown fire output variables do
+	not appear in the output (even if they are checked) if the
+	CROWN module is configured to use Rothermel method rather
+	than the Reinhardt & Scott method.
+
+
+2015-06-05 (2.0 hours) [5.5 total]
+
+--	BehavePlus status meeting with FAH at Fire Lab.
+
+--	Decided to try distributing BP builds that don't require formal installation
+	(i.e., can be downloaded onto and run from a thumb drive)
+	
+--	FAH requested that when the Rothermel CROWN option is selected,
+	that passive crown variables be (1) greyed out on the input selection tab
+	and (2) no passive variables be output, even if they are selected.
+
+--	Transferred installed Build 615 directory structure into a zip file
+	and uploded it onto DropBox.  Sent FAH an email with a link to see if she
+	can unzip and run it without actual installation.
+
 
 2015-05-29 (1.5 hours) [3.5 total]
 

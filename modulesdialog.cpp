@@ -306,8 +306,9 @@ void ModulesDialog::slotOptions( int id )
 
 void ModulesDialog::containOptions( void )
 {
-    PropertyPage *p;
-    QButtonGroup *bg;
+    PropertyPage *p = 0;
+    QButtonGroup *bg = 0;
+	VarCheckBox *checkBox = 0;
     // Create the tabbed dialog
     PropertyTabDialog *dialog = new PropertyTabDialog( m_bp, m_bp->property(),
         "PropertyTabDialog:Contain:Caption", "containDialog" );
@@ -393,6 +394,7 @@ void ModulesDialog::crownOptions( void )
 {
     PropertyPage *p, *p1;
     QButtonGroup *bg;
+	VarCheckBox* varCheckBox = 0;
 	int row = 0;
     // Create the tabbed dialog
     PropertyTabDialog *dialog = new PropertyTabDialog( m_bp, m_bp->property(),
@@ -408,7 +410,7 @@ void ModulesDialog::crownOptions( void )
 	// Add the "Crown fire is calculated using" button group
     bg = p->addButtonGroup( "PropertyTabDialog:Crown:Inputs:Model:Caption",
                             row, 0, row, 0 ); row++;
-    p->addRadio( "crownConfModelRothermel",
+	QRadioButton* rothermelCrownButton = p->addRadio( "crownConfModelRothermel",
 		"PropertyTabDialog:Crown:Inputs:Model:Rothermel",
                   bg );
     p->addRadio( "crownConfModelScottReinhardt",
@@ -450,18 +452,30 @@ void ModulesDialog::crownOptions( void )
                   row, 0, row, 0 ); row++;
     p->addLabel( "!",
                   row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcPassiveSpreadRate",
+    varCheckBox = addOutput( p, "crownCalcPassiveSpreadRate",
                   "vCrownFirePassiveSpreadRate",
                   row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcPassiveHeatPerUnitArea",
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+	varCheckBox = addOutput( p, "crownCalcPassiveHeatPerUnitArea",
                   "vCrownFirePassiveHeatPerUnitArea",
                   row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcPassiveFireLineInt",
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+
+    varCheckBox = addOutput( p, "crownCalcPassiveFireLineInt",
                   "vCrownFirePassiveFireLineInt",
                   row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcPassiveFlameLeng",
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+    varCheckBox = addOutput( p, "crownCalcPassiveFlameLeng",
                   "vCrownFirePassiveFlameLeng",
                   row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
 
 	// Add the "Fire Type Outputs" page
     p = dialog->addPage( "PropertyTabDialog:Crown:FireTypeOutputs:Tab", 1, 1,
@@ -519,15 +533,23 @@ void ModulesDialog::crownOptions( void )
                   row, 0, row, 0 ); row++;
     p->addLabel( "!",
                   row, 0, row, 0 ); row++;
-	addOutput( p, "crownCalcPassiveSpreadDist",
+	varCheckBox = addOutput( p, "crownCalcPassiveSpreadDist",
                   "vCrownFirePassiveSpreadDist",
                   row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcPassiveFireArea",
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+ 
+	varCheckBox = addOutput( p, "crownCalcPassiveFireArea",
                   "vCrownFirePassiveFireArea",
                   row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcPassiveFirePerimeter",
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+	varCheckBox = addOutput( p, "crownCalcPassiveFirePerimeter",
                   "vCrownFirePassiveFirePerimeter",
                   row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
 
 	// Add the "Canopy Outputs" page
     p = dialog->addPage( "PropertyTabDialog:Crown:CanopyOutputs:Tab", 1, 1,

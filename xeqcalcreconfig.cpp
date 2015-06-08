@@ -405,6 +405,20 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
 		prop->boolean( "crownCalcPassiveSpreadRate" );
 	vCrownFirePassiveFireWidth->m_isUserOutput =
 		prop->boolean( "crownCalcPassiveFireWidth" );
+
+	// Build 616 - FAH sez no passive fire outputs if Rothermel crown model is selected
+	if ( prop->boolean( "crownConfModelRothermel" ) )
+	{
+		vCrownFirePassiveFireArea->m_isUserOutput = false;
+		vCrownFirePassiveSpreadDist->m_isUserOutput = false;
+		vCrownFirePassiveFlameLeng->m_isUserOutput = false;
+		vCrownFirePassiveHeatPerUnitArea->m_isUserOutput = false;
+		vCrownFirePassiveFireLineInt->m_isUserOutput = false;
+		vCrownFirePassiveFirePerimeter->m_isUserOutput = false;
+		vCrownFirePassiveSpreadRate->m_isUserOutput = false;
+		vCrownFirePassiveFireWidth->m_isUserOutput = false;
+	}
+
     return;
 }
 
