@@ -171,7 +171,7 @@ public:
 		double fli,
 		double hpua );
 	// Use this instead of setSite()
-	void setWind( double windSpeedAt20ft );	// wind speed at 20 ft (ft/min)
+	void setWindSpeedAt20FtFpm( double windSpeedAt20ft );	// wind speed at 20 ft (ft/min)
 	virtual void updateCanopy();
 	virtual void updateSurfaceFire();
 

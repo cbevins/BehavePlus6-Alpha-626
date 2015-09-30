@@ -253,8 +253,6 @@ static const char *FuelMoisVars[] =
     "vSurfaceFuelBedMextLive",
     "vSurfaceFuelBedMoisDead",
     "vSurfaceFuelBedMoisLive",
-	"vSurfaceFuelChaparralMoisLiveLeaf",
-	"vSurfaceFuelChaparralMoisLiveStem",
     "vSurfaceFuelMois0",
     "vSurfaceFuelMois1",
     "vSurfaceFuelMois2",
@@ -271,8 +269,6 @@ static const char *FuelMoisVars[] =
 
 static const char *FuelHeatVars[] =
 {
-	"vSurfaceFuelChaparralHeatLiveLeaf",
-	"vSurfaceFuelChaparralHeatLiveStem",
     "vSurfaceFuelHeatDead",
     "vSurfaceFuelHeatLive",
     "vSurfaceFuelHeat0",
@@ -634,6 +630,7 @@ static const char *FlameResidenceTimeVars[] =
 
 static const char *PalmettoAgeVars[] =
 {
+    "vSurfaceFuelChaparralAge",
     "vSurfaceFuelPalmettoAge",
     NULL
 };

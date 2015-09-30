@@ -1,4 +1,19 @@
 ---------------------------------------
+Build 616 - Sep 30, 2015
+---------------------------------------
+
+--	The special case Chaparral fuel model based on Rothermel
+	& Philpot (1973) and Cohen's FIRECAST code was simplified
+	as per FA Heinsch's change request.
+	(Issue #066FAH - Adding Chaparral Special Case Fuel Model
+	to SURFACE)
+	
+--	Fixes a number of bugs resulting from the introduction of
+	the chaparral special case fuel model (which has 9 fuel
+	particle types and was therefore causing overruns of arrays
+	that had previously been sized at maximum of 8 elements).
+	
+---------------------------------------
 Build 615 - May 12, 2015
 ---------------------------------------
 

@@ -729,10 +729,21 @@ double FBL_ChaparralMoistureLiveStem( double daysSinceMay1 )
 }
 
 //------------------------------------------------------------------------------
+/*! \brief Calculate the total chaparral fuel load from age and type.
+ *
+ * NOTE - Rothermel & Philpot (1973) used a factor of 0.0315 for chamise age,
+ * while Cohen used 0.0347 in FIRECAST.  According to Faith Ann Heinsch:
+ * <i>We are going to use Cohen’s calculation from FIRECAST. The change has to do
+ * with the fact that we are creating a proxy age from fuel bed depth rather than
+ * using an entered age. He had to make some corrections for that assumption.</i>
+ */
 double FBL_ChaparralTotalFuelLoad( double age, bool isChamise )
 {
+	double factor1 = 0.0315;	// Chamise load factor from Rothermel & Philpot (1973)
+	double factor2 = 0.0347;	// Chamise load factor from Cohen's FIRECAST code
+	double chamiseFactor = factor2;
 	double tpa = ( isChamise )
-		? age / ( 1.4459 + 0.0315 * age )	// ton/ac
+		? age / ( 1.4459 + factor2 * age )	// ton/ac
 		: age / ( 0.4849 + 0.0170 * age );	// ton/ac
 	double load = tpa * 2000. / 43560.;		// lb/ft2
 	return load;

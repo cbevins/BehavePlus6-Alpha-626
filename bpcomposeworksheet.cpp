@@ -1475,7 +1475,7 @@ void BpDocument::runOptions( QString* runOpt, int& nOptions )
 	        translate( runOpt[nOptions++],
 		        "BpDocument:Worksheet:RunOptions:Crown:Rothermel" );
 		}
-		else if ( property()->boolean( "crownConfModelScotteReinhardt" ) )
+		else if ( property()->boolean( "crownConfModelScottReinhardt" ) )
 		{
 	        translate( runOpt[nOptions++],
 		        "BpDocument:Worksheet:RunOptions:Crown:ScottReinhardt" );

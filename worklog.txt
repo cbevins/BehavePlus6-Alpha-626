@@ -1,8 +1,189 @@
 =============================
 Collin D. Bevins
+LLCP0064 - BehavePlus6 Task
+Sep 16 - Oct 21, 2015
+??? hours
+=============================
+
+2015-09-16 (5.0 hours) [5.0 total]
+
+-- Discovered and fixed bug with array sizes that resulted from
+	adding the Chaparral Fuel Model (which required expaning
+	maximum number of particles from 8 to 10).  (3.0 h)
+
+--	Discovered and fixed bug "crownConfModelScotteReinhardt not found" (0.5 h)	
+
+--	Discovered and fixed bug where wind speed at 20-ft was being reset
+	to zero in Bp6CrownFire.cpp, causing l/w to be 1, powerWind to be zero,
+	and powerRatio to be zero. (1.5 h)
+
+2015-09-28 (8.0 hours) [13.0 total]
+
+-- Began simplification of chaparral special fuels case as per FAH and Cohen
+
+-- Removed following 60 elements from BehavePlus6.xml:
+	- vSurfaceFuelChaparralDate
+	- vSurfaceFuelChaparralDayOfMonth
+	- vSurfaceFuelChaparralDaysSinceMay1
+	- vSurfaceFuelChaparralHeatLiveLeaf
+	- vSurfaceFuelChaparralHeatLiveStem
+	- vSurfaceFuelChaparralMoisLiveLeaf
+	- vSurfaceFuelChaparralMoisLiveStem
+	- vSurfaceFuelChaparralMonthOfYear
+	- fSurfaceFuelChaparralDaysSinceMay1
+	- fSurfaceFuelChaparralDeadFuelFraction
+	- fSurfaceFuelChaparralDepth
+	- fSurfaceFuelChaparralHeatLiveLeaf
+	- fSurfaceFuelChaparralHeatLiveStem
+	- fSurfaceFuelChaparralMoisLiveLeaf
+	- fSurfaceFuelChaparralMoisLiveStem
+	- fSurfaceFuelMoisLiveChaparral
+	- surfaceCalcChaparralDaysSinceMay1
+	- surfaceCalcChaparralDeadFuelFraction
+	- surfaceCalcChaparralDepth
+	- surfaceCalcChaparralHeatLiveLeaf
+	- surfaceCalcChaparralHeatLiveStem
+	- surfaceCalcChaparralMoisLiveLeaf
+	- surfaceCalcChaparralMoisLiveStem
+	- surfaceConfFuelChaparralDepthFromInput
+	- surfaceConfFuelChaparralDepthFromAgeType
+	- surfaceConfFuelChaparralTotalLoadFromAgeType
+	- surfaceConfFuelChaparralDeadFractionFromInput
+	- surfaceConfFuelChaparralDeadFractionFromAge
+	- surfaceConfFuelChaparralHeatLiveFromInput
+	- surfaceConfFuelChaparralHeatLiveFromDays
+	- surfaceConfFuelChaparralMoisLiveFromInput
+	- surfaceConfFuelChaparralMoisLiveFromDays
+	- surfaceConfFuelChaparralDaysFromInput
+	- surfaceConfFuelChaparralDaysFromDate
+	- PropertyTabDialog:Surface:Chaparral:TotalLoad:AgeType
+	- PropertyTabDialog:Surface:Chaparral:Depth:Caption
+	- PropertyTabDialog:Surface:Chaparral:Depth:Input
+	- PropertyTabDialog:Surface:Chaparral:Depth:AgeType
+	- PropertyTabDialog:Surface:Chaparral:DeadFraction:Caption
+	- PropertyTabDialog:Surface:Chaparral:DeadFraction:Input
+	- PropertyTabDialog:Surface:Chaparral:DeadFraction:Age
+	- PropertyTabDialog:Surface:Chaparral:HeatLive:Caption
+	- PropertyTabDialog:Surface:Chaparral:HeatLive:Input
+	- PropertyTabDialog:Surface:Chaparral:HeatLive:Days
+	- PropertyTabDialog:Surface:Chaparral:MoisLive:Caption
+	- PropertyTabDialog:Surface:Chaparral:MoisLive:Input
+	- PropertyTabDialog:Surface:Chaparral:MoisLive:Days
+	- PropertyTabDialog:Surface:Chaparral:Days:Caption
+	- PropertyTabDialog:Surface:Chaparral:Days:Input
+	- PropertyTabDialog:Surface:Chaparral:Days:Date
+
+--	Removed the following elements from the  modulesdialog.cpp
+	Surface Module > Input Options > Chaparral dialog:
+	- Fuel depth is...
+	- Dead fuel fraction is...
+	- Live fuel heat of combustion is...
+	- Live fuel moisture content is...
+	- Days since May 1st is...
+	
+-- Removed code block from EqCalc::FuelBedHeatSink() where
+		if chaparral fuels are in use, the live fuel moisture of
+		extinction values of Weris et.al. are passed into the surface
+		fire model.
+	
+--	Removed following methods from EqCalc (xeqcal.cpp, xeqcal.h):
+	- EqCalc::FuelChaparralDaysSinceMay1( void )
+	- EqCalc::FuelChaparralHeatLiveLeaf( void )
+	- EqCalc::FuelChaparralHeatLiveStem( void )
+	- EqCalc::FuelChaparralMoisLiveLeaf( void )
+	- EqCalc::FuelChaparralMoisLiveStem( void )	
+	- EqCalc::FuelMoisLiveChaparral( void )
+	
+-- Updated EqCalc::FuelChaparralParms() as follows:
+	- Dead fuel moisture of extinction set to 0.30.
+	- Total mineral content set to 0.055 for all fuel particles
+	- Set live fuel heat of combustion to 10500 and 9550.
+	
+-- Removed following elements from EqCalc class:
+	- vSurfaceFuelChaparralDayOfMonth
+    - vSurfaceFuelChaparralDaysSinceMay1
+    - vSurfaceFuelChaparralHeatLiveLeaf
+    - vSurfaceFuelChaparralHeatLiveStem
+    - vSurfaceFuelChaparralMoisLiveLeaf
+    - vSurfaceFuelChaparralMoisLiveStem
+    - vSurfaceFuelChaparralMonthOfYear
+    - fSurfaceFuelChaparralDaysSinceMay1
+    - fSurfaceFuelChaparralDeadFuelFraction
+    - fSurfaceFuelChaparralDepth
+    - fSurfaceFuelChaparralHeatLiveLeaf
+    - fSurfaceFuelChaparralHeatLiveStem
+    - fSurfaceFuelChaparralMoisLiveLeaf
+    - fSurfaceFuelChaparralMoisLiveStem
+    - fSurfaceFuelMoisLiveChaparral
+    
+-- Updated xeqcalcreconfig.cpp
+
+-- Removed the following from the unitseditrdialog.cpp:
+	- vSurfaceFuelChaparralMoisLiveLeaf
+	- vSurfaceFuelChaparralMoisLiveStem
+	- vSurfaceFuelChaparralHeatLiveLeaf
+	- vSurfaceFuelChaparralHeatLiveStem
+
+
+2015-09-29 (2.0 hours) [15.0 total]
+
+- Developed PHP test program ChaparralCalculator.php to compare
+	and test chaparral fuel outputs.
+	
+-- Wrote FAH email concerning which factor (R&P or Cohen) to use
+	in calculating total load for chamise
+	
+-- Discovered error in R&P equations such that total of live fuel
+	particles loads to not equal the total live fuel load.
+	Added adjustment that reconciles the large live fuel load class
+	so that it completes the full live fuel load.
+
+
+2015-09-30 (3.0 hours) [18.0 total]
+	
+-- As per instructions from FAH, will use Cohen's FIRECAST factor of 0.0347
+	for determining chamise total fuel load, rather than Rothermel & Philpot's
+	original (1973) factor of 0.0315.
+	
+-- Began creating Build 616 package:
+	- Created wix_bp6_product_616.wxs
+	- Updated wixcandle.bat
+	- Updated wixlight.bat
+	- Updated wix_bp6_component_docfolder.wxs
+	- Recompiled a release version of Build 616
+	- Created the installation package bp6_616.msi
+	- Performed a test installation
+	- Updated the ReleaseNotes
+	- Uploaded the bp6_616.msi installation package and ReleaseNotes.txt
+		to DropBox.
+	- Notified FAH that Build 616 was available for download and testing.
+	
+	
+=============================
+Collin D. Bevins
+LLCP0044 - BehavePlus6 Task
+Jun 22 - Jul 21, 2015
+1.5 hours
+=============================
+
+2015-07-06 (1.5 hours) [1.5 total]
+
+--	Created a local Git repository for BehavePlus 5.0.5
+
+--	Created a GitBub repository for BehavePlus5 and upload
+	my local BehavePlus5.0.5 Git repository onto it
+	
+-- Sent FAH an email notifying her of the GitHub repository.
+
+--	Responded to FAH request to create a Qt 3.3.8 installation
+	zip file and upload it to DropBox.
+	
+	
+=============================
+Collin D. Bevins
 LLCP0044 - BehavePlus6 Task
 May 22 - Jun 21, 2015
-?? hours
+7.5 hours
 =============================
 
 2015-06-08 (2.0 hours) [7.5 total]

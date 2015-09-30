@@ -1180,63 +1180,18 @@ void EqCalc::reconfigureSurfaceModule( PropertyDict *prop, int /* release */ )
         // Use Chaparral versions of these functions:
         fSurfaceFuelChaparralModel->m_active = true;
         fSurfaceFuelChaparralParms->m_active = true;
-		// Fuel depth options
-		if ( prop->boolean( "surfaceConfFuelChaparralDepthFromAgeType" ) )
+
+		// FAH and Cohen say to use this set of restricted options:
+		// Age is always calculated from fuel bed depth
+		fSurfaceFuelChaparralAgeFromDepthType->m_active = true;
+		// Total fuel load is either input or calculted from depth (and age)
+		if ( prop->boolean( "surfaceConfFuelChaparralTotalLoadFromDepthType" ) )
 		{
-			fSurfaceFuelChaparralDepth->m_active = true;
-		}
-		else // if ( prop->boolean( "surfaceConfFuelChaparralDepthFromInput" ) )
-		{
-			fSurfaceFuelChaparralDepth->m_active = false;
-		}
-		// Total fuel load options
-		if ( prop->boolean( "surfaceConfFuelChaparralTotalLoadFromAgeType" ) )
-		{
-			fSurfaceFuelChaparralLoadTotal->m_active = true;
+			fSurfaceFuelChaparralLoadTotalFromAgeType->m_active = true;
 		}
 		else // if ( prop->boolean( "surfaceConfFuelChaparralTotalLoadFromInput" ) )
 		{
-			fSurfaceFuelChaparralLoadTotal->m_active = false;
-		}
-		// Dead fuel fraction option
-		if ( prop->boolean( "surfaceConfFuelChaparralDeadFractionFromAge" ) )
-		{
-			fSurfaceFuelChaparralDeadFuelFraction->m_active = true;
-		}
-		else // if ( prop->boolean( "surfaceConfFuelChaparralDeadFractionFromInput" ) )
-		{
-			fSurfaceFuelChaparralDeadFuelFraction->m_active = false;
-		}
-		// Live heat of combustion option
-		if ( prop->boolean( "surfaceConfFuelChaparralHeatLiveFromDays" ) )
-		{
-			fSurfaceFuelChaparralHeatLiveLeaf->m_active = true;
-			fSurfaceFuelChaparralHeatLiveStem->m_active = true;
-		}
-		else // if ( prop->boolean( "surfaceConfFuelChaparralHeatLiveFromDays" ) )
-		{
-			fSurfaceFuelChaparralHeatLiveLeaf->m_active = false;
-			fSurfaceFuelChaparralHeatLiveStem->m_active = false;
-		}
-		// Live fuel moisture content option
-		if ( prop->boolean( "surfaceConfFuelChaparralMoisLiveFromDays" ) )
-		{
-			fSurfaceFuelChaparralMoisLiveLeaf->m_active = true;
-			fSurfaceFuelChaparralMoisLiveStem->m_active = true;
-		}
-		else // if ( prop->boolean( "surfaceConfFuelChaparralMoisLiveFromDays" ) )
-		{
-			fSurfaceFuelChaparralMoisLiveLeaf->m_active = false;
-			fSurfaceFuelChaparralMoisLiveStem->m_active = false;
-		}
-		// Days since May 1st option
-		if ( prop->boolean( "surfaceConfFuelChaparralDaysFromDate" ) )
-		{
-			fSurfaceFuelChaparralDaysSinceMay1->m_active = true;
-		}
-		else // if ( prop->boolean( "surfaceConfFuelChaparralDaysFromDate" ) )
-		{
-			fSurfaceFuelChaparralDaysSinceMay1->m_active = false;
+			fSurfaceFuelChaparralLoadTotalFromAgeType->m_active = false;
 		}
 
 		// Keep this off the worksheet
@@ -1248,16 +1203,6 @@ void EqCalc::reconfigureSurfaceModule( PropertyDict *prop, int /* release */ )
         // Output variables
         vSurfaceFuelChaparralAge->m_isUserOutput =
             prop->boolean( "surfaceCalcChaparralAge" );
-        vSurfaceFuelChaparralDaysSinceMay1->m_isUserOutput =
-            prop->boolean( "surfaceCalcChaparralDaysSinceMay1" );
-        vSurfaceFuelChaparralDepth->m_isUserOutput =
-            prop->boolean( "surfaceCalcChaparralDepth" );
-        vSurfaceFuelChaparralDeadFuelFraction->m_isUserOutput =
-            prop->boolean( "surfaceCalcChaparralDeadFuelFraction" );
-        vSurfaceFuelChaparralHeatLiveLeaf->m_isUserOutput =
-            prop->boolean( "surfaceCalcChaparralHeatLiveLeaf" );
-        vSurfaceFuelChaparralHeatLiveStem->m_isUserOutput =
-            prop->boolean( "surfaceCalcChaparralHeatLiveStem" );
         vSurfaceFuelChaparralLoadDead1->m_isUserOutput =
             prop->boolean( "surfaceCalcChaparralLoadDead1" );
         vSurfaceFuelChaparralLoadDead2->m_isUserOutput =
@@ -1282,17 +1227,6 @@ void EqCalc::reconfigureSurfaceModule( PropertyDict *prop, int /* release */ )
             prop->boolean( "surfaceCalcChaparralLoadTotalDead" );
         vSurfaceFuelChaparralLoadTotalLive->m_isUserOutput =
             prop->boolean( "surfaceCalcChaparralLoadTotalLive" );
-        vSurfaceFuelChaparralMoisLiveLeaf->m_isUserOutput =
-            prop->boolean( "surfaceCalcChaparralMoisLiveLeaf" );
-        vSurfaceFuelChaparralMoisLiveStem->m_isUserOutput =
-            prop->boolean( "surfaceCalcChaparralMoisLiveStem" );
-
-		if ( prop->boolean( "surfaceConfFuelChaparralDeadFractionFromInput" )
-		  && prop->boolean( "surfaceConfFuelChaparralDepthFromInput" )
-		  && prop->boolean( "surfaceConfFuelChaparralTotalLoadFromInput" ) )
-		{
-			fSurfaceFuelChaparralAgeFromDepth->m_active = true;
-		}
     }
 
     //--------------------------------------------------------------------------
@@ -1379,15 +1313,6 @@ void EqCalc::reconfigureSurfaceModule( PropertyDict *prop, int /* release */ )
         // Must derive time lag fuel moisture from moistures scenario
         fSurfaceFuelMoisScenarioModel->m_active = true;
     }
-    //--------------------------------------------------------------------------
-    // Choice 3.5: Chaparral live fuel moisture is calculated
-    //--------------------------------------------------------------------------
-
-	if ( prop->boolean( "surfaceConfFuelChaparral" )
-	  && prop->boolean( "surfaceConfFuelChaparralMoisLiveFromDays" ) )
-    {
-		fSurfaceFuelMoisLiveChaparral->m_active = true;
-	}
 
     //--------------------------------------------------------------------------
     // Option 4: Wind speed is entered as:

@@ -411,7 +411,7 @@ void Bp6CrownFire::resetCanopyInput()
 	m_canopyFoliarMois	= 5.;
 	m_canopyHeat		= 8000.;	// 7732.64 = equals 18,000 kJ/kg
 	m_canopyHeight		= 0.;
-	m_windSpeedAt20ft	= 0.;
+	//m_windSpeedAt20ft	= 0.;
 }
 
 //------------------------------------------------------------------------------
@@ -530,7 +530,7 @@ void Bp6CrownFire::setSite(
         double windDirFromUpslope,		// wind heading direction (degrees clockwise from upslope)
 		bool   applyWindSpeedLimit )	// if TRUE, apply Rothermel's upper wind speed limit
 {
-	setWind( midflameWindSpeed / 0.4 );
+	setWindSpeedAt20FtFpm( 88. * midflameWindSpeed / 0.4 );
 }
 
 //------------------------------------------------------------------------------
@@ -568,12 +568,13 @@ void Bp6CrownFire::setSurfaceFire( double ros, double fli, double hpua )
  *	This overrides the Bp6SurfaceFire::setSite(), since the crown fire models
  *	treats many of the arguments as constants.
  */
-void Bp6CrownFire::setWind(
+void Bp6CrownFire::setWindSpeedAt20FtFpm(
         double windSpeedAt20Ft )		// mid-flame wind speed (ft/min)
 {
 	resetSiteOutput();
 	m_slopeFraction			= 0.0;
 	m_aspect				= 180.;
+	m_windSpeedAt20ft		= windSpeedAt20Ft;
 	m_midflameWindSpeed		= 0.4 * windSpeedAt20Ft;
 	m_windDirFromUpslope	= 0.;
 	m_applyWindSpeedLimit	= true;

@@ -1517,20 +1517,11 @@
       <Component Id="cmp88F1352540B44ccd9BA16B11CFB759C3" Directory="Html" Guid="{C86536B9-DEF1-42b2-8D5C-9E21870FBBF1}">
         <File Id="fil7814C6328D00450796451DEBDF0B509B" KeyPath="yes" Source="DocFolder\en_US\Html\vSurfaceFuelChaparralAge.html" />
       </Component>
-      <Component Id="cmp8C35E2982AEA4fe7B9DC9C6BD7CEBD20" Directory="Html" Guid="{4BF241DE-52EB-4d25-9A88-42ADCD571207}">
-        <File Id="fil4112947A3A934c5b86D2E670E3B183E8" KeyPath="yes" Source="DocFolder\en_US\Html\vSurfaceFuelChaparralDate.html" />
-      </Component>
-      <Component Id="cmp347CA794CE5D43b3BE6AC39FA963F1F0" Directory="Html" Guid="{D8D1235B-F704-4dfe-8224-D90AC0BB46FE}">
-        <File Id="filD00CDCA958C34493B64453DD84AF6300" KeyPath="yes" Source="DocFolder\en_US\Html\vSurfaceFuelChaparralDaysSinceMay1.html" />
-      </Component>
       <Component Id="cmp4E44327D532D42a897B90EC40DD49422" Directory="Html" Guid="{FB370C6E-6314-41b1-A655-8C9C99454239}">
         <File Id="fil24EA174394E3423f9F1D888EBA16E81D" KeyPath="yes" Source="DocFolder\en_US\Html\vSurfaceFuelChaparralDeadFuelFraction.html" />
       </Component>
       <Component Id="cmp8484E840064B48cd9FCF14097019DCD2" Directory="Html" Guid="{F89B98A6-2E18-49b0-A490-FAB03E0B5677}">
         <File Id="fil5B819F2B90924d5b809CF740260E389E" KeyPath="yes" Source="DocFolder\en_US\Html\vSurfaceFuelChaparralDepth.html" />
-      </Component>
-      <Component Id="cmp8BA8B322BEEF4531BBEC39383C37C497" Directory="Html" Guid="{8FC2FC7A-6A0B-4e64-93BF-49339ED543B6}">
-        <File Id="fil1D747527CCCE48b1939F10DA59968077" KeyPath="yes" Source="DocFolder\en_US\Html\vSurfaceFuelChaparralHeatLive.html" />
       </Component>
       <Component Id="cmp3E038600E9304fd4969D4D0DFA737F51" Directory="Html" Guid="{CBBBEE65-61CE-4ed1-B488-367715BFCF59}">
         <File Id="filBE8DDAE6E72E4bc1849F74B0E4E5247E" KeyPath="yes" Source="DocFolder\en_US\Html\vSurfaceFuelChaparralLoadDead.html" />
@@ -1540,9 +1531,6 @@
       </Component>
       <Component Id="cmpA145370D7F714114A1D2EC7519F84FE9" Directory="Html" Guid="{AB5F34FF-2C9E-43a9-BEC1-FE6FC895EAB7}">
         <File Id="filD9646D0D8E5B4f1cB44F71F01C0ED909" KeyPath="yes" Source="DocFolder\en_US\Html\vSurfaceFuelChaparralLoadTotal.html" />
-      </Component>
-      <Component Id="cmp10FAD64147C64329B30B7FDC78E91C00" Directory="Html" Guid="{2C164012-A045-42e2-9CA3-A86A163D6EF1}">
-        <File Id="fil7A3AD7AAB7824743812276AF35C6DB6E" KeyPath="yes" Source="DocFolder\en_US\Html\vSurfaceFuelChaparralMoisLive.html" />
       </Component>
       <Component Id="cmp669E25C770C44e92B566D0D050A99F8B" Directory="Html" Guid="{F9FA0697-9645-49f8-BDA5-FA7D64B976C8}">
         <File Id="fil6B1ECEC36903434dB43BAA3074902F98" KeyPath="yes" Source="DocFolder\en_US\Html\vSurfaceFuelChaparralType.html" />

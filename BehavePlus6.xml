@@ -2456,18 +2456,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vSurfaceFuelChaparralDate.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <file name="vSurfaceFuelChaparralDaysSinceMay1.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
   <file name="vSurfaceFuelChaparralDeadFuelFraction.html"
     type="DocHtml"
     permission="ERw"
@@ -2475,12 +2463,6 @@
     releaseThru="99999"
   />
   <file name="vSurfaceFuelChaparralDepth.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <file name="vSurfaceFuelChaparralHeatLive.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
@@ -2499,12 +2481,6 @@
     releaseThru="99999"
   />
   <file name="vSurfaceFuelChaparralLoadTotal.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <file name="vSurfaceFuelChaparralMoisLive.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
@@ -13026,68 +13002,6 @@ por relâmpago"
     pt_PT="Age"
   />
 
-  <variable name="vSurfaceFuelChaparralDayOfMonth"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vSurfaceFuelChaparralDate.html"
-    sortIn="01:460:0"
-    sortOut="01:999:9"
-    nativeUnits="" nativeDecimals="0"
-    englishUnits="" englishDecimals="0"
-    metricUnits="" metricDecimals="0"
-    minimum="1"
-    maximum="31"
-    default="1"
-  />
-  <translate key="vSurfaceFuelChaparralDayOfMonth:Label"
-      en_US="Chaparral Fuel Day-of-the-Month"
-      pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralDayOfMonth:Desc"
-    en_US="Chaparral seasonal day of the month"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralDayOfMonth:Hdr0"
-    en_US="Chaparral Fuel"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralDayOfMonth:Hdr1"
-    en_US="Day of the Month"
-    pt_PT=""
-  />
-
-  <variable name="vSurfaceFuelChaparralDaysSinceMay1"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vSurfaceFuelChaparralDaysSinceMay1.html"
-    sortIn="01:465:0"
-    sortOut="01:760:0"
-    nativeUnits="" nativeDecimals="0"
-    englishUnits="" englishDecimals="0"
-    metricUnits="" metricDecimals="0"
-    minimum="0"
-    maximum="184"
-    default="0"
-  />
-  <translate key="vSurfaceFuelChaparralDaysSinceMay1:Label"
-      en_US="Chaparral Fuel Days Since May 1st"
-      pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralDaysSinceMay1:Desc"
-    en_US="Chaparral seasonal days since May 1st"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralDaysSinceMay1:Hdr0"
-    en_US="Chaparral Fuel"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralDaysSinceMay1:Hdr1"
-    en_US="Days Since May 1st"
-    pt_PT=""
-  />
-
   <variable name="vSurfaceFuelChaparralDeadFuelFraction"
     type="continuous"
     releaseFrom="10000"
@@ -13149,70 +13063,6 @@ por relâmpago"
   <translate key="vSurfaceFuelChaparralDepth:Hdr1"
     en_US="Fuel Bed Depth"
     pt_PT="Espessura"
-  />
-
-  <variable name="vSurfaceFuelChaparralHeatLiveLeaf"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vSurfaceFuelChaparralHeatLive.html"
-    sortIn="01:470:0"
-    sortOut="01:770:1"
-    nativeUnits="Btu/lb" nativeDecimals="0"
-    englishUnits="Btu/lb" englishDecimals="0"
-    metricUnits="kJ/kg" metricDecimals="0"
-    minimum="6000"
-    maximum="12000"
-    default="9750"
-    wizard="fuelHeatWizard"
-  />
-  <translate key="vSurfaceFuelChaparralHeatLiveLeaf:Label"
-    en_US="Chaparral Fuel Live Leaf Heat Content"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralHeatLiveLeaf:Desc"
-    en_US="Low heat of combustion of the live leaf fuel in the chaparral fuel bed."
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralHeatLiveLeaf:Hdr0"
-    en_US="Chaparral Fuel"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralHeatLiveLeaf:Hdr1"
-    en_US="Live Leaf Heat"
-    pt_PT=""
-  />
-
-  <variable name="vSurfaceFuelChaparralHeatLiveStem"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vSurfaceFuelChaparralHeatLive.html"
-    sortIn="01:480:0"
-    sortOut="01:770:2"
-    nativeUnits="Btu/lb" nativeDecimals="0"
-    englishUnits="Btu/lb" englishDecimals="0"
-    metricUnits="kJ/kg" metricDecimals="0"
-    minimum="6000"
-    maximum="12000"
-    default="9750"
-    wizard="fuelHeatWizard"
-  />
-  <translate key="vSurfaceFuelChaparralHeatLiveStem:Label"
-    en_US="Chaparral Fuel Live Stem Heat Content"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralHeatLiveStem:Desc"
-    en_US="Low heat of combustion of the live stem fuel in the chaparral fuel bed."
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralHeatLiveStem:Hdr0"
-    en_US="Chaparral Fuel"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralHeatLiveStem:Hdr1"
-    en_US="Live Stem Heat"
-    pt_PT=""
   />
 
   <variable name="vSurfaceFuelChaparralLoadDead1"
@@ -13597,96 +13447,6 @@ por relâmpago"
   <translate key="vSurfaceFuelChaparralLoadTotalLive:Hdr1"
     en_US="Total Live Fuel Load"
     pt_PT="Carga"
-  />
-
-  <variable name="vSurfaceFuelChaparralMoisLiveLeaf"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vSurfaceFuelCHaparralMoisLive.html"
-    sortIn="99:999:9"
-    sortOut="01:780:1"
-    nativeUnits="fraction" nativeDecimals="2"
-    englishUnits="%" englishDecimals="0"
-    metricUnits="%" metricDecimals="0"
-    minimum="0.30"
-    maximum="3.00"
-    default="1.00"
-    wizard="liveHerbMoistureWizard"
-  />
-  <translate key="vSurfaceFuelChaparralMoisLiveLeaf:Label"
-    en_US="Chaparral Fuel Live Leaf Moisture Content"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralMoisLiveLeaf:Desc"
-    en_US="Moisture content of live leaf fuels."
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralMoisLiveLeaf:Hdr0"
-    en_US="Chaparral Fuel"
-    pt_PT="Leafáceos vivos"
-  />
-  <translate key="vSurfaceFuelChaparralMoisLiveLeaf:Hdr1"
-    en_US="Live Leaf Moisture"
-    pt_PT="Humidade"
-  />
-
-  <variable name="vSurfaceFuelChaparralMoisLiveStem"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vSurfaceFuelChaparralMoisLive.html"
-    sortIn="99:999:9"
-    sortOut="01:780:2"
-    nativeUnits="fraction" nativeDecimals="2"
-    englishUnits="%" englishDecimals="0"
-    metricUnits="%" metricDecimals="0"
-    minimum="0.30"
-    maximum="3.00"
-    default="1.00"
-    wizard="liveWoodMoistureWizard"
-  />
-  <translate key="vSurfaceFuelChaparralMoisLiveStem:Label"
-    en_US="Chaparral Fuel Live Stem Moisture Content"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralMoisLiveStem:Desc"
-    en_US="Moisture content of live leaf fuels."
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralMoisLiveStem:Hdr0"
-    en_US="Chaparral Fuel"
-    pt_PT="Stemáceos vivos"
-  />
-  <translate key="vSurfaceFuelChaparralMoisLiveStem:Hdr1"
-    en_US="Live Stem Moisture"
-    pt_PT="Humidade"
-  />
-
-  <variable name="vSurfaceFuelChaparralMonthOfYear"
-    type="discrete"
-    itemList="MonthOfYear"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vSurfaceFuelChaparralDate.html"
-    sortIn="01:450:0"
-    sortOut="09:999:9"
-  />
-  <translate key="vSurfaceFuelChaparralMonthOfYear:Label"
-    en_US="Chaparral Fuel Month of the Year"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralMonthOfYear:Desc"
-    en_US="Chaparral fuel month of the year"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralMonthOfYear:Hdr0"
-    en_US="Chaparral Fuel"
-    pt_PT=""
-  />
-  <translate key="vSurfaceFuelChaparralMonthOfYear:Hdr1"
-    en_US="Month of the Year"
-    pt_PT=""
   />
 
   <variable name="vSurfaceFuelChaparralType"
@@ -20437,15 +20197,6 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vSurfaceFuelMoisLiveHerb"
     output="vSurfaceFuelMoisLiveWood" />
 
-  <function name="fSurfaceFuelMoisLiveChaparral"
-    module="surface"
-    releaseFrom="10000"
-    releaseThru="99999"
-    input="vSurfaceFuelChaparralMoisLiveLeaf"
-    input="vSurfaceFuelChaparralMoisLiveStem"
-    output="vSurfaceFuelMoisLiveHerb"
-    output="vSurfaceFuelMoisLiveWood" />
-
   <function name="fContainFF"
   module="contain"
   releaseFrom="20000"
@@ -21884,7 +21635,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vSurfaceFuelStot9"
   />
   
-  <function name="fSurfaceFuelChaparralAgeFromDepth"
+  <function name="fSurfaceFuelChaparralAgeFromDepthType"
     module="surface"
     releaseFrom="60000"
     releaseThru="99999"
@@ -21892,44 +21643,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vSurfaceFuelChaparralType"
     output="vSurfaceFuelChaparralAge" />
 
-  <function name="fSurfaceFuelChaparralDaysSinceMay1"
-    module="surface"
-    releaseFrom="60000"
-    releaseThru="99999"
-    input="vSurfaceFuelChaparralMonthOfYear"
-    input="vSurfaceFuelChaparralDayOfMonth"
-    output="vSurfaceFuelChaparralDaysSinceMay1" />
-
-  <function name="fSurfaceFuelChaparralDeadFuelFraction"
-    module="surface"
-    releaseFrom="60000"
-    releaseThru="99999"
-    input="vSurfaceFuelChaparralAge"
-    output="vSurfaceFuelChaparralDeadFuelFraction" />
-
-  <function name="fSurfaceFuelChaparralDepth"
-    module="surface"
-    releaseFrom="60000"
-    releaseThru="99999"
-    input="vSurfaceFuelChaparralAge"
-    input="vSurfaceFuelChaparralType"
-    output="vSurfaceFuelChaparralDepth" />
-
-  <function name="fSurfaceFuelChaparralHeatLiveLeaf"
-    module="surface"
-    releaseFrom="60000"
-    releaseThru="99999"
-    input="vSurfaceFuelChaparralDaysSinceMay1"
-    output="vSurfaceFuelChaparralHeatLiveLeaf" />
-
-  <function name="fSurfaceFuelChaparralHeatLiveStem"
-    module="surface"
-    releaseFrom="60000"
-    releaseThru="99999"
-    input="vSurfaceFuelChaparralDaysSinceMay1"
-    output="vSurfaceFuelChaparralHeatLiveStem" />
-
-  <function name="fSurfaceFuelChaparralLoadTotal"
+  <function name="fSurfaceFuelChaparralLoadTotalFromAgeType"
     module="surface"
     releaseFrom="60000"
     releaseThru="99999"
@@ -21937,25 +21651,12 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vSurfaceFuelChaparralType"
     output="vSurfaceFuelChaparralLoadTotal" />
 
-  <function name="fSurfaceFuelChaparralMoisLiveLeaf"
-    module="surface"
-    releaseFrom="60000"
-    releaseThru="99999"
-    input="vSurfaceFuelChaparralDaysSinceMay1"
-    output="vSurfaceFuelChaparralMoisLiveLeaf" />
-
-  <function name="fSurfaceFuelChaparralMoisLiveStem"
-    module="surface"
-    releaseFrom="60000"
-    releaseThru="99999"
-    input="vSurfaceFuelChaparralDaysSinceMay1"
-    output="vSurfaceFuelChaparralMoisLiveStem" />
-
   <function name="fSurfaceFuelChaparralModel"
     module="surface"
     releaseFrom="20000"
     releaseThru="99999"
     input="vSurfaceFuelChaparralDeadFuelFraction"
+    input="vSurfaceFuelChaparralDepth"
     input="vSurfaceFuelChaparralLoadTotal"
     output="vSurfaceFuelChaparralLoadDead1"
     output="vSurfaceFuelChaparralLoadDead2"
@@ -21975,8 +21676,6 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="20000"
     releaseThru="99999"
     input="vSurfaceFuelChaparralDepth"
-    input="vSurfaceFuelChaparralHeatLiveLeaf"
-    input="vSurfaceFuelChaparralHeatLiveStem"
     input="vSurfaceFuelChaparralLoadDead1"
     input="vSurfaceFuelChaparralLoadDead2"
     input="vSurfaceFuelChaparralLoadDead3"
@@ -24306,36 +24005,6 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <property name="surfaceCalcChaparralDaysSinceMay1"
-    type="Boolean"
-    value="false"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <property name="surfaceCalcChaparralDeadFuelFraction"
-    type="Boolean"
-    value="true"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <property name="surfaceCalcChaparralDepth"
-    type="Boolean"
-    value="true"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <property name="surfaceCalcChaparralHeatLiveLeaf"
-    type="Boolean"
-    value="false"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <property name="surfaceCalcChaparralHeatLiveStem"
-    type="Boolean"
-    value="false"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
   <property name="surfaceCalcChaparralLoadDead1"
     type="Boolean"
     value="false"
@@ -24408,18 +24077,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <property name="surfaceCalcChaparralMoisLiveLeaf"
-    type="Boolean"
-    value="false"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <property name="surfaceCalcChaparralMoisLiveStem"
-    type="Boolean"
-    value="false"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />  <property name="surfaceCalcCrownRatio"
+  <property name="surfaceCalcCrownRatio"
     type="Boolean"
     value="false"
     releaseFrom="10000"
@@ -24901,73 +24559,13 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="20000"
     releaseThru="99999"
   />
-  <property name="surfaceConfFuelChaparralDepthFromInput"
-    type="Boolean"
-    value="false"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <property name="surfaceConfFuelChaparralDepthFromAgeType"
-    type="Boolean"
-    value="true"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
   <property name="surfaceConfFuelChaparralTotalLoadFromInput"
     type="Boolean"
     value="false"
     releaseFrom="20000"
     releaseThru="99999"
   />
-  <property name="surfaceConfFuelChaparralTotalLoadFromAgeType"
-    type="Boolean"
-    value="true"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <property name="surfaceConfFuelChaparralDeadFractionFromInput"
-    type="Boolean"
-    value="false"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <property name="surfaceConfFuelChaparralDeadFractionFromAge"
-    type="Boolean"
-    value="true"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <property name="surfaceConfFuelChaparralHeatLiveFromInput"
-    type="Boolean"
-    value="false"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <property name="surfaceConfFuelChaparralHeatLiveFromDays"
-    type="Boolean"
-    value="true"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <property name="surfaceConfFuelChaparralMoisLiveFromInput"
-    type="Boolean"
-    value="false"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <property name="surfaceConfFuelChaparralMoisLiveFromDays"
-    type="Boolean"
-    value="true"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <property name="surfaceConfFuelChaparralDaysFromInput"
-    type="Boolean"
-    value="false"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <property name="surfaceConfFuelChaparralDaysFromDate"
+  <property name="surfaceConfFuelChaparralTotalLoadFromDepthType"
     type="Boolean"
     value="true"
     releaseFrom="20000"
@@ -29398,68 +28996,8 @@ from ignition point, method through V5)"
     en_US="specified on the worksheet."
     pt_PT=""
   />
-  <translate key="PropertyTabDialog:Surface:Chaparral:TotalLoad:AgeType"
-    en_US="calculated from chaparral age and type."
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:Depth:Caption"
-    en_US="Fuel depth is"
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:Depth:Input"
-    en_US="specified on the worksheet."
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:Depth:AgeType"
-    en_US="calculated from chaparral age and type."
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:DeadFraction:Caption"
-  en_US="Dead fuel fraction is"
-  pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:DeadFraction:Input"
-    en_US="specified on the worksheet."
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:DeadFraction:Age"
-    en_US="calculated from chaparral age."
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:HeatLive:Caption"
-    en_US="Live fuel heat of combustion is"
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:HeatLive:Input"
-    en_US="specified on the worksheet."
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:HeatLive:Days"
-    en_US="calculated from days since May 1st."
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:MoisLive:Caption"
-    en_US="Live fuel moisture content is"
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:MoisLive:Input"
-    en_US="specified on the worksheet."
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:MoisLive:Days"
-    en_US="calculated from days since May 1st."
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:Days:Caption"
-    en_US="Days since May 1st is"
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:Days:Input"
-    en_US="specified on the worksheet."
-    pt_PT=""
-  />
-  <translate key="PropertyTabDialog:Surface:Chaparral:Days:Date"
-    en_US="calculated from calendar month and day."
+  <translate key="PropertyTabDialog:Surface:Chaparral:TotalLoad:DepthType"
+    en_US="calculated from fuel bed depth and type."
     pt_PT=""
   />
   <!-- PropertyTabDialog SURFACE "Basic Outputs" Tab 6 Text -->

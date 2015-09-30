@@ -1234,70 +1234,16 @@ if ( false )
                          "Going To The Sun",
                          "chaparralOptions.html" );
 	inTab->addTab( p, "Chaparral" );
- 
-	// Add the "Total Load" button group "Total fuel load is" ...
+
+	// After giving FAH all the possible input options,
+	// she and Cohen decided not to use them
     bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:TotalLoad:Caption",
                      0, 0, 0, 0 );
     p->addRadio( "surfaceConfFuelChaparralTotalLoadFromInput",
 		"PropertyTabDialog:Surface:Chaparral:TotalLoad:Input",
                  bg );
-    p->addRadio( "surfaceConfFuelChaparralTotalLoadFromAgeType",
-		"PropertyTabDialog:Surface:Chaparral:TotalLoad:AgeType",
-                 bg );
-    bg->setFixedHeight( bg->sizeHint().height() );
- 
-	// Add the "Depth" button group "Depth is" ...
-    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:Depth:Caption",
-                     1, 0, 1, 0 );
-    p->addRadio( "surfaceConfFuelChaparralDepthFromInput",
-		"PropertyTabDialog:Surface:Chaparral:Depth:Input",
-                 bg );
-    p->addRadio( "surfaceConfFuelChaparralDepthFromAgeType",
-		"PropertyTabDialog:Surface:Chaparral:Depth:AgeType",
-                 bg );
-    bg->setFixedHeight( bg->sizeHint().height() );
- 
-	// Add the "Dead fuel fraction" button group "Dead fuel fraction is" ...
-    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:DeadFraction:Caption",
-                     2, 0, 2, 0 );
-    p->addRadio( "surfaceConfFuelChaparralDeadFractionFromInput",
-		"PropertyTabDialog:Surface:Chaparral:DeadFraction:Input",
-                 bg );
-    p->addRadio( "surfaceConfFuelChaparralDeadFractionFromAge",
-		"PropertyTabDialog:Surface:Chaparral:DeadFraction:Age",
-                 bg );
-    bg->setFixedHeight( bg->sizeHint().height() );
- 
-	// Add the "Live Heat" button group "Live fuel heat content is" ...
-    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:HeatLive:Caption",
-                     3, 0, 3, 0 );
-    p->addRadio( "surfaceConfFuelChaparralHeatLiveFromInput",
-		"PropertyTabDialog:Surface:Chaparral:HeatLive:Input",
-                 bg );
-    p->addRadio( "surfaceConfFuelChaparralHeatLiveFromDays",
-		"PropertyTabDialog:Surface:Chaparral:HeatLive:Days",
-                 bg );
-    bg->setFixedHeight( bg->sizeHint().height() );
- 
-	// Add the "Live Moisture" button group "Live fuel moisture content is" ...
-    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:MoisLive:Caption",
-                     4, 0, 4, 0 );
-    p->addRadio( "surfaceConfFuelChaparralMoisLiveFromInput",
-		"PropertyTabDialog:Surface:Chaparral:MoisLive:Input",
-                 bg );
-    p->addRadio( "surfaceConfFuelChaparralMoisLiveFromDays",
-		"PropertyTabDialog:Surface:Chaparral:MoisLive:Days",
-                 bg );
-    bg->setFixedHeight( bg->sizeHint().height() );
- 
-	// Add the "Days Since May 1" button group "Days since May 1 is" ...
-    bg = p->addButtonGroup( "PropertyTabDialog:Surface:Chaparral:Days:Caption",
-                     5, 0, 5, 0 );
-    p->addRadio( "surfaceConfFuelChaparralDaysFromInput",
-		"PropertyTabDialog:Surface:Chaparral:Days:Input",
-                 bg );
-    p->addRadio( "surfaceConfFuelChaparralDaysFromDate",
-		"PropertyTabDialog:Surface:Chaparral:Days:Date",
+    p->addRadio( "surfaceConfFuelChaparralTotalLoadFromDepthType",
+		"PropertyTabDialog:Surface:Chaparral:TotalLoad:DepthType",
                  bg );
     bg->setFixedHeight( bg->sizeHint().height() );
 
@@ -1660,11 +1606,8 @@ if ( false )
 
         p->addLabel( "PropertyTabDialog:Surface:ChaparralOutputs:Note",
                       r, 0, r, 0 ); r++;
-        addOutput( p, "surfaceCalcChaparralDepth",
-                      "vSurfaceFuelChaparralDepth",
-                      r, 0, r, 0 ); r++;
-        addOutput( p, "surfaceCalcChaparralDeadFuelFraction",
-                      "vSurfaceFuelChaparralDeadFuelFraction",
+        addOutput( p, "surfaceCalcChaparralAge",
+                      "vSurfaceFuelChaparralAge",
                       r, 0, r, 0 ); r++;
         addOutput( p, "surfaceCalcChaparralLoadTotal",
                       "vSurfaceFuelChaparralLoadTotal",
@@ -1702,6 +1645,8 @@ if ( false )
         addOutput( p, "surfaceCalcChaparralLoadLive4",
                       "vSurfaceFuelChaparralLoadLive4",
                       r, 0, r, 0 ); r++;
+		if ( false )
+		{
         addOutput( p, "surfaceCalcChaparralDaysSinceMay1",
                       "vSurfaceFuelChaparralDaysSinceMay1",
                       r, 0, r, 0 ); r++;
@@ -1717,6 +1662,7 @@ if ( false )
         addOutput( p, "surfaceCalcChaparralMoisLiveStem",
                       "vSurfaceFuelChaparralMoisLiveStem",
                       r, 0, r, 0 ); r++;
+		}
         p->addLabel( "!",
                       r, 0, r, 0 ); r++;
         p->addLabel( "PropertyTabDialog:Surface:ChaparralOutputs:Note2",
