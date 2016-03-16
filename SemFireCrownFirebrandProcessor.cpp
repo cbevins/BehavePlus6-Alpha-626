@@ -202,7 +202,7 @@ void Sem::Fire::Crown::Firebrand::Processor::processFirebrandLoft()
 }
 
 //------------------------------------------------------------------------------
-/*!	\brief Calculates the avereage flame height above the canopy top (m)
+/*!	\brief Calculates the average flame height above the canopy top (m)
 
 	This is from Frank Albini's 'tip.for' FORTRAN source, function tip().
 */
@@ -247,7 +247,7 @@ void Sem::Fire::Crown::Firebrand::Processor::processFlameBoundaryConditions()
 }
 
 //------------------------------------------------------------------------------
-/*!	\brief Calculates the avereage flame height above the canopy top (m)
+/*!	\brief Calculates the average flame height above the canopy top (m)
 
 	This is from Frank Albini's 'dist.for' FORTRAN source, function height().
 */

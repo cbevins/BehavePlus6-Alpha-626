@@ -1,8 +1,106 @@
 =============================
 Collin D. Bevins
 LLCP0064 - BehavePlus6 Task
+Feb 22, 2016 - Mar 21, 2016
+40 hours
+=============================
+
+2015-02-28 (2.0 hours)
+
+Investigated FAH question regarding use of various canopy height variables
+in BP6.  Analyzed the 7 variables in use, and drafted a response to FAH.
+
+=============================
+Collin D. Bevins
+LLCP0064 - BatchBehave Task
+Oct 22, 2015 - Jan 21, 2016
+40 hours
+=============================
+
+2015-10-22 through 2016-01-21 (40.0 hours )
+
+During this time period I have completed an offline working version
+of the "Batch Behave" as described in "Issue #067 - Adding a Web-Based
+Version of Surface for Batch Runs".  Primary features are as follows:
+
+- The application reads a standard Excel worksheet file as input,
+and produces an HTML page (file) as output.
+
+- The "Batch Behave" program reads the worksheet looking for Batch
+Behave commands, which are indicated by the word "behave" in Column A
+of the row, and one of the following subcommands in Column B:
+	-- a "title" row adds a title (whose text is in Column C of the
+		row) to the output table.  Any number of titles are allowed.
+		
+	-- a "note" row adds a note (whose text is in Column C of the row)
+		to the output cover page.  Any number of notes are allowed.
+		
+	-- an "output" row specifies an input or output variable to
+		appear in the output table.  Column C of the row has the
+		well-known variable name. The user can modify the default:
+		--- output display variable label (in Column H),
+		--- output table column headers (in Columns D and E),
+		--- output display units-of-measure (in row Column F), and
+		--- output display decimals (in Column G) as desired.
+		All specified output variables appear in the output table in
+		the	same order they appear in the worksheet, so order of
+		appearance is under user control.  The user may in fact
+		specify	the same variable to appear multiple times in the
+		output,	perhaps to display results in various units of
+		measure.
+		
+	-- a "units" row specifies (in columns C-X) the input units-of-
+		measure for each of the input variables .  Only columns with
+		non-empty values have their associated variable's units-of-
+		measure	modified.  Users can change input units any number
+		of time within the worksheet.
+		
+	-- a "run" row indicates that a new set of results should be
+		generated using the input values specified in columns C-X.
+		An input value is modified only if it has a non-blank value
+		in its column.  Thus, one "input" row can specify values
+		for all its variables, and the following "input" row only
+		needs to specify values for inputs whose values change.
+		A complete set out Behave results are calculated and stored
+		internally for each "run" command.
+
+- Batch Behave supports the following Behave Modules:
+	-- Surface (using moisture by size class, wind at midflame)
+	-- Size linked to Surface,
+	-- Scorch Height linked to Surface, and
+	-- Crown Fire linked to Surface (per Scott & Reinhardt)
+	
+- Outputs include fire behavior at the head, flank, and back of the
+	ellipse, and all the intermediate fuel and fire variables.
+	
+- The entire code base (including all the required fuel and fire
+behavior models) has been rewritten in PHP so it can be run directly
+on a web server.
+
+- A comprehensive suite of unit tests has been developed to:
+	-- support regression testing during development and updating,
+	-- ensure identical results with BehavePlus6, and
+	-- to guarantee 100% code coverage by the tests.
+
+- All source code is under Git version control and available for download
+from http://bitbucket.org/cbevins/batchbehavephp.
+
+The work remaining to be done on Batch Behave includes:
+	- setting up a Batch Behave web site and deploying the source
+		code and supporting libraries to the site
+	- allow the user to upload the input worksheet file
+	- display to the user
+		-- any errors detected in the input file
+		-- the output html table
+	-- allow the user to download the results as an html table
+	or CSV file for import into Excel.
+
+
+=============================
+Collin D. Bevins
+LLCP0064 - BehavePlus6 Desktop Task
 Sep 16 - Oct 21, 2015
-??? hours
+18.0 hours
 =============================
 
 2015-09-16 (5.0 hours) [5.0 total]
@@ -158,6 +256,188 @@ Sep 16 - Oct 21, 2015
 		to DropBox.
 	- Notified FAH that Build 616 was available for download and testing.
 	
+=============================
+Collin D. Bevins
+LLCP0064 - Batch Behave Task
+Sep 16 - Oct 21, 2015
+64.0 hours
+=============================
+	
+2015-09-22 (7.0 hours) [7.0 total]
+
+-- Completed following tasks on Sem\Behave\Algorithms\CrownFire.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (CrownFireSpreadTest.php) (835/835/1172)
+	- confirmed 100% code coverage (90/104/347)
+
+-- Completed following tasks on Sem\Behave\Algorithms\FireSpread.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (SurfaceFireSpreadTest.php) (212/212/321)
+	- confirmed 100% code coverage (133/158/488)
+	
+-- Completed following tasks on Sem\Behave\Algorithms\FuelParticle.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (ParticleTest.php) (463/463/783)
+	- confirmed 100% code coverage (35/42/201)
+
+
+2015-09-23 (8.0 hours) [15.0 total]
+
+-- Completed following tasks on Sem\Behave\Model\Loge\Base.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (BaseTest.php) (36/36/123)
+	- confirmed 100% code coverage (41/43/255)
+
+-- Completed following tasks on Sem\Behave\Model\Loge\Development.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (DevelopmentTest.php) (99/99/146)
+	- confirmed 100% code coverage (41/43/255)
+
+-- Completed following tasks on Sem\Behave\Model\CrownFire\Spread.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (CrownFireSpreadTest.php) (866/866/1209)
+	- confirmed 100% code coverage (374/443/1638)
+
+
+2015-09-24 (8.0 hours) [23.0 total]
+
+-- Completed following tasks on Sem\Behave\Model\Fuel\Bed.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (BedTest.php) (83/83/138)
+	- confirmed 100% code coverage (229/278/1145)
+
+-- Completed following tasks on Sem\Behave\Model\Fuel\CatalogRecordInterface.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (CatalogTest.php) (186/186/294)
+	- confirmed 100% code coverage (1/1/90)
+
+-- Completed following tasks on Sem\Behave\Model\Fuel\Chaparral.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (ChaparralTest.php) (66/66/110)
+	- confirmed 100% code coverage (132/162/719)
+
+-- Completed following tasks on Sem\Behave\Model\Fuel\ChaparralCatalogLoader.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (ChaparralTest.php) (66/66/110)
+	- confirmed 100% code coverage (31/31/101)
+
+2015-09-25 (8.0 hours) [31.0 total]
+
+-- Completed following tasks on Sem\Behave\Model\Fuel\Complex.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (ComplexTest.php) (91/91/151)
+	- confirmed 100% code coverage (89/108/422)
+
+-- Completed following tasks on Sem\Behave\Model\Fuel\Model.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (ModelTest.php) (146/146/253)
+	- confirmed 100% code coverage (208/244/861)
+
+-- Completed following tasks on Sem\Behave\Model\Fuel\Particle.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (ParticleTest.php) (463/463/783)
+	- confirmed 100% code coverage (77/108/644)
+
+2015-10-01 (8.0 hours) [39.0 total]
+
+-- Completed following tasks on Sem\Behave\Model\Fuel\Standard.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (StandardTest.php) (281/281/393)
+	- confirmed 100% code coverage (194/239/929)
+
+-- Completed following tasks on Sem\Behave\Model\Fuel\StandardCatalogLoader.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (StandardTest.php) (281/281/393)
+	- confirmed 100% code coverage (263/263/382)
+
+-- Completed following tasks on Sem\Behave\Model\SurfaceFire\Spread.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (SurfaceFireSpreadTest.php) (212/212/321)
+	- confirmed 100% code coverage (196/256/1012)
+
+-- Completed following tasks on Sem\Behave\Model\SurfaceFire\SpreadCalculator.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (SurfaceFireSpreadTest.php) (212/212/321)
+	- confirmed 100% code coverage (130/156/419)
+
+
+2015-10-02 (2.0 hours) [41.0 total]
+
+-- Completed following tasks on Sem\Behave\Service\Fuel\Catalog.php
+	- performed full code review
+	- documented the file, class, and all properties and methods
+	- produced and reviewed PHPDocumenter web page with no warnings or errors
+	- created and conducted comprehensive unit test (CatalogTest.php) (186/186/294)
+	- confirmed 100% code coverage (65/76/292)
+	
+
+2015-10-02 (6.0 hours) [48.0 total]
+
+--	ApplicationTest.cpp
+	- Began development of a basic BehavePlus application that implements
+		multiple configurations, including BatchBehave and BP6.
+	- Developed experimental VariantBase to support ApplicationTest.php
+	- Developed experimental SlateBase to support ApplicationTest.php
+
+
+2015-10-14 (5.0 hours) [53.0 total]
+
+--	Continued development of ApplicationTest
+	- Added ProcessorBase and ProcessorStandard for sequencing of processors
+	- Added configuration Variants to SlateStandard
+	- Confirmed that configuration variants properly control processor
+		sequencing.
+
+	
+2015-10-15 (7.0 hours) (60.0 total)
+
+--	Completed an initial ApplicationTest.cpp
+	- Can handle BP6 type configuration
+	- Can handle batch processing chores
+	- Stores and displays all BP6 variants
+	- Passes all Fuel\Model, Fuel\Bed, Fuel\Complex,
+		SurfaceFire\Spread, and CrownFire\Spread tests
+
+	
+2015-10-16 (4.0 hours) (64.0 total)
+
+--	Created ReporterTable and ReporterColumn for generating
+	output tabular reports as needed by BatchBehave.
+	
 	
 =============================
 Collin D. Bevins
@@ -170,7 +450,7 @@ Jun 22 - Jul 21, 2015
 
 --	Created a local Git repository for BehavePlus 5.0.5
 
---	Created a GitBub repository for BehavePlus5 and upload
+--	Created a GitHub repository for BehavePlus5 and upload
 	my local BehavePlus5.0.5 Git repository onto it
 	
 -- Sent FAH an email notifying her of the GitHub repository.
