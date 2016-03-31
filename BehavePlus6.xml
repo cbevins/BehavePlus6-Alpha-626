@@ -7898,8 +7898,8 @@
     wizard=""
   />
   <translate key="vCrownFireActiveCritOpenWindSpeed:Label"
-    en_US="Active Crown Critical Open Windspeed"
-    pt_PT="Active Crown Critical Open Windspeed"
+    en_US="Active Crown Critical Open Wind Speed"
+    pt_PT="Active Crown Critical Open Wind Speed"
   />
   <translate key="vCrownFireActiveCritOpenWindSpeed:Desc"
     en_US="Scott-Reinhardt O'active"
@@ -12074,7 +12074,7 @@ por relâmpago"
     pt_PT="Velocidade do vento máxima aconcelhável"
   />
   <translate key="vSurfaceFireWindSpeedLimit:Desc"
-    en_US="Maximum reliable midflame effective wind speed for a fire of this intensity."
+    en_US="Maximum midflame effective wind speed for a fire of this intensity."
     pt_PT="Velocidade do vento a meia altura da chama máxima aconcelhável para um fogo desta intensidade."
   />
   <translate key="vSurfaceFireWindSpeedLimit:Hdr0"
@@ -20415,6 +20415,46 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vCrownFirePowerOfWind"
     output="vCrownFirePowerRatio" />
 
+  <function name="fCrownFireSpreadDist"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vCrownFireSpreadRate"
+    input="vSurfaceFireElapsedTime"
+    output="vCrownFireSpreadDist" />
+
+  <!-- Produces all V6 distance outputs and replaces:
+    fCrownFireArea
+    fCrownFirePerimeter
+    fCrownFireSpreadDist
+  -->
+  <function name="fCrownFireSpreadDistV6"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vCrownFireSpreadRate"
+    input="vSurfaceFireElapsedTime"
+    output="vCrownFireActiveFireArea"
+    output="vCrownFireActiveSpreadDist"
+    output="vCrownFireActiveFirePerimeter"
+    output="vCrownFireActiveFireWidth"
+    output="vCrownFirePassiveFireArea"
+    output="vCrownFirePassiveSpreadDist"
+    output="vCrownFirePassiveFirePerimeter"
+    output="vCrownFirePassiveFireWidth"
+    output="vCrownFireSpreadDist"
+    output="vCrownFireArea"
+    output="vCrownFirePerimeter"
+  />
+
+  <function name="fCrownFireSpreadMapDist"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vCrownFireSpreadDist"
+    input="vMapScale"
+    output="vCrownFireSpreadMapDist" />
+
   <function name="fCrownFireSpreadRate"
     module="crown"
     releaseFrom="30000"
@@ -20456,7 +20496,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vSurfaceFuelMoisDead100"
     input="vSurfaceFuelMoisLiveWood"
     input="vWindSpeedAt20Ft"
-    input="vSurfaceFireLineIntAtVector"
+            
     input="vTreeCanopyBulkDens"
     input="vTreeCoverHt"
 	  input="vTreeCrownBaseHt"
@@ -20506,45 +20546,13 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vCrownFireSpreadRate"
    />
 
-  <!-- Produces all V6 distance outputs and replaces:
-    fCrownFireArea
-    fCrownFirePerimeter
-    fCrownFireSpreadDist
-  -->
-  <function name="fCrownFireSpreadDistV6"
+  <function name="fCrownFireTransRatioFromFireIntAtVector"
     module="crown"
     releaseFrom="30000"
     releaseThru="99999"
-    input="vCrownFireSpreadRate"
-    input="vSurfaceFireElapsedTime"
-    output="vCrownFireActiveFireArea"
-    output="vCrownFireActiveSpreadDist"
-    output="vCrownFireActiveFirePerimeter"
-    output="vCrownFireActiveFireWidth"
-    output="vCrownFirePassiveFireArea"
-    output="vCrownFirePassiveSpreadDist"
-    output="vCrownFirePassiveFirePerimeter"
-    output="vCrownFirePassiveFireWidth"
-    output="vCrownFireSpreadDist"
-    output="vCrownFireArea"
-    output="vCrownFirePerimeter"
-  />
-
-  <function name="fCrownFireSpreadDist"
-    module="crown"
-    releaseFrom="30000"
-    releaseThru="99999"
-    input="vCrownFireSpreadRate"
-    input="vSurfaceFireElapsedTime"
-    output="vCrownFireSpreadDist" />
-
-  <function name="fCrownFireSpreadMapDist"
-    module="crown"
-    releaseFrom="30000"
-    releaseThru="99999"
-    input="vCrownFireSpreadDist"
-    input="vMapScale"
-    output="vCrownFireSpreadMapDist" />
+    input="vCrownFireCritSurfFireInt"
+    input="vSurfaceFireLineIntAtVector"
+    output="vCrownFireTransRatio" />
 
   <function name="fCrownFireTransRatioFromFlameLengAtVector"
     module="crown"
@@ -20552,14 +20560,6 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseThru="99999"
     input="vCrownFireCritSurfFireInt"
     input="vSurfaceFireFlameLengAtVector"
-    output="vCrownFireTransRatio" />
-
-  <function name="fCrownFireTransRatioFromFireIntAtVector"
-    module="crown"
-    releaseFrom="30000"
-    releaseThru="99999"
-    input="vCrownFireCritSurfFireInt"
-    input="vSurfaceFireLineIntAtVector"
     output="vCrownFireTransRatio" />
 
   <function name="fCrownFireTransToCrown"
@@ -21188,7 +21188,11 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vSurfaceFireWindFactor"
     output="vSurfaceFireSlopeFactor" />
 
-  <function name="fSurfaceFireSpreadAtPsi"
+<!--
+  NOTE: Changed as of Build 617 to use rates rather than distances,
+  thus eliminating the need of elapsed time as an input.
+  Was:
+  <deprecated name="fSurfaceFireSpreadAtPsi"
     module="surface"
     releaseFrom="60000"
     releaseThru="99999"
@@ -21197,6 +21201,17 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vSurfaceFireEllipseH"
     input="vSurfaceFireVectorPsi"
     input="vSurfaceFireElapsedTime"
+    output="vSurfaceFireSpreadAtPsi" />
+  Now:
+-->
+  <function name="fSurfaceFireSpreadAtPsi"
+    module="surface"
+    releaseFrom="60000"
+    releaseThru="99999"
+    input="vSurfaceFireSpreadAtHead"
+    input="vSurfaceFireSpreadAtBack"
+    input="vSurfaceFireLengthToWidth"
+    input="vSurfaceFireVectorPsi"
     output="vSurfaceFireSpreadAtPsi" />
 
   <function name="fSurfaceFireSpreadAtVectorFromBeta"
@@ -21208,7 +21223,11 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vSurfaceFireEccentricity"
     output="vSurfaceFireSpreadAtVector" />
 
-  <function name="fSurfaceFireSpreadAtVectorFromPsi"
+<!--
+  NOTE: Changed as of Build 617 to use rates rather than distances,
+  thus eliminating the need of elapsed time as an input.
+  Was:  
+  <deprecated name="fSurfaceFireSpreadAtVectorFromPsi"
     module="surface"
     releaseFrom="60000"
     releaseThru="99999"
@@ -21217,6 +21236,17 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vSurfaceFireEllipseH"
     input="vSurfaceFireVectorPsi"
     input="vSurfaceFireElapsedTime"
+    output="vSurfaceFireSpreadAtVector" />
+  Now:
+-->
+  <function name="fSurfaceFireSpreadAtVectorFromPsi"
+    module="surface"
+    releaseFrom="60000"
+    releaseThru="99999"
+    input="vSurfaceFireSpreadAtHead"
+    input="vSurfaceFireSpreadAtBack"
+    input="vSurfaceFireLengthToWidth"
+    input="vSurfaceFireVectorPsi"
     output="vSurfaceFireSpreadAtVector" />
 
   <function name="fSurfaceFireVectorBetaFromTheta"
@@ -26761,12 +26791,12 @@ NOTE:  You can open this HTML file using Excel, and subsequently save it as an .
     pt_PT="    para a direcção de propagação calculada [SUPERFÍCIE]."
   />
   <translate key="BpDocument:Worksheet:RunOptions:Wind:Limit:Applied"
-    en_US="Maximum reliable effective wind speed limit IS imposed [SURFACE]."
-    pt_PT="??? Maximum reliable effective wind speed limit IS imposed [SURFACE]."
+    en_US="Maximum effective wind speed limit IS imposed [SURFACE]."
+    pt_PT="??? Maximum effective wind speed limit IS imposed [SURFACE]."
   />
   <translate key="BpDocument:Worksheet:RunOptions:Wind:Limit:NotApplied"
-    en_US="Maximum reliable effective wind speed limit is NOT imposed [SURFACE]."
-    pt_PT="??? Maximum reliable effective wind speed limit is NOT imposed [SURFACE]."
+    en_US="Maximum effective wind speed limit is NOT imposed [SURFACE]."
+    pt_PT="??? Maximum effective wind speed limit is NOT imposed [SURFACE]."
   />
   <translate key="BpDocument:Worksheet:RunOptions:WindUpslope"
     en_US="Wind is blowing upslope [SURFACE]."
@@ -28845,7 +28875,7 @@ fuel moisture."
   />
   <translate key="PropertyTabDialog:Surface:Wind:Limit:Caption"
     en_US="Impose maximum effective wind speed limit?"
-    pt_PT="??? Impose maximum reliable effective wind speed limit?"
+    pt_PT="??? Impose maximum effective wind speed limit?"
   />
   <translate key="PropertyTabDialog:Surface:Wind:Limit:Applied"
     en_US="Yes"

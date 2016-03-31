@@ -3894,17 +3894,38 @@ void EqCalc::FireSpreadAtHead( void )
  *		vSurfaceFireEllipseH (ft)
  *      vSurfaceFireElapsedTime (min)
  *      vSurfaceFireVectorPsi (degrees)
+ *
+ *  NOTE: Changed as of Build 617 to use rates rather than distances,
+ *  thus eliminating the need of elapsed time as an input
+ *
+ *  Independent Variables (Inputs)
+ *		vSurfaceFireSpreadAtBack (ft/min)
+ *		vSurfaceFireSpreadAtHead( ft/min)
+ *		vSurfaceFireLengthToWidth (ratio)
+ *      vSurfaceFireVectorPsi (degrees)
  */
 void EqCalc::FireSpreadAtPsi( void )
 {
     // Access current input values
-    double f = vSurfaceFireEllipseF->m_nativeValue;
-    double g = vSurfaceFireEllipseG->m_nativeValue;
-    double h = vSurfaceFireEllipseH->m_nativeValue;
-    double elapsed = vSurfaceFireElapsedTime->m_nativeValue;
-    double psi   = vSurfaceFireVectorPsi->m_nativeValue;
-    // Calculate results
-    double rosVec = FBL_SurfaceFireExpansionRateAtPsi( f, g, h, elapsed, psi );
+    double psi = vSurfaceFireVectorPsi->m_nativeValue;
+	// Before Build 617
+	double f = vSurfaceFireEllipseF->m_nativeValue;
+	double g = vSurfaceFireEllipseG->m_nativeValue;
+	double h = vSurfaceFireEllipseH->m_nativeValue;
+	double t = vSurfaceFireElapsedTime->m_nativeValue;
+	// As of Build 617
+	double rosBack = vSurfaceFireSpreadAtHead->m_nativeValue;
+	double rosHead = vSurfaceFireSpreadAtBack->m_nativeValue;
+	double lwRatio = vSurfaceFireLengthToWidth->m_nativeValue;
+	double length  = rosHead + rosBack;
+	double width   = length / lwRatio;
+	f = FBL_SurfaceFireEllipseF( length );
+	g = FBL_SurfaceFireEllipseG( length, rosBack );
+	h = FBL_SurfaceFireEllipseH( width );
+	t = 1.0;
+
+	// Calculate results
+    double rosVec = FBL_SurfaceFireExpansionRateAtPsi( f, g, h, t, psi );
     // Store results
     vSurfaceFireSpreadAtPsi->update( rosVec );
     // Log results
@@ -3912,16 +3933,16 @@ void EqCalc::FireSpreadAtPsi( void )
     {
         fprintf( m_log, "%sbegin proc FireSpreadAtPsi() 5 1\n", Margin );
          fprintf( m_log, "%s  i vSurfaceFireEllipseF %g %s\n", Margin,
-            vSurfaceFireEllipseF->m_nativeValue,
+            f, // vSurfaceFireEllipseF->m_nativeValue,
             vSurfaceFireEllipseF->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  i vSurfaceFireEllipseG %g %s\n", Margin,
-            vSurfaceFireEllipseG->m_nativeValue,
+            g, // vSurfaceFireEllipseG->m_nativeValue,
             vSurfaceFireEllipseG->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  i vSurfaceFireEllipseH %g %s\n", Margin,
-            vSurfaceFireEllipseH->m_nativeValue,
+            h, // vSurfaceFireEllipseH->m_nativeValue,
             vSurfaceFireEllipseH->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  i vSurfaceFireElaspedTime %g %s\n", Margin,
-            vSurfaceFireElapsedTime->m_nativeValue,
+            t, // vSurfaceFireElapsedTime->m_nativeValue,
             vSurfaceFireElapsedTime->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  i vSurfaceFireVectorPsi %g %s\n", Margin,
             vSurfaceFireVectorPsi->m_nativeValue,
@@ -3986,35 +4007,59 @@ void EqCalc::FireSpreadAtVectorFromBeta( void )
  *		vSurfaceFireEllipseH (ft)
  *      vSurfaceFireElapsedTime (min)
  *      vSurfaceFireVectorPsi (degrees)
+ *
+ *  NOTE: Changed as of Build 617 to use rates rather than distances,
+ *  thus eliminating the need of elapsed time as an input
+ *
+ *  Independent Variables (Inputs)
+ *		vSurfaceFireSpreadAtBack (ft/min)
+ *		vSurfaceFireSpreadAtHead( ft/min)
+ *		vSurfaceFireLengthToWidth (ratio)
+ *      vSurfaceFireVectorPsi (degrees)
  */
 void EqCalc::FireSpreadAtVectorFromPsi( void )
 {
     // Access current input values
-    double f = vSurfaceFireEllipseF->m_nativeValue;
-    double g = vSurfaceFireEllipseG->m_nativeValue;
-    double h = vSurfaceFireEllipseH->m_nativeValue;
-    double elapsed = vSurfaceFireElapsedTime->m_nativeValue;
-    double psi   = vSurfaceFireVectorPsi->m_nativeValue;
+    double psi = vSurfaceFireVectorPsi->m_nativeValue;
+	// Before Build 617
+	double f = vSurfaceFireEllipseF->m_nativeValue;
+	double g = vSurfaceFireEllipseG->m_nativeValue;
+	double h = vSurfaceFireEllipseH->m_nativeValue;
+	double t = vSurfaceFireElapsedTime->m_nativeValue;
+	// As of Build 617
+	double rosBack = vSurfaceFireSpreadAtHead->m_nativeValue;
+	double rosHead = vSurfaceFireSpreadAtBack->m_nativeValue;
+	double lwRatio = vSurfaceFireLengthToWidth->m_nativeValue;
+	double length  = rosHead + rosBack;
+	double width   = length / lwRatio;
+	f = FBL_SurfaceFireEllipseF( length );
+	g = FBL_SurfaceFireEllipseG( length, rosBack );
+	h = FBL_SurfaceFireEllipseH( width );
+	t = 1.0;
+
     // Calculate results
-    double rosVec = FBL_SurfaceFireExpansionRateAtPsi( f, g, h, elapsed, psi );
+    double rosVec = FBL_SurfaceFireExpansionRateAtPsi( f, g, h, t, psi );
     // Store results
     vSurfaceFireSpreadAtVector->update( rosVec );
     // Log results
     if( m_log )
     {
-        fprintf( m_log, "%sbegin proc FireSpreadAtVectorFromPsi() 4 1\n", Margin );
+        fprintf( m_log, "%sbegin proc FireSpreadAtVectorFromPsi() 5 1\n", Margin );
          fprintf( m_log, "%s  i vSurfaceFireEllipseF %g %s\n", Margin,
-            vSurfaceFireEllipseF->m_nativeValue,
+            f, // vSurfaceFireEllipseF->m_nativeValue,
             vSurfaceFireEllipseF->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  i vSurfaceFireEllipseG %g %s\n", Margin,
-            vSurfaceFireEllipseG->m_nativeValue,
+            g, // vSurfaceFireEllipseG->m_nativeValue,
             vSurfaceFireEllipseG->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  i vSurfaceFireEllipseH %g %s\n", Margin,
-            vSurfaceFireEllipseH->m_nativeValue,
+            h, // vSurfaceFireEllipseH->m_nativeValue,
             vSurfaceFireEllipseH->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  i vSurfaceFireElaspedTime %g %s\n", Margin,
-            vSurfaceFireElapsedTime->m_nativeValue,
+            t, // vSurfaceFireElapsedTime->m_nativeValue,
             vSurfaceFireElapsedTime->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vSurfaceFireVectorPsi %g %s\n", Margin,
+            vSurfaceFireVectorPsi->m_nativeValue,
+            vSurfaceFireVectorPsi->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  o vSurfaceFireSpreadAtVector %g %s\n", Margin,
             vSurfaceFireSpreadAtVector->m_nativeValue,
             vSurfaceFireSpreadAtVector->m_nativeUnits.latin1() );

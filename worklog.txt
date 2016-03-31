@@ -1,11 +1,60 @@
 =============================
 Collin D. Bevins
 LLCP0064 - BehavePlus6 Task
-Feb 22, 2016 - Mar 21, 2016
-40 hours
+Mar 22, 2016 - Apr 21, 2016
+?? hours
 =============================
 
-2015-02-28 (2.0 hours)
+2016-03-31 (2.75 h) [4.0 h total]
+
+- Resolved Issue #074FAH - Elapsed Time incorrectly requested
+	in SURFACE
+	This issue was resolved by cusing the spread RATES at unity
+	elapsed time 1 to calculate ellipse F, G, and H parameters.
+	Prior to Build 617, BP6 was using DISTANCES to calculate F, G,
+	and H, so elapsed time and spread rates were both require dinputs.
+
+2016-03-30 (0.25 h) [1.25 h total]
+
+- Resolved Issue #102CDB - Fixed broken link in
+	BatchBehave and responded to FAH questions on
+	BatchBehave flank spread rate.
+
+
+2016-03-29 (0.75 h) [1.0 h total]
+
+- Supplied more BP6 code specific to the Psi/Beta
+algorithms.
+
+
+2016-03-25 (0.25 h) [0.25 total]
+
+- Supplied BP6 code to FAH and PLA.
+
+
+=============================
+Collin D. Bevins
+LLCP0064 - BehavePlus6 Task
+Feb 22, 2016 - Mar 21, 2016
+5 hours
+=============================
+
+2016-03-16 (3.0 h)
+
+- Updated BehavePlus6.cpp and appwindow.cpp to Build 617.
+
+- Resolved Issue #069FAH - Crown requests fireline intensity, not flame length
+
+- Resolved Issue #070FAH - Change Run option Note for Maximum
+	Wind Speed Limit
+
+- Resolved Issues #071FAH - Change Variable Name for Active Crown
+	Critical Open Wind Speed
+
+- Resolved Issue #073FAH - Palmetto-Gallberry CHOICES window is incorrect
+
+
+2016-02-28 (2.0 hours)
 
 Investigated FAH question regarding use of various canopy height variables
 in BP6.  Analyzed the 7 variables in use, and drafted a response to FAH.
