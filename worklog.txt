@@ -5,6 +5,15 @@ Mar 22, 2016 - Apr 21, 2016
 ?? hours
 =============================
 
+2016-03-31 (1.0 h) [5.0 h total]
+
+- Resolved Issue #072FAH - Error in Output Variable Module
+	The "Surface Fire Spread Distance" is now listed as a
+	SURFACE Module output in the Output Variables section
+	of the worksheet.  This includes vSurfaceFireDistAtVector,
+	vSurfaceFireDistAtBeta, and vSurfaceFireDistAtPsi.
+	Also fixed vSUrfaceFireEllipseG to also show as SURFACE.
+	
 2016-03-31 (2.75 h) [4.0 h total]
 
 - Resolved Issue #074FAH - Elapsed Time incorrectly requested

@@ -20813,7 +20813,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vSurfaceFireDistAtBack" />
 
   <function name="fSurfaceFireDistAtBeta"
-    module="size"
+    module="surface"
     releaseFrom="60000"
     releaseThru="99999"
     input="vSurfaceFireSpreadAtBeta"
@@ -20837,7 +20837,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vSurfaceFireDistAtHead" />
 
   <function name="fSurfaceFireDistAtPsi"
-    module="size"
+    module="surface"
     releaseFrom="60000"
     releaseThru="99999"
     input="vSurfaceFireSpreadAtPsi"
@@ -20845,7 +20845,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vSurfaceFireDistAtPsi" />
 
   <function name="fSurfaceFireDistAtVector"
-    module="size"
+    module="surface"
     releaseFrom="10000"
     releaseThru="99999"
     input="vSurfaceFireSpreadAtVector"
@@ -20875,7 +20875,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vSurfaceFireEllipseF" />
 
   <function name="fSurfaceFireEllipseG"
-    module="size"
+    module="surface"
     releaseFrom="60000"
     releaseThru="99999"
     input="vSurfaceFireLengDist"

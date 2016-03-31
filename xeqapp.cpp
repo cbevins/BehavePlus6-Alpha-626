@@ -837,12 +837,8 @@ QString EqApp::findProducerModule( const QString &varName )
 	// HACK for lenght-to-width ratio and forward spread distance,
 	// which sometimes get calculated in SURFACE even though they are input to SIZE
 	// Pat wants only their INPUT module to be listed (i.e., just 'SIZE').
-
-	// HACK REVISITED effective Build 617 Issue #072FAH
-	// FAH says vSurfaceFireDistAtHead should be SURFACE, not SIZE
 	const char* str = varName.latin1();
 	if ( ! strcmp( str, "vSurfaceFireLengthToWidth" ) )
-	  // || ! strcmp( str, "vSurfaceFireDistAtHead" ) )
 	{
 		modules = "SIZE";
 		return( modules );
