@@ -807,8 +807,19 @@ double FBL_CrownFireActiveRatio( double crownSpreadRate,
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the Scott & Reinhardt 'crowning index' (O'active),
- *	the 20-ft wind speed at which the crown canopy becomes fully available
+/*! \brief Calculates the Scott & Reinhardt 'Crowning Index', also known as
+ *	"O'active", the critical open wind speed for sustaining a fully active crown fire.
+ *
+ *	The 'Crowning Index' and O'active is the open wind speed at which Ractive==R'active,
+ *	where:
+ *	- Ractive is the Rothermel crown fire spread rate
+ *		(3.34 times the Fuel Model 10 spread rate), and
+ *  - R'active is the critical crown fire spread rate for sustaining an active crown fire
+ *		(a function of the canopy fuel bulk density)
+ *
+ *  See Scott & Reinhardt (2001) equantion 20 on page 19.
+ *
+ *	This is the 20-ft wind speed at which the crown canopy becomes fully available
  *	for active fire spread (and the crown fraction burned approaches 1).
  *
  *	\param canopyBulkDensity Crown canopy bulk density (btu/ft3)
@@ -857,33 +868,33 @@ double FBL_CrownFireArea( double spreadDistance, double lwRatio )
 //------------------------------------------------------------------------------
 /*! \brief Calculates the crown fraction burned as per Scott & Reinhardt.
  *
- *  \param surfaceFireRos Actual surface fire spread rate (ft/min).
- *	\param criticalSurfaceFireRos Surface fire spread rate required to
- *		initiate torching/crowning (ft/min) [R'intiation].
- *	\param crowningSurfaceFireRos Surface fire spread rate at which the
- *	active crown fire spread rate is fully achieved and the crown fraction
- *	burned is 1 [R'active].
+ *	See Scott & Reinhardt (2001) equation 28 on page 41.
  *
- *  \return Crown fration burned (dl).
+ *  \param ros Actual surface fire spread rate (ft/min) [Rsurface].
+ *	\param rInitiation Surface fire spread rate required to initiate
+ *		passive/torching/crowning (ft/min) [R'intiation].
+ *	\param rsa Surface fire spread rate required to reach CI or O'active
+ *
+ *  \return Crown fraction burned (dl).
  */
 double FBL_CrownFireCanopyFractionBurned(
-		double surfaceFireRos,
-		double criticalSurfaceFireRos,
-		double crowningSurfaceFireRos )
+		double ros,
+		double rInitiation,
+		double rsa )
 {
-	// If actual ROS is less than initiation ROS, then no canopy is burned
-	double num = surfaceFireRos - criticalSurfaceFireRos;
+	// If surface ROS is less than crown fire initiation ROS, then no canopy is burned
+	double num = ros - rInitiation;
 	if ( num <= 0. )
 	{
 		return 0.;
 	}
-	// If actual ROS is greater than active ROS, then 100% of the canopy is burned
-	if ( surfaceFireRos >= crowningSurfaceFireRos )
+	// If surface ROS is greater than surface Rsa, then 100% of the canopy is burned
+	if ( ros >= rsa )
 	{
 		return 1.;
 	}
 	// Otherwise actual ROS is between passive and active crowning critical threshholds
-	double den = crowningSurfaceFireRos - criticalSurfaceFireRos;
+	double den = rsa - rInitiation;
 	den = ( den < 0. ) ? 0. : den;
 	double cfb = ( den > SMIDGEN ) ? ( num / den ) : 0.;
 	cfb = ( cfb > 1. ) ? 1. : cfb;
@@ -892,8 +903,10 @@ double FBL_CrownFireCanopyFractionBurned(
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the critical crown fire spread rate to achieve active
- *  crowning.
+/*! \brief Calculates the critical crown fire spread rate (R'active) for
+ *	sustaining an active crown fire.
+ *
+ *	S&R equation 14 on page 14.
  *
  *  \param canopyBulkDensity    Canopy crown bulk density (lb/ft3).
  *
@@ -910,6 +923,8 @@ double FBL_CrownFireCriticalCrownFireSpreadRate( double canopyBulkDensity )
 //------------------------------------------------------------------------------
 /*! \brief Calculates the Scott & Reinhardt critical surface fire spread rate
  *	(R'initiation) sufficient to initiate a passive or active crown fire.
+ *
+ *	S&R equation 12 on page 13.
  *
  *	\param criticalSurfaceFireIntensity Critical surface fireline intensity (btu/ft/s) 
  *  \param surfaceFireHpua Surface fire heat per unit area (Btu/ft2)
@@ -944,8 +959,10 @@ double FBL_CrownFireCriticalSurfaceFireIntensity( double criticalFlameLength )
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the critical surface fire intensity for a surface fire
- *  to transition to a crown fire.
+/*! \brief Calculates the critical surface fire intensity (I'initiation)
+ *	for a surface fire to transition to a passsive or activecrown fire.
+ *
+ *	See Scott & Reinhardt (2001) equation 11 on page 12.
  *
  *  \param foliarMoisture   Tree foliar moisture content (lb water/lb foliage).
  *  \param crownBaseHt      Tree crown base height (ft).
@@ -963,7 +980,7 @@ double FBL_CrownFireCriticalSurfaceFireIntensity( double foliarMoisture,
     double cbh = 0.3048 * crownBaseHt;
     cbh = ( cbh < 0.1 ) ? 0.1 : cbh;
     // Critical surface fireline intensity (kW/m)
-    double csfi =pow( (0.010 * cbh * ( 460. + 25.9 * fmc ) ), 1.5 );
+    double csfi = pow( (0.010 * cbh * ( 460. + 25.9 * fmc ) ), 1.5 );
     // Return as Btu/ft/s
     return ( 0.288672 * csfi );
 }

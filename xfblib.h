@@ -181,9 +181,9 @@ double FBL_CrownFireActiveWindSpeed(
 		double slopeFactor );
 
 double FBL_CrownFireCanopyFractionBurned(
-		double surfaceFireRos,
-		double criticalSurfaceFireRos,
-		double crowningSurfaceFireRos );
+		double ros,
+		double rInitiation,
+		double rsa );
 
 double FBL_CrownFireCriticalCrownFireSpreadRate(
             double crownBulkDensity ) ;
