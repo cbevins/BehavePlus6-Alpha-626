@@ -8081,8 +8081,8 @@
     default="0"
   />
   <translate key="vCrownFireActiveFireWidth:Label"
-    en_US="Active Crown Fire Spread Width"
-    pt_PT="Active Crown Fire Spread Width"
+    en_US="Active Crown Fire Width"
+    pt_PT="Active Crown Fire Width"
   />
   <translate key="vCrownFireActiveFireWidth:Desc"
     en_US="Width of an elliptical crown fire under uniform conditions."
@@ -8221,6 +8221,38 @@
     pt_PT="Spread Distance"
   />
 
+  <variable name="vCrownFireActiveSpreadMapDist"
+    type="continuous"
+    releaseFrom="30000"
+    releaseThru="99999"
+    help="vCrownFireActiveSpreadDist.html"
+    sortIn="06:999:9"
+    sortOut="02:140:1"
+    nativeUnits="in" nativeDecimals="2"
+    englishUnits="in" englishDecimals="2"
+    metricUnits="cm" metricDecimals="2"
+    minimum="0.00"
+    maximum="96.00"
+    default="0.00"
+    wizard=""
+  />
+  <translate key="vCrownFireActiveSpreadMapDist:Label"
+    en_US="Active Crown Fire Spread Map Distance"
+    pt_PT="Distância no Mapa de Propagação de Copas"
+  />
+  <translate key="vCrownFireActiveSpreadMapDist:Desc"
+    en_US="Active fire spread map distance."
+    pt_PT="Distância no mapa de propagação de copas."
+  />
+  <translate key="vCrownFireActiveSpreadMapDist:Hdr0"
+    en_US="Active Crown Fire"
+    pt_PT="Fogo de copas"
+  />
+  <translate key="vCrownFireActiveSpreadMapDist:Hdr1"
+    en_US="Spread Map Distance"
+    pt_PT="Dist mapa"
+  />
+
   <variable name="vCrownFireActiveSpreadRate"
     type="continuous"
     releaseFrom="30000"
@@ -8251,37 +8283,6 @@
   <translate key="vCrownFireActiveSpreadRate:Hdr1"
     en_US="ROS"
     pt_PT="Vel. fogo"
-  />
-
-  <variable name="vCrownFireArea"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vCrownFireArea.html"
-    sortIn="06:320:2"
-    sortOut="02:150:1"
-    nativeUnits="ft2" nativeDecimals="1"
-    englishUnits="ac" englishDecimals="1"
-    metricUnits="ha" metricDecimals="1"
-    minimum="0.0"
-    maximum="999999999.0"
-    default="0.0"
-  />
-  <translate key="vCrownFireArea:Label"
-    en_US="Crown Fire Area"
-    pt_PT="??? Crown Fire Área"
-  />
-  <translate key="vCrownFireArea:Desc"
-    en_US="Size of an elliptical crown fire under uniform conditions."
-    pt_PT="Dimensão de um incêndio com forma elíptica sob condições ambientais uniformes."
-  />
-  <translate key="vCrownFireArea:Hdr0"
-    en_US="Crown"
-    pt_PT="???Crown"
-  />
-  <translate key="vCrownFireArea:Hdr1"
-    en_US="Fire Area"
-    pt_PT="???Fire Área"
   />
 
   <variable name="vCrownFireCanopyFractionBurned"
@@ -8474,37 +8475,6 @@
     pt_PT="Surface RoS"
   />
 
-  <variable name="vCrownFireFlameLeng"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vCrownFireFlameLeng.html"
-    sortIn="06:130:0"
-    sortOut="02:190:1"
-    nativeUnits="ft" nativeDecimals="1"
-    englishUnits="ft" englishDecimals="1"
-    metricUnits="m" metricDecimals="1"
-    minimum="0.0"
-    maximum="200.0"
-    default="0.0"
-  />
-  <translate key="vCrownFireFlameLeng:Label"
-    en_US="Crown Fire Flame Length"
-    pt_PT="??? Crown Comprimento da chama"
-  />
-  <translate key="vCrownFireFlameLeng:Desc"
-    en_US="Crown fire (surface, torching, or active crown) flame length at the head of the fire."
-    pt_PT="??? Comprimento da chama na cabeça do incêndio."
-  />
-  <translate key="vCrownFireFlameLeng:Hdr0"
-    en_US="Crown"
-    pt_PT="Crown"
-  />
-  <translate key="vCrownFireFlameLeng:Hdr1"
-    en_US="Flame Length"
-    pt_PT="??? Flame Leng"
-  />
-
   <variable name="vCrownFireFuelLoad"
     type="continuous"
     releaseFrom="10000"
@@ -8534,37 +8504,6 @@
   <translate key="vCrownFireFuelLoad:Hdr1"
     en_US="Fuel Load"
     pt_PT="Carga"
-  />
-
-  <variable name="vCrownFireHeatPerUnitArea"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vCrownFireHeatPerUnitArea.html"
-    sortIn="06:9999:9"
-    sortOut="02:120:1"
-    nativeUnits="Btu/ft2" nativeDecimals="0"
-    englishUnits="Btu/ft2" englishDecimals="0"
-    metricUnits="kJ/m2" metricDecimals="0"
-    minimum="0"
-    maximum="5000"
-    default="0"
-  />
-  <translate key="vCrownFireHeatPerUnitArea:Label"
-    en_US="Crown Fire Heat per Unit Area"
-    pt_PT="??? Crown Energia libertada por unidade de área"
-  />
-  <translate key="vCrownFireHeatPerUnitArea:Desc"
-    en_US="Crown fire total potential heat produced per unit area."
-    pt_PT="??? Crown Energia potencial libertada por unidade de área no incêndio."
-  />
-  <translate key="vCrownFireHeatPerUnitArea:Hdr0"
-    en_US="Crown"
-    pt_PT="??? Crown"
-  />
-  <translate key="vCrownFireHeatPerUnitArea:Hdr1"
-    en_US="HPUA"
-    pt_PT="??? Unidade de área"
   />
 
   <variable name="vCrownFireHeatPerUnitAreaCanopy"
@@ -8627,38 +8566,6 @@
   <translate key="vCrownFireLengthToWidth:Hdr1"
     en_US="Length/Width"
     pt_PT="Comp/largura"
-  />
-
-  <variable name="vCrownFireLineInt"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vCrownFireLineInt.html"
-    sortIn="06:990:9"
-    sortOut="02:180:1"
-    nativeUnits="Btu/ft/s" nativeDecimals="0"
-    englishUnits="Btu/ft/s" englishDecimals="0"
-    metricUnits="kW/m" metricDecimals="0"
-    minimum="0"
-    maximum="10000"
-    default="0"
-    wizard=""
-  />
-  <translate key="vCrownFireLineInt:Label"
-    en_US="Crown Fireline Intensity"
-    pt_PT="??? Final Fireline Intensity"
-  />
-  <translate key="vCrownFireLineInt:Desc"
-    en_US="Crown fireline (Byram&apos;s) intensity at the head of the fire."
-    pt_PT="Crown Intensidade (Byram&apos;s) da frente de chamas na cabeça do incêndio."
-  />
-  <translate key="vCrownFireLineInt:Hdr0"
-    en_US="Crown"
-    pt_PT="??? Crown"
-  />
-  <translate key="vCrownFireLineInt:Hdr1"
-    en_US="FLI"
-    pt_PT="??? FLI"
   />
 
   <variable name="vCrownFirePassiveFireArea"
@@ -8770,8 +8677,8 @@
     default="0"
   />
   <translate key="vCrownFirePassiveFireWidth:Label"
-    en_US="Passive Crown Fire Spread Width"
-    pt_PT="Passive Crown Fire Spread Width"
+    en_US="Passive Crown Fire Width"
+    pt_PT="Passive Crown Fire Width"
   />
   <translate key="vCrownFirePassiveFireWidth:Desc"
     en_US="Width of an elliptical crown fire under uniform conditions."
@@ -8879,6 +8786,38 @@
     pt_PT="Spread Distance"
   />
 
+  <variable name="vCrownFirePassiveSpreadMapDist"
+    type="continuous"
+    releaseFrom="30000"
+    releaseThru="99999"
+    help="vCrownFirePassiveSpreadDist.html"
+    sortIn="06:999:9"
+    sortOut="02:140:1"
+    nativeUnits="in" nativeDecimals="2"
+    englishUnits="in" englishDecimals="2"
+    metricUnits="cm" metricDecimals="2"
+    minimum="0.00"
+    maximum="96.00"
+    default="0.00"
+    wizard=""
+  />
+  <translate key="vCrownFirePassiveSpreadMapDist:Label"
+    en_US="Passive Crown Fire Spread Map Distance"
+    pt_PT="Distância no Mapa de Propagação de Copas"
+  />
+  <translate key="vCrownFirePassiveSpreadMapDist:Desc"
+    en_US="Passive fire spread map distance."
+    pt_PT="Distância no mapa de propagação de copas."
+  />
+  <translate key="vCrownFirePassiveSpreadMapDist:Hdr0"
+    en_US="Passive Crown Fire"
+    pt_PT="Fogo de copas"
+  />
+  <translate key="vCrownFireActiveSpreadMapDist:Hdr1"
+    en_US="Spread Map Distance"
+    pt_PT="Dist mapa"
+  />
+
   <variable name="vCrownFirePassiveSpreadRate"
     type="continuous"
     releaseFrom="30000"
@@ -8909,37 +8848,6 @@
   <translate key="vCrownFirePassiveSpreadRate:Hdr1"
     en_US="ROS"
     pt_PT="Vel. fogo"
-  />
-
-  <variable name="vCrownFirePerimeter"
-    type="continuous"
-    releaseFrom="10000"
-    releaseThru="99999"
-    help="vCrownFirePerimeter.html"
-    sortIn="06:999:9"
-    sortOut="02:160:1"
-    nativeUnits="ft" nativeDecimals="0"
-    englishUnits="ch" englishDecimals="0"
-    metricUnits="m" metricDecimals="0"
-    minimum="0"
-    maximum="100000"
-    default="0"
-  />
-  <translate key="vCrownFirePerimeter:Label"
-    en_US="Crown Fire Perimeter"
-    pt_PT="Perímetro"
-  />
-  <translate key="vCrownFirePerimeter:Desc"
-    en_US="Total perimeter of an elliptical crown fire under uniform conditions."
-    pt_PT="???Perímetro total de um incêndio de forma elíptica a propagar-se sobre condições hómogeneas."
-  />
-  <translate key="vCrownFirePerimeter:Hdr0"
-    en_US="Crown Fire"
-    pt_PT="???Crown Incêndio"
-  />
-  <translate key="vCrownFirePerimeter:Hdr1"
-    en_US="Perimeter"
-    pt_PT="Perímetro"
   />
 
   <variable name="vCrownFirePowerOfFire"
@@ -9033,102 +8941,6 @@
   <translate key="vCrownFirePowerRatio:Hdr1"
     en_US="Ratio"
     pt_PT="??? Ratio"
-  />
-
-  <variable name="vCrownFireSpreadDist"
-    type="continuous"
-    releaseFrom="30000"
-    releaseThru="99999"
-    help="vCrownFireSpreadDist.html"
-    sortIn="06:999:9"
-    sortOut="02:130:1"
-    nativeUnits="ft" nativeDecimals="1"
-    englishUnits="ch" englishDecimals="1"
-    metricUnits="m" metricDecimals="1"
-    minimum="0"
-    maximum="10000"
-    default="0"
-    wizard=""
-  />
-  <translate key="vCrownFireSpreadDist:Label"
-    en_US="Crown Fire Spread Distance"
-    pt_PT="Distância  da Propagação de Fogo de Copas"
-  />
-  <translate key="vCrownFireSpreadDist:Desc"
-    en_US="Crown fire spread distance."
-    pt_PT="Distância  da propagação de fogo de copas."
-  />
-  <translate key="vCrownFireSpreadDist:Hdr0"
-    en_US="Crown Fire"
-    pt_PT="Copas"
-  />
-  <translate key="vCrownFireSpreadDist:Hdr1"
-    en_US="Spread Distance"
-    pt_PT="Dist. fogo"
-  />
-
-  <variable name="vCrownFireSpreadMapDist"
-    type="continuous"
-    releaseFrom="30000"
-    releaseThru="99999"
-    help="vCrownFireSpreadDist.html"
-    sortIn="06:999:9"
-    sortOut="02:140:1"
-    nativeUnits="in" nativeDecimals="2"
-    englishUnits="in" englishDecimals="2"
-    metricUnits="cm" metricDecimals="2"
-    minimum="0.00"
-    maximum="96.00"
-    default="0.00"
-    wizard=""
-  />
-  <translate key="vCrownFireSpreadMapDist:Label"
-    en_US="Crown Fire Spread Map Distance"
-    pt_PT="Distância no Mapa de Propagação de Copas"
-  />
-  <translate key="vCrownFireSpreadMapDist:Desc"
-    en_US="Final fire spread map distance."
-    pt_PT="Distância no mapa de propagação de copas."
-  />
-  <translate key="vCrownFireSpreadMapDist:Hdr0"
-    en_US="Crown Fire"
-    pt_PT="Fogo de copas"
-  />
-  <translate key="vCrownFireSpreadMapDist:Hdr1"
-    en_US="Spread Map Distance"
-    pt_PT="Dist mapa"
-  />
-
-  <variable name="vCrownFireSpreadRate"
-    type="continuous"
-    releaseFrom="30000"
-    releaseThru="99999"
-    help="vCrownFireSpreadRate.html"
-    sortIn="06:999:9"
-    sortOut="02:050:1"
-    nativeUnits="ft/min" nativeDecimals="1"
-    englishUnits="ch/h" englishDecimals="1"
-    metricUnits="m/min" metricDecimals="1"
-    minimum="0"
-    maximum="10000"
-    default="0"
-    wizard=""
-  />
-  <translate key="vCrownFireSpreadRate:Label"
-    en_US="Crown Fire Rate of Spread"
-    pt_PT="Propagação de copas"
-  />
-  <translate key="vCrownFireSpreadRate:Desc"
-    en_US="Crown fire rate of spread."
-    pt_PT="Velocidade de propagação de fogo de copas."
-  />
-  <translate key="vCrownFireSpreadRate:Hdr0"
-    en_US="Crown Fire"
-    pt_PT="Copas"
-  />
-  <translate key="vCrownFireSpreadRate:Hdr1"
-    en_US="Rate of Spread"
-    pt_PT="Vel. fogo"
   />
 
   <variable name="vCrownFireTransRatio"
@@ -12027,6 +11839,68 @@ por relâmpago"
   <translate key="vSurfaceFireWindFactor:Hdr1"
     en_US="Factor"
     pt_PT="??? Factor"
+  />
+
+  <variable name="vSurfaceFireWindFactorB"
+    type="continuous"
+    releaseFrom="10000"
+    releaseThru="99999"
+    help="vSurfaceFireWindFactor.html"
+    sortIn="06:999:9"
+    sortOut="01:390:1"
+    nativeUnits="ratio" nativeDecimals="1"
+    englishUnits="ratio" englishDecimals="1"
+    metricUnits="ratio" metricDecimals="1"
+    minimum="0.0"
+    maximum="1000.0"
+    default="0.0"
+  />
+  <translate key="vSurfaceFireWindFactorB:Label"
+    en_US="Rothermel Wind Factor B"
+    pt_PT="??? Rothermel Wind Factor B"
+  />
+  <translate key="vSurfaceFireWindFactorB:Desc"
+    en_US="Rothermel wind factor B"
+    pt_PT="???  Rothermel wind factor B"
+  />
+  <translate key="vSurfaceFireWindFactorB:Hdr0"
+    en_US="Wind"
+    pt_PT="??? Wind"
+  />
+  <translate key="vSurfaceFireWindFactorB:Hdr1"
+    en_US="Factor B"
+    pt_PT="??? Factor B"
+  />
+
+  <variable name="vSurfaceFireWindFactorK"
+    type="continuous"
+    releaseFrom="10000"
+    releaseThru="99999"
+    help="vSurfaceFireWindFactor.html"
+    sortIn="06:999:9"
+    sortOut="01:390:1"
+    nativeUnits="ratio" nativeDecimals="1"
+    englishUnits="ratio" englishDecimals="1"
+    metricUnits="ratio" metricDecimals="1"
+    minimum="0.0"
+    maximum="1000.0"
+    default="0.0"
+  />
+  <translate key="vSurfaceFireWindFactorK:Label"
+    en_US="Rothermel Wind Factor K"
+    pt_PT="??? Wind Factor k"
+  />
+  <translate key="vSurfaceFireWindFactorK:Desc"
+    en_US="Rothermel wind factor K"
+    pt_PT="???  Rothermel wind factor K"
+  />
+  <translate key="vSurfaceFireWindFactorK:Hdr0"
+    en_US="Wind"
+    pt_PT="??? Wind"
+  />
+  <translate key="vSurfaceFireWindFactorK:Hdr1"
+    en_US="Factor K"
+    pt_PT="??? Factor K"
   />
 
   <variable name="vSurfaceFireWindSpeedFlag"
@@ -20286,6 +20160,17 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vContainXMin"
     output="vContainYMax" />
 
+  <function name="fCrownFireActiveCritSurfSpreadRate"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vSurfaceFireNoWindRate"
+    input="vSurfaceFireSlopeFactor"
+    input="vSurfaceFireWindFactorB"
+    input="vSurfaceFireWindFactorK"
+    input="vCrownFireActiveCritOpenWindSpeed"
+    output="vCrownFireActiveCritSurfSpreadRate" />
+
   <function name="fCrownFireActiveCrown"
     module="crown"
     releaseFrom="30000"
@@ -20297,17 +20182,101 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     module="crown"
     releaseFrom="30000"
     releaseThru="99999"
-    input="vCrownFireSpreadRate"
+    input="vCrownFireActiveSpreadRate"
     input="vCrownFireCritCrownSpreadRate"
     output="vCrownFireActiveRatio" />
 
-  <function name="fCrownFireArea"
+  <!-- ACTIVE ros, hpua, fli, fl, distance, width, area, perimeter, map -->
+  <function name="fCrownFireActiveFireArea"
     module="crown"
     releaseFrom="10000"
     releaseThru="99999"
-    input="vCrownFireSpreadDist"
+    input="vCrownFireActiveSpreadDist"
     input="vCrownFireLengthToWidth"
-    output="vCrownFireArea" />
+    output="vCrownFireActiveFireArea" />
+
+  <function name="fCrownFireActiveFireLineInt"
+    module="crown"
+    releaseFrom="10000"
+    releaseThru="99999"
+    input="vCrownFireActiveHeatPerUnitArea"
+    input="vCrownFireActiveSpreadRate"
+    output="vCrownFireActiveFireLineInt" />
+
+  <function name="fCrownFireActiveFireLineIntFromFlameLeng"
+    module="crown"
+    releaseFrom="10000"
+    releaseThru="99999"
+    input="vCrownFireActiveFlameLeng"
+    output="vCrownFireActiveFireLineInt" />
+
+  <function name="fCrownFireActiveFirePerimeter"
+    module="crown"
+    releaseFrom="10000"
+    releaseThru="99999"
+    input="vCrownFireActiveSpreadDist"
+    input="vCrownFireLengthToWidth"
+    output="vCrownFireActiveFirePerimeter" />
+
+  <function name="fCrownFireActiveFireWidth"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vCrownFireActiveSpreadDist"
+    input="vCrownFireLengthToWidth"
+    output="vCrownFireActiveFireWidth" />
+
+  <function name="fCrownFireActiveFlameLeng"
+    module="crown"
+    releaseFrom="10000"
+    releaseThru="99999"
+    input="vCrownFireActiveFireLineInt"
+    output="vCrownFireActiveFlameLeng" />
+
+  <function name="fCrownFireActiveHeatPerUnitArea"
+    module="crown"
+    releaseFrom="10000"
+    releaseThru="99999"
+    input="vCrownFireHeatPerUnitAreaCanopy"
+    input="vSurfaceFireHeatPerUnitArea"
+    output="vCrownFireActiveHeatPerUnitArea" />
+
+  <function name="fCrownFireActiveSpreadDist"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vCrownFireActiveSpreadRate"
+    input="vSurfaceFireElapsedTime"
+    output="vCrownFireActiveSpreadDist" />
+
+  <function name="fCrownFireActiveSpreadMapDist"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vCrownFireActiveSpreadDist"
+    input="vMapScale"
+    output="vCrownFireActiveSpreadMapDist" />
+
+  <function name="fCrownFireActiveSpreadRate"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vSurfaceFuelMoisDead1"
+    input="vSurfaceFuelMoisDead10"
+    input="vSurfaceFuelMoisDead100"
+    input="vSurfaceFuelMoisLiveWood"
+    input="vWindSpeedAt20Ft"
+    output="vCrownFireActiveSpreadRate"
+    output="vCrownFireActiveCritSurfSpreadRate" />
+
+  <function name="fCrownFireCanopyFractionBurned"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vSurfaceFireSpreadAtHead"
+    input="vCrownFireCritSurfSpreadRate"
+    input="vCrownFireActiveCritSurfSpreadRate"
+    output="vCrownFireCanopyFractionBurned" />
 
   <function name="fCrownFireCritCrownSpreadRate"
     module="crown"
@@ -20331,12 +20300,13 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vCrownFireCritSurfFireInt"
     output="vCrownFireCritSurfFlameLeng" />
 
-  <function name="fCrownFireFlameLeng"
+  <function name="fCrownFireCritSurfSpreadRate"
     module="crown"
-    releaseFrom="10000"
+    releaseFrom="60000"
     releaseThru="99999"
-    input="vCrownFireLineInt"
-    output="vCrownFireFlameLeng" />
+    input="vCrownFireCritSurfFireInt"
+		input="vSurfaceFireHeatPerUnitArea"
+    output="vCrownFireActiveCritSurfSpreadRate" />
 
   <function name="fCrownFireFuelLoad"
     module="crown"
@@ -20354,49 +20324,92 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vCrownFireFuelLoad"
     output="vCrownFireHeatPerUnitAreaCanopy" />
 
-  <function name="fCrownFireHeatPerUnitArea"
-    module="crown"
-    releaseFrom="10000"
-    releaseThru="99999"
-    input="vCrownFireHeatPerUnitAreaCanopy"
-    input="vSurfaceFireHeatPerUnitArea"
-    output="vCrownFireHeatPerUnitArea" />
-
   <function name="fCrownFireLengthToWidth"
     module="crown"
     releaseFrom="10000"
     releaseThru="99999"
     input="vWindSpeedAt20Ft"
     output="vCrownFireLengthToWidth" />
-
-  <function name="fCrownFireLineInt"
+  
+  <!-- PASSIVE ros, hpua, fli, fl, distance, width, area, perimeter, map -->
+  <function name="fCrownFirePassiveFireArea"
     module="crown"
     releaseFrom="10000"
     releaseThru="99999"
-    input="vCrownFireHeatPerUnitArea"
-    input="vCrownFireSpreadRate"
-    output="vCrownFireLineInt" />
-
-  <function name="fCrownFireLineIntFromFlameLeng"
-    module="crown"
-    releaseFrom="10000"
-    releaseThru="99999"
-    input="vCrownFireFlameLeng"
-    output="vCrownFireLineInt" />
-
-  <function name="fCrownFirePerimeter"
-    module="crown"
-    releaseFrom="10000"
-    releaseThru="99999"
-    input="vCrownFireSpreadDist"
+    input="vCrownFirePassiveSpreadDist"
     input="vCrownFireLengthToWidth"
-    output="vCrownFirePerimeter" />
+    output="vCrownFirePassiveFireArea" />
+
+  <function name="fCrownFirePassiveFireLineInt"
+    module="crown"
+    releaseFrom="10000"
+    releaseThru="99999"
+    input="vCrownFirePassiveHeatPerUnitArea"
+    input="vCrownFirePassiveSpreadRate"
+    output="vCrownFirePassiveFireLineInt" />
+
+  <function name="fCrownFirePassiveFirePerimeter"
+    module="crown"
+    releaseFrom="10000"
+    releaseThru="99999"
+    input="vCrownFirePassiveSpreadDist"
+    input="vCrownFireLengthToWidth"
+    output="vCrownFirePassiveFirePerimeter" />
+
+  <function name="fCrownFirePassiveFireWidth"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vCrownFirePassiveSpreadDist"
+    input="vCrownFireLengthToWidth"
+    output="vCrownFirePassiveFireWidth" />
+
+  <function name="fCrownFirePassiveFlameLeng"
+    module="crown"
+    releaseFrom="10000"
+    releaseThru="99999"
+    input="vCrownFirePassiveFireLineInt"
+    output="vCrownFirePassiveFlameLeng" />
+
+  <function name="fCrownFirePassiveHeatPerUnitArea"
+    module="crown"
+    releaseFrom="10000"
+    releaseThru="99999"
+    input="vCrownFireHeatPerUnitAreaCanopy"
+    input="vSurfaceFireHeatPerUnitArea"
+    input="vCrownFireCanopyFractionBurned"
+    output="vCrownFirePassiveHeatPerUnitArea" />
+
+  <function name="fCrownFirePassiveSpreadDist"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vCrownFirePassiveSpreadRate"
+    input="vSurfaceFireElapsedTime"
+    output="vCrownFirePassiveSpreadDist" />
+
+  <function name="fCrownFirePassiveSpreadMapDist"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vCrownFirePassiveSpreadDist"
+    input="vMapScale"
+    output="vCrownFirePassiveSpreadMapDist" />
+
+  <function name="fCrownFirePassiveSpreadRate"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vCrownFireActiveSpreadRate"
+    input="vCrownFireCanopyFractionBurned"
+    input="vSurfaceFireSpreadAtHead"
+    output="vCrownFirePassiveSpreadRate" />
 
   <function name="fCrownFirePowerOfFire"
     module="crown"
     releaseFrom="30000"
     releaseThru="99999"
-    input="vCrownFireLineInt"
+    input="vCrownFireActiveFireLineInt"
     output="vCrownFirePowerOfFire" />
 
   <function name="fCrownFirePowerOfWind"
@@ -20404,7 +20417,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="30000"
     releaseThru="99999"
     input="vWindSpeedAt20Ft"
-    input="vCrownFireSpreadRate"
+    input="vCrownFireActiveSpreadRate"
     output="vCrownFirePowerOfWind" />
 
   <function name="fCrownFirePowerRatio"
@@ -20414,137 +20427,6 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vCrownFirePowerOfFire"
     input="vCrownFirePowerOfWind"
     output="vCrownFirePowerRatio" />
-
-  <function name="fCrownFireSpreadDist"
-    module="crown"
-    releaseFrom="30000"
-    releaseThru="99999"
-    input="vCrownFireSpreadRate"
-    input="vSurfaceFireElapsedTime"
-    output="vCrownFireSpreadDist" />
-
-  <!-- Produces all V6 distance outputs and replaces:
-    fCrownFireArea
-    fCrownFirePerimeter
-    fCrownFireSpreadDist
-  -->
-  <function name="fCrownFireSpreadDistV6"
-    module="crown"
-    releaseFrom="30000"
-    releaseThru="99999"
-    input="vCrownFireSpreadRate"
-    input="vSurfaceFireElapsedTime"
-    output="vCrownFireActiveFireArea"
-    output="vCrownFireActiveSpreadDist"
-    output="vCrownFireActiveFirePerimeter"
-    output="vCrownFireActiveFireWidth"
-    output="vCrownFirePassiveFireArea"
-    output="vCrownFirePassiveSpreadDist"
-    output="vCrownFirePassiveFirePerimeter"
-    output="vCrownFirePassiveFireWidth"
-    output="vCrownFireSpreadDist"
-    output="vCrownFireArea"
-    output="vCrownFirePerimeter"
-  />
-
-  <function name="fCrownFireSpreadMapDist"
-    module="crown"
-    releaseFrom="30000"
-    releaseThru="99999"
-    input="vCrownFireSpreadDist"
-    input="vMapScale"
-    output="vCrownFireSpreadMapDist" />
-
-  <function name="fCrownFireSpreadRate"
-    module="crown"
-    releaseFrom="30000"
-    releaseThru="99999"
-    input="vSurfaceFuelMoisDead1"
-    input="vSurfaceFuelMoisDead10"
-    input="vSurfaceFuelMoisDead100"
-    input="vSurfaceFuelMoisLiveWood"
-    input="vWindSpeedAt20Ft"
-    output="vCrownFireSpreadRate" />
-
-  <!-- Produces all crown outputs except those that depend upon elapsed time
-    Replaces:
-      fCrownFireActiveCrown  
-      fCrownFireActiveRatio
-      fCrownFireCritCrownSpreadRate
-      fCrownFireCritSurfFireInt
-      fCrownFireCritSurfFlameLeng
-      fCrownFireFlameLeng
-      fCrownFireFuelLoad
-      fCrownFireHeatPerUnitAreaCanopy
-      fCrownFireHeatPerUnitArea
-      fCrownFireLengthToWidth
-      fCrownFireLineInt
-      fCrownFirePowerOfFire
-      fCrownFirePowerOfWind
-      fCrownFirePowerRatio
-      fCrownFireSpreadRate
-      fCrownFireTransToCrown
-      fCrownFireType
-      fCrownFireWindDriven
--->
-  <function name="fCrownFireSpreadRateV6"
-    module="crown"
-    releaseFrom="30000"
-    releaseThru="99999"
-    input="vSurfaceFuelMoisDead1"
-    input="vSurfaceFuelMoisDead10"
-    input="vSurfaceFuelMoisDead100"
-    input="vSurfaceFuelMoisLiveWood"
-    input="vWindSpeedAt20Ft"
-            
-    input="vTreeCanopyBulkDens"
-    input="vTreeCoverHt"
-	  input="vTreeCrownBaseHt"
-    input="vTreeFoliarMois"
-    input="vSurfaceFireSpreadAtHead"
-		input="vSurfaceFireHeatPerUnitArea"
-		input="vSurfaceFireLineIntAtVector"
-
-    output="vCrownFireActiveSpreadRate"
-
-    output="vCrownFireActiveRatio"
-    output="vCrownFireLengthToWidth"
-    output="vCrownFireHeatPerUnitAreaCanopy"
-    output="vCrownFireCritSurfFireInt"
-    output="vCrownFireCritSurfFlameLeng"
-    output="vCrownFireFuelLoad"
-    output="vCrownFireCritCrownSpreadRate"
-    output="vCrownFireActiveCrown"
-    output="vCrownFirePowerOfWind"
-  
-    output="vCrownFireCanopyFractionBurned"
-    output="vCrownFireCritSurfSpreadRate"
-
-    output="vCrownFireActiveCritSurfSpreadRate"
-    output="vCrownFireActiveCritOpenWindSpeed"
-
-    output="vCrownFireTransRatio"
-    output="vCrownFireTransToCrown"
-    output="vCrownFireType"
-    output="vCrownFireWindDriven"
-
-    output="vCrownFirePowerOfFire"
-    output="vCrownFirePowerRatio"
-
-    output="vCrownFireActiveFlameLeng"
-    output="vCrownFireActiveHeatPerUnitArea"
-    output="vCrownFireActiveFireLineInt"
-
-    output="vCrownFirePassiveFlameLeng"
-    output="vCrownFirePassiveHeatPerUnitArea"
-    output="vCrownFirePassiveFireLineInt"
-    output="vCrownFirePassiveSpreadRate"
-
-    output="vCrownFireHeatPerUnitArea"
-    output="vCrownFireFlameLeng"
-    output="vCrownFireLineInt"
-    output="vCrownFireSpreadRate"
-   />
 
   <function name="fCrownFireTransRatioFromFireIntAtVector"
     module="crown"
@@ -20694,7 +20576,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vSiteRidgeToValleyElev"
     input="vWindSpeedAt20Ft"
     input="vSpotEmberDiamAtSurface"
-    input="vCrownFireLineInt"
+    input="vCrownFireActiveFireLineInt"
     output="vSpotFlameHtActiveCrown"
     output="vSpotDistActiveCrown"
     output="vSpotFirebrandHtActiveCrown"
@@ -21186,6 +21068,8 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vSurfaceFireWindSpeedLimit"
     output="vSurfaceFireWindSpeedFlag"
     output="vSurfaceFireWindFactor"
+    output="vSurfaceFireWindFactorB"
+    output="vSurfaceFireWindFactorK"
     output="vSurfaceFireSlopeFactor" />
 
 <!--

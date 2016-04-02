@@ -747,1115 +747,6 @@ void EqCalc::ContainFFSingle( void )
 }
 
 //------------------------------------------------------------------------------
-/*! \brief CrownFireActiveCrown
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireActiveCrown
- *
- *  Independent Variables (Inputs)
- *      vCrownFireActiveRatio (dl)
- */
-
-void EqCalc::CrownFireActiveCrown( void )
-{
-    // Access current input values
-    double ratio = vCrownFireActiveRatio->m_nativeValue;
-    // Calculate results
-    int   status = ( ratio < 1.0 ) ? 0 : 1;
-    // Store results
-    vCrownFireActiveCrown->updateItem( status );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireActiveCrown() 1 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireActiveRatio %g %s\n", Margin,
-            vCrownFireActiveRatio->m_nativeValue,
-            vCrownFireActiveRatio->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireActiveCrown %g %s\n", Margin,
-            vCrownFireActiveCrown->m_nativeValue,
-            vCrownFireActiveCrown->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireActiveRatio
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireActiveRatio (dl)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireSpreadRate (ft/min)
- *      vCrownFireCritCrownSpreadRate (ft/min)
- */
-
-void EqCalc::CrownFireActiveRatio( void )
-{
-    // Access current input values
-    double ros  = vCrownFireSpreadRate->m_nativeValue;
-    double cros = vCrownFireCritCrownSpreadRate->m_nativeValue;
-    // Calculate results
-    double ratio = FBL_CrownFireActiveRatio( ros, cros );
-    // Store results
-    vCrownFireActiveRatio->update( ratio );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireActiveRatio() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireSpreadRate %g %s\n", Margin,
-            vCrownFireSpreadRate->m_nativeValue,
-            vCrownFireSpreadRate->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vCrownFireCritCrownSpreadRate %g %s\n", Margin,
-            vCrownFireCritCrownSpreadRate->m_nativeValue,
-            vCrownFireCritCrownSpreadRate->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireActiveRatio %g %s\n", Margin,
-            vCrownFireActiveRatio->m_nativeValue,
-            vCrownFireActiveRatio->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrowFireArea
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireArea (ft)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireSpreadDist (ft)
- *      vCrownFireLengthToWidth (ft/ft)
- */
-
-void EqCalc::CrownFireArea( void )
-{
-    // Access current input values
-    double dist  = vCrownFireSpreadDist->m_nativeValue;
-    double ratio = vCrownFireLengthToWidth->m_nativeValue;
-    // Calculate results
-    double area = FBL_CrownFireArea( dist, ratio );
-    // Store results
-    vCrownFireArea->update( area );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireArea() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireSpreadDist %g %s\n", Margin,
-            vCrownFireSpreadDist->m_nativeValue,
-            vCrownFireSpreadDist->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vCrownFireLengthToWidth %g %s\n", Margin,
-            vSurfaceFireLengthToWidth->m_nativeValue,
-            vSurfaceFireLengthToWidth->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireArea %g %s\n", Margin,
-            vCrownFireArea->m_nativeValue,
-            vCrownFireArea->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireCritCrownSpreadRate
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireCritCrownSpreadRate (ft/min)
- *
- *  Independent Variables (Inputs)
- *      vTreeCanopyBulkDens (lb/ft3)
- */
-
-void EqCalc::CrownFireCritCrownSpreadRate( void )
-{
-    // Access current input values
-    double rhob = vTreeCanopyBulkDens->m_nativeValue;
-    // Calculate results
-    double cros = FBL_CrownFireCriticalCrownFireSpreadRate( rhob );
-    // Store results
-    vCrownFireCritCrownSpreadRate->update( cros );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireCritCrownSpreadRate() 1 1\n", Margin );
-        fprintf( m_log, "%s  i vTreeCanopyBulkDens %g %s\n", Margin,
-            vTreeCanopyBulkDens->m_nativeValue,
-            vTreeCanopyBulkDens->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireCritCrownSpreadRate %g %s\n", Margin,
-            vCrownFireCritCrownSpreadRate->m_nativeValue,
-            vCrownFireCritCrownSpreadRate->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireCritSurfFireInt
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireCritSurfFireInt (Btu/ft/s)
- *
- *  Independent Variables (Inputs)
- *      vTreeCrownBaseHt (ft)
- *      vTreeFoliarMois (lb water/lb fuel)
- */
-
-void EqCalc::CrownFireCritSurfFireInt( void )
-{
-    // Access current input values
-    double fmc = vTreeFoliarMois->m_nativeValue;
-    double cbh = vTreeCrownBaseHt->m_nativeValue;
-    // Calculate results
-    double cfli = FBL_CrownFireCriticalSurfaceFireIntensity( fmc, cbh );
-    // Store results
-    vCrownFireCritSurfFireInt->update( cfli );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireCritSurfFireInt() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vTreeCrownBaseHt %g %s\n", Margin,
-            vTreeCrownBaseHt->m_nativeValue,
-            vTreeCrownBaseHt->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vTreeFoliarMois %g %s\n", Margin,
-            vTreeFoliarMois->m_nativeValue,
-            vTreeFoliarMois->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireCritSurfFireInt %g %s\n", Margin,
-            vCrownFireCritSurfFireInt->m_nativeValue,
-            vCrownFireCritSurfFireInt->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireCritSurfFlameLeng
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireCritSurfFlameLeng (ft)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireCritSurfFireInt (Btu/ft/s)
- */
-
-void EqCalc::CrownFireCritSurfFlameLeng( void )
-{
-    // Access current input values
-    double cfli = vCrownFireCritSurfFireInt->m_nativeValue;
-    // Calculate results
-    double cfl  = FBL_CrownFireCriticalSurfaceFlameLength( cfli );
-    // Store results
-    vCrownFireCritSurfFlameLeng->update( cfl );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireCritSurfFlameLeng() 1 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireCritSurfFireInt %g %s\n", Margin,
-            vCrownFireCritSurfFireInt->m_nativeValue,
-            vCrownFireCritSurfFireInt->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireCritSurfFlameLeng %g %s\n", Margin,
-            vCrownFireCritSurfFlameLeng->m_nativeValue,
-            vCrownFireCritSurfFlameLeng->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireFlameLength
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireFlameLeng (ft)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireLineInt (Btu/ft/s)
- */
-
-void EqCalc::CrownFireFlameLength( void )
-{
-    // Access current input values
-    double cfli = vCrownFireLineInt->m_nativeValue;
-    // Calculate results
-    double cfl  = FBL_CrownFireFlameLength( cfli );
-    // Store results
-    vCrownFireFlameLeng->update( cfl );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireFlameLength() 1 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireLineInt %g %s\n", Margin,
-            vCrownFireLineInt->m_nativeValue,
-            vCrownFireLineInt->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireFlameLeng %g %s\n", Margin,
-            vCrownFireFlameLeng->m_nativeValue,
-            vCrownFireFlameLeng->m_nativeUnits.latin1() );
-    }
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireFuelLoad
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireFuelLoad (lb/ft2)
- *
- *  Independent Variables (Inputs)
- *      vTreeCanopyBulkDens (lb/ft3)
- *      vTreeCoverHt (ft)
- *		vTreeCrownBaseHt (ft)
- */
-
-void EqCalc::CrownFireFuelLoad( void )
-{
-    // Access current input values
-    double bulkDensity = vTreeCanopyBulkDens->m_nativeValue;
-    double canopyHt = vTreeCoverHt->m_nativeValue;
-	double baseHt = vTreeCrownBaseHt->m_nativeValue;
-    // Calculate results
-    double load  = FBL_CrownFuelLoad( bulkDensity, canopyHt, baseHt );
-    // Store results
-    vCrownFireFuelLoad->update( load );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireFuelLoad() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vTreeCanopyBulkDens %g %s\n", Margin,
-            vTreeCanopyBulkDens->m_nativeValue,
-            vTreeCanopyBulkDens->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vTreeCoverHt %g %s\n", Margin,
-            vTreeCoverHt->m_nativeValue,
-            vTreeCoverHt->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireFuelLoad %g %s\n", Margin,
-            vCrownFireFuelLoad->m_nativeValue,
-            vCrownFireFuelLoad->m_nativeUnits.latin1() );
-    }
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireHeatPerUnitArea
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireHeatPerUnitArea (Btu/ft2)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireHeatPerUnitAreaCanopy (Btu/ft2)
- *		vSurfaceFireHeatPerUnitArea (Btu/ft2)
- */
-
-void EqCalc::CrownFireHeatPerUnitArea( void )
-{
-    // Access current input values
-    double surfaceHpua = vSurfaceFireHeatPerUnitArea->m_nativeValue;
-    double canopyHpua  = vCrownFireHeatPerUnitAreaCanopy->m_nativeValue;
-    // Calculate results
-    double crownHpua = FBL_CrownFireHeatPerUnitArea( surfaceHpua, canopyHpua );
-    // Store results
-    vCrownFireHeatPerUnitArea->update( crownHpua );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireHeatPerUnitArea() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vSurfaceFireHeatPerUnitArea %g %s\n", Margin,
-            vSurfaceFireHeatPerUnitArea->m_nativeValue,
-            vSurfaceFireHeatPerUnitArea->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vCrownFireHeatPerUnitAreaCanopy %g %s\n", Margin,
-            vCrownFireHeatPerUnitAreaCanopy->m_nativeValue,
-            vCrownFireHeatPerUnitAreaCanopy->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireHeatPerUnitArea %g %s\n", Margin,
-            vCrownFireHeatPerUnitArea->m_nativeValue,
-            vCrownFireHeatPerUnitArea->m_nativeUnits.latin1() );
-    }
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireHeatPerUnitAreaCanopy
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireHeatPerUnitAreaCanopy (Btu/ft2)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireFuelLoad (lb/ft2)
- */
-
-void EqCalc::CrownFireHeatPerUnitAreaCanopy( void )
-{
-    // Access current input values
-    double load = vCrownFireFuelLoad->m_nativeValue;
-    // Calculate results
-    double hpua = FBL_CrownFireHeatPerUnitAreaCanopy( load, 8000. );
-    // Store results
-    vCrownFireHeatPerUnitAreaCanopy->update( hpua );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireHeatPerUnitAreaCanopy() 1 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireFuelLoad %g %s\n", Margin,
-            vCrownFireFuelLoad->m_nativeValue,
-            vCrownFireFuelLoad->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireHeatPerUnitAreaCanopy %g %s\n", Margin,
-            vCrownFireHeatPerUnitAreaCanopy->m_nativeValue,
-            vCrownFireHeatPerUnitAreaCanopy->m_nativeUnits.latin1() );
-    }
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrowFireLengthToWidth
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireLengthToWidth (ft)
- *
- *  Independent Variables (Inputs)
- *      vWindSpeedAt20Ft (mi/h)
- */
-
-void EqCalc::CrownFireLengthToWidth( void )
-{
-    // Access current input values
-    double wind = vWindSpeedAt20Ft->m_nativeValue;
-    // Calculate results
-    double ratio = FBL_CrownFireLengthToWidthRatio( wind );
-    // Store results
-    vCrownFireLengthToWidth->update( ratio );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireLengthToWidth() 1 1\n", Margin );
-        fprintf( m_log, "%s  i vWindSpeedAt20Ft %g %s\n", Margin,
-            vWindSpeedAt20Ft->m_nativeValue,
-            vWindSpeedAt20Ft->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireLengthToWidth %g %s\n", Margin,
-            vCrownFireLengthToWidth->m_nativeValue,
-            vCrownFireLengthToWidth->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireLineIntensity
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireLineInt (Btu/ft/s)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireHeatPerUnitArea (Btu/ft2)
- *      vCrownFireSpreadRate (ft/min)
- */
-
-void EqCalc::CrownFireLineIntensity( void )
-{
-    // Access current input values
-    double chpua = vCrownFireHeatPerUnitArea->m_nativeValue;
-    double cros = vCrownFireSpreadRate->m_nativeValue;
-    // Calculate results
-    double cfli = FBL_CrownFireFirelineIntensity( chpua, cros );
-    // Store results
-    vCrownFireLineInt->update( cfli );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireLineIntensity() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireHeatPerUnitArea %g %s\n", Margin,
-            vCrownFireHeatPerUnitArea->m_nativeValue,
-            vCrownFireHeatPerUnitArea->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vCrownFireSpreadRate %g %s\n", Margin,
-            vCrownFireSpreadRate->m_nativeValue,
-            vCrownFireSpreadRate->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireLineInt %g %s\n", Margin,
-            vCrownFireLineInt->m_nativeValue,
-            vCrownFireLineInt->m_nativeUnits.latin1() );
-    }
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireLineIntensityFromFlameLength
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireLineInt (Btu/ft/s)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireFLameLeng (ft)
- */
-
-void EqCalc::CrownFireLineIntensityFromFlameLength( void )
-{
-    // Access current input values
-    double cfl = vCrownFireFlameLeng->m_nativeValue;
-    // Calculate results
-    double cfli = FBL_CrownFireFirelineIntensityFromFlameLength( cfl );
-    // Store results
-    vCrownFireLineInt->update( cfli );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireLineIntensityFromFlameLength() 1 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireFlameLeng %g %s\n", Margin,
-            vCrownFireFlameLeng->m_nativeValue,
-            vCrownFireFlameLeng->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireLineInt %g %s\n", Margin,
-            vCrownFireLineInt->m_nativeValue,
-            vCrownFireLineInt->m_nativeUnits.latin1() );
-    }
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrowFirePerimeter
- *
- *  Dependent Variables (Outputs)
- *      vCrownFirePerimeter (ft)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireSpreadDist (ft)
- *      vCrownFireLengthToWidth (ft/ft)
- */
-
-void EqCalc::CrownFirePerimeter( void )
-{
-    // Access current input values
-    double dist  = vCrownFireSpreadDist->m_nativeValue;
-    double ratio = vCrownFireLengthToWidth->m_nativeValue;
-    // Calculate results
-    double perim = FBL_CrownFirePerimeter( dist, ratio );
-    // Store results
-    vCrownFirePerimeter->update( perim );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFirePerimeter() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireSpreadDist %g %s\n", Margin,
-            vCrownFireSpreadDist->m_nativeValue,
-            vCrownFireSpreadDist->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vCrownFireLengthToWidth %g %s\n", Margin,
-            vSurfaceFireLengthToWidth->m_nativeValue,
-            vSurfaceFireLengthToWidth->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFirePerimeter %g %s\n", Margin,
-            vCrownFirePerimeter->m_nativeValue,
-            vCrownFirePerimeter->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFirePowerOfFire
- *
- *  Dependent Variables (Outputs)
- *      vCrownFirePowerOfFire (ft-lb/s/ft2)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireLineInt (Btu/ft/s)
- */
-
-void EqCalc::CrownFirePowerOfFire( void )
-{
-    // Access current input values
-    double cfli = vCrownFireLineInt->m_nativeValue;
-    // Calculate results
-    double power = FBL_CrownFirePowerOfFire( cfli );
-    // Store results
-    vCrownFirePowerOfFire->update( power );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFirePowerFire() 1 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireLineInt %g %s\n", Margin,
-            vCrownFireLineInt->m_nativeValue,
-            vCrownFireLineInt->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFirePowerOfFire %g %s\n", Margin,
-            vCrownFirePowerOfFire->m_nativeValue,
-            vCrownFirePowerOfFire->m_nativeUnits.latin1() );
-    }
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFirePowerOfWind
- *
- *  Dependent Variables (Outputs)
- *      vCrownFirePowerOfWind (ft-lb/s/ft2)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireSpreadrate (ft/min)
- *      vWindSpeedAt20Ft (ft/min)
- */
-
-void EqCalc::CrownFirePowerOfWind( void )
-{
-    // Access current input values
-    double wind = vWindSpeedAt20Ft->m_nativeValue;
-    double cros = vCrownFireSpreadRate->m_nativeValue;
-    // Calculate results
-	wind = wind * 5280. / 60.;	// convert from miles/hour to ft/min
-    double power = FBL_CrownFirePowerOfWind( wind, cros );
-    // Store results
-    vCrownFirePowerOfWind->update( power );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFirePowerWind() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vWindSpeedAt20Ft %g %s\n", Margin,
-            vWindSpeedAt20Ft->m_nativeValue,
-            vWindSpeedAt20Ft->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vCrownFireSpreadRate %g %s\n", Margin,
-            vCrownFireSpreadRate->m_nativeValue,
-            vCrownFireSpreadRate->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFirePowerOfWind %g %s\n", Margin,
-            vCrownFirePowerOfWind->m_nativeValue,
-            vCrownFirePowerOfWind->m_nativeUnits.latin1() );
-    }
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFirePowerRatio
- *
- *  Dependent Variables (Outputs)
- *      vCrownFirePowerRatio (ratio)
- *
- *  Independent Variables (Inputs)
- *      vCrownFirePowerOfFire (ft-lb/s/ft2)
- *      vCrownFirePowerOfWind (ft-lb/s/ft2)
- */
-
-void EqCalc::CrownFirePowerRatio( void )
-{
-    // Access current input values
-    double fire = vCrownFirePowerOfFire->m_nativeValue;
-    double wind = vCrownFirePowerOfWind->m_nativeValue;
-    // Calculate results
-    double ratio = FBL_CrownFirePowerRatio( fire, wind );
-    // Store results
-    vCrownFirePowerRatio->update( ratio );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFirePowerRatio() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFirePowerOfFire %g %s\n", Margin,
-            vCrownFirePowerOfFire->m_nativeValue,
-            vCrownFirePowerOfFire->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vCrownFirePowerOfWind %g %s\n", Margin,
-            vCrownFirePowerOfWind->m_nativeValue,
-            vCrownFirePowerOfWind->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFirePowerRatio %g %s\n", Margin,
-            vCrownFirePowerRatio->m_nativeValue,
-            vCrownFirePowerRatio->m_nativeUnits.latin1() );
-    }
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireSpreadDist
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireSpreadDist (ft)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireSpreadRate (ft/min)
- *      vSurfaceFireElapsedTime ( min )
- */
-
-void EqCalc::CrownFireSpreadDistV6( void )
-{
-	CrownFireSpreadDist();
-}
-void EqCalc::CrownFireSpreadDist( void )
-{
-    // Access current input values
-    double elapsed = vSurfaceFireElapsedTime->m_nativeValue;
-
-#ifdef INCLUDE_V5_CODE
-    double cros    = vCrownFireSpreadRate->m_nativeValue;
-    // Calculate results
-    double dist = cros * elapsed;
-    // Store results
-    vCrownFireSpreadDist->update( dist );
-#endif
-
-#ifdef INCLUDE_V6_CODE
-	//--------------------------------------------------------------------------
-	// Bp6CrownFire::setTime()
-	//--------------------------------------------------------------------------
-	// submit the inputs
-	m_Bp6CrownFire->setTime( elapsed );
-	// collect the outputs
-	double activeArea	= m_Bp6CrownFire->getActiveCrownFireArea();
-	double activeLength = m_Bp6CrownFire->getActiveCrownFireLength();
-	double activePerim	= m_Bp6CrownFire->getActiveCrownFirePerimeter();
-	double activeWidth	= m_Bp6CrownFire->getActiveCrownFireWidth();
-	double passiveArea	= m_Bp6CrownFire->getPassiveCrownFireArea();
-	double passiveLength= m_Bp6CrownFire->getPassiveCrownFireLength();
-	double passivePerim	= m_Bp6CrownFire->getPassiveCrownFirePerimeter();
-	double passiveWidth = m_Bp6CrownFire->getPassiveCrownFireWidth();
-	int    fireType     = m_Bp6CrownFire->getFinalFireType();
-	double finalArea, finalLength, finalPerim;
-	if ( fireType == 0 || fireType == 2 )
-	{
-		m_Bp6SurfaceFire->setTime( elapsed );
-		finalArea   = m_Bp6SurfaceFire->getFireArea();
-		finalLength = m_Bp6SurfaceFire->getFireLength();
-		finalPerim  = m_Bp6SurfaceFire->getFirePerimeter();
-	}
-	else if ( fireType == 1 )
-	{
-		finalArea	= m_Bp6CrownFire->getPassiveCrownFireArea();
-		finalLength	= m_Bp6CrownFire->getPassiveCrownFireLength();
-		finalPerim	= m_Bp6CrownFire->getPassiveCrownFirePerimeter();
-	}
-	else if ( fireType == 3 )
-	{
-		finalArea	= m_Bp6CrownFire->getActiveCrownFireArea();
-		finalLength	= m_Bp6CrownFire->getActiveCrownFireLength();
-		finalPerim	= m_Bp6CrownFire->getActiveCrownFirePerimeter();
-	}
-    // Store results
-	vCrownFireActiveFireArea->update( activeArea );
-	vCrownFireActiveSpreadDist->update( activeLength );
-	vCrownFireActiveFirePerimeter->update( activePerim );
-	vCrownFireActiveFireWidth->update( activeWidth );
-
-	vCrownFirePassiveFireArea->update( passiveArea );
-	vCrownFirePassiveSpreadDist->update( passiveLength );
-	vCrownFirePassiveFirePerimeter->update( passivePerim );
-	vCrownFirePassiveFireWidth->update( passiveWidth );
-
-	vCrownFireSpreadDist->update( finalLength );
-	vCrownFirePerimeter->update( finalPerim );
-	vCrownFireArea->update( finalArea );
-#ifdef INCLUDE_V5_CODE
-	closeEnough( "crownFireSpreadDist", dist, activeLeng );
-#endif
-#endif
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireSpreadDist() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireSpreadRate %g %s\n", Margin,
-            vCrownFireSpreadRate->m_nativeValue,
-            vCrownFireSpreadRate->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSurfaceFireElapsedTime %g %s\n", Margin,
-            vSurfaceFireElapsedTime->m_nativeValue,
-            vSurfaceFireElapsedTime->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireSpreadDist %g %s\n", Margin,
-            vCrownFireSpreadDist->m_nativeValue,
-            vCrownFireSpreadDist->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireSpreadMapDist
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireSpreadMapDist (ft)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireSpreadDist (ft)
- *      vMapScale (ratio)
- */
-
-void EqCalc::CrownFireSpreadMapDist( void )
-{
-    // Access current input values
-    double dist  = vCrownFireSpreadDist->m_nativeValue;
-    double scale = vMapScale->m_nativeValue;
-    // Calculate results
-    double md    = scale * dist / 5280.;
-    // Store results
-    vCrownFireSpreadMapDist->update( md );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireSpreadMapDist() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireSpreadDist %g %s\n", Margin,
-            vCrownFireSpreadDist->m_nativeValue,
-            vCrownFireSpreadDist->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vMapScale %g %s\n", Margin,
-            vMapScale->m_nativeValue,
-            vMapScale->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireSpreadMapDist %g %s\n", Margin,
-            vCrownFireSpreadMapDist->m_nativeValue,
-            vCrownFireSpreadMapDist->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireSpreadRate
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireSpreadRate (ft/min)
- *
- *  Independent Variables (Inputs)
- *      vSurfaceFuelMoisDead1 (lb/lb)
- *      vSurfaceFuelMoisDead10 (lb/lb)
- *      vSurfaceFuelMoisDead100 (lb/lb)
- *      vSurfaceFuelMoisLiveWood (lb/lb)
- *      vWindSpeedAt20Ft (ft/min)
- */
-void EqCalc::CrownFireSpreadRateV6( void )
-{
-	CrownFireSpreadRate();
-}
-
-void EqCalc::CrownFireSpreadRate( void )
-{
-    // Access current input values
-    double mc1      = vSurfaceFuelMoisDead1->m_nativeValue;
-    double mc10     = vSurfaceFuelMoisDead10->m_nativeValue;
-    double mc100    = vSurfaceFuelMoisDead100->m_nativeValue;
-    double mcWood   = vSurfaceFuelMoisLiveWood->m_nativeValue;
-    double wind20Ft = vWindSpeedAt20Ft->m_nativeValue;
-
-#ifdef INCLUDE_V5_CODE
-    // Calculate results
-    double cros = FBL_CrownFireSpreadRate( wind20Ft, mc1, mc10, mc100, mcWood );
-    // Store results
-    vCrownFireSpreadRate->update( cros );
-#endif
-
-#ifdef INCLUDE_V6_CODE
-	// V6 Refactor
-	//--------------------------------------------------------------------------
-	// Bp6CrownFire::setMoisture()
-	//--------------------------------------------------------------------------
-	// collect the inputs
-    double mois[4];
-    mois[0] = mc1;
-    mois[1] = mc10;
-    mois[2] = mc100;
-    mois[3] = mcWood;
-	// submit the inputs
-	m_Bp6CrownFire->setMoisture( mois );
-
-	//--------------------------------------------------------------------------
-	// Bp6CrownFire::setWind()
-	//--------------------------------------------------------------------------
-	// submit the inputs
-	m_Bp6CrownFire->setWindSpeedAt20FtFpm( 88. * wind20Ft );
-	// collect the outputs
-	double activeRos = m_Bp6CrownFire->getActiveCrownFireRos();
-	// Store the results
-    vCrownFireActiveSpreadRate->update( activeRos );
-
-	//--------------------------------------------------------------------------
-	// Bp6CrownFire::setCanopy()
-	//--------------------------------------------------------------------------
-	// collect the inputs
-    double canopyBulk = vTreeCanopyBulkDens->m_nativeValue;
-    double canopyHt   = vTreeCoverHt->m_nativeValue;
-	double canopyBase = vTreeCrownBaseHt->m_nativeValue;
-    double foliarMc   = vTreeFoliarMois->m_nativeValue;
-	// submit the inputs
-	m_Bp6CrownFire->setCanopy( canopyHt, canopyBase, canopyBulk, foliarMc );
-	// collect the outputs
-	double activeRatio		= m_Bp6CrownFire->getActiveCrownFireRatio();
-	double canopyFuelLoad	= m_Bp6CrownFire->getCanopyFuelLoad();
-	double canopyHpua		= m_Bp6CrownFire->getCanopyHpua();
-	double critCrownRos		= m_Bp6CrownFire->getCriticalCrownFireRos();
-	double critSurfFlame	= m_Bp6CrownFire->getCriticalSurfaceFireFlame();
-	double critSurfFli		= m_Bp6CrownFire->getCriticalSurfaceFireFli();
-	double crownLwRatio		= m_Bp6CrownFire->getCrownFireLwRatio();
-	double powerWind		= m_Bp6CrownFire->getPowerWind();
-	// Store the results
-    vCrownFireActiveRatio->update( activeRatio );
-    vCrownFireFuelLoad->update( canopyFuelLoad );
-    vCrownFireHeatPerUnitAreaCanopy->update( canopyHpua );
-    vCrownFireCritCrownSpreadRate->update( critCrownRos );
-    vCrownFireCritSurfFlameLeng->update( critSurfFlame );
-    vCrownFireCritSurfFireInt->update( critSurfFli );
-	vCrownFireLengthToWidth->update( crownLwRatio );
-    vCrownFirePowerOfWind->update( powerWind );
-
-	//--------------------------------------------------------------------------
-	// Bp6CrownFire::setSurfaceFire()
-	//--------------------------------------------------------------------------
-	// If SURFACE module is active, provide its spread and heat
-    PropertyDict *prop = m_eqTree->m_propDict;
-	if ( prop->boolean( "surfaceModuleActive" ) )
-	{
-		// submit the Bp6SurfaceFire object
-		m_Bp6CrownFire->setSurfaceFire( m_Bp6SurfaceFire );
-	}
-	// Otherwise get the user input values for ros, fli, hpua
-	else
-	{
-		// collect the inputs
-        double surfaceRos  = vSurfaceFireSpreadAtHead->m_nativeValue;
-		double surfaceHpua = vSurfaceFireHeatPerUnitArea->m_nativeValue;
-		double surfaceFli = 0.;
-		if ( prop->boolean( "crownConfUseFlameLeng" ) )
-		{
-			double surfaceFlame = vSurfaceFireFlameLengAtVector->m_nativeValue;
-			surfaceFli = FBL_SurfaceFireFirelineIntensity( surfaceFlame );
-		}
-		else // if ( prop->boolean( "crownConfUseFlameLeng" )
-		{
-			surfaceFli = vSurfaceFireLineIntAtVector->m_nativeValue;
-		}
-		// submit the inputs
-		m_Bp6CrownFire->setSurfaceFire( surfaceRos, surfaceFli, surfaceHpua );
-	}
-	// collect outputs
-	double activeFlame	= m_Bp6CrownFire->getActiveCrownFireFlame();
-	double activeFli	= m_Bp6CrownFire->getActiveCrownFireFli();
-	double activeHpua	= m_Bp6CrownFire->getActiveCrownFireHpua();
-	double critSurfRos	= m_Bp6CrownFire->getCriticalSurfaceFireRos();
-	double cfb			= m_Bp6CrownFire->getCrownFractionBurned();
-	double finalFlame	= m_Bp6CrownFire->getFinalFireFlame();
-	double finalFli		= m_Bp6CrownFire->getFinalFireFli();
-	double finalHpua	= m_Bp6CrownFire->getFinalFireHpua();
-	double finalRos		= m_Bp6CrownFire->getFinalFireRos();
-	int    finalFireType= m_Bp6CrownFire->getFinalFireType();
-	bool   isActiveFire = m_Bp6CrownFire->isActiveCrownFire();
-	bool   isCrownFire	= m_Bp6CrownFire->isCrownFire();
-	bool   isPassiveFire= m_Bp6CrownFire->isPassiveCrownFire();
-	bool   isSurfaceFire= m_Bp6CrownFire->isSurfaceFire();
-	bool   isPlumeDom	= m_Bp6CrownFire->isPlumeDominated();
-	bool   isWindDriven = m_Bp6CrownFire->isWindDriven();
-	double fullCrownU20 = m_Bp6CrownFire->getFullCrownFireU20();
-	double fullCrownRos = m_Bp6CrownFire->getFullCrownFireRos();
-	double passiveFlame = m_Bp6CrownFire->getPassiveCrownFireFlame();
-	double passiveFli	= m_Bp6CrownFire->getPassiveCrownFireFli();
-	double passiveHpua	= m_Bp6CrownFire->getPassiveCrownFireHpua();
-	double passiveRos	= m_Bp6CrownFire->getPassiveCrownFireRos();
-	double powerFire	= m_Bp6CrownFire->getPowerFire();
-	double powerRatio	= m_Bp6CrownFire->getPowerRatio();
-	double transRatio	= m_Bp6CrownFire->getTransRatio();
-	// NOTE - when not linked to Surface Module, we cannot calculate
-	// many of the Scoot & Reinhardt variables, which are within
-	// Bp6CrownFire to:
-	//  - vCrownFireActiveCritOpenWindSpeed = 0
-	//  - vCrownFireActiveCritSurfSpreadRate = 0
-	//	- vCrownFireCanopyFractionBurned = 0
-	// and all passive crown fire values default to surface fire values
-	//	- vCrownFirePassiveFlameLeng = vSurfaceFireFlameLeng
-	//	- vCrownFirePassiveHeatPerUnitArea = vSurfaceFireHeatPerUnitArea
-	//	- vCrownFirePassiveFireLineInt = vSurfaceFireLineInt
-	//	- vCrownFirePassiveSpreadRate = vSurfaceFireSPreadAtHead
-
-	// Store the results
-	vCrownFireCanopyFractionBurned->update( cfb );
-    vCrownFireCritSurfSpreadRate->update( critSurfRos );
-
-	vCrownFireActiveCritSurfSpreadRate->update( fullCrownRos );
-	vCrownFireActiveCritOpenWindSpeed->update( fullCrownU20 );
-
-	vCrownFireTransRatio->update( transRatio );
-	vCrownFireTransToCrown->updateItem( isCrownFire ? 1 : 0 );
-	vCrownFireActiveCrown->updateItem( isActiveFire ? 1 : 0 );
-    vCrownFireType->updateItem( finalFireType );
-	vCrownFireWindDriven->updateItem( isWindDriven ? 1 : 0 );
-
-	vCrownFirePowerOfFire->update( powerFire );
-    vCrownFirePowerRatio->update( powerRatio );
-
-    vCrownFireActiveFlameLeng->update( activeFlame );
-    vCrownFireActiveHeatPerUnitArea->update( activeHpua );
-    vCrownFireActiveFireLineInt->update( activeFli );
-
-	vCrownFirePassiveFlameLeng->update( passiveFlame );
-	vCrownFirePassiveHeatPerUnitArea->update( passiveHpua );
-	vCrownFirePassiveFireLineInt->update( passiveFli );
-	vCrownFirePassiveSpreadRate->update( passiveRos );
-
-    vCrownFireSpreadRate->update( finalRos );
-    vCrownFireHeatPerUnitArea->update( finalHpua );
-    vCrownFireLineInt->update( finalFli );
-    vCrownFireFlameLeng->update( finalFlame );
-
-#ifdef INCLUDE_V5_CODE
-	closeEnough( "crownFireSpreadRate", cros, activeCrownFireRos );
-#endif
-#endif
-
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireSpreadRate() 5 1\n", Margin );
-        fprintf( m_log, "%s  i vSurfaceFuelMoisDead1 %g %s\n", Margin,
-            vSurfaceFuelMoisDead1->m_nativeValue,
-            vSurfaceFuelMoisDead1->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSurfaceFuelMoisDead10 %g %s\n", Margin,
-            vSurfaceFuelMoisDead10->m_nativeValue,
-            vSurfaceFuelMoisDead10->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSurfaceFuelMoisDead100 %g %s\n", Margin,
-            vSurfaceFuelMoisDead100->m_nativeValue,
-            vSurfaceFuelMoisDead100->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSurfaceFuelMoisLiveWood %g %s\n", Margin,
-            vSurfaceFuelMoisLiveWood->m_nativeValue,
-            vSurfaceFuelMoisLiveWood->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vWindSpeedAt20Ft %g %s\n", Margin,
-            vWindSpeedAt20Ft->m_nativeValue,
-            vWindSpeedAt20Ft->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireSpreadRate %g %s\n", Margin,
-            vCrownFireSpreadRate->m_nativeValue,
-            vCrownFireSpreadRate->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireTransRatioFromFireIntAtVector
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireTransRatio (dl)
- *
- *  Independent Variables (Inputs)
- *      vSurfaceFireLineIntAtVector (Btu/ft/s)
- *      vCrownFireCritSurfFireInt (Btu/ft/s)
- */
-
-void EqCalc::CrownFireTransRatioFromFireIntAtVector( void )
-{
-    // Access current input values
-    double cfli  = vCrownFireCritSurfFireInt->m_nativeValue;
-    double fli   = vSurfaceFireLineIntAtVector->m_nativeValue;
-    // Calculate results
-    double ratio = FBL_CrownFireTransitionRatio( fli, cfli );
-    // Store results
-    vCrownFireTransRatio->update( ratio );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireTransRatioFromFireIntAtVector() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireCritSurfFireInt %g %s\n", Margin,
-            vCrownFireCritSurfFireInt->m_nativeValue,
-            vCrownFireCritSurfFireInt->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSurfaceFireLineIntAtVector %g %s\n", Margin,
-            vSurfaceFireLineIntAtVector->m_nativeValue,
-            vSurfaceFireLineIntAtVector->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireTransRatio %g %s\n", Margin,
-            vCrownFireTransRatio->m_nativeValue,
-            vCrownFireTransRatio->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireTransRatioFromFlameLengAtVector
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireTransRatio (dl)
- *
- *  Independent Variables (Inputs)
- *      vSurfaceFireFlameLengAtVector (ft)
- *      vCrownFireCritSurfFireInt (Btu/ft/s)
- */
-
-void EqCalc::CrownFireTransRatioFromFlameLengAtVector( void )
-{
-    // Access current input values
-    double cfli  = vCrownFireCritSurfFireInt->m_nativeValue;
-    double fl    = vSurfaceFireFlameLengAtVector->m_nativeValue;
-    // Calculate results
-    double fli   = FBL_SurfaceFireFirelineIntensity( fl );
-    double ratio = FBL_CrownFireTransitionRatio( fli, cfli );
-    // Store results
-    vCrownFireTransRatio->update( ratio );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireTransRatioFromFlameLengAtVector() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireCritSurfFireInt %g %s\n", Margin,
-            vCrownFireCritSurfFireInt->m_nativeValue,
-            vCrownFireCritSurfFireInt->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSurfaceFireFlameLengAtVector %g %s\n", Margin,
-            vSurfaceFireFlameLengAtVector->m_nativeValue,
-            vSurfaceFireFlameLengAtVector->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireTransRatio %g %s\n", Margin,
-            vCrownFireTransRatio->m_nativeValue,
-            vCrownFireTransRatio->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireTransToCrown
- *
- *  Dependent Variables (Outputs)
- *      vSurfaceFireArea (ac)
- *
- *  Independent Variables (Inputs)
- *      vSurfaceFireLengDist (ft)
- */
-
-void EqCalc::CrownFireTransToCrown( void )
-{
-    // Access current input values
-    double ratio = vCrownFireTransRatio->m_nativeValue;
-    // Calculate results
-    int   status = ( ratio < 1.0 ) ? 0 : 1;
-    // Store results
-    vCrownFireTransToCrown->updateItem( status );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireTransToCrown() 1 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireTransRatio %g %s\n", Margin,
-            vCrownFireTransRatio->m_nativeValue,
-            vCrownFireTransRatio->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireTransToCrown %g %s\n", Margin,
-            vCrownFireTransToCrown->m_nativeValue,
-            vCrownFireTransToCrown->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireType
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireType (class)
- *
- *  Independent Variables (Inputs)
- *      vCrownFireActiveRatio (dl)
- *      vCrownFireTransRatio (dl)
- */
-
-void EqCalc::CrownFireType( void )
-{
-    // Access current input values
-    double activeRatio = vCrownFireActiveRatio->m_nativeValue;
-    double transRatio  = vCrownFireTransRatio->m_nativeValue;
-    // Calculate results
-    int status = FBL_FireType( transRatio, activeRatio ) ;
-    // Store results
-    vCrownFireType->updateItem( status );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireType() 2 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireActiveRatio %g %s\n", Margin,
-            vCrownFireActiveRatio->m_nativeValue,
-            vCrownFireActiveRatio->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vCrownFireTransRatio %g %s\n", Margin,
-            vCrownFireTransRatio->m_nativeValue,
-            vCrownFireTransRatio->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireType %g %s\n", Margin,
-            vCrownFireType->m_nativeValue,
-            vCrownFireType->m_nativeUnits.latin1() );
-    }
-    return;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief CrownFireWindDriven
- *
- *  Dependent Variables (Outputs)
- *      vCrownFireWindDriven
- *
- *  Independent Variables (Inputs)
- *      vCrownFirePowerRatio (ratio)
- */
-
-void EqCalc::CrownFireWindDriven( void )
-{
-    // Access current input values
-    double ratio = vCrownFirePowerRatio->m_nativeValue;
-    // Calculate results
-    int wind_driven = ( ratio > 0.00001 && ratio < 1.0 ) ? 1 : 0;
-    // Store results
-    vCrownFireWindDriven->updateItem( wind_driven );
-    // Log results
-    if( m_log )
-    {
-        fprintf( m_log, "%sbegin proc CrownFireWindDriven() 1 1\n", Margin );
-        fprintf( m_log, "%s  i vCrownFirePowerRatio %g %s\n", Margin,
-            vCrownFirePowerRatio->m_nativeValue,
-            vCrownFirePowerRatio->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vCrownFireWindDriven %g %s\n", Margin,
-            vCrownFireWindDriven->m_nativeValue,
-            vCrownFireWindDriven->m_nativeUnits.latin1() );
-    }
-}
-
-//------------------------------------------------------------------------------
 /*! \brief FireArea
  *
  *  Dependent Variables (Outputs)
@@ -3763,8 +2654,10 @@ void EqCalc::FireSpreadAtFlank( void )
  *      vSurfaceFireEffWindAtHead (mi/h)
  *      vSurfaceFireWindSpeedLimit (mi/h)
  *      vSurfaceFireWindSpeedFlag (flag)
- *      vSurfaceFiewWindFactor (dl)
  *      vSurfaceFiewSlopeFactor (dl)
+ *      vSurfaceFireWindFactor (dl)
+ *      vSurfaceFireWindFactorB (dl)
+ *      vSurfaceFireWindFactorK (dl)
  *
  *  Independent Variables (Inputs)
  *      vSurfaceFireNoWindRate (ft/min)
@@ -3780,7 +2673,7 @@ void EqCalc::FireSpreadAtHead( void )
 {
     // Access current input values
     double ros0  = vSurfaceFireNoWindRate->m_nativeValue;
-    double rxi   = vSurfaceFireReactionInt->m_nativeValue;
+    //double rxi   = vSurfaceFireReactionInt->m_nativeValue;
     double slope = vSiteSlopeFraction->m_nativeValue;
     double windSpeed = vWindSpeedAtMidflame->m_nativeValue;
     double windDir = vWindDirFromUpslope->m_nativeValue;
@@ -3822,6 +2715,8 @@ void EqCalc::FireSpreadAtHead( void )
 	int    windLimitV6   = m_Bp6SurfaceFire->getWindLimitExceeded() ? 1 : 0;
 	double windFactorV6  = m_Bp6SurfaceFire->getWindFactor();
 	double slopeFactorV6 = m_Bp6SurfaceFire->getSlopeFactor();
+	double windFactorB   = m_Bp6SurfaceFire->getWindB();
+	double windFactorK   = m_Bp6SurfaceFire->getWindK();
     // Store results
     vSurfaceFireSpreadAtHead->update( rosMaxV6 );
     vSurfaceFireMaxDirFromUpslope->update( dirMaxV6 );
@@ -3829,6 +2724,8 @@ void EqCalc::FireSpreadAtHead( void )
     vSurfaceFireWindSpeedLimit->update( maxWindV6 );
     vSurfaceFireWindSpeedFlag->updateItem( windLimitV6 );
     vSurfaceFireWindFactor->update( windFactorV6 );
+    vSurfaceFireWindFactorB->update( windFactorB );
+    vSurfaceFireWindFactorK->update( windFactorK );
     vSurfaceFireSlopeFactor->update( slopeFactorV6 );
 #ifdef INCLUDE_V5_CODE
 	closeEnough( "rosMax", rosMax, rosMaxV6 );
@@ -3844,7 +2741,7 @@ void EqCalc::FireSpreadAtHead( void )
     // Log results
     if( m_log )
     {
-        fprintf( m_log, "%sbegin proc FireSpreadAtHead() 4 5\n", Margin );
+        fprintf( m_log, "%sbegin proc FireSpreadAtHead() 4 9\n", Margin );
         fprintf( m_log, "%s  i vSurfaceFireNoWindRate %g %s\n", Margin,
             vSurfaceFireNoWindRate->m_nativeValue,
             vSurfaceFireNoWindRate->m_nativeUnits.latin1() );
@@ -3875,6 +2772,12 @@ void EqCalc::FireSpreadAtHead( void )
         fprintf( m_log, "%s  o vSurfaceFireWindFactor %g %s\n", Margin,
             vSurfaceFireWindFactor->m_nativeValue,
             vSurfaceFireWindFactor->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFireWindFactorB %g %s\n", Margin,
+            vSurfaceFireWindFactorB->m_nativeValue,
+            vSurfaceFireWindFactorB->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  o vSurfaceFireWindFactorK %g %s\n", Margin,
+            vSurfaceFireWindFactorK->m_nativeValue,
+            vSurfaceFireWindFactorK->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  o vSurfaceFireSlopeFactor %g %s\n", Margin,
             vSurfaceFireSlopeFactor->m_nativeValue,
             vSurfaceFireSlopeFactor->m_nativeUnits.latin1() );
@@ -5310,6 +4213,8 @@ void EqCalc::FuelBedWeighted( void )
         //  o vSurfaceFireWindSpeedLimit
         //  o vSurfaceFireWindSpeedFlag
         //  o vSurfaceFireWindFactor
+        //  o vSurfaceFireWindFactorB
+        //  o vSurfaceFireWindFactorK
         //  o vSurfaceFireSlopeFactor
         FireSpreadAtHead();
         rosh[i] = vSurfaceFireSpreadAtHead->m_nativeValue;
@@ -7181,7 +6086,7 @@ void EqCalc::SiteUpslopeDirFromNorth( void )
  *
  *  Independent Variables (Inputs)
  *      vCrownFireCanopyHt (ft)
- *      vCrownFireLineInt (Btu/ft/s)
+ *      vCrownFireActiveFireLineInt (Btu/ft/s)
  *      vSpotEmberDiamAtSurface (mm)
  *      vWindSpeedAt20Ft (mi/h)
  *      vSpotFireSource (0-3)
@@ -7194,7 +6099,7 @@ void EqCalc::SpotDistActiveCrown( void )
 	// Marshall the active crown fire spotting distance input variables
 	double canopyHtFt   = vCrownFireCanopyHt->m_nativeValue;
 	double emberDiamMm  = vSpotEmberDiamAtSurface->m_nativeValue;
-	double fireIntBtu   = vCrownFireLineInt->m_nativeValue;
+	double fireIntBtu   = vCrownFireActiveFireLineInt->m_nativeValue;
 	double windSpeedMph = vWindSpeedAt20Ft->m_nativeValue;
 	
 	// Convert from English to metric units
@@ -7239,24 +6144,24 @@ void EqCalc::SpotDistActiveCrown( void )
         fprintf( m_log, "%s  i vCrownFireCanopyHt %g %s\n", Margin,
             vCrownFireCanopyHt->m_nativeValue,
             vCrownFireCanopyHt->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSiteRidgeToValleyDist %g %s\n", Margin,
-            vSiteRidgeToValleyDist->m_nativeValue,
-            vSiteRidgeToValleyDist->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSiteRidgeToValleyElev %g %s\n", Margin,
-            vSiteRidgeToValleyElev->m_nativeValue,
-            vSiteRidgeToValleyElev->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vWindSpeedAt20Ft %g %s\n", Margin,
-            vWindSpeedAt20Ft->m_nativeValue,
-            vWindSpeedAt20Ft->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSpotFireSource %d %s\n", Margin,
-            vSpotFireSource->activeItemDataIndex(),
-            vSpotFireSource->activeItemName().latin1() );
-        fprintf( m_log, "%s  i vCrownFireFlameLeng %g %s\n", Margin,
-            vCrownFireFlameLeng->m_nativeValue,
-            vCrownFireFlameLeng->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  i vSpotEmberDiamAtSurface %g %s\n", Margin,
             vSpotEmberDiamAtSurface->m_nativeValue,
             vSpotEmberDiamAtSurface->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vCrownFireActiveFireLintInt %g %s\n", Margin,
+            vCrownFireActiveFireLineInt->m_nativeValue,
+            vCrownFireActiveFireLineInt->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vWindSpeedAt20Ft %g %s\n", Margin,
+            vWindSpeedAt20Ft->m_nativeValue,
+            vWindSpeedAt20Ft->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vSiteRidgeToValleyElev %g %s\n", Margin,
+            vSiteRidgeToValleyElev->m_nativeValue,
+            vSiteRidgeToValleyElev->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vSiteRidgeToValleyDist %g %s\n", Margin,
+            vSiteRidgeToValleyDist->m_nativeValue,
+            vSiteRidgeToValleyDist->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vSpotFireSource %d %s\n", Margin,
+            vSpotFireSource->activeItemDataIndex(),
+            vSpotFireSource->activeItemName().latin1() );
         fprintf( m_log, "%s  o vSpotDistActiveCrown %g %s\n", Margin,
             vSpotDistActiveCrown->m_nativeValue,
             vSpotDistActiveCrown->m_nativeUnits.latin1() );
@@ -8850,46 +7755,48 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     vContainXMin             = m_eqTree->getVarPtr( "vContainXMin" );
     vContainYMax             = m_eqTree->getVarPtr( "vContainYMax" );
 
+	vCrownFireActiveCritOpenWindSpeed	= m_eqTree->getVarPtr( "vCrownFireActiveCritOpenWindSpeed" );
+	vCrownFireActiveCritSurfSpreadRate	= m_eqTree->getVarPtr( "vCrownFireActiveCritSurfSpreadRate" );
     vCrownFireActiveCrown				= m_eqTree->getVarPtr( "vCrownFireActiveCrown" );
-    vCrownFireActiveRatio				= m_eqTree->getVarPtr( "vCrownFireActiveRatio" );
-	vCrownFireActiveFireArea				= m_eqTree->getVarPtr( "vCrownFireActiveFireArea" );
+	vCrownFireActiveFireArea			= m_eqTree->getVarPtr( "vCrownFireActiveFireArea" );
+	vCrownFireActiveFireLineInt			= m_eqTree->getVarPtr( "vCrownFireActiveFireLineInt" );
+	vCrownFireActiveFirePerimeter		= m_eqTree->getVarPtr( "vCrownFireActiveFirePerimeter" );
+	vCrownFireActiveFireWidth			= m_eqTree->getVarPtr( "vCrownFireActiveFireWidth" );
 	vCrownFireActiveFlameLeng			= m_eqTree->getVarPtr( "vCrownFireActiveFlameLeng" );
 	vCrownFireActiveHeatPerUnitArea		= m_eqTree->getVarPtr( "vCrownFireActiveHeatPerUnitArea" );
-	vCrownFireActiveSpreadDist				= m_eqTree->getVarPtr( "vCrownFireActiveSpreadDist" );
-	vCrownFireActiveFireLineInt				= m_eqTree->getVarPtr( "vCrownFireActiveFireLineInt" );
-	vCrownFireActiveFirePerimeter			= m_eqTree->getVarPtr( "vCrownFireActiveFirePerimeter" );
+    vCrownFireActiveRatio				= m_eqTree->getVarPtr( "vCrownFireActiveRatio" );
+	vCrownFireActiveSpreadDist			= m_eqTree->getVarPtr( "vCrownFireActiveSpreadDist" );
+	vCrownFireActiveSpreadMapDist		= m_eqTree->getVarPtr( "vCrownFireActiveSpreadMapDist" );
 	vCrownFireActiveSpreadRate			= m_eqTree->getVarPtr( "vCrownFireActiveSpreadRate" );
-	vCrownFireActiveFireWidth				= m_eqTree->getVarPtr( "vCrownFireActiveFireWidth" );
-    vCrownFireArea						= m_eqTree->getVarPtr( "vCrownFireArea" );
+    //vCrownFireArea					= m_eqTree->getVarPtr( "vCrownFireArea" );
 	vCrownFireCanopyFractionBurned		= m_eqTree->getVarPtr( "vCrownFireCanopyFractionBurned" );
     vCrownFireCanopyHt					= m_eqTree->getVarPtr( "vCrownFireCanopyHt" );
     vCrownFireCritCrownSpreadRate		= m_eqTree->getVarPtr( "vCrownFireCritCrownSpreadRate" );
     vCrownFireCritSurfFireInt			= m_eqTree->getVarPtr( "vCrownFireCritSurfFireInt" );
     vCrownFireCritSurfFlameLeng			= m_eqTree->getVarPtr( "vCrownFireCritSurfFlameLeng" );
     vCrownFireCritSurfSpreadRate		= m_eqTree->getVarPtr( "vCrownFireCritSurfSpreadRate" );
-    vCrownFireFlameLeng					= m_eqTree->getVarPtr( "vCrownFireFlameLeng" );
+    //vCrownFireFlameLeng				= m_eqTree->getVarPtr( "vCrownFireFlameLeng" );
     vCrownFireFuelLoad					= m_eqTree->getVarPtr( "vCrownFireFuelLoad" );
-	vCrownFireActiveCritSurfSpreadRate		= m_eqTree->getVarPtr( "vCrownFireActiveCritSurfSpreadRate" );
-	vCrownFireActiveCritOpenWindSpeed = m_eqTree->getVarPtr( "vCrownFireActiveCritOpenWindSpeed" );
-	vCrownFireHeatPerUnitArea			= m_eqTree->getVarPtr( "vCrownFireHeatPerUnitArea" );
+	//vCrownFireHeatPerUnitArea			= m_eqTree->getVarPtr( "vCrownFireHeatPerUnitArea" );
     vCrownFireHeatPerUnitAreaCanopy		= m_eqTree->getVarPtr( "vCrownFireHeatPerUnitAreaCanopy" );
 	vCrownFireLengthToWidth				= m_eqTree->getVarPtr( "vCrownFireLengthToWidth" );
-    vCrownFireLineInt					= m_eqTree->getVarPtr( "vCrownFireLineInt" );
-	vCrownFirePassiveFireArea				= m_eqTree->getVarPtr( "vCrownFirePassiveFireArea" );
+    //vCrownFireLineInt					= m_eqTree->getVarPtr( "vCrownFireLineInt" );
+	vCrownFirePassiveFireArea			= m_eqTree->getVarPtr( "vCrownFirePassiveFireArea" );
+	vCrownFirePassiveFireLineInt		= m_eqTree->getVarPtr( "vCrownFirePassiveFireLineInt" );
+	vCrownFirePassiveFirePerimeter		= m_eqTree->getVarPtr( "vCrownFirePassiveFirePerimeter" );
+	vCrownFirePassiveFireWidth			= m_eqTree->getVarPtr( "vCrownFirePassiveFireWidth" );
 	vCrownFirePassiveFlameLeng			= m_eqTree->getVarPtr( "vCrownFirePassiveFlameLeng" );
 	vCrownFirePassiveHeatPerUnitArea	= m_eqTree->getVarPtr( "vCrownFirePassiveHeatPerUnitArea" );
-	vCrownFirePassiveSpreadDist				= m_eqTree->getVarPtr( "vCrownFirePassiveSpreadDist" );
-	vCrownFirePassiveFireLineInt			= m_eqTree->getVarPtr( "vCrownFirePassiveFireLineInt" );
-	vCrownFirePassiveFirePerimeter			= m_eqTree->getVarPtr( "vCrownFirePassiveFirePerimeter" );
+	vCrownFirePassiveSpreadDist			= m_eqTree->getVarPtr( "vCrownFirePassiveSpreadDist" );
+    vCrownFirePassiveSpreadMapDist		= m_eqTree->getVarPtr( "vCrownFirePassiveSpreadMapDist" );
 	vCrownFirePassiveSpreadRate			= m_eqTree->getVarPtr( "vCrownFirePassiveSpreadRate" );
-	vCrownFirePassiveFireWidth				= m_eqTree->getVarPtr( "vCrownFirePassiveFireWidth" );
-	vCrownFirePerimeter					= m_eqTree->getVarPtr( "vCrownFirePerimeter" );
+	//vCrownFirePerimeter				= m_eqTree->getVarPtr( "vCrownFirePerimeter" );
     vCrownFirePowerOfFire				= m_eqTree->getVarPtr( "vCrownFirePowerOfFire" );
     vCrownFirePowerOfWind				= m_eqTree->getVarPtr( "vCrownFirePowerOfWind" );
     vCrownFirePowerRatio				= m_eqTree->getVarPtr( "vCrownFirePowerRatio" );
-    vCrownFireSpreadDist				= m_eqTree->getVarPtr( "vCrownFireSpreadDist" );
-    vCrownFireSpreadMapDist				= m_eqTree->getVarPtr( "vCrownFireSpreadMapDist" );
-    vCrownFireSpreadRate				= m_eqTree->getVarPtr( "vCrownFireSpreadRate" );
+    //vCrownFireSpreadDist				= m_eqTree->getVarPtr( "vCrownFireSpreadDist" );
+    //vCrownFireSpreadMapDist			= m_eqTree->getVarPtr( "vCrownFireSpreadMapDist" );
+    //vCrownFireSpreadRate				= m_eqTree->getVarPtr( "vCrownFireSpreadRate" );
     vCrownFireTransRatio				= m_eqTree->getVarPtr( "vCrownFireTransRatio" );
     vCrownFireTransToCrown				= m_eqTree->getVarPtr( "vCrownFireTransToCrown" );
     vCrownFireType						= m_eqTree->getVarPtr( "vCrownFireType" );
@@ -9039,6 +7946,8 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     vSurfaceFireWidthDist            = m_eqTree->getVarPtr( "vSurfaceFireWidthDist" );
     vSurfaceFireWidthMapDist         = m_eqTree->getVarPtr( "vSurfaceFireWidthMapDist" );
     vSurfaceFireWindFactor           = m_eqTree->getVarPtr( "vSurfaceFireWindFactor" );
+    vSurfaceFireWindFactorB          = m_eqTree->getVarPtr( "vSurfaceFireWindFactorB" );
+    vSurfaceFireWindFactorK          = m_eqTree->getVarPtr( "vSurfaceFireWindFactorK" );
     vSurfaceFireWindSpeedFlag        = m_eqTree->getVarPtr( "vSurfaceFireWindSpeedFlag" );
     vSurfaceFireWindSpeedLimit       = m_eqTree->getVarPtr( "vSurfaceFireWindSpeedLimit" );
 
@@ -9270,33 +8179,47 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     fContainFFReportSpread = m_eqTree->setEqFunAddress( "fContainFFReportSpread", &EqCalc::ContainFFReportSpread );
     fContainFFSingle       = m_eqTree->setEqFunAddress( "fContainFFSingle", &EqCalc::ContainFFSingle );
 
-    fCrownFireActiveCrown         = m_eqTree->setEqFunAddress( "fCrownFireActiveCrown", &EqCalc::CrownFireActiveCrown );
-    fCrownFireActiveRatio         = m_eqTree->setEqFunAddress( "fCrownFireActiveRatio", &EqCalc::CrownFireActiveRatio );
-    fCrownFireArea                = m_eqTree->setEqFunAddress( "fCrownFireArea", &EqCalc::CrownFireArea );
-    fCrownFireCritCrownSpreadRate = m_eqTree->setEqFunAddress( "fCrownFireCritCrownSpreadRate", &EqCalc::CrownFireCritCrownSpreadRate );
-    fCrownFireCritSurfFireInt     = m_eqTree->setEqFunAddress( "fCrownFireCritSurfFireInt", &EqCalc::CrownFireCritSurfFireInt );
-    fCrownFireCritSurfFlameLeng   = m_eqTree->setEqFunAddress( "fCrownFireCritSurfFlameLeng", &EqCalc::CrownFireCritSurfFlameLeng );
-    fCrownFireFlameLeng           = m_eqTree->setEqFunAddress( "fCrownFireFlameLeng", &EqCalc::CrownFireFlameLength );
-    fCrownFireFuelLoad            = m_eqTree->setEqFunAddress( "fCrownFireFuelLoad", &EqCalc::CrownFireFuelLoad );
-    fCrownFireHeatPerUnitArea     = m_eqTree->setEqFunAddress( "fCrownFireHeatPerUnitArea", &EqCalc::CrownFireHeatPerUnitArea );
-    fCrownFireHeatPerUnitAreaCanopy = m_eqTree->setEqFunAddress( "fCrownFireHeatPerUnitAreaCanopy", &EqCalc::CrownFireHeatPerUnitAreaCanopy );
-    fCrownFireLengthToWidth       = m_eqTree->setEqFunAddress( "fCrownFireLengthToWidth", &EqCalc::CrownFireLengthToWidth );
-    fCrownFireLineInt             = m_eqTree->setEqFunAddress( "fCrownFireLineInt", &EqCalc::CrownFireLineIntensity );
-    fCrownFireLineIntFromFlameLeng= m_eqTree->setEqFunAddress( "fCrownFireLineIntFromFlameLeng", &EqCalc::CrownFireLineIntensityFromFlameLength );
-    fCrownFirePerimeter           = m_eqTree->setEqFunAddress( "fCrownFirePerimeter", &EqCalc::CrownFirePerimeter );
-    fCrownFirePowerOfFire         = m_eqTree->setEqFunAddress( "fCrownFirePowerOfFire", &EqCalc::CrownFirePowerOfFire );
-    fCrownFirePowerOfWind         = m_eqTree->setEqFunAddress( "fCrownFirePowerOfWind", &EqCalc::CrownFirePowerOfWind );
-    fCrownFirePowerRatio          = m_eqTree->setEqFunAddress( "fCrownFirePowerRatio", &EqCalc::CrownFirePowerRatio );
-    fCrownFireSpreadDist          = m_eqTree->setEqFunAddress( "fCrownFireSpreadDist", &EqCalc::CrownFireSpreadDist );
-    fCrownFireSpreadDistV6        = m_eqTree->setEqFunAddress( "fCrownFireSpreadDistV6", &EqCalc::CrownFireSpreadDistV6 );
-    fCrownFireSpreadMapDist       = m_eqTree->setEqFunAddress( "fCrownFireSpreadMapDist", &EqCalc::CrownFireSpreadMapDist );
-    fCrownFireSpreadRate          = m_eqTree->setEqFunAddress( "fCrownFireSpreadRate", &EqCalc::CrownFireSpreadRate );
-    fCrownFireSpreadRateV6        = m_eqTree->setEqFunAddress( "fCrownFireSpreadRateV6", &EqCalc::CrownFireSpreadRateV6 );
-    fCrownFireTransRatioFromFireIntAtVector = m_eqTree->setEqFunAddress( "fCrownFireTransRatioFromFireIntAtVector", &EqCalc::CrownFireTransRatioFromFireIntAtVector );
-    fCrownFireTransRatioFromFlameLengAtVector = m_eqTree->setEqFunAddress( "fCrownFireTransRatioFromFlameLengAtVector", &EqCalc::CrownFireTransRatioFromFlameLengAtVector );
-    fCrownFireTransToCrown        = m_eqTree->setEqFunAddress( "fCrownFireTransToCrown", &EqCalc::CrownFireTransToCrown );
-    fCrownFireType                = m_eqTree->setEqFunAddress( "fCrownFireType", &EqCalc::CrownFireType );
-    fCrownFireWindDriven          = m_eqTree->setEqFunAddress( "fCrownFireWindDriven", &EqCalc::CrownFireWindDriven );
+	//fCrownFireActiveCritOpenWindSpeed = m_eqTree->setEqFunAddress( "fCrownFireActiveCritOpenWindSpeed", &EqCalc::V6CrownFireActiveCriticalOpenWindSpeed );
+	fCrownFireActiveCritSurfSpreadRate = m_eqTree->setEqFunAddress( "fCrownFireActiveCritSurfSpreadRate", &EqCalc::V6CrownFireActiveCriticalSurfaceSpreadRate );
+	fCrownFireActiveCrown         = m_eqTree->setEqFunAddress( "fCrownFireActiveCrown", &EqCalc::V6CrownFireActiveCrown );
+    fCrownFireActiveRatio         = m_eqTree->setEqFunAddress( "fCrownFireActiveRatio", &EqCalc::V6CrownFireActiveRatio );
+    fCrownFireActiveFireArea      = m_eqTree->setEqFunAddress( "fCrownFireActiveFireArea", &EqCalc::V6CrownFireActiveFireArea );
+    fCrownFireActiveFireLineInt   = m_eqTree->setEqFunAddress( "fCrownFireActiveFireLineInt", &EqCalc::V6CrownFireActiveFireLineIntensity );
+    fCrownFireActiveFireLineIntFromFlameLeng = m_eqTree->setEqFunAddress( "fCrownFireActiveFireLineIntFromFlameLeng", &EqCalc::V6CrownFireActiveFireLineIntensityFromFlameLength );
+    fCrownFireActiveFirePerimeter = m_eqTree->setEqFunAddress( "fCrownFireActiveFirePerimeter", &EqCalc::V6CrownFireActiveFirePerimeter );
+    fCrownFireActiveFireWidth     = m_eqTree->setEqFunAddress( "fCrownFireActiveFireWidth", &EqCalc::V6CrownFireActiveFireWidth );
+    fCrownFireActiveFlameLeng     = m_eqTree->setEqFunAddress( "fCrownFireActiveFlameLeng", &EqCalc::V6CrownFireActiveFlameLength );
+    fCrownFireActiveHeatPerUnitArea = m_eqTree->setEqFunAddress( "fCrownFireActiveHeatPerUnitArea", &EqCalc::V6CrownFireActiveHeatPerUnitArea );
+    fCrownFireActiveSpreadDist    = m_eqTree->setEqFunAddress( "fCrownFireActiveSpreadDist", &EqCalc::V6CrownFireActiveSpreadDist );
+    //fCrownFireActiveSpreadDistV6  = m_eqTree->setEqFunAddress( "fCrownFireActiveSpreadDistV6", &EqCalc::V6CrownFireActiveSpreadDistV6 );
+    fCrownFireActiveSpreadMapDist = m_eqTree->setEqFunAddress( "fCrownFireActiveSpreadMapDist", &EqCalc::V6CrownFireActiveSpreadMapDist );
+    fCrownFireActiveSpreadRate    = m_eqTree->setEqFunAddress( "fCrownFireActiveSpreadRate", &EqCalc::V6CrownFireActiveSpreadRate );
+    //fCrownFireActiveSpreadRateV6  = m_eqTree->setEqFunAddress( "fCrownFireActiveSpreadRateV6", &EqCalc::V6CrownFireActiveSpreadRateV6 );
+	fCrownFireCanopyFractionBurned = m_eqTree->setEqFunAddress( "fCrownFireCanopyFractionBurned", &EqCalc::V6CrownFireCanopyFractionBurned );
+	fCrownFireCritCrownSpreadRate = m_eqTree->setEqFunAddress( "fCrownFireCritCrownSpreadRate", &EqCalc::V6CrownFireCritCrownSpreadRate );
+    fCrownFireCritSurfFireInt     = m_eqTree->setEqFunAddress( "fCrownFireCritSurfFireInt", &EqCalc::V6CrownFireCritSurfFireInt );
+    fCrownFireCritSurfFlameLeng   = m_eqTree->setEqFunAddress( "fCrownFireCritSurfFlameLeng", &EqCalc::V6CrownFireCritSurfFlameLeng );
+    fCrownFireCritSurfSpreadRate  = m_eqTree->setEqFunAddress( "fCrownFireCritSurfSpreadRate", &EqCalc::V6CrownFireCritSurfSpreadRate );
+    fCrownFireFuelLoad            = m_eqTree->setEqFunAddress( "fCrownFireFuelLoad", &EqCalc::V6CrownFireFuelLoad );
+    fCrownFireHeatPerUnitAreaCanopy = m_eqTree->setEqFunAddress( "fCrownFireHeatPerUnitAreaCanopy", &EqCalc::V6CrownFireHeatPerUnitAreaCanopy );
+    fCrownFireLengthToWidth       = m_eqTree->setEqFunAddress( "fCrownFireLengthToWidth", &EqCalc::V6CrownFireLengthToWidth );
+    fCrownFirePassiveFireArea     = m_eqTree->setEqFunAddress( "fCrownFirePassiveFireArea", &EqCalc::V6CrownFirePassiveFireArea );
+    fCrownFirePassiveFireLineInt  = m_eqTree->setEqFunAddress( "fCrownFirePassiveFireLineInt", &EqCalc::V6CrownFirePassiveFireLineIntensity );
+    fCrownFirePassiveFirePerimeter= m_eqTree->setEqFunAddress( "fCrownFirePassiveFirePerimeter", &EqCalc::V6CrownFirePassiveFirePerimeter );
+    fCrownFirePassiveFireWidth    = m_eqTree->setEqFunAddress( "fCrownFirePassiveFireWidth", &EqCalc::V6CrownFirePassiveFireWidth );
+    fCrownFirePassiveFlameLeng    = m_eqTree->setEqFunAddress( "fCrownFirePassiveFlameLeng", &EqCalc::V6CrownFirePassiveFlameLength );
+    fCrownFirePassiveHeatPerUnitArea = m_eqTree->setEqFunAddress( "fCrownFirePassiveHeatPerUnitArea", &EqCalc::V6CrownFirePassiveHeatPerUnitArea );
+    fCrownFirePassiveSpreadDist   = m_eqTree->setEqFunAddress( "fCrownFirePassiveSpreadDist", &EqCalc::V6CrownFirePassiveSpreadDist );
+    fCrownFirePassiveSpreadMapDist= m_eqTree->setEqFunAddress( "fCrownFirePassiveSpreadMapDist", &EqCalc::V6CrownFirePassiveSpreadMapDist );
+    fCrownFirePassiveSpreadRate   = m_eqTree->setEqFunAddress( "fCrownFirePassiveSpreadRate", &EqCalc::V6CrownFirePassiveSpreadRate );
+	fCrownFirePowerOfFire         = m_eqTree->setEqFunAddress( "fCrownFirePowerOfFire", &EqCalc::V6CrownFirePowerOfFire );
+    fCrownFirePowerOfWind         = m_eqTree->setEqFunAddress( "fCrownFirePowerOfWind", &EqCalc::V6CrownFirePowerOfWind );
+    fCrownFirePowerRatio          = m_eqTree->setEqFunAddress( "fCrownFirePowerRatio", &EqCalc::V6CrownFirePowerRatio );
+    fCrownFireTransRatioFromFireIntAtVector = m_eqTree->setEqFunAddress( "fCrownFireTransRatioFromFireIntAtVector", &EqCalc::V6CrownFireTransRatioFromFireIntAtVector );
+    fCrownFireTransRatioFromFlameLengAtVector = m_eqTree->setEqFunAddress( "fCrownFireTransRatioFromFlameLengAtVector", &EqCalc::V6CrownFireTransRatioFromFlameLengAtVector );
+    fCrownFireTransToCrown        = m_eqTree->setEqFunAddress( "fCrownFireTransToCrown", &EqCalc::V6CrownFireTransToCrown );
+    fCrownFireType                = m_eqTree->setEqFunAddress( "fCrownFireType", &EqCalc::V6CrownFireType );
+    fCrownFireWindDriven          = m_eqTree->setEqFunAddress( "fCrownFireWindDriven", &EqCalc::V6CrownFireWindDriven );
 
     fIgnitionFirebrandFuelMoisFromDead1Hr   = m_eqTree->setEqFunAddress( "fIgnitionFirebrandFuelMoisFromDead1Hr", &EqCalc::IgnitionFirebrandFuelMoisFromDead1Hr );
     fIgnitionFirebrandProb                  = m_eqTree->setEqFunAddress( "fIgnitionFirebrandProb", &EqCalc::IgnitionFirebrandProb );

@@ -174,6 +174,17 @@ double FBL_CrownFireActiveRatio(
             double crownSpreadRate,
             double criticalSpreadRate ) ;
 
+double FBL_CrownFireActiveWindSpeed(
+		double canopyBulkDensity,
+		double reactionIntensity,
+		double heatSink,
+		double slopeFactor );
+
+double FBL_CrownFireCanopyFractionBurned(
+		double surfaceFireRos,
+		double criticalSurfaceFireRos,
+		double crowningSurfaceFireRos );
+
 double FBL_CrownFireCriticalCrownFireSpreadRate(
             double crownBulkDensity ) ;
 
@@ -211,6 +222,11 @@ double FBL_CrownFireHeatPerUnitAreaCanopy(
 
 double FBL_CrownFireLengthToWidthRatio(
             double windSpeedAt20ft ) ;
+
+double FBL_CrownFirePassiveSpreadRate(
+            double surfaceFireRos,
+			double activeCrownFireRos,
+            double canopyFractionBurned ) ;
 
 double FBL_CrownFirePerimeter(
             double fireLength,

@@ -807,6 +807,38 @@ double FBL_CrownFireActiveRatio( double crownSpreadRate,
 }
 
 //------------------------------------------------------------------------------
+/*! \brief Calculates the Scott & Reinhardt 'crowning index' (O'active),
+ *	the 20-ft wind speed at which the crown canopy becomes fully available
+ *	for active fire spread (and the crown fraction burned approaches 1).
+ *
+ *	\param canopyBulkDensity Crown canopy bulk density (btu/ft3)
+ *	\param reactionIntensity Crown fire (fuel model 10) reaction intensity (btu/ft2/min)
+ *	\param heatSink Crown fire (fuel model 10) heat sink (btu/ft3)
+ *	\param slopeFactor
+ *
+ *  \return Crowing index, aka O'active (ft/min).
+*/
+double FBL_CrownFireActiveWindSpeed(
+		double canopyBulkDensity,
+		double reactionIntensity,
+		double heatSink,
+		double slopeFactor )
+{
+	double rhob = 0.5520;							// Fuel model 10 bulk density (lb/ft3)
+	double cbd = 16.0185 * canopyBulkDensity;		// Convert from lb/ft3 to kg/m3
+	double rxInt = 0.189422 * reactionIntensity;	// Convert from Btu/ft2/min to kW/m2
+	// Determine the epsilon * Qig product from the fuel bed rbQig heat sink
+	double epsQig = heatSink / rhob;				// Product of eff htg num and heat of preignition
+	epsQig *= 2.32779;								// Convert from Btu/lb to kJ/kg
+	double numerator = ( 164.8 * epsQig / ( rxInt * cbd ) ) - slopeFactor - 1.;
+	double term = numerator / 0.001612;
+	// Scott & Reinhardt Eq 20 to derive wind speed at 20-ft that sustains a fully active crown fire
+	double oActive = 0.0457 * pow( term, 0.7 );		// m/min
+	double fpm = 3.2808 * oActive;					// Convert from m/min to ft/min
+	return fpm;
+}
+
+//------------------------------------------------------------------------------
 /*! \brief Calculates the crown fire area from its forward spread distance and
  *  elliptical length-to-width ratio using the assumptions and equations as per
  *  Rothermel (1991) equation 11 on page 16 (which ignores backing distance).
@@ -820,6 +852,43 @@ double FBL_CrownFireActiveRatio( double crownSpreadRate,
 double FBL_CrownFireArea( double spreadDistance, double lwRatio )
 {
     return( M_PI * spreadDistance * spreadDistance / ( 4. * lwRatio ) );
+}
+
+//------------------------------------------------------------------------------
+/*! \brief Calculates the crown fraction burned as per Scott & Reinhardt.
+ *
+ *  \param surfaceFireRos Actual surface fire spread rate (ft/min).
+ *	\param criticalSurfaceFireRos Surface fire spread rate required to
+ *		initiate torching/crowning (ft/min) [R'intiation].
+ *	\param crowningSurfaceFireRos Surface fire spread rate at which the
+ *	active crown fire spread rate is fully achieved and the crown fraction
+ *	burned is 1 [R'active].
+ *
+ *  \return Crown fration burned (dl).
+ */
+double FBL_CrownFireCanopyFractionBurned(
+		double surfaceFireRos,
+		double criticalSurfaceFireRos,
+		double crowningSurfaceFireRos )
+{
+	// If actual ROS is less than initiation ROS, then no canopy is burned
+	double num = surfaceFireRos - criticalSurfaceFireRos;
+	if ( num <= 0. )
+	{
+		return 0.;
+	}
+	// If actual ROS is greater than active ROS, then 100% of the canopy is burned
+	if ( surfaceFireRos >= crowningSurfaceFireRos )
+	{
+		return 1.;
+	}
+	// Otherwise actual ROS is between passive and active crowning critical threshholds
+	double den = crowningSurfaceFireRos - criticalSurfaceFireRos;
+	den = ( den < 0. ) ? 0. : den;
+	double cfb = ( den > SMIDGEN ) ? ( num / den ) : 0.;
+	cfb = ( cfb > 1. ) ? 1. : cfb;
+	cfb = ( cfb < 0. ) ? 0. : cfb;
+	return cfb;
 }
 
 //------------------------------------------------------------------------------
@@ -839,13 +908,13 @@ double FBL_CrownFireCriticalCrownFireSpreadRate( double canopyBulkDensity )
 }
 
 //------------------------------------------------------------------------------
-/*! \brief SCott and Reinhardt equation for the critical surface ROS
- *  (R'initiation) used to determine crown fire initiation.
+/*! \brief Calculates the Scott & Reinhardt critical surface fire spread rate
+ *	(R'initiation) sufficient to initiate a passive or active crown fire.
  *
- *  \param criticalSurfaceFireIntensity (Btu/fts)
- *	\param surfaceFireHpua
+ *	\param criticalSurfaceFireIntensity Critical surface fireline intensity (btu/ft/s) 
+ *  \param surfaceFireHpua Surface fire heat per unit area (Btu/ft2)
  *
- *  \return Critical surface fire spread rate (ft/min).
+ *	\return Critical surface fire spread rate (ft/min)
  */
 
 double FBL_CrownFireCriticalSurfaceFireSpreadRate(
@@ -1005,6 +1074,27 @@ double FBL_CrownFireLengthToWidthRatio( double windSpeedAt20ft )
     return( ( windSpeedAt20ft > SMIDGEN )
           ? ( 1. + 0.125 * windSpeedAt20ft )
           : ( 1. ) );
+}
+
+//------------------------------------------------------------------------------
+/*! \brief Calculates the Scott & Reinhardt passive crown fire spread rate (ft/min).
+ *
+ *  \param surfaceFireRos surface fire spread rate at head (ft/min)
+ *	\param activeCrownFireRos Active crown fir spread rate (ft/min)
+ *	\param canopyFractionBurned Fraction of the crown canopy that is burned
+ *
+ *  \return passiveRos Passive crown fire spread rate (ft/min).
+ */
+
+double FBL_CrownFirePassiveSpreadRate(
+            double surfaceFireRos,
+			double activeCrownFireRos,
+            double canopyFractionBurned )
+{
+	double diffRos = ( activeCrownFireRos < surfaceFireRos )
+		? 0. : activeCrownFireRos - surfaceFireRos;
+	double passiveCrownFireRos = surfaceFireRos + canopyFractionBurned * diffRos;
+	return passiveCrownFireRos;
 }
 
 //------------------------------------------------------------------------------

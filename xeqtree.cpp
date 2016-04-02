@@ -237,7 +237,7 @@ EqTree::EqTree( EqApp *eqApp, const QString &name, int funCount, int funPrime,
 
     // CROWN Module
     m_rxVarList->add( m_eqCalc->vCrownFireTransToCrown) ;           // 2:040
-    m_rxVarList->add( m_eqCalc->vCrownFireSpreadRate ) ;            // 2:050
+    m_rxVarList->add( m_eqCalc->vCrownFireActiveSpreadRate ) ;      // 2:050
     m_rxVarList->add( m_eqCalc->vCrownFireActiveCrown) ;            // 2:080
     m_rxVarList->add( m_eqCalc->vCrownFireType) ;                   // 2:090
 
