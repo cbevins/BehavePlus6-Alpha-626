@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqtree.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Experimental Equation Tree class methods.
  */

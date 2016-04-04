@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalc.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree calculator interface.
  *
@@ -8179,7 +8179,6 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     fContainFFReportSpread = m_eqTree->setEqFunAddress( "fContainFFReportSpread", &EqCalc::ContainFFReportSpread );
     fContainFFSingle       = m_eqTree->setEqFunAddress( "fContainFFSingle", &EqCalc::ContainFFSingle );
 
-	//fCrownFireActiveCritOpenWindSpeed = m_eqTree->setEqFunAddress( "fCrownFireActiveCritOpenWindSpeed", &EqCalc::V6CrownFireActiveCriticalOpenWindSpeed );
 	fCrownFireActiveCritSurfSpreadRate = m_eqTree->setEqFunAddress( "fCrownFireActiveCritSurfSpreadRate", &EqCalc::V6CrownFireActiveCriticalSurfaceSpreadRate );
 	fCrownFireActiveCrown         = m_eqTree->setEqFunAddress( "fCrownFireActiveCrown", &EqCalc::V6CrownFireActiveCrown );
     fCrownFireActiveRatio         = m_eqTree->setEqFunAddress( "fCrownFireActiveRatio", &EqCalc::V6CrownFireActiveRatio );
@@ -8191,10 +8190,8 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     fCrownFireActiveFlameLeng     = m_eqTree->setEqFunAddress( "fCrownFireActiveFlameLeng", &EqCalc::V6CrownFireActiveFlameLength );
     fCrownFireActiveHeatPerUnitArea = m_eqTree->setEqFunAddress( "fCrownFireActiveHeatPerUnitArea", &EqCalc::V6CrownFireActiveHeatPerUnitArea );
     fCrownFireActiveSpreadDist    = m_eqTree->setEqFunAddress( "fCrownFireActiveSpreadDist", &EqCalc::V6CrownFireActiveSpreadDist );
-    //fCrownFireActiveSpreadDistV6  = m_eqTree->setEqFunAddress( "fCrownFireActiveSpreadDistV6", &EqCalc::V6CrownFireActiveSpreadDistV6 );
     fCrownFireActiveSpreadMapDist = m_eqTree->setEqFunAddress( "fCrownFireActiveSpreadMapDist", &EqCalc::V6CrownFireActiveSpreadMapDist );
     fCrownFireActiveSpreadRate    = m_eqTree->setEqFunAddress( "fCrownFireActiveSpreadRate", &EqCalc::V6CrownFireActiveSpreadRate );
-    //fCrownFireActiveSpreadRateV6  = m_eqTree->setEqFunAddress( "fCrownFireActiveSpreadRateV6", &EqCalc::V6CrownFireActiveSpreadRateV6 );
 	fCrownFireCanopyFractionBurned = m_eqTree->setEqFunAddress( "fCrownFireCanopyFractionBurned", &EqCalc::V6CrownFireCanopyFractionBurned );
 	fCrownFireCritCrownSpreadRate = m_eqTree->setEqFunAddress( "fCrownFireCritCrownSpreadRate", &EqCalc::V6CrownFireCritCrownSpreadRate );
     fCrownFireCritSurfFireInt     = m_eqTree->setEqFunAddress( "fCrownFireCritSurfFireInt", &EqCalc::V6CrownFireCritSurfFireInt );

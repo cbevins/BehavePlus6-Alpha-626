@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalc.h
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree calculator interface.
  */
@@ -454,7 +454,6 @@ public:
     EqFun *fCrownFireActiveFlameLeng;
     EqFun *fCrownFireActiveHeatPerUnitArea;
     EqFun *fCrownFireActiveSpreadDist;
-    //EqFun *fCrownFireActiveSpreadDistV6;
     EqFun *fCrownFireActiveSpreadMapDist;
     EqFun *fCrownFireActiveSpreadRate;
 	EqFun *fCrownFireCanopyFractionBurned;
@@ -482,10 +481,6 @@ public:
     EqFun *fCrownFireTransToCrown;
     EqFun *fCrownFireType;
     EqFun *fCrownFireWindDriven;
-
-	EqFun *fCrownFireSpreadDistV6;		// temp
-	EqFun *fCrownFireSpreadRateV6;		// temp
-	EqFun *fCrownFireLineIntFromFlameLeng;		// temp
 
     EqFun *fIgnitionFirebrandFuelMoisFromDead1Hr;
     EqFun *fIgnitionFirebrandProb;
