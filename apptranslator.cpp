@@ -232,6 +232,9 @@ void translate( QString &dst, const QString &key,
     //if ( ! ( fmt = TrDict->find( fullKey ) ) )
     // This code block should never be executed!
     {
+        dst = key;
+        return;
+
 fprintf( stderr, "translate( key=\"%s\" ) unable to find full key \"%s\".\n",
 key.latin1(), fullKey.latin1() );
 platformExit(1);

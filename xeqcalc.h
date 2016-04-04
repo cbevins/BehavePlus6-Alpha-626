@@ -121,40 +121,42 @@ public:
 	EqVar *vCrownFireActiveFlameLeng;
 	EqVar *vCrownFireActiveHeatPerUnitArea;
 	EqVar *vCrownFireActiveSpreadDist;
+	EqVar *vCrownFireActiveSpreadMapDist;
 	EqVar *vCrownFireActiveFireLineInt;
 	EqVar *vCrownFireActiveFirePerimeter;
 	EqVar *vCrownFireActiveSpreadRate;
     EqVar *vCrownFireActiveFireWidth;
-    EqVar *vCrownFireArea;
+    //EqVar *vCrownFireArea;
 	EqVar *vCrownFireCanopyFractionBurned;
 	EqVar *vCrownFireCanopyHt;
     EqVar *vCrownFireCritCrownSpreadRate;
     EqVar *vCrownFireCritSurfFireInt;
     EqVar *vCrownFireCritSurfFlameLeng;
     EqVar *vCrownFireCritSurfSpreadRate;
-    EqVar *vCrownFireFlameLeng;
+    //EqVar *vCrownFireFlameLeng;
     EqVar *vCrownFireFuelLoad;
 	EqVar *vCrownFireActiveCritSurfSpreadRate;
 	EqVar *vCrownFireActiveCritOpenWindSpeed;
-    EqVar *vCrownFireHeatPerUnitArea;
+    //EqVar *vCrownFireHeatPerUnitArea;
     EqVar *vCrownFireHeatPerUnitAreaCanopy;
     EqVar *vCrownFireLengthToWidth;
-    EqVar *vCrownFireLineInt;
+    //EqVar *vCrownFireLineInt;
 	EqVar *vCrownFirePassiveFireArea;
 	EqVar *vCrownFirePassiveFlameLeng;
 	EqVar *vCrownFirePassiveHeatPerUnitArea;
 	EqVar *vCrownFirePassiveSpreadDist;
+	EqVar *vCrownFirePassiveSpreadMapDist;
 	EqVar *vCrownFirePassiveFireLineInt;
 	EqVar *vCrownFirePassiveFirePerimeter;
 	EqVar *vCrownFirePassiveSpreadRate;
     EqVar *vCrownFirePassiveFireWidth;
-	EqVar *vCrownFirePerimeter;
+	//EqVar *vCrownFirePerimeter;
     EqVar *vCrownFirePowerOfFire;
     EqVar *vCrownFirePowerOfWind;
     EqVar *vCrownFirePowerRatio;
-    EqVar *vCrownFireSpreadDist;
-    EqVar *vCrownFireSpreadMapDist;
-    EqVar *vCrownFireSpreadRate;
+    //EqVar *vCrownFireSpreadDist;
+    //EqVar *vCrownFireSpreadMapDist;
+    //EqVar *vCrownFireSpreadRate;
     EqVar *vCrownFireTransRatio;
     EqVar *vCrownFireTransToCrown;
     EqVar *vCrownFireType;
@@ -298,6 +300,8 @@ public:
     EqVar *vSurfaceFireWidthDist;
     EqVar *vSurfaceFireWidthMapDist;
     EqVar *vSurfaceFireWindFactor;
+    EqVar *vSurfaceFireWindFactorB;
+    EqVar *vSurfaceFireWindFactorK;
     EqVar *vSurfaceFireWindSpeedFlag;
     EqVar *vSurfaceFireWindSpeedLimit;
     EqVar *vSurfaceFuelAspenCuring;
@@ -327,6 +331,7 @@ public:
     EqVar *vSurfaceFuelBedMoisDead;
     EqVar *vSurfaceFuelBedMoisLive;
     EqVar *vSurfaceFuelBedPackingRatio;
+	EqVar *vSurfaceFuelBedRbQig;
     EqVar *vSurfaceFuelBedSigma;
 	EqVar *vSurfaceFuelChaparralAge;
 	EqVar *vSurfaceFuelChaparralDeadFuelFraction;
@@ -437,33 +442,51 @@ public:
     EqFun *fContainFFReportSize;
     EqFun *fContainFFReportSpread;
     EqFun *fContainFFSingle;
-    EqFun *fCrownFireActiveCrown;
+
+	EqFun *fCrownFireActiveCritSurfSpreadRate;
+	EqFun *fCrownFireActiveCrown;
     EqFun *fCrownFireActiveRatio;
-    EqFun *fCrownFireArea;
-    EqFun *fCrownFireCritCrownSpreadRate;
+    EqFun *fCrownFireActiveFireArea;
+    EqFun *fCrownFireActiveFireLineInt;
+    EqFun *fCrownFireActiveFireLineIntFromFlameLeng;
+    EqFun *fCrownFireActiveFirePerimeter;
+    EqFun *fCrownFireActiveFireWidth;
+    EqFun *fCrownFireActiveFlameLeng;
+    EqFun *fCrownFireActiveHeatPerUnitArea;
+    EqFun *fCrownFireActiveSpreadDist;
+    //EqFun *fCrownFireActiveSpreadDistV6;
+    EqFun *fCrownFireActiveSpreadMapDist;
+    EqFun *fCrownFireActiveSpreadRate;
+	EqFun *fCrownFireCanopyFractionBurned;
+	EqFun *fCrownFireCritCrownSpreadRate;
     EqFun *fCrownFireCritSurfFireInt;
     EqFun *fCrownFireCritSurfFlameLeng;
-    EqFun *fCrownFireFlameLeng;
+    EqFun *fCrownFireCritSurfSpreadRate;
     EqFun *fCrownFireFuelLoad;
-    EqFun *fCrownFireHeatPerUnitArea;
     EqFun *fCrownFireHeatPerUnitAreaCanopy;
     EqFun *fCrownFireLengthToWidth;
-    EqFun *fCrownFireLineInt;
-    EqFun *fCrownFireLineIntFromFlameLeng;
-    EqFun *fCrownFirePerimeter;
-    EqFun *fCrownFirePowerOfFire;
+    EqFun *fCrownFirePassiveFireArea;
+    EqFun *fCrownFirePassiveFireLineInt;
+    EqFun *fCrownFirePassiveFirePerimeter;
+    EqFun *fCrownFirePassiveFireWidth;
+    EqFun *fCrownFirePassiveFlameLeng;
+    EqFun *fCrownFirePassiveHeatPerUnitArea;
+    EqFun *fCrownFirePassiveSpreadDist;
+    EqFun *fCrownFirePassiveSpreadMapDist;
+    EqFun *fCrownFirePassiveSpreadRate;
+	EqFun *fCrownFirePowerOfFire;
     EqFun *fCrownFirePowerOfWind;
     EqFun *fCrownFirePowerRatio;
-    EqFun *fCrownFireSpreadDist;
-    EqFun *fCrownFireSpreadDistV6;
-    EqFun *fCrownFireSpreadMapDist;
-    EqFun *fCrownFireSpreadRate;
-    EqFun *fCrownFireSpreadRateV6;
     EqFun *fCrownFireTransRatioFromFireIntAtVector;
     EqFun *fCrownFireTransRatioFromFlameLengAtVector;
     EqFun *fCrownFireTransToCrown;
     EqFun *fCrownFireType;
     EqFun *fCrownFireWindDriven;
+
+	EqFun *fCrownFireSpreadDistV6;		// temp
+	EqFun *fCrownFireSpreadRateV6;		// temp
+	EqFun *fCrownFireLineIntFromFlameLeng;		// temp
+
     EqFun *fIgnitionFirebrandFuelMoisFromDead1Hr;
     EqFun *fIgnitionFirebrandProb;
     EqFun *fIgnitionLightningFuelMoisFromDead100Hr;
@@ -752,6 +775,51 @@ public:
     void WthrSummerSimmerIndex( void );
     void WthrWindChillTemp( void );
 
+	void V6CrownFireActiveCriticalSurfaceSpreadRate( void );
+	void V6CrownFireActiveCrown( void );
+	void V6CrownFireActiveRatio( void );
+	void V6CrownFireActiveFireArea( void );
+	void V6CrownFireActiveFireLineIntensity( void );
+	void V6CrownFireActiveFireLineIntensityFromFlameLength( void );
+	void V6CrownFireActiveFirePerimeter( void );
+	void V6CrownFireActiveFireWidth( void );
+	void V6CrownFireActiveFlameLength( void );
+	void V6CrownFireActiveHeatPerUnitArea( void );
+	void V6CrownFireActiveSpreadDist( void );
+	void V6CrownFireActiveSpreadDistV6( void );
+	void V6CrownFireActiveSpreadMapDist( void );
+	void V6CrownFireActiveSpreadRate( void );
+	void V6CrownFireActiveSpreadRateV6( void );
+	void V6CrownFireCanopyFractionBurned( void );
+	void V6CrownFireCritCrownSpreadRate( void );
+    void V6CrownFireCritSurfFireInt( void );
+    void V6CrownFireCritSurfFlameLeng( void );
+    void V6CrownFireCritSurfSpreadRate( void );
+    void V6CrownFireFuelLoad( void );
+    void V6CrownFireHeatPerUnitAreaCanopy( void );
+    void V6CrownFireLengthToWidth( void );
+    void V6CrownFirePassiveFireArea( void );
+    void V6CrownFirePassiveFireLineIntensity( void );
+    void V6CrownFirePassiveFirePerimeter( void );
+    void V6CrownFirePassiveFireWidth( void );
+    void V6CrownFirePassiveFlameLength( void );
+    void V6CrownFirePassiveHeatPerUnitArea( void );
+    void V6CrownFirePassiveSpreadDist( void );
+    void V6CrownFirePassiveSpreadMapDist( void );
+    void V6CrownFirePassiveSpreadRate( void );
+	void V6CrownFirePowerOfFire( void );
+    void V6CrownFirePowerOfWind( void );
+    void V6CrownFirePowerRatio( void );
+    void V6CrownFireTransRatioFromFireIntAtVector( void );
+    void V6CrownFireTransRatioFromFlameLengAtVector( void );
+    void V6CrownFireTransToCrown( void );
+    void V6CrownFireType( void );
+    void V6CrownFireWindDriven( void );
+
+	void logMethod( char* methodName, int numInputs, int numOutputs );
+	void logInput( EqVar *var );
+	void logOutput( EqVar *var );
+
 	Bp6CrownFire*   m_Bp6CrownFire;
 	Bp6SurfaceFire* m_Bp6SurfaceFire;
 };
@@ -761,4 +829,3 @@ public:
 //------------------------------------------------------------------------------
 //  End of xeqcalc.h
 //------------------------------------------------------------------------------
-

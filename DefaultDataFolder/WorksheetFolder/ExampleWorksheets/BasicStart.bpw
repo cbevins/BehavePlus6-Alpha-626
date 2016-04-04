@@ -108,19 +108,42 @@
   <property name="containDiagramValueFontFamily" value="courier" />
   <property name="containDiagramValueFontSize" value="10" />
   <property name="containModuleActive" value="false" />
+
+  <property name="crownCalcActiveCritOpenWindSpeed" value="false" />
+  <property name="crownCalcActiveCritSurfSpreadRate" value="false" />
   <property name="crownCalcActiveCrown" value="true" />
+  <property name="crownCalcActiveFireArea" value="false" />
+  <property name="crownCalcActiveFireLineInt" value="true" />
+  <property name="crownCalcActiveFirePerimeter" value="false" />
+  <property name="crownCalcActiveFireWidth" value="false" />
+  <property name="crownCalcActiveFlameLeng" value="true" />
+  <property name="crownCalcActiveHeatPerUnitArea" value="true" />
   <property name="crownCalcActiveRatio" value="true" />
-  <property name="crownCalcCriticalCrownSpreadRate" value="true" />
+  <property name="crownCalcActiveSpreadDist" value="false" />
+  <property name="crownCalcActiveSpreadRate" value="true" />
+  <property name="crownCalcCanopyFractionBurned" value="false" />
+  <property name="crownCalcCriticalCrownSpreadRate" value="false" />
   <property name="crownCalcCriticalSurfaceFlameLeng" value="false" />
-  <property name="crownCalcCriticalSurfaceIntensity" value="true" />
+  <property name="crownCalcCriticalSurfaceIntensity" value="false" />
+  <property name="crownCalcCritSurfSpreadRate" value="false" />
   <property name="crownCalcCrownFireType" value="true" />
-  <property name="crownCalcCrownSpreadDist" value="false" />
-  <property name="crownCalcCrownSpreadRate" value="true" />
-  <property name="crownCalcFireArea" value="false" />
   <property name="crownCalcFireLengthToWidth" value="false" />
-  <property name="crownCalcFirePerimeter" value="false" />
+  <property name="crownCalcFuelLoad" value="false" />
+  <property name="crownCalcHeatPerUnitAreaCanopy" value="false" />
+  <property name="crownCalcPassiveFireArea" value="false" />
+  <property name="crownCalcPassiveFireLineInt" value="false" />
+  <property name="crownCalcPassiveFirePerimeter" value="false" />
+  <property name="crownCalcPassiveFireWidth" value="false" />
+  <property name="crownCalcPassiveFlameLeng" value="false" />
+  <property name="crownCalcPassiveHeatPerUnitArea" value="false" />
+  <property name="crownCalcPassiveSpreadDist" value="false" />
+  <property name="crownCalcPassiveSpreadRate" value="false" />
+  <property name="crownCalcPowerOfFire" value="false" />
+  <property name="crownCalcPowerOfWind" value="false" />
+  <property name="crownCalcPowerRatio" value="false" />
   <property name="crownCalcTransitionRatio" value="true" />
   <property name="crownCalcTransitionToCrown" value="true" />
+  <property name="crownCalcWindDriven" value="false" />
   <property name="crownConfUseFireLineInt" value="false" />
   <property name="crownConfUseFlameLeng" value="true" />
   <property name="crownModuleActive" value="false" />
@@ -436,7 +459,7 @@
   <prescription name="vContainStatus" active="false" accept="1,0,0,0,1" />
   <prescription name="vContainTime" active="false" minimum="0.0" maximum="0.0" units="h" />
   <prescription name="vCrownFireActiveCrown" active="false" accept="1,0" />
-  <prescription name="vCrownFireSpreadRate" active="false" minimum="0.0" maximum="0.0" units="ch/h" />
+  <prescription name="vCrownFireActiveSpreadRate" active="false" minimum="0.0" maximum="0.0" units="ch/h" />
   <prescription name="vCrownFireTransToCrown" active="false" accept="1,0" />
   <prescription name="vCrownFireType" active="false" accept="1,0,0,0" />
   <prescription name="vIgnitionFirebrandProb" active="false" minimum="0" maximum="0" units="%" />
@@ -486,22 +509,25 @@
   <variable name="vContainXMax" decimals="0" units="ch" value="" />
   <variable name="vContainXMin" decimals="0" units="ch" value="" />
   <variable name="vContainYMax" decimals="0" units="ch" value="" />
+  
   <variable name="vCrownFireActiveCrown" code="" />
   <variable name="vCrownFireActiveRatio" decimals="2" units="ratio" value="" />
-  <variable name="vCrownFireArea" decimals="1" units="ac" value="" />
   <variable name="vCrownFireCritCrownSpreadRate" decimals="1" units="ch/h" value="" />
   <variable name="vCrownFireCritSurfFireInt" decimals="0" units="Btu/ft/s" value="" />
   <variable name="vCrownFireCritSurfFlameLeng" decimals="1" units="ft" value="" />
-  <variable name="vCrownFireHeatPerUnitArea" decimals="0" units="Btu/ft2" value="" />
   <variable name="vCrownFireHeatPerUnitAreaCanopy" decimals="0" units="Btu/ft2" value="" />
   <variable name="vCrownFireLengthToWidth" decimals="1" units="ratio" value="" />
-  <variable name="vCrownFirePerimeter" decimals="0" units="ch" value="" />
-  <variable name="vCrownFireSpreadDist" decimals="1" units="ch" value="" />
-  <variable name="vCrownFireSpreadMapDist" decimals="2" units="in" value="" />
-  <variable name="vCrownFireSpreadRate" decimals="1" units="ch/h" value="" />
   <variable name="vCrownFireTransRatio" decimals="2" units="ratio" value="" />
   <variable name="vCrownFireTransToCrown" code="" />
   <variable name="vCrownFireType" code="" />
+  
+  <variable name="vCrownFireActiveFireArea" decimals="1" units="ac" value="" />
+  <variable name="vCrownFireActiveFirePerimeter" decimals="0" units="ch" value="" />
+  <variable name="vCrownFireActiveHeatPerUnitArea" decimals="0" units="Btu/ft2" value="" />
+  <variable name="vCrownFireActiveSpreadDist" decimals="1" units="ch" value="" />
+  <variable name="vCrownFireActiveSpreadMapDist" decimals="2" units="in" value="" />
+  <variable name="vCrownFireActiveSpreadRate" decimals="1" units="ch/h" value="" />
+
   <variable name="vDocDescription" text="" />
   <variable name="vDocFireAnalyst" text="" />
   <variable name="vDocFireName" text="" />
