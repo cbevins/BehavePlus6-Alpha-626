@@ -224,9 +224,9 @@ double FBL_CrownFireLengthToWidthRatio(
             double windSpeedAt20ft ) ;
 
 double FBL_CrownFirePassiveSpreadRate(
-            double surfaceFireRos,
-			double activeCrownFireRos,
-            double canopyFractionBurned ) ;
+            double Rsurface,
+			double Ractive,
+            double cfb ) ;
 
 double FBL_CrownFirePerimeter(
             double fireLength,

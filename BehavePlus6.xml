@@ -7898,7 +7898,7 @@
     wizard=""
   />
   <translate key="vCrownFireActiveCritOpenWindSpeed:Label"
-    en_US="Active Crown Critical Open Wind Speed"
+    en_US="Active Crown Critical Open Wind Speed [O'active]"
     pt_PT="Active Crown Critical Open Wind Speed"
   />
   <translate key="vCrownFireActiveCritOpenWindSpeed:Desc"
@@ -7930,8 +7930,8 @@
     wizard=""
   />
   <translate key="vCrownFireActiveCritSurfSpreadRate:Label"
-    en_US="Critical Surface ROS, Active Crown Fire"
-    pt_PT="Critical SUrface ROS, Active Crown Fire"
+    en_US="Critical Surface Fire ROS, Active Crown Fire [R'sa]"
+    pt_PT="Critical Surface Fire ROS, Active Crown Fire"
   />
   <translate key="vCrownFireActiveCritSurfSpreadRate:Desc"
     en_US="Scott-Reinhardt R'sa"
@@ -8363,11 +8363,11 @@
     wizard=""
   />
   <translate key="vCrownFireCritCrownSpreadRate:Label"
-    en_US="Critical Crown Fire Rate of Spread"
+    en_US="Critical Crown Fire Rate of Spread [R'active]"
     pt_PT="Velocidade Crítica Para Fogos de Copas"
   />
   <translate key="vCrownFireCritCrownSpreadRate:Desc"
-    en_US="Critical crown fire rate of spread."
+    en_US="Critical crown fire rate of spread [R'active]."
     pt_PT="Velocidade de propagação crítica para fogos de copas."
   />
   <translate key="vCrownFireCritCrownSpreadRate:Hdr0"
@@ -8395,7 +8395,7 @@
     wizard=""
   />
   <translate key="vCrownFireCritSurfFireInt:Label"
-    en_US="Critical Surface Fireline Intensity"
+    en_US="Critical Surface Fireline Intensity [I'initiation]"
     pt_PT="Intensidade de Superfície Crítica"
   />
   <translate key="vCrownFireCritSurfFireInt:Desc"
@@ -8427,7 +8427,7 @@
     wizard=""
   />
   <translate key="vCrownFireCritSurfFlameLeng:Label"
-    en_US="Critical Surface Fire Flame Length"
+    en_US="Critical Surface Fire Flame Length [L'initiation]"
     pt_PT="Comprimento de Chamas Crítico"
   />
   <translate key="vCrownFireCritSurfFlameLeng:Desc"
@@ -8459,7 +8459,7 @@
     wizard=""
   />
   <translate key="vCrownFireCritSurfSpreadRate:Label"
-    en_US="Critical Surface Fire ROS, Crown Fire Initiation"
+    en_US="Critical Surface Fire ROS, Crown Fire Initiation [R'initiation]"
     pt_PT="Critical Surface Fire ROS, Crown Fire Initiation"
   />
   <translate key="vCrownFireCritSurfSpreadRate:Desc"
@@ -8813,7 +8813,7 @@
     en_US="Passive Crown Fire"
     pt_PT="Fogo de copas"
   />
-  <translate key="vCrownFireActiveSpreadMapDist:Hdr1"
+  <translate key="vCrownFirePassiveSpreadMapDist:Hdr1"
     en_US="Spread Map Distance"
     pt_PT="Dist mapa"
   />
@@ -20306,7 +20306,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseThru="99999"
     input="vCrownFireCritSurfFireInt"
 		input="vSurfaceFireHeatPerUnitArea"
-    output="vCrownFireActiveCritSurfSpreadRate" />
+    output="vCrownFireCritSurfSpreadRate" />
 
   <function name="fCrownFireFuelLoad"
     module="crown"
@@ -22679,13 +22679,14 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="20000"
     releaseThru="99999"
   />
-
+  <!-- O'active -->
   <property name="crownCalcActiveCritOpenWindSpeed"
     type="Boolean"
     value="false"
     releaseFrom="30000"
     releaseThru="99999"
   />
+  <!-- Rsa -->
   <property name="crownCalcActiveCritSurfSpreadRate"
     type="Boolean"
     value="false"
@@ -22706,7 +22707,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
   />
   <property name="crownCalcActiveFireLineInt"
     type="Boolean"
-    value="false"
+    value="true"
     releaseFrom="30000"
     releaseThru="99999"
   />
@@ -22724,13 +22725,13 @@ do mapa de partículas em combustão com origem num fogo de superfície"
   />
   <property name="crownCalcActiveFlameLeng"
     type="Boolean"
-    value="false"
+    value="true"
     releaseFrom="30000"
     releaseThru="99999"
   />
   <property name="crownCalcActiveHeatPerUnitArea"
     type="Boolean"
-    value="false"
+    value="true"
     releaseFrom="30000"
     releaseThru="99999"
   />
@@ -22748,7 +22749,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
   />
   <property name="crownCalcActiveSpreadRate"
     type="Boolean"
-    value="false"
+    value="true"
     releaseFrom="30000"
     releaseThru="99999"
   />
@@ -22776,6 +22777,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="30000"
     releaseThru="99999"
   />
+  <!-- R'initiation -->
   <property name="crownCalcCritSurfSpreadRate"
     type="Boolean"
     value="false"
@@ -22788,18 +22790,21 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="30000"
     releaseThru="99999"
   />
+  <!-- Deprecated in V6 in favor of Active and Passive pair -->
   <property name="crownCalcCrownSpreadDist"
     type="Boolean"
     value="false"
     releaseFrom="30000"
     releaseThru="99999"
   />
+  <!-- Deprecated in V6 in favor of Active and Passive pair -->
   <property name="crownCalcCrownSpreadRate"
     type="Boolean"
     value="true"
     releaseFrom="30000"
     releaseThru="99999"
   />
+  <!-- Deprecated in V6 in favor of Active and Passive pair -->
   <property name="crownCalcFireArea"
     type="Boolean"
     value="false"
@@ -22812,18 +22817,21 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="30000"
     releaseThru="99999"
   />
+  <!-- Deprecated in V6 in favor of Active and Passive pair -->
   <property name="crownCalcFireLineInt"
     type="Boolean"
     value="false"
     releaseFrom="30000"
     releaseThru="99999"
   />
+  <!-- Deprecated in V6 in favor of Active and Passive pair -->
   <property name="crownCalcFirePerimeter"
     type="Boolean"
     value="false"
     releaseFrom="30000"
     releaseThru="99999"
   />
+  <!-- Deprecated in V6 in favor of Active and Passive pair -->
   <property name="crownCalcFlameLeng"
     type="Boolean"
     value="false"
@@ -22836,6 +22844,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="30000"
     releaseThru="99999"
   />
+  <!-- Deprecated in V6 in favor of Active and Passive pair -->
   <property name="crownCalcHeatPerUnitArea"
     type="Boolean"
     value="false"
@@ -28466,6 +28475,10 @@ para eixo dos Y"
   <translate key="PropertyTabDialog:Crown:IntermediateOutputs:Tab"
     en_US="Intermediate Outputs"
     pt_PT="??? Intermediate Outputs"
+  />
+  <translate key="PropertyTabDialog:Crown:ScottReinhardtOutputs:Tab"
+    en_US="Scott and Reinhardt Outputs"
+    pt_PT="Scott and Reinhardt Outputs"
   />
   <!-- PropertyTabDialog Contain Text -->
   <translate key="PropertyTabDialog:Contain:Caption"

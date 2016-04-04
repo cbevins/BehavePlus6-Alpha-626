@@ -5,6 +5,24 @@ Mar 22, 2016 - Apr 21, 2016
 ?? hours
 =============================
 
+2016-04-04 (8.0 h] [21.0 h total]
+
+- Completed refactoring the crown fire model to successfully
+	resolve Issues 68, 69, and 103.
+
+- RESOLVED Issue #068FAH - Program requiring non-essential inputs for CROWN.
+
+- RESOLVED Issue #069FAH - CROWN requests fireline intensity, not flame length
+
+- RESOLVED ISSUE #103CDB - Force Scott & Reinhardt  to require linked
+	CROWN and SURFACE Modules.
+	
+	
+2016-04-01 (8.0 h) [13.0 h total]
+
+- Refactored the monolithic crown fire model so that smaller
+	submodules can be requested.
+	
 2016-03-31 (1.0 h) [5.0 h total]
 
 - Resolved Issue #072FAH - Error in Output Variable Module

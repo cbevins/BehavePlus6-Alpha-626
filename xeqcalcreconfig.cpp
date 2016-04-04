@@ -229,11 +229,6 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
     fCrownFireType->m_active                = true;
     fCrownFireWindDriven->m_active          = true;
 
-	// V6 functions
-	fCrownFireLineIntFromFlameLeng->m_active = false;
-	fCrownFireSpreadRateV6->m_active = false;
-	fCrownFireSpreadDistV6->m_active = false;
-
 	// Build 611 uses SURFACE Module fuel moisture settings
     fSurfaceFuelMoisTimeLag->m_active = true;
 
@@ -302,23 +297,66 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
 		}
     }
 
-    // V5 output variables
+	vCrownFireActiveCritOpenWindSpeed->m_isUserOutput =			// V6 O'active, CI
+		prop->boolean( "crownCalcActiveCritOpenWindSpeed" );
+	vCrownFireActiveCritSurfSpreadRate->m_isUserOutput =		// V6 Rsa
+		prop->boolean( "crownCalcActiveCritSurfSpreadRate" );
     vCrownFireActiveCrown->m_isUserOutput =
         prop->boolean( "crownCalcActiveCrown" );
+	vCrownFireActiveFireArea->m_isUserOutput =
+		prop->boolean( "crownCalcActiveFireArea" );
+	vCrownFireActiveFireLineInt->m_isUserOutput =
+		prop->boolean( "crownCalcActiveFireLineInt" );
+	vCrownFireActiveFirePerimeter->m_isUserOutput =
+		prop->boolean( "crownCalcActiveFirePerimeter" );
+	vCrownFireActiveFireWidth->m_isUserOutput =
+		prop->boolean( "crownCalcActiveFireWidth" );
+	vCrownFireActiveFlameLeng->m_isUserOutput = 
+		prop->boolean( "crownCalcActiveFlameLeng" );
+	vCrownFireActiveHeatPerUnitArea->m_isUserOutput =
+		prop->boolean( "crownCalcActiveHeatPerUnitArea" );
     vCrownFireActiveRatio->m_isUserOutput =
         prop->boolean( "crownCalcActiveRatio" );
+	vCrownFireActiveSpreadDist->m_isUserOutput =
+		prop->boolean( "crownCalcActiveSpreadDist" );
+	vCrownFireActiveSpreadRate->m_isUserOutput =
+		prop->boolean( "crownCalcActiveSpreadRate" );
+	vCrownFireCanopyFractionBurned->m_isUserOutput =			// V6 CFB
+		prop->boolean( "crownCalcCanopyFractionBurned" );
     vCrownFireCritCrownSpreadRate->m_isUserOutput =
         prop->boolean( "crownCalcCriticalCrownSpreadRate" );
-    vCrownFireCritSurfFireInt->m_isUserOutput =
+    vCrownFireCritSurfFireInt->m_isUserOutput =					// V6 I'initiation
         prop->boolean( "crownCalcCriticalSurfaceIntensity" );
     vCrownFireCritSurfFlameLeng->m_isUserOutput =
         prop->boolean( "crownCalcCriticalSurfaceFlameLeng" );
+    vCrownFireCritSurfSpreadRate->m_isUserOutput =				// V6 R'initiation
+		prop->boolean( "crownCalcCritSurfSpreadRate" );
+    vCrownFireLengthToWidth->m_isUserOutput =
+        prop->boolean( "crownCalcFireLengthToWidth" );
+    vCrownFireType->m_isUserOutput =
+        prop->boolean( "crownCalcCrownFireType" );
     vCrownFireFuelLoad->m_isUserOutput =
         prop->boolean( "crownCalcFuelLoad" );
     vCrownFireHeatPerUnitAreaCanopy->m_isUserOutput =
         prop->boolean( "crownCalcHeatPerUnitAreaCanopy" );
-    vCrownFireLengthToWidth->m_isUserOutput =
-        prop->boolean( "crownCalcFireLengthToWidth" );
+
+	vCrownFirePassiveFireArea->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveFireArea" );
+	vCrownFirePassiveFireLineInt->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveFireLineInt" );
+	vCrownFirePassiveFirePerimeter->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveFirePerimeter" );
+	vCrownFirePassiveFireWidth->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveFireWidth" );
+	vCrownFirePassiveFlameLeng->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveFlameLeng" );
+	vCrownFirePassiveHeatPerUnitArea->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveHeatPerUnitArea" );
+	vCrownFirePassiveSpreadDist->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveSpreadDist" );
+	vCrownFirePassiveSpreadRate->m_isUserOutput =
+		prop->boolean( "crownCalcPassiveSpreadRate" );
+
     vCrownFirePowerOfFire->m_isUserOutput =
         prop->boolean( "crownCalcPowerOfFire" );
     vCrownFirePowerOfWind->m_isUserOutput =
@@ -329,10 +367,9 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
         prop->boolean( "crownCalcTransitionRatio" );
     vCrownFireTransToCrown->m_isUserOutput =
         prop->boolean( "crownCalcTransitionToCrown" );
-    vCrownFireType->m_isUserOutput =
-        prop->boolean( "crownCalcCrownFireType" );
     vCrownFireWindDriven->m_isUserOutput =
         prop->boolean( "crownCalcWindDriven" );
+
     if ( prop->boolean( "mapCalcDist" ) )
     {
         fMapScale->m_active = true;
@@ -341,65 +378,26 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
         vCrownFirePassiveSpreadMapDist->m_isUserOutput =
             prop->boolean( "crownCalcPassiveSpreadDist" );
     }
-	// V6 additional output variables
-	vCrownFireCanopyFractionBurned->m_isUserOutput =
-		prop->boolean( "crownCalcCanopyFractionBurned" );
-	// TO BE MADE FALSE!!
-    vCrownFireCritSurfSpreadRate->m_isUserOutput =	// false;
-		prop->boolean( "crownCalcCritSurfSpreadRate" );
-	vCrownFireActiveCritSurfSpreadRate->m_isUserOutput = false;
-		//prop->boolean( "crownCalcActiveCritSurfSpreadRate" );
-	// TO BE MADE FALSE!!
-	vCrownFireActiveCritOpenWindSpeed->m_isUserOutput = // false;
-		prop->boolean( "crownCalcActiveCritOpenWindSpeed" );
-
-	vCrownFireActiveFireArea->m_isUserOutput =
-		prop->boolean( "crownCalcActiveFireArea" );
-	vCrownFireActiveFlameLeng->m_isUserOutput = 
-		prop->boolean( "crownCalcActiveFlameLeng" );
-	vCrownFireActiveSpreadDist->m_isUserOutput =
-		prop->boolean( "crownCalcActiveSpreadDist" );
-	vCrownFireActiveHeatPerUnitArea->m_isUserOutput =
-		prop->boolean( "crownCalcActiveHeatPerUnitArea" );
-	vCrownFireActiveFireLineInt->m_isUserOutput =
-		prop->boolean( "crownCalcActiveFireLineInt" );
-	vCrownFireActiveFirePerimeter->m_isUserOutput =
-		prop->boolean( "crownCalcActiveFirePerimeter" );
-	vCrownFireActiveSpreadRate->m_isUserOutput =
-		prop->boolean( "crownCalcActiveSpreadRate" );
-	vCrownFireActiveFireWidth->m_isUserOutput =
-		prop->boolean( "crownCalcActiveFireWidth" );
-
-	vCrownFirePassiveFireArea->m_isUserOutput =
-		prop->boolean( "crownCalcPassiveFireArea" );
-	vCrownFirePassiveSpreadDist->m_isUserOutput =
-		prop->boolean( "crownCalcPassiveSpreadDist" );
-	vCrownFirePassiveFlameLeng->m_isUserOutput =
-		prop->boolean( "crownCalcPassiveFlameLeng" );
-	vCrownFirePassiveHeatPerUnitArea->m_isUserOutput =
-		prop->boolean( "crownCalcPassiveHeatPerUnitArea" );
-	vCrownFirePassiveFireLineInt->m_isUserOutput =
-		prop->boolean( "crownCalcPassiveFireLineInt" );
-	vCrownFirePassiveFirePerimeter->m_isUserOutput =
-		prop->boolean( "crownCalcPassiveFirePerimeter" );
-	vCrownFirePassiveSpreadRate->m_isUserOutput =
-		prop->boolean( "crownCalcPassiveSpreadRate" );
-	vCrownFirePassiveFireWidth->m_isUserOutput =
-		prop->boolean( "crownCalcPassiveFireWidth" );
 
 	// Build 616 - FAH sez no passive fire outputs if Rothermel crown model is selected
 	if ( prop->boolean( "crownConfModelRothermel" ) )
 	{
 		vCrownFirePassiveFireArea->m_isUserOutput = false;
-		vCrownFirePassiveSpreadDist->m_isUserOutput = false;
-		vCrownFirePassiveFlameLeng->m_isUserOutput = false;
-		vCrownFirePassiveHeatPerUnitArea->m_isUserOutput = false;
 		vCrownFirePassiveFireLineInt->m_isUserOutput = false;
 		vCrownFirePassiveFirePerimeter->m_isUserOutput = false;
-		vCrownFirePassiveSpreadRate->m_isUserOutput = false;
 		vCrownFirePassiveFireWidth->m_isUserOutput = false;
+		vCrownFirePassiveFlameLeng->m_isUserOutput = false;
+		vCrownFirePassiveHeatPerUnitArea->m_isUserOutput = false;
+		vCrownFirePassiveSpreadDist->m_isUserOutput = false;
+		vCrownFirePassiveSpreadMapDist->m_isUserOutput = false;
+		vCrownFirePassiveSpreadRate->m_isUserOutput = false;
+		vCrownFireActiveCritOpenWindSpeed->m_isUserOutput = false;
+		vCrownFireActiveCritSurfSpreadRate->m_isUserOutput = false;
+		vCrownFireCanopyFractionBurned->m_isUserOutput = false;
 	}
-
+	else if ( prop->boolean( "crownConfModelScottReinhardt" ) )
+	{
+	}
     return;
 }
 

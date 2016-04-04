@@ -790,24 +790,30 @@ double FBL_CompassRadiansToDegrees( double radians )
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the crown fire active ratio.
+/*! \brief Calculates the crown fire active ratio (ratio of Ractive to R'active])
  *
- *  \param crownSpreadRate      Crown fire spread rate (ft/min).
- *  \param criticalSpreadRate   Critical crown fire spread rate (ft/min).
+ * The Active Ratio == 1 when Ractive==R'active, which occurs when the open
+ * wind speed O'active (the Crowning Index) is achieved, resulting in a
+ * theoretical surface fire spread rate of R'sa
+ *
+ *  \param crownFireSpreadRate Crown fire spread rate (ft/min) [Ractive].
+ *
+ *  \param criticalActiveCrownFireSpreadRate Critical crown fire spread rate
+ *	for sustaining a fully active crown fire (ft/min) [R'active].
  *
  *  \return Crown fire active ratio.
  */
 
-double FBL_CrownFireActiveRatio( double crownSpreadRate,
-        double criticalSpreadRate )
+double FBL_CrownFireActiveRatio( double crownFireSpreadRate,
+        double criticalActiveCrownFireSpreadRate )
 {
-    return( ( criticalSpreadRate < SMIDGEN )
+    return( ( criticalActiveCrownFireSpreadRate < SMIDGEN )
           ? ( 0.00 )
-          : ( crownSpreadRate / criticalSpreadRate ) );
+          : ( crownFireSpreadRate / criticalActiveCrownFireSpreadRate ) );
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the Scott & Reinhardt 'Crowning Index', also known as
+/*! \brief Calculates the Scott & Reinhardt 'Crowning Index', which is also the
  *	"O'active", the critical open wind speed for sustaining a fully active crown fire.
  *
  *	The 'Crowning Index' and O'active is the open wind speed at which Ractive==R'active,
@@ -816,11 +822,13 @@ double FBL_CrownFireActiveRatio( double crownSpreadRate,
  *		(3.34 times the Fuel Model 10 spread rate), and
  *  - R'active is the critical crown fire spread rate for sustaining an active crown fire
  *		(a function of the canopy fuel bulk density)
+ *	This is the 20-ft wind speed at which the crown canopy becomes fully available
+ *	for active fire spread and:
+ *	- the crown fraction burned approaches 1,
+ *	- Ractive == R'active, and
+ *	- the surface fire spread rate would equal R'sa.
  *
  *  See Scott & Reinhardt (2001) equantion 20 on page 19.
- *
- *	This is the 20-ft wind speed at which the crown canopy becomes fully available
- *	for active fire spread (and the crown fraction burned approaches 1).
  *
  *	\param canopyBulkDensity Crown canopy bulk density (btu/ft3)
  *	\param reactionIntensity Crown fire (fuel model 10) reaction intensity (btu/ft2/min)
@@ -870,31 +878,31 @@ double FBL_CrownFireArea( double spreadDistance, double lwRatio )
  *
  *	See Scott & Reinhardt (2001) equation 28 on page 41.
  *
- *  \param ros Actual surface fire spread rate (ft/min) [Rsurface].
- *	\param rInitiation Surface fire spread rate required to initiate
+ *  \param Rsurface Actual surface fire spread rate (ft/min) [Rsurface].
+ *	\param Rinitiation Surface fire spread rate required to initiate
  *		passive/torching/crowning (ft/min) [R'intiation].
- *	\param rsa Surface fire spread rate required to reach CI or O'active
+ *	\param Rsa Surface fire spread rate required to reach CI or O'active [R'sa]
  *
  *  \return Crown fraction burned (dl).
  */
 double FBL_CrownFireCanopyFractionBurned(
-		double ros,
-		double rInitiation,
-		double rsa )
+		double Rsurface,
+		double Rinitiation,
+		double Rsa )
 {
 	// If surface ROS is less than crown fire initiation ROS, then no canopy is burned
-	double num = ros - rInitiation;
+	double num = Rsurface - Rinitiation;
 	if ( num <= 0. )
 	{
 		return 0.;
 	}
 	// If surface ROS is greater than surface Rsa, then 100% of the canopy is burned
-	if ( ros >= rsa )
+	if ( Rsurface >= Rsa )
 	{
 		return 1.;
 	}
 	// Otherwise actual ROS is between passive and active crowning critical threshholds
-	double den = rsa - rInitiation;
+	double den = Rsa - Rinitiation;
 	den = ( den < 0. ) ? 0. : den;
 	double cfb = ( den > SMIDGEN ) ? ( num / den ) : 0.;
 	cfb = ( cfb > 1. ) ? 1. : cfb;
@@ -903,12 +911,12 @@ double FBL_CrownFireCanopyFractionBurned(
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the critical crown fire spread rate (R'active) for
+/*! \brief Calculates the critical crown fire spread rate [R'active] for
  *	sustaining an active crown fire.
  *
- *	S&R equation 14 on page 14.
+ *	See Scott & Reinhardt (2001) equation 14 on page 14.
  *
- *  \param canopyBulkDensity    Canopy crown bulk density (lb/ft3).
+ *  \param canopyBulkDensity Canopy crown bulk density (lb/ft3).
  *
  *  \return Critical crown fire spread rate (ft/min).
  */
@@ -921,32 +929,8 @@ double FBL_CrownFireCriticalCrownFireSpreadRate( double canopyBulkDensity )
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the Scott & Reinhardt critical surface fire spread rate
- *	(R'initiation) sufficient to initiate a passive or active crown fire.
- *
- *	S&R equation 12 on page 13.
- *
- *	\param criticalSurfaceFireIntensity Critical surface fireline intensity (btu/ft/s) 
- *  \param surfaceFireHpua Surface fire heat per unit area (Btu/ft2)
- *
- *	\return Critical surface fire spread rate (ft/min)
- */
-
-double FBL_CrownFireCriticalSurfaceFireSpreadRate(
-	double criticalSurfaceFireIntensity,
-	double surfaceFireHpua )
-{
-	double ros = 99999.;
-	if ( surfaceFireHpua > 0. )
-	{
-		ros = (60. * criticalSurfaceFireIntensity) / surfaceFireHpua;
-	}
-	return ros;
-}
-
-//------------------------------------------------------------------------------
-/*! \brief Reverse calculates the critical surface fire intensity for a
- *  surface fire to transition to a crown fire given the critical flame length.
+/*! \brief Reverse calculates the critical surface fire intensity [I'initiation]
+ *  for a surface fire to transition to a crown fire given the critical flame length.
  *
  *  \param criticalFlameLength Critical surface fire flame length (ft).
  *
@@ -959,8 +943,8 @@ double FBL_CrownFireCriticalSurfaceFireIntensity( double criticalFlameLength )
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the critical surface fire intensity (I'initiation)
- *	for a surface fire to transition to a passsive or activecrown fire.
+/*! \brief Calculates the critical surface fire intensity [I'initiation] for a
+ *	surface fire to transition to a passsive or active crown fire.
  *
  *	See Scott & Reinhardt (2001) equation 11 on page 12.
  *
@@ -970,8 +954,9 @@ double FBL_CrownFireCriticalSurfaceFireIntensity( double criticalFlameLength )
  *  \return Critical surface fire intensity (Btu/ft/s).
  */
 
-double FBL_CrownFireCriticalSurfaceFireIntensity( double foliarMoisture,
-        double crownBaseHt )
+double FBL_CrownFireCriticalSurfaceFireIntensity(
+		double foliarMoisture,
+		double crownBaseHt )
 {
     // Convert foliar moisture content to percent and constrain lower limit
     double fmc = 100. * foliarMoisture;
@@ -1000,7 +985,32 @@ double FBL_CrownFireCriticalSurfaceFlameLength( double criticalFireInt )
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the crown fire fireline intensity
+/*! \brief Calculates the Scott & Reinhardt (2001) critical surface fire spread
+ *	rate [R'initiation] sufficient to initiate a passive or active crown fire.
+ *
+ *	See Scott & Reinhardt (2001) equation 12 on page 13.
+ *
+ *	\param criticalSurfaceFireIntensity Critical surface fireline intensity
+ *		(btu/ft/s) [I'initiation]
+ *  \param surfaceFireHpua Surface fire heat per unit area (Btu/ft2)
+ *
+ *	\return Critical surface fire spread rate (ft/min)
+ */
+
+double FBL_CrownFireCriticalSurfaceFireSpreadRate(
+		double criticalSurfaceFireIntensity,
+		double surfaceFireHpua )
+{
+	double ros = 99999.;
+	if ( surfaceFireHpua > 0. )
+	{
+		ros = (60. * criticalSurfaceFireIntensity) / surfaceFireHpua;
+	}
+	return ros;
+}
+
+//------------------------------------------------------------------------------
+/*! \brief Calculates the total (surface and canopy) crown fire fireline intensity
  *  given the surface fire and crown fire heats per unit area
  *  and the crown fire spread rate.
  *
@@ -1010,13 +1020,15 @@ double FBL_CrownFireCriticalSurfaceFlameLength( double criticalFireInt )
  *  \return Crown fire fireline intensity (Btu/ft/s).
  */
 
-double FBL_CrownFireFirelineIntensity( double crownFireHpua, double crownFireSpreadRate )
+double FBL_CrownFireFirelineIntensity(
+		double crownFireHpua,
+		double crownFireSpreadRate )
 {
     return( (crownFireSpreadRate / 60.) * crownFireHpua );
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the crown fireline intensity given the fire flame length 
+/*! \brief Calculates the crown fireline intensity given the crown fire flame length.
  *
  *	Based on Thomas (1963), which differs from Byram (1959).
  *
@@ -1031,8 +1043,7 @@ double FBL_CrownFireFirelineIntensityFromFlameLength( double crownFireFlameLengt
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the crown fire flame length 
- *  given the crown fireline intensity.
+/*! \brief Calculates the crown fire flame length given the crown fireline intensity.
  *
  *	Based on Thomas (1963), which differs from Byram (1959).
  *
@@ -1056,8 +1067,9 @@ double FBL_CrownFireFlameLength( double crownFirelineIntensity )
  *  \return Total crown fire (surface plus canopy) heat per unit area (Btu/ft2).
  */
 
-double FBL_CrownFireHeatPerUnitArea( double surfaceHpua,
-    double canopyHpua )
+double FBL_CrownFireHeatPerUnitArea(
+		double surfaceHpua,
+		double canopyHpua )
 {
     return( surfaceHpua + canopyHpua );
 }
@@ -1071,15 +1083,18 @@ double FBL_CrownFireHeatPerUnitArea( double surfaceHpua,
  *  \return Crown fire canopy heat per unit area (Btu/ft2).
  */
 
-double FBL_CrownFireHeatPerUnitAreaCanopy( double crownFuelLoad,
-    double lowHeatOfCombustion )
+double FBL_CrownFireHeatPerUnitAreaCanopy(
+		double crownFuelLoad,
+		double lowHeatOfCombustion )
 {
     return( crownFuelLoad * lowHeatOfCombustion );
 }
 
 //------------------------------------------------------------------------------
 /*! \brief Calculates the crown fire length-to-width ratio given the 20-ft
- *  wind speed (Rothermel 1991, Equation 10, p16).
+ *  wind speed.
+ *
+ *  Rothermel (1991) equation 10 on page 16.
  *
  *  \param windSpeedAt20ft Wind speed at 20-ft (mi/h).
  *
@@ -1094,29 +1109,30 @@ double FBL_CrownFireLengthToWidthRatio( double windSpeedAt20ft )
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Calculates the Scott & Reinhardt passive crown fire spread rate (ft/min).
+/*! \brief Calculates the Scott & Reinhardt 'final' crown fire spread rate (ft/min).
  *
- *  \param surfaceFireRos surface fire spread rate at head (ft/min)
- *	\param activeCrownFireRos Active crown fir spread rate (ft/min)
- *	\param canopyFractionBurned Fraction of the crown canopy that is burned
+ *	Scott & Reinhardt (2001) equation 21 on page 19.
  *
- *  \return passiveRos Passive crown fire spread rate (ft/min).
+ *  \param Rsurface Surface fire spread rate at head (ft/min)
+ *	\param Ractive Active crown fire spread rate (ft/min)
+ *	\param cfb Fraction of the crown canopy that is burned
+ *
+ *  \return Rfinal Passive crown fire spread rate (ft/min).
  */
 
 double FBL_CrownFirePassiveSpreadRate(
-            double surfaceFireRos,
-			double activeCrownFireRos,
-            double canopyFractionBurned )
+            double Rsurface,
+			double Ractive,
+            double cfb )
 {
-	double diffRos = ( activeCrownFireRos < surfaceFireRos )
-		? 0. : activeCrownFireRos - surfaceFireRos;
-	double passiveCrownFireRos = surfaceFireRos + canopyFractionBurned * diffRos;
-	return passiveCrownFireRos;
+	double Rdiff = ( Ractive < Rsurface ) ? 0. : Ractive - Rsurface;
+	double Rfinal = Rsurface + cfb * Rdiff;
+	return Rfinal;
 }
 
 //------------------------------------------------------------------------------
 /*! \brief Estimates crown fire perimeter from spread distance and length-to-
- *  wifth ratio as per Rothermel (1991) equation 13 on page 16.
+ *  width ratio as per Rothermel (1991) equation 13 on page 16.
  *
  *  \param fireLength   Fire ellipse length (ft).
  *  \param fireWidth    Fire ellipse width (ft).
@@ -1133,6 +1149,8 @@ double FBL_CrownFirePerimeter( double spreadDistance, double lwRatio )
 /*! \brief Calculates the crown fire 'power of the fire'
  *  given the crown fireline intensity.
  *
+ *	See Rothermel (1991) equation 6 on page 14.
+ *
  *  \param crownFirelineIntensity Crown fireline intensity (Btu/ft/s).
  *
  *  \return Crown fire 'power of the fire' (ft-lb/s/ft2).
@@ -1147,14 +1165,17 @@ double FBL_CrownFirePowerOfFire( double crownFirelineIntensity )
 /*! \brief Calculates the crown fire 'power of the wind'
  *  given the 20-ft wind speed and crown fire spread rate.
  *
+ *	See Rothermel (1991) equation 7 on page 14.
+ *
  *  \param windSpeedAt20Ft Wind speed at 20ft (ft/min).
  *  \param crownFireSPreadRate Crown fire spread rate (ft/min).
  *
  *  \return Crown fire 'power of the wind' (ft-lb/s/ft2).
  */
 
-double FBL_CrownFirePowerOfWind( double windSpeedAt20Ft,
-    double crownFireSpreadRate )
+double FBL_CrownFirePowerOfWind(
+		double windSpeedAt20Ft,
+		double crownFireSpreadRate )
 {
     double diff = ( windSpeedAt20Ft - crownFireSpreadRate ) / 60.;
     diff = ( diff < SMIDGEN ) ? SMIDGEN : diff;
@@ -1171,7 +1192,9 @@ double FBL_CrownFirePowerOfWind( double windSpeedAt20Ft,
  *  \return Ratio of the crown fire 'power-of-the-fire' to 'power-of-the-wind).
  */
 
-double FBL_CrownFirePowerRatio( double firePower, double windPower )
+double FBL_CrownFirePowerRatio(
+		double firePower,
+		double windPower )
 {
     return( ( windPower > SMIDGEN ) ? ( firePower / windPower ) : 0.0 );
 }
@@ -1189,13 +1212,17 @@ double FBL_CrownFirePowerRatio( double firePower, double windPower )
  *
  *  \return Crown fire average spread rate (ft/min).
  */
-double FBL_CrownFireSpreadRate( double windAt20Ft, double mc1, double mc10,
-        double mc100, double mcWood )
+double FBL_CrownFireSpreadRate(
+		double windAt20Ft,
+		double mc1,
+		double mc10,
+        double mc100,
+		double mcWood )
 {
 	double aspect              = 180.;
     double slopeFraction       = 0.0;
     double windDirFromUpslope  = 0.0;
-    double midflameWindSpeed   = 0.4 * windAt20Ft;
+    double midflameWindSpeed   = 0.4 * windAt20Ft;	// Rothermel (1991) p 9
 	bool   applyWindSpeedLimit = true;
     double mois[4];
     mois[0] = mc1;
@@ -1247,13 +1274,14 @@ double FBL_CrownFireSpreadRate( double windAt20Ft, double mc1, double mc10,
 //------------------------------------------------------------------------------
 /*! \brief Calculates the crown fire transition ratio.
  *
- *  \param surfaceFireInt   Surface fireline intensity (Btu/ft/s).
- *  \param criticalFireInt  Critical crown fire fireline intensity (Btu/ft/s).
+ *  \param surfaceFireInt   Surface fireline intensity (Btu/ft/s) [Isurface].
+ *  \param criticalFireInt  Critical crown fire fireline intensity (Btu/ft/s) [I'initition].
  *
  *  \return Transition ratio.
  */
 
-double FBL_CrownFireTransitionRatio( double surfaceFireInt,
+double FBL_CrownFireTransitionRatio(
+		double surfaceFireInt,
         double criticalFireInt )
 {
     return( ( criticalFireInt < SMIDGEN )
@@ -1271,7 +1299,9 @@ double FBL_CrownFireTransitionRatio( double surfaceFireInt,
  *  \return Maximum fire width (ft).
  */
 
-double FBL_CrownFireWidth( double fireLength, double lengthWidthRatio )
+double FBL_CrownFireWidth(
+		double fireLength,
+		double lengthWidthRatio )
 {
     return( ( lengthWidthRatio < SMIDGEN )
           ? ( 0.0 )
@@ -1288,7 +1318,10 @@ double FBL_CrownFireWidth( double fireLength, double lengthWidthRatio )
  *  \return Crown fire fuel load (lb/ft2).
  */
 
-double FBL_CrownFuelLoad( double canopyBulkDensity, double canopyHt, double baseHt )
+double FBL_CrownFuelLoad(
+		double canopyBulkDensity,
+		double canopyHt,
+		double baseHt )
 {
     return( canopyBulkDensity * ( canopyHt - baseHt ) );
 }
