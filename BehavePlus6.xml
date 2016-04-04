@@ -26668,8 +26668,8 @@ NOTE:  You can open this HTML file using Excel, and subsequently save it as an .
     pt_PT="     perpendicular to perimeter, improved V6 method."
   />
   <translate key="BpDocument:Worksheet:RunOptions:SpreadDirFireFront"
-    en_US="Fire spread is in the specified directions from the FIRE FRONT [SURFACE]."
-    pt_PT="Fire spread is in the specified directions from the FIRE FRONT [SUPERFÍCIE]."
+    en_US="Fire spread is in the specified directions from the FIRE PERIMETER [SURFACE]."
+    pt_PT="Fire spread is in the specified directions from the FIRE PERIMETER [SUPERFÍCIE]."
   />
   <translate key="BpDocument:Worksheet:RunOptions:SpecifiedSpreadDir"
     en_US="Calculations are for the specified spread directions [SURFACE]."
@@ -28866,8 +28866,8 @@ from ignition point, method through V5)"
 from ignition point, method through V5)"
   />
   <translate key="PropertyTabDialog:Surface:Dir:Spread:FireFront"
-    en_US="Directions from FIRE FRONT."
-    pt_PT="??? Directions from FIRE FRONT."
+    en_US="Directions from FIRE PERIMETER."
+    pt_PT="??? Directions from FIRE PERIMETER."
   />
   <translate key="PropertyTabDialog:Surface:Dir:Beta:Caption"
     en_US="Ignition Pt fireline intensity and flame length are"

@@ -1199,9 +1199,12 @@ void ModulesDialog::surfaceOptions( void )
     p->addRadio( "surfaceConfSpreadDirPointSourcePsi",
                  "PropertyTabDialog:Surface:Dir:Spread:PointSourcePsi",
                   bg );
-    p->addRadio( "surfaceConfSpreadDirPointSourceBeta",
+	if ( false )
+	{
+		p->addRadio( "surfaceConfSpreadDirPointSourceBeta",
                  "PropertyTabDialog:Surface:Dir:Spread:PointSourceBeta",
                   bg );
+	}
     bg->setFixedHeight( bg->sizeHint().height() );
 
 	// Add the "Directions" button group "Wind direction is" ...
