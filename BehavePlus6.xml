@@ -20230,7 +20230,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vSurfaceFuelMoisLiveWood"
     input="vWindSpeedAt20Ft"
     output="vCrownFireActiveSpreadRate"
-    output="vCrownFireActiveCritSurfSpreadRate" />
+    output="vCrownFireActiveCritOpenWindSpeed" />
 
   <function name="fCrownFireCanopyFractionBurned"
     module="crown"
