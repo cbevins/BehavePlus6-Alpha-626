@@ -128,7 +128,6 @@ public:
     EqVar *vCrownFireActiveFireWidth;
     //EqVar *vCrownFireArea;
 	EqVar *vCrownFireCanopyFractionBurned;
-	EqVar *vCrownFireCanopyHt;
     EqVar *vCrownFireCritCrownSpreadRate;
     EqVar *vCrownFireCritSurfFireInt;
     EqVar *vCrownFireCritSurfFlameLeng;

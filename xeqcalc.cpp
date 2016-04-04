@@ -6085,7 +6085,7 @@ void EqCalc::SiteUpslopeDirFromNorth( void )
  *      vSpotFlatDistActiveCrown (mi)
  *
  *  Independent Variables (Inputs)
- *      vCrownFireCanopyHt (ft)
+ *      vTreeCoverHt (ft)
  *      vCrownFireActiveFireLineInt (Btu/ft/s)
  *      vSpotEmberDiamAtSurface (mm)
  *      vWindSpeedAt20Ft (mi/h)
@@ -6097,7 +6097,7 @@ void EqCalc::SiteUpslopeDirFromNorth( void )
 void EqCalc::SpotDistActiveCrown( void )
 {
 	// Marshall the active crown fire spotting distance input variables
-	double canopyHtFt   = vCrownFireCanopyHt->m_nativeValue;
+	double canopyHtFt   = vTreeCoverHt->m_nativeValue;
 	double emberDiamMm  = vSpotEmberDiamAtSurface->m_nativeValue;
 	double fireIntBtu   = vCrownFireActiveFireLineInt->m_nativeValue;
 	double windSpeedMph = vWindSpeedAt20Ft->m_nativeValue;
@@ -6141,9 +6141,9 @@ void EqCalc::SpotDistActiveCrown( void )
     if( m_log )
     {
         fprintf( m_log, "%sbegin proc SpotDistActiveCrown() 7 4\n", Margin );
-        fprintf( m_log, "%s  i vCrownFireCanopyHt %g %s\n", Margin,
-            vCrownFireCanopyHt->m_nativeValue,
-            vCrownFireCanopyHt->m_nativeUnits.latin1() );
+        fprintf( m_log, "%s  i vTreeCoverHt %g %s\n", Margin,
+            vTreeCoverHt->m_nativeValue,
+            vTreeCoverHt->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  i vSpotEmberDiamAtSurface %g %s\n", Margin,
             vSpotEmberDiamAtSurface->m_nativeValue,
             vSpotEmberDiamAtSurface->m_nativeUnits.latin1() );
@@ -7770,7 +7770,6 @@ EqCalc::EqCalc( EqTree *eqTree ) :
 	vCrownFireActiveSpreadRate			= m_eqTree->getVarPtr( "vCrownFireActiveSpreadRate" );
     //vCrownFireArea					= m_eqTree->getVarPtr( "vCrownFireArea" );
 	vCrownFireCanopyFractionBurned		= m_eqTree->getVarPtr( "vCrownFireCanopyFractionBurned" );
-    vCrownFireCanopyHt					= m_eqTree->getVarPtr( "vCrownFireCanopyHt" );
     vCrownFireCritCrownSpreadRate		= m_eqTree->getVarPtr( "vCrownFireCritCrownSpreadRate" );
     vCrownFireCritSurfFireInt			= m_eqTree->getVarPtr( "vCrownFireCritSurfFireInt" );
     vCrownFireCritSurfFlameLeng			= m_eqTree->getVarPtr( "vCrownFireCritSurfFlameLeng" );

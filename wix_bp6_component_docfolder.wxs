@@ -1109,9 +1109,6 @@
       <Component Id="cmpC7E961609CC04E6DAE6AC37EC73174DD" Directory="Html" Guid="{C1F2B547-223B-4dc2-AC7B-F9C2EC01151B}">
         <File Id="filC853D192B520483185B978CB96FFB17F" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireCanopyFractionBurned.html" />
       </Component>
-      <Component Id="cmpE8EA013E082C449E9694C6ACCD2A5DED" Directory="Html" Guid="{0DAFB303-8A4B-41b3-904B-AC05B4CE6B89}">
-        <File Id="fil891B0B1E2B2A410ABD23CA98B0409623" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireCanopyHt.html" />
-      </Component>
       <Component Id="cmp2E180B435931945D6B5B2814C3A98C07" Directory="Html" Guid="{DCCF6560-8813-4B14-A3FC-6BF97388DB58}">
         <File Id="filB88257F9BF18F088FDC12CCAA8CD2AEA" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireCritCrownSpreadRate.html" />
       </Component>

@@ -14,10 +14,13 @@ Mar 22, 2016 - Apr 21, 2016
 
 - RESOLVED Issue #069FAH - CROWN requests fireline intensity, not flame length
 
-- RESOLVED ISSUE #103CDB - Force Scott & Reinhardt  to require linked
+- RESOLVED Issue #103CDB - Force Scott & Reinhardt  to require linked
 	CROWN and SURFACE Modules.
 
-- RESOLVED ISSUE #075FAH - Changes to SURFACE Options
+- RESOLVED Issue #075FAH - Changes to SURFACE Options
+
+- RESOLVED Issue #103CDB - Remove vCrownFireCanopyHt variable
+	and use vTreeCanopyHt instead
 
 	
 2016-04-01 (8.0 h) [13.0 h total]

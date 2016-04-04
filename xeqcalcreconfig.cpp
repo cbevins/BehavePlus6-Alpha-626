@@ -830,7 +830,7 @@ void EqCalc::reconfigureSpotModule( PropertyDict *prop, int /* release */ )
          || prop->boolean( "spotCalcFlatDistActiveCrown" ) )
 		{
 			// Ask for crown fire flame length as surrogate for fireline intensity
-			fCrownFireLineIntFromFlameLeng->m_active = true;
+			fCrownFireActiveFireLineIntFromFlameLeng->m_active = true;
 		}
 	}
 

@@ -322,7 +322,6 @@ static const char *TreeDbhVars[] =
 
 static const char *TreeHtVars[] =
 {
-	"vCrownFireCanopyHt",
     "vTreeCoverHt",
     "vTreeCoverHtDownwind",
     "vTreeHt",

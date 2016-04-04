@@ -1631,12 +1631,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vCrownFireCanopyHt.html"
-      type="DocHtml"
-      permission="ERw"
-      releaseFrom="10000"
-      releaseThru="99999"
-  />
   <file name="vCrownFireCritCrownSpreadRate.html"
     type="DocHtml"
     permission="ERw"
@@ -8314,37 +8308,6 @@
   <translate key="vCrownFireCanopyFractionBurned:Hdr1"
     en_US="Fraction Burned"
     pt_PT="Fraction Burned"
-  />
-
-  <variable name="vCrownFireCanopyHt"
-     type="continuous"
-     releaseFrom="10000"
-     releaseThru="99999"
-     help="vCrownFireCanopyHt.html"
-     sortIn="02:041:1"
-     sortOut="99:999:9"
-     nativeUnits="ft" nativeDecimals="1"
-     englishUnits="ft" englishDecimals="1"
-     metricUnits="m" metricDecimals="1"
-     minimum="10.0"
-     maximum="300.0"
-     default="20.0"
-  />
-  <translate key="vCrownFireCanopyHt:Label"
-    en_US="Crown Canopy Height"
-    pt_PT="Crown Canopy Height"
-  />
-  <translate key="vCrownFireCanopyHt:Desc"
-    en_US="The mean canopy height."
-    pt_PT="The mean canopy height."
-  />
-  <translate key="vCrownFireCanopyHt:Hdr0"
-    en_US="Crown"
-    pt_PT="Crown"
-  />
-  <translate key="vCrownFireCanopyHt:Hdr1"
-    en_US="Canopy Ht"
-    pt_PT="Canopy Ht"
   />
 
   <variable name="vCrownFireCritCrownSpreadRate"
@@ -20570,7 +20533,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     module="spot"
     releaseFrom="10000"
     releaseThru="99999"
-    input="vCrownFireCanopyHt"
+    input="vTreeCoverHt"
     input="vSpotFireSource"
     input="vSiteRidgeToValleyDist"
     input="vSiteRidgeToValleyElev"
