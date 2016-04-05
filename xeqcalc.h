@@ -815,6 +815,9 @@ public:
 	void logMethod( char* methodName, int numInputs, int numOutputs );
 	void logInput( EqVar *var );
 	void logOutput( EqVar *var );
+	void logOutputItem( EqVar *var );
+	double fetch( EqVar *var );
+	void store( EqVar *var, double value );
 
 	Bp6CrownFire*   m_Bp6CrownFire;
 	Bp6SurfaceFire* m_Bp6SurfaceFire;

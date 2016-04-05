@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xfblib.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Fire behavior C API library.
  *
@@ -1225,33 +1225,11 @@ double FBL_CrownFireSpreadRate(
     mois[2] = mc100;
     mois[3] = mcWood;
 
-	// V6 Refactor
 	Bp6CrownFire cf;
 	cf.setMoisture( mois );
 	cf.setWindSpeedAt20FtFpm( 88. * windAt20Ft );
 	double crownRos = cf.getActiveCrownFireRos();
     return crownRos;
-
-#ifdef INCLUDE_OLD_CROWN_REFACTOR
-	Bp6CrownFuelBedIntermediates fb;
-	double beta = fb.getPackingRatio();
-	double sigma = fb.getSigma();
-	double propFlux = fb.getPropagatingFlux();
-
-	Bp6SurfaceFuelHeatSink hs = Bp6SurfaceFuelHeatSink( &fb, mois );
-	double heatSink = hs.getHeatSink();
-
-	Bp6SurfaceFireReactionIntensity rx = Bp6SurfaceFireReactionIntensity( &hs );
-	double rxInt = rx.getTotalRxInt();
-
-	double ros0 = FBL_SurfaceFireNoWindNoSlopeSpreadRate( rxInt,
-		propFlux, heatSink ) ;
-
-	Bp6SurfaceFireForwardSpreadRate sr = Bp6SurfaceFireForwardSpreadRate(
-		&fb, ros0, rxInt, slopeFraction, midflameWindSpeed, windDirFromUpslope );
-	double rosMax = sr.getMaxSpreadRate();
-    double crownRosOld = 3.34 * rosMax;
-#endif
 }
 
 //------------------------------------------------------------------------------
@@ -3810,7 +3788,7 @@ double FBL_SurfaceFuelTemperature( double airTemperature, double sunShade )
 /*! \brief Calculates tree bark thickness using the old BEHAVE equations.
  *
  *  \param speciesIndex Index into the BehaveBarkSpecies[] array.
- *  This vakue is returned by a call to FBL_BehaveBarkSpeciesIndex().
+ *  This value is returned by a call to FBL_BehaveBarkSpeciesIndex().
  *  \param dbh Tree diameter at breast height (in).
  *
  *  \return Tree bark thickness (in).

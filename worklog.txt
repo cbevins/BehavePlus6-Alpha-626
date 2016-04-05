@@ -5,6 +5,11 @@ Mar 22, 2016 - Apr 21, 2016
 ?? hours
 =============================
 
+2016-04-05 (2.0 h) [25.0 h total]
+
+- Refactored xeqcalcV6Crown.cpp, xeqcalcV6Main.cpp, xflib.cpp.
+
+
 2016-04-04 (2.0 h) [23.0 h total]
 
 - Performed tests of S&R model against publisged results in their paper.
