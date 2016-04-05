@@ -458,14 +458,14 @@ static const char *FireCrownSpreadVars[] =
     "vCrownFireCritCrownSpreadRate",
 	"vCrownFireCritSurfSpreadRate",
 	"vCrownFirePassiveSpreadRate",
-    "vCrownFireSpreadRate",
+    //"vCrownFireSpreadRate",
 	NULL
 };
 
 static const char *FireHpuaVars[] =
 {
 	"vCrownFireActiveHeatPerUnitArea",
-    "vCrownFireHeatPerUnitArea",
+    "vCrownFireActiveHeatPerUnitArea",
     "vCrownFireHeatPerUnitAreaCanopy",
 	"vCrownFirePassiveHeatPerUnitArea",
     "vSurfaceFireHeatPerUnitArea",
@@ -476,7 +476,7 @@ static const char *FireLineIntVars[] =
 {
     "vCrownFireActiveFireLineInt",
     "vCrownFireCritSurfFireInt",
-    "vCrownFireLineInt",
+    //"vCrownFireLineInt",
     "vCrownFirePassiveFireLineInt",
     "vSurfaceFireLineIntAtBeta",
     "vSurfaceFireLineIntAtHead",
@@ -489,7 +489,7 @@ static const char *FireFlameLengthVars[] =
 {
     "vCrownFireActiveFlameLeng",
     "vCrownFireCritSurfFlameLeng",
-    "vCrownFireFlameLeng",
+    //"vCrownFireFlameLeng",
     "vCrownFirePassiveFlameLeng",
     "vSpotFlameHtActiveCrown",
     "vSpotFlameHtTorchingTrees",
@@ -531,7 +531,7 @@ static const char *FireDistVars[] =
     "vCrownFireActiveSpreadDist",
     "vCrownFirePassiveFireWidth",
     "vCrownFirePassiveSpreadDist",
-    "vCrownFireSpreadDist",
+    //"vCrownFireSpreadDist",
     "vSurfaceFireDistAtHead",
     "vSurfaceFireDistAtBack",
     "vSurfaceFireDistAtBeta",
@@ -552,7 +552,7 @@ static const char *FireAreaVars[] =
     "vContainReportSize",
     "vContainSize",
     "vCrownFireActiveFireArea",
-    "vCrownFireArea",
+    //"vCrownFireArea",
     "vCrownFirePassiveFireArea",
     "vSurfaceFireArea",
     NULL
@@ -563,7 +563,7 @@ static const char *FirePerimeterVars[] =
     "vContainAttackPerimeter",
     "vCrownFireActiveFirePerimeter",
     "vCrownFirePassiveFirePerimeter",
-    "vCrownFirePerimeter",
+    //"vCrownFirePerimeter",
     "vSurfaceFirePerimeter",
     NULL
 };
@@ -642,7 +642,8 @@ static const char *MapElevationVars[] =
 
 static const char *MapDistanceVars[] =
 {
-    "vCrownFireSpreadMapDist",
+    "vCrownFireActiveSpreadMapDist",
+    "vCrownFirePassiveSpreadMapDist",
     "vMapDist",
     "vSpotMapDistActiveCrown",
     "vSpotMapDistBurningPile",

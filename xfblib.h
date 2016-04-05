@@ -619,7 +619,9 @@ double FBL_SurfaceFuelBedIntermediates(
             double *seff,
             double *fuelBedBulkDensity,
             double *fuelBedPackingRatio,
-            double *fuelBedBetaRatio ) ;
+            double *fuelBedBetaRatio,
+			double *windB,
+			double *windK ) ;
 
 double FBL_SurfaceFuelTemperature(
             double airTemperature,

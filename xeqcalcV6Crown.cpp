@@ -543,11 +543,11 @@ void EqCalc::V6CrownFireActiveSpreadRate( void )
     double mcWood   = vSurfaceFuelMoisLiveWood->m_nativeValue;
     double wind20Ft = vWindSpeedAt20Ft->m_nativeValue;
 
-#ifdef INCLUDE_V5_CODE
+#ifdef INCLUDE_OLD_V5_CODE
     // Calculate results
     double cros = FBL_CrownFireSpreadRate( wind20Ft, mc1, mc10, mc100, mcWood );
     // Store results
-    vCrownFireSpreadRate->update( cros );
+    vCrownFireActiveSpreadRate->update( cros );
 #endif
 
 	// V6 Refactor

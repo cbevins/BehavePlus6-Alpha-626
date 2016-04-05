@@ -1202,26 +1202,17 @@ void EqCalc::FireEllipseH ( void )
 void EqCalc::FireEffWindAtVector( void )
 {
     // Access current input values
-    double rosV    = vSurfaceFireSpreadAtVector->m_nativeValue;
-
-#ifdef INCLUDE_V5_CODE
-    double ros0    = vSurfaceFireNoWindRate->m_nativeValue;
+    double rosV = vSurfaceFireSpreadAtVector->m_nativeValue;
     // Calculate results
-    double effWind = FBL_SurfaceFireEffectiveWindSpeedAtVector( ros0, rosV );
+	double effWind = 0.;
+#ifdef INCLUDE_V5_CODE
+    double ros0 = vSurfaceFireNoWindRate->m_nativeValue;
+    effWind = FBL_SurfaceFireEffectiveWindSpeedAtVector( ros0, rosV );
+#elif INCLUDE_V6_CODE
+	effWind = m_Bp6SurfaceFire->getEffectiveWindSpeedAtVector( rosV );
+#endif
     // Store results
     vSurfaceFireEffWindAtVector->update( effWind );
-#endif
-
-#ifdef INCLUDE_V6_CODE
-	// V6 Refactor
-	double effWindV6 = m_Bp6SurfaceFire->getEffectiveWindSpeedAtVector( rosV );
-    // Store results
-    vSurfaceFireEffWindAtVector->update( effWindV6 );
-#ifdef INCLUDE_V5_CODE
-	closeEnough( "effWindAtVector", effWind, effWindV6 );
-#endif
-#endif
-
     // Log results
     if( m_log )
     {
@@ -2268,27 +2259,15 @@ void EqCalc::FireReactionInt( void )
     double rxIntLive = 0.0;
     double rxInt = FBL_SurfaceFireReactionIntensity( deadMois, deadMext,
                         liveMois, liveMext, &rxIntDead, &rxIntLive );
+#elif INCLUDE_V6_CODE
+	double rxInt = m_Bp6SurfaceFire->getTotalRxInt();
+	double rxIntDead = m_Bp6SurfaceFire->getDeadRxInt();
+	double rxIntLive = m_Bp6SurfaceFire->getLiveRxInt();
+#endif
     // Store results
     vSurfaceFireReactionInt->update( rxInt );
     vSurfaceFireReactionIntDead->update( rxIntDead );
     vSurfaceFireReactionIntLive->update( rxIntLive );
-#endif
-
-#ifdef INCLUDE_V6_CODE
-	// V6 Refactor
-	double rxIntV6 = m_Bp6SurfaceFire->getTotalRxInt();
-	double rxIntDeadV6 = m_Bp6SurfaceFire->getDeadRxInt();
-	double rxIntLiveV6 = m_Bp6SurfaceFire->getLiveRxInt();
-    // Store results
-    vSurfaceFireReactionInt->update( rxIntV6 );
-    vSurfaceFireReactionIntDead->update( rxIntDeadV6 );
-    vSurfaceFireReactionIntLive->update( rxIntLiveV6 );
-#ifdef INCLUDE_V5_CODE
-	closeEnough( "rxInt", rxInt, rxIntV6 );
-	closeEnough( "rxIntDead", rxIntDead, rxIntDeadV6 );
-	closeEnough( "rxIntLive", rxIntLive, rxIntLiveV6 );
-#endif
-#endif
 
     // Log results
     if( m_log )
@@ -2546,7 +2525,8 @@ void EqCalc::FireSpreadAtBack( void )
     // Store results
     vSurfaceFireSpreadAtBack->update( rosBacking );
     // Log results
-    if( m_log )
+
+	if( m_log )
     {
         fprintf( m_log, "%sbegin proc FireSpreadAtBack() 2 1\n", Margin );
         fprintf( m_log, "%s  i vSurfaceFireEccentricity %g %s\n", Margin,
@@ -2656,11 +2636,10 @@ void EqCalc::FireSpreadAtFlank( void )
  *      vSurfaceFireWindSpeedFlag (flag)
  *      vSurfaceFiewSlopeFactor (dl)
  *      vSurfaceFireWindFactor (dl)
- *      vSurfaceFireWindFactorB (dl)
- *      vSurfaceFireWindFactorK (dl)
  *
  *  Independent Variables (Inputs)
  *      vSurfaceFireNoWindRate (ft/min)
+ *		vSurfaceFireReactionInt (btu/ft2/min)
  *      vSiteSlopeFraction (rise/reach)
  *      vWindDirFromUpslope (degrees)
  *      vWindSpeedAtMidflame (mi/h)
@@ -2673,7 +2652,7 @@ void EqCalc::FireSpreadAtHead( void )
 {
     // Access current input values
     double ros0  = vSurfaceFireNoWindRate->m_nativeValue;
-    //double rxi   = vSurfaceFireReactionInt->m_nativeValue;
+    double rxi   = vSurfaceFireReactionInt->m_nativeValue;
     double slope = vSiteSlopeFraction->m_nativeValue;
     double windSpeed = vWindSpeedAtMidflame->m_nativeValue;
     double windDir = vWindDirFromUpslope->m_nativeValue;
@@ -2687,14 +2666,31 @@ void EqCalc::FireSpreadAtHead( void )
         applyWindLimit = false;
     }
 
-#ifdef INCLUDE_V5_CODE
     // Calculate results
-    double dirMax, effWind, maxWind, windFactor, slopeFactor;
-    int windLimit;
-    double rosMax = FBL_SurfaceFireForwardSpreadRate( ros0, rxi, slope,
+    double dirMax = 0.;
+	double effWind = 0.;
+	double maxWind = 0.;
+	double windFactor = 0.;
+	double slopeFactor = 0.;
+	double rosMax = 0.;
+    int    windLimit = 0;
+#ifdef INCLUDE_V5_CODE
+    rosMax = FBL_SurfaceFireForwardSpreadRate( ros0, rxi, slope,
         windSpeed, windDir, &dirMax, &effWind, &maxWind, &windLimit,
         &windFactor, &slopeFactor, applyWindLimit );
-    // Store results
+#elif INCLUDE_V6_CODE
+	double aspect = vSiteAspectDirFromNorth->m_nativeValue;
+	m_Bp6SurfaceFire->setSite( slope, aspect, 88.*windSpeed, windDir, applyWindLimit );
+	rosMax      = m_Bp6SurfaceFire->getSpreadRateAtHead();
+	dirMax      = m_Bp6SurfaceFire->getHeadDirFromUpslope();
+	effWind     = m_Bp6SurfaceFire->getEffectiveWindSpeed() / 88.;
+	maxWind     = m_Bp6SurfaceFire->getWindSpeedLimit() / 88.;
+	windLimit   = m_Bp6SurfaceFire->getWindLimitExceeded() ? 1 : 0;
+	windFactor  = m_Bp6SurfaceFire->getWindFactor();
+	slopeFactor = m_Bp6SurfaceFire->getSlopeFactor();
+#endif
+
+	// Store results
     vSurfaceFireSpreadAtHead->update( rosMax );
     vSurfaceFireMaxDirFromUpslope->update( dirMax );
     vSurfaceFireEffWindAtHead->update( effWind );
@@ -2702,49 +2698,15 @@ void EqCalc::FireSpreadAtHead( void )
     vSurfaceFireWindSpeedFlag->updateItem( windLimit );
     vSurfaceFireWindFactor->update( windFactor );
     vSurfaceFireSlopeFactor->update( slopeFactor );
-#endif
-
-#ifdef INCLUDE_V6_CODE
-	// V6 Refactor
-	double aspect		 =  vSiteAspectDirFromNorth->m_nativeValue;
-	m_Bp6SurfaceFire->setSite( slope, aspect, 88.*windSpeed, windDir, applyWindLimit );
-	double rosMaxV6      = m_Bp6SurfaceFire->getSpreadRateAtHead();
-	double dirMaxV6      = m_Bp6SurfaceFire->getHeadDirFromUpslope();
-	double effWindV6     = m_Bp6SurfaceFire->getEffectiveWindSpeed() / 88.;
-	double maxWindV6     = m_Bp6SurfaceFire->getWindSpeedLimit() / 88.;
-	int    windLimitV6   = m_Bp6SurfaceFire->getWindLimitExceeded() ? 1 : 0;
-	double windFactorV6  = m_Bp6SurfaceFire->getWindFactor();
-	double slopeFactorV6 = m_Bp6SurfaceFire->getSlopeFactor();
-	double windFactorB   = m_Bp6SurfaceFire->getWindB();
-	double windFactorK   = m_Bp6SurfaceFire->getWindK();
-    // Store results
-    vSurfaceFireSpreadAtHead->update( rosMaxV6 );
-    vSurfaceFireMaxDirFromUpslope->update( dirMaxV6 );
-    vSurfaceFireEffWindAtHead->update( effWindV6 );
-    vSurfaceFireWindSpeedLimit->update( maxWindV6 );
-    vSurfaceFireWindSpeedFlag->updateItem( windLimitV6 );
-    vSurfaceFireWindFactor->update( windFactorV6 );
-    vSurfaceFireWindFactorB->update( windFactorB );
-    vSurfaceFireWindFactorK->update( windFactorK );
-    vSurfaceFireSlopeFactor->update( slopeFactorV6 );
-#ifdef INCLUDE_V5_CODE
-	closeEnough( "rosMax", rosMax, rosMaxV6 );
-	closeEnough( "dirMax", dirMax, dirMaxV6 );
-	closeEnough( "effWind", effWind, effWindV6 );
-	closeEnough( "maxWind", maxWind, maxWindV6 );
-	closeEnough( "windLimit", windLimit, windLimitV6 );
-	closeEnough( "windFactor", windFactor, windFactorV6 );
-	closeEnough( "slopeFactor", slopeFactor, slopeFactorV6 );
-#endif
-#endif
 
     // Log results
     if( m_log )
     {
-        fprintf( m_log, "%sbegin proc FireSpreadAtHead() 4 9\n", Margin );
+        fprintf( m_log, "%sbegin proc FireSpreadAtHead() 5 7\n", Margin );
         fprintf( m_log, "%s  i vSurfaceFireNoWindRate %g %s\n", Margin,
             vSurfaceFireNoWindRate->m_nativeValue,
             vSurfaceFireNoWindRate->m_nativeUnits.latin1() );
+		logInput( vSurfaceFireReactionInt );
         fprintf( m_log, "%s  i vSiteSlopeFraction %g %s\n", Margin,
             vSiteSlopeFraction->m_nativeValue,
             vSiteSlopeFraction->m_nativeUnits.latin1() );
@@ -2772,12 +2734,6 @@ void EqCalc::FireSpreadAtHead( void )
         fprintf( m_log, "%s  o vSurfaceFireWindFactor %g %s\n", Margin,
             vSurfaceFireWindFactor->m_nativeValue,
             vSurfaceFireWindFactor->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFireWindFactorB %g %s\n", Margin,
-            vSurfaceFireWindFactorB->m_nativeValue,
-            vSurfaceFireWindFactorB->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFireWindFactorK %g %s\n", Margin,
-            vSurfaceFireWindFactorK->m_nativeValue,
-            vSurfaceFireWindFactorK->m_nativeUnits.latin1() );
         fprintf( m_log, "%s  o vSurfaceFireSlopeFactor %g %s\n", Margin,
             vSurfaceFireSlopeFactor->m_nativeValue,
             vSurfaceFireSlopeFactor->m_nativeUnits.latin1() );
@@ -2817,8 +2773,8 @@ void EqCalc::FireSpreadAtPsi( void )
 	double h = vSurfaceFireEllipseH->m_nativeValue;
 	double t = vSurfaceFireElapsedTime->m_nativeValue;
 	// As of Build 617
-	double rosBack = vSurfaceFireSpreadAtHead->m_nativeValue;
-	double rosHead = vSurfaceFireSpreadAtBack->m_nativeValue;
+	double rosBack = vSurfaceFireSpreadAtBack->m_nativeValue;
+	double rosHead = vSurfaceFireSpreadAtHead->m_nativeValue;
 	double lwRatio = vSurfaceFireLengthToWidth->m_nativeValue;
 	double length  = rosHead + rosBack;
 	double width   = length / lwRatio;
@@ -2930,8 +2886,8 @@ void EqCalc::FireSpreadAtVectorFromPsi( void )
 	double h = vSurfaceFireEllipseH->m_nativeValue;
 	double t = vSurfaceFireElapsedTime->m_nativeValue;
 	// As of Build 617
-	double rosBack = vSurfaceFireSpreadAtHead->m_nativeValue;
-	double rosHead = vSurfaceFireSpreadAtBack->m_nativeValue;
+	double rosBack = vSurfaceFireSpreadAtBack->m_nativeValue;
+	double rosHead = vSurfaceFireSpreadAtHead->m_nativeValue;
 	double lwRatio = vSurfaceFireLengthToWidth->m_nativeValue;
 	double length  = rosHead + rosBack;
 	double width   = length / lwRatio;
@@ -3539,28 +3495,21 @@ void EqCalc::FuelBedHeatSink( void )
 {
     // Access current input values
     double mois[MaxParts];
-    for ( int p = 0;
-          p < MaxParts;
-          p++)
+    for ( int p=0; p<MaxParts; p++)
     {
         mois[p] = vSurfaceFuelMois[p]->m_nativeValue;
     }
-#ifdef INCLUDE_V5_CODE
     // Calculate results
-    double deadMois, liveMois, liveMext;
+    double deadMois = 0.;
+	double liveMois = 0.;
+	double liveMext = 0.;
+	double rbQig = 0.;
+#ifdef INCLUDE_V5_CODE
     double bulkDensity = vSurfaceFuelBedBulkDensity->m_nativeValue;
     double deadMext = vSurfaceFuelBedMextDead->m_nativeValue;
-    double rbQig = FBL_SurfaceFuelBedHeatSink( bulkDensity, deadMext, mois,
+    rbQig = FBL_SurfaceFuelBedHeatSink( bulkDensity, deadMext, mois,
         &deadMois, &liveMois, &liveMext );
-    // Store results
-    vSurfaceFuelBedMoisDead->update( deadMois );
-    vSurfaceFuelBedMoisLive->update( liveMois );
-    vSurfaceFuelBedMextLive->update( liveMext );
-    vSurfaceFuelBedHeatSink->update( rbQig );
-#endif
-
-#ifdef INCLUDE_V6_CODE
-	// V6 REFACTOR
+#elif INCLUDE_V6_CODE
 	// If using Rothermel & Philpot chaparral fuel models ...
 	double liveMextChaparral = 0.;
     PropertyDict *prop = m_eqTree->m_propDict;
@@ -3570,22 +3519,16 @@ void EqCalc::FuelBedHeatSink( void )
 //		liveMextChaparral = (typeIndex==0) ? 0.65 : 0.74;
 //	}
 	m_Bp6SurfaceFire->setMoisture( mois, liveMextChaparral );
-	double deadMoisV6 = m_Bp6SurfaceFire->getDeadMois();
-	double liveMoisV6 = m_Bp6SurfaceFire->getLiveMois();
-	double liveMextV6 = m_Bp6SurfaceFire->getLiveMextApplied();
-	double rbQigV6    = m_Bp6SurfaceFire->getRbQig();
+	deadMois = m_Bp6SurfaceFire->getDeadMois();
+	liveMois = m_Bp6SurfaceFire->getLiveMois();
+	liveMext = m_Bp6SurfaceFire->getLiveMextApplied();
+	rbQig    = m_Bp6SurfaceFire->getRbQig();
+#endif
     // Store results
-    vSurfaceFuelBedMoisDead->update( deadMoisV6 );
-    vSurfaceFuelBedMoisLive->update( liveMoisV6 );
-    vSurfaceFuelBedMextLive->update( liveMextV6 );
-    vSurfaceFuelBedHeatSink->update( rbQigV6 );
-#ifdef INCLUDE_V5_CODE
-	closeEnough( "deadMois", deadMois, deadMoisV6 );
-	closeEnough( "liveMois", liveMois, liveMoisV6 );
-	closeEnough( "liveMext", liveMext, liveMextV6 );
-	closeEnough( "rbQig", rbQig, rbQigV6 );
-#endif
-#endif
+    vSurfaceFuelBedMoisDead->update( deadMois );
+    vSurfaceFuelBedMoisLive->update( liveMois );
+    vSurfaceFuelBedMextLive->update( liveMext );
+    vSurfaceFuelBedHeatSink->update( rbQig );
 
     // Log results
     if( m_log )
@@ -3617,16 +3560,18 @@ void EqCalc::FuelBedHeatSink( void )
 /*! \brief FuelBedIntermediates
  *
  *  Dependent Variables (Outputs)
+ *      vSurfaceFireWindFactorB (dl)
+ *      vSurfaceFireWindFactorK (dl)
  *      vSurfaceFuelBedBetaRatio (fraction)
  *      vSurfaceFuelBedBulkDensity (lbs/ft3)
  *      vSurfaceFuelBedDeadFraction (fraction)
  *		vSurfaceFuelBedLiveFraction (fraction)
  *      vSurfaceFuelBedPackingRatio (fraction)
  *      vSurfaceFuelBedSigma (ft2/ft3)
- *      vSurfaceFuelLoadDeadHerb (lbs/ft2)
- *      vSurfaceFuelLoadUndeadHerb (lbs/ft2)
  *      vSurfaceFuelLoadDead (lbs/ft2)
+ *      vSurfaceFuelLoadDeadHerb (lbs/ft2)
  *      vSurfaceFuelLoadLive (lbs/ft2)
+ *      vSurfaceFuelLoadUndeadHerb (lbs/ft2)
  *
  *  Independent Variables (Inputs)
  *      vSurfaceFuelBedDepth (ft)
@@ -3650,9 +3595,7 @@ void EqCalc::FuelBedIntermediates ( void )
     int    life[MaxParts];
     double deadLoad = 0.;
     double liveLoad = 0.;
-    for ( int p = 0;
-          p < MaxParts;
-          p++ )
+    for ( int p=0; p<MaxParts; p++ )
     {
         dens[p] = vSurfaceFuelDens[p]->m_nativeValue;
         heat[p] = vSurfaceFuelHeat[p]->m_nativeValue;
@@ -3693,50 +3636,48 @@ void EqCalc::FuelBedIntermediates ( void )
     double deadFraction = ( totalLoad < SMIDGEN )
                         ? ( 0. )
                         : ( deadLoad / totalLoad );
+
+    // Store results so far
+    vSurfaceFuelBedDeadFraction->update( deadFraction );
+    vSurfaceFuelBedLiveFraction->update( 1. - deadFraction );
+    vSurfaceFuelLoadDead->update( deadLoad );
+    vSurfaceFuelLoadDeadHerb->update( load[DeadHerb] );
+    vSurfaceFuelLoadLive->update( liveLoad );
+    vSurfaceFuelLoadUndeadHerb->update( load[LiveHerb] );
+
     // Fuel bed intermediates
     double depth    = vSurfaceFuelBedDepth->m_nativeValue;
     double deadMext = vSurfaceFuelBedMextDead->m_nativeValue;
 
-#ifdef INCLUDE_V5_CODE
-    double bulkDensity, packingRatio, betaRatio;
-    double sigma = FBL_SurfaceFuelBedIntermediates( depth, deadMext, MaxParts,
-        life, load, savr, heat, dens, stot, seff,
-        &bulkDensity, &packingRatio, &betaRatio );
-    //double betaOpt = packingRatio / betaRatio;
-    // Store results
-    vSurfaceFuelBedSigma->update( sigma );
-    vSurfaceFuelBedBulkDensity->update( bulkDensity );
-    vSurfaceFuelBedPackingRatio->update( packingRatio );
-    vSurfaceFuelBedBetaRatio->update( betaRatio );
-#endif
+    double bulkDensity = 0.;
+	double packingRatio = 0.;
+	double betaRatio = 0.;
+	double windB = 0.;
+	double windK = 0.;
+	double sigma = 0.;
 
-#ifdef INCLUDE_V6_CODE
-	// V6 REFACTOR
+#ifdef INCLUDE_V5_CODE
+    sigma = FBL_SurfaceFuelBedIntermediates( depth, deadMext, MaxParts,
+        life, load, savr, heat, dens, stot, seff,
+        &bulkDensity, &packingRatio, &betaRatio, &windB, &windK );
+    //double betaOpt = packingRatio / betaRatio;
+#elif INCLUDE_V6_CODE
 	m_Bp6SurfaceFire->setFuel( depth, deadMext, MaxParts,
         life, load, savr, heat, dens, stot, seff );
-	double sigmaV6 = m_Bp6SurfaceFire->getSigma();
-	double bulkDensityV6 = m_Bp6SurfaceFire->getBulkDensity();
-	double packingRatioV6 = m_Bp6SurfaceFire->getPackingRatio();
-	double betaRatioV6 = m_Bp6SurfaceFire->getBetaRatio();
+	sigma = m_Bp6SurfaceFire->getSigma();
+	bulkDensity = m_Bp6SurfaceFire->getBulkDensity();
+	packingRatio = m_Bp6SurfaceFire->getPackingRatio();
+	betaRatio = m_Bp6SurfaceFire->getBetaRatio();
+	windB = m_Bp6SurfaceFire->getWindB();
+	windK = m_Bp6SurfaceFire->getWindK();
+#endif
     // Store results
-    vSurfaceFuelBedSigma->update( sigmaV6 );
-    vSurfaceFuelBedBulkDensity->update( bulkDensityV6 );
-    vSurfaceFuelBedPackingRatio->update( packingRatioV6 );
-    vSurfaceFuelBedBetaRatio->update( betaRatioV6 );
-#ifdef INCLUDE_V5_CODE
-	closeEnough( "sigma", sigma, sigmaV6 );
-	closeEnough( "bulkDensity", bulkDensity, bulkDensityV6 );
-	closeEnough( "packingRatio", packingRatio, packingRatioV6 );
-	closeEnough( "betaRatio", betaRatio, betaRatioV6 );
-#endif
-#endif
-
-    vSurfaceFuelBedDeadFraction->update( deadFraction );
-    vSurfaceFuelBedLiveFraction->update( 1. - deadFraction );
-    vSurfaceFuelLoadDeadHerb->update( load[DeadHerb] );
-    vSurfaceFuelLoadUndeadHerb->update( load[LiveHerb] );
-    vSurfaceFuelLoadDead->update( deadLoad );
-    vSurfaceFuelLoadLive->update( liveLoad );
+    vSurfaceFireWindFactorB->update( windB );
+    vSurfaceFireWindFactorK->update( windK );
+    vSurfaceFuelBedBetaRatio->update( betaRatio );
+    vSurfaceFuelBedBulkDensity->update( bulkDensity );
+    vSurfaceFuelBedPackingRatio->update( packingRatio );
+    vSurfaceFuelBedSigma->update( sigma );
 
 //printf( "%-4.4s %6.1f %6.4f %6.4f %6.4f %6.4f\n",
 //  vSurfaceFuelBedModel->activeItemName().latin1(),
@@ -3744,49 +3685,24 @@ void EqCalc::FuelBedIntermediates ( void )
     // Log results
     if( m_log )
     {
-        fprintf( m_log, "%sbegin proc FuelBedIntermediates() 3 11\n", Margin );
+        fprintf( m_log, "%sbegin proc FuelBedIntermediates() 3 12\n", Margin );
         fprintf( m_log, "%s  i vSurfaceFuelLoadTransferEq %d %s\n", Margin,
             vSurfaceFuelLoadTransferEq->activeItemDataIndex(),
             vSurfaceFuelLoadTransferEq->activeItemName().latin1() );
-        fprintf( m_log, "%s  i vSurfaceFuelBedDepth %g %s\n", Margin,
-            vSurfaceFuelBedDepth->m_nativeValue,
-            vSurfaceFuelBedDepth->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  i vSurfaceFuelBedMextDead %g %s\n", Margin,
-            vSurfaceFuelBedMextDead->m_nativeValue,
-            vSurfaceFuelBedMextDead->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelBedBetaRatio %g %s\n", Margin,
-            vSurfaceFuelBedBetaRatio->m_nativeValue,
-            vSurfaceFuelBedBetaRatio->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelBedBulkDensity %g %s\n", Margin,
-            vSurfaceFuelBedBulkDensity->m_nativeValue,
-            vSurfaceFuelBedBulkDensity->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelBedPackingRatio %g %s\n", Margin,
-            vSurfaceFuelBedPackingRatio->m_nativeValue,
-            vSurfaceFuelBedPackingRatio->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelBedSigma %g %s\n", Margin,
-            vSurfaceFuelBedSigma->m_nativeValue,
-            vSurfaceFuelBedSigma->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelLoadTransferFraction %g %s\n", Margin,
-            vSurfaceFuelLoadTransferFraction->m_nativeValue,
-            vSurfaceFuelLoadTransferFraction->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelLoadDeadHerb %g %s\n", Margin,
-            vSurfaceFuelLoadDeadHerb->m_nativeValue,
-            vSurfaceFuelLoadDeadHerb->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelLoadUndeadHerb %g %s\n", Margin,
-            vSurfaceFuelLoadUndeadHerb->m_nativeValue,
-            vSurfaceFuelLoadUndeadHerb->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelLoadDead %g %s\n", Margin,
-            vSurfaceFuelLoadDead->m_nativeValue,
-            vSurfaceFuelLoadDead->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelLoadLive %g %s\n", Margin,
-            vSurfaceFuelLoadLive->m_nativeValue,
-            vSurfaceFuelLoadLive->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelBedDeadFraction %g %s\n", Margin,
-            vSurfaceFuelBedDeadFraction->m_nativeValue,
-            vSurfaceFuelBedDeadFraction->m_nativeUnits.latin1() );
-        fprintf( m_log, "%s  o vSurfaceFuelBedLiveFraction %g %s\n", Margin,
-            vSurfaceFuelBedLiveFraction->m_nativeValue,
-            vSurfaceFuelBedLiveFraction->m_nativeUnits.latin1() );
+        logInput( vSurfaceFuelBedDepth );
+        logInput( vSurfaceFuelBedMextDead );
+		logOutput( vSurfaceFireWindFactorB );
+		logOutput( vSurfaceFireWindFactorK );
+		logOutput( vSurfaceFuelBedBetaRatio );
+    	logOutput( vSurfaceFuelBedBulkDensity );
+    	logOutput( vSurfaceFuelBedDeadFraction );
+    	logOutput( vSurfaceFuelBedLiveFraction );
+    	logOutput( vSurfaceFuelBedPackingRatio );
+    	logOutput( vSurfaceFuelBedSigma );
+    	logOutput( vSurfaceFuelLoadDead );
+    	logOutput( vSurfaceFuelLoadDeadHerb );
+    	logOutput( vSurfaceFuelLoadLive );
+    	logOutput( vSurfaceFuelLoadUndeadHerb );
     }
     return;
 }
@@ -3956,9 +3872,7 @@ void EqCalc::FuelBedModel( void )
 void EqCalc::FuelBedParms( void )
 {
     // Give default values to all particles.
-    for ( int i = 0;
-          i < MaxParts;
-          i++ )
+    for ( int i=0; i<MaxParts; i++ )
     {
         vSurfaceFuelDens[i]->update( 32. );
         vSurfaceFuelHeat[i]->update( 8000. );
@@ -4925,7 +4839,7 @@ void EqCalc::FuelChaparralModel( void )
 void EqCalc::FuelChaparralParms( void )
 {
 	// Initialize to default values
-    for ( int i = 0; i < MaxParts; i++ )
+    for ( int i=0; i<MaxParts; i++ )
     {
 		vSurfaceFuelLife[i]->updateItem( FuelLifeType_DeadTimeLag );
         vSurfaceFuelDens[i]->update( 46.0 );
@@ -5296,9 +5210,7 @@ void EqCalc::FuelMoisTimeLag( void )
     int    life, i;
     double savr, mois;
 
-    for ( i = 0;
-          i < MaxParts;
-          i++ )
+    for ( i=0; i<MaxParts; i++ )
     {
         life = vSurfaceFuelLife[i]->activeItemDataIndex();
         savr = vSurfaceFuelSavr[i]->m_nativeValue;
@@ -5359,9 +5271,7 @@ void EqCalc::FuelMoisTimeLag( void )
         fprintf( m_log, "%s  i vSurfaceFuelMoisLiveWood %g %s\n", Margin,
             vSurfaceFuelMoisLiveWood->m_nativeValue,
             vSurfaceFuelMoisLiveWood->m_nativeUnits.latin1() );
-        for ( i = 0;
-              i < MaxParts;
-              i++ )
+        for ( i = 0; i < MaxParts; i++ )
         {
             fprintf( m_log, "%s  i vSurfaceFuelLife%d %g %s\n", Margin, i,
                 vSurfaceFuelLife[i]->m_nativeValue,
@@ -5370,9 +5280,7 @@ void EqCalc::FuelMoisTimeLag( void )
                 vSurfaceFuelSavr[i]->m_nativeValue,
                 vSurfaceFuelSavr[i]->m_nativeUnits.latin1() );
         }
-        for ( i = 0;
-              i < MaxParts;
-              i++ )
+        for ( i = 0; i < MaxParts; i++ )
         {
             fprintf( m_log, "%s  o vSurfaceFuelMois%d %g %s\n", Margin, i,
                 vSurfaceFuelMois[i]->m_nativeValue,

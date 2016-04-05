@@ -32,7 +32,7 @@
 //  FBL_SurfaceFireReactionIntensity(), or FBL_SurfaceFireSpreadAtHead().
 //------------------------------------------------------------------------------
 
-const int MAX_PARTS    = 8;         //!< Maximum number of fuel particles.
+const int MAX_PARTS    = 10;        //!< Maximum number of fuel particles.
 const int MAX_CATS     = 2;         //!< Life categories
 const int MAX_SIZES    = 6;         //!< Fuel moisture time lag classes.
 const int DEAD_CAT     = 0;         //!< Dead life category index
@@ -3533,7 +3533,8 @@ double FBL_SurfaceFuelBedIntermediates(
             double depth, double /* deadMext */, int particles,
             int *life, double *load, double *savr, double *heat, double *dens,
             double *stot, double *seff, double *fuelBedBulkDensity,
-            double *fuelBedPackingRatio, double *fuelBedBetaRatio )
+            double *fuelBedPackingRatio, double *fuelBedBetaRatio,
+			double *windB, double *windK )
 {
     // Savr by size class                 .04"  .25"  0.5"  1.0"  3.0"
     static double Size_bdy[MAX_SIZES] = { 1200., 192., 96.0, 48.0, 16.0, 0. };
@@ -3768,6 +3769,8 @@ double FBL_SurfaceFuelBedIntermediates(
     *fuelBedBulkDensity  = bulkDensity;
     *fuelBedPackingRatio = packingRatio;
     *fuelBedBetaRatio    = betaRatio;
+	*windB               = m_windB;
+	*windK               = m_windK;
     //fprintf( stderr, "bulkDensity=%f\n", bulkDensity );
     //fprintf( stderr, "packingRatio=%f\n", packingRatio );
     //fprintf( stderr, "betaRatio=%f\n", betaRatio );
