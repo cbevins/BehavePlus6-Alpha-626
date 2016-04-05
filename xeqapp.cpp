@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqapp.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree application class methods.
  */
