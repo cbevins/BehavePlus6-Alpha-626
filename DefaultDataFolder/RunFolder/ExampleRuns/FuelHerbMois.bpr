@@ -108,19 +108,50 @@
   <property name="containDiagramValueFontFamily" value="courier" />
   <property name="containDiagramValueFontSize" value="10" />
   <property name="containModuleActive" value="false" />
+  <property name="crownCalcActiveCritOpenWindSpeed" value="false" />
+  <property name="crownCalcActiveCritSurfSpreadRate" value="false" />
   <property name="crownCalcActiveCrown" value="true" />
+  <property name="crownCalcActiveFireArea" value="false" />
+  <property name="crownCalcActiveFireLineInt" value="false" />
+  <property name="crownCalcActiveFirePerimeter" value="false" />
+  <property name="crownCalcActiveFireWidth" value="false" />
+  <property name="crownCalcActiveFlameLeng" value="false" />
+  <property name="crownCalcActiveHeatPerUnitArea" value="false" />
   <property name="crownCalcActiveRatio" value="true" />
-  <property name="crownCalcCriticalCrownSpreadRate" value="true" />
+  <property name="crownCalcActiveSpreadDist" value="false" />
+  <property name="crownCalcActiveSpreadRate" value="false" />
+  <property name="crownCalcCanopyFractionBurned" value="false" />
+  <property name="crownCalcCritSurfSpreadRate" value="false" />
+  <property name="crownCalcCriticalCrownSpreadRate" value="false" />
   <property name="crownCalcCriticalSurfaceFlameLeng" value="false" />
-  <property name="crownCalcCriticalSurfaceIntensity" value="true" />
+  <property name="crownCalcCriticalSurfaceIntensity" value="false" />
   <property name="crownCalcCrownFireType" value="true" />
   <property name="crownCalcCrownSpreadDist" value="false" />
   <property name="crownCalcCrownSpreadRate" value="true" />
   <property name="crownCalcFireArea" value="false" />
   <property name="crownCalcFireLengthToWidth" value="false" />
+  <property name="crownCalcFireLineInt" value="false" />
   <property name="crownCalcFirePerimeter" value="false" />
+  <property name="crownCalcFlameLeng" value="false" />
+  <property name="crownCalcFuelLoad" value="false" />
+  <property name="crownCalcHeatPerUnitArea" value="false" />
+  <property name="crownCalcHeatPerUnitAreaCanopy" value="false" />
+  <property name="crownCalcPassiveFireArea" value="false" />
+  <property name="crownCalcPassiveFireLineInt" value="false" />
+  <property name="crownCalcPassiveFirePerimeter" value="false" />
+  <property name="crownCalcPassiveFireWidth" value="false" />
+  <property name="crownCalcPassiveFlameLeng" value="false" />
+  <property name="crownCalcPassiveHeatPerUnitArea" value="false" />
+  <property name="crownCalcPassiveSpreadDist" value="false" />
+  <property name="crownCalcPassiveSpreadRate" value="false" />
+  <property name="crownCalcPowerOfFire" value="false" />
+  <property name="crownCalcPowerOfWind" value="false" />
+  <property name="crownCalcPowerRatio" value="false" />
   <property name="crownCalcTransitionRatio" value="true" />
   <property name="crownCalcTransitionToCrown" value="true" />
+  <property name="crownCalcWindDriven" value="false" />
+  <property name="crownConfModelRothermel" value="true" />
+  <property name="crownConfModelScottReinhardt" value="false" />
   <property name="crownConfUseFireLineInt" value="false" />
   <property name="crownConfUseFlameLeng" value="true" />
   <property name="crownModuleActive" value="false" />
@@ -141,6 +172,7 @@
   <property name="fdfmShd" value="0" />
   <property name="fdfmSlp" value="0" />
   <property name="fdfmTod" value="0" />
+  <property name="fuelModelPreventDuplicateNumbers" value="true" />
   <property name="graphActive" value="true" />
   <property name="graphAxleColor" value="black" />
   <property name="graphAxleWidth" value="1" />
@@ -202,9 +234,11 @@
   <property name="pageMarginTop" value="0.75" />
   <property name="pageSizeHeight" value="11.0" />
   <property name="pageSizeWidth" value="8.5" />
+  <property name="safetyCalcLength" value="false" />
   <property name="safetyCalcRadius" value="false" />
   <property name="safetyCalcSepDist" value="true" />
   <property name="safetyCalcSize" value="true" />
+  <property name="safetyCalcSizeSquare" value="true" />
   <property name="safetyModuleActive" value="false" />
   <property name="scorchCalcScorchHt" value="true" />
   <property name="scorchConfUseFireLineInt" value="false" />
@@ -212,6 +246,7 @@
   <property name="scorchModuleActive" value="false" />
   <property name="sizeCalcFireArea" value="true" />
   <property name="sizeCalcFireDistAtBack" value="false" />
+  <property name="sizeCalcFireDistAtFlank" value="false" />
   <property name="sizeCalcFireDistAtFront" value="false" />
   <property name="sizeCalcFireLengDist" value="false" />
   <property name="sizeCalcFireLengToWidth" value="false" />
@@ -244,19 +279,25 @@
   <property name="spotCalcCoverHtBurningPile" value="false" />
   <property name="spotCalcCoverHtSurfaceFire" value="false" />
   <property name="spotCalcCoverHtTorchingTrees" value="false" />
+  <property name="spotCalcDistActiveCrown" value="false" />
   <property name="spotCalcDistBurningPile" value="false" />
   <property name="spotCalcDistSurfaceFire" value="false" />
   <property name="spotCalcDistTorchingTrees" value="true" />
+  <property name="spotCalcFirebrandDriftActiveCrown" value="false" />
   <property name="spotCalcFirebrandDriftSurfaceFire" value="false" />
+  <property name="spotCalcFirebrandHtActiveCrown" value="false" />
   <property name="spotCalcFirebrandHtBurningPile" value="false" />
   <property name="spotCalcFirebrandHtSurfaceFire" value="false" />
   <property name="spotCalcFirebrandHtTorchingTrees" value="false" />
   <property name="spotCalcFlameDurTorchingTrees" value="false" />
+  <property name="spotCalcFlameHtActiveCrown" value="false" />
   <property name="spotCalcFlameHtTorchingTrees" value="false" />
   <property name="spotCalcFlameRatioTorchingTrees" value="false" />
+  <property name="spotCalcFlatDistActiveCrown" value="false" />
   <property name="spotCalcFlatDistBurningPile" value="false" />
   <property name="spotCalcFlatDistSurfaceFire" value="false" />
   <property name="spotCalcFlatDistTorchingTrees" value="false" />
+  <property name="spotCalcWindSpeedAtCanopyTop" value="false" />
   <property name="spotModuleActive" value="false" />
   <property name="sunLocation" value="Missoula, MT USA" />
   <property name="surfaceCalcAspenBedDepth" value="false" />
@@ -269,15 +310,40 @@
   <property name="surfaceCalcAspenSavrDead10" value="false" />
   <property name="surfaceCalcAspenSavrLiveHerb" value="false" />
   <property name="surfaceCalcAspenSavrLiveWoody" value="false" />
+  <property name="surfaceCalcChaparralAge" value="false" />
+  <property name="surfaceCalcChaparralLoadDead1" value="false" />
+  <property name="surfaceCalcChaparralLoadDead2" value="false" />
+  <property name="surfaceCalcChaparralLoadDead3" value="false" />
+  <property name="surfaceCalcChaparralLoadDead4" value="false" />
+  <property name="surfaceCalcChaparralLoadLive1" value="false" />
+  <property name="surfaceCalcChaparralLoadLive2" value="false" />
+  <property name="surfaceCalcChaparralLoadLive3" value="false" />
+  <property name="surfaceCalcChaparralLoadLive4" value="false" />
+  <property name="surfaceCalcChaparralLoadLiveLeaf" value="false" />
+  <property name="surfaceCalcChaparralLoadTotal" value="true" />
+  <property name="surfaceCalcChaparralLoadTotalDead" value="false" />
+  <property name="surfaceCalcChaparralLoadTotalLive" value="false" />
   <property name="surfaceCalcCrownFillPortion" value="false" />
   <property name="surfaceCalcCrownRatio" value="false" />
+  <property name="surfaceCalcEllipseF" value="false" />
+  <property name="surfaceCalcEllipseG" value="false" />
+  <property name="surfaceCalcEllipseH" value="false" />
   <property name="surfaceCalcFireCharacteristicsDiagram" value="false" />
   <property name="surfaceCalcFireDist" value="false" />
+  <property name="surfaceCalcFireDistAtOther" value="false" />
+  <property name="surfaceCalcFireDistAtPsi" value="false" />
+  <property name="surfaceCalcFireDistAtPsi" value="false" />
   <property name="surfaceCalcFireEffWind" value="false" />
   <property name="surfaceCalcFireFlameLeng" value="true" />
+  <property name="surfaceCalcFireFlameLengAtOther" value="false" />
+  <property name="surfaceCalcFireFlameLengAtPsi" value="false" />
   <property name="surfaceCalcFireHeatPerUnitArea" value="false" />
   <property name="surfaceCalcFireHeatSource" value="false" />
   <property name="surfaceCalcFireLineInt" value="false" />
+  <property name="surfaceCalcFireLineIntAtOther" value="false" />
+  <property name="surfaceCalcFireLineIntAtPsi" value="false" />
+  <property name="surfaceCalcFireMapDistAtOther" value="false" />
+  <property name="surfaceCalcFireMapDistAtPsi" value="false" />
   <property name="surfaceCalcFireMaxDirDiagram" value="false" />
   <property name="surfaceCalcFireMaxDirFromUpslope" value="false" />
   <property name="surfaceCalcFirePropagatingFlux" value="false" />
@@ -287,6 +353,8 @@
   <property name="surfaceCalcFireResidenceTime" value="false" />
   <property name="surfaceCalcFireSlopeFactor" value="false" />
   <property name="surfaceCalcFireSpread" value="true" />
+  <property name="surfaceCalcFireSpreadAtOther" value="false" />
+  <property name="surfaceCalcFireSpreadAtPsi" value="false" />
   <property name="surfaceCalcFireWindFactor" value="false" />
   <property name="surfaceCalcFireWindSpeedFlag" value="false" />
   <property name="surfaceCalcFireWindSpeedLimit" value="false" />
@@ -294,6 +362,7 @@
   <property name="surfaceCalcFuelBedBulkDensity" value="false" />
   <property name="surfaceCalcFuelBedDeadFraction" value="false" />
   <property name="surfaceCalcFuelBedHeatSink" value="false" />
+  <property name="surfaceCalcFuelBedLiveFraction" value="false" />
   <property name="surfaceCalcFuelBedMextLive" value="false" />
   <property name="surfaceCalcFuelBedMoisDead" value="false" />
   <property name="surfaceCalcFuelBedMoisLive" value="false" />
@@ -321,6 +390,9 @@
   <property name="surfaceCalcSlopeReach" value="false" />
   <property name="surfaceCalcSlopeRise" value="false" />
   <property name="surfaceCalcSlopeSteepness" value="false" />
+  <property name="surfaceCalcVectorOther" value="false" />
+  <property name="surfaceCalcVectorPsi" value="false" />
+  <property name="surfaceCalcVectorTheta" value="false" />
   <property name="surfaceCalcWindAdjFactor" value="false" />
   <property name="surfaceCalcWindAdjMethod" value="false" />
   <property name="surfaceCalcWindSpeedAtMidflame" value="false" />
@@ -332,12 +404,16 @@
   <property name="surfaceConfFuel2Dimensional" value="false" />
   <property name="surfaceConfFuelAreaWeighted" value="false" />
   <property name="surfaceConfFuelAspen" value="false" />
+  <property name="surfaceConfFuelChaparral" value="false" />
+  <property name="surfaceConfFuelChaparralTotalLoadFromDepthType" value="true" />
+  <property name="surfaceConfFuelChaparralTotalLoadFromInput" value="false" />
   <property name="surfaceConfFuelHarmonicMean" value="false" />
   <property name="surfaceConfFuelModels" value="true" />
   <property name="surfaceConfFuelPalmettoGallberry" value="false" />
   <property name="surfaceConfFuelParms" value="false" />
   <property name="surfaceConfLoadTransferCalc" value="true" />
   <property name="surfaceConfLoadTransferInput" value="false" />
+  <property name="surfaceConfMoisDeadHerbWood" value="false" />
   <property name="surfaceConfMoisLifeCat" value="false" />
   <property name="surfaceConfMoisScenario" value="false" />
   <property name="surfaceConfMoisTimeLag" value="true" />
@@ -345,8 +421,17 @@
   <property name="surfaceConfSlopeDerived" value="false" />
   <property name="surfaceConfSlopeFraction" value="true" />
   <property name="surfaceConfSlopeInput" value="true" />
+  <property name="surfaceConfSpreadDirBack" value="false" />
+  <property name="surfaceConfSpreadDirBetaBeta" value="false" />
+  <property name="surfaceConfSpreadDirBetaPsi" value="false" />
+  <property name="surfaceConfSpreadDirFireFront" value="false" />
+  <property name="surfaceConfSpreadDirFlank" value="false" />
+  <property name="surfaceConfSpreadDirHead" value="true" />
   <property name="surfaceConfSpreadDirInput" value="false" />
   <property name="surfaceConfSpreadDirMax" value="true" />
+  <property name="surfaceConfSpreadDirPointSource" value="false" />
+  <property name="surfaceConfSpreadDirPointSourceBeta" value="false" />
+  <property name="surfaceConfSpreadDirPointSourcePsi" value="false" />
   <property name="surfaceConfWindDirInput" value="false" />
   <property name="surfaceConfWindDirUpslope" value="true" />
   <property name="surfaceConfWindLimitApplied" value="true" />
@@ -432,10 +517,10 @@
   <property name="worksheetValueFontFamily" value="Courier New" />
   <property name="worksheetValueFontSize" value="12" />
   <prescription name="vContainSize" active="false" minimum="0.0" maximum="0.0" units="ac" />
-  <prescription name="vContainStatus" active="false" accept="1,0,0,1,1" />
+  <prescription name="vContainStatus" active="false" accept="1,0,0" />
   <prescription name="vContainTime" active="false" minimum="0.0" maximum="0.0" units="h" />
   <prescription name="vCrownFireActiveCrown" active="false" accept="1,0" />
-  <prescription name="vCrownFireSpreadRate" active="false" minimum="0.0" maximum="0.0" units="ch/h" />
+  <prescription name="vCrownFireActiveSpreadRate" active="false" minimum="0.0" maximum="0.0" units="ch/h" />
   <prescription name="vCrownFireTransToCrown" active="false" accept="1,0" />
   <prescription name="vCrownFireType" active="false" accept="1,0,0,1" />
   <prescription name="vIgnitionFirebrandProb" active="false" minimum="0" maximum="0" units="%" />
@@ -485,20 +570,43 @@
   <variable name="vContainXMax" decimals="0" units="ch" value="" />
   <variable name="vContainXMin" decimals="0" units="ch" value="" />
   <variable name="vContainYMax" decimals="0" units="ch" value="" />
+  <variable name="vCrownFireActiveCritOpenWindSpeed" decimals="1" units="mi/h" value="" />
+  <variable name="vCrownFireActiveCritSurfSpreadRate" decimals="1" units="ft/min" value="" />
   <variable name="vCrownFireActiveCrown" code="" />
+  <variable name="vCrownFireActiveFireArea" decimals="1" units="ac" value="" />
+  <variable name="vCrownFireActiveFireLineInt" decimals="0" units="Btu/ft/s" value="" />
+  <variable name="vCrownFireActiveFirePerimeter" decimals="0" units="ch" value="" />
+  <variable name="vCrownFireActiveFireWidth" decimals="0" units="ch" value="" />
+  <variable name="vCrownFireActiveFlameLeng" decimals="1" units="ft" value="" />
+  <variable name="vCrownFireActiveHeatPerUnitArea" decimals="0" units="Btu/ft2" value="" />
   <variable name="vCrownFireActiveRatio" decimals="2" units="ratio" value="" />
-  <variable name="vCrownFireArea" decimals="1" units="ac" value="" />
+  <variable name="vCrownFireActiveSpreadDist" decimals="0" units="ch" value="" />
+  <variable name="vCrownFireActiveSpreadMapDist" decimals="2" units="in" value="" />
+  <variable name="vCrownFireActiveSpreadRate" decimals="1" units="ch/h" value="" />
+  <variable name="vCrownFireCanopyFractionBurned" decimals="4" units="ratio" value="" />
   <variable name="vCrownFireCritCrownSpreadRate" decimals="1" units="ch/h" value="" />
   <variable name="vCrownFireCritSurfFireInt" decimals="0" units="Btu/ft/s" value="" />
   <variable name="vCrownFireCritSurfFlameLeng" decimals="1" units="ft" value="" />
+  <variable name="vCrownFireCritSurfSpreadRate" decimals="1" units="ft/min" value="" />
+  <variable name="vCrownFireFuelLoad" decimals="2" units="ton/ac" value="" />
+  <variable name="vCrownFireHeatPerUnitAreaCanopy" decimals="0" units="Btu/ft2" value="" />
   <variable name="vCrownFireLengthToWidth" decimals="1" units="ratio" value="" />
-  <variable name="vCrownFirePerimeter" decimals="0" units="ch" value="" />
-  <variable name="vCrownFireSpreadDist" decimals="1" units="ch" value="" />
-  <variable name="vCrownFireSpreadMapDist" decimals="2" units="in" value="" />
-  <variable name="vCrownFireSpreadRate" decimals="1" units="ch/h" value="" />
+  <variable name="vCrownFirePassiveFireArea" decimals="1" units="ac" value="" />
+  <variable name="vCrownFirePassiveFireLineInt" decimals="0" units="Btu/ft/s" value="" />
+  <variable name="vCrownFirePassiveFirePerimeter" decimals="0" units="ch" value="" />
+  <variable name="vCrownFirePassiveFireWidth" decimals="0" units="ch" value="" />
+  <variable name="vCrownFirePassiveFlameLeng" decimals="1" units="ft" value="" />
+  <variable name="vCrownFirePassiveHeatPerUnitArea" decimals="0" units="Btu/ft2" value="" />
+  <variable name="vCrownFirePassiveSpreadDist" decimals="0" units="ch" value="" />
+  <variable name="vCrownFirePassiveSpreadMapDist" decimals="2" units="in" value="" />
+  <variable name="vCrownFirePassiveSpreadRate" decimals="1" units="ch/h" value="" />
+  <variable name="vCrownFirePowerOfFire" decimals="0" units="ft-lb/s/ft2" value="" />
+  <variable name="vCrownFirePowerOfWind" decimals="0" units="ft-lb/s/ft2" value="" />
+  <variable name="vCrownFirePowerRatio" decimals="2" units="ratio" value="" />
   <variable name="vCrownFireTransRatio" decimals="2" units="ratio" value="" />
   <variable name="vCrownFireTransToCrown" code="" />
   <variable name="vCrownFireType" code="" />
+  <variable name="vCrownFireWindDriven" code="" />
   <variable name="vDocDescription" text="Compare fuel models, range of live herb. mois." />
   <variable name="vDocFireAnalyst" text="" />
   <variable name="vDocFireName" text="" />
@@ -522,11 +630,13 @@
   <variable name="vMapScale" decimals="4" units="in/mi" value="" />
   <variable name="vSafetyZoneEquipmentArea" decimals="0" units="ft2" value="" />
   <variable name="vSafetyZoneEquipmentNumber" decimals="0" units="" value="" />
+  <variable name="vSafetyZoneLength" decimals="0" units="ft" value="" />
   <variable name="vSafetyZonePersonnelArea" decimals="0" units="ft2" value="" />
   <variable name="vSafetyZonePersonnelNumber" decimals="0" units="" value="" />
   <variable name="vSafetyZoneRadius" decimals="0" units="ft" value="" />
   <variable name="vSafetyZoneSepDist" decimals="0" units="ft" value="" />
   <variable name="vSafetyZoneSize" decimals="2" units="ac" value="" />
+  <variable name="vSafetyZoneSizeSquare" decimals="2" units="ac" value="" />
   <variable name="vSiteAspectDirFromCompass" code="" />
   <variable name="vSiteAspectDirFromNorth" decimals="0" units="deg" value="" />
   <variable name="vSiteElevation" decimals="0" units="ft" value="" />
@@ -544,20 +654,26 @@
   <variable name="vSpotCoverHtBurningPile" decimals="1" units="ft" value="" />
   <variable name="vSpotCoverHtSurfaceFire" decimals="1" units="ft" value="" />
   <variable name="vSpotCoverHtTorchingTrees" decimals="1" units="ft" value="" />
+  <variable name="vSpotDistActiveCrown" decimals="1" units="mi" value="" />
   <variable name="vSpotDistBurningPile" decimals="1" units="mi" value="" />
   <variable name="vSpotDistSurfaceFire" decimals="1" units="mi" value="" />
   <variable name="vSpotDistTorchingTrees" decimals="1" units="mi" value="" />
+  <variable name="vSpotEmberDiamAtSurface" decimals="4" units="in" value="" />
   <variable name="vSpotFireSource" code="" />
   <variable name="vSpotFirebrandDriftSurfaceFire" decimals="1" units="mi" value="" />
+  <variable name="vSpotFirebrandHtActiveCrown" decimals="1" units="ft" value="" />
   <variable name="vSpotFirebrandHtBurningPile" decimals="1" units="ft" value="" />
   <variable name="vSpotFirebrandHtSurfaceFire" decimals="1" units="ft" value="" />
   <variable name="vSpotFirebrandHtTorchingTrees" decimals="1" units="ft" value="" />
   <variable name="vSpotFlameDurTorchingTrees" decimals="1" units="ratio" value="" />
+  <variable name="vSpotFlameHtActiveCrown" decimals="1" units="ft" value="" />
   <variable name="vSpotFlameHtTorchingTrees" decimals="1" units="ft" value="" />
   <variable name="vSpotFlameRatioTorchingTrees" decimals="1" units="ratio" value="" />
+  <variable name="vSpotFlatDistActiveCrown" decimals="1" units="mi" value="" />
   <variable name="vSpotFlatDistBurningPile" decimals="1" units="mi" value="" />
   <variable name="vSpotFlatDistSurfaceFire" decimals="1" units="mi" value="" />
   <variable name="vSpotFlatDistTorchingTrees" decimals="1" units="mi" value="" />
+  <variable name="vSpotMapDistActiveCrown" decimals="1" units="mi" value="" />
   <variable name="vSpotMapDistBurningPile" decimals="2" units="in" value="" />
   <variable name="vSpotMapDistSurfaceFire" decimals="2" units="in" value="" />
   <variable name="vSpotMapDistTorchingTrees" decimals="2" units="in" value="" />
@@ -565,26 +681,39 @@
   <variable name="vSurfaceFireArea" decimals="1" units="ac" value="" />
   <variable name="vSurfaceFireCharacteristicsDiagram" code="" />
   <variable name="vSurfaceFireDistAtBack" decimals="1" units="ch" value="" />
+  <variable name="vSurfaceFireDistAtBeta" decimals="1" units="ch" value="" />
+  <variable name="vSurfaceFireDistAtFlank" decimals="1" units="ch" value="" />
   <variable name="vSurfaceFireDistAtHead" decimals="1" units="ch" value="" />
+  <variable name="vSurfaceFireDistAtPsi" decimals="1" units="ch" value="" />
   <variable name="vSurfaceFireDistAtVector" decimals="1" units="ch" value="" />
   <variable name="vSurfaceFireEccentricity" decimals="2" units="ratio" value="" />
   <variable name="vSurfaceFireEffWindAtHead" decimals="1" units="mi/h" value="" />
   <variable name="vSurfaceFireEffWindAtVector" decimals="1" units="mi/h" value="" />
   <variable name="vSurfaceFireElapsedTime" decimals="1" units="h" value="" />
+  <variable name="vSurfaceFireEllipseF" decimals="1" units="ch" value="" />
+  <variable name="vSurfaceFireEllipseG" decimals="1" units="ch" value="" />
+  <variable name="vSurfaceFireEllipseH" decimals="1" units="ch" value="" />
   <variable name="vSurfaceFireFlameAngleAtVector" decimals="0" units="deg" value="" />
   <variable name="vSurfaceFireFlameHtAtVector" decimals="1" units="ft" value="" />
   <variable name="vSurfaceFireFlameHtPile" decimals="1" units="ft" value="" />
+  <variable name="vSurfaceFireFlameLengAtBeta" decimals="1" units="ft" value="" />
   <variable name="vSurfaceFireFlameLengAtHead" decimals="1" units="ft" value="" />
+  <variable name="vSurfaceFireFlameLengAtPsi" decimals="1" units="ft" value="" />
   <variable name="vSurfaceFireFlameLengAtVector" decimals="1" units="ft" value="" />
   <variable name="vSurfaceFireHeatPerUnitArea" decimals="0" units="Btu/ft2" value="" />
   <variable name="vSurfaceFireHeatSource" decimals="0" units="Btu/ft2/min" value="" />
   <variable name="vSurfaceFireLengDist" decimals="1" units="ch" value="" />
   <variable name="vSurfaceFireLengMapDist" decimals="2" units="in" value="" />
   <variable name="vSurfaceFireLengthToWidth" decimals="1" units="ratio" value="" />
+  <variable name="vSurfaceFireLineIntAtBeta" decimals="0" units="Btu/ft/s" value="" />
   <variable name="vSurfaceFireLineIntAtHead" decimals="0" units="Btu/ft/s" value="" />
+  <variable name="vSurfaceFireLineIntAtPsi" decimals="0" units="Btu/ft/s" value="" />
   <variable name="vSurfaceFireLineIntAtVector" decimals="0" units="Btu/ft/s" value="" />
   <variable name="vSurfaceFireMapDistAtBack" decimals="2" units="in" value="" />
+  <variable name="vSurfaceFireMapDistAtBeta" decimals="2" units="in" value="" />
+  <variable name="vSurfaceFireMapDistAtFlank" decimals="2" units="in" value="" />
   <variable name="vSurfaceFireMapDistAtHead" decimals="2" units="in" value="" />
+  <variable name="vSurfaceFireMapDistAtPsi" decimals="2" units="in" value="" />
   <variable name="vSurfaceFireMapDistAtVector" decimals="2" units="in" value="" />
   <variable name="vSurfaceFireMaxDirDiagram" code="" />
   <variable name="vSurfaceFireMaxDirFromNorth" decimals="0" units="deg" value="" />
@@ -601,18 +730,25 @@
   <variable name="vSurfaceFireShapeDiagram" code="" />
   <variable name="vSurfaceFireSlopeFactor" decimals="1" units="ratio" value="" />
   <variable name="vSurfaceFireSpreadAtBack" decimals="1" units="ch/h" value="" />
+  <variable name="vSurfaceFireSpreadAtBeta" decimals="1" units="ch/h" value="" />
+  <variable name="vSurfaceFireSpreadAtFlank" decimals="1" units="ch/h" value="" />
   <variable name="vSurfaceFireSpreadAtHead" decimals="1" units="ch/h" value="" />
+  <variable name="vSurfaceFireSpreadAtPsi" decimals="1" units="ch/h" value="" />
   <variable name="vSurfaceFireSpreadAtVector" decimals="1" units="ch/h" value="" />
   <variable name="vSurfaceFireVectorBeta" decimals="0" units="deg" value="" />
   <variable name="vSurfaceFireVectorDirFromCompass" code="" />
   <variable name="vSurfaceFireVectorDirFromNorth" decimals="0" units="deg" value="" />
   <variable name="vSurfaceFireVectorDirFromUpslope" decimals="0" units="deg" value="" />
+  <variable name="vSurfaceFireVectorPsi" decimals="0" units="deg" value="" />
   <variable name="vSurfaceFireVectorPsiFromFire" code="" />
   <variable name="vSurfaceFireVectorPsiFromNorth" decimals="0" units="deg" value="" />
   <variable name="vSurfaceFireVectorPsiFromUpslope" decimals="0" units="deg" value="" />
+  <variable name="vSurfaceFireVectorTheta" decimals="0" units="deg" value="" />
   <variable name="vSurfaceFireWidthDist" decimals="1" units="ch" value="" />
   <variable name="vSurfaceFireWidthMapDist" decimals="2" units="in" value="" />
   <variable name="vSurfaceFireWindFactor" decimals="1" units="ratio" value="" />
+  <variable name="vSurfaceFireWindFactorB" decimals="1" units="ratio" value="" />
+  <variable name="vSurfaceFireWindFactorK" decimals="1" units="ratio" value="" />
   <variable name="vSurfaceFireWindSpeedFlag" code="" />
   <variable name="vSurfaceFireWindSpeedLimit" decimals="1" units="mi/h" value="" />
   <variable name="vSurfaceFuelAspenCuring" decimals="0" units="%" value="" />
@@ -631,15 +767,34 @@
   <variable name="vSurfaceFuelBedDeadFraction" decimals="2" units="%" value="" />
   <variable name="vSurfaceFuelBedDepth" decimals="2" units="ft" value="1.00" />
   <variable name="vSurfaceFuelBedHeatSink" decimals="1" units="Btu/ft3" value="" />
+  <variable name="vSurfaceFuelBedLiveFraction" decimals="0" units="%" value="" />
   <variable name="vSurfaceFuelBedMextDead" decimals="0" units="%" value="15" />
   <variable name="vSurfaceFuelBedMextLive" decimals="0" units="%" value="" />
   <variable name="vSurfaceFuelBedModel" code="1, 2, gr1, gr2" />
   <variable name="vSurfaceFuelBedModel1" code="" />
   <variable name="vSurfaceFuelBedModel2" code="" />
+  <variable name="vSurfaceFuelBedModelCode" text="" />
+  <variable name="vSurfaceFuelBedModelNumber" decimals="0" units="" value="" />
   <variable name="vSurfaceFuelBedMoisDead" decimals="0" units="%" value="" />
   <variable name="vSurfaceFuelBedMoisLive" decimals="0" units="%" value="" />
   <variable name="vSurfaceFuelBedPackingRatio" decimals="4" units="ratio" value="" />
   <variable name="vSurfaceFuelBedSigma" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelChaparralAge" decimals="0" units="years" value="" />
+  <variable name="vSurfaceFuelChaparralDeadFuelFraction" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelChaparralDepth" decimals="2" units="ft" value="" />
+  <variable name="vSurfaceFuelChaparralLoadDead1" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadDead2" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadDead3" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadDead4" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadLive1" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadLive2" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadLive3" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadLive4" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadLiveLeaf" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadTotal" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadTotalDead" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralLoadTotalLive" decimals="3" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelChaparralType" code="" />
   <variable name="vSurfaceFuelDens0" decimals="1" units="lb/ft3" value="" />
   <variable name="vSurfaceFuelDens1" decimals="1" units="lb/ft3" value="" />
   <variable name="vSurfaceFuelDens2" decimals="1" units="lb/ft3" value="" />
@@ -648,6 +803,8 @@
   <variable name="vSurfaceFuelDens5" decimals="1" units="lb/ft3" value="" />
   <variable name="vSurfaceFuelDens6" decimals="1" units="lb/ft3" value="" />
   <variable name="vSurfaceFuelDens7" decimals="1" units="lb/ft3" value="" />
+  <variable name="vSurfaceFuelDens8" decimals="1" units="lb/ft3" value="" />
+  <variable name="vSurfaceFuelDens9" decimals="1" units="lb/ft3" value="" />
   <variable name="vSurfaceFuelDuffDepth" decimals="1" units="in" value="" />
   <variable name="vSurfaceFuelHeat0" decimals="0" units="Btu/lb" value="" />
   <variable name="vSurfaceFuelHeat1" decimals="0" units="Btu/lb" value="" />
@@ -657,6 +814,8 @@
   <variable name="vSurfaceFuelHeat5" decimals="0" units="Btu/lb" value="" />
   <variable name="vSurfaceFuelHeat6" decimals="0" units="Btu/lb" value="" />
   <variable name="vSurfaceFuelHeat7" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeat8" decimals="0" units="Btu/lb" value="" />
+  <variable name="vSurfaceFuelHeat9" decimals="0" units="Btu/lb" value="" />
   <variable name="vSurfaceFuelHeatDead" decimals="0" units="Btu/lb" value="8000" />
   <variable name="vSurfaceFuelHeatLive" decimals="0" units="Btu/lb" value="8000" />
   <variable name="vSurfaceFuelLife0" code="" />
@@ -667,6 +826,8 @@
   <variable name="vSurfaceFuelLife5" code="" />
   <variable name="vSurfaceFuelLife6" code="" />
   <variable name="vSurfaceFuelLife7" code="" />
+  <variable name="vSurfaceFuelLife8" code="" />
+  <variable name="vSurfaceFuelLife9" code="" />
   <variable name="vSurfaceFuelLoad0" decimals="2" units="ton/ac" value="" />
   <variable name="vSurfaceFuelLoad1" decimals="2" units="ton/ac" value="" />
   <variable name="vSurfaceFuelLoad2" decimals="2" units="ton/ac" value="" />
@@ -675,6 +836,8 @@
   <variable name="vSurfaceFuelLoad5" decimals="2" units="ton/ac" value="" />
   <variable name="vSurfaceFuelLoad6" decimals="2" units="ton/ac" value="" />
   <variable name="vSurfaceFuelLoad7" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoad8" decimals="2" units="ton/ac" value="" />
+  <variable name="vSurfaceFuelLoad9" decimals="2" units="ton/ac" value="" />
   <variable name="vSurfaceFuelLoadDead" decimals="2" units="ton/ac" value="" />
   <variable name="vSurfaceFuelLoadDead1" decimals="2" units="ton/ac" value="0.10" />
   <variable name="vSurfaceFuelLoadDead10" decimals="2" units="ton/ac" value="0.00" />
@@ -694,6 +857,8 @@
   <variable name="vSurfaceFuelMois5" decimals="0" units="%" value="" />
   <variable name="vSurfaceFuelMois6" decimals="0" units="%" value="" />
   <variable name="vSurfaceFuelMois7" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMois8" decimals="0" units="%" value="" />
+  <variable name="vSurfaceFuelMois9" decimals="0" units="%" value="" />
   <variable name="vSurfaceFuelMoisDead1" decimals="0" units="%" value="3" />
   <variable name="vSurfaceFuelMoisDead10" decimals="0" units="%" value="4" />
   <variable name="vSurfaceFuelMoisDead100" decimals="0" units="%" value="5" />
@@ -722,6 +887,8 @@
   <variable name="vSurfaceFuelSavr5" decimals="0" units="ft2/ft3" value="" />
   <variable name="vSurfaceFuelSavr6" decimals="0" units="ft2/ft3" value="" />
   <variable name="vSurfaceFuelSavr7" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavr8" decimals="0" units="ft2/ft3" value="" />
+  <variable name="vSurfaceFuelSavr9" decimals="0" units="ft2/ft3" value="" />
   <variable name="vSurfaceFuelSavrDead1" decimals="0" units="ft2/ft3" value="2000" />
   <variable name="vSurfaceFuelSavrLiveHerb" decimals="0" units="ft2/ft3" value="1800" />
   <variable name="vSurfaceFuelSavrLiveWood" decimals="0" units="ft2/ft3" value="1500" />
@@ -733,6 +900,8 @@
   <variable name="vSurfaceFuelSeff5" decimals="4" units="ratio" value="" />
   <variable name="vSurfaceFuelSeff6" decimals="4" units="ratio" value="" />
   <variable name="vSurfaceFuelSeff7" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelSeff8" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelSeff9" decimals="4" units="ratio" value="" />
   <variable name="vSurfaceFuelStot0" decimals="4" units="ratio" value="" />
   <variable name="vSurfaceFuelStot1" decimals="4" units="ratio" value="" />
   <variable name="vSurfaceFuelStot2" decimals="4" units="ratio" value="" />
@@ -741,15 +910,19 @@
   <variable name="vSurfaceFuelStot5" decimals="4" units="ratio" value="" />
   <variable name="vSurfaceFuelStot6" decimals="4" units="ratio" value="" />
   <variable name="vSurfaceFuelStot7" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelStot8" decimals="4" units="ratio" value="" />
+  <variable name="vSurfaceFuelStot9" decimals="4" units="ratio" value="" />
   <variable name="vSurfaceFuelTemp" decimals="0" units="oF" value="" />
   <variable name="vTimeIntegerDate" decimals="0" units="" value="" />
   <variable name="vTimeJulianDate" decimals="2" units="" value="" />
   <variable name="vTreeBarkThickness" decimals="1" units="in" value="" />
   <variable name="vTreeCanopyBulkDens" decimals="3" units="lb/ft3" value="" />
   <variable name="vTreeCanopyCover" decimals="0" units="%" value="" />
+  <variable name="vTreeCanopyCoverDownwind" code="" />
   <variable name="vTreeCanopyCrownFraction" decimals="1" units="%" value="" />
   <variable name="vTreeCount" decimals="0" units="per ac" value="" />
   <variable name="vTreeCoverHt" decimals="0" units="ft" value="" />
+  <variable name="vTreeCoverHtDownwind" decimals="0" units="ft" value="" />
   <variable name="vTreeCrownBaseHt" decimals="1" units="ft" value="" />
   <variable name="vTreeCrownLengFractionScorchedAtVector" decimals="0" units="%" value="" />
   <variable name="vTreeCrownLengScorchedAtVector" decimals="1" units="ft" value="" />
