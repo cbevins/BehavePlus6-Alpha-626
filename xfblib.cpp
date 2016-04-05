@@ -1219,16 +1219,18 @@ double FBL_CrownFireSpreadRate(
         double mc100,
 		double mcWood )
 {
-	double aspect              = 180.;
-    double slopeFraction       = 0.0;
-    double windDirFromUpslope  = 0.0;
-    double midflameWindSpeed   = 0.4 * windAt20Ft;	// Rothermel (1991) p 9
-	bool   applyWindSpeedLimit = true;
     double mois[4];
     mois[0] = mc1;
     mois[1] = mc10;
     mois[2] = mc100;
     mois[3] = mcWood;
+
+	// V6 Refactor
+	Bp6CrownFire cf;
+	cf.setMoisture( mois );
+	cf.setWindSpeedAt20FtFpm( 88. * windAt20Ft );
+	double crownRos = cf.getActiveCrownFireRos();
+    return crownRos;
 
 #ifdef INCLUDE_OLD_CROWN_REFACTOR
 	Bp6CrownFuelBedIntermediates fb;
@@ -1250,25 +1252,6 @@ double FBL_CrownFireSpreadRate(
 	double rosMax = sr.getMaxSpreadRate();
     double crownRosOld = 3.34 * rosMax;
 #endif
-
-	// V6 Refactor
-	Bp6CrownFire cf;
-	cf.setMoisture( mois );
-	cf.setSite(
-		slopeFraction,
-		aspect,
-		88.*midflameWindSpeed,
-		windDirFromUpslope,
-		applyWindSpeedLimit );
-	double crownRos = cf.getActiveCrownFireRos();
-
-#ifdef INCLUDE_OLD_CROWN_REFACTOR
-	if ( fabs( crownRos-crownRosOld ) > 1.0e-7 )
-	{
-		printf( "\n*** crown fire ros v6=%g, old=%g\n", crownRos, crownRosOld );
-	}
-#endif
-    return( crownRos );
 }
 
 //------------------------------------------------------------------------------

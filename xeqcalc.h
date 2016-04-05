@@ -442,6 +442,7 @@ public:
     EqFun *fContainFFReportSpread;
     EqFun *fContainFFSingle;
 
+	EqFun *fCrownFireActiveCritOpenWindSpeed;
 	EqFun *fCrownFireActiveCritSurfSpreadRate;
 	EqFun *fCrownFireActiveCrown;
     EqFun *fCrownFireActiveRatio;
@@ -769,6 +770,7 @@ public:
     void WthrSummerSimmerIndex( void );
     void WthrWindChillTemp( void );
 
+	void V6CrownFireActiveCriticalOpenWindSpeed( void );
 	void V6CrownFireActiveCriticalSurfaceSpreadRate( void );
 	void V6CrownFireActiveCrown( void );
 	void V6CrownFireActiveRatio( void );
@@ -816,6 +818,9 @@ public:
 
 	Bp6CrownFire*   m_Bp6CrownFire;
 	Bp6SurfaceFire* m_Bp6SurfaceFire;
+	double m_canopyRbQig;
+	double m_canopyRxInt;
+	double m_canopySlopeFactor;
 };
 
 #endif

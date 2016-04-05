@@ -190,6 +190,7 @@ void EqCalc::reconfigureCrownModule( PropertyDict *prop, int /* release */ )
 	// These are Rothermel crown fire functions
 
 	// These are Scott & Reinhardt crown fire functions
+	fCrownFireActiveCritOpenWindSpeed->m_active = true;
 	fCrownFireActiveCritSurfSpreadRate->m_active = true;
 	fCrownFireActiveCrown->m_active         = true;
     fCrownFireActiveRatio->m_active         = true;

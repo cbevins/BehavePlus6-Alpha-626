@@ -8086,6 +8086,7 @@ EqCalc::EqCalc( EqTree *eqTree ) :
     fContainFFReportSpread = m_eqTree->setEqFunAddress( "fContainFFReportSpread", &EqCalc::ContainFFReportSpread );
     fContainFFSingle       = m_eqTree->setEqFunAddress( "fContainFFSingle", &EqCalc::ContainFFSingle );
 
+	fCrownFireActiveCritOpenWindSpeed = m_eqTree->setEqFunAddress( "fCrownFireActiveCritOpenWindSpeed", &EqCalc::V6CrownFireActiveCriticalOpenWindSpeed );
 	fCrownFireActiveCritSurfSpreadRate = m_eqTree->setEqFunAddress( "fCrownFireActiveCritSurfSpreadRate", &EqCalc::V6CrownFireActiveCriticalSurfaceSpreadRate );
 	fCrownFireActiveCrown         = m_eqTree->setEqFunAddress( "fCrownFireActiveCrown", &EqCalc::V6CrownFireActiveCrown );
     fCrownFireActiveRatio         = m_eqTree->setEqFunAddress( "fCrownFireActiveRatio", &EqCalc::V6CrownFireActiveRatio );

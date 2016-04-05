@@ -7885,7 +7885,7 @@
     sortOut="02:202:1"
     nativeUnits="ft/min" nativeDecimals="1"
     englishUnits="mi/h" englishDecimals="1"
-    metricUnits="m/s" metricDecimals="1"
+    metricUnits="m/min" metricDecimals="1"
     minimum="0"
     maximum="10000"
     default="0"
@@ -7917,7 +7917,7 @@
     sortOut="02:204:1"
     nativeUnits="ft/min" nativeDecimals="1"
     englishUnits="ft/min" englishDecimals="1"
-    metricUnits="m/s" metricDecimals="1"
+    metricUnits="m/min" metricDecimals="1"
     minimum="0"
     maximum="10000"
     default="0"
@@ -8415,7 +8415,7 @@
     sortOut="02:110:1"
     nativeUnits="ft/min" nativeDecimals="1"
     englishUnits="ft/min" englishDecimals="1"
-    metricUnits="m/s" metricDecimals="1"
+    metricUnits="m/min" metricDecimals="1"
     minimum="0"
     maximum="10000"
     default="0"
@@ -20123,6 +20123,14 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     output="vContainXMin"
     output="vContainYMax" />
 
+  <function name="fCrownFireActiveCritOpenWindSpeed"
+    module="crown"
+    releaseFrom="30000"
+    releaseThru="99999"
+    input="vTreeCanopyBulkDens"
+	  input="vCrownFireActiveSpreadRate"
+    output="vCrownFireActiveCritOpenWindSpeed" />
+
   <function name="fCrownFireActiveCritSurfSpreadRate"
     module="crown"
     releaseFrom="30000"
@@ -20229,8 +20237,7 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     input="vSurfaceFuelMoisDead100"
     input="vSurfaceFuelMoisLiveWood"
     input="vWindSpeedAt20Ft"
-    output="vCrownFireActiveSpreadRate"
-    output="vCrownFireActiveCritOpenWindSpeed" />
+    output="vCrownFireActiveSpreadRate" />
 
   <function name="fCrownFireCanopyFractionBurned"
     module="crown"
