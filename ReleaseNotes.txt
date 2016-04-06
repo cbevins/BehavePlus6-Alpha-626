@@ -16,9 +16,9 @@ Build 617 - Apr 5, 2016
 	
 --	The label for Active Crowqn Critical Open Wind Speed was changed.
 	(Issue #071FAH - Change variable name for Active Crown Critical
-	Open WInd Speed)
+	Open Wind Speed)
 
---	The SUrface SPread distance is now listed as aa [SURFACE] module
+--	The Surface Spread distance is now listed as aa [SURFACE] module
 	output in the Output Variables section
 	(Issue #072 FAH - Error in Output Variable Module
 	
