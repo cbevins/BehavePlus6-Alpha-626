@@ -530,7 +530,7 @@ void Bp6CrownFire::setSite(
         double windDirFromUpslope,		// wind heading direction (degrees clockwise from upslope)
 		bool   applyWindSpeedLimit )	// if TRUE, apply Rothermel's upper wind speed limit
 {
-	setWindSpeedAt20FtFpm( 88. * midflameWindSpeed / 0.4 );
+	setWindSpeedAt20FtFpm( midflameWindSpeed / 0.4 );
 }
 
 //------------------------------------------------------------------------------

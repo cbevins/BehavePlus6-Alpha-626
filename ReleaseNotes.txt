@@ -1,4 +1,53 @@
 ---------------------------------------
+Build 617 - Apr 5, 2016
+---------------------------------------
+
+--	The CROWN Module input wqorksheet now correctly displays
+	the minimum	number of required inputs.
+	(Issue #068FAH - Program requiring non-essential inputs for CROWN)
+	
+--	The CROWN Module now correctly requests flame length input
+	on the worksheet when "Surface fire intensity is entered as:
+	flame length" is selected.
+	(Issue #069 FAH - CROWN requests fireline intensity, not flame length)
+	
+--	The Run Option note for maximum wind speed limit was changed
+	(Issue #070FAH - Change Run Option note for maximum wind speed limit)
+	
+--	The label for Active Crowqn Critical Open Wind Speed was changed.
+	(Issue #071FAH - Change variable name for Active Crown Critical
+	Open WInd Speed)
+
+--	The SUrface SPread distance is now listed as aa [SURFACE] module
+	output in the Output Variables section
+	(Issue #072 FAH - Error in Output Variable Module
+	
+--	The Palmetto-Gallberry CHOICES window now displays the correct labels
+	for coverage and basal area options.
+	(Issue #073FAH - Palmetto-Gallberry CHOICES wind is incorrect)
+	
+--	The fire ellipse size parameters (F, G, and H) are now derived as
+	velocities rather than distances at a specific elapsed time.
+	(Issue #074FAH - Elapsed Time incorrectly requested in SURFACE)
+	
+--	The SURFACE Module Input-Directions tab fire spread option
+	"Directions from Ignition Point ... method through V5" has been removed
+	and the term "FIRE FRONT" has been changed to "FIRE PERIMETER".
+	(Issue #075FAH - Change to SURFACE Options)
+	
+--	The crown fire spotting distance variable "Crown Canopy Height"
+	has been removed in favor of tge "Canopy Height" variable.
+	(Issue #101CDB - Email from FAH on Jan 15, 2016)
+	
+--	The Batch Behave link from the index page to the download page was fixed.
+	(Issue #102CDB - Broken link in Batch Behave, email from FAH on Mar 22, 2016)
+	
+--	The Scott & Reinhardt crown fire output variables are only available
+	when linked to the SURFACE Modile.
+	(Issue #103CDB - Viability of S&R Crown Model in Stand-alone Mode,
+	email from FAH on Mar 16, 2016).
+
+---------------------------------------
 Build 616 - Sep 30, 2015
 ---------------------------------------
 

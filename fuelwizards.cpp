@@ -419,7 +419,7 @@ static const double PalmettoCoverValues[] =
 
 static const QString PalmettoCoverModels[] =
 {
-    "", "Wizard:Fuel:PalmettoCover:15",
+    "Wizard:Fuel:PalmettoCover:15",
     "", "Wizard:Fuel:PalmettoCover:50",
     "", "Wizard:Fuel:PalmettoCover:85", ""
 };
@@ -446,7 +446,7 @@ static const double PalmettoOverstoryBasalAreaValues[] =
 
 static const QString PalmettoOverstoryBasalAreaModels[] =
 {
-    "", "Wizard:Fuel:PalmettoOverstoryBasalArea:30",
+    "Wizard:Fuel:PalmettoOverstoryBasalArea:30",
     "", "Wizard:Fuel:PalmettoOverstoryBasalArea:70",
     "", "Wizard:Fuel:PalmettoOverstoryBasalArea:110", ""
 };

@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqapp.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree application class methods.
  */
@@ -838,8 +838,7 @@ QString EqApp::findProducerModule( const QString &varName )
 	// which sometimes get calculated in SURFACE even though they are input to SIZE
 	// Pat wants only their INPUT module to be listed (i.e., just 'SIZE').
 	const char* str = varName.latin1();
-	if ( ! strcmp( str, "vSurfaceFireLengthToWidth" )
-	  || ! strcmp( str, "vSurfaceFireDistAtHead" ) )
+	if ( ! strcmp( str, "vSurfaceFireLengthToWidth" ) )
 	{
 		modules = "SIZE";
 		return( modules );

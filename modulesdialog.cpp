@@ -450,32 +450,6 @@ void ModulesDialog::crownOptions( void )
     addOutput( p, "crownCalcActiveFlameLeng",
                   "vCrownFireActiveFlameLeng",
                   row, 0, row, 0 ); row++;
-    p->addLabel( "!",
-                  row, 0, row, 0 ); row++;
-    varCheckBox = addOutput( p, "crownCalcPassiveSpreadRate",
-                  "vCrownFirePassiveSpreadRate",
-                  row, 0, row, 0 ); row++;
-    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
-	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
-
-	varCheckBox = addOutput( p, "crownCalcPassiveHeatPerUnitArea",
-                  "vCrownFirePassiveHeatPerUnitArea",
-                  row, 0, row, 0 ); row++;
-    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
-	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
-
-
-    varCheckBox = addOutput( p, "crownCalcPassiveFireLineInt",
-                  "vCrownFirePassiveFireLineInt",
-                  row, 0, row, 0 ); row++;
-    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
-	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
-
-    varCheckBox = addOutput( p, "crownCalcPassiveFlameLeng",
-                  "vCrownFirePassiveFlameLeng",
-                  row, 0, row, 0 ); row++;
-    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
-	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
 
 	// Add the "Fire Type Outputs" page
     p = dialog->addPage( "PropertyTabDialog:Crown:FireTypeOutputs:Tab", 1, 1,
@@ -531,25 +505,6 @@ void ModulesDialog::crownOptions( void )
     addOutput( p, "crownCalcFireLengthToWidth",
                   "vCrownFireLengthToWidth",
                   row, 0, row, 0 ); row++;
-    p->addLabel( "!",
-                  row, 0, row, 0 ); row++;
-	varCheckBox = addOutput( p, "crownCalcPassiveSpreadDist",
-                  "vCrownFirePassiveSpreadDist",
-                  row, 0, row, 0 ); row++;
-    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
-	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
- 
-	varCheckBox = addOutput( p, "crownCalcPassiveFireArea",
-                  "vCrownFirePassiveFireArea",
-                  row, 0, row, 0 ); row++;
-    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
-	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
-
-	varCheckBox = addOutput( p, "crownCalcPassiveFirePerimeter",
-                  "vCrownFirePassiveFirePerimeter",
-                  row, 0, row, 0 ); row++;
-    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
-	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
 
 	// Add the "Canopy Outputs" page
     p = dialog->addPage( "PropertyTabDialog:Crown:CanopyOutputs:Tab", 1, 1,
@@ -562,9 +517,6 @@ void ModulesDialog::crownOptions( void )
                   row, 0, row, 0 ); row++;
     addOutput( p, "crownCalcHeatPerUnitAreaCanopy",
                   "vCrownFireHeatPerUnitAreaCanopy",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcCanopyFractionBurned",
-                  "vCrownFireCanopyFractionBurned",
                   row, 0, row, 0 ); row++;
 
 	// Add the "Intermediate Outputs" page
@@ -579,23 +531,11 @@ void ModulesDialog::crownOptions( void )
     addOutput( p, "crownCalcCriticalSurfaceFlameLeng",
                   "vCrownFireCritSurfFlameLeng",
                   row, 0, row, 0 ); row++;
-	// TO BE REMOVED
     addOutput( p, "crownCalcCritSurfSpreadRate",
                   "vCrownFireCritSurfSpreadRate",
                   row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcCriticalCrownSpreadRate",
-                  "vCrownFireCritCrownSpreadRate",
-                  row, 0, row, 0 ); row++;
-	// TO BE REMOVED
-    addOutput( p, "crownCalcActiveCritOpenWindSpeed",
-                  "vCrownFireActiveCritOpenWindSpeed",
-                  row, 0, row, 0 ); row++;
 
-	// Unused
-    //addOutput( p, "crownCalcActiveCritSurfSpreadRate",
-    //              "vCrownFireActiveCritSurfSpreadRate",
-    //              row, 0, row, 0 ); row++;
-    //addOutput( p, "crownCalcCrownSpreadRate",
+	//addOutput( p, "crownCalcCrownSpreadRate",
     //              "vCrownFireSpreadRate",
     //              row, 0, row, 0 ); row++;
     //addOutput( p, "crownCalcFireLineInt",
@@ -617,6 +557,82 @@ void ModulesDialog::crownOptions( void )
     //              "vCrownFirePerimeter",
     //              row, 0, row, 0 ); row++;
 
+	// Add the "Intermediate Outputs" page
+    p = dialog->addPage( "PropertyTabDialog:Crown:ScottReinhardtOutputs:Tab", 1, 1,
+                         "Wildfire3.png",
+                         "Wildfire",
+                         "selectOutput.html" );
+	row = 0;
+
+	p->addLabel( "The Scott & Reinhardt (2001) outputs below:", row, 0, row, 0 ); row++;
+    p->addLabel( "are available only when linked to SURFACE", row, 0, row, 0 ); row++;
+
+	varCheckBox = addOutput( p, "crownCalcPassiveSpreadRate",
+                  "vCrownFirePassiveSpreadRate",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+	varCheckBox = addOutput( p, "crownCalcPassiveHeatPerUnitArea",
+                  "vCrownFirePassiveHeatPerUnitArea",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+    varCheckBox = addOutput( p, "crownCalcPassiveFireLineInt",
+                  "vCrownFirePassiveFireLineInt",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+    varCheckBox = addOutput( p, "crownCalcPassiveFlameLeng",
+                  "vCrownFirePassiveFlameLeng",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+	varCheckBox = addOutput( p, "crownCalcPassiveSpreadDist",
+                  "vCrownFirePassiveSpreadDist",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+ 
+	varCheckBox = addOutput( p, "crownCalcPassiveFireArea",
+                  "vCrownFirePassiveFireArea",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+	varCheckBox = addOutput( p, "crownCalcPassiveFirePerimeter",
+                  "vCrownFirePassiveFirePerimeter",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+    varCheckBox = addOutput( p, "crownCalcCanopyFractionBurned",
+                  "vCrownFireCanopyFractionBurned",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+	varCheckBox = addOutput( p, "crownCalcCriticalCrownSpreadRate",
+                  "vCrownFireCritCrownSpreadRate",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+	varCheckBox = addOutput( p, "crownCalcActiveCritOpenWindSpeed",
+                  "vCrownFireActiveCritOpenWindSpeed",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+    varCheckBox = addOutput( p, "crownCalcActiveCritSurfSpreadRate",
+                  "vCrownFireActiveCritSurfSpreadRate",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+	
 	// Show then delete the dialog.
     dialog->resize( sizeHint() );
     dialog->showPage( p1 );
@@ -1183,9 +1199,12 @@ void ModulesDialog::surfaceOptions( void )
     p->addRadio( "surfaceConfSpreadDirPointSourcePsi",
                  "PropertyTabDialog:Surface:Dir:Spread:PointSourcePsi",
                   bg );
-    p->addRadio( "surfaceConfSpreadDirPointSourceBeta",
+	if ( false )
+	{
+		p->addRadio( "surfaceConfSpreadDirPointSourceBeta",
                  "PropertyTabDialog:Surface:Dir:Spread:PointSourceBeta",
                   bg );
+	}
     bg->setFixedHeight( bg->sizeHint().height() );
 
 	// Add the "Directions" button group "Wind direction is" ...
