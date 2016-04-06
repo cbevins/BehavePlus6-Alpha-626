@@ -5,9 +5,19 @@ Mar 22, 2016 - Apr 21, 2016
 ?? hours
 =============================
 
-2016-04-05 (2.0 h) [25.0 h total]
+2016-04-05 (4.0 h) [27.0 h total]
 
 - Refactored xeqcalcV6Crown.cpp, xeqcalcV6Main.cpp, xflib.cpp.
+
+- Developed Build 617 Wix files.
+
+- Created and tested Build 617 installation packake bp6_617.msi,
+	and uploaded it to DropBox.
+	
+- Updated the ReleaseNotes.txt and uploaded it to DropBox.
+
+- Sent FAH email with download links to bp6-617.msi and
+	ReleaseNotes.txt.
 
 
 2016-04-04 (2.0 h) [23.0 h total]
