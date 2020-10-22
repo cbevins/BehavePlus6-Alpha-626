@@ -1,59 +1,71 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Crown Fire Length-to-Width Ratio Page</TITLE>
-  </HEAD>
-  <BODY>
-<TABLE WIDTH="100%">
-	<TR>
-		<TD width="100"> <IMG SRC="logo90x90.png" ALT="BehavePlus Logo"></TD>
-		<TD ALIGN="left" VALIGN="center"><H2><FONT COLOR="#ff5500">Crown Fire Length-to-Width Ratio</FONT></H2></TD>
-	</TR>
-</TABLE>
-<HR>
+<html>
+  <head>
+    <title>BehavePlus Crown Fire Length-to-Width Ratio Page</title>
+  </head>
+  <body>
+<table width="100%">
+	<tr>
+		<td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+		<td align="left" valign="center"><h2><font color="#ff5500">Crown Fire Length-to-Width Ratio</font></h2></td>
+	</tr>
+</table>
+<hr>
 
-<P> The crown fire length-to-width ratio is based on 20-ft wind speed as described by Rothermel (1991, 
-p.16).
-<P>
+<p>The crown fire length-to-width ratio is used to describe an elliptically shaped fire. For crown fire, it is based on 20-foot wind speed and is used to calculate crown fire perimeter as described by Rothermel (1991, p. 16). A similar calculation for surface fire length-to-width ratio is used to calculate surface fire perimeter using the effective wind speed (combined estimated effect of wind and slope). Slope is not factored into the crown fire length-to-width ratio. In both cases, the calculated fire shape becomes longer and narrower as the length-to-width ratio increases.</p>
 
+<p></p>
 <table border="1" cellspacing="0" cellpadding="2">
 	<tr bgcolor="#CCCCCC">
-		<td width="67" valign="top"><p align="center"><strong>I/O</strong></p></td>
-		<td width="109" valign="top"><p align="center"><strong>Module</strong></p></td>
-		<td width="207" valign="top"><p align="center"><strong>If</strong></p></td>
-		<td width="207" valign="top"> <p align="center"><strong>Notes</strong></p></td>
+		<td width="67" valign="top" align="center"><strong>I/O</strong></td>
+		<td width="109" valign="top" align="center"><strong>Module</strong></td>
+		<td width="207" valign="top" align="center"><strong>If</strong></td>
+		<td width="207" valign="top" align="center"><strong>Notes</strong></td>
 	</tr> 
 	<tr>
-		<td width="67" valign="top"><p>Input</p></td>
+		<td width="67" valign="top">Input</td>
 		<td width="109" valign="top">None</td>
 		<td width="207" valign="top">&nbsp;</td>
 		<td width="207" valign="top">&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="67" valign="top"><p>Output</p></td>
-		<td width="109" valign="top"><p>CROWN</p></td>
-		<td width="207" valign="top"><p>&nbsp;</p></td>
-		<td width="207" valign="top"><p>&nbsp;</p></td>
+		<td width="67" valign="top">Output</td>
+		<td width="109" valign="top">CROWN</td>
+		<td width="207" valign="top">&nbsp;</td>
+		<td width="207" valign="top">&nbsp;</td>
 	</tr>
 </table>
 
-<p>
-<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
-    <UL>
-      <LI><A HREF="vWindSpeedAt20Ft.html">20-Foot Wind Speed</A></LI>
-      <LI><A HREF="vCrownFireArea.html">Crown Fire Area</A></LI>
-      <LI><A HREF="vCrownFirePerimeter.html">Crown Fire Perimeter</A></LI>
-    </UL>
-<p>
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+<p></p>
+Example crown fire length-to-width ratios: This graph shows example values for 20-ft wind speed and the resulting effect on the crown fire length-to-width ratio. As wind speed increases, the fire shape becomes longer and narrower. To demonstrate this effect, the length is constant in the image below, while the width changes.<br>
+<a name="firelengthtowidthcrown.png"></a>
+<table>
+	<tr>
+		<td><img src="firelengthtowidthcrown.png" alt="Example Crown Fire Length-to-Width Ratio Values"></td>
+	</tr>
+</table>
+
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+    <ul>
+      <li><a href="vWindSpeedAt20Ft.html">20-foot Wind Speed</a></li>
+      <li><a href="vCrownFireActiveFireArea.html">Active Crown Fire Area</a></li>
+      <li><a href="vCrownFireActiveFirePerimeter.html">Active Crown Fire Perimeter</a></li>
+      <li><a href="vCrownFirePassiveFireArea.html">Passive Crown Fire Area</a></li>
+      <li><a href="vCrownFirePassiveFirePerimeter.html">Passive Crown Fire Perimeter</a></li>
+      <li><a href="vSurfaceFireLengthToWidth.html">Surface Fire Length-to-Width Ratio</a></li>
+    </ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
  
-<HR>
-<FONT SIZE=2>BehavePlus On-Line Documentation, March 19, 2014.</FONT>
-</BODY>
-</HTML>
+<hr>
+<font size="2">BehavePlus Online Documentation, September 14, 2017.</font>
+</body>
+</html>

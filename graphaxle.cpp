@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file graphaxle.cpp
- *  \version BehavePlus5
- *  \author Copyright (C) 2002-2011 by Collin D. Bevins.  All rights reserved.
+ *  \version BehavePlus6
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief GraphAxle class methods.
  */

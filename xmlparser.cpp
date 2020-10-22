@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xmlparser.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BehavePlus XML definition document parser base class methods.
  *
@@ -13,6 +13,8 @@
 #include "appmessage.h"
 #include "apptranslator.h"
 #include "xmlparser.h"
+
+//#include <qdatetime.h>
 
 // Standard include files
 #include <iostream>
@@ -451,8 +453,9 @@ void xmlWriteFooter( FILE *fptr, const QString &name )
 void xmlWriteHeader( FILE *fptr, const QString &name, const QString &type,
         int release )
 {
-    fprintf( fptr, "<?xml version=\"1.0\" encoding=\"iso-8859-1\" standalone=\"yes\" ?>\n\n" );
-    fprintf( fptr, "<!-- Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved. -->\n\n" );
+	//int year = QDate().year();
+    fprintf( fptr, "<?xml version=\"1.0\" encoding=\"iso-8859-1\" standalone=\"yes\" ?>\n" );
+    //fprintf( fptr, "<!-- Copyright (C) 2002-%d by Collin D. Bevins.  All rights reserved. -->\n\n", year );
     fprintf( fptr, "<%s type=\"%s\" release=\"%d\">\n",
         name.latin1(), type.latin1(), release );
 }

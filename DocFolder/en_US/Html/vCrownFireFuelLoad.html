@@ -1,25 +1,25 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Crown Load Page</TITLE>
-  </HEAD>
-  <BODY>
-<TABLE WIDTH="100%">
-	<TR>
-		<TD width="100"><IMG SRC="logo90x90.png" ALT="BehavePlus Logo"></TD>
-		<TD ALIGN="left" VALIGN="center"> 
-			<H2><FONT COLOR="#ff5500">Crown Load</FONT></H2>
-		</TD>
-	</TR>
-</TABLE>
-<HR>
-<P>Crown load is used to calculate crown fireline intensity as described by Rothermel (1991). Crown load is found by multiplying canopy bulk density by the difference between canopy height and canopy base height.
-<P> 
+<html>
+  <head>
+    <title>BehavePlus Crown Fuel Load Page</title>
+  </head>
+  <body>
+<table width="100%">
+	<tr>
+		<td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+		<td align="left" valign="center"><h2><font color="#ff5500">Crown Fuel Load</font></h2></td>
+	</tr>
+</table>
+<hr>
+
+<p>Crown fuel load is an intermediate value that is used to calculate canopy heat per unit area as described by Rothermel (1991). Crown fuel load is found by multiplying canopy bulk density by the difference between canopy height and canopy base height.</p>
+
+<p></p> 
 <table border="1" cellspacing="0" cellpadding="2">
 	<tr bgcolor="#CCCCCC">
-		<td width="67" valign="top"><p align="center"><strong>I/O</strong></p></td>
-		<td width="109" valign="top"><p align="center"><strong>Module</strong></p></td>
-		<td width="207" valign="top"><p align="center"><strong>If</strong></p></td>
-		<td width="207" valign="top"> <p align="center"><strong>Notes</strong></p></td>
+		<td width="67" valign="top" align="center"><strong>I/O</strong></td>
+		<td width="109" valign="top" align="center"><strong>Module</strong></td>
+		<td width="207" valign="top" align="center"><strong>If</strong></td>
+		<td width="207" valign="top" align="center"><strong>Notes</strong></td>
 	</tr> 
 	<tr>
 		<td width="67" valign="top">Input</td>
@@ -31,30 +31,40 @@
 		<td width="67" valign="top">Output</td>
 		<td width="109" valign="top">CROWN</td>
 		<td width="207" valign="top">&nbsp;</td>
-		<td width="207" valign="top">Intermediate value </td>
+		<td width="207" valign="top">Intermediate value</td>
 	</tr>
 </table>
-<p>
-  <table><tr><td><A NAME="CrownLoad.png"></a> <IMG SRC="CrownLoad.png" ALT="Crown Module Data Flow - Crown Load"></td></tr></table> 
-<p>
-<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
-    <UL>
-      <LI><A HREF="vTreeCanopyBulkDens.html">Canopy Bulk Density</A></LI>
-      <LI><A HREF="vCrownFireHeatPerUnitAreaCanopy.html">Canopy Heat per Unit Area</A></LI>
-      <LI><A HREF="vTreeCoverHt.html">Canopy Height</A></LI>
-      <LI><A HREF="vCrownFireLineInt.html">Crown Fireline Intensity</A></LI>
-    </UL>
-<P>
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+
+<p></p>
+<table>
+  	<tr>
+  		<td><a name="CrownLoad.png"></a> <img src="CrownLoad.png" alt="Active Crown Fire Module Data Flow - Crown Fuel Load"></td>
+    </tr>
+  	<tr>
+  		<td><a name="CrownLoad_Passive.png"></a> <img src="CrownLoad_Passive.png" alt="Passive Crown Fire Module Data Flow - Crown Fuel Load"></td>
+    </tr>
+</table> 
+
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+    <ul>
+      <li><a href="vTreeCanopyBulkDens.html">Canopy Bulk Density</a></li>
+      <li><a href="vCrownFireHeatPerUnitAreaCanopy.html">Canopy Heat per Unit Area</a></li>
+      <li><a href="vTreeCrownBaseHt.html">Canopy Base Height</a></li>
+      <li><a href="vTreeCoverHt.html">Canopy Height</a></li>
+    </ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
  
-<HR>
-<FONT SIZE=2>BehavePlus On-Line Documentation, March 19, 2014.</FONT>
-</BODY>
-</HTML>
+<hr>
+<font size="2">BehavePlus Online Documentation, July 26, 2017.</font>
+</body>
+</html>

@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqtree.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Experimental Equation Tree class methods.
  */
@@ -210,6 +210,8 @@ EqTree::EqTree( EqApp *eqApp, const QString &name, int funCount, int funPrime,
     while( it.current() )
     {
         prop = (Property *) it.current();
+		const char *key = it.currentKey();
+		const char* value = prop->m_value;
         m_propDict->add( it.currentKey(), prop->m_type, prop->m_value,
             prop->m_releaseFrom, prop->m_releaseThru );
         ++it;

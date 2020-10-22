@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file bpcomposegraphs.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BpDocument graph composition methods.
  *
@@ -170,8 +170,7 @@ void BpDocument::composeBarGraph( int yid, EqVar *xVar, EqVar *yVar,
     double xMajorStep = 3. * xMinorStep;
 
     // Create each data bar and add it to the graph.
-    double x0, x1, y0, y1, xl;
-    double yl = 0.;
+    double x0, x1, y0, y1, xlabel, ylabel;
     double rotation = 0.;
     QString label;
     int row, vid;
@@ -183,7 +182,6 @@ void BpDocument::composeBarGraph( int yid, EqVar *xVar, EqVar *yVar,
         x1 = xMin + ( row + 1 ) * xMajorStep;
         y0 = yParms->m_axleMin;
         y1 = tableVal( vid );
-        xl = 0.5 * (x0 + x1) ;
 
         // If we're out of colors, start over.
         if ( colorId >= colors )
@@ -200,7 +198,9 @@ void BpDocument::composeBarGraph( int yid, EqVar *xVar, EqVar *yVar,
         // Create the bar label.
         int iid = (int) tableRow( row );
         label = xVar->m_itemList->itemName( iid );
-        bar->setGraphBarLabel( label, xl, yl, textFont, textColor, rotation );
+        xlabel = 0.5 * (x0 + x1) ;
+		ylabel = y0;
+        bar->setGraphBarLabel( label, xlabel, ylabel, textFont, textColor, rotation );
     }
 
     //--------------------------------------------------------------------------
@@ -466,6 +466,8 @@ void BpDocument::composeGraphBasics( Graph *g,
     QBrush canvasBg( "white", SolidPattern );
     QPen   canvasBox( "black", 1, NoPen );
 
+	QString qStr("");
+
     //--------------------------------------------------------------------------
     // Create the graph canvas, world, and decoration.
     //--------------------------------------------------------------------------
@@ -482,32 +484,42 @@ void BpDocument::composeGraphBasics( Graph *g,
     int    yDec       = yParms->m_decimals;
 
     // Graph title and subtitle.
-    QString qStr = m_eqTree->m_eqCalc->docDescriptionStore().stripWhiteSpace();
-    //if ( qStr.isNull() || qStr.isEmpty() )
+    QString title = m_eqTree->m_eqCalc->docDescriptionStore().stripWhiteSpace();
+    //if ( title.isNull() || title.isEmpty() )
     //{
-    //  translate( qStr, "BpDocument:NoRunDescription" );
+    //  translate( title, "BpDocument:NoRunDescription" );
     //}
-    g->setTitle( qStr, titleFont, titleColor );
+	const char *str = title.latin1();
+    g->setTitle( title, titleFont, titleColor );
 
+	QString subTitle("");
     if ( property()->boolean( "graphTitleActive" ) )
     {
         QString text("");
         translate( text, "BpDocument:Graphs:By" );
-        qStr = *(yVar->m_label) + "\n" + text + " " + *(xVar->m_label);
+        subTitle = *(yVar->m_label) + "\n" + text + " " + *(xVar->m_label);
+		str = subTitle.latin1();
         if ( curves > 1 && isLineGraph && zVar )
         {
             translate( text, "BpDocument:Graphs:And" );
-            qStr += "\n" + text + " " + *(zVar->m_label);
+            subTitle += "\n" + text + " " + *(zVar->m_label);
+			str = subTitle.latin1();
         }
-        g->setSubTitle( qStr, subTitleFont, subTitleColor );
+		str = subTitle.latin1();
     }
 	// Added in Build 607 to display the Fire Direction as the subtitle
-	qStr = m_eqTree->m_eqCalc->getSubtitle();
-	if ( qStr.length() > 0 )
+	// This method returns "Head Fire", "Backing Fire", "Flanking Fire", etc.
+	QString fireDir = m_eqTree->m_eqCalc->getSubtitle();
+	str = fireDir.latin1();
+	if ( fireDir.length() > 0 )
 	{
-		g->setSubTitle( qStr, subTitleFont, subTitleColor );
+		subTitle += ( subTitle.length() > 0 ) ? "\n" : "";
+		subTitle += fireDir;
+		str = subTitle.latin1();
 	}
-    // Use portrait orientation (assuming screen output, not printer).
+	g->setSubTitle( subTitle, subTitleFont, subTitleColor );
+
+	// Use portrait orientation (assuming screen output, not printer).
     g->setCanvasRotation( 0.0 );
     g->setCanvasScale( 1.0, 1.0 );
     // NOTE: to change the graph location or size,

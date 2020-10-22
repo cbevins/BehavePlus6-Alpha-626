@@ -52,6 +52,7 @@ public:
     ~AppWindow( void ) ;
     Document *openDocument( const QString &fileName, const QString &fileType,
                 bool openAnyway=true ) ;
+    Document *getActiveWindow( const QString &docType ) ;
 
 // Private methods
 private:
@@ -59,7 +60,6 @@ private:
     void checkWorkspaceSwitch( void ) ;
     bool testInstallation( void ) ;
     bool findInstallation( void ) ;
-    Document *getActiveWindow( const QString &docType ) ;
     void initIconSets( void ) ;
     void initMenuCalculate( void ) ;
     void initMenuConfigure( void ) ;

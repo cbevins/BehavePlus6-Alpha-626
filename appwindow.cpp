@@ -1,19 +1,30 @@
 //------------------------------------------------------------------------------
 /*! \file appwindow.cpp
- *		Build 616
- *		Build 615 2015-05-12
- *		Build 614 2015-04-08
- *		Build 613 2014-07-15
- *		Build 612 2014-04-04
- *		Build 611 2014-03-22
- *		Build 610 2014-01-16
- *		Build 609 2013-11-21
- *		Build 608 2013-11-14
- *		Build 607 2013-11-13
- *		Build 606 2013-09-02
- *		Build 604 2012-07-07
+ *		Build	MSI Date  
+ *		626		2018-03-25	Beta 3
+ *		625     2017-12-21  Beta 2
+ *		624		2017-09-26	Beta 1
+ *		623		2017-09-18
+ *		622		2017-04-13
+ *		621		2017-04-13
+ *		620		2017-04-11
+ *		619		2017-04-10
+ *		618		2016-05-25
+ *		617		2016-04-05
+ *		616		2015-09-30
+ *		615		2015-05-12
+ *		614		2015-04-08
+ *		613		2014-07-15
+ *		612		2014-04-04
+ *		611		2014-03-22
+ *		610		2014-01-16
+ *		609		2013-11-21
+ *		608		2013-11-14
+ *		607		2013-11-13
+ *		606		2013-09-02
+ *		604		2012-07-07
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief AppWindow class definition.  This class creates the main
  *  application window including its workspace, menu bar, menu system,
@@ -251,13 +262,17 @@ void AppWindow::slotAppInit( void )
     }
 
     // Try to read any existing application property file in the home directory
-    QString propertyFile = appFileSystem()->propertyFilePath();
-    QFileInfo fi( propertyFile );
-    if ( fi.exists() && fi.isReadable() )
-    {
-        m_bpApp->updateSplashPage( "Loading property file ..." );
-        appProperty()->readXmlFile( appFileSystem()->propertyFilePath() );
-    }
+	bool apply = appProperty()->boolean("appApplyPropertyXmlOverrides");
+	if (apply )
+	{
+		QString propertyFile = appFileSystem()->propertyFilePath();
+		QFileInfo fi( propertyFile );
+		if ( fi.exists() && fi.isReadable() )
+		{
+			m_bpApp->updateSplashPage( "Loading property file ..." );
+			appProperty()->readXmlFile( appFileSystem()->propertyFilePath() );
+		}
+	}
     // If we want to force the page background color...
     // This is for Rob Seli User Guide preparation
     if ( false )
@@ -678,6 +693,7 @@ bool AppWindow::openStartupFile( const QString &fileName, bool run, bool print )
     log( QString( "Opening startup file '%1' ...\n" ).arg( fileName ) );
 
     QString fileType = appFileSystem()->type( fileName );
+	const char* fn = fileName.latin1();
     if ( ! ( doc = openDocument( fileName, fileType, false ) ) )
     {
         QString l_caption, text;
@@ -1716,6 +1732,7 @@ Document *AppWindow::openDocument( const QString &fileName,
     // Request a file name if one wasn't provided
     QString fileType = thisFileType;
     QString openFileName = fileName;
+	const char *fn = fileName.latin1();
     if ( openFileName.isNull() || openFileName.isEmpty() )
     {
         log( "Presenting Open Document dialog ...\n" );

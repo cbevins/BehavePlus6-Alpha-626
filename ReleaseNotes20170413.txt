@@ -1,0 +1,639 @@
+---------------------------------------
+Build 622 - April 13, 2017
+---------------------------------------
+
+--	Disabled the SURFACE > Output Variables > Intermediate
+	Directions tab from the Modules Dialog for alpha testing.
+	(Issue #083FAH - Preparation for V6 Alpha Release)
+
+
+---------------------------------------
+Build 621 - April 13, 2017
+---------------------------------------
+
+--	Re-enabled the SURFACE > Output Variables > Intermediate
+	Directions tab from the Modules Dialog for FAH testing.
+	(Issue #083FAH - Preparation for V6 Alpha Release)
+
+--	The SURFACE Spread Directions Help File has been updated.
+	
+--  BP6 is now able to open additional run files created
+	with BP5.
+	(Issue #079FAH - V6 will not open V5 files)
+
+
+---------------------------------------
+Build 620 - April 10, 2017
+---------------------------------------
+
+--	Disabled the SURFACE > Output Variables > Intermediate
+	Directions tab from the Modules Dialog.
+	(Issue #083FAH - Preparation for V6 Alpha Release)
+
+	
+---------------------------------------
+Build 619 - April 10, 2017
+---------------------------------------
+
+--  The configuration dialog for the IGNITE Module now correctly
+	grays out the "Specify graph Y axis limits".
+	(Issue #078FAH)
+	
+--  BP6 is now able to open run files created with BP5.
+	(Issue #079FAH - V6 will not open V5 files)
+	
+--  All custom fuel models now display in the choices dialog.
+--	Custom fuel models are not allowed to use reserved fuel
+	model numbers.
+	(Issue #080FAH - Custom fuel models are not appearing in menu)
+	
+--  Elapsed time since ignition is no longer a required input
+	when SURFACE and SIZE Modules are linked but no time-dependent
+	outputs are selected.
+	(Issue #081FAH - Elapsed time is required as an input when it
+	should not be)
+	
+--	The Safety Zone Module has been diabled.
+	(Issue #082FAH - Disable the Safety Zone Module)
+	
+--	BP6 now uses updated example worksheets; and
+	Surface > Output Variables > Basic and Crown > Basic Outputs
+	are now the default configuration tabs.
+	(Issue #083FAH - Preparation for V6 Alpha Release)
+	
+--	BP6 now uses the term 'Direction from Fire Perimeter' rather
+	than 'Direction from Fire Front'.
+	(Issue #084FAH - Change header line on output files to
+	 'Fire Perimeter'
+
+--	Several typographical and layout errors are now corrected
+	in the Configure > Custom Units dialogs.
+	(Issue #085FAH - Minor typos in program)
+	
+--	Chaparral Fuel Age is no longer an available output, and the
+	term 'Chaparral Total Fuel Load' is now used.
+	(Issue #086FAH - Updates to Chaparral special case fuel model)
+	
+--	The CROWN Module output variable 'Critical Surface Fire ROS,
+	Crown Fire Initiation' is now only active when 'Crown fire
+	is calculated using Scott and Reinhardt (2001)' is selected.
+	(Issue #087 - Critical surface fire ros, crown initiation)
+	
+--	Issue 088FAH - Downwind Canopy Height/Cover for Active Crown
+	is pending further review by FAH.
+	
+--	Run Notes for Crown Fire Method now include the [CROWN]
+	module designator.
+	(Issue #089FAH - Run Options for CROWN Fire Method)
+	
+
+---------------------------------------
+Build 618 - May 25, 2016
+---------------------------------------
+
+--	Restored the CROWN Module dialog to its appearance
+	as in Build 616.
+	
+---------------------------------------
+Build 617 - Apr 5, 2016
+---------------------------------------
+
+--	The CROWN Module input wqorksheet now correctly displays
+	the minimum	number of required inputs.
+	(Issue #068FAH - Program requiring non-essential inputs for CROWN)
+	
+--	The CROWN Module now correctly requests flame length input
+	on the worksheet when "Surface fire intensity is entered as:
+	flame length" is selected.
+	(Issue #069 FAH - CROWN requests fireline intensity, not flame length)
+	
+--	The Run Option note for maximum wind speed limit was changed
+	(Issue #070FAH - Change Run Option note for maximum wind speed limit)
+	
+--	The label for Active Crowqn Critical Open Wind Speed was changed.
+	(Issue #071FAH - Change variable name for Active Crown Critical
+	Open Wind Speed)
+
+--	The Surface Spread distance is now listed as aa [SURFACE] module
+	output in the Output Variables section
+	(Issue #072 FAH - Error in Output Variable Module
+	
+--	The Palmetto-Gallberry CHOICES window now displays the correct labels
+	for coverage and basal area options.
+	(Issue #073FAH - Palmetto-Gallberry CHOICES wind is incorrect)
+	
+--	The fire ellipse size parameters (F, G, and H) are now derived as
+	velocities rather than distances at a specific elapsed time.
+	(Issue #074FAH - Elapsed Time incorrectly requested in SURFACE)
+	
+--	The SURFACE Module Input-Directions tab fire spread option
+	"Directions from Ignition Point ... method through V5" has been removed
+	and the term "FIRE FRONT" has been changed to "FIRE PERIMETER".
+	(Issue #075FAH - Change to SURFACE Options)
+	
+--	The crown fire spotting distance variable "Crown Canopy Height"
+	has been removed in favor of tge "Canopy Height" variable.
+	(Issue #101CDB - Email from FAH on Jan 15, 2016)
+	
+--	The Batch Behave link from the index page to the download page was fixed.
+	(Issue #102CDB - Broken link in Batch Behave, email from FAH on Mar 22, 2016)
+	
+--	The Scott & Reinhardt crown fire output variables are only available
+	when linked to the SURFACE Modile.
+	(Issue #103CDB - Viability of S&R Crown Model in Stand-alone Mode,
+	email from FAH on Mar 16, 2016).
+
+---------------------------------------
+Build 616 - Sep 30, 2015
+---------------------------------------
+
+--	The special case Chaparral fuel model based on Rothermel
+	& Philpot (1973) and Cohen's FIRECAST code was simplified
+	as per FA Heinsch's change request.
+	(Issue #066FAH - Adding Chaparral Special Case Fuel Model
+	to SURFACE)
+	
+--	Fixes a number of bugs resulting from the introduction of
+	the chaparral special case fuel model (which has 9 fuel
+	particle types and was therefore causing overruns of arrays
+	that had previously been sized at maximum of 8 elements).
+	
+---------------------------------------
+Build 615 - May 12, 2015
+---------------------------------------
+
+--	The SURFACE Module now includes the special case
+	Chaparral fuel model based on Rothermel & Philpot (1973).
+	(Issue #066FAH - Adding Chaparral Special Case Fuel Model
+	to SURFACE)
+
+---------------------------------------
+Build 614 - April 8, 2015
+---------------------------------------
+
+--	The installation package now has a checkbox on the
+	Folder Destination dialog that allows optional
+	installation of a BehavePlu6 icon on the user's desktop.
+	
+--	Scott & Reinhardt (2005) crown fire model variables
+	are now	included within the Crown Module.  This
+	introduces 21 new variables into BehavePlus.
+
+--	The Crown Module configuration dialog now has 1 tab
+	for its single input option and 5 tabs for the various
+	outputs variables now available.
+
+--	Most surface, crown, moisture, fuel, and site variables
+	now have updated labels and/or column headers to better
+	disambiguate between their various modules and fire types
+	(surface, canopy, crown, active crown, passive crown, etc)
+	and to provide a more structured and consistent
+	nomenclature.
+	
+--	The Active Crown Fire Spotting Module now sets the
+	minimum viable ember diameter to a constant 1 mm
+	rather than ask the user to provide a value.
+	
+
+---------------------------------------
+Build 613 - July 15, 2014
+---------------------------------------
+
+--	The 'Surface' adjective has been added to the surface
+	ROS, HPUA, fireline intensity and flame length variables.
+	(Issue #058FAB(b) - Change Variable Names)
+	
+--	The 3 fuel moisture input options now work as expected when
+	SURFACE and CROWN are both active and linked.  That is,
+	dead and live woody fuel moistures are always requested	
+	since crown fire behavior is based on Fuel Model 10.
+	(Issue #060FAH - Moisture Options, CROWN)
+	
+--	The installer license agreement now specifies that
+	BehavePlus6 is PostcardWare, just as it was for BehavePlus5.
+	(Issue #065FAH - PostcardWare)
+
+	
+---------------------------------------
+Build 612 - April 4, 2014
+---------------------------------------
+
+--	Added UsersGuide.pdf back into the installation package
+	so that the Help system now works as expected.
+	
+	
+---------------------------------------
+Build 611 - March 23, 2014
+---------------------------------------
+
+--	The SURFACE Module subtitles are now "Head Fire", "Backing Fire",
+	and "Flanking Fire" (all words capitalized).  In addition,
+	the subtitles only show when the SURFACe Module is active.
+	(Issue #041aPLA - Add Heading Line)
+
+--	Corrected mispelled directory name in the installation packager
+	that was causing the "Create New Workspace" feature to fail.
+	(Issue #056FAH - New Workspace Cannot be Created)
+	
+--	The units label "tonRefreidgeration" is now "tonRefrigeration".
+	(Issue #057FAH - Units Converter Typo)
+
+--	Changes were made to the following variable labels and/or
+	their table column headers:
+    "Heat per Unit Area" is now "Surface Heat per Unit Area".
+    "Fireline Intensity" is now "Surface Fireline Intensity"
+        and column headers are "Surface\nFireline Intensity".
+    "Flame Length" is now "Surface Flame Length"
+	    and column headers are "Surface\nFlame Length".
+	"Crown ROS" is now "Crown rate of Spread"
+	    and column headers  are "Crown rate\nof Spread"
+	The column header for Crown Flamne Length is now "Crown\nFlame Length".
+	(Issue #058FAH - Change Variable names)
+
+--	BehavePlus6 can now be launched from the Windows Explorer file
+	listing either by (1) double clicking on the file name or
+	(2) right-clicking on the file name to bring up a context menu
+	and then clicking on either (2a) "Open with BehavePlus6" or
+	(2b) the "Open with..." dialog, in which BehavePlus5 and
+	BehavePlus6 are available options.
+	
+	This feature works with the following file types:
+		.bpf - custom fuel model files
+		.bpm - custom moisture scenarion files
+		.bpr - saved run files
+		.bpu - custom units files
+		.bpw - input worksheet template files	
+	(Issue #059FAH - Using Windows Open With.... Option)
+
+--	The CROWN Module now honors the SURFACE Module's
+	"Input Options > Moisture > Moisture is entered by ..."
+	setting, even when the SURFACE Module is inactive.
+	(Issue #060FAH - Moisture Options, CROWN)
+
+--  New Help system HTML and image files have been added
+	in support of V6 frontal fire spread options.
+	(Issue #061FAH - Help File Changes)
+		
+--	The Calendar Tool title "Seasonal Dates & Moon Phases" is
+	now "Seasonal dates and Moon Phases", as the ampersand
+	was failing to show in the browser window on some computers.
+	(Issue #062FAH - Calendar Tool Type)
+	
+--	The program publisher as displayed in the Control Panel >
+	Program and Features window is now "US Forest Service and SEM LLC".
+	(Issue #063FAH - Change the Publisher for BehavePlus v6)
+
+--	The Southern California custom fuel model files now load correctly.
+
+--	The Fuel Moisture Scenario files for fuel modeling now load correctly.	
+
+	
+---------------------------------------
+Build 610 - Jan 16, 2014
+---------------------------------------
+
+--	The SURFACE Module 'P-G Outputs' dialog Note text has
+	been modified to match that of the 'Apen Outputs' tab.
+	(Issue #019aFAH - Change Note for Aspen)
+	(Issue #050aPLA - Aspen Output Note)
+
+--	Added a 'Calculate' button (and asociated signls and slots) to
+	the Relative Humidyt Tool's 'Dry Temp & Dew Point Temp' dialog.
+	(Issue #022aFAH - Relative Humidity Tool)
+
+--	Confirmed that the correct BehavePlus version is displayed
+	when a Run or Worksheet file that was created by a previous
+	version of BehavePlus is loaded.
+	(Issue #024aFAH - Change in MORTALITY Species Codes)
+	
+--	The Worksheet now displays all the dead fuel moisture inputs
+	before all the live fuel moisture inputs.
+	(Issue #030aFAH - SURFACE Module, New Fuel Moisture Option)
+
+--	The fuel model code, number, and description are now correctly
+	displayed in the Discrete Variables output page, even for
+	previously saved and attached custom fuel models.
+	(Issue #032bFAH - SURFACE Module, Fuel Model Selection)
+
+--	When attaching fuel models, if a fuel model number is already
+	in use by the program, the new fuel model will  not be loaded.
+	(Issue #032bFAH - SURFACE Module, Fuel Model Selection)
+	
+--	The 'Fuel Model Number' and 'Fuel Model Code' variables no longer
+	appear on the input worksheet when special case fuel modeling
+	(Aspen or Palmetto-Gallbery) is relected for the SURFACE Module.
+	(Issue #033aFAH - FARSITE Fuel Model Export)
+	
+--	The SPOT Conflict message now includes the parenthesis as
+	per the associated SURFACE Module dialog text.
+	(Issue #049aPLA - Restore SPOT Conflict Message)
+	
+--	The Elapsed Time is now always requested whenever the SIZE
+	Module is active.
+	(Issue #053PLA - Elapsed Time Not Requested)
+	
+--	Updated terminology of online Experimental Fire Direction Calculator
+	(Issue #055PLA - Calculator Terminology)
+		
+---------------------------------------
+Build 609 - Nov 21, 2013
+---------------------------------------
+
+--	BehavePlus6 now includes an Active Crown Fire Spotting
+	Model based upon Frank Albini's work.
+	(Issue #034FAH - Active Crown Spotting Model)
+	
+--	The SURFACE spread direction Run Option text has been
+	updated to match the SURFACE Direction tab text changes
+	resulting from Issue #046PLA.
+	(Issue #037bPLA - Direction Run Option Notes)
+
+--	The SURFACE Module output subheading now only appears on
+	output if the SURFACE Module is active.  The subheading
+	is also included in the header of exported HTML files,
+	and reappears again just before each output listing or
+	table within the exported HTML files.
+	(Issue #041aPLA - Add Heading Line)
+
+--  All the SIZE Module output variables now correctly display
+	their [SIZE] Module affiliation in the Output Variables
+	list of the worksheet.
+	(Issue #044aPLA - Flanking Spread Direction in SIZE)
+	
+--	The SURFACE Module Direction tab dialog now has wording,
+	punctuation, and line breaks as requested.
+	(Issue #046aPLA - Direction Option Wording)
+
+--	The SAFETY Run Option Note wording has been changed.
+	(Issue #047PLA - SAFETY Run Option Note)
+	
+--	The SURFACE & SPOT/CROWN Conflict Dialog has capitalization
+	changes.
+	(Issue #048PLA - Wind Confilct Format)
+	
+--	The SPOT Conflict Dialog now appears when the SPOT Module
+	is active for a wind-driven	surface fire, and the SURFACE
+	Module is active with the fire spread direction NOT in the
+	heading direction.  Corresponding changes in wording have
+	been made.
+	(Issue #049PLA - Restore SPOT Conflict Message)
+	
+--	The SURFACE Module Output Variables tab, Fuel tab wording
+	has changed for Aspen fuel selection.
+	(Issue #050PLA - Aspen Output Note)
+
+--	The "Choices" button no longer appears on the Guide Dialog
+	for the "SPread Direction" worksheet variable.
+	(Issue #051PLA - Spread Direction Choices)	
+	
+---------------------------------------
+Build 608 - Nov 14, 2013
+---------------------------------------
+
+--	Added the required Microsoft and Qt DLL libraries
+	to the installation package.
+	
+---------------------------------------
+Build 607 - Nov 13, 2013
+---------------------------------------
+
+--	The 'Fuel Model Selection', 'Initialize From Fuel Model',
+	and 'Fuel Model Export' dialogs now display both the fuel
+	model number and the fuel model code, under more
+	appropriate column headers.
+	(Issue #032FAH - SURFACE Module, Fuel Model Selection)	
+	
+--	The user may now enter either the Fuel Model Code or the
+	Fuel Model Number onto the worksheet Fuel Model entry field.
+	(Issue #032FAH - SURFACE Module, Fuel Model Selection)	
+
+--	Two new variables have been introduced when the "Fuel is entered
+	as Fuel Parameters" SURFACE Module option is enabled:
+	1. "Fuel Model Code" accepts a 1-7 character alphanumeric value, and
+	2. "Fuel Model Number" accepts an integer in the range 14-256 that
+	doesn't conflict with standard Burgan & Scott fuel model numbers.
+	(Issue #033FAH - FARSITE Fuel Model Export, Parts 1 and 2).
+	
+--	The 'File > Save as a fuel Model > BehavePlus Format' dialog uses
+	the 'Fuel Model Code' variable as the default file name.
+	(Issue #033FAH - FARSITE Fuel Model Export, Part 3).
+	
+--	The 'File > Save as a fuel model' submenu has two new options:
+	1. 'FARSITE format, English', and
+	2. 'FARSITE format, metric'.
+	The generated files are now compliant with FARSITE .fmd format.
+	(Issue #033FAH - FARSITE Fuel Model Export, Part 4).
+
+--	The fuel model parameter table displayed when the user
+	right-clicks on a fuel model dialog item and selects 'View
+	Parameters' now displays both English and metric units.	
+	(Issue #033FAH - FARSITE Fuel Model Export, Part 5).
+
+--  The current SURFACE Direction run option (HEADING, FLANKING,
+	FIRE FRONT, etc) is always displayed on the worksheet for
+	consistent run documentation.
+	(Issue #037PLA - DIrection Run Notes Option).
+	
+--	The SURFACE Module Options dialog has been reorganized into a
+	set of nested tabs:
+	
+	The "Input Options" tab contains sub-tabs for "Fuel", "Moisture",
+	"Wind Speed", "Slope", and "Directions".
+	
+	The "Output Variables" tab contains sub-tabs for "Basic",
+	"Intermediate Directions", "Wind", "Slope", "Intermediate Fire",
+	"Fuel", "Aspen", and "Palmetto-Gallberry".
+	(Issue #039PLA - SURFACE Tabs)
+
+--	For the online fire ellipse calculator only (and NOT for BehavePlus6):
+	The spread direction from the ignition point (beta) when derived
+	from an input spread direction from fire front (psi) is now
+	calculated correctly when crossing ellipse quadrant boundaries.
+	(Issue #040PLA - Fire Direction Calculator)
+
+--	The output tables, graphs, and Fire Direction Diagram now
+	include a subheading indicating the current Fire Direction
+	Option: 'Head Fire', 'Backing Fire', 'Flanking Fire', 'Spread
+	from Fire Front', 'Spread from Ignition Point', or 'Spread 
+	from Ignition Point, V5 Directional FL Calculation'.
+	(Issue #041PAL - Add Heading Line)
+
+--	The Fire Direction Diagram now includes a Spread Direction vector
+	and legend for all 6 SURFACE Fire Direction options (and displays
+	both flanking vectors under the Flanking option).
+	(Issue #042PLA - Add Direction Vector)
+
+--  The CONTAIN Direction DIagram x-axis is now limited to a maximum
+	of 7 tic marks and labels in an attempt to reduce text clutter.
+	(Issue #043PLA - Contain Diagram SCale Problem)
+	
+--  The SIZE Module Output Variables dialog now has an additional
+	output variable, "Heading Spread Distance",	and the output
+	variable "Forward Spread Distance" has been renamed to
+	"Heading Spread Distance".
+	(Issue #044PLA - Flanking Spread Distance in SIZE).
+
+--	Verified that the Flanking ROS in SURFACE is always equal to
+	half the maximum fire width when a sufficient number of
+	decimal point precision is reported.  When just 1 or 2 decimal
+	places are displayed, some rounding error occurs.
+	(Issue #045PLA - Flanking ROS Check)
+	
+--	The SURFACE Directions tabs has some minor text changes.
+    (Issue #046PLA - Direction Option Wording)
+    	
+---------------------------------------
+Build 606 - Sep 18, 2013
+---------------------------------------
+
+--	The Calculate Results help window now displays the correct range
+	variable names when the pair of range variables consists of one
+	continuous and one discrete variable.
+	(Issue #018FAH - Help Window Graph Variable Names)
+	
+--	The 'Aspen Outputs' and 'P-G Outputs' tabs under the Configure >
+	Module selection > SURFACE Options menu path now display the
+	correct text under the 'NOTE:' label.
+	(Issue #019FAH - Change Note for Aspen)
+	
+--	The Help menu now offers the 'Features Paper' rather than the
+	'Users Guide'.
+	(Issue #020FAH - BehavePlus Help Document)
+
+--	The small page map that appears in the upper left hand corner of
+	multi-paged output tables now includes a black 'X' indicating the
+	position of the currently displayed output page.
+	(Issue #021FAH - Multi-Page Table Format: Change Symbolization of
+	Current Page.
+
+--	A new "Calculate" button has been added to the Relative Humidity
+	tool.  Whenever the user changes an input value, the background color
+	of all the output fields simply turn light blue instead of having
+	their values automatically updated.  Once the user presses the
+	"Calculate" button and the output values are updated, their fields
+	return to a white background.
+	(Issue #022FAH - Relative Humidity Tool)
+	
+--	The Douglas-fir, western larch,	and ponderosa pine bark thickness
+	coefficients are now 0.063(as per FOFEM) instead of 0.065.
+	(Issue #023FAH - Change in Bark Thickness Equation)
+
+--	Tree species codes have been changed to those used by FOFEM v6.
+	This includes new 4-7 character codes for all species, the
+	addition of 13 new species, and the removal of 2 species.
+	(Issue #024FAH - Change in MORTALITY Species Codes for Consistency
+	with FOFEM6)
+	
+--	New bark thickness and mortality equations from FOFEM v6 have been
+	implemented	for longleaf pine.
+	(Issue #025FAH - Mortality Module, New Longleaf Pine Mortality Model)
+
+--	FOFEM v5 mortality and torching tree species codes in worksheet and run
+	files are automatically	updated to FOFEM v6 species codes.
+	(Issue #026FAH - SPOT Module, Changes to Species Codes)
+	
+--	The Hood mortality equation numbers have been reassigned to those
+	used by FOFEM v6.
+	(Issue #027FAH - Change Equation Numbers for Consistency with FOFEM6)
+
+--	A new discrete variable, "Downwind Canopy Cover" ("Open" or "Closed"),
+	has been introduced into the SPOT Module.  When set to "Open", only
+	half of the "Downwind Canopy Height" is applied internally in the
+	burning pile, surface fire, and torching tree spotting distance models.
+	(Issue #028FAH - Downwind Canopy Open/Closed)
+	
+--	The SAFETY Module now includes additional outputs for square shaped
+	safety zones; "Square Safety Zone Size" and
+	"Safety Zone Length (for Square)".	
+	(Issue #029FAH - Safety Zone Size (Square))
+
+--	A new fuel moisture input option is available where the user enters
+	a single value for all the dead fuel time-lag size classes, but
+	individual live herb and live woody moisture contents, if required.
+	(Issue #030FAH - Surface Module, New Fuel Moisture Option)
+	
+--	Whenever BehavePlus cannot open a file for writing, the error message
+	now reminds the user that BehavePlus must be installed in a folder
+	to which the user has WRITE permission.
+	(Issue #031FAH - Error Message on Exiting BehavePlus)
+	
+--	The SURFACE Module 'Directions' tab has some minor changes in text
+	and radio button order.
+	(Issue #035PLA - Directions Tab Text)
+	
+--	The spread direction from the ignition point (beta) when derived
+	from an input spread direction from fire front (psi) is now
+	calculated correctly when crossing ellipse quadrant boundaries.
+	(Issue #036PLA - Psi Calculation Error)
+	
+--	Run Option Notes are now displayed for all selections made on the
+	SURFACE Module 'Directions' tab.
+	(Issue #037PLA - Direction Run Option Note)
+	
+--	The SURFACE maximum rate of spread is now limited to the effective
+	wind speed whenever the effective wind speed exceeds 1 mi/h.
+	(Issue #038PLA - Maximum SPread Rate <= Effective Wind Speed)
+	
+
+---------------------------------------
+Build 601 - 
+---------------------------------------
+
+
+--	The Modules Dialog has been reorganized with the "Options" button
+	replaced by an "Inputs" button (if necessary) and an "Outputs"
+	button.  Accordingly, input options for the Surface, Contain, Crown,
+	and Scorch modules have been moved onto their own Inputs tabbed page.
+	
+--	Fireline intensity calculation is now based upon the fire spread rate
+	from the fire front (i.e., along the vector normal to the tangent of
+	the fire ellipse, or 'psi').  Accordingly, all variables derived from
+	fireline intensity will have different values than in previous versions.
+	
+	The hierarchy of affected variables include:
+	- fireline intensity
+		- flame length
+			- spotting distance from a surface fire
+			- safety zone separation distance
+				- safety zone radius
+			- aspen mortality rate
+		- scorch height
+			- crown length scorched
+			- crown volume scorched
+			- tree mortality rate (FOFEM)
+			- tree mortality rate (Hood)
+		- crown fire transition ratio
+			- crown fire transition to crown
+			- crown fire type
+	- fire characteristics chart
+	
+
+--	The Surface Module 'Directions' input options now offers 3 choice for
+		Surface fire spread direction is
+			o only for heading, flanking, and/or backing fire.
+			o in specified directions from ignition point.
+			o in specified directions from fire front.
+	
+--	The Surface Module 'Directions' input options now offers 2 choices for
+		Wind direction is
+			o only for up-slope, cross-slope, and/or down-slope directions.
+			o in specified directions.
+
+--	The Run Options have been changed to reflect the above option changes.
+
+
+---------------------------------------
+Build 600 - April 29, 2010
+---------------------------------------
+
+--	Created a Wise script for Build 600.
+
+--	Updated the BehavePlus5* file names to BehavePlus6*,
+	including text in the License.txt and Readme.txt files.
+
+--	Created new BehavePlus6 program icon, resource files,
+	and startup screen.
+ 
+--	Created new Visual Studio 2008 Project for BehavePlus6
+	and moved all the BehavePlus 5.0.1 source and distribution
+	files into it.

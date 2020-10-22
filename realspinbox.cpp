@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 /*! \file realspinbox.cpp
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins
  *
  *  \brief RealSpinBox class methods.
  */

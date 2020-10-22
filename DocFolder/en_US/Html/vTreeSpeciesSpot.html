@@ -1,55 +1,41 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Spot Tree Species Page</TITLE>
-  </HEAD>
-  <BODY>
-    <TABLE WIDTH="100%">
-      <TR>
-        <TD width="100">
-          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
-        </TD>
-        <TD ALIGN="left" VALIGN="center">
-          <H2><FONT COLOR="#ff5500">Spot Tree Species</FONT></H2>
-        </TD>
-      </TR>
-    </TABLE>
-    <HR>
- <P> Spot tree species is used in estimating the maximum spotting distance from 
-  torching trees. Fourteen tree species are available for SPOT.
-<P>Tree species is also an input to MORTALITY. Because 218 species are available 
-  for MORTALITY and 14 for SPOT, to avoid confusion, there are two tree species 
-  variables:
-<UL>
-  <LI><strong>Spot tree species</strong>, and</LI>
-  <LI><strong>Mortality tree species</strong>.</LI>
-</UL>
+<html>
+  <head>
+    <title>BehavePlus Spot Tree Species Page</title>
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+        <td align="left" valign="center"><h2><font color="#ff5500">Spot Tree Species</font></h2></td>
+      </tr>
+    </table>
+    <hr>
+
+<p>Spot tree species is used in estimating the maximum spotting distance from torching trees. Fourteen tree species are available for SPOT.</p>
+
+<p>Tree species is also an input to MORTALITY. Because 218 species are available for MORTALITY and 14 for SPOT, to avoid confusion, there are two tree species variables.</p>
+	<ul>
+	  <li><strong>Spot tree species</strong></li>
+	  <li><strong>Mortality tree species</strong></li>
+	</ul>
  
 
-The same tree species codes are used for both variables. The table below lists all tree species available to the SPOT module.
-The tree species available to the MORTALITY module are listed in
-  <UL>
-      <LI><A HREF="vTreeSpeciesMortalityTable.html">Tree Species Bark Thickness & Mortality Equations</A></LI>
-  </UL>
+<p>The same tree species codes are used for both variables. The table below lists all tree species available to the SPOT module. The tree species available to the MORTALITY module are listed in</p>
+  <ul>
+      <li><a href="vTreeSpeciesMortalityTable.html">Tree Species Bark Thickness & Mortality Equations</a></li>
+  </ul>
 
-<P>
+<p></p>
 <table border="1" cellspacing="0" cellpadding="2">
   <tr bgcolor="#CCCCCC"> 
-    <td width="67" valign="top"> 
-      <p align="center"><strong>I/O</strong></p>
-    </td>
-    <td width="109" valign="top"> 
-      <p align="center"><strong>Module</strong></p>
-    </td>
-    <td width="207" valign="top"> 
-      <p align="center"><strong>If</strong></p>
-    </td>
-    <td width="207" valign="top"> 
-      <p align="center"><strong>Notes</strong></p>
-    </td>
+		<td width="67" valign="top" align="center"><strong>I/O</strong></td>
+		<td width="109" valign="top" align="center"><strong>Module</strong></td>
+		<td width="207" valign="top" align="center"><strong>If</strong></td>
+		<td width="207" valign="top" align="center"><strong>Notes</strong></td>
   </tr>
   <tr> 
     <td width="67" valign="top">Input</td>
-    <td width="109" valign="top">SPOT </td>
+    <td width="109" valign="top">SPOT</td>
     <td width="207" valign="top">&nbsp;</td>
     <td width="207" valign="top">&nbsp;</td>
   </tr>
@@ -60,106 +46,109 @@ The tree species available to the MORTALITY module are listed in
     <td width="207" valign="top">&nbsp;</td>
   </tr>
 </table>
-<P> The tree species available for the spot fire distance model are from <I>"Spot fire distance from burning trees - a predictive model"</I> (Albini, 1979), and include the following: 
 
-<p><p><A NAME="Table1"></a>
-<B>Spot Tree Species</B><br>
-<TABLE border="1" cellspacing="0" cellpadding="2">
-  <TR bgcolor="#CCCCCC">
-    <TH align="left">Code</TH>
-    <TH align="left">Common Name</TH>
-    <TH align="left">Scientific Name</TH>
-  </TR>
-  <TR>
-    <TD>ABBA</TD>
-    <TD>Balsam fir</TD>
-    <TD><I>Abies balsamea</I></TD>
-  </TR>
-  <TR>
-    <TD>ABGR</TD>
-    <TD>Grand fir</TD>
-    <TD><I>Abies grandis</I></TD>
-  </TR>
-  <TR>
-    <TD>ABLA</TD>
-    <TD>Subalpine fir</TD>
-    <TD><I>Abies lasiocarpa</I></TD>
-  </TR>
-  <TR>
-    <TD>PIEN</TD>
-    <TD>Engelmann spruce</TD>
-    <TD><I>Picea engelmannii</I></TD>
-  </TR>
-  <TR>
-    <TD>PICO</TD>
-    <TD>Lodgepole pine</TD>
-    <TD><I>Pinus contorta</I></TD>
-  </TR>
-  <TR>
-    <TD>PIEC2</TD>
-    <TD>Shortleaf pine</TD>
-    <TD><I>Pinus echinata</I></TD>
-  </TR>
-  <TR>
-    <TD>PIEL</TD>
-    <TD>Slash pine</TD>
-    <TD><I>Pinus elliottii</I></TD>
-  </TR>
-  <TR>
-    <TD>PIMO3</TD>
-    <TD>Western white pine</TD>
-    <TD><I>Pinus monticola</I></TD>
-  </TR>
-  <TR>
-    <TD>PIPA2</TD>
-    <TD>Longleaf pine</TD>
-    <TD><I>Pinus palustrus</I></TD>
-  </TR>
-  <TR>
-    <TD>PIPO</TD>
-    <TD>Ponderosa pine</TD>
-    <TD><I>Pinus ponderosa</I></TD>
-  </TR>
-  <TR>
-    <TD>PISE</TD>
-    <TD>Pond pine</TD>
-    <TD><I>Pinus serotina</I></TD>
-  </TR>
-  <TR>
-    <TD>PITA</TD>
-    <TD>Loblolly pine</TD>
-    <TD><I>Pinus taeda</I></TD>
-  </TR>
-  <TR>
-    <TD>PSME</TD>
-    <TD>Douglas-fir</TD>
-    <TD><I>Pseudotsuga menziesii</I></TD>
-  </TR>
-  <TR>
-    <TD>TSHE</TD>
-    <TD>Western hemlock</TD>
-    <TD><I>Tsuga heterophylla</I></TD>
-  </TR>
-</TABLE>
+<p>The tree species available for the spot fire distance model are from <i>"Spot fire distance from burning trees - a predictive model"</i> (Albini, 1979), and include the following:</p>
 
-<p>
-<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
-  <UL>
-    <LI><A HREF="vTreeSpecies.html">Mortality Tree Species</A></LI>
-      <LI><A HREF="vSpotDistTorchingTrees.html">Spotting Distance from Torching Trees</A></LI>
-      <LI><A HREF="vTreeSpeciesMortalityTable.html">Tree Species Bark Thickness & Mortality Equations</A></LI>
-  </UL>
-<P>
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+<p></p>
+<a name="Table1"></a>
+<b>Spot Tree Species</b><br>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC">
+    <th align="left">Code</th>
+    <th align="left">Common Name</th>
+    <th align="left">Scientific Name</th>
+  </tr>
+  <tr>
+    <td>ABBA</td>
+    <td>Balsam fir</td>
+    <td><i>Abies balsamea</i></td>
+  </tr>
+  <tr>
+    <td>ABGR</td>
+    <td>Grand fir</td>
+    <td><i>Abies grandis</i></td>
+  </tr>
+  <tr>
+    <td>ABLA</td>
+    <td>Subalpine fir</td>
+    <td><i>Abies lasiocarpa</i></td>
+  </tr>
+  <tr>
+    <td>PIEN</td>
+    <td>Engelmann spruce</td>
+    <td><i>Picea engelmannii</i></td>
+  </tr>
+  <tr>
+    <td>PICO</td>
+    <td>Lodgepole pine</td>
+    <td><i>Pinus contorta</i></td>
+  </tr>
+  <tr>
+    <td>PIEC2</td>
+    <td>Shortleaf pine</td>
+    <td><i>Pinus echinata</i></td>
+  </tr>
+  <tr>
+    <td>PIEL</td>
+    <td>Slash pine</td>
+    <td><i>Pinus elliottii</i></td>
+  </tr>
+  <tr>
+    <td>PIMO3</td>
+    <td>Western white pine</td>
+    <td><i>Pinus monticola</i></td>
+  </tr>
+  <tr>
+    <td>PIPA2</td>
+    <td>Longleaf pine</td>
+    <td><i>Pinus palustrus</i></td>
+  </tr>
+  <tr>
+    <td>PIPO</td>
+    <td>Ponderosa pine</td>
+    <td><i>Pinus ponderosa</i></td>
+  </tr>
+  <tr>
+    <td>PISE</td>
+    <td>Pond pine</td>
+    <td><i>Pinus serotina</i></td>
+  </tr>
+  <tr>
+    <td>PITA</td>
+    <td>Loblolly pine</td>
+    <td><i>Pinus taeda</i></td>
+  </tr>
+  <tr>
+    <td>PSME</td>
+    <td>Douglas-fir</td>
+    <td><i>Pseudotsuga menziesii</i></td>
+  </tr>
+  <tr>
+    <td>TSHE</td>
+    <td>Western hemlock</td>
+    <td><i>Tsuga heterophylla</i></td>
+  </tr>
+</table>
+
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+  <ul>
+    <li><a href="vTreeSpecies.html">Mortality Tree Species</a></li>
+      <li><a href="vSpotDistTorchingTrees.html">Spotting Distance from Torching Trees</a></li>
+      <li><a href="vTreeSpeciesMortalityTable.html">Tree Species Bark Thickness & Mortality Equations</a></li>
+  </ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
  
-<HR>
-<FONT SIZE=2>BehavePlus On-Line Documentation, March 17, 2014.</FONT>
-</BODY>
-</HTML>
+<hr>
+<font size="2">BehavePlus Online Documentation, July 26, 2017.</font>
+</body>
+</html>

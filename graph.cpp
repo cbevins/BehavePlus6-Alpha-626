@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file graph.h
- *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \version BehavePlus6
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Graph class declaration.
  *

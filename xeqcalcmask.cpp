@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalcmask.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Routines to mask/unmask EqCalc input variables.
  *

@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalc.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree calculator interface.
  *
@@ -31,11 +31,13 @@
 // Custom include files
 #include "Bp6Globals.h"
 #include "appmessage.h"
+#include "appproperty.h"
 #include "appsiunits.h"
 #include "apptranslator.h"
 #include "bpdocument.h"
 #include "cdtlib.h"
 #include "contain.h"
+#include "ContainSim6.h"
 #include "fuelmodel.h"
 #include "moisscenario.h"
 #include "parser.h"
@@ -145,20 +147,28 @@ void EqCalc::ContainFF( void )
     // 0 == Contained
     // 1 == Withdrawn
     // 2 == Escaped
-    static int Status[8] =
+    static int Status[9] =
     {
-        2, // 0=Unreported  Fire started but not yet reported (init() not called)
-        2, // 1=Reported    Fire reported but not yet attacked (init() called)
-        2, // 2=Attacked    Fire attacked but not yet resolved
-        0, // 3=Contained   Fire contained by attacking forces
-        1, // 4=Overrun     Attacking resources are overrun
-        2, // 5=Exhausted   Attacking resources are exhausted
-        2, // 6=Overflow    Simulation max step overflow
-        2, // 7=DistLimit   Fire spread distance limit exceeded
+        2, // 0=Unreported, Unreported6 Fire started but not yet reported (init() not called)
+        2, // 1=Reported, Reported6		Fire reported but not yet attacked (init() called)
+        2, // 2=Attacked, Attacked6		Fire attacked but not yet resolved
+        0, // 3=Contained, Contained6   Fire contained by attacking forces
+        1, // 4=Overrun, Overrun6		Attacking resources are overrun
+        2, // 5=Exhausted , Exhausted6  Attacking resources are exhausted
+        2, // 6=Overflow, Overflow6		Simulation max step overflow
+        2, // 7=DistLimit, SizeLimitExceeded6   Fire spread distance limit exceeded
+        2, // 8=TimeLimitExceeded6		Fire spread distance limit exceeded
     };
 
     // We'll need to get some properties
     PropertyDict *prop = m_eqTree->m_propDict;
+
+	// Determine which version to use
+	bool useVersion5 = appProperty()->boolean( "containConfVersion5" );
+
+	int maxSteps = appProperty()->integer( "containConfMaxSteps" );
+    int minSteps = appProperty()->integer( "containConfMinSteps" );
+    bool retry   = appProperty()->boolean( "containConfRetry" );
 
     // Access current input values
     double attackDist = vContainAttackDist->m_nativeValue;
@@ -166,16 +176,8 @@ void EqCalc::ContainFF( void )
     double lwRatio    = vContainReportRatio->m_nativeValue;
     double reportSize = vContainReportSize->m_nativeValue;
     double reportRate = vContainReportSpread->m_nativeValue;
-    double distLimit  = vContainLimitDist->m_nativeValue;
-    if ( prop->boolean( "containConfLimitDistOff" ) )
-    {
-        distLimit = 1000000.;
-    }
 
-    // Build the containment resources array
-    ContainForce *force = new ContainForce();
-    checkmem( __FILE__, __LINE__, force, "ContainForce force", 1 );
-    Parser parserArr( " \t,\"", "", "" );
+	Parser parserArr( " \t,\"", "", "" );
     parserArr.parse( vContainResourceArrival->m_store );
     Parser parserDur( " \t,\"", "", "" );
     parserDur.parse( vContainResourceDuration->m_store );
@@ -192,18 +194,21 @@ void EqCalc::ContainFF( void )
         parserBase.parse( vContainResourceBaseCost->m_store );
         parserHour.parse( vContainResourceHourCost->m_store );
     }
+
     double arr, dur, prod, tmp;
-    double base = 0.;
-    double hour = 0.;
-    QString name;
+    QString name[100];
+	double arrival[100], duration[100], productivity[100], base[100], hour[100];
+
     // Loop for each resource
-    for ( int i=0; i<vContainResourceName->m_tokens; i++ )
+	int resources = vContainResourceName->m_tokens;
+    for ( int i=0; i < resources; i++ )
     {
         // Resource arrival time
         tmp = parserArr.token( i ).toDouble();
         appSiUnits()->convert( tmp,
             vContainResourceArrival->m_displayUnits.latin1(),
             vContainResourceArrival->m_nativeUnits.latin1(), &arr );
+		arrival[i] = arr;
         //fprintf( stderr, "Resource Arrival %f %s --> %f %s\n",
         //  tmp, vContainResourceArrival->m_displayUnits.latin1(),
         //    arr, vContainResourceArrival->m_nativeUnits.latin1() );
@@ -213,196 +218,415 @@ void EqCalc::ContainFF( void )
         appSiUnits()->convert( tmp,
             vContainResourceDuration->m_displayUnits.latin1(),
             vContainResourceDuration->m_nativeUnits.latin1(), &dur );
+		duration[i] = dur;
         //fprintf( stderr, "Resource Duration %f %s --> %f %s\n",
         //  tmp, vContainResourceDuration->m_displayUnits.latin1(),
         //    dur, vContainResourceDuration->m_nativeUnits.latin1() );
 
         // Resource name
-        name = parserName.token( i );
+        name[i] = parserName.token( i );
 
         // Resource productivity
         tmp = parserProd.token( i ).toDouble();
         appSiUnits()->convert( tmp,
             vContainResourceProd->m_displayUnits.latin1(),
             vContainResourceProd->m_nativeUnits.latin1(), &prod );
+		productivity[i] = prod;
         //fprintf( stderr, "Resource Productivity %f %s --> %f %s\n",
         //  tmp, vContainResourceProd->m_displayUnits.latin1(),
         //    prod, vContainResourceProd->m_nativeUnits.latin1() );
 
         // Resource cost
-        if ( doCost )
-        {
-            base = parserBase.token( i ).toDouble();
-            hour = parserHour.token( i ).toDouble();
-        }
-        // Add the resource to the resource array
-        force->addResource( arr, prod, dur, LeftFlank, name.latin1(),
-            base, hour );
+		base[i] = ( doCost ) ? parserBase.token( i ).toDouble() : 0.;
+		hour[i] = ( doCost ) ? parserHour.token( i ).toDouble() : 0.;
     }
 
-    // Calculate results
-    int maxSteps = prop->integer( "containConfMaxSteps" );
-    int minSteps = prop->integer( "containConfMinSteps" );
-    bool retry   = prop->boolean( "containConfRetry" );
-    ContainSim *sim = new ContainSim( reportSize, reportRate, lwRatio,
-        force, (ContainTactic) tactic, attackDist, distLimit,
-        retry, minSteps, maxSteps );
-    checkmem( __FILE__, __LINE__, sim, "ContainSim sim", 1 );
-    sim->run();
-    int    status = Status[ sim->m_left->m_status ];
-    double finalSize = sim->m_finalSize;
-    // If no contained or limit exceeded...
-    if ( status != 0 && status != 3 )
-    {
-        // Reset final size to -1 acres
-        finalSize = -1;
-        // If fire line was built, then Withdrawn, otherwise Escaped
-        status = ( sim->m_finalLine > 0.0 ) ? 1 : 2;
-    }
+	if ( useVersion5 )
+	{
+		// Version 5 configuration properties
+		double distLimit  = vContainLimitDist->m_nativeValue;
+		if ( prop->boolean( "containConfLimitDistOff" ) )
+		{
+			distLimit = 1000000.;
+		}
 
-    // Determine perimeter and size at initial attack
-    bool useFirstResourceArrivalTimeAsInitialAttack = true;
-    double length = sim->m_left->m_attackBack + sim->m_left->m_attackHead;
-    if ( useFirstResourceArrivalTimeAsInitialAttack )
-    {
-        length = sim->m_left->m_initialAttackBack
-               + sim->m_left->m_initialAttackHead;
-    }
-    double width  = FBL_SurfaceFireWidth( length, lwRatio );
-    double perim  = FBL_SurfaceFirePerimeter( length, width );
-    double size   = FBL_SurfaceFireArea( length, width );
-    size *= 0.1;    // ac
+		// Build the containment resources array
+		ContainForce *force = new ContainForce();
+		checkmem( __FILE__, __LINE__, force, "ContainForce force", 1 );
 
-    // Store results
-    if ( useFirstResourceArrivalTimeAsInitialAttack )
-    {
-        vContainAttackBack->update( sim->m_left->m_initialAttackBack );
-        vContainAttackHead->update( sim->m_left->m_initialAttackHead );
-    }
-    else
-    {
-        vContainAttackBack->update( sim->m_left->m_attackBack );
-        vContainAttackHead->update( sim->m_left->m_attackHead );
-    }
-    vContainAttackPerimeter->update( perim );
-    vContainAttackSize->update( size );
-    vContainCost->update( sim->m_finalCost );
-    vContainLine->update( sim->m_finalLine );
-    vContainPoints->update( sim->m_left->m_step + 1 );
-    vContainReportBack->update( sim->m_left->m_reportBack );
-    vContainReportHead->update( sim->m_left->m_reportHead );
-    vContainResourcesUsed->update( sim->m_used );
-    vContainSize->update( finalSize );
-    vContainStatus->updateItem( status );
-    vContainTime->update( sim->m_finalTime );
-    vContainXMax->update( sim->m_xMax );
-    vContainXMin->update( sim->m_xMin );
-    vContainYMax->update( sim->m_yMax );
+		// Add the resources to the resource array
+		for ( int i=0; i < resources; i++ )
+		{
+			force->addResource(
+				arrival[i],
+				productivity[i],
+				duration[i],
+				LeftFlank,	// Sem::LeftFlank6,
+				name[i].latin1(),
+				base[i],
+				hour[i] );
+		}
 
-    // Log results
-    if( m_log )
-    {
-        int outputs = 14 + sim->m_left->m_step + 1;
-        fprintf( m_log, "%sbegin proc ContainFF() 5 %d\n", Margin, outputs );
-        fprintf( m_log, "%s  i vContainReportSpread %g %d %s\n", Margin,
-            vContainReportSpread->m_displayValue,
-            vContainReportSpread->m_displayDecimals,
-            vContainReportSpread->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  i vContainReportSize %g %d %s\n", Margin,
-            vContainReportSize->m_displayValue,
-            vContainReportSize->m_displayDecimals,
-            vContainReportSize->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  i vContainReportRatio %g %d %s\n", Margin,
-            vContainReportRatio->m_displayValue,
-            vContainReportRatio->m_displayDecimals,
-            vContainReportRatio->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  i vContainAttackTactic %d %d %s\n", Margin,
-            vContainAttackTactic->activeItemDataIndex(),
-            0,
-            vContainAttackTactic->activeItemName().latin1() );
-        fprintf( m_log, "%s  i vContainAttackDist %g %d %s\n", Margin,
-            vContainAttackDist->m_displayValue,
-            vContainAttackDist->m_displayDecimals,
-            vContainAttackDist->m_displayUnits.latin1() );
+		// Calculate results
+		ContainSim *sim = new ContainSim(
+			reportSize,
+			reportRate,
+			lwRatio,
+			force,
+			(ContainTactic) tactic,
+			attackDist,
+			distLimit,
+			retry,
+			minSteps,
+			maxSteps );
+		checkmem( __FILE__, __LINE__, sim, "ContainSim sim", 1 );
 
-        fprintf( m_log, "%s  o vContainAttackSize %g %d %s\n", Margin,
-            vContainAttackSize->m_displayValue,
-            vContainAttackSize->m_displayDecimals,
-            vContainAttackSize->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainAttackPerimeter %g %d %s\n", Margin,
-            vContainAttackPerimeter->m_displayValue,
-            vContainAttackPerimeter->m_displayDecimals,
-            vContainAttackPerimeter->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainStatus %d %d %s\n", Margin,
-            vContainStatus->activeItemDataIndex(),
-            0,
-            vContainStatus->activeItemName().latin1() );
-        fprintf( m_log, "%s  o vContainTime %g %d %s\n", Margin,
-            vContainTime->m_displayValue,
-            vContainTime->m_displayDecimals,
-            vContainTime->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainSize %g %d %s\n", Margin,
-            vContainSize->m_displayValue,
-            vContainSize->m_displayDecimals,
-            vContainSize->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainLine %g %d %s\n", Margin,
-            vContainLine->m_displayValue,
-            vContainLine->m_displayDecimals,
-            vContainLine->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainResourcesUsed %g %d ratio\n", Margin,
-            vContainResourcesUsed->m_displayValue,
-            vContainResourcesUsed->m_displayDecimals );
-        fprintf( m_log, "%s  o vContainCost %g %d %s\n", Margin,
-            vContainCost->m_displayValue,
-            vContainCost->m_displayDecimals,
-            vContainCost->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainAttackBack %g %d %s\n", Margin,
-            vContainAttackBack->m_displayValue,
-            vContainAttackBack->m_displayDecimals,
-            vContainAttackBack->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainAttackHead %g %d %s\n", Margin,
-            vContainAttackHead->m_displayValue,
-            vContainAttackHead->m_displayDecimals,
-            vContainAttackHead->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainReportBack %g %d %s\n", Margin,
-            vContainReportBack->m_displayValue,
-            vContainReportBack->m_displayDecimals,
-            vContainReportBack->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainReportHead %g %d %s\n", Margin,
-            vContainReportHead->m_displayValue,
-            vContainReportHead->m_displayDecimals,
-            vContainReportHead->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainXMin %g %d %s\n", Margin,
-            vContainXMin->m_displayValue,
-            vContainXMin->m_displayDecimals,
-            vContainXMin->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainXMax %g %d %s\n", Margin,
-            vContainXMax->m_displayValue,
-            vContainXMax->m_displayDecimals,
-            vContainXMax->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainYMax %g %d %s\n", Margin,
-            vContainYMax->m_displayValue,
-            vContainYMax->m_displayDecimals,
-            vContainYMax->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainPoints %g %d ratio\n", Margin,
-            vContainPoints->m_displayValue,
-            vContainPoints->m_displayDecimals );
-        // The coordinates need to be converted from chains to display units
-        double factor, offset;
-        appSiUnits()->conversionFactorOffset( vContainXMax->m_nativeUnits,
-            vContainXMax->m_displayUnits, &factor, &offset );
-        for ( int pt = 0;
-              pt <= sim->m_left->m_step;
-              pt++ )
-        {
-            fprintf( m_log, " %s      %f %f\n", Margin,
-                offset + factor * sim->m_x[pt],
-                offset + factor * sim->m_y[pt] );
-        }
-    }
-    // Free resources
-    delete force;   force = 0;
-    delete sim;     sim = 0;
+		sim->run();
+
+		int    status = Status[ sim->m_left->m_status ];
+		double finalSize = sim->m_finalSize;
+		// If no contained or limit exceeded...
+		if ( status != 0 && status != 3 )
+		{
+			// Reset final size to -1 acres
+			finalSize = -1;
+			// If fire line was built, then Withdrawn, otherwise Escaped
+			status = ( sim->m_finalLine > 0.0 ) ? 1 : 2;
+		}
+
+		// Determine perimeter and size at initial attack
+		bool useFirstResourceArrivalTimeAsInitialAttack = true;
+		double length = sim->m_left->m_attackBack + sim->m_left->m_attackHead;
+		if ( useFirstResourceArrivalTimeAsInitialAttack )
+		{
+			length = sim->m_left->m_initialAttackBack
+				   + sim->m_left->m_initialAttackHead;
+		}
+		double width  = FBL_SurfaceFireWidth( length, lwRatio );
+		double perim  = FBL_SurfaceFirePerimeter( length, width );
+		double size   = FBL_SurfaceFireArea( length, width );
+		size *= 0.1;    // ac
+
+		// Store results
+		if ( useFirstResourceArrivalTimeAsInitialAttack )
+		{
+			vContainAttackBack->update( sim->m_left->m_initialAttackBack );
+			vContainAttackHead->update( sim->m_left->m_initialAttackHead );
+		}
+		else
+		{
+			vContainAttackBack->update( sim->m_left->m_attackBack );
+			vContainAttackHead->update( sim->m_left->m_attackHead );
+		}
+		vContainAttackPerimeter->update( perim );
+		vContainAttackSize->update( size );
+		vContainCost->update( sim->m_finalCost );
+		vContainLine->update( sim->m_finalLine );
+		vContainPoints->update( sim->m_left->m_step + 1 );
+		vContainReportBack->update( sim->m_left->m_reportBack );
+		vContainReportHead->update( sim->m_left->m_reportHead );
+		vContainResourcesUsed->update( sim->m_used );
+		vContainSize->update( finalSize );
+		vContainStatus->updateItem( status );
+		vContainTime->update( sim->m_finalTime );
+		vContainXMax->update( sim->m_xMax );
+		vContainXMin->update( sim->m_xMin );
+		vContainYMax->update( sim->m_yMax );
+
+		// Log results
+		if( m_log )
+		{
+			int outputs = 14 + sim->m_left->m_step + 1;
+			fprintf( m_log, "%sbegin proc ContainFF() 5 %d\n", Margin, outputs );
+			fprintf( m_log, "%s  i vContainReportSpread %g %d %s\n", Margin,
+				vContainReportSpread->m_displayValue,
+				vContainReportSpread->m_displayDecimals,
+				vContainReportSpread->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainReportSize %g %d %s\n", Margin,
+				vContainReportSize->m_displayValue,
+				vContainReportSize->m_displayDecimals,
+				vContainReportSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainReportRatio %g %d %s\n", Margin,
+				vContainReportRatio->m_displayValue,
+				vContainReportRatio->m_displayDecimals,
+				vContainReportRatio->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainAttackTactic %d %d %s\n", Margin,
+				vContainAttackTactic->activeItemDataIndex(),
+				0,
+				vContainAttackTactic->activeItemName().latin1() );
+			fprintf( m_log, "%s  i vContainAttackDist %g %d %s\n", Margin,
+				vContainAttackDist->m_displayValue,
+				vContainAttackDist->m_displayDecimals,
+				vContainAttackDist->m_displayUnits.latin1() );
+
+			fprintf( m_log, "%s  o vContainAttackSize %g %d %s\n", Margin,
+				vContainAttackSize->m_displayValue,
+				vContainAttackSize->m_displayDecimals,
+				vContainAttackSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackPerimeter %g %d %s\n", Margin,
+				vContainAttackPerimeter->m_displayValue,
+				vContainAttackPerimeter->m_displayDecimals,
+				vContainAttackPerimeter->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainStatus %d %d %s\n", Margin,
+				vContainStatus->activeItemDataIndex(),
+				0,
+				vContainStatus->activeItemName().latin1() );
+			fprintf( m_log, "%s  o vContainTime %g %d %s\n", Margin,
+				vContainTime->m_displayValue,
+				vContainTime->m_displayDecimals,
+				vContainTime->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainSize %g %d %s\n", Margin,
+				vContainSize->m_displayValue,
+				vContainSize->m_displayDecimals,
+				vContainSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainLine %g %d %s\n", Margin,
+				vContainLine->m_displayValue,
+				vContainLine->m_displayDecimals,
+				vContainLine->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainResourcesUsed %g %d ratio\n", Margin,
+				vContainResourcesUsed->m_displayValue,
+				vContainResourcesUsed->m_displayDecimals );
+			fprintf( m_log, "%s  o vContainCost %g %d %s\n", Margin,
+				vContainCost->m_displayValue,
+				vContainCost->m_displayDecimals,
+				vContainCost->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackBack %g %d %s\n", Margin,
+				vContainAttackBack->m_displayValue,
+				vContainAttackBack->m_displayDecimals,
+				vContainAttackBack->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackHead %g %d %s\n", Margin,
+				vContainAttackHead->m_displayValue,
+				vContainAttackHead->m_displayDecimals,
+				vContainAttackHead->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainReportBack %g %d %s\n", Margin,
+				vContainReportBack->m_displayValue,
+				vContainReportBack->m_displayDecimals,
+				vContainReportBack->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainReportHead %g %d %s\n", Margin,
+				vContainReportHead->m_displayValue,
+				vContainReportHead->m_displayDecimals,
+				vContainReportHead->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainXMin %g %d %s\n", Margin,
+				vContainXMin->m_displayValue,
+				vContainXMin->m_displayDecimals,
+				vContainXMin->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainXMax %g %d %s\n", Margin,
+				vContainXMax->m_displayValue,
+				vContainXMax->m_displayDecimals,
+				vContainXMax->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainYMax %g %d %s\n", Margin,
+				vContainYMax->m_displayValue,
+				vContainYMax->m_displayDecimals,
+				vContainYMax->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainPoints %g %d ratio\n", Margin,
+				vContainPoints->m_displayValue,
+				vContainPoints->m_displayDecimals );
+			// The coordinates need to be converted from chains to display units
+			double factor, offset;
+			appSiUnits()->conversionFactorOffset( vContainXMax->m_nativeUnits,
+				vContainXMax->m_displayUnits, &factor, &offset );
+			for ( int pt = 0;
+				  pt <= sim->m_left->m_step;
+				  pt++ )
+			{
+				fprintf( m_log, " %s      %f %f\n", Margin,
+					offset + factor * sim->m_x[pt],
+					offset + factor * sim->m_y[pt] );
+			}
+		}
+		// Free resources
+		delete force;   force = 0;
+		delete sim;     sim = 0;
+	}
+	else	// version 6
+	{
+		// Version 6 configuration properties
+		int maxFireSize = appProperty()->integer( "containConfSizeLimit" ); // acres at which fire is declared 'escaped'
+		int maxFireTime = appProperty()->integer( "containConfTimeLimit" );// minutes at which fire is declared 'escaped'
+
+		// Build the containment resources array
+		Sem::ContainForce6 *force = new Sem::ContainForce6();
+		checkmem( __FILE__, __LINE__, force, "ContainForce6 force", 1 );
+
+		// Add the resources to the resource array
+		for ( int i=0; i < resources; i++ )
+		{
+			force->addResource(
+				arrival[i],
+				productivity[i],
+				duration[i],
+				Sem::LeftFlank6,
+				name[i].latin1(),
+				base[i],
+				hour[i] );
+		}
+
+		int fireStartMinutes = 0;
+		double diurnalRos[24];
+		for ( int i=0; i<24; i++ )
+		{
+			diurnalRos[i] = reportRate;
+		}
+		Sem::ContainSim6 *sim = new Sem::ContainSim6(
+			reportSize,
+			reportRate,
+			diurnalRos,
+			fireStartMinutes,
+			lwRatio,
+			force,
+			(Sem::Contain6::ContainTactic6) tactic,
+			attackDist,
+			retry,
+			minSteps,
+			maxSteps,
+			maxFireSize,
+			maxFireTime );
+		checkmem( __FILE__, __LINE__, sim, "ContainSim6 sim6", 1 );
+
+		sim->run();
+
+		int    status = Status[ sim->m_left->m_status ];
+		double finalSize = sim->m_finalSize;
+		// If no contained or limit exceeded...
+		if ( status != 0 && status != 3 )
+		{
+			// Reset final size to -1 acres
+			finalSize = -1;
+			// If fire line was built, then Withdrawn, otherwise Escaped
+			status = ( sim->m_finalLine > 0.0 ) ? 1 : 2;
+		}
+
+		// Determine perimeter and size at initial attack
+		bool useFirstResourceArrivalTimeAsInitialAttack = true;
+		double length = sim->m_left->m_attackBack + sim->m_left->m_attackHead;
+		double width  = FBL_SurfaceFireWidth( length, lwRatio );
+		double perim  = FBL_SurfaceFirePerimeter( length, width );
+		double size   = FBL_SurfaceFireArea( length, width );
+		size *= 0.1;    // ac
+
+		// Store results
+		vContainAttackBack->update( sim->m_left->m_attackBack );
+		vContainAttackHead->update( sim->m_left->m_attackHead );
+		vContainAttackPerimeter->update( perim );
+		vContainAttackSize->update( size );
+		vContainCost->update( sim->m_finalCost );
+		vContainLine->update( sim->m_finalLine );
+		vContainPoints->update( sim->m_left->m_step + 1 );
+		vContainReportBack->update( sim->m_left->m_reportBack );
+		vContainReportHead->update( sim->m_left->m_reportHead );
+		vContainResourcesUsed->update( sim->m_used );
+		vContainSize->update( finalSize );
+		vContainStatus->updateItem( status );
+		vContainTime->update( sim->m_finalTime );
+		vContainXMax->update( sim->m_xMax );
+		vContainXMin->update( sim->m_xMin );
+		vContainYMax->update( sim->m_yMax );
+
+		// Log results
+		if( m_log )
+		{
+			int outputs = 14 + sim->m_left->m_step + 1;
+			fprintf( m_log, "%sbegin proc ContainFF() 5 %d\n", Margin, outputs );
+			fprintf( m_log, "%s  i vContainReportSpread %g %d %s\n", Margin,
+				vContainReportSpread->m_displayValue,
+				vContainReportSpread->m_displayDecimals,
+				vContainReportSpread->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainReportSize %g %d %s\n", Margin,
+				vContainReportSize->m_displayValue,
+				vContainReportSize->m_displayDecimals,
+				vContainReportSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainReportRatio %g %d %s\n", Margin,
+				vContainReportRatio->m_displayValue,
+				vContainReportRatio->m_displayDecimals,
+				vContainReportRatio->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainAttackTactic %d %d %s\n", Margin,
+				vContainAttackTactic->activeItemDataIndex(),
+				0,
+				vContainAttackTactic->activeItemName().latin1() );
+			fprintf( m_log, "%s  i vContainAttackDist %g %d %s\n", Margin,
+				vContainAttackDist->m_displayValue,
+				vContainAttackDist->m_displayDecimals,
+				vContainAttackDist->m_displayUnits.latin1() );
+
+			fprintf( m_log, "%s  o vContainAttackSize %g %d %s\n", Margin,
+				vContainAttackSize->m_displayValue,
+				vContainAttackSize->m_displayDecimals,
+				vContainAttackSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackPerimeter %g %d %s\n", Margin,
+				vContainAttackPerimeter->m_displayValue,
+				vContainAttackPerimeter->m_displayDecimals,
+				vContainAttackPerimeter->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainStatus %d %d %s\n", Margin,
+				vContainStatus->activeItemDataIndex(),
+				0,
+				vContainStatus->activeItemName().latin1() );
+			fprintf( m_log, "%s  o vContainTime %g %d %s\n", Margin,
+				vContainTime->m_displayValue,
+				vContainTime->m_displayDecimals,
+				vContainTime->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainSize %g %d %s\n", Margin,
+				vContainSize->m_displayValue,
+				vContainSize->m_displayDecimals,
+				vContainSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainLine %g %d %s\n", Margin,
+				vContainLine->m_displayValue,
+				vContainLine->m_displayDecimals,
+				vContainLine->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainResourcesUsed %g %d ratio\n", Margin,
+				vContainResourcesUsed->m_displayValue,
+				vContainResourcesUsed->m_displayDecimals );
+			fprintf( m_log, "%s  o vContainCost %g %d %s\n", Margin,
+				vContainCost->m_displayValue,
+				vContainCost->m_displayDecimals,
+				vContainCost->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackBack %g %d %s\n", Margin,
+				vContainAttackBack->m_displayValue,
+				vContainAttackBack->m_displayDecimals,
+				vContainAttackBack->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackHead %g %d %s\n", Margin,
+				vContainAttackHead->m_displayValue,
+				vContainAttackHead->m_displayDecimals,
+				vContainAttackHead->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainReportBack %g %d %s\n", Margin,
+				vContainReportBack->m_displayValue,
+				vContainReportBack->m_displayDecimals,
+				vContainReportBack->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainReportHead %g %d %s\n", Margin,
+				vContainReportHead->m_displayValue,
+				vContainReportHead->m_displayDecimals,
+				vContainReportHead->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainXMin %g %d %s\n", Margin,
+				vContainXMin->m_displayValue,
+				vContainXMin->m_displayDecimals,
+				vContainXMin->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainXMax %g %d %s\n", Margin,
+				vContainXMax->m_displayValue,
+				vContainXMax->m_displayDecimals,
+				vContainXMax->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainYMax %g %d %s\n", Margin,
+				vContainYMax->m_displayValue,
+				vContainYMax->m_displayDecimals,
+				vContainYMax->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainPoints %g %d ratio\n", Margin,
+				vContainPoints->m_displayValue,
+				vContainPoints->m_displayDecimals );
+			// The coordinates need to be converted from chains to display units
+			double factor, offset;
+			appSiUnits()->conversionFactorOffset( vContainXMax->m_nativeUnits,
+				vContainXMax->m_displayUnits, &factor, &offset );
+			for ( int pt = 0;
+				  pt <= sim->m_left->m_step;
+				  pt++ )
+			{
+				fprintf( m_log, " %s      %f %f\n", Margin,
+					offset + factor * sim->m_x[pt],
+					offset + factor * sim->m_y[pt] );
+			}
+		}
+		// Free resources
+		delete force;   force = 0;
+		delete sim;     sim = 0;
+	}
     return;
 }
 
@@ -538,20 +762,28 @@ void EqCalc::ContainFFSingle( void )
     // 0 == Contained
     // 1 == Withdrawn
     // 2 == Escaped
-    static int Status[8] =
+    static int Status[9] =
     {
-        2, // 0=Unreported  Fire started but not yet reported (init() not called)
-        2, // 1=Reported    Fire reported but not yet attacked (init() called)
-        2, // 2=Attacked    Fire attacked but not yet resolved
-        0, // 3=Contained   Fire contained by attacking forces
-        1, // 4=Overrun     Attacking resources are overrun
-        2, // 5=Exhausted   Attacking resources are exhausted
-        2, // 6=Overflow    Simulation max step overflow
-        2, // 7=DistLimit   Fire spread distance limit exceeded
+        2, // 0=Unreported, Unreported6 Fire started but not yet reported (init() not called)
+        2, // 1=Reported, Reported6		Fire reported but not yet attacked (init() called)
+        2, // 2=Attacked, Attacked6		Fire attacked but not yet resolved
+        0, // 3=Contained, Contained6   Fire contained by attacking forces
+        1, // 4=Overrun, Overrun6		Attacking resources are overrun
+        2, // 5=Exhausted , Exhausted6  Attacking resources are exhausted
+        2, // 6=Overflow, Overflow6		Simulation max step overflow
+        2, // 7=DistLimit, SizeLimitExceeded6   Fire spread distance limit exceeded
+        2, // 8=TimeLimitExceeded6		Fire spread distance limit exceeded
     };
 
     // We'll need to get some properties
     PropertyDict *prop = m_eqTree->m_propDict;
+
+	// Determine which version to use
+	bool useVersion5 = appProperty()->boolean( "containConfVersion5" );
+
+	int maxSteps = appProperty()->integer( "containConfMaxSteps" );
+    int minSteps = appProperty()->integer( "containConfMinSteps" );
+    bool retry   = appProperty()->boolean( "containConfRetry" );
 
     // Access current input values
     double attackDist = vContainAttackDist->m_nativeValue;
@@ -559,11 +791,6 @@ void EqCalc::ContainFFSingle( void )
     double lwRatio    = vContainReportRatio->m_nativeValue;
     double reportSize = vContainReportSize->m_nativeValue;
     double reportRate = vContainReportSpread->m_nativeValue;
-    double distLimit  = vContainLimitDist->m_nativeValue;
-    if ( prop->boolean( "containConfLimitDistOff" ) )
-    {
-        distLimit = 1000000.;
-    }
 
     // Resources
     QString name      = vContainResourceName->m_store;
@@ -579,161 +806,355 @@ void EqCalc::ContainFFSingle( void )
         hourCost   = vContainResourceHourCost->m_nativeValue;
     }
 
-    // Build the containment resources array
-    ContainForce *force = new ContainForce();
-    checkmem( __FILE__, __LINE__, force, "ContainForce force", 1 );
-    force->addResource( arrival, prod, duration, LeftFlank, name.latin1(),
-            baseCost, hourCost );
+	if ( useVersion5 )
+	{
+		// Version 5 configuration properties
+		double distLimit  = vContainLimitDist->m_nativeValue;
+		if ( prop->boolean( "containConfLimitDistOff" ) )
+		{
+			distLimit = 1000000.;
+		}
 
-    // Calculate results
-    int maxSteps = prop->integer( "containConfMaxSteps" );
-    int minSteps = prop->integer( "containConfMinSteps" );
-    bool retry   = prop->boolean( "containConfRetry" );
-    ContainSim *sim = new ContainSim( reportSize, reportRate, lwRatio,
-        force, (ContainTactic) tactic, attackDist, distLimit,
-        retry, minSteps, maxSteps );
-    checkmem( __FILE__, __LINE__, sim, "ContainSim sim", 1 );
-    sim->run();
-    int    status = Status[ sim->m_left->m_status ];
-    double finalSize = sim->m_finalSize;
-    // If not contained...
-    if ( status != 0 && status != 3 )
-    {
-        // Reset final size to -1 acres
-        finalSize = -1;
-        // If fire line was built, then Withdrawn, otherwise Escaped
-        status = ( sim->m_finalLine > 0.0 ) ? 1 : 2;
-    }
+		// Build the containment resources array
+		ContainForce *force = new ContainForce();
+		checkmem( __FILE__, __LINE__, force, "ContainForce force", 1 );
+		force->addResource( arrival, prod, duration, LeftFlank, name.latin1(),
+				baseCost, hourCost );
 
-    // Determine perimeter and size at initial attack
-    double length = sim->m_left->m_attackBack + sim->m_left->m_attackHead;
-    double width  = FBL_SurfaceFireWidth( length, lwRatio );
-    double perim  = FBL_SurfaceFirePerimeter( length, width );
-    double size   = FBL_SurfaceFireArea( length, width );  // ch2
-    size *= 0.1;    // ac
+		// Calculate results
+		ContainSim *sim = new ContainSim(
+			reportSize,
+			reportRate,
+			lwRatio,
+			force,
+			(ContainTactic) tactic,
+			attackDist,
+			distLimit,
+			retry,
+			minSteps,
+			maxSteps );
+		checkmem( __FILE__, __LINE__, sim, "ContainSim sim", 1 );
 
-    // Store results
-    vContainAttackBack->update( sim->m_left->m_attackBack );
-    vContainAttackHead->update( sim->m_left->m_attackHead );
-    vContainAttackPerimeter->update( perim );
-    vContainAttackSize->update( size );
-    vContainCost->update( sim->m_finalCost );
-    vContainLine->update( sim->m_finalLine );
-    vContainPoints->update( sim->m_left->m_step + 1 );
-    vContainReportBack->update( sim->m_left->m_reportBack );
-    vContainReportHead->update( sim->m_left->m_reportHead );
-    vContainResourcesUsed->update( sim->m_used );
-    vContainSize->update( finalSize );
-    vContainStatus->updateItem( status );
-    vContainTime->update( sim->m_finalTime );
-    vContainXMax->update( sim->m_xMax );
-    vContainXMin->update( sim->m_xMin );
-    vContainYMax->update( sim->m_yMax );
+		sim->run();
 
-    // Log results
-    if( m_log )
-    {
-        int outputs = 14 + sim->m_left->m_step + 1;
-        fprintf( m_log, "%sbegin proc ContainFF() 5 %d\n", Margin, outputs );
-        fprintf( m_log, "%s  i vContainReportSpread %g %d %s\n", Margin,
-            vContainReportSpread->m_displayValue,
-            vContainReportSpread->m_displayDecimals,
-            vContainReportSpread->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  i vContainReportSize %g %d %s\n", Margin,
-            vContainReportSize->m_displayValue,
-            vContainReportSize->m_displayDecimals,
-            vContainReportSize->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  i vContainReportRatio %g %d %s\n", Margin,
-            vContainReportRatio->m_displayValue,
-            vContainReportRatio->m_displayDecimals,
-            vContainReportRatio->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  i vContainAttackTactic %d %d %s\n", Margin,
-            vContainAttackTactic->activeItemDataIndex(),
-            0,
-            vContainAttackTactic->activeItemName().latin1() );
-        fprintf( m_log, "%s  i vContainAttackDist %g %d %s\n", Margin,
-            vContainAttackDist->m_displayValue,
-            vContainAttackDist->m_displayDecimals,
-            vContainAttackDist->m_displayUnits.latin1() );
+		int    status = Status[ sim->m_left->m_status ];
+		double finalSize = sim->m_finalSize;
+		// If not contained...
+		if ( status != 0 && status != 3 )
+		{
+			// Reset final size to -1 acres
+			finalSize = -1;
+			// If fire line was built, then Withdrawn, otherwise Escaped
+			status = ( sim->m_finalLine > 0.0 ) ? 1 : 2;
+		}
 
-        fprintf( m_log, "%s  o vContainAttackSize %g %d %s\n", Margin,
-            vContainAttackSize->m_displayValue,
-            vContainAttackSize->m_displayDecimals,
-            vContainAttackSize->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainAttackPerimeter %g %d %s\n", Margin,
-            vContainAttackPerimeter->m_displayValue,
-            vContainAttackPerimeter->m_displayDecimals,
-            vContainAttackPerimeter->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainStatus %d %d %s\n", Margin,
-            vContainStatus->activeItemDataIndex(),
-            0,
-            vContainStatus->activeItemName().latin1() );
-        fprintf( m_log, "%s  o vContainTime %g %d %s\n", Margin,
-            vContainTime->m_displayValue,
-            vContainTime->m_displayDecimals,
-            vContainTime->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainSize %g %d %s\n", Margin,
-            vContainSize->m_displayValue,
-            vContainSize->m_displayDecimals,
-            vContainSize->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainLine %g %d %s\n", Margin,
-            vContainLine->m_displayValue,
-            vContainLine->m_displayDecimals,
-            vContainLine->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainResourcesUsed %g %d ratio\n", Margin,
-            vContainResourcesUsed->m_displayValue,
-            vContainResourcesUsed->m_displayDecimals );
-        fprintf( m_log, "%s  o vContainCost %g %d %s\n", Margin,
-            vContainCost->m_displayValue,
-            vContainCost->m_displayDecimals,
-            vContainCost->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainAttackBack %g %d %s\n", Margin,
-            vContainAttackBack->m_displayValue,
-            vContainAttackBack->m_displayDecimals,
-            vContainAttackBack->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainAttackHead %g %d %s\n", Margin,
-            vContainAttackHead->m_displayValue,
-            vContainAttackHead->m_displayDecimals,
-            vContainAttackHead->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainReportBack %g %d %s\n", Margin,
-            vContainReportBack->m_displayValue,
-            vContainReportBack->m_displayDecimals,
-            vContainReportBack->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainReportHead %g %d %s\n", Margin,
-            vContainReportHead->m_displayValue,
-            vContainReportHead->m_displayDecimals,
-            vContainReportHead->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainXMin %g %d %s\n", Margin,
-            vContainXMin->m_displayValue,
-            vContainXMin->m_displayDecimals,
-            vContainXMin->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainXMax %g %d %s\n", Margin,
-            vContainXMax->m_displayValue,
-            vContainXMax->m_displayDecimals,
-            vContainXMax->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainYMax %g %d %s\n", Margin,
-            vContainYMax->m_displayValue,
-            vContainYMax->m_displayDecimals,
-            vContainYMax->m_displayUnits.latin1() );
-        fprintf( m_log, "%s  o vContainPoints %g %d ratio\n", Margin,
-            vContainPoints->m_displayValue,
-            vContainPoints->m_displayDecimals );
-        // The coordinates need to be converted from chains to display units
-        double factor, offset;
-        appSiUnits()->conversionFactorOffset( vContainXMax->m_nativeUnits,
-            vContainXMax->m_displayUnits, &factor, &offset );
-        for ( int pt = 0;
-              pt <= sim->m_left->m_step;
-              pt++ )
-        {
-            fprintf( m_log, " %s      %f %f\n", Margin,
-                offset + factor * sim->m_x[pt],
-                offset + factor * sim->m_y[pt] );
-        }
-    }
-    // Free resources
-    delete force;   force = 0;
-    delete sim;     sim = 0;
+		// Determine perimeter and size at initial attack
+		double length = sim->m_left->m_attackBack + sim->m_left->m_attackHead;
+		double width  = FBL_SurfaceFireWidth( length, lwRatio );
+		double perim  = FBL_SurfaceFirePerimeter( length, width );
+		double size   = FBL_SurfaceFireArea( length, width );  // ch2
+		size *= 0.1;    // ac
+
+		// Store results
+		vContainAttackBack->update( sim->m_left->m_attackBack );
+		vContainAttackHead->update( sim->m_left->m_attackHead );
+		vContainAttackPerimeter->update( perim );
+		vContainAttackSize->update( size );
+		vContainCost->update( sim->m_finalCost );
+		vContainLine->update( sim->m_finalLine );
+		vContainPoints->update( sim->m_left->m_step + 1 );
+		vContainReportBack->update( sim->m_left->m_reportBack );
+		vContainReportHead->update( sim->m_left->m_reportHead );
+		vContainResourcesUsed->update( sim->m_used );
+		vContainSize->update( finalSize );
+		vContainStatus->updateItem( status );
+		vContainTime->update( sim->m_finalTime );
+		vContainXMax->update( sim->m_xMax );
+		vContainXMin->update( sim->m_xMin );
+		vContainYMax->update( sim->m_yMax );
+
+		// Log results
+		if( m_log )
+		{
+			int outputs = 14 + sim->m_left->m_step + 1;
+			fprintf( m_log, "%sbegin proc ContainFF() 5 %d\n", Margin, outputs );
+			fprintf( m_log, "%s  i vContainReportSpread %g %d %s\n", Margin,
+				vContainReportSpread->m_displayValue,
+				vContainReportSpread->m_displayDecimals,
+				vContainReportSpread->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainReportSize %g %d %s\n", Margin,
+				vContainReportSize->m_displayValue,
+				vContainReportSize->m_displayDecimals,
+				vContainReportSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainReportRatio %g %d %s\n", Margin,
+				vContainReportRatio->m_displayValue,
+				vContainReportRatio->m_displayDecimals,
+				vContainReportRatio->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainAttackTactic %d %d %s\n", Margin,
+				vContainAttackTactic->activeItemDataIndex(),
+				0,
+				vContainAttackTactic->activeItemName().latin1() );
+			fprintf( m_log, "%s  i vContainAttackDist %g %d %s\n", Margin,
+				vContainAttackDist->m_displayValue,
+				vContainAttackDist->m_displayDecimals,
+				vContainAttackDist->m_displayUnits.latin1() );
+
+			fprintf( m_log, "%s  o vContainAttackSize %g %d %s\n", Margin,
+				vContainAttackSize->m_displayValue,
+				vContainAttackSize->m_displayDecimals,
+				vContainAttackSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackPerimeter %g %d %s\n", Margin,
+				vContainAttackPerimeter->m_displayValue,
+				vContainAttackPerimeter->m_displayDecimals,
+				vContainAttackPerimeter->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainStatus %d %d %s\n", Margin,
+				vContainStatus->activeItemDataIndex(),
+				0,
+				vContainStatus->activeItemName().latin1() );
+			fprintf( m_log, "%s  o vContainTime %g %d %s\n", Margin,
+				vContainTime->m_displayValue,
+				vContainTime->m_displayDecimals,
+				vContainTime->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainSize %g %d %s\n", Margin,
+				vContainSize->m_displayValue,
+				vContainSize->m_displayDecimals,
+				vContainSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainLine %g %d %s\n", Margin,
+				vContainLine->m_displayValue,
+				vContainLine->m_displayDecimals,
+				vContainLine->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainResourcesUsed %g %d ratio\n", Margin,
+				vContainResourcesUsed->m_displayValue,
+				vContainResourcesUsed->m_displayDecimals );
+			fprintf( m_log, "%s  o vContainCost %g %d %s\n", Margin,
+				vContainCost->m_displayValue,
+				vContainCost->m_displayDecimals,
+				vContainCost->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackBack %g %d %s\n", Margin,
+				vContainAttackBack->m_displayValue,
+				vContainAttackBack->m_displayDecimals,
+				vContainAttackBack->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackHead %g %d %s\n", Margin,
+				vContainAttackHead->m_displayValue,
+				vContainAttackHead->m_displayDecimals,
+				vContainAttackHead->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainReportBack %g %d %s\n", Margin,
+				vContainReportBack->m_displayValue,
+				vContainReportBack->m_displayDecimals,
+				vContainReportBack->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainReportHead %g %d %s\n", Margin,
+				vContainReportHead->m_displayValue,
+				vContainReportHead->m_displayDecimals,
+				vContainReportHead->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainXMin %g %d %s\n", Margin,
+				vContainXMin->m_displayValue,
+				vContainXMin->m_displayDecimals,
+				vContainXMin->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainXMax %g %d %s\n", Margin,
+				vContainXMax->m_displayValue,
+				vContainXMax->m_displayDecimals,
+				vContainXMax->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainYMax %g %d %s\n", Margin,
+				vContainYMax->m_displayValue,
+				vContainYMax->m_displayDecimals,
+				vContainYMax->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainPoints %g %d ratio\n", Margin,
+				vContainPoints->m_displayValue,
+				vContainPoints->m_displayDecimals );
+			// The coordinates need to be converted from chains to display units
+			double factor, offset;
+			appSiUnits()->conversionFactorOffset( vContainXMax->m_nativeUnits,
+				vContainXMax->m_displayUnits, &factor, &offset );
+			for ( int pt = 0;
+				  pt <= sim->m_left->m_step;
+				  pt++ )
+			{
+				fprintf( m_log, " %s      %f %f\n", Margin,
+					offset + factor * sim->m_x[pt],
+					offset + factor * sim->m_y[pt] );
+			}
+		}
+
+		// Free resources
+		delete force;   force = 0;
+		delete sim;     sim = 0;
+	}
+	else // useVersion6
+	{
+		// Version 6 configuration properties
+		int maxFireSize = appProperty()->integer( "containConfSizeLimit" ); // acres at which fire is declared 'escaped'
+		int maxFireTime = appProperty()->integer( "containConfTimeLimit" );// minutes at which fire is declared 'escaped'
+
+		Sem::ContainForce6 *force = new Sem::ContainForce6();
+		checkmem( __FILE__, __LINE__, force, "ContainForce6 force", 1 );
+		force->addResource( arrival, prod, duration, Sem::LeftFlank6, name.latin1(),
+				baseCost, hourCost );
+
+		int fireStartMinutes = 0;
+		double diurnalRos[24];
+		for ( int i=0; i<24; i++ )
+		{
+			diurnalRos[i] = reportRate;
+		}
+		Sem::ContainSim6 *sim = new Sem::ContainSim6(
+			reportSize,
+			reportRate,
+			diurnalRos,
+			fireStartMinutes,
+			lwRatio,
+			force,
+			(Sem::Contain6::ContainTactic6) tactic,
+			attackDist,
+			retry,
+			minSteps,
+			maxSteps,
+			maxFireSize,
+			maxFireTime );
+		checkmem( __FILE__, __LINE__, sim, "ContainSim6 sim", 1 );
+
+		sim->run();
+
+		int    status = Status[ sim->m_left->m_status ];
+		double finalSize = sim->m_finalSize;
+		// If not contained...
+		if ( status != 0 && status != 3 )
+		{
+			// Reset final size to -1 acres
+			finalSize = -1;
+			// If fire line was built, then Withdrawn, otherwise Escaped
+			status = ( sim->m_finalLine > 0.0 ) ? 1 : 2;
+		}
+
+		// Determine perimeter and size at initial attack
+		double length = sim->m_left->m_attackBack + sim->m_left->m_attackHead;
+		double width  = FBL_SurfaceFireWidth( length, lwRatio );
+		double perim  = FBL_SurfaceFirePerimeter( length, width );
+		double size   = FBL_SurfaceFireArea( length, width );  // ch2
+		size *= 0.1;    // ac
+
+		// Store results
+		vContainAttackBack->update( sim->m_left->m_attackBack );
+		vContainAttackHead->update( sim->m_left->m_attackHead );
+		vContainAttackPerimeter->update( perim );
+		vContainAttackSize->update( size );
+		vContainCost->update( sim->m_finalCost );
+		vContainLine->update( sim->m_finalLine );
+		vContainPoints->update( sim->m_left->m_step + 1 );
+		vContainReportBack->update( sim->m_left->m_reportBack );
+		vContainReportHead->update( sim->m_left->m_reportHead );
+		vContainResourcesUsed->update( sim->m_used );
+		vContainSize->update( finalSize );
+		vContainStatus->updateItem( status );
+		vContainTime->update( sim->m_finalTime );
+		vContainXMax->update( sim->m_xMax );
+		vContainXMin->update( sim->m_xMin );
+		vContainYMax->update( sim->m_yMax );
+
+		// Log results
+		if( m_log )
+		{
+			int outputs = 14 + sim->m_left->m_step + 1;
+			fprintf( m_log, "%sbegin proc ContainFF() 5 %d\n", Margin, outputs );
+			fprintf( m_log, "%s  i vContainReportSpread %g %d %s\n", Margin,
+				vContainReportSpread->m_displayValue,
+				vContainReportSpread->m_displayDecimals,
+				vContainReportSpread->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainReportSize %g %d %s\n", Margin,
+				vContainReportSize->m_displayValue,
+				vContainReportSize->m_displayDecimals,
+				vContainReportSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainReportRatio %g %d %s\n", Margin,
+				vContainReportRatio->m_displayValue,
+				vContainReportRatio->m_displayDecimals,
+				vContainReportRatio->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  i vContainAttackTactic %d %d %s\n", Margin,
+				vContainAttackTactic->activeItemDataIndex(),
+				0,
+				vContainAttackTactic->activeItemName().latin1() );
+			fprintf( m_log, "%s  i vContainAttackDist %g %d %s\n", Margin,
+				vContainAttackDist->m_displayValue,
+				vContainAttackDist->m_displayDecimals,
+				vContainAttackDist->m_displayUnits.latin1() );
+
+			fprintf( m_log, "%s  o vContainAttackSize %g %d %s\n", Margin,
+				vContainAttackSize->m_displayValue,
+				vContainAttackSize->m_displayDecimals,
+				vContainAttackSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackPerimeter %g %d %s\n", Margin,
+				vContainAttackPerimeter->m_displayValue,
+				vContainAttackPerimeter->m_displayDecimals,
+				vContainAttackPerimeter->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainStatus %d %d %s\n", Margin,
+				vContainStatus->activeItemDataIndex(),
+				0,
+				vContainStatus->activeItemName().latin1() );
+			fprintf( m_log, "%s  o vContainTime %g %d %s\n", Margin,
+				vContainTime->m_displayValue,
+				vContainTime->m_displayDecimals,
+				vContainTime->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainSize %g %d %s\n", Margin,
+				vContainSize->m_displayValue,
+				vContainSize->m_displayDecimals,
+				vContainSize->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainLine %g %d %s\n", Margin,
+				vContainLine->m_displayValue,
+				vContainLine->m_displayDecimals,
+				vContainLine->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainResourcesUsed %g %d ratio\n", Margin,
+				vContainResourcesUsed->m_displayValue,
+				vContainResourcesUsed->m_displayDecimals );
+			fprintf( m_log, "%s  o vContainCost %g %d %s\n", Margin,
+				vContainCost->m_displayValue,
+				vContainCost->m_displayDecimals,
+				vContainCost->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackBack %g %d %s\n", Margin,
+				vContainAttackBack->m_displayValue,
+				vContainAttackBack->m_displayDecimals,
+				vContainAttackBack->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainAttackHead %g %d %s\n", Margin,
+				vContainAttackHead->m_displayValue,
+				vContainAttackHead->m_displayDecimals,
+				vContainAttackHead->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainReportBack %g %d %s\n", Margin,
+				vContainReportBack->m_displayValue,
+				vContainReportBack->m_displayDecimals,
+				vContainReportBack->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainReportHead %g %d %s\n", Margin,
+				vContainReportHead->m_displayValue,
+				vContainReportHead->m_displayDecimals,
+				vContainReportHead->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainXMin %g %d %s\n", Margin,
+				vContainXMin->m_displayValue,
+				vContainXMin->m_displayDecimals,
+				vContainXMin->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainXMax %g %d %s\n", Margin,
+				vContainXMax->m_displayValue,
+				vContainXMax->m_displayDecimals,
+				vContainXMax->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainYMax %g %d %s\n", Margin,
+				vContainYMax->m_displayValue,
+				vContainYMax->m_displayDecimals,
+				vContainYMax->m_displayUnits.latin1() );
+			fprintf( m_log, "%s  o vContainPoints %g %d ratio\n", Margin,
+				vContainPoints->m_displayValue,
+				vContainPoints->m_displayDecimals );
+			// The coordinates need to be converted from chains to display units
+			double factor, offset;
+			appSiUnits()->conversionFactorOffset( vContainXMax->m_nativeUnits,
+				vContainXMax->m_displayUnits, &factor, &offset );
+			for ( int pt = 0;
+				  pt <= sim->m_left->m_step;
+				  pt++ )
+			{
+				fprintf( m_log, " %s      %f %f\n", Margin,
+					offset + factor * sim->m_x[pt],
+					offset + factor * sim->m_y[pt] );
+			}
+		}
+		// Free resources
+		delete force;   force = 0;
+		delete sim;     sim = 0;
+	}
     return;
 }
 

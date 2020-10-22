@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file textview.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief QTextView and a QTextBrowser derived classes that support printing
  *  of their rich text contents via a right-click context menu.

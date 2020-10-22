@@ -10,3 +10,5 @@
 #include <tchar.h>
 
 // TODO: reference additional headers your program requires here
+
+#include "wix_bp6_product_618.h"

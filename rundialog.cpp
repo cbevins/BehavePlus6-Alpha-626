@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file rundialog.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BpDocument run time dialog class methods.
  */
@@ -208,6 +208,12 @@ RunDialog::RunDialog( BpDocument *bp, const char *name ) :
         Q_CHECK_PTR( m_graphLimitsCheckBox );
         m_graphLimitsCheckBox->setChecked(
             m_bp->property()->boolean( "graphYUserRange" ) );
+    
+		// Case 5: 0 continuous & 2 discrete range vars
+		if ( m_bp->m_eqTree->m_rangeCase == 5 )
+		{
+			m_graphLimitsCheckBox->setEnabled( false );
+		}
 
         translate( text, "RunDialog:GraphLimits:Caption" );
         html += "<P><H3><FONT COLOR=\"#ff5500\">" + text + "</FONT></H3><HR>";

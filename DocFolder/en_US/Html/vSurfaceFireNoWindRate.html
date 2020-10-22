@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>BehavePlus Surface Fire No Wind-No Slope Spread Rate Page</title>
+  </head>
+  <body>
+<table width="100%">
+	<tr>
+		<td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+		<td align="left" valign="center"><h2><font color="#ff5500">Surface Fire No Wind-No Slope Spread Rate</font></h2></td>
+	</tr>
+</table>
+<hr>
+
+<p>This value appears if you are calcuating passive crown fire behavior using the Scott and Reinhardt (2001) crown fire model <strong>without</strong> the SURFACE module. Accurate estimates of passive crown fire activity require that you <strong>run the SURFACE and CROWN modules together</strong> in this situation. It is not possible to accurately estimate the values needed to calculate passive crown fire activity from field measurements.</p>
+
+<p>Surface fire no wind-no slope spread rate is the &quot;speed&quot; at which the fire travels through the surface fuels with no wind and no slope. Rothermel's (1972) surface fire spread model multiplies this value by the slope factor and wind factor to obtain the surface fire rate of spread.</p>
+
+<p></p>
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+		<td width="67" valign="top" align="center"><strong>I/O</strong></td>
+		<td width="109" valign="top" align="center"><strong>Module</strong></td>
+		<td width="207" valign="top" align="center"><strong>If</strong></td>
+		<td width="207" valign="top" align="center"><strong>Notes</strong></td>
+	</tr> 
+	<tr>
+		<td valign="top">Input</td>
+		<td width="109" valign="top">CROWN</td>
+		<td width="207" valign="top">If SURFACE is not selected, <i>Crown fire is calculated using Scott and Reinhardt (2001)</i> is selected as an input option, and passive crown fire behavior outputs are selected.</td>
+		<td width="207" valign="top">Run the SURFACE and CROWN modules together in this senario.</td>
+	</tr>
+	<tr>
+		<td width="67" valign="top">Output</td>
+		<td width="109" valign="top">&nbsp;</td>
+		<td width="207" valign="top">&nbsp;</td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr>
+</table>
+
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+  <ul>
+      <li><a href="vCrownFirePassiveFlameLeng.html">Passive Crown Fire Flame Length</a></li>
+      <li><a href="vCrownFirePassiveSpreadRate.html">Passive Crown Fire Rate of Spread</a></li>
+      <li><a href="vCrownFirePassiveFireLineInt.html">Passive Crown Fireline Intensity</a></li>
+      <li><a href="vSurfaceFireSpread.html">Surface Fire Rate of Spread</a></li>
+  </ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
+ 
+<hr>
+<font size="2">BehavePlus Online Documentation, July 26, 2017.</font>
+</body>
+</html>

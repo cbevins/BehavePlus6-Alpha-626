@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*  \file document.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2010 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief MDI document base class methods.
  */

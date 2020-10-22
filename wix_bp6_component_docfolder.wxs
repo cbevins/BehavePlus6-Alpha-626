@@ -1115,6 +1115,9 @@
       <Component Id="cmp2BF2B2EDF924A91018A33A85C1E754D4" Directory="Html" Guid="{CC59E368-9AF6-408C-BA91-FD51FE8330A1}">
         <File Id="filAE1D3ED536193F55F93EB922E2042999" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireCritSurfFireInt.html" />
       </Component>
+      <Component Id="cmp2AFC92DD708F4120B900CB818CCBB3D2" Directory="Html" Guid="{F2189A30-530A-4163-9B47-FC5A994930C5}">
+        <File Id="filE7F48D806633464aBB0867FCBE62CA4E" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireCritSurfSpreadRate.html" />
+      </Component>
       <Component Id="cmp08351BF21344B6ABBC37DC2ED4F9F76E" Directory="Html" Guid="{275DA1C7-480F-4DE2-BC30-FAC5ACEBB24A}">
         <File Id="fil71606490F11B1E6BF9CAE6885063FE5B" KeyPath="yes" Source="DocFolder\en_US\Html\vCrownFireCritSurfFlameLeng.html" />
       </Component>

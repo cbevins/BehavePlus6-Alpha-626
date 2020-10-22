@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalc.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree calculator interface.
  *

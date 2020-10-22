@@ -1,23 +1,68 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Crown Fire Canopy Fraction Burned Page</TITLE>
-  </HEAD>
-  <BODY>
-<TABLE WIDTH="100%">
-	<TR>
-		<TD width="100"><IMG SRC="logo90x90.png" ALT="BehavePlus Logo"></TD>
-		<TD ALIGN="left" VALIGN="center">
-			<H2><FONT COLOR="#ff5500">Crown Fire Canopy Fraction Burned</FONT></H2>
-		</TD>
-	</TR> 
-</TABLE>
+<html>
+  <head>
+    <title>BehavePlus Canopy Fraction Burned Page</title>
+  </head>
+  <body>
+<table width="100%">
+	<tr>
+		<td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+		<td align="left" valign="center"><h2><font color="#ff5500">Canopy Fraction Burned</font></h2></td>
+	</tr> 
+</table>
+<hr>
 
-<HR>
- <P>
-THIS IS A TO DO ITEM!!!
-<P>
+<p>Canopy fraction burned is used to calculate passive crown fire rate of spread. It has a value of 0 for a surface fire and a value of 1 for a fully active crown fire (Scott and Reinhardt 2001; p. 41, eqn. 28). The associated passive crown fire rate of spread will be somewhere between the surface fire rate of spread and the active crown fire rate of spread.</p>
 
-<HR><FONT SIZE=2>BehavePlus On-Line Documentation, April 5, 2015.</FONT>
-</BODY>
-</HTML>
+<p>Passive crown fire outputs are only valid for the Scott and Reinhardt (2001) crown fire method.</p>
 
+<p></p> 
+<table border="1" cellspacing="0" cellpadding="2">
+	<tr bgcolor="#CCCCCC">
+		<td width="67" valign="top" align="center"><strong>I/O</strong></td>
+		<td width="109" valign="top" align="center"><strong>Module</strong></td>
+		<td width="207" valign="top" align="center"><strong>If</strong></td>
+		<td width="207" valign="top" align="center"><strong>Notes</strong></td>
+	</tr> 
+	<tr>
+		<td width="67" valign="top">Input</td>
+		<td width="109" valign="top">None</td>
+		<td width="207" valign="top">&nbsp;</td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr> 
+	<tr>
+		<td width="67" valign="top">Output</td>
+		<td width="109" valign="top">CROWN</td>
+		<td width="207" valign="top">If <i>Crown fire is calculated using Scott and Reinhardt (2001)</i> is selected as an input option.</td>
+		<td width="207" valign="top">&nbsp;</td>
+	</tr>
+</table>
+
+<p></p>
+<table>
+	<tr>
+		<td><a name="CrownCanopyFractionBurned.png"></a><img src="CrownCanopyFractionBurned.png" alt="Passive Crown Fire Module Data Flow - Canopy Fraction Burned"></td>
+	</tr>
+</table>
+
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+    <ul>
+      <li><a href="vSurfaceFireSpread.html">Surface Fire Rate of Spread</a></li>
+      <li><a href="vCrownFireActiveSpreadRate.html">Active Crown Fire Rate of Spread</a></li>
+      <li><a href="vCrownFirePassiveSpreadRate.html">Passive Crown Fire Rate of Spread</a></li>
+    </ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
+ 
+<hr>
+<font size="2">BehavePlus Online Documentation, July 26, 2017.</font>
+</body>
+</html>

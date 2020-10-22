@@ -1,8 +1,846 @@
+
+=============================
+Collin D. Bevins
+LLCP0068 - BehavePlus6
+Jan 22 - Jun 21, 2018
+TOTAL 17.00 h
+=============================
+
+2018-05-23 [1.0 h]
+
+- Responded to a request from FAH to make some debugger runs
+	on SRExampleStandB.
+
+2018-03-25 [2.0 h]
+
+- Upload bp_626.msi, ReleaseNotes.txt, Build_626.zip
+
+- Refresh Worksheet, Run, Fuel Model, Moisture Scenario files
+
+- Created new Build 626 (Beta 3)
+
+- Created new zip file Build_626.zip with all source and supporting files.
+
+ 
+2018-03-12 [1.0 h]
+
+-	Tested changes to the File Save As dialogs.
+
+-	Updated the ReleaseNotes.txt.
+
+-	Wrote an email to FAH about schedule for Build 626 release.
+
+
+2018-03-11 [2.0 h]
+
+- Made fixes to all the file 'save' operations so that
+	(1) the Run Descipription (whether entered/tabbed or not)
+	is used as the default file description, and that
+	(2) the 'save' dialog file description field text,
+	(whether enetered/tabbed or not) is used as the final
+	file description, and that
+	(3) the original Run Description text is properly restored
+	to the worksheet after the file has been saved.
+	
+- Applied the above fixes to the following file save dialogs::
+	- BpDocument::saveAsFuelModelFile()
+	- BpDocument::saveAsMoistureScenarioFile()
+	- BpDocument::saveAsRunFile()
+	- BpDocument::saveAsUnitsSetFile()
+	- BpDocument::saveAsWorksheetFile()
+
+	
+2018-03-10 [5.0 h]
+
+- Revised BpDocument::saveAsWorksheetFile() and
+  FileSaveAsDialog::FileSaveAsDialog() to scrape uncommitted
+  entry fields (i.ew., fields with edited text bu no <Enter>
+  or <Tab> to force storage).  SDaved run and file
+  descriptions are now handle properly.
+  
+- Created zipit.bat file to generate Build zip files
+	Usage: zipit <buildNumber>
+	
+- Added "appApplyPropertyXmlOverrides" boolean configuration
+	parameter to BehavePlus6.xml around line 21961.
+	If "true", the current Workspace (usually DefaultDataFolder)
+	is searched for "property.xml", and if found, loads its
+	properties into the application.
+
+-- Added "crownConfDisplayPowerVariables" boolean configuration
+	parameter to BehavePlus6.xml around line 22861.
+	If "true", the Configure > CROWN > Fire Type Outputs tab displays
+	"Power of the Fire", "Power of the Wind", "Power Ratio", and
+	"Wind Driven Fire?" as available outputs,
+	AND the Configure > Custom Units Preferences > Fire & Effects Units
+	dialog displays the "Power" units field.
+
+- Added "surfaceConfDisplayIntermediateDirectionsTab" boolean
+	configuration parameter to BehavePlus6.xml around line 24378.
+	If "true", the SURFACE Output Variables configuration dialog
+	display the "Intermediate Directions" tab.
+
+- Added "containConfSizeLimit" integer configuration parameter
+	to BehavePlus6.xml to set CONTAIN fire size limt (10,000 ac).
+
+- Added "containConfTimeLimit" integer configuration parameter
+	to BehavePlus6.xml to set CONTAIN fire size limt (10,000 ac).
+
+- Replaced the following Doc files with newest versions from FAH:
+	fireUnits.html
+	Models_BehavePlus.html
+	variableIndex.html
+	figureIndex.html
+	vCrownFireActiveFireLineInt.html
+	vCrownFireActiveFlameLeng.html
+	vCrownFireActiveHeatPerUnitArea.html
+	vCrownFireActiveSpreadRate.html
+	vSurfaceFireHeatPerUnitArea.html
+	vTreeCanopyBulkDens.html
+	vTreeCrownBaseHt.html
+	vWindSpeedAt20Ft.html
+
+- Updated BehavePlus6.cpp to "Build 626 Beta 3"
+
+- Create following wix packaging files:
+	- wix_bp6_component_datafolder_626.wxs
+	- wix_bp6_component_docfolder_626.wxs
+	- wix_bp6_product_626.wxs,
+	- wixcandle_626.bat
+	- wixlight_626.bat
+
+
+2018-03-09 [2.0 h]
+
+- Tracked down reason the new 10,000 ac CONTAIN fire size limit
+was always being reset to 1000.  The culprit was the property.xml
+file inside the DefaultDataFolder, which was resetting the
+BehavePlus6.xml value from 10000 to 1000.
+
+
+2018-03-07 [4.0 h]
+
+- Reviewed issue #102FAH CONTAIN Single Resource.
+Tracked down differences between V5 and V6 CONTAIN code.
+
+- Wrote email to FAH that V6 CONTAIN is government-supplied
+source code from Issue #096TD - New CONTAIN Code.
+
+- Determined that the cause of Issue #102 was that V6 CONTAIN
+imposes a 1000 ac fire size limit on CONTAIN, at which point
+resources are WITHDRAWN.  The example run supplied with the
+issue results in fire sizes greater than 1000 ac at containment.
+
+- Wrote FAH an email describing the situation and asking for
+her preferred size and time limit values.
+
+
+=============================
+Collin D. Bevins
+LLCP0068 - BehavePlus6
+Oct 1, 2017 - Jan 21, 2018
+TOTAL 36.0 h
+=============================
+
+2017-10-10 [ 8.0 h]
+
+- Uncovered bug in S&R crown fire routine.
+
+- Tried to track it down.
+
+
+2017-10-11 [8.0 h]
+
+- Wrote several alternative routines for calculating O'active,
+Crowning Index, R'sa, and Crown Fraction Burned.
+
+- Attempted to reconcile differences between Nexus, S&R pubs,
+and C++ and PHP calculations of R'sa, O'active.
+
+
+2017-10-12 [8.0 h]
+
+- Tracked down cause of bug of two issues:
+	-- S&R Eq 19 actually requires Ir as kJ/m2-min
+		instead of kW/m2 (kJ/m2-s) as stated in Table 1.
+	-- FAH instructions for R'sa say to use FM10 and waf=0.4
+		instead of actual surface fuel model and waf
+
+- Re-implemented O'active method using native Rothermel units
+
+- Re-implemented R'sa method to use surface fuel model's ros0,
+	wind factors, and waf.
+
+
+2017-10-13 [2.0 h]
+
+- Tested and verified new R'sa and O'active methods against S&R samples.
+
+
+2017-12-06 [2.0 h]
+
+- Graph subtitles now include the fire direction as well as
+	the y- and x-axis labels.
+- RESOLVED ISSUE #100FAH - Graph Options Not Working
+
+
+2017-12-05 [1.0 h]
+
+- Added revised HTML and figure files to DocFolder.
+- RESOLVED ISSUE #099FAH - Updates to Help System
+
+- Revised Surface Module > Input Options > Directions dialog text
+- RESOLVED ISSUE #098FAH - Change Surface Directions Options
+
+
+2017-12-13 [5.0 h]
+
+-- Fixed bug where crown fraction burned was not being applied
+	to the S&R final HPUA.
+	
+- Verified results against S&R examples for Stands A and B, Tables 5 and 6.
+
+
+2017-12-21 [ 2.0 h]
+
+-- Created new Build 625 (bp6_625.msi) and uploaded it to cloud vault.
+
+-- RESOLVED ISSUE 101FAH Table Row Header has the word "fuel" twice.
+
+
+------------------------------------------------
+NOTES ON THE SCOTT & REINHARDT CROWN FIRE MODEL
+------------------------------------------------
+
+- Equation 8 for R'active includes the phiS term, which should be 0,
+	as Rothermel assumes wind is blowing upslope.
+
+- Equation 15 uses 54.683 instead of 54.681 for km/h to ft/min conversion factor.
+
+- Equation 19 actually requires Ir as kJ/m2-min instead of kW/m2 (kJ/m2-s)
+	as stated in Table 1.
+
+- Equation 20 for O'active uses FM10 wind K of 0.001612 instead of 0.0016102.
+
+- Equation 20 for O'active uses 1/wind B of 0.7 instead of 0.698897
+
+- Equation 20 for O'active assume wind is blowing upslope,
+	and provides inaccurrate results if wind is blowing cross slope.
+
+- Table 6 units for HPAsurface are actually in mega-Joules, not kiloJourles
+ 
+- As a stand-alone model, S&R crown fire requires the following inputs:
+	- wind speed at 20-ft
+	- 1-h, 10-h, 100-h, and live stem fuel moistures
+	- canopy foliage fuel moisture
+	- canopy bulk density
+	- canopy base height
+	- canopy height
+	- canopy heat of combustion
+	- Surface fire heat per unit area
+	- Surface fire fireline intensity (or flame length)
+	- Surface fire spread no-wind no-slope rate
+	- Surface fuel wind factor B
+	- Surface fuel wind factor K
+	- Surface fuel wind adjustment factor
+	- Surface fire slope coefficient (phiS)
+	- Surface fire reaction intensity
+
+TO-DO
+
+- Ensure S&R CROWN is available when linked to SURFACE.
+- Ensure wind blows upslope when S&R is active.
+
+
+=============================
+Collin D. Bevins
+LLCP0068 - BehavePlus6
+Sep 22 - Sep 30, 2017
+TOTAL	51.00 h
+=============================
+
+2017-09-25
+
+- Restored the damaged Microsoft Visual Studio 2008
+	build environment.
+	
+
+2017-09-26
+
+- Created new wixcandle_624.bat, wixlight_624.bat,
+	wix_bp6_product_624.wxs, and wix_bp6_prerelease.wxs files
+	as BehavePlus6 Beta 1 Release.
+
+- Rebuilt the Build 624 in debug mode and verified all expected
+	files are present.
+
+- Rebuilt the Build 624 in release mode and verified all expected
+	files are present.
+
+- Created new bp6_624.msi installation package
+
+- Performed several test installations and confirmed that
+	all files are present and all run/worksheet files work.
+
+- Updated the ReleaseNotes.txt file.
+
+- Uploaded bp6_623.msi and ReleaseNotes.txt to cloud repository
+	and notified FAH.
+
+
+=============================
+Collin D. Bevins
+LLCP0068 - BehavePlus6
+Aug 22 - Sep 21, 2017
+TOTAL	10.00 h
+=============================
+
+2017-09-17 [1.0 h]
+
+- Unzipped and installed the final example WOrksheet and Run files.
+
+- Comapred old and new files, and verified that they all work
+	as expected.
+
+- Updated the Wix component files to load the new files.
+
+- RESOLVED ISSUE #097FAH - New Example Worksheet and Run Files
+
+
+2017-09-18 [8.0 h]
+
+- Received and reviewed list of 330 help files
+and 233 images from FAH.
+
+- Updated BehavePlus6.cpp and appwindow.cpp to Build 623.
+
+- Made changed to BehavePlus6.xml doc and image files lists
+to reflect all new, deleted, and renamed files.
+
+- Created new Wix (installer package) file lists with
+unique GUIDs for all new and renamed files, and with
+deleted files removed.
+
+- Created new wixcandle_623.bat and wixlight_623.bat files.
+
+- Rebuilt the Build 623 in debug mode and verified all expected
+files are present.
+
+- Rebuilt the Build 623 in release mode and verified all expected
+files are present.
+
+- Created new bp6_623.msi installation package
+
+- Performed several test installations and confirmed that
+all files are present and all run/worksheet files work.
+
+- RESOLVED ISSUE #096FAH - Updated Help Files
+
+2017-09-21 [1.0 h]
+
+- Updated ReleaseNotes.txt
+
+- Uploaded bp6_623.msi and ReleaseNotes.txt to cloud repository
+ and notified FAH.
+
+
+=============================
+Collin D. Bevins
+LLCP0068 - BehavePlus6
+Jul 22, 2017 - Aug 21, 2017
+TOTAL	10.00 h
+=============================
+
+2017-08-01 [1.0 h]
+
+- Reviewed the WFIPS Contain Module code sent by T. Dzomba and sent
+an estimate of level-of-effort to incorporate it into BP6.
+
+
+2017-08-11 [2.0 h]
+
+- Performed several diff analyses of the 8 new Contain files
+ (Contain, ContainSim, ContainForce, and ContainResource cpp and h)
+ to determine best way to incorporate them into BP6.
+ 
+- Decided to append the digit '6' to all the new Contain class
+	and constant names to avoid naming conflicts with current BP
+	CONTAIN module classes.  This will allow both code sets to co-exist
+	in BP6 for comparison and testing purposes.
+
+	
+2017-08-13 [2.0 h]
+
+- Added the 8 new Contain files, with renamed classes and constants,
+	to BP6 code base.  Successfully compiled and linked them all.
+
+
+2017-08-14 [5.0 h]
+
+- Implemented both V5 and V6 versions of Contain for single resources.
+	
+- Contain version is configured in BehavePlus6.xml by setting the
+	"containConfVersion5" property to "true" or "false" (@ line 22415).
+	
+- Contain V6 size and time limits are set in BehavePlus6.xml by setting
+	the "containConfSizeLimit" and "containConfTimeLimit" properties.
+
+- Implemented both V5 and V6 versions of Contain for multiple resources.
+	
+- /TODO split out fire area size/perim at first attack
+
+
+=============================
+Collin D. Bevins
+LLCP0068 - BehavePlus6
+Apr 22, 2017 - Jul 21, 2017
+
+2017-06-27	1.0
+2017-07-08	3.0
+2017-07-09	3.0
+2017-07-11	1.0
+2017-07-17	1.0
+2017-07-21	1.0
+TOTAL	   10.00 h
+=============================
+
+
+2017-06-27 [1.0 h]
+
+Printed and reviewed issue reports #91-94 from FAH.
+
+
+2017-07-08 [3.0 h]
+
+Received email request from FAH for assistance in cross-referencing
+help file usage in the code base.  Created a help file cross-
+reference index and emailed it to her.
+
+- Updated BehavePlus6.cpp and appwindow.cpp to Build 623.
+
+---- ISSUE#091FAH ---------------------------------------------
+
+- Changed Chaparral Fuel load labels as requested in BehavePlus6.xml.
+	
+- RESOLVED ISSUES #091FAH - "Chaparral Output Variable Names"
+
+
+---- ISSUE#094FAH ---------------------------------------------
+
+- Modified BpDocument::guideClicked() in bpdocument.cpp to call the
+	FuelModelDialog() for the two fuel model option variables
+	'First Fuel Model' and 'Second Fuel Model' as well as for the
+	single fuel model variable 'Fuel Model'.
+	
+- RESOLVED ISSURE #094FAH - Fuel Model List for 2-fuel model options
+
+
+2017-07-09 [3.0 h]
+
+---- ISSUE#093FAH ---------------------------------------------
+
+- Modified bpcomposegraphs.cpp BpDocument::composeBarGraph() to use
+the y axis minimum value as the y label anchor position (instead of zero).
+
+- RESOLVED ISSUE #093 - X Axis Variable Names Don't Appear...
+
+
+---- ISSUE#092FAH - CONTAIN Outputs -----------------------------
+
+- Researched into this issue and wrote the following response to FAH:
+
+
+The BP Contain model is based entirely on the Fried and Fried model, which has the following behavior:
+
+1. More than a single resource (crew, engine, etc) with various productivity rates may be dispatched at various times as specified by user input.
+
+2. If the productivity of the very first resource that arrives is so insufficient that it would be overrun by the fire, it's initial attack is delayed until the next resource arrives.
+
+3.  When the next resource arrives, its productivity is accumulated, and we again test if the combined resources are overrun.
+
+4.  If the combined resources are overrun
+4a  and MORE resources are yet to arrive, loop back to step 3.
+4b  and NO more resources are yet to arrive, there is no initial attack time.
+
+5.  If the combined forces have sufficient productivity to not be overrun, THEN the initial attack time is set and the race is afoot.
+
+From the above discussion, it becomes more apparent why the resource arrival times, production rates, durations, tactic, and offset are all required to determine the Time of Initial Attack, and therefore fire size and perimeter at initial attack (which isn't necessarily the fire size at first arrival).
+
+Let me know if you have any questions.
+
+
+2017-07-11 [1.0 h]
+
+- Drafted a response to FAH concerning the CONTAIN module behavior in determining
+initial attack time.
+
+
+2017-07-17 [1.0 h]
+
+- Constructed a crosswalk of the Units Editor Dialog variable groups
+and their units of measure.
+
+- Emailed the corsswalk to FAH.
+
+2017-07-21 [1.0 h]
+
+- Removed Safety Module units from the Units Editor.
+
+- RESOLVED ISSUE #095FAH - Delete Safety Units
+
+
+=============================
+Collin D. Bevins
+LLCP0068 - BehavePlus6
+Mar 22, 2016 - Apr 21, 2017
+
+2017-03-27	8.00 h
+2017-03-28	8.00 h
+2017-03-30	2.00 h
+2017-04-10	6.00 h
+2017-04-11	8.00 h
+2017-04-12  5.00 h
+2017-04-13	2.00 h
+TOTAL	   39.00 h
+=============================
+	
+
+2017-03-27 [8.00 h]
+
+---- ISSUE#078FAH ---------------------------------------------
+
+- In rundialog.cpp RunDialog::RunDialog(), inserted lines 212-216
+	that checks if both range variables are discrete, and if so,
+	disables the 'Specify graph Y axist limits' checkbox.
+	
+- RESOLVED ISSUES #078FAH - "Specify graph Y axis limits" should be grayed out
+	when both range variables are discrete.
+
+
+---- ISSUE #082FAH --------------------------------------------
+
+- In modulesdialog.cpp ModulesDialog::safetyOptions(),
+	inserted lines 128-133 to hide Safety Module:
+		const char *str = mod->m_name.latin1();
+		if ( strcmp( str, "safety" ) == 0 )
+		{
+            m_cb[row]->hide();
+            m_pb[row]->hide();
+		}
+		
+- RESOLVED ISSUE #082FAH - Disable Saftey Zone Module
+
+
+---- ISSUE #083FAH --------------------------------------------
+
+- Updated BehavePlus6.cpp and appwind.cpp to 'Build 619'.
+
+- Changed modulesdialog.cpp ModuleDialog::surfaceOptions() at line 1706 to
+    dialog->showPage( outTab );
+	so that the SURFACE opening tab is 'Output Variables > Basic'.
+	
+- Opening tab in Crown module is 'Basic Outputs'.
+
+- Installed and tested 6 new Example Worksheet files provided by FAH.
+
+- RESOLVED ISSUE #083FAH - Preparation for v6 Alpha Release
+
+
+---- ISSUE #084FAH --------------------------------------------
+
+- In BehavePlus6.xml, changed all occurrences of 'Fire Front' to
+	'Fire Perimeter' or iht ehte case of column headers, 'Fire Perim'.
+	
+- RESOLVED ISSUE #084FAH - Change header line on output files to Fire Perimeter
+
+
+---- ISSUE #085FAH --------------------------------------------
+
+- In BehavePlus6.xml, changed:
+	- all occurrences of '&amp;' followed by 2 spaces,
+		to being followed by a single space.
+    - changed Custom Units dialog item labels for 'Surface ROS'
+		and 'Crown Ros' to 'Surface Rate of Spread'.
+	- 'Changed Chaparral Fuel Total Fuel Load' to 'Chaparral Total Fuel Load'
+
+- RESOLVED ISSUE #085FAH - Minor typos in program
+
+
+---- ISSUE #086FAH --------------------------------------------
+
+- In modulesdialog.cpp ModulesDialog::surfaceOptions(),
+	commented out lines 1640-1642 to disable 'Chaparral Fuel Age'
+	as an output variable.
+
+- 'Changed Chaparral Fuel Total Fuel Load' to 'Chaparral Total Fuel Load'
+	
+- RESOLVED ISSUE #086FAH - Updates to Chaparral Special Case Fuel Model
+
+
+---- ISSUE #087FAH --------------------------------------------
+
+- In modulesdialog.cpp ModulesDialog::crownOptions(),
+	inserted lines 591-595 to disable 'Critical Surface Fire ROS,
+	Crown Fire Initition' checkbox when 'Crown fire is calculated
+	using' == 'Rothermel':
+	
+		varCheckBox = addOutput( p, "crownCalcCritSurfSpreadRate",
+					  "vCrownFireCritSurfSpreadRate",
+					  row, 0, row, 0 ); row++;
+		varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+		connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+- RESOLVED ISSUE #087FAH - Critical Surface Fire ROS, Crown Fire Initiation
+
+
+---- ISSUE #088FAH --------------------------------------------
+
+- Researched the use of downwind canopy height and canopy cover in
+	Albini (1979), the original BEHAVE SUBROUTINE SPOTMX(), BehavePlus,
+	and the Albini and Alexander crown fire spotting distance C program.
+	
+- Composed a response to FAH's question concerning use of downwind
+	canopy height between the two Albini model versions.
+
+
+---- ISSUE #089FAH --------------------------------------------
+
+- RESOLVED ISSUE #089FAH - Run Option Notes from Crown Fire Method
+
+
+2017-03-28 [8.0 h]
+
+---- ISSUE #080FAH --------------------------------------------
+
+- Updated the current and future set of reserved fuel model numbers
+  in EqVar::isValidString() (xeqvar.cpp:821-830) as follows:
+		if ( n <= 13						// current standard fuel models
+		 || ( n >=  14 && n<=  18 )			// future standard fuel models
+		 || ( n >=  91 && n<=  93 )			// current NB series
+		 || ( n >=  94 && n<=  95 )			// future NB series
+		 || ( n >=  98 && n<=  99 )			// FARSITE water and rock fuel models
+		 || ( n >= 101 && n<= 109 )			// current GR series
+		 || ( n >= 110 && n<= 112 )			// future GR series
+		 || ( n >= 121 && n<= 124 )			// current GS series
+		 || ( n >= 125 && n<= 130 )			// future GS series
+		 || ( n >= 141 && n<= 149 )			// current SH series
+		 || ( n >= 150 && n<= 152 )			// future SH series
+		 || ( n >= 161 && n<= 165 )			// current TU series
+		 || ( n >= 166 && n<= 170 )			// future TU series
+		 || ( n >= 181 && n<= 189 )			// current TL series
+		 || ( n >= 190 && n<= 192 )			// future TL series
+		 || ( n >= 201 && n<= 204 )			// current SB series
+		 || ( n >= 205 && n<= 210 )			// future SB series
+		 || n > 256 )						// FARSITE upper limit
+
+- Updated BpDocument::saveAsFuelModelFile() bpfile.cpp:595-600 
+	so that if attachment fails,the success dialog is skipped:
+        // Attach the fuel model file
+        if ( m_eqApp->attachFuelModel( newFileName ) )
+		{
+			// Display a confirmation
+			translate( text, "BpDocument:SaveFuelModel:Saved", newFileName );
+			info( text );
+		}
+
+- Updated BpDocument::saveAsFuelModelFile() bpfile:533-551
+	to ensure that the fuel model code is not the same as the fuel model number
+	when attempting to save the fuel parameters as a fuel model.
+	
+- Updated FuelModelDialog() at fuelmodeldialog.cpp:141 to allow custom
+	fuel models whose codes==number to be listed in the choices dialog
+	(so that old custom models will appear in the list).
+
+- Added FuelModelDialog::isReservedFuelModelNumber() method.
+
+- RESOLVED ISSUE #080FAH - Custom Fuel Modls Not Appearing in Menu
+	- The fix prevents future custom fuel models from being saved if
+	they have the same fuel model code as their fuel model number,
+	while allowing old custom fuel models whose code==number to still
+	appear int he choice dialog.
+
+
+---- ISSUE #081FAH - Elapsed Time is Required as Input When It Should Not Be
+
+- Added EqCacl:;requiresElapsedTime() to xeqcalcreconfigure.cpp:1826-1862
+	to check if elapsed time is required by Surface, Size, and/or Crown.
+	
+- RESOLVED ISSUE #081FAH - Elapsed Time is Required as Input When It Should Not Be
+
+
+2017-03-30 [2.0 h]
+
+---- ISSUE #079FAH - V6 will not Open V5 file	
+
+- Updated EqTreeParser::handlePrescription() at xeqtreeparser.cpp:132-140
+	to check for and ignore 'prescription' names that no longer exist in V6.
+
+- Updated EqTreeParser::handleVariable() at xeqtreeparser.cpp:380-393
+	to check for and ignore 'variable' names that no longer exist in V6.
+
+- Verified that V6 can now open all 4 V5 ExampleRun files.
+
+- RESOLVED ISSUE #079FAH - V6 will not Open V5 file	
+
+
+2017-04-10 [6.0 h]
+
+- Performed complete rebuild of debug and release versions of BP6 Build 619.
+
+- Downloaded and installed Help and Doc files from FAH.
+
+- Created wix_bp6_product_619.wxs installation packager files.
+
+- Updated installation packager file wixcandle.bat and wixlight.bat
+	to Build 619.
+
+- Compiled and linked bp6_619.msi
+
+- Performed several test installation of bp6_619.msi
+
+- Updated ReleaseNotes.txt.
+
+-- Uploaded bp6_619.msi and ReleaseNotes to DropBox location.
+
+-- Sent an email to FAH with download links to bp6_619.msi
+	and ReleaseNotes.txt.
+
+
+-- Disabled the SURFACE Module Output Variables Intermediate Directions tab
+	by enclosing ModuleDialog::surfaceOptions() lines modulesdialog.cpp:1330-1368
+	in an if(false){} block.
+
+- Performed complete rebuild of debug and release versions of BP6 Build 620.
+
+- Created wix_bp6_product_620.wxs installation packager files.
+
+- Updated installation packager file wixcandle.bat and wixlight.bat
+	to Build 620.
+
+- Compiled and linked bp6_620.msi
+
+- Performed several test installation of bp6_620.msi
+
+- Updated ReleaseNotes.txt.
+
+-- Uploaded bp6_620.msi and ReleaseNotes to DropBox location.
+
+-- Sent an email to FAH with download links to bp6_620.msi
+	and ReleaseNotes.txt.
+
+
+2017-04-11 [8.0 h]
+
+-- Updated EqCalc::getSubtitle() at xeqcalcreconfig.cpp:49
+	to return hard-coded string "Spread from Fire Front"
+	RESOLVED ISSUE #084FAH UPDATED, April 11, 2017
+
+-- Reviewed updated Issue #078FAH, and wrote email to FAH about
+	whether the update was logically correct.  Received an affirmative
+	reply from FAH, so issue is closed.
+	
+-- Installed the new directionOptions.html file.
+
+-- Fixed bug in Build 620 that displayed the SURFACE Intermediate
+	Directions tab on the upper level (with Inputs and Outputs)
+	instead of hiding it.
+
+--  Updated xeqtreeparser.cpp:383-390 yo ignore deprecated V5
+	variables:
+			if ( name == "vCrownFireArea"
+			  || name == "vCrownFireFlameLeng"
+			  || name == "vCrownFireHeatPerUnitArea"
+			  || name == "vCrownFireLineInt"
+			  || name == "vCrownFirePerimeter"
+			  || name == "vCrownFireSpreadDist"
+			  || name == "vCrownFireSpreadMapDist"
+			  || name == "vCrownFireSpreadRate"
+	Build 621 can now read the 6 V5 example runs files provided by FAH.
+	RESOLVED ISSUE #079FAH UPDATED - V6 will not open V5 fils.
+
+	
+2017-04-12 [5.0 h]
+
+--	Conducted an analysis fo the surface fire spotting model vs
+	the crown fire spotting model to determine where and how the
+	downwind canopy cover and height could be introduced into
+	the latter.
+	
+--- Developed dependency diagrams of Albini's crown fire
+	spotting model and the BehavePlus surface fire spotting
+	model to understand where and how downwind canopy cover
+	and height could be introduced.
+	
+-- Composed an email to FAH detailing the above and asking
+	for futher direction.
+
+
+2017-04-13 2.00 h]	
+
+- Began packaging Build 621 that includes the Intermediate Directions
+  tab for FAH use.
+	
+- Performed complete rebuild of debug and release versions of BP6 Build 621.
+
+- Created wix_bp6_product_621.wxs installation packager files.
+
+- Updated installation packager file wixcandle.bat and wixlight.bat
+	to Build 621.
+
+- Compiled and linked bp6_621.msi
+
+- Performed several test installation of bp6_621.msi
+
+- Updated ReleaseNotes.txt.
+
+-- Uploaded bp6_621.msi and ReleaseNotes to DropBox location.
+
+-- Sent an email to FAH with download links to bp6_621.msi
+	and ReleaseNotes.txt.
+	
+-- Modified Module Dialog to hide the Intermediate Directions tab.
+
+- Began packaging Build 622 that HIDES the Intermediate Directions
+  tab for alpha testing purposes.
+	
+- Performed complete rebuild of debug and release versions of BP6 Build 622.
+
+- Created wix_bp6_product_622.wxs installation packager files.
+
+- Updated installation packager file wixcandle.bat and wixlight.bat
+	to Build 622.
+
+- Compiled and linked bp6_622.msi
+
+- Performed several test installation of bp6_622.msi
+
+- Updated ReleaseNotes.txt.
+
+-- Uploaded bp6_622.msi and ReleaseNotes to DropBox location.
+
+-- Sent an email to FAH with download links to bp6_622.msi
+	and ReleaseNotes.txt.
+
+=============================
+Collin D. Bevins
+LLCP0064 - BehavePlus6 Task
+Apr 22, 2016 - Jun 21, 2016
+ hours
+=============================
+
+2016-05-25
+
+-	Restored the Crown Module dialog to its appearance as
+	in Build 617 (without the 'Scott and Rienhardt' tab).
+	
+-	Created Build 618 installation packake, uploaded it to
+	DropBox, and informed FAH.
+	
 =============================
 Collin D. Bevins
 LLCP0064 - BehavePlus6 Task
 Mar 22, 2016 - Apr 21, 2016
-?? hours
+27 hours
 =============================
 
 2016-04-05 (4.0 h) [27.0 h total]

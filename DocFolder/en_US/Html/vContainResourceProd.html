@@ -1,28 +1,22 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Resource Line Production Rate Page</TITLE>
-  </HEAD>
-  <BODY>
-    <TABLE WIDTH="100%">
-      <TR>
-        <TD width="100">
-          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
-        </TD>
-        <TD ALIGN="left" VALIGN="center">
-         <H2><FONT COLOR="#ff5500">Resource Line Production Rate</FONT></H2>
-        </TD>
-      </TR>
-    </TABLE>
-<HR>
-<P> The resource line production rate is the average, sustained rate 
-at which the resource can build and hold fire line. Enter the total rate for the 
-resource, which is assumed to be split evenly between the two flanks. Thus, a 
-crew (or single piece of equipment) that constructs fireline at 20 ch/h is assumed 
-to be constructing 10 ch/h on the left flank and another 10 ch/h on the right 
-flank. Guidelines are given in the Fireline Handbook. 
-<p>If suppression is entered 
-for multiple resources is selected as an input option, there must be exactly one 
-resource line production rate entry in the worksheet for every resource name entry.<br> 
+<html>
+  <head>
+    <title>BehavePlus Resource Line Production Rate Page</title>
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+        <td align="left" valign="center"><h2><font color="#ff5500">Resource Line Production Rate</font></h2></td>
+      </tr>
+    </table>
+<hr>
+
+<p>The resource line production rate is the average, sustained rate at which the resource can build and hold fire line. Enter the total rate for the resource, which is assumed by the model to be split evenly between the two flanks. Thus, a crew (or single piece of equipment) that constructs fireline at 20 ch/h is assumed to be constructing 10 ch/h on the left flank and another 10 ch/h on the right flank.</p>
+
+<p>Guidelines were developed during the 1970s and are given in the Fireline Handbook. If you have better, more recent information, that should be used. You may want to document your assumptions in the Notes section of the Worksheet.</p>
+
+<p>If <i>Suppression input entered for multiple resources</i> is selected as an input option, there must be exactly one and only one resource line production rate entry in the worksheet for every resource name entry.</p><br>
+
 <table border="1" cellspacing="0" cellpadding="2">
   <tr bgcolor="#CCCCCC"> 
     <td width="67" valign="top" align="center"><strong>I/O</strong></td>
@@ -44,521 +38,534 @@ resource line production rate entry in the worksheet for every resource name ent
   </tr>
 </table>
 
-<P><br>The following tables come from the <em>Fireline 
-Handbook, Appendix A</em> (March 2004). <BR> <p> <A NAME="Table1"></a> <B>Table 
-1. Sustained Line Production Rates of 20-Person Crews for Construction, Burnout, 
-and Holding in Chains/Hour</B><br>
-<TABLE border="1" cellspacing="0" cellpadding="2"> 
-	<TR bgcolor="#CCCCCC"><br>
-		<TH ROWSPAN=3 COLSPAN=1>Fire Behavior Fuel Model</TH>
-        <TH ROWSPAN=3 COLSPAN=1>Specific Conditions</TH>
-        <TH ROWSPAN=1 COLSPAN=2>Crew Type</TH>
-    </TR>
-    <TR bgcolor="#CCCCCC"> 
-		<TD align="center"><b>Type I</b></TD>
-        <TD align="center"><b>Type II</b></TD>
-    </TR>
-    <TR bgcolor="#CCCCCC">
-    	<TD align="center"><B>(ch/h)</B></TD>
-        <TD align="center"><B>(ch/h)</B></TD>
-    </TR> 
-	<TR>
-    	<TD>1 Short Grass</TD>
-        <TD>Grass<BR>Tundra</TD>
-        <TD align="center">30<BR>9</TD>
-      <TD align="center">18<BR>5</TD>
-    </TR> 
-	<TR>
-    	<TD>2 Open Timber/Grass Understory</TD>
-        <TD>All</TD>
-        <TD align="center">24</TD>
-        <TD align="center">16</TD>
-    </TR> 
-	<TR>
-    	<TD>3 Tall Grass</TD>
-        <TD>All</TD>
-        <TD align="center">5</TD>
-        <TD align="center">3</TD>
-    </TR>
-    <TR>
-    	<TD>4 Chaparral</TD>
-        <TD>Chaparral<BR>High Pocosin</TD>
-        <TD align="center">5<BR>4</TD>
-      <TD align="center">3<BR>2</TD>
-    </TR>
-    <TR>
-    	<TD>5 Brush</TD>
-        <TD>All</TD>
-        <TD align="center">6</TD>
-        <TD align="center">4</TD>
-    </TR> 
-	<TR>
-    	<TD>6 Dormant Brush/Hardwood Slash</TD>
-        <TD>Black Spruce<BR>Others</TD>
-        <TD align="center">7<BR>6</TD>
-      <TD align="center">5<BR>4</TD>
-    </TR> 
-	<TR>
-    	<TD>7 Southern Rough</TD>
-        <TD>All</TD
-        ><TD align="center">4</TD>
-        <TD align="center">2</TD>
-    </TR>
-    <TR>
-    	<TD>8 Closed Timber Litter</TD>
-        <TD>Conifers<BR>Hardwoods</TD>
-        <TD align="center">7<BR>40</TD>
-      <TD align="center">5<BR>24</TD>
-    </TR> 
-	<TR>
-    	<TD>9 Hardwood Litter</TD>
-        <TD>Conifers<BR>Hardwoods</TD>
-        <TD align="center">28<BR>40</TD>
-      <TD align="center">16<BR>24</TD>
-   	</TR> 
-	<TR>
-    	<TD>10 Timber (Litter & Understory)</TD>
-        <TD>All</TD>
-        <TD align="center">6</TD>
-        <TD align="center">4</TD>
-    </TR> 
-	<TR>
-    	<TD>11 Logging Slash, Light</TD>
-        <TD>All</TD>
-        <TD align="center">15</TD>
-        <TD align="center">9</TD>
-    </TR>
-    <TR> 
-		<TD>12 Logging Slash, Medium</TD>
-        <TD>All</TD>
-        <TD align="center">7</TD>
-        <TD align="center">4</TD>
-    </TR>
-    <TR>
-    	<TD>13 Logging Slash, Heavy</TD>
-        <TD>All</TD>
-        <TD align="center">5</TD>
-        <TD align="center">3</TD>
-    </TR>
-</TABLE>
+<p>The following tables come from the <em>Fireline Handbook, Appendix A</em> (March 2004).</p>
 
-<P> <b>Note:</b> Allowances have been made in the production rates for rest periods and cumulative 
-fatigue. <p><p><A NAME="Table2"></a> <B>Table 2. Line Production Rates 
-for Initial Action by Hand Crews in Chains per Person per Hour</B><br>
+<p>Click on a link below to be directed to the appropriate table.</p>
+	<ul>
+		<li><a href="#Table1">20-Person Crews: Construction, Burnout, and Holding</a></li>
+		<li><a href="#Table2">IA Hand Crews</a></li>
+		<li><a href="#Table3">IA Engine Crews</a></li>
+		<li><a href="#Table4">Fireline Explosives</a></li>
+		<li><a href="#Table5">Dozer</a></li>
+		<li><a href="#Table6">Tractor-Plow</a></li>
+	</ul>
+			
+<p></p>
+<a name="Table1"></a>
+<strong>Sustained Line Production Rates of 20-Person Crews for Construction, Burnout, and Holding in Chains/Hour</strong><br>
+<strong>Note:</strong> Allowances have been made in the production rates for rest periods and cumulative fatigue.<br>
+<table border="1" cellspacing="0" cellpadding="2"><tr bgcolor="#CCCCCC">
+		<th rowspan="3" colspan="1">Fire Behavior Fuel Model</th>
+        <th rowspan="3" colspan="1">Specific Conditions</th>
+        <th rowspan="1" colspan="2">Crew Type</th>
+    </tr>
+    <tr bgcolor="#CCCCCC"> 
+		<td align="center"><b>Type I</b></td>
+        <td align="center"><b>Type II</b></td>
+    </tr>
+    <tr bgcolor="#CCCCCC">
+    	<td align="center"><strong>(ch/h)</strong></td>
+        <td align="center"><strong>(ch/h)</strong></td>
+    </tr> 
+	<tr>
+    	<td>1 Short Grass</td>
+        <td>Grass<br>Tundra</td>
+        <td align="center">30<br>9</td>
+      <td align="center">18<br>5</td>
+    </tr> 
+	<tr>
+    	<td>2 Open Timber/Grass Understory</td>
+        <td>All</td>
+        <td align="center">24</td>
+        <td align="center">16</td>
+    </tr> 
+	<tr>
+    	<td>3 Tall Grass</td>
+        <td>All</td>
+        <td align="center">5</td>
+        <td align="center">3</td>
+    </tr>
+    <tr>
+    	<td>4 Chaparral</td>
+        <td>Chaparral<br>High Pocosin</td>
+        <td align="center">5<br>4</td>
+      <td align="center">3<br>2</td>
+    </tr>
+    <tr>
+    	<td>5 Brush</td>
+        <td>All</td>
+        <td align="center">6</td>
+        <td align="center">4</td>
+    </tr> 
+	<tr>
+    	<td>6 Dormant Brush/Hardwood Slash</td>
+        <td>Black Spruce<br>Others</td>
+        <td align="center">7<br>6</td>
+      <td align="center">5<br>4</td>
+    </tr> 
+	<tr>
+    	<td>7 Southern Rough</td>
+		<td>All</td>
+      <td align="center">4</td>
+        <td align="center">2</td>
+    </tr>
+    <tr>
+    	<td>8 Closed Timber Litter</td>
+        <td>Conifers<br>Hardwoods</td>
+        <td align="center">7<br>40</td>
+      <td align="center">5<br>24</td>
+    </tr> 
+	<tr>
+    	<td>9 Hardwood Litter</td>
+        <td>Conifers<br>Hardwoods</td>
+        <td align="center">28<br>40</td>
+      <td align="center">16<br>24</td>
+   	</tr> 
+	<tr>
+    	<td>10 Timber (Litter & Understory)</td>
+        <td>All</td>
+        <td align="center">6</td>
+        <td align="center">4</td>
+    </tr> 
+	<tr>
+    	<td>11 Logging Slash, Light</td>
+        <td>All</td>
+        <td align="center">15</td>
+        <td align="center">9</td>
+    </tr>
+    <tr> 
+		<td>12 Logging Slash, Medium</td>
+        <td>All</td>
+        <td align="center">7</td>
+        <td align="center">4</td>
+    </tr>
+    <tr>
+    	<td>13 Logging Slash, Heavy</td>
+        <td>All</td>
+        <td align="center">5</td>
+        <td align="center">3</td>
+    </tr>
+</table>
 
-<TABLE border="1" cellspacing="0" cellpadding="2"> 
-	<TR bgcolor="#CCCCCC">
-    	<TH>Fire Behavior Fuel Model</TH>
-        <TH>Specific Conditions</TH>
-        <TH>Construction Rate in<br> Chains per Person<br> per Hour (ch/h)</TH>
-    </TR>
-    <TR>
-    	<TD>1 Short Grass</TD>
-        <TD>Grass<BR>Tundra</TD>
-        <TD align="center">4.0<BR>1.0</TD>
-    </TR> 
-	<TR>
-    	<TD>2 Open Timber/Grass Understory</TD>
-        <TD>All</TD>
-        <TD align="center">3.0</TD>
-    </TR>
-    <TR> 
-		<TD>3 Tall Grass</TD>
-        <TD>All</TD>
-        <TD align="center">0.7</TD>
-   </TR>
-   <TR>
-   		<TD>4 Chaparral</TD>
-    	<TD>Chaparral<BR>High Pocosin</TD>
-    	<TD align="center">0.4<BR>0.7</TD>
-	</TR>
-    <TR>
-    	<TD>5 Brush</TD>
-        <TD>All</TD>
-        <TD align="center">0.7</TD>
-    </TR> 
-	<TR>
-    	<TD>6 Dormant Brush/Hardwood Slash</TD>
-        <TD>Black Spruce<BR>Others</TD>
-        <TD align="center">0.7<BR>1.0</TD>
-    </TR> 
-	<TR>
-    	<TD>7 Southern Rough</TD>
-        <TD>All</TD>
-        <TD align="center">0.7</TD>
-    </TR>
-    <TR>
-    	<TD>8 Closed Timber Litter</TD>
-        <TD>Conifers<BR>Hardwoods</TD>
-        <TD align="center">2.0<BR>10.0</TD>
-    </TR>
-    <TR> 
-		<TD>9 Hardwood Litter</TD>
-        <TD>Conifers<BR>Hardwoods</TD>
-        <TD align="center">2.0<BR>8.0</TD>
-    </TR> 
-	<TR>
-    	<TD>10 Timber (Litter & Understory)</TD>
-        <TD>All</TD>
-        <TD align="center">1.0</TD>
-    </TR>
-    <TR> 
-		<TD>11 Logging Slash, Light</TD>
-        <TD>All</TD>
-        <TD align="center">1.0</TD>
-    </TR>
-    <TR>
-    	<TD>12 Logging Slash, Medium</TD>
-        <TD>All</TD>
-        <TD align="center">1.0</TD>
-    </TR>
-    <TR>
-    	<TD>13 Logging Slash, Heavy</TD>
-        <TD>All</TD>
-        <TD align="center">0.4</TD>
-    </TR> 
-</TABLE>
-<P> <B>Note:</B> Use these rates to estimate initial action productivity. 
-<U>Do not</U> use these rates to estimate sustained line construction, burnout, 
-or holding productivity. Initial action may consist of scratch line construction 
-and hotspotting. <p><p>
-<A NAME="Table3"></a> <B>Table 3. Line Production Rates for Initial Action by Engine Crews in Chains per Crew per Hour</B><br>
-<TABLE border="1" cellspacing="0" cellpadding="2"> 
-	<TR bgcolor="#CCCCCC">
-    	<TH ROWSPAN=2 COLSPAN=1>Fire Behavior Fuel Model</TH>
-        <TH ROWSPAN=2 COLSPAN=1>Specific Conditions</TH>
-        <TH ROWSPAN=1 COLSPAN=5>Number of Persons<BR>in Crew<br>(Rates in ch/h)</TH>
-    </TR>
-    <TR>
-    	<TD align="center" BGCOLOR="#CCCCCC"><B>1</B></TD>
-   	  <TD align="center" BGCOLOR="#CCCCCC"><B>2</B></TD>
-      <TD align="center" BGCOLOR="#CCCCCC"><B>3</B></TD>
-      <TD align="center" BGCOLOR="#CCCCCC"><B>4</B></TD>
-        <TD align="center" BGCOLOR="#CCCCCC"><B>5+</B></TD>
-    </TR> 
-	<TR>
-    	<TD>1 Short Grass</TD>
-        <TD>Grass<BR>Tundra</TD>
-        <TD align="center">6<BR>2</TD>
-    <TD align="center">12<BR>8</TD>
-    <TD align="center">24<BR>15</TD>
-    <TD align="center">35<BR>24</TD>
-      <TD align="center">40<BR>30</TD>
-    </TR> 
-	<TR>
-    	<TD>2 Open Timber/Grass Understory</TD>
-        <TD>All</TD>
-        <TD align="center">3</TD>
-      <TD align="center">7</TD>
-      <TD align="center">15</TD>
-      <TD align="center">21</TD>
-        <TD align="center">25</TD>
-    </TR> 
-	<TR>
-    	<TD>3 Tall Grass</TD>
-        <TD>All</TD>
-        <TD align="center">2</TD>
-      <TD align="center">5</TD>
-      <TD align="center">10</TD>
-      <TD align="center">14</TD>
-        <TD align="center">16</TD>
-    </TR> 
-	<TR>
-    	<TD>4 Chaparral</TD>
-        <TD>Chaparral<BR>High Pocosin</TD>
-        <TD align="center">2<BR>2</TD>
-    <TD align="center">3<BR>4</TD>
-    <TD align="center">8<BR>10</TD>
-    <TD align="center">15<BR>15</TD>
-      <TD align="center">20<BR>18</TD>
-    </TR> 
-	<TR>
-    	<TD>5 Brush (2 ft)</TD>
-        <TD>All</TD>
-        <TD align="center">3</TD>
-      <TD align="center">6</TD>
-      <TD align="center">12</TD>
-      <TD align="center">16</TD>
-        <TD align="center">20</TD>
-    </TR> 
-	<TR>
-    	<TD>6 Dormant Brush/Hardwood Slash</TD>
-        <TD>Black Spruce<BR>Others</TD>
-        <TD align="center">3<BR>3</TD>
-    <TD align="center">6<BR>6</TD>
-    <TD align="center">10<BR>12</TD>
-    <TD align="center">16<BR>16</TD>
-      <TD align="center">20<BR>20</TD>
-    </TR> 
-	<TR>
-		<TD>7 Southern Rough</TD>
-        <TD>All</TD>
-        <TD align="center">2</TD>
-      <TD align="center">5</TD>
-      <TD align="center">12</TD>
-      <TD align="center">16</TD>
-        <TD align="center">20</TD>
-    </TR> 
-	<TR>
-    	<TD>8 Closed Timber Litter</TD>
-        <TD>Conifers<BR>Hardwoods</TD>
-        <TD align="center">3<BR>10</TD>
-    <TD align="center">8<BR>30</TD>
-    <TD align="center">15<BR>40</TD>
-    <TD align="center">20<BR>50</TD>
-      <TD align="center">24<BR>60</TD>
-    </TR> 
-	<TR>
-    	<TD>9 Hardwood Litter</TD>
-        <TD>Conifers<BR>Hardwoods</TD>
-      <TD align="center">3<BR>8</TD><TD align="center">7<BR>25</TD>
-    <TD align="center">12<BR>40</TD>
-    <TD align="center">18<BR>50</TD>
-      <TD align="center">22<BR>60</TD>
-    </TR> 
-	<TR>
-    	<TD>10 Timber (Litter & Understory)</TD>
-        <TD>All</TD>
-        <TD align="center">3</TD>
-      <TD align="center">8</TD>
-      <TD align="center">12</TD>
-      <TD align="center">16</TD>
-        <TD align="center">20</TD>
-    </TR> 
-	<TR>
-    	<TD>11 Logging Slash, Light</TD>
-        <TD>All</TD>
-        <TD align="center">3</TD>
-      <TD align="center">8</TD>
-      <TD align="center">12</TD>
-      <TD align="center">16</TD>
-        <TD align="center">20</TD>
-	</TR> 
-	<TR>
-    	<TD>12  Logging Slash, Medium</TD>
-        <TD>All</TD>
-        <TD align="center">3</TD>
-      <TD align="center">5</TD>
-      <TD align="center">10</TD>
-      <TD align="center">16</TD>
-        <TD align="center">20</TD>
-    </TR> 
-	<TR>
-    	<TD>13 Logging Slash, Heavy</TD>
-        <TD>All</TD>
-        <TD align="center">2</TD>
-      <TD align="center">4</TD>
-      <TD align="center">8</TD>
-      <TD align="center">15</TD>
-        <TD align="center">20</TD>
-    </TR> 
-</TABLE>
-<P> <B>Note:</B> Use these rates to estimate initial action productivity. 
-<U>Do not</U> use these rates to estimate sustained line construction, burnout, 
-or holding productivity. Initial action may consist of scratch line construction 
-and hotspotting. <P><p>
+<p></p>
+<a name="Table2"></a>
+<strong>Line Production Rates for Initial Action by Hand Crews in Chains per Person per Hour</strong><br>
+<strong>Note:</strong> Use these rates to estimate initial action productivity. <u>Do not</u> use these rates to estimate sustained line construction, burnout, or holding productivity. Initial action may consist of scratch line construction and hotspotting.<br>
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+    	<th>Fire Behavior Fuel Model</th>
+        <th>Specific Conditions</th>
+        <th>Construction Rate in<br> Chains per Person<br> per Hour (ch/h)</th>
+    </tr>
+    <tr>
+    	<td>1 Short Grass</td>
+        <td>Grass<br>Tundra</td>
+        <td align="center">4.0<br>1.0</td>
+    </tr> 
+	<tr>
+    	<td>2 Open Timber/Grass Understory</td>
+        <td>All</td>
+        <td align="center">3.0</td>
+    </tr>
+    <tr> 
+		<td>3 Tall Grass</td>
+        <td>All</td>
+        <td align="center">0.7</td>
+   </tr>
+   <tr>
+   		<td>4 Chaparral</td>
+    	<td>Chaparral<br>High Pocosin</td>
+    	<td align="center">0.4<br>0.7</td>
+	</tr>
+    <tr>
+    	<td>5 Brush</td>
+        <td>All</td>
+        <td align="center">0.7</td>
+    </tr> 
+	<tr>
+    	<td>6 Dormant Brush/Hardwood Slash</td>
+        <td>Black Spruce<br>Others</td>
+        <td align="center">0.7<br>1.0</td>
+    </tr> 
+	<tr>
+    	<td>7 Southern Rough</td>
+        <td>All</td>
+        <td align="center">0.7</td>
+    </tr>
+    <tr>
+    	<td>8 Closed Timber Litter</td>
+        <td>Conifers<br>Hardwoods</td>
+        <td align="center">2.0<br>10.0</td>
+    </tr>
+    <tr> 
+		<td>9 Hardwood Litter</td>
+        <td>Conifers<br>Hardwoods</td>
+        <td align="center">2.0<br>8.0</td>
+    </tr> 
+	<tr>
+    	<td>10 Timber (Litter & Understory)</td>
+        <td>All</td>
+        <td align="center">1.0</td>
+    </tr>
+    <tr> 
+		<td>11 Logging Slash, Light</td>
+        <td>All</td>
+        <td align="center">1.0</td>
+    </tr>
+    <tr>
+    	<td>12 Logging Slash, Medium</td>
+        <td>All</td>
+        <td align="center">1.0</td>
+    </tr>
+    <tr>
+    	<td>13 Logging Slash, Heavy</td>
+        <td>All</td>
+        <td align="center">0.4</td>
+    </tr> 
+</table>
 
-<A NAME="Table4"></a> <B>Table 4. Fireline Explosives Production Comparison</B><br>
-<TABLE border="1" cellspacing="0" cellpadding="2"> 
-	<TR bgcolor="#CCCCCC">
-    	<TH ROWSPAN=2 COLSPAN=1>Fuel Type</TH>
-        <TH COLSPAN=2 ROWSPAN=1 align="center">Constructed Fireline (chains)</TH>
-    </TR>
-    <TR bgcolor="#CCCCCC">
-    	<TD align="center"><b>Explosives Crew</b></TD>
-        <TD align="center"><b>Hand Crew</b></TD>
-    </TR>
-    <TR>
-    	<TD>Grass</TD>
-        <TD align="center">360</TD>
-        <TD align="center">360</TD>
-    </TR>
-    <TR>
-    	<TD>Second Growth Conifers</TD>
-        <TD align="center">240</TD>
-        <TD align="center">180</TD>
-    </TR>
-    <TR>
-    	<TD>Light Slash</TD>
-        <TD align="center">210</TD>
-        <TD align="center">90</TD>
-    </TR> 
-	<TR>
-    	<TD>Heavy Slash</TD>
-        <TD align="center">120</TD>
-        <TD align="center">45</TD>
-    </TR>
-</TABLE>
-<P> <b>Note:</b> This is based on Washington State Department of Natural Resources experience. 
-Production rate comparison between a 7-person fireline explosives crew and a 20-person 
-hand crew over a 10-hour shift. <p><p>
-<A NAME="Table5"></a> <B>Table 5. Dozer Fireline Construction Rates (Single Pass) in Chains/Hour</B><br>
-<TABLE border="1" cellspacing="0" cellpadding="2"> 
-	<TR bgcolor="#CCCCCC">
-    	<TH ROWSPAN=2 COLSPAN=1>Fire Behavior<br>Fuel Model</TH>
-        <TH ROWSPAN=2 COLSPAN=1>Up or<Br>Down Slope</TH>
-        <TH ROWSPAN=1 COLSPAN=5>Slope Class (Rates in ch/h)</TH>
-    </TR> 
-	<TR align="center" bgcolor="#CCCCCC">
-    	<TD><b>1<BR>0 - 25%</b></TD>
-        <TD><b>2<BR>26 - 40%</b></TD>
-        <TD><B>3<BR>41 - 55%</b></TD>
-        <TD><b>4<BR>56 - 74%</b></TD>
-    </TR> 
-	<TR>
-    	<TD>Type III Dozer<BR>1, 2</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">55 - 90<BR>90 - 110</TD>
-    <TD align="center">30 - 55<BR>90- 110</TD>
-    <TD align="center">8 - 30<BR>20 - 90</TD>
-      <TD align="center">0 - 8<BR>0 - 20</TD>
-    </TR>
-    <TR> 
-		<TD>3, 5, 8</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">45 - 70<BR>70 - 80</TD>
-    <TD align="center">25 - 45<BR>65 - 80</TD>
-    <TD align="center">2 - 25<BR>0 - 65</TD>
-      <TD align="center">0 - 2<BR>0</TD>
-    </TR>
-    <TR>
-    	<TD>4</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">20 - 35<BR>35 - 40</TD>
-    <TD align="center">10 - 20<BR>25 - 40</TD>
-    <TD align="center">0 -10<BR>0 -25</TD>
-      <TD align="center">0<BR>0</TD>
-    </TR> 
-	<TR>
-    	<TD>6, 7, 9</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">35 - 55<BR>55 - 60</TD>
-    <TD align="center">15 - 35<BR>40 - 60</TD>
-    <TD align="center">0 - 15<BR>0 - 40</TD>
-      <TD align="center">0<BR>0</TD>
-    </TR>
-    <TR>
-    	<TD>11, 12</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">15 - 25<BR>25 - 30</TD>
-    <TD align="center">7 - 15<BR>10 - 30</TD>
-    <TD align="center">0 - 7<BR>0 - 10</TD>
-      <TD align="center">0<BR>0</TD>
-    </TR> 
-	<TR>
-    	<TD>10, 13</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">8 - 15<BR>10 -15</TD>
-    <TD align="center">3 - 8<BR>5 - 10</TD>
-    <TD align="center">0 - 3<BR>0 - 5</TD>
-      <TD align="center">0<BR>0</TD>
-    </TR>
-    <TR>
-    	<TD>Type II Dozer<BR>1, 2</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">85 - 125<BR>125 - 145</TD>
-    <TD align="center">60 - 85<BR>130 - 145</TD>
-    <TD align="center">30 - 60<BR>75 - 130</TD>
-      <TD align="center">0 - 30<BR>0 - 75</TD>
-    </TR>
-    <TR>
-    	<TD>3, 5, 8</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">70 - 105<BR>105 - 120</TD>
-    <TD align="center">45 - 70<BR>105 - 120</TD>
-    <TD align="center">15 - 45<BR>55 - 105</TD>
-      <TD align="center">0 - 15<BR>0 - 55</TD>
-    </TR>
-    <TR>
-    	<TD>4</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">35 - 60<BR>60 - 75</TD>
-    <TD align="center">20 - 35<BR>65 - 76</TD>
-    <TD align="center">2 - 20<BR>20 - 65</TD>
-      <TD align="center">0 - 2<BR>0 - 20</TD>
-    </TR> 
-	<TR>
-    	<TD>6, 7, 9</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">50 - 85<BR>85 - 100</TD>
-    <TD align="center">30 - 50<BR>85 - 100</TD>
-    <TD align="center">7 - 30<BR>40 - 85</TD>
-      <TD align="center">0 - 7<BR>0 - 40</TD>
-    </TR>
-    <TR>
-    	<TD>11, 12</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">25 - 40<BR>40 - 55</TD>
-    <TD align="center">15 - 25<BR>45 - 55</TD>
-    <TD align="center">1 - 15<BR>0 - 45</TD>
-      <TD align="center">0 - 1<BR>0</TD>
-    </TR>
-    <TR>
-    	<TD>10, 13</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">10 - 20<BR>20 - 25</TD>
-    <TD align="center">7 - 10<BR>20 - 25</TD>
-    <TD align="center">0 - 7<BR>0 - 20</TD>
-      <TD align="center">0<BR>0</TD>
-    </TR> 
-	<TR>
-    	<TD>Type I Dozer<BR>1, 2</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">100 - 140<BR>140 - 155</TD>
-    <TD align="center">70 - 100<BR>140 - 155</TD>
-    <TD align="center">35 - 70<BR>85 - 140</TD>
-      <TD align="center">0 - 35<BR>0 - 85</TD>
-    </TR> 
-	<TR>
-    	<TD>3, 5, 8</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">75 - 110<BR>110 - 130</TD>
-    <TD align="center">50 - 75<BR>110 - 130</TD>
-    <TD align="center">20 - 50<BR>55 - 110</TD>
-      <TD align="center">0 - 20<BR>0 - 55</TD>
-    </TR> 
-	<TR>
-    	<TD>4</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">45 - 70<BR>70 - 80</TD>
-    <TD align="center">30 - 45<BR>75 - 85</TD>
-    <TD align="center">8 - 30<BR>25 - 75</TD>
-      <TD align="center">0 - 8<BR>0 - 25</TD>
-    </TR>
-    <TR>
-    	<TD>6, 7, 9</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">65 - 95<BR>95 - 110</TD>
-    <TD align="center">40 - 65<BR>90 - 110</TD>
-    <TD align="center">15 - 40<BR>50 - 90</TD>
-      <TD align="center">0 - 15<BR>0 - 50</TD>
-    </TR>
-    <TR>
-    	<TD>11, 12</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">35 - 55<BR>55 - 65</TD>
-    <TD align="center">20 - 35<BR>55 - 65</TD>
-    <TD align="center">3 - 20<BR>6 - 55</TD>
-      <TD align="center">0 - 3<BR>0 - 6</TD>
-    </TR>
-	<TR>
-    	<TD>10, 13</TD>
-        <TD>Up<BR>Down</TD>
-        <TD align="center">20 - 35<BR>35 - 40</TD>
-    <TD align="center">9 - 20<BR>30 - 40</TD>
-    <TD align="center">0 - 9<BR>0 - 30</TD>
-      <TD align="center">0<BR>0</TD>
-    </TR> 
-</TABLE>
-<P> <B>Note:</B> Prediction rates vary with conditions. The higher rate 
-can be used for newer dozers (1975 and later). <P><p> 
-<A NAME="Table6"></a><B>Table 6. Tractor-Plow Fireline Production Rates in Chains per Hour </B><br> 
-&nbsp;&nbsp;(drag or mounted plow, appropriate blade, level to rolling terrain)<br> 
-<TABLE border="1" cellspacing="0" cellpadding="2">
-	<TR bgcolor="#CCCCCC">
-    	<TH ROWSPAN=2 COLSPAN=1>Fire Behavior<br>Fuel Model</TH>
-        <TH ROWSPAN=1 COLSPAN=6>Tractor Plow Type (Rates in ch/h) </TH>
-    </TR>
+<p></p>
+<a name="Table3"></a>
+<strong>Line Production Rates for Initial Action by Engine Crews in Chains per Crew per Hour</strong><br>
+<strong>Note:</strong> Use these rates to estimate initial action productivity. <u>Do not</u> use these rates to estimate sustained line construction, burnout, 
+or holding productivity. Initial action may consist of scratch line construction and hotspotting.<br>
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+    	<th rowspan="2" colspan="1">Fire Behavior Fuel Model</th>
+        <th rowspan="2" colspan="1">Specific Conditions</th>
+        <th rowspan="1" colspan="5">Number of Persons<br>in Crew<br>(Rates in ch/h)</th>
+    </tr>
+    <tr>
+    	<td align="center" bgcolor="#CCCCCC"><strong>1</strong></td>
+   	  <td align="center" bgcolor="#CCCCCC"><strong>2</strong></td>
+      <td align="center" bgcolor="#CCCCCC"><strong>3</strong></td>
+      <td align="center" bgcolor="#CCCCCC"><strong>4</strong></td>
+        <td align="center" bgcolor="#CCCCCC"><strong>5+</strong></td>
+    </tr> 
+	<tr>
+    	<td>1 Short Grass</td>
+        <td>Grass<br>Tundra</td>
+        <td align="center">6<br>2</td>
+    	<td align="center">12<br>8</td>
+    	<td align="center">24<br>15</td>
+    	<td align="center">35<br>24</td>
+   	  <td align="center">40<br>30</td>
+    </tr> 
+	<tr>
+    	<td>2 Open Timber/Grass Understory</td>
+        <td>All</td>
+        <td align="center">3</td>
+      	<td align="center">7</td>
+      	<td align="center">15</td>
+   	  <td align="center">21</td>
+        <td align="center">25</td>
+    </tr> 
+	<tr>
+    	<td>3 Tall Grass</td>
+        <td>All</td>
+        <td align="center">2</td>
+      	<td align="center">5</td>
+      	<td align="center">10</td>
+   	  <td align="center">14</td>
+        <td align="center">16</td>
+    </tr> 
+	<tr>
+    	<td>4 Chaparral</td>
+        <td>Chaparral<br>High Pocosin</td>
+        <td align="center">2<br>2</td>
+    	<td align="center">3<br>4</td>
+    	<td align="center">8<br>10</td>
+    	<td align="center">15<br>15</td>
+   	  <td align="center">20<br>18</td>
+    </tr> 
+	<tr>
+    	<td>5 Brush (2 ft)</td>
+        <td>All</td>
+        <td align="center">3</td>
+      	<td align="center">6</td>
+      	<td align="center">12</td>
+   	  <td align="center">16</td>
+        <td align="center">20</td>
+    </tr> 
+	<tr>
+    	<td>6 Dormant Brush/Hardwood Slash</td>
+        <td>Black Spruce<br>Others</td>
+        <td align="center">3<br>3</td>
+    	<td align="center">6<br>6</td>
+    	<td align="center">10<br>12</td>
+    	<td align="center">16<br>16</td>
+   	  <td align="center">20<br>20</td>
+    </tr> 
+	<tr>
+		<td>7 Southern Rough</td>
+        <td>All</td>
+        <td align="center">2</td>
+      	<td align="center">5</td>
+     	<td align="center">12</td>
+   	  <td align="center">16</td>
+        <td align="center">20</td>
+    </tr> 
+	<tr>
+    	<td>8 Closed Timber Litter</td>
+        <td>Conifers<br>Hardwoods</td>
+        <td align="center">3<br>10</td>
+    	<td align="center">8<br>30</td>
+    	<td align="center">15<br>40</td>
+    	<td align="center">20<br>50</td>
+   	  <td align="center">24<br>60</td>
+    </tr> 
+	<tr>
+    	<td>9 Hardwood Litter</td>
+        <td>Conifers<br>Hardwoods</td>
+      	<td align="center">3<br>8</td>
+      	<td align="center">7<br>25</td>
+    	<td align="center">12<br>40</td>
+   	  <td align="center">18<br>50</td>
+      <td align="center">22<br>60</td>
+    </tr> 
+	<tr>
+    	<td>10 Timber (Litter & Understory)</td>
+        <td>All</td>
+        <td align="center">3</td>
+		<td align="center">8</td>
+		<td align="center">12</td>
+	  <td align="center">16</td>
+        <td align="center">20</td>
+    </tr> 
+	<tr>
+    	<td>11 Logging Slash, Light</td>
+        <td>All</td>
+        <td align="center">3</td>
+      	<td align="center">8</td>
+      	<td align="center">12</td>
+   	  <td align="center">16</td>
+        <td align="center">20</td>
+	</tr> 
+	<tr>
+    	<td>12  Logging Slash, Medium</td>
+        <td>All</td>
+        <td align="center">3</td>
+      	<td align="center">5</td>
+      	<td align="center">10</td>
+   	  <td align="center">16</td>
+        <td align="center">20</td>
+    </tr> 
+	<tr>
+    	<td>13 Logging Slash, Heavy</td>
+        <td>All</td>
+        <td align="center">2</td>
+      	<td align="center">4</td>
+      	<td align="center">8</td>
+   	  <td align="center">15</td>
+        <td align="center">20</td>
+    </tr> 
+</table>
+
+<p></p>
+<a name="Table4"></a>
+<strong>Fireline Explosives Production Comparison</strong><br>
+<strong>Note:</strong> This is based on Washington State Department of Natural Resources experience. Production rate comparison between a 7-person fireline explosives crew and a 20-person hand crew over a 10-hour shift.<br>
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+    	<th rowspan="2" colspan="1">Fuel Type</th>
+        <th colspan="2" rowspan="1" align="center">Constructed Fireline (chains)</th>
+    </tr>
+    <tr bgcolor="#CCCCCC">
+    	<td align="center"><b>Explosives Crew</b></td>
+        <td align="center"><b>Hand Crew</b></td>
+    </tr>
+    <tr>
+    	<td>Grass</td>
+        <td align="center">360</td>
+        <td align="center">360</td>
+    </tr>
+    <tr>
+    	<td>Second Growth Conifers</td>
+        <td align="center">240</td>
+        <td align="center">180</td>
+    </tr>
+    <tr>
+    	<td>Light Slash</td>
+        <td align="center">210</td>
+        <td align="center">90</td>
+    </tr> 
+	<tr>
+    	<td>Heavy Slash</td>
+        <td align="center">120</td>
+        <td align="center">45</td>
+    </tr>
+</table>
+
+<p></p>
+<a name="Table5"></a>
+<strong>Dozer Fireline Construction Rates (Single Pass) in Chains/Hour</strong><br>
+<strong>Note:</strong> Prediction rates vary with conditions. The higher rate can be used for newer dozers (1975 and later).<br>
+<table border="1" cellspacing="0" cellpadding="2"> 
+	<tr bgcolor="#CCCCCC">
+    	<th rowspan="2" colspan="1">Fire Behavior<br>Fuel Model</th>
+        <th rowspan="2" colspan="1">Up or<br>Down Slope</th>
+        <th rowspan="1" colspan="5">Slope Class (Rates in ch/h)</th>
+    </tr> 
+	<tr align="center" bgcolor="#CCCCCC">
+    	<td><b>1<br>0 - 25%</b></td>
+        <td><b>2<br>26 - 40%</b></td>
+        <td><b>3<br>41 - 55%</b></td>
+        <td><b>4<br>56 - 74%</b></td>
+    </tr> 
+	<tr>
+    	<td>Type III Dozer<br>1, 2</td>
+        <td>Up<br>Down</td>
+        <td align="center">55 - 90<br>90 - 110</td>
+   	  	<td align="center">30 - 55<br>90- 110</td>
+   	  	<td align="center">8 - 30<br>20 - 90</td>
+      	<td align="center">0 - 8<br>0 - 20</td>
+    </tr>
+    <tr> 
+		<td>3, 5, 8</td>
+        <td>Up<br>Down</td>
+        <td align="center">45 - 70<br>70 - 80</td>
+   	  	<td align="center">25 - 45<br>65 - 80</td>
+   	  	<td align="center">2 - 25<br>0 - 65</td>
+   	  	<td align="center">0 - 2<br>0</td>
+    </tr>
+    <tr>
+    	<td>4</td>
+        <td>Up<br>Down</td>
+        <td align="center">20 - 35<br>35 - 40</td>
+    	<td align="center">10 - 20<br>25 - 40</td>
+   	  	<td align="center">0 -10<br>0 -25</td>
+   	  	<td align="center">0<br>0</td>
+    </tr> 
+	<tr>
+    	<td>6, 7, 9</td>
+        <td>Up<br>Down</td>
+        <td align="center">35 - 55<br>55 - 60</td>
+   	  	<td align="center">15 - 35<br>40 - 60</td>
+    	<td align="center">0 - 15<br>0 - 40</td>
+   	  	<td align="center">0<br>0</td>
+    </tr>
+    <tr>
+    	<td>11, 12</td>
+        <td>Up<br>Down</td>
+        <td align="center">15 - 25<br>25 - 30</td>
+   	  	<td align="center">7 - 15<br>10 - 30</td>
+   	  	<td align="center">0 - 7<br>0 - 10</td>
+   	  	<td align="center">0<br>0</td>
+    </tr> 
+	<tr>
+    	<td>10, 13</td>
+        <td>Up<br>Down</td>
+        <td align="center">8 - 15<br>10 -15</td>
+   	  	<td align="center">3 - 8<br>5 - 10</td>
+   	  	<td align="center">0 - 3<br>0 - 5</td>
+   	  	<td align="center">0<br>0</td>
+    </tr>
+    <tr>
+    	<td>Type II Dozer<br>1, 2</td>
+        <td>Up<br>Down</td>
+        <td align="center">85 - 125<br>125 - 145</td>
+   	  	<td align="center">60 - 85<br>130 - 145</td>
+   	  	<td align="center">30 - 60<br>75 - 130</td>
+   	  	<td align="center">0 - 30<br>0 - 75</td>
+    </tr>
+    <tr>
+    	<td>3, 5, 8</td>
+        <td>Up<br>Down</td>
+        <td align="center">70 - 105<br>105 - 120</td>
+    	<td align="center">45 - 70<br>105 - 120</td>
+   	  	<td align="center">15 - 45<br>55 - 105</td>
+   	  	<td align="center">0 - 15<br>0 - 55</td>
+    </tr>
+    <tr>
+    	<td>4</td>
+        <td>Up<br>Down</td>
+        <td align="center">35 - 60<br>60 - 75</td>
+    	<td align="center">20 - 35<br>65 - 76</td>
+   	  	<td align="center">2 - 20<br>20 - 65</td>
+   	  	<td align="center">0 - 2<br>0 - 20</td>
+    </tr> 
+	<tr>
+    	<td>6, 7, 9</td>
+        <td>Up<br>Down</td>
+        <td align="center">50 - 85<br>85 - 100</td>
+   	  	<td align="center">30 - 50<br>85 - 100</td>
+   	  	<td align="center">7 - 30<br>40 - 85</td>
+   	  	<td align="center">0 - 7<br>0 - 40</td>
+    </tr>
+    <tr>
+    	<td>11, 12</td>
+        <td>Up<br>Down</td>
+        <td align="center">25 - 40<br>40 - 55</td>
+   	  	<td align="center">15 - 25<br>45 - 55</td>
+   	  	<td align="center">1 - 15<br>0 - 45</td>
+   	  	<td align="center">0 - 1<br>0</td>
+    </tr>
+    <tr>
+    	<td>10, 13</td>
+        <td>Up<br>Down</td>
+        <td align="center">10 - 20<br>20 - 25</td>
+   	  	<td align="center">7 - 10<br>20 - 25</td>
+    	<td align="center">0 - 7<br>0 - 20</td>
+   	  	<td align="center">0<br>0</td>
+    </tr> 
+	<tr>
+    	<td>Type I Dozer<br>1, 2</td>
+        <td>Up<br>Down</td>
+        <td align="center">100 - 140<br>140 - 155</td>
+   	  	<td align="center">70 - 100<br>140 - 155</td>
+   	  	<td align="center">35 - 70<br>85 - 140</td>
+   	  	<td align="center">0 - 35<br>0 - 85</td>
+    </tr> 
+	<tr>
+    	<td>3, 5, 8</td>
+        <td>Up<br>Down</td>
+        <td align="center">75 - 110<br>110 - 130</td>
+    	<td align="center">50 - 75<br>110 - 130</td>
+    	<td align="center">20 - 50<br>55 - 110</td>
+      	<td align="center">0 - 20<br>0 - 55</td>
+    </tr> 
+	<tr>
+    	<td>4</td>
+        <td>Up<br>Down</td>
+        <td align="center">45 - 70<br>70 - 80</td>
+    	<td align="center">30 - 45<br>75 - 85</td>
+    	<td align="center">8 - 30<br>25 - 75</td>
+      	<td align="center">0 - 8<br>0 - 25</td>
+    </tr>
+    <tr>
+    	<td>6, 7, 9</td>
+        <td>Up<br>Down</td>
+        <td align="center">65 - 95<br>95 - 110</td>
+    	<td align="center">40 - 65<br>90 - 110</td>
+    	<td align="center">15 - 40<br>50 - 90</td>
+      	<td align="center">0 - 15<br>0 - 50</td>
+    </tr>
+    <tr>
+    	<td>11, 12</td>
+        <td>Up<br>Down</td>
+        <td align="center">35 - 55<br>55 - 65</td>
+    	<td align="center">20 - 35<br>55 - 65</td>
+    	<td align="center">3 - 20<br>6 - 55</td>
+      	<td align="center">0 - 3<br>0 - 6</td>
+    </tr>
+	<tr>
+    	<td>10, 13</td>
+        <td>Up<br>Down</td>
+        <td align="center">20 - 35<br>35 - 40</td>
+    	<td align="center">9 - 20<br>30 - 40</td>
+    	<td align="center">0 - 9<br>0 - 30</td>
+      	<td align="center">0<br>0</td>
+    </tr> 
+</table>
+
+<p></p> 
+<a name="Table6"></a>
+<strong>Tractor-Plow Fireline Production Rates in Chains per Hour</strong> (drag or mounted plow, appropriate blade, level to rolling terrain)<br> 
+<table border="1" cellspacing="0" cellpadding="2">
+	<tr bgcolor="#CCCCCC">
+    	<th rowspan="2" colspan="1">Fire Behavior<br>Fuel Model</th>
+        <th rowspan="1" colspan="6">Tractor Plow Type (Rates in ch/h) </th>
+    </tr>
     <tr align="center" bgcolor="#CCCCCC">
     	<td><strong>1</strong></td>
         <td><strong>2</strong></td>
@@ -567,184 +574,185 @@ can be used for newer dozers (1975 and later). <P><p>
         <td><strong>5</strong></td>
         <td><strong>6</strong></td>
     </tr> 
-	<TR align="center" valign="top" bgcolor="#CCCCCC">
+	<tr align="center" valign="top" bgcolor="#CCCCCC">
     	<td>&nbsp;</td>
-        <TD><b>(165 HP)<br>D-7,<br>JD-850,<br>TD-20<br>& Larger</b></TD>
-        <TD><b>(140 HP)<br>D-6,<br>JD-750,<br>TD-15,<br>Case 1450</b></TD>
-        <TD><b>(120 HP)<br>D5H,<br>D4H,<br>TD-12,<br>Case 1150</b></TD>
-        <TD><b>(90 HP)<br>D-4,<br>JD-650,<br>TD-9,<br>D5C</b></TD>
-        <TD><b>(70-80 HP)<br>JD-450,<br> D4C,<br> TD-8</b></TD>
-        <TD><b>(42-60 HP)<br>JD350,<br>D3,<br>JD-400,<br>TD-7</b></TD>
-    </TR>
-    <TR>
-    	<TD>1</TD>
-        <TD align="center">240</TD>
-      <TD align="center">240</TD>
-      <TD align="center">240</TD>
-      <TD align="center">200</TD>
-      <TD align="center">180</TD>
-        <TD align="center">80</TD>
-    </TR> 
-	<TR>
-		<TD>2</TD>
-        <TD align="center">180</TD>
-      <TD align="center">180</TD>
-      <TD align="center">180</TD>
-      <TD align="center">140</TD>
-      <TD align="center">120</TD>
-        <TD align="center">80</TD>
-    </TR> 
-	<TR>
-    	<TD>3</TD>
-        <TD align="center">180</TD>
-      <TD align="center">180</TD>
-      <TD align="center">180</TD>
-      <TD align="center">120</TD>
-      <TD align="center">100</TD>
-        <TD align="center">70</TD>
-    </TR> 
-	<TR>
-    	<TD>4</TD>
-        <TD align="center">80</TD>
-      <TD align="center">80</TD>
-      <TD align="center">60</TD>
-      <TD align="center">40</TD>
-      <TD align="center">20</TD>
-        <TD align="center">0</TD>
-    </TR>
-    <TR> 
-		<TD>5</TD>
-        <TD align="center">160</TD>
-      <TD align="center">160</TD>
-      <TD align="center">160</TD>
-      <TD align="center">100</TD>
-      <TD align="center">80</TD>
-        <TD align="center">40</TD>
-    </TR> 
-	<TR>
-    	<TD>6</TD>
-        <TD align="center">120</TD>
-      <TD align="center">120</TD>
-      <TD align="center">100</TD>
-      <TD align="center">60</TD>
-      <TD align="center">40</TD>
-        <TD align="center">20</TD>
-    </TR> 
-	<TR><br>
-		<TD>7</TD>
-        <TD align="center">160</TD>
-      <TD align="center">160</TD>
-      <TD align="center">160</TD>
-      <TD align="center">120</TD>
-      <TD align="center">100</TD>
-        <TD align="center">60</TD>
-    </TR> 
-	<TR>
-    	<TD>8</TD>
-        <TD align="center">180</TD>
-      <TD align="center">180</TD>
-      <TD align="center">180</TD>
-      <TD align="center">120</TD>
-      <TD align="center">100</TD>
-        <TD align="center">70</TD>
-    </TR> 
-	<TR>
-    	<TD>9</TD>
-        <TD align="center">180</TD>
-      <TD align="center">180</TD>
-      <TD align="center">180</TD>
-      <TD align="center">120</TD>
-      <TD align="center">100</TD>
-        <TD align="center">70</TD>
-    </TR> 
-	<TR>
-    	<TD>10</TD>
-        <TD align="center">100</TD>
-      <TD align="center">100</TD>
-      <TD align="center">80</TD>
-      <TD align="center">50</TD>
-      <TD align="center">40</TD>
-        <TD align="center">20</TD>
-    </TR>
-    <TR> 
-		<TD>&nbsp;</TD>
-        <TD colspan="6"><center>Mountainous Terrain, 60% or less slope, front and rear<br> mounted plow, downhill plowing </center></TD>
-    </TR>
-    <TR>
-    	<TD>8</TD>
-        <TD align="center">--</TD>
-        <TD align="center">--</TD>
-        <TD align="center">--</TD>
-        <TD align="center">50</TD>
-        <TD align="center">40</TD>
-        <TD align="center">20</TD>
-    </TR> 
-	<TR>
-    	<TD>9</TD>
-        <TD align="center">--</TD>
-        <TD align="center">--</TD>
-        <TD align="center">--</TD>
-        <TD align="center">50</TD>
-        <TD align="center">40</TD>
-        <TD align="center">20</TD>
-    </TR> 
-	<TR>
-    	<TD>&nbsp; </TD>
-        <TD colspan="6"><center>Mountainous Terrain, 60% or less slope, using ripper<br> attachment, 
-        		up/down slope fireline construction </center></TD>
-    </TR> 
-	<TR>
-    	<TD>1, 2, 3 </TD>
-        <TD align="center">20/30</TD>
-        <TD align="center">10/30</TD>
-        <TD align="center">0/30</TD>
-        <TD align="center">--</TD>
-        <TD align="center">--</TD>
-        <TD align="center">--</TD>
-    </TR> 
-	<TR>
-    	<TD>4, 6, 12, 13 </TD>
-        <TD align="center">10/20</TD>
-        <TD align="center">5/10</TD>
-        <TD align="center">0/5</TD>
-        <TD align="center">--</TD>
-        <TD align="center">--</TD>
-        <TD align="center">--</TD>
-    </TR>
-    <TR> 
-		<TD>5, 7, 8-10, 11</TD>
-        <TD align="center">12/25</TD>
-        <TD align="center">8/15</TD>
-        <TD align="center">0/10</TD>
-        <TD align="center">--</TD>
-        <TD align="center">--</TD>
-        <TD align="center">--</TD>
-    </TR> 
-</TABLE>
+        <td><b>(165 HP)<br>D-7,<br>JD-850,<br>td-20<br>& Larger</b></td>
+        <td><b>(140 HP)<br>D-6,<br>JD-750,<br>td-15,<br>Case 1450</b></td>
+        <td><b>(120 HP)<br>D5H,<br>D4H,<br>td-12,<br>Case 1150</b></td>
+        <td><b>(90 HP)<br>D-4,<br>JD-650,<br>td-9,<br>D5C</b></td>
+        <td><b>(70-80 HP)<br>JD-450,<br> D4C,<br> td-8</b></td>
+        <td><b>(42-60 HP)<br>JD350,<br>D3,<br>JD-400,<br>td-7</b></td>
+    </tr>
+    <tr>
+    	<td>1</td>
+        <td align="center">240</td>
+      	<td align="center">240</td>
+      	<td align="center">240</td>
+   	  	<td align="center">200</td>
+   	  	<td align="center">180</td>
+        <td align="center">80</td>
+    </tr> 
+	<tr>
+		<td>2</td>
+        <td align="center">180</td>
+      	<td align="center">180</td>
+      	<td align="center">180</td>
+   	  	<td align="center">140</td>
+   	  	<td align="center">120</td>
+        <td align="center">80</td>
+    </tr> 
+	<tr>
+    	<td>3</td>
+        <td align="center">180</td>
+      	<td align="center">180</td>
+      	<td align="center">180</td>
+      	<td align="center">120</td>
+   	  	<td align="center">100</td>
+        <td align="center">70</td>
+    </tr> 
+	<tr>
+    	<td>4</td>
+        <td align="center">80</td>
+      	<td align="center">80</td>
+      	<td align="center">60</td>
+      	<td align="center">40</td>
+   	  	<td align="center">20</td>
+        <td align="center">0</td>
+    </tr>
+    <tr> 
+		<td>5</td>
+        <td align="center">160</td>
+      	<td align="center">160</td>
+      	<td align="center">160</td>
+      	<td align="center">100</td>
+   	  	<td align="center">80</td>
+        <td align="center">40</td>
+    </tr> 
+	<tr>
+    	<td>6</td>
+        <td align="center">120</td>
+      	<td align="center">120</td>
+      	<td align="center">100</td>
+      	<td align="center">60</td>
+   	  	<td align="center">40</td>
+        <td align="center">20</td>
+    </tr> 
+	<tr><br>
+		<td>7</td>
+        <td align="center">160</td>
+      	<td align="center">160</td>
+      	<td align="center">160</td>
+      	<td align="center">120</td>
+   	  	<td align="center">100</td>
+        <td align="center">60</td>
+    </tr> 
+	<tr>
+    	<td>8</td>
+        <td align="center">180</td>
+      	<td align="center">180</td>
+      	<td align="center">180</td>
+      	<td align="center">120</td>
+   	  <td align="center">100</td>
+        <td align="center">70</td>
+    </tr> 
+	<tr>
+    	<td>9</td>
+        <td align="center">180</td>
+      	<td align="center">180</td>
+      	<td align="center">180</td>
+      	<td align="center">120</td>
+   	  	<td align="center">100</td>
+        <td align="center">70</td>
+    </tr> 
+	<tr>
+    	<td>10</td>
+        <td align="center">100</td>
+      	<td align="center">100</td>
+      	<td align="center">80</td>
+      	<td align="center">50</td>
+   	  	<td align="center">40</td>
+        <td align="center">20</td>
+    </tr>
+    <tr> 
+		<td>&nbsp;</td>
+        <td colspan="6"><center>Mountainous Terrain, 60% or less slope, front and rear<br> mounted plow, downhill plowing</center></td>
+    </tr>
+    <tr>
+    	<td>8</td>
+        <td align="center">--</td>
+        <td align="center">--</td>
+        <td align="center">--</td>
+        <td align="center">50</td>
+        <td align="center">40</td>
+        <td align="center">20</td>
+    </tr> 
+	<tr>
+    	<td>9</td>
+        <td align="center">--</td>
+        <td align="center">--</td>
+        <td align="center">--</td>
+        <td align="center">50</td>
+        <td align="center">40</td>
+        <td align="center">20</td>
+    </tr> 
+	<tr>
+    	<td>&nbsp;</td>
+        <td colspan="6"><center>Mountainous Terrain, 60% or less slope, using ripper<br> attachment, up/down slope fireline construction </center></td>
+    </tr> 
+	<tr>
+    	<td>1, 2, 3 </td>
+        <td align="center">20/30</td>
+        <td align="center">10/30</td>
+        <td align="center">0/30</td>
+        <td align="center">--</td>
+        <td align="center">--</td>
+        <td align="center">--</td>
+    </tr> 
+	<tr>
+    	<td>4, 6, 12, 13 </td>
+        <td align="center">10/20</td>
+        <td align="center">5/10</td>
+        <td align="center">0/5</td>
+        <td align="center">--</td>
+        <td align="center">--</td>
+        <td align="center">--</td>
+    </tr>
+    <tr> 
+		<td>5, 7, 8-10, 11</td>
+        <td align="center">12/25</td>
+        <td align="center">8/15</td>
+        <td align="center">0/10</td>
+        <td align="center">--</td>
+        <td align="center">--</td>
+        <td align="center">--</td>
+    </tr> 
+</table>
 
-<P>
-<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
-    <UL>
-      <LI><A HREF="vContainSize.html">Contained Area</A></LI>
-      <LI><A HREF="vContainDiagram.html">Containment Diagram</A></LI>
-      <LI><A HREF="vContainLine.html">Fireline Constructed</A></LI>
-      <LI><A HREF="vContainAttackDist.html">Line Construction Offset</A></LI>
-      <LI><A HREF="vContainResourceDuration.html">Resource Duration</A></LI>
-      <LI><A HREF="vContainResourceName.html">Resource Name</A></LI>
-      <LI><A HREF="vContainAttackTactic.html">Suppression Tactic</A></LI>
-	</UL>
-<p>
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+    <ul>
+      <li><a href="vContainStatus.html">Contain Status</a></li>
+      <li><a href="vContainSize.html">Contained Area</a></li>
+      <li><a href="vContainDiagram.html">Containment Diagram</a></li>
+      <li><a href="vContainLine.html">Fireline Constructed</a></li>
+      <li><a href="vContainAttackDist.html">Line Construction Offset</a></li>
+      <li><a href="vContainResourcesUsed.html">Number of Resources Used</a></li>
+      <li><a href="vContainResourceDuration.html">Resource Duration</a></li>
+      <li><a href="vContainResourceName.html">Resource Name</a></li>
+      <li><a href="vContainAttackTactic.html">Suppression Tactic</a></li>
+	</ul>
 
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+  <ul>
+	<li><a href="variableIndex.html">Variable Index</a></li>
+	<li><a href="figureIndex.html">Figure Index</a></li>
+	<li><a href="tablesIndex.html">Table Index</a></li>
+	<li><a href="guideIndex.html">Guide Index</a></li>
+	<li><a href="Models_BehavePlus.html">Table of References</a></li>
+  </ul>
  
-<HR>
-<FONT SIZE=2>BehavePlus On-Line Documentation, March 12, 2014.</FONT>
-</BODY>
-</HTML>
+<hr>
+<font size="2">BehavePlus Online Documentation, July 26, 2017.</font>
+</body>
+</html>

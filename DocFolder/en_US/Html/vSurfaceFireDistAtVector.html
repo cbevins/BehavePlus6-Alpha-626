@@ -1,29 +1,49 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Surface Spread Distance Page</TITLE>
-  </HEAD>
-  <BODY>
-<TABLE WIDTH="100%">
-	<TR>
-		<TD width="100"><IMG SRC="logo90x90.png" ALT="BehavePlus Logo"></TD>
-		<TD ALIGN="left" VALIGN="center">
-			<H2><FONT COLOR="#ff5500">Surface Spread Distance</FONT></H2>
-		</TD>
-	</TR>
-</TABLE>
-<HR>
-<P>Surface spread distance is the distance a surface fire travels during a specified elapsed time. It is 
-the product of the surface rate of spread and elapsed time. 
+<html>
+  <head>
+    <title>BehavePlus Surface Fire Spread Distance Page</title>
+  </head>
+  <body>
+<table width="100%">
+	<tr>
+		<td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+		<td align="left" valign="center"><h2><font color="#ff5500">Surface Fire Spread Distance</font></h2></td>
+	</tr>
+</table>
+<hr>
 
-<P>See <a href="vSurfaceFireSpread.html">Surface 
-Rate of Spread</a>.
-<P>
+<p>Surface fire spread distance is the distance a surface fire travels in a specified direction during a specified elapsed time. It is the product of the surface fire rate of spread and elapsed time.</p>
+
+<p>See <a href="vSurfaceFireSpread.html">Surface Fire Rate of Spread</a>.</p>
+
+<p>Under certain conditions, surface fire spread distance is the same as spread distances calculated in the SIZE module.</p>
+<ul>
+	<li>If a heading fire is modeled, and <em>Surface fire spread is</em>...</li>
+		<ul>
+			<li><em>HEADING only (in direction of maximum spread)</em></li>
+			<li><em>Directions from FIRE PERIMETER</em>, and Surface Fire Spread Direction is heading ( direction of maximum spread)</li>
+			<li><em>Directions from IGNITION POINT</em>, and Surface Fire Spread Direction is heading (direction of maximum spread)<br><br></li>
+		</ul>
+	<li>If a backing fire (180 degrees from heading) is modeled, and <em>Surface fire spread is</em>...</li>
+		<ul>
+			<li><em>BACKING only (180 degrees from head fire)</em></li>
+			<li><em>Directions from FIRE PERIMETER</em>, and Surface Fire Spread Direction is backing (180 degrees from direction of maximum spread)</li>
+			<li><em>Directions from IGNITION POINT</em>, and Surface Fire Spread Direction is backing (180 degrees from direction of maximum spread)<br><br></li>
+		</ul>
+	<li>If a flanking fire (90 degrees from heading) is modeled, and <em>Surface fire spread is</em>...</li>
+		<ul>
+			<li><em>FLANKING only (90 degrees from head fire)</em></li>
+			<li><em>Directions from FIRE PERIMETER</em>, and Surface Fire Spread Direction is flanking (90 degrees from direction of maximum spread)</li>
+			
+		</ul>
+</ul>
+
+<p></p>
 <table border="1" cellspacing="0" cellpadding="2"> 
 	<tr bgcolor="#CCCCCC">
-		<td width="67" valign="top"><p align="center"><strong>I/O</strong></p></td>
-		<td width="109" valign="top"><p align="center"><strong>Module</strong></p></td>
-		<td width="207" valign="top"><p align="center"><strong>If</strong></p></td>
-		<td width="207" valign="top"><p align="center"><strong>Notes</strong></p></td>
+		<td width="67" valign="top" align="center"><strong>I/O</strong></td>
+		<td width="109" valign="top" align="center"><strong>Module</strong></td>
+		<td width="207" valign="top" align="center"><strong>If</strong></td>
+		<td width="207" valign="top" align="center"><strong>Notes</strong></td>
 	</tr> 
 	<tr>
 		<td width="67" valign="top">Input</td>
@@ -35,28 +55,31 @@ Rate of Spread</a>.
 		<td width="67" valign="top">Output</td>
 		<td width="109" valign="top">SURFACE</td>
 		<td width="207" valign="top">&nbsp;</td>
-		<td width="207" valign="top">Can also be output as a map distance if <i>Display output distances in map 
-			units</i> is selected.</td>
+		<td width="207" valign="top">Can also be output as a map distance if <i>Display output distances in map units</i> is checked.</td>
 	</tr>
 </table>
-<p>
-<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
-    <UL>
-      <LI><A HREF="vSurfaceFireElapsedTime.html">Elapsed Time</A></LI>
-      <LI><A HREF="vSurfaceFireDistAtHead.html">Heading Spread Distance</A></LI>
-      <LI><A HREF="vSurfaceFireSpread.html">Surface Rate of Spread</A></LI>
-    </UL>
-<p>
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+    <ul>
+      <li><a href="vSurfaceFireElapsedTime.html">Elapsed Time</a></li>
+	  <li><a href="vSurfaceFireDistAtBack.html">Surface Fire Backing Spread Distance</a></li>
+      <li><a href="vSurfaceFireDistAtFlank.html">Surface Fire Flanking Spread Distance</a></li>
+      <li><a href="vSurfaceFireDistAtHead.html">Surface Fire Heading Spread Distance</a></li>
+      <li><a href="vSurfaceFireSpread.html">Surface Fire Rate of Spread</a></li>
+    </ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
  
-<HR>
-<FONT SIZE=2>BehavePlus On-Line Documentation, March 19, 2014.</FONT>
-</BODY>
-</HTML>
+<hr>
+<font size="2">BehavePlus Online Documentation, July 26, 2017.</font>
+</body>
+</html>

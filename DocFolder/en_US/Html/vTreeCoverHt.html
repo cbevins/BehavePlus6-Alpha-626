@@ -1,41 +1,35 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Canopy Height Page</TITLE>
-  </HEAD>
-  <BODY>
-    <TABLE WIDTH="100%">
-      <TR>
-        <TD width="100">
-          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
-        </TD>
-        <TD ALIGN="left" VALIGN="center">
-          <H2><FONT COLOR="#ff5500">Canopy Height</FONT></H2>
-        </TD>
-      </TR>
-    </TABLE>
-    <HR>
-<P>Canopy height describes the stand as it affects calculation of the wind adjustment factor in SURFACE. If canopy height is less than 6 feet (1.8 meters), then the unsheltered WAF calculation is used.
-<P>In the CROWN Module, canopy height is multiplied by canopy bulk density to get crown load, which is used to calculate crown flame length.
-<P>In the MORTALITY module, canopy height is used to find tree crown length scorched, which is used to calculate probability of mortality.
-<p>Canopy height at the site of the fire may be different from downwind canopy height in the direction firebrands are carried. Downwind canopy height is used to calculate maximum spotting distance in SPOT and is the mean cover height in the downwind direction as it affects the distance a firebrand is carried.
-<P>
+<html>
+  <head>
+    <title>BehavePlus Canopy Height Page</title>
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+        <td align="left" valign="center"><h2><font color="#ff5500">Canopy Height</font></h2></td>
+      </tr>
+    </table>
+    <hr>
+<p>Canopy height describes the average tree height in a stand.</p>
+	<ul>
+		<li>In the SURFACE module, canopy height affects <em>calculation</em> of the wind adjustment factor. If canopy height is less than 6 feet (1.8 meters), then the unsheltered WAF calculation is used.</li>
+		<li>In the CROWN Module, canopy height is multiplied by canopy bulk density to get crown load, which is used to calculate crown flame length.</li>
+		<li>In the SPOT module, canopy height is used to calculate spotting distance from active crown fire.</li>
+		<li>In the MORTALITY module, canopy height is used to find tree crown length scorched, which is used to calculate probability of mortality.</li>
+	</ul>
+<p></p>
+<p>Canopy height at the site of the fire may be different from downwind canopy height in the direction firebrands are carried. Downwind canopy height is used to calculate maximum spotting distance in SPOT and is the mean cover height in the downwind direction as it affects the distance a firebrand is carried.</p>
+
+<p></p>
 <table border="1" cellspacing="0" cellpadding="2">
   <tr bgcolor="#CCCCCC"> 
-    <td width="67" valign="top"> 
-      <p align="center"><strong>I/O</strong></p>
-    </td>
-    <td width="109" valign="top"> 
-      <p align="center"><strong>Module</strong></p>
-    </td>
-    <td width="207" valign="top"> 
-      <p align="center"><strong>If</strong></p>
-    </td>
-    <td width="207" valign="top"> 
-      <p align="center"><strong>Notes</strong></p>
-    </td>
+		<td width="67" valign="top" align="center"><strong>I/O</strong></td>
+		<td width="109" valign="top" align="center"><strong>Module</strong></td>
+		<td width="207" valign="top" align="center"><strong>If</strong></td>
+		<td width="207" valign="top" align="center"><strong>Notes</strong></td>
   </tr>
   <tr> 
-    <td rowspan="3" valign="top">Input</td>
+    <td rowspan="4" valign="top">Input</td>
     <td width="109" valign="top">SURFACE</td>
     <td width="207" valign="top">If <i>Wind speed is entered as 20-ft (or 10-m) wind and Calculated wind 
         adjustment factor</i> is selected as an input option.</td>
@@ -44,6 +38,11 @@
   <tr> 
     <td width="109" valign="top">CROWN</td>
     <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="109" valign="top">SPOT</td>
+	<td width="207" valign="top">If <i>Spotting Distance from Active Crown Fire </i> is selected as an output variable.</td>
     <td width="207" valign="top">&nbsp;</td>
   </tr>
   <tr> 
@@ -58,35 +57,51 @@
     <td width="207" valign="top">&nbsp;</td>
   </tr>
 </table>
-<P>
-<table><tr><td><A NAME="treecanopyheight.png"></a>
-      <IMG SRC="treecanopyheight.png" ALT="Canopy Height"></td></tr></table>
-<p>
-  <table><tr><td><A NAME="CrownCanopyVars.png"></a> <IMG SRC="CrownCanopyVars.png" ALT="Crown Module Data Flow - Canopy Height"></td></tr></table> 
-<p>
-<h3><FONT COLOR="#ff5500">See Also</FONT></h3>
-	<UL>
-      <LI><A HREF="vTreeCrownBaseHt.html">Canopy Base Height</A></LI>
-      <LI><A HREF="vTreeCanopyBulkDens.html">Canopy Bulk Density</A></LI>
-      <LI><A HREF="vCrownFireFlameLeng.html">Crown Flame Length</A></LI>
-      <LI><A HREF="vCrownFireFuelLoad.html">Crown Load</A></LI>
-	  <LI><A HREF="vTreeCoverHtDownwind.html">Downwind Canopy Height</A></LI>
-      <LI><A HREF="vTreeCrownLengScorched.html">Tree Crown Length Scorched</A></LI>
-	  <LI><A HREF="vTreeHt.html">Torching Tree Height</A></LI>
-      <LI><A HREF="vWindAdjMethod.html">WAF Calculation</A></LI>
-      <LI><A HREF="vWindAdjFactor.html">Wind Adjustment Factor</A></LI>
-	</UL>
-<P>
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+
+<p></p>
+<table>
+     <tr>
+     	<td><a name="treecanopyheight.png"></a> <img src="treecanopyheight.png" alt="Canopy Height"></td>
+     </tr>
+</table>
+
+<p></p>
+<table>
+	<tr>
+		<td><a name="CanopyBaseHt_Power.png"></a> <img src="CanopyBaseHt_Power.png" alt="Crown Module Data Flow, Active Crown Fire - Canopy Height"></td>
+	</tr>
+	<tr>
+		<td><a name="CanopyBaseHt_Passive.png"></a> <img src="CanopyBaseHt_Passive.png" alt="Crown Module Data Flow, Passive Crown Fire - Canopy Height"></td>
+	</tr>
+</table> 
+
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+	<ul>
+      <li><a href="vWindSpeedAt10M.html">10-meter Wind Speed</a></li>
+      <li><a href="vWindSpeedAt20Ft.html">20-foot Wind Speed</a></li>
+      <li><a href="vCrownFireActiveFlameLeng.html">Active Crown Fire Flame Length</a></li>
+      <li><a href="vTreeCrownBaseHt.html">Canopy Base Height</a></li>
+      <li><a href="vTreeCanopyBulkDens.html">Canopy Bulk Density</a></li>
+      <li><a href="vCrownFireFuelLoad.html">Crown Fuel Load</a></li>
+	  <li><a href="vTreeCoverHtDownwind.html">Downwind Canopy Height</a></li>
+      <li><a href="vCrownFirePassiveFlameLeng.html">Passive Crown Fire Flame Length</a></li>
+      <li><a href="vTreeCrownLengScorched.html">Tree Crown Length Scorched</a></li>
+	  <li><a href="vTreeHt.html">Torching Tree Height</a></li>
+      <li><a href="vWindAdjMethod.html">WAF Calculation</a></li>
+      <li><a href="vWindAdjFactor.html">Wind Adjustment Factor</a></li>
+	</ul>
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+  <ul>
+      <li><a href="variableIndex.html">Variable Index</a></li>
+      <li><a href="figureIndex.html">Figure Index</a></li>
+      <li><a href="tablesIndex.html">Table Index</a></li>
+      <li><a href="guideIndex.html">Guide Index</a></li>
+      <li><a href="Models_BehavePlus.html">Table of References</a></li>
+  </ul>
  
-<HR>
-<FONT SIZE=2>BehavePlus On-Line Documentation, March 17, 2014.</FONT>
-</BODY>
-</HTML>
+<hr>
+<font size="2">BehavePlus Online Documentation, August 23, 2017.</font>
+</body>
+</html>

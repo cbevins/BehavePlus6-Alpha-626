@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file pagemenudialog.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief QListView for selecting a document page from a large ToC.
  */

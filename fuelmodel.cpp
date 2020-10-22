@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file fuelmodel.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief FuelModel and FuelModelList class methods.
  */
@@ -505,6 +505,8 @@ bool FuelModelList::addFuelModel( const QString &file,
         const QString &loadTransfer )
 {
     // Create the new FuelModel and add it by name to the fuel model list.
+	const char* fuelModelName = name.lower().latin1();
+	int fuelModelNameAsNumber = name.toInt();
     FuelModel *fmPtr = new FuelModel( file, number, name.lower(), desc,
         depth, mext, heatDead, heatLive,
         load1, load10, load100, loadHerb, loadWood,

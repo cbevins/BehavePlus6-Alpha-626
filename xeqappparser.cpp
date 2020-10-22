@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqappparser.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree application parser class methods.
  */
@@ -455,6 +455,11 @@ bool EqAppParser::handleProperty( const QString &elementName,
     else if ( type == "Integer" )
     {
         propType = Property::Integer;
+		const char *cname = name.ascii();
+		const char *cvalue = value.ascii();
+		if ( name == "containConfSizeLimit") {
+			int wait = 1;
+		}
     }
     else if ( type == "Real" )
     {

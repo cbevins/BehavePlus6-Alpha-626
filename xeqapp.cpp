@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqapp.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief EqTree application class methods.
  */
@@ -175,7 +175,7 @@ EqApp::EqApp( const QString &fileName ) :
         true,                       // Perform name cross-validation?
         false );                    // Print debug output?
 
-    // The translator is now enabled
+	// The translator is now enabled
     appTranslatorEnabled( true );
 
     // Get the address of the "FuelBedModel" EqVarItemList
@@ -527,6 +527,7 @@ bool EqApp::attachFuelModel( const QString &fileName )
 
 	// Build 610: check if the newly loaded fuel model has
 	// a code or number already in the list
+	const char* fuelModelName = fmPtr->m_name.latin1();
 	if ( appProperty()->boolean( "fuelModelPreventDuplicateNumbers" ) )
 	{
 		if ( m_fuelModelList->fuelModelByModelName( fmPtr->m_name ) )
@@ -552,6 +553,7 @@ bool EqApp::attachFuelModel( const QString &fileName )
     // Add the name, sort key, and description to the FuelBedModel EqVarItem
     // list and its description key to the translator
 	QString sort = QString("%1").arg( fmPtr->m_number, 3 );
+	const char *srt = sort.latin1();
     attachItem( "FuelBedModel", fileName, fmPtr->m_name, sort,
         m_fuelModelList->count(), fmPtr->m_desc ) ;
     return( true );
@@ -637,8 +639,12 @@ bool EqApp::attachMoisScenario( const QString &fileName )
     }
     // Instead, if this moisture scenario is in the attached list, remove it.
     MoisScenario *msPtr;
+	const char *cname = 0;
+	const char *cdesc = 0;
     if ( ( msPtr = m_moisScenarioList->moisScenarioByFileName( fileName ) ) )
     {
+		cname = msPtr->m_name.latin1();
+		cdesc = msPtr->m_desc.latin1();
         deleteMoisScenario( msPtr->m_name );
     }
     // End of Version 2 Behavior Change
@@ -651,6 +657,8 @@ bool EqApp::attachMoisScenario( const QString &fileName )
         delete msPtr;   msPtr = 0;
         return( false );
     }
+	cname = msPtr->m_name.latin1();
+	cdesc = msPtr->m_desc.latin1();
     // Add the FuelMoisScenario address to the application's m_moisScenarioList
     m_moisScenarioList->append( msPtr );
 

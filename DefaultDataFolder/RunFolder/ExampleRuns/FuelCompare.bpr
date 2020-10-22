@@ -3,6 +3,7 @@
 <!-- Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved. -->
 
 <BehavePlus type="Run" release="60000">
+  <property name="appApplyPropertyXmlOverrides" value="false" />
   <property name="appDeleteRunLogFile" value="true" />
   <property name="appDescription" value="Compare fuel models, constant conditions" />
   <property name="appExpiration" value="2453400." />
@@ -84,6 +85,9 @@
   <property name="containConfResourcesMultiple" value="false" />
   <property name="containConfResourcesSingle" value="true" />
   <property name="containConfRetry" value="true" />
+  <property name="containConfSizeLimit" value="10001" />
+  <property name="containConfTimeLimit" value="1441" />
+  <property name="containConfVersion5" value="false" />
   <property name="containDiagramAttackFireColor" value="red" />
   <property name="containDiagramAttackPerimColor" value="red" />
   <property name="containDiagramAttackPerimWidth" value="1" />
@@ -150,6 +154,7 @@
   <property name="crownCalcTransitionRatio" value="true" />
   <property name="crownCalcTransitionToCrown" value="true" />
   <property name="crownCalcWindDriven" value="false" />
+  <property name="crownConfDisplayPowerVariables" value="false" />
   <property name="crownConfModelRothermel" value="true" />
   <property name="crownConfModelScottReinhardt" value="false" />
   <property name="crownConfUseFireLineInt" value="false" />
@@ -398,6 +403,7 @@
   <property name="surfaceCalcWindSpeedAtMidflame" value="false" />
   <property name="surfaceConfDegreesWrtNorth" value="false" />
   <property name="surfaceConfDegreesWrtUpslope" value="true" />
+  <property name="surfaceConfDisplayIntermediateDirectionsTab" value="false" />
   <property name="surfaceConfFuel2DDepth" value="2" />
   <property name="surfaceConfFuel2DLaterals" value="0" />
   <property name="surfaceConfFuel2DSamples" value="2" />

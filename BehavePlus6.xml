@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved. -->
+<!-- Copyright (C) 2002-2018 Build 626 by Collin D. Bevins.  All rights reserved. -->
 
 <!-- NOTE: it is IMPERATIVE that <language>, <translate>, <variable>,
       <function>, <property>, and <itemList> elements all have their element
@@ -901,12 +901,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="fileSelector.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
   <file name="fireSpreadDirections.html"
     type="DocHtml"
     permission="ERw"
@@ -1255,6 +1249,12 @@
     releaseFrom="60000"
     releaseThru="99999"
   />
+  <file name="fuelModelCrosswalk.html"
+    type="DocHtml"
+    permission="ERw"
+    releaseFrom="60000"
+    releaseThru="99999"
+  />
   <file name="fuelModelKey.html"
     type="DocHtml"
     permission="ERw"
@@ -1479,14 +1479,6 @@
     releaseThru="99999"
    />
   -->
-  <!-- Pat wants this removed since its not user-visible anymore
-  <file name="vContainLimitDist.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  -->
   <file name="vContainLine.html"
     type="DocHtml"
     permission="ERw"
@@ -1559,12 +1551,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vCrownFireActiveCritSurfSpreadRate.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
   <file name="vCrownFireActiveCrown.html"
     type="DocHtml"
     permission="ERw"
@@ -1619,12 +1605,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vCrownFireArea.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
   <file name="vCrownFireCanopyFractionBurned.html"
     type="DocHtml"
     permission="ERw"
@@ -1649,13 +1629,13 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vCrownFireFlameLeng.html"
+  <file name="vCrownFireCritSurfSpreadRate.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vCrownFireHeatPerUnitArea.html"
+  <file name="vCrownFireFuelLoad.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
@@ -1668,12 +1648,6 @@
     releaseThru="99999"
   />
   <file name="vCrownFireLengthToWidth.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <file name="vCrownFireLineInt.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
@@ -1721,12 +1695,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vCrownFirePerimeter.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
   <file name="vCrownFirePowerOfFire.html"
     type="DocHtml"
     permission="ERw"
@@ -1740,18 +1708,6 @@
     releaseThru="99999"
   />
   <file name="vCrownFirePowerRatio.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <file name="vCrownFireSpreadDist.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <file name="vCrownFireSpreadRate.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
@@ -1781,7 +1737,13 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vCrownFireFuelLoad.html"
+  <file name="vCrownFireType.html"
+    type="DocHtml"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
+  <file name="vCrownFireWindDriven.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
@@ -1895,60 +1857,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vSafetyZoneEquipmentArea.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <file name="vSafetyZoneEquipmentNumber.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <file name="vSafetyZoneLength.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <file name="vSafetyZonePersonnelArea.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <file name="vSafetyZonePersonnelNumber.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <file name="vSafetyZoneRadius.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <file name="vSafetyZoneSepDist.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <file name="vSafetyZoneSize.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <file name="vSafetyZoneSize_Square.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
   <file name="vSiteAspectDirFromNorth.html"
     type="DocHtml"
     permission="ERw"
@@ -2009,13 +1917,13 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vSpotDistBurningPile.html"
+  <file name="vSpotDistActiveCrown.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vSpotDistActiveCrown.html"
+  <file name="vSpotDistBurningPile.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
@@ -2028,12 +1936,6 @@
     releaseThru="99999"
   />
   <file name="vSpotDistTorchingTrees.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <file name="vSpotEmberDiamAtSurface.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
@@ -2233,6 +2135,12 @@
     releaseFrom="20000"
     releaseThru="99999"
   />
+  <file name="vSurfaceFireNoWindRate.html"
+    type="DocHtml"
+    permission="ERw"
+    releaseFrom="20000"
+    releaseThru="99999"
+  />
   <file name="vSurfaceFirePerimeter.html"
     type="DocHtml"
     permission="ERw"
@@ -2359,12 +2267,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="vSurfaceFuelBedLiveFraction.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
   <file name="vSurfaceFuelBedDepth.html"
     type="DocHtml"
     permission="ERw"
@@ -2372,6 +2274,12 @@
     releaseThru="99999"
   />
   <file name="vSurfaceFuelBedHeatSink.html"
+    type="DocHtml"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
+  <file name="vSurfaceFuelBedLiveFraction.html"
     type="DocHtml"
     permission="ERw"
     releaseFrom="10000"
@@ -2444,12 +2352,6 @@
     releaseThru="99999"
   />
 
-  <file name="vSurfaceFuelChaparralAge.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
   <file name="vSurfaceFuelChaparralDeadFuelFraction.html"
     type="DocHtml"
     permission="ERw"
@@ -2798,14 +2700,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <!-- Pat wants this file removed from the package
-  <file name="vTreeSpeciesMortality.html"
-    type="DocHtml"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
-  -->
   <file name="vTreeSpeciesMortalityTable.html"
     type="DocHtml"
     permission="ERw"
@@ -3162,7 +3056,7 @@
     releaseFrom="20000"
     releaseThru="99999"
   />
-  <file name="CanopyBaseHt.png"
+  <file name="CanopyBaseHt_Passive.png"
     type="DocImage"
     permission="ERw"
     releaseFrom="10000"
@@ -3186,7 +3080,19 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
+  <file name="CanopyFractionBurned_Passive.png"
+      type="DocImage"
+      permission="ERw"
+      releaseFrom="10000"
+      releaseThru="99999"
+  />
   <file name="CanopyHeatPerUnitArea.png"
+      type="DocImage"
+      permission="ERw"
+      releaseFrom="10000"
+      releaseThru="99999"
+  />
+  <file name="CanopyHeatPerUnitArea_Passive.png"
       type="DocImage"
       permission="ERw"
       releaseFrom="10000"
@@ -3210,6 +3116,12 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
+  <file name="Crown_20ftWind_Passive.png"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
   <file name="Crown_20ftWind_Power.png"
     type="DocImage"
     permission="ERw"
@@ -3228,23 +3140,35 @@
      releaseFrom="10000"
      releaseThru="99999"
   />
-  <file name="Crown_WindDriven.png"
+  <file name="Crown_SurfFuelMois_Passive.png"
      type="DocImage"
      permission="ERw"
      releaseFrom="10000"
      releaseThru="99999"
   />
-  <file name="CrownCanopyVars.png"
-     type="DocImage"
-     permission="ERw"
-     releaseFrom="10000"
-     releaseThru="99999"
+  <file name="Crown_WindDriven.png"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
+  <file name="CrownCanopyFractionBurned.png"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
   />
   <file name="CrownFLI.png"
-  type="DocImage"
-  permission="ERw"
-  releaseFrom="10000"
-  releaseThru="99999"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
+  <file name="CrownFLI_Passive.png"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
   />
   <file name="CrownHeatPerUnitArea.png"
     type="DocImage"
@@ -3252,7 +3176,19 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
+  <file name="CrownHeatPerUnitArea_Passive.png"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
   <file name="CrownLoad.png"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
+  <file name="CrownLoad_Passive.png"
     type="DocImage"
     permission="ERw"
     releaseFrom="10000"
@@ -3283,6 +3219,12 @@
     releaseThru="99999"
   />
   <file name="CrownROS.png"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
+  <file name="CrownROS_Passive.png"
     type="DocImage"
     permission="ERw"
     releaseFrom="10000"
@@ -3342,6 +3284,12 @@
       releaseFrom="20000"
       releaseThru="99999"
   />
+  <file name="dynamicFuelLoadTransfer.png"
+      type="DocImage"
+      permission="ERw"
+      releaseFrom="20000"
+      releaseThru="99999"
+  />
   <file name="firearea.png"
     type="DocImage"
     permission="ERw"
@@ -3361,6 +3309,12 @@
     releaseThru="99999"
   />
   <file name="firelengthtowidth.png"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
+  <file name="firelengthtowidthcrown.png"
     type="DocImage"
     permission="ERw"
     releaseFrom="10000"
@@ -3408,7 +3362,7 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="FoliarMois.png"
+  <file name="flankingdistance.png"
     type="DocImage"
     permission="ERw"
     releaseFrom="10000"
@@ -3432,14 +3386,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <!-- Removed from Build 610
-   <file name="haulingchart.png"
-    type="DocImage"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-    />
-  / -->
   <file name="jfsp_logo.png"
     type="DocImage"
     permission="ERw"
@@ -3558,30 +3504,6 @@
     type="DocImage"
     permission="ERw"
     releaseFrom="10000"
-    releaseThru="99999"
-  />
-  <file name="safetyzonediagram.png"
-    type="DocImage"
-    permission="ERw"
-    releaseFrom="20000"
-    releaseThru="99999"
-  />
-  <file name="safetyzonediagram_square.png"
-    type="DocImage"
-    permission="ERw"
-    releaseFrom="60000"
-    releaseThru="99999"
-  />
-  <file name="safetyzonetoosmall_square.png"
-    type="DocImage"
-    permission="ERw"
-    releaseFrom="60000"
-    releaseThru="99999"
-  />
-  <file name="safetyzonetoosmall.png"
-    type="DocImage"
-    permission="ERw"
-    releaseFrom="20000"
     releaseThru="99999"
   />
   <file name="ScottBurgan10101.png"
@@ -4130,37 +4052,25 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="spreadBackingOnly.png"
-    type="DocImage"
-    permission="ERw"
-    releaseFrom="60000"
-    releaseThru="99999"
-  />
-  <file name="spreadFireFront.png"
-    type="DocImage"
-    permission="ERw"
-    releaseFrom="60000"
-    releaseThru="99999"
-  />
-  <file name="spreadFireFrontFarsite.png"
-    type="DocImage"
-    permission="ERw"
-    releaseFrom="60000"
-    releaseThru="99999"
-  />
   <file name="spreadFireFrontFL.png"
     type="DocImage"
     permission="ERw"
     releaseFrom="60000"
     releaseThru="99999"
   />
-  <file name="spreadFlankingOnly.png"
+  <file name="spreadFirePerim.png"
     type="DocImage"
     permission="ERw"
     releaseFrom="60000"
     releaseThru="99999"
   />
-  <file name="spreadHeadingOnly.png"
+  <file name="spreadFirePerimEllipse.png"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="60000"
+    releaseThru="99999"
+  />
+  <file name="spreadHeadFlankBack.png"
     type="DocImage"
     permission="ERw"
     releaseFrom="60000"
@@ -4214,6 +4124,12 @@
    releaseFrom="10000"
    releaseThru="99999"
   />
+  <file name="SurfaceHeatPerUnitArea_Passive.png"
+   type="DocImage"
+   permission="ERw"
+   releaseFrom="10000"
+   releaseThru="99999"
+  />
   <file name="SurfFLI.png"
     type="DocImage"
     permission="ERw"
@@ -4232,6 +4148,12 @@
     releaseFrom="20000"
     releaseThru="99999"
   />
+  <file name="treecanopybaseheight.png"
+      type="DocImage"
+      permission="ERw"
+      releaseFrom="10000"
+      releaseThru="99999"
+  />
   <file name="treecanopyheight.png"
       type="DocImage"
       permission="ERw"
@@ -4244,12 +4166,6 @@
     releaseFrom="10000"
     releaseThru="99999"
   />
-  <file name="treeheight.png"
-    type="DocImage"
-    permission="ERw"
-    releaseFrom="10000"
-    releaseThru="99999"
-  />
   <file name="treescorchheight.png"
     type="DocImage"
     permission="ERw"
@@ -4257,6 +4173,12 @@
     releaseThru="99999"
   />
   <file name="windnorth.png"
+    type="DocImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
+  <file name="windSlopeFireDir.png"
     type="DocImage"
     permission="ERw"
     releaseFrom="10000"
@@ -4287,12 +4209,6 @@
   permission="ERw"
   releaseFrom="40000"
   releaseThru="99999"
-  />
-  <file name="windSlopeFireDir.png"
-    type="DocImage"
-    permission="ERw"
-    releaseFrom="60000"
-    releaseThru="99999"
   />
 
   <!-- Dialog Image Files (release 10000) -->
@@ -4663,6 +4579,12 @@
     releaseThru="99999"
   />
   <file name="RockCreek.png"
+    type="DialogImage"
+    permission="ERw"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
+  <file name="RockCreek2000.png"
     type="DialogImage"
     permission="ERw"
     releaseFrom="10000"
@@ -7892,8 +7814,8 @@
     wizard=""
   />
   <translate key="vCrownFireActiveCritOpenWindSpeed:Label"
-    en_US="Active Crown Critical Open Wind Speed [O'active]"
-    pt_PT="Active Crown Critical Open Wind Speed"
+    en_US="Active Crown Critical Open Wind Speed"
+    pt_PT="Active Crown Critical Open Wind Speed [O'active]"
   />
   <translate key="vCrownFireActiveCritOpenWindSpeed:Desc"
     en_US="Scott-Reinhardt O'active"
@@ -8326,8 +8248,8 @@
     wizard=""
   />
   <translate key="vCrownFireCritCrownSpreadRate:Label"
-    en_US="Critical Crown Fire Rate of Spread [R'active]"
-    pt_PT="Velocidade Crítica Para Fogos de Copas"
+    en_US="Critical Crown Fire Rate of Spread"
+    pt_PT="Velocidade Crítica Para Fogos de Copas [R'active]"
   />
   <translate key="vCrownFireCritCrownSpreadRate:Desc"
     en_US="Critical crown fire rate of spread [R'active]."
@@ -8358,8 +8280,8 @@
     wizard=""
   />
   <translate key="vCrownFireCritSurfFireInt:Label"
-    en_US="Critical Surface Fireline Intensity [I'initiation]"
-    pt_PT="Intensidade de Superfície Crítica"
+    en_US="Critical Surface Fireline Intensity"
+    pt_PT="Intensidade de Superfície Crítica [I'initiation]"
   />
   <translate key="vCrownFireCritSurfFireInt:Desc"
     en_US="Critical surface fireline (Byram&apos;s) intensity for crown fire modeling. (Scott-Reinhardt I'initiation)"
@@ -8390,8 +8312,8 @@
     wizard=""
   />
   <translate key="vCrownFireCritSurfFlameLeng:Label"
-    en_US="Critical Surface Fire Flame Length [L'initiation]"
-    pt_PT="Comprimento de Chamas Crítico"
+    en_US="Critical Surface Fire Flame Length"
+    pt_PT="Comprimento de Chamas Crítico [L'initiation]"
   />
   <translate key="vCrownFireCritSurfFlameLeng:Desc"
     en_US="Critical surface flame length for crown fire modeling (Scott-Reinhardt FL'initiation)."
@@ -8422,8 +8344,8 @@
     wizard=""
   />
   <translate key="vCrownFireCritSurfSpreadRate:Label"
-    en_US="Critical Surface Fire ROS, Crown Fire Initiation [R'initiation]"
-    pt_PT="Critical Surface Fire ROS, Crown Fire Initiation"
+    en_US="Critical Surface Fire ROS, Crown Fire Initiation"
+    pt_PT="Critical Surface Fire ROS, Crown Fire Initiation [R'initiation]"
   />
   <translate key="vCrownFireCritSurfSpreadRate:Desc"
     en_US="Critical surface fire spread rate to achieve crowning. (R'initiation)"
@@ -9757,7 +9679,7 @@ por relâmpago"
       pt_PT=""
   />
   <translate key="vSurfaceFireDistAtBeta:Desc"
-      en_US="Surface fire spread distance from ignition point or fire front."
+      en_US="Surface fire spread distance from ignition point or fire perimeter."
       pt_PT=""
   />
   <translate key="vSurfaceFireDistAtBeta:Hdr0"
@@ -9847,11 +9769,11 @@ por relâmpago"
     default="0.0"
   />
   <translate key="vSurfaceFireDistAtPsi:Label"
-    en_US="Surface Fire Spread Dist from Fire Front"
+    en_US="Surface Fire Spread Dist from Fire Perimeter"
     pt_PT=""
   />
   <translate key="vSurfaceFireDistAtPsi:Desc"
-    en_US="Surface fire spread distance from fire front in the specified direction."
+    en_US="Surface fire spread distance from fire perimeter in the specified direction."
     pt_PT=""
   />
   <translate key="vSurfaceFireDistAtPsi:Hdr0"
@@ -9859,7 +9781,7 @@ por relâmpago"
     pt_PT=""
   />
   <translate key="vSurfaceFireDistAtPsi:Hdr1"
-    en_US="Dist from Fire Front"
+    en_US="Dist from Fire Perim"
     pt_PT=""
   />
 
@@ -9882,7 +9804,7 @@ por relâmpago"
       pt_PT=""
   />
   <translate key="vSurfaceFireDistAtVector:Desc"
-      en_US="Surface fire spread distance from ignition point or fire front."
+      en_US="Surface fire spread distance from ignition point or fire perimeter."
       pt_PT=""
   />
   <translate key="vSurfaceFireDistAtVector:Hdr0"
@@ -10281,7 +10203,7 @@ por relâmpago"
       default="0.0"
   />
   <translate key="vSurfaceFireFlameLengAtPsi:Label"
-    en_US="Surface Fire Flame Length from Fire Front"
+    en_US="Surface Fire Flame Length from Fire Perimeter"
     pt_PT="Comprimento da chama"
   />
   <translate key="vSurfaceFireFlameLengAtPsi:Desc"
@@ -10293,7 +10215,7 @@ por relâmpago"
     pt_PT="Chama"
   />
   <translate key="vSurfaceFireFlameLengAtPsi:Hdr1"
-    en_US="Flame from Fire Front"
+    en_US="Flame from Fire Perimeter"
     pt_PT="Comprimento"
   />
 
@@ -10564,7 +10486,7 @@ por relâmpago"
       wizard=""
   />
   <translate key="vSurfaceFireLineIntAtPsi:Label"
-    en_US="Surface Fireline Intensity from Fire Front"
+    en_US="Surface Fireline Intensity from Fire Perimeter"
     pt_PT="Intensidade da frente de chamas"
   />
   <translate key="vSurfaceFireLineIntAtPsi:Desc"
@@ -10576,7 +10498,7 @@ por relâmpago"
     pt_PT="Frente de chamas"
   />
   <translate key="vSurfaceFireLineIntAtPsi:Hdr1"
-    en_US="FLI from Fire Front"
+    en_US="FLI from Fire Perimeter"
     pt_PT="Intensidade"
   />
 
@@ -10751,11 +10673,11 @@ por relâmpago"
     default="0.00"
   />
   <translate key="vSurfaceFireMapDistAtPsi:Label"
-    en_US="Surface Fire Spread Map Dist from Fire Front"
+    en_US="Surface Fire Spread Map Dist from Fire Perimeter"
     pt_PT=""
   />
   <translate key="vSurfaceFireMapDistAtPsi:Desc"
-    en_US="Surface fire spread distance from fire front in the specified direction in map units."
+    en_US="Surface fire spread distance from fire perimeter in the specified direction in map units."
     pt_PT=""
   />
   <translate key="vSurfaceFireMapDistAtPsi:Hdr0"
@@ -10763,7 +10685,7 @@ por relâmpago"
     pt_PT=""
   />
   <translate key="vSurfaceFireMapDistAtPsi:Hdr1"
-    en_US="Map Dist from Fire Front"
+    en_US="Map Dist from Fire Perim"
     pt_PT=""
   />
 
@@ -11374,11 +11296,11 @@ por relâmpago"
     default="0.0"
   />
   <translate key="vSurfaceFireSpreadAtPsi:Label"
-    en_US="Surface Fire Rate of Spread from Fire Front"
+    en_US="Surface Fire Rate of Spread from Fire Perimeter"
     pt_PT=""
   />
   <translate key="vSurfaceFireSpreadAtPsi:Desc"
-    en_US="Surface fire spread rate in a specified direction perpendicular to the fire front."
+    en_US="Surface fire spread rate in a specified direction perpendicular to the fire perimeter."
     pt_PT=""
   />
   <translate key="vSurfaceFireSpreadAtPsi:Hdr0"
@@ -11386,7 +11308,7 @@ por relâmpago"
     pt_PT=""
   />
   <translate key="vSurfaceFireSpreadAtPsi:Hdr1"
-    en_US="ROS from Fire Front"
+    en_US="ROS from Fire Perim"
     pt_PT=""
   />
 
@@ -11563,15 +11485,15 @@ por relâmpago"
     wizard="compassUpslopeWizard"
   />
   <translate key="vSurfaceFireVectorPsi:Label"
-    en_US="Surface Fire Spread Dir from Fire Front"
+    en_US="Surface Fire Spread Dir from Fire Perimeter"
     pt_PT=""
   />
   <translate key="vSurfaceFireVectorPsiNorth:Label"
-    en_US="Spread Dir from Fire Front (from north)"
+    en_US="Spread Dir from Fire Perimeter (from north)"
     pt_PT=""
   />
   <translate key="vSurfaceFireVectorPsiUpslope:Label"
-    en_US="Spread Dir from Fire Front (from upslope)"
+    en_US="Spread Dir from Fire Perimeter (from upslope)"
     pt_PT=""
   />
   <translate key="vSurfaceFireVectorPsi:Desc"
@@ -11583,7 +11505,7 @@ por relâmpago"
     pt_PT="Incêndio"
   />
   <translate key="vSurfaceFireVectorPsi:Hdr1"
-    en_US="Dir from Fire Front"
+    en_US="Dir from Fire Perim"
     pt_PT="Direcção"
   />
 
@@ -11631,7 +11553,7 @@ por relâmpago"
   />
   <translate key="vSurfaceFireVectorPsiFromNorth:Label"
     en_US="Surface Fire Spread Direction (from north)"
-    pt_PT="??? Direction from Fire Front (from north)"
+    pt_PT="??? Surface Fire SPread Direction (from north)"
   />
   <translate key="vSurfaceFireVectorPsiFromNorth:Desc"
     en_US="Calculate fire behavior in a direction Psi expressed as degrees clockwise from north."
@@ -11664,7 +11586,7 @@ por relâmpago"
   />
   <translate key="vSurfaceFireVectorPsiFromUpslope:Label"
     en_US="Surface Fire Spread Direction (from upslope)"
-    pt_PT="??? Direction from Fire Front (from upslope)"
+    pt_PT="??? Surface Fire SPread Direction (from upslope)"
   />
   <translate key="vSurfaceFireVectorPsiFromUpslope:Desc"
     en_US="Calculate fire behavior in a direction expressed as degrees clockwise from upslope."
@@ -12854,7 +12776,7 @@ por relâmpago"
     default="0.0000"
   />
   <translate key="vSurfaceFuelChaparralDeadFuelFraction:Label"
-    en_US="Chaparral Fuel Dead Load Fraction"
+    en_US="Chaparral Dead Load Fraction"
     pt_PT=""
   />
   <translate key="vSurfaceFuelChaparralDeadFuelFraction:Desc"
@@ -13206,7 +13128,7 @@ por relâmpago"
     wizard=""
   />
   <translate key="vSurfaceFuelChaparralLoadTotal:Label"
-    en_US="Chaparral Fuel Total Fuel Load"
+    en_US="Chaparral Total Fuel Load"
     pt_PT="???"
   />
   <translate key="vSurfaceFuelChaparralLoadTotal:Desc"
@@ -13238,7 +13160,7 @@ por relâmpago"
     wizard=""
   />
   <translate key="vSurfaceFuelChaparralLoadTotalDead:Label"
-    en_US="Chaparral Fuel Total Dead Fuel Load"
+    en_US="Chaparral Total Dead Fuel Load"
     pt_PT="???"
   />
   <translate key="vSurfaceFuelChaparralLoadTotalDead:Desc"
@@ -13270,7 +13192,7 @@ por relâmpago"
     wizard=""
   />
   <translate key="vSurfaceFuelChaparralLoadTotalLive:Label"
-    en_US="Chaparral Fuel Total Live Fuel Load"
+    en_US="Chaparral Total Live Fuel Load"
     pt_PT="???"
   />
   <translate key="vSurfaceFuelChaparralLoadTotalLive:Desc"
@@ -15370,7 +15292,7 @@ por relâmpago"
     pt_PT="Combustível morto"
   />
   <translate key="vSurfaceFuelMoisLifeDead:Hdr1"
-    en_US="Fuel Moisture"
+    en_US="Moisture"
     pt_PT="Humidade"
   />
 
@@ -15402,7 +15324,7 @@ por relâmpago"
     pt_PT="Combustível vivo"
   />
   <translate key="vSurfaceFuelMoisLifeLive:Hdr1"
-    en_US="Fuel Moisture"
+    en_US="Moisture"
     pt_PT="Humidade"
   />
 
@@ -22036,6 +21958,12 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseFrom="20000"
     releaseThru="99999"
   />
+  <property name="appApplyPropertyXmlOverrides"
+    type="Boolean"
+    value="false"
+    releaseFrom="20000"
+    releaseThru="99999"
+  />
   <property name="appFixedFontColor"
     type="Color"
     value="black"
@@ -22466,13 +22394,31 @@ do mapa de partículas em combustão com origem num fogo de superfície"
   />
   <property name="containConfMaxSteps"
     type="Integer"
-    value="400"
+    value="1000"
     releaseFrom="20000"
     releaseThru="99999"
   />
   <property name="containConfMinSteps"
     type="Integer"
     value="200"
+    releaseFrom="20000"
+    releaseThru="99999"
+  />
+  <property name="containConfSizeLimit"
+    type="Integer"
+    value="10001"
+    releaseFrom="20000"
+    releaseThru="99999"
+  />
+  <property name="containConfTimeLimit"
+    type="Integer"
+    value="1441"
+    releaseFrom="20000"
+    releaseThru="99999"
+  />
+  <property name="containConfVersion5"
+    type="Boolean"
+    value="false"
     releaseFrom="20000"
     releaseThru="99999"
   />
@@ -22907,6 +22853,12 @@ do mapa de partículas em combustão com origem num fogo de superfície"
     releaseThru="99999"
   />
   <property name="crownCalcWindDriven"
+    type="Boolean"
+    value="false"
+    releaseFrom="30000"
+    releaseThru="99999"
+  />
+  <property name="crownConfDisplayPowerVariables"
     type="Boolean"
     value="false"
     releaseFrom="30000"
@@ -24420,6 +24372,12 @@ do mapa de partículas em combustão com origem num fogo de superfície"
   <property name="surfaceConfDegreesWrtUpslope"
     type="Boolean"
     value="true"
+    releaseFrom="10000"
+    releaseThru="99999"
+  />
+  <property name="surfaceConfDisplayIntermediateDirectionsTab"
+    type="Boolean"
+    value="false"
     releaseFrom="10000"
     releaseThru="99999"
   />
@@ -26337,6 +26295,10 @@ via Configure-&gt;Units or via the Units Editor, and the File-&amp;Save run.
     en_US="To save a fuel model the &lt;B&gt;Surface Module&lt;/B&gt; must be active with the &quot;&lt;I&gt;Fuel is entered as&lt;/I&gt;&quot; option set to &quot;&lt;I&gt;fuel parameters&lt;/I&gt;&quot; (not &quot;&lt;I&gt;fuel models&lt;/I&gt;&quot;)."
     pt_PT="Para salvar o modelo de combustível o &lt;B&gt;Surface Module&lt;/B&gt; necessita de estar activado com &quot;&lt;I&gt;Combustível é introduzido como&lt;/I&gt;&quot; opções para &quot;&lt;I&gt;parâmetros do combustível&lt;/I&gt;&quot; (não &quot;&lt;I&gt;Modelos de combustível&lt;/I&gt;&quot;)."
   />
+  <translate key="BpDocument:SaveFuelModel:CodeSameAsNumber"
+    en_US="The fuel model Code can not be the same as the fuel model Number; please re-enter the fuel model Code."
+    pt_PT="The fuel model Code can not be the same as the fuel model Number."
+  />
   <translate key="BpDocument:SaveFuelModel:MissingInputs"
     en_US="Inputs are required for the following fuel parameters to complete the fuel model:
 "
@@ -26555,8 +26517,8 @@ NOTE:  You can open this HTML file using Excel, and subsequently save it as an .
     pt_PT="    é especificada para cada recurso (velocidade de produção de linha, etc)."
   />
   <translate key="BpDocument:Worksheet:RunOptions:Crown:Rothermel"
-    en_US="Crown fire method uses Rothermel (1991)."
-    pt_PT="Crown fire method uses Rothermel (1991)."
+    en_US="Crown fire method uses Rothermel (1991) [CROWN]."
+    pt_PT="Crown fire method uses Rothermel (1991) [CROWN]."
   />
   <translate key="BpDocument:Worksheet:RunOptions:Crown:ScottReinhardt"
     en_US="Crown fire method uses Scott and Reinhardt (2001)."
@@ -28710,7 +28672,7 @@ fuel moisture."
   />
   <!-- PropertyTabDialog SURFACE "Wind Speed" Tab 3 Text -->
   <translate key="PropertyTabDialog:Surface:Wind:Tab"
-    en_US="Wind Speed &amp;&amp;  Dir"
+    en_US="Wind Speed &amp;&amp; Dir"
     pt_PT="Direcção&amp;&amp; do vento"
   />
   <translate key="PropertyTabDialog:Surface:Wind:Tab20000"
@@ -28755,7 +28717,7 @@ fuel moisture."
   />
   <!-- PropertyTabDialog Surface "Directions" Tab 5 Text -->
   <translate key="PropertyTabDialog:Surface:Dir:Tab"
-    en_US="Wind &amp;&amp;  Fire Directions"
+    en_US="Wind &amp;&amp; Fire Directions"
     pt_PT="Direcção do fogo &amp;&amp; vento"
   />
   <translate key="PropertyTabDialog:Surface:Dir:Tab20000"
@@ -28775,7 +28737,7 @@ fuel moisture."
     pt_PT="??? upslope only."
   />
   <translate key="PropertyTabDialog:Surface:Dir:Compass:Caption"
-    en_US="Wind &amp;&amp;  spread directions are"
+    en_US="Wind &amp;&amp; spread directions are"
     pt_PT="As direcções do vento &amp;&amp; propagação são"
   />
   <translate key="PropertyTabDialog:Surface:Dir:Compass:North"
@@ -28821,12 +28783,8 @@ fuel moisture."
     pt_PT="??? in specified directions from ignition point (for Point Source Fire)."
   />
   <translate key="PropertyTabDialog:Surface:Dir:Spread:PointSourcePsi"
-    en_US="Directions from IGNITION POINT.
-(FL based on flaming segment perpendicular
-to perimeter, improved V6 method)"
-    pt_PT="Directions from IGNITION POINT.
-(FL based on flaming segment perpendicular
-to perimeter, improved V6 method)"
+    en_US="Directions from IGNITION POINT."
+    pt_PT="Directions from IGNITION POINT."
   />
   <translate key="PropertyTabDialog:Surface:Dir:Spread:PointSourceBeta"
     en_US="Directions from Ignition Point.
@@ -29695,7 +29653,7 @@ for which you do not have WRIRE permission."
     pt_PT="Unidades de Contenção &amp;&amp; Segurança"
   />
   <translate key="UnitsEditDialog:FuelVeg:Tab"
-    en_US="Fuel &amp;&amp;  Vegetation Units"
+    en_US="Fuel &amp;&amp; Vegetation Units"
     pt_PT="Unidades de Combustível &amp;&amp; Vegetação"
   />
   <translate key="UnitsEditDialog:Weather:Tab"
@@ -29707,11 +29665,11 @@ for which you do not have WRIRE permission."
     pt_PT="Unidades de Terreno &amp;&amp; Projecção de Partículas"
   />
   <translate key="UnitsEditDialog:FireEffects:Tab"
-    en_US="Fire &amp;&amp;  Effects Units"
+    en_US="Fire &amp;&amp; Effects Units"
     pt_PT="Unidades de Comportamento do Fogo &amp;&amp; Efeitos do Fogo"
   />
   <translate key="UnitsEditDialog:TimeMap:Tab"
-    en_US="Time &amp;&amp;  Map Units"
+    en_US="Time &amp;&amp; Map Units"
     pt_PT="Unidades de Tempo &amp;&amp; Mapa"
   />
   <translate key="UnitsEditDialog:Contain:Dist"
@@ -29731,7 +29689,7 @@ for which you do not have WRIRE permission."
     pt_PT="Área da Zona de segurança "
   />
   <translate key="UnitsEditDialog:Safety:PE"
-    en_US="Personnel &amp;  Equipment Areas"
+    en_US="Personnel &amp; Equipment Areas"
     pt_PT="Áreas para Pessoal e Equip."
   />
   <translate key="UnitsEditDialog:FuelVeg:BasalArea"
@@ -29771,7 +29729,7 @@ for which you do not have WRIRE permission."
     pt_PT="Espessura do Estrato de Manta Morta"
   />
   <translate key="UnitsEditDialog:FuelVeg:FuelMois"
-    en_US="Fuel &amp;  Extinction Moisture"
+    en_US="Fuel &amp; Extinction Moisture"
     pt_PT="Humidade dos Combustívels &amp; Humidade de Extinção"
   />
   <translate key="UnitsEditDialog:FuelVeg:FuelHeat"
@@ -29783,7 +29741,7 @@ for which you do not have WRIRE permission."
     pt_PT="??? Heat Sink"
   />
   <translate key="UnitsEditDialog:FuelVeg:TreeHt"
-    en_US="Tree &amp;  Canopy Height"
+    en_US="Tree &amp; Canopy Height"
     pt_PT="Altura das Árvores"
   />
   <translate key="UnitsEditDialog:FuelVeg:TreeCrown"
@@ -29791,7 +29749,7 @@ for which you do not have WRIRE permission."
     pt_PT="Razão do Copado"
   />
   <translate key="UnitsEditDialog:FuelVeg:TreeDbh"
-    en_US="Tree Dbh &amp;  Bark Thickness"
+    en_US="Tree Dbh &amp; Bark Thickness"
     pt_PT="DAP &amp; Espessura da Casca"
   />
   <translate key="UnitsEditDialog:FuelVeg:PackingRatio"
@@ -29851,11 +29809,11 @@ Entre Vale e Cumeada"
     pt_PT="??? Flame and Duration Proporções"
   />
   <translate key="UnitsEditDialog:FireEffects:FireSurfaceSpread"
-    en_US="Surface ROS"
+    en_US="Surface Rate of Spread"
     pt_PT="Velocidade de propagação"
   />
   <translate key="UnitsEditDialog:FireEffects:FireCrownSpread"
-    en_US="Crown ROS"
+    en_US="Crown Rate of Spread"
     pt_PT=" Velocidade de propagação - fogo de copas"
   />
   <translate key="UnitsEditDialog:FireEffects:FireHpua"
@@ -29875,7 +29833,7 @@ Entre Vale e Cumeada"
     pt_PT="Altura de dessecação"
   />
   <translate key="UnitsEditDialog:FireEffects:FireRxInt"
-    en_US="Heat Souce &amp; Reaction Intensity"
+    en_US="Heat Source &amp; Reaction Intensity"
     pt_PT="Intensidade de reacção"
   />
   <translate key="UnitsEditDialog:FireEffects:FireDistance"

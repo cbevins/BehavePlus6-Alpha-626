@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file property.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Generic property system used to define and access the plethora of
  *  properties used by BehavePlus.
@@ -204,6 +204,7 @@ Property *PropertyDict::get( const QString &name, Property::PropertyType type )
         error( msg );
         return( 0 );
     }
+	const char *value = property->m_value.latin1();
     return( property );
 }
 
@@ -445,6 +446,7 @@ bool PropertyDict::update( const QString &name, const QString &value )
 
 bool PropertyDict::readXmlFile( const QString &fileName )
 {
+	const char *fn = fileName.latin1();
     PropertyParser *handler = new PropertyParser( this, fileName );
     checkmem( __FILE__, __LINE__, handler, "PropertyParser handler", 1 );
     QFile xmlFile( fileName );
@@ -470,6 +472,7 @@ bool PropertyDict::readXmlFile( const QString &fileName )
 bool PropertyDict::writeXmlFile( const QString &fileName,
         const QString &elementName, int release )
 {
+	const char *fn = fileName.latin1();
     // Atempt to open the property file
     FILE *fptr;
     if ( ! ( fptr = fopen( fileName.latin1(), "w" ) ) )

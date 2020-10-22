@@ -1,106 +1,94 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Palmetto-Gallberry Details Page</TITLE>
-  </HEAD>
-  <BODY>
-    <TABLE WIDTH="100%">
-      <TR>
-        <TD width="100">
-          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
-        </TD>
-        <TD ALIGN="left" VALIGN="center">
-          <H2><FONT COLOR="#ff5500">Palmetto-Gallberry Details</FONT></H2>
-        </TD>
-      </TR>
-    </TABLE>
-    <HR><P>
+<html>
+  <head>
+    <title>BehavePlus Palmetto-Gallberry Details Page</title>
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+        <td align="left" valign="center"><h2><font color="#ff5500">Palmetto-Gallberry Details</font></h2></td>
+      </tr>
+    </table>
+    <hr>
+    
+<p>The Palmetto-Gallberry fuel option in BehavePlus is used to enter vegetation data specific to southern rough. The equations of Hough and Albini (1978) are then used to create fuel inputs for live and dead fuel by size class to define surface fuel parameters for use in Rothermel's surface fire rate of spread model.</p>
 
 
-The Palmetto-Gallberry fuel option in BehavePlus allows entry of vegetation
-data for southern rough fuels. The equations of Hough and Albini (1978) are then used to create fuel
-inputs for live and dead fuel by size class to define surface fuel parameters.
+<p>The Palmetto-Gallberry option assumes the following variables are constant when assigning fuel parameters.</p>
 
-
-    <P>The Palmetto-Gallberry option assumes the following constants when
-    assigning fuel parameters.     
-    <P>
-  <A NAME="Table 1 Palmetto-Gallberry Fuel Constants"></a>
-<B>Table 1: Palmetto-Gallberry Fuel Constants</B><br>
+<a name="Table1"></a>
+<b>Palmetto-Gallberry Fuel Constants</b><br>
 <table border="1" cellspacing="0" cellpadding="5" >
-  <tbody>
     <tr bgcolor="#CCCCCC">
-      <td><b>Fuel Model Variable</b></td>
-      <td><b>English Value</b></td>
-      <td><b>Metric Value</b></td>
+      <th>Fuel Model Variable</th>
+      <th>English Value</th>
+      <th>Metric Value</th>
     </tr>
     <tr>
-      <td>extinction moisture</td>
+      <td>Moisture of Extinction</td>
       <td colspan="2" align="center">40 percent</td>
     </tr>
     <tr>
-      <td>fuel bed depth</td>
+      <td>Fuel Bed Depth</td>
       <td colspan="2" align="center">2/3 height of understory</td>
     </tr>
     <tr>
-      <td>low heat content</td>
+      <td>Low Heat Content</td>
       <td align="center">8,300 Btu / lb</td>
       <td align="center">19,321 kJ / kg</td>
     </tr>
     <tr>
-      <td>particle density, live fuel</td>
-      <td align="center">46 lb / ft<SUP>3</SUP></td>
+      <td>Particle Density, Live Fuel</td>
+      <td align="center">46 lb / ft<sup>3</sup></td>
       <td align="center">737 kg/m<sup>3</sup></td>
     </tr>
     <tr>
-      <td>particle density, dead fuel</td>
-      <td align="center">30 lb / ft<SUP>3</SUP></td>
+      <td>Particle Density, Dead Fuel</td>
+      <td align="center">30 lb / ft<sup>3</sup></td>
       <td align="center">481 kg/m<sup>3</sup></td>
     </tr>
     <tr>
-      <td>total ash content, fraction</td>
+      <td>Total Ash Content (fraction)</td>
       <td colspan="2" align="center">0.030</td>
     </tr>
     <tr>
-      <td>silica-free ash, live fuel, fraction</td>
+      <td>Silica-free Ash, Live Fuel (fraction)</td>
       <td colspan="2" align="center">0.015</td>
     </tr>
     <tr>
-      <td>silica-free ash, dead fuel, fraction</td>
+      <td>Silica-free Ash, Dead Fuel (fraction)</td>
       <td colspan="2" align="center">0.010</td>
     </tr>
     <tr>
-      <td>SA/V, foliage</td>
-      <td align="center">2,000 ft<SUP>2</SUP> / ft<SUP>3</SUP></td>
-      <td align="center">6,562 m<SUP>2</SUP> / m<SUP>3</SUP></td>
+      <td>SA/V, Foliage</td>
+      <td align="center">2,000 ft<sup>2</sup> / ft<sup>3</sup></td>
+      <td align="center">6,562 m<sup>2</sup> / m<sup>3</sup></td>
     </tr>
     <tr>
       <td>SA/V, 0-0.25 inch diameter stems</td>
-      <td align="center">350 ft<SUP>2</SUP> / ft<SUP>3</SUP></td>
-      <td align="center">1,148 m<SUP>2</SUP> / m<SUP>3</SUP></td>
+      <td align="center">350 ft<sup>2</sup> / ft<sup>3</sup></td>
+      <td align="center">1,148 m<sup>2</sup> / m<sup>3</sup></td>
     </tr>
     <tr>
       <td>SA/V, 0.25-1 inch diameter stems</td>
-      <td align="center">140 ft<SUP>2</SUP> / ft<SUP>3</SUP></td>
-      <td align="center">459 m<SUP>2</SUP> / m<SUP>3</SUP></td>
+      <td align="center">140 ft<sup>2</sup> / ft<sup>3</sup></td>
+      <td align="center">459 m<sup>2</sup> / m<sup>3</sup></td>
     </tr>
-  </tbody>
 </table>
-<BR><BR>
-The following table indicates which input variables for the Palmetto-Gallberry
-option affect which fuel load classes:
 
+<p>The following table indicates which input variables for the Palmetto-Gallberry
+option affect which fuel load classes.</p>
 
-      <p>
-      <A NAME="Table2"></a>
-  <B>Table 2: Palmetto-Gallberry Input Variables Affecting Fuel Load by Class</B><br>
+<a name="Table2"></a>
+<b>Palmetto-Gallberry Input Variables Affecting Fuel Load by Class</b><br>
 <table cellpadding="5" cellspacing="0" border="1">
   <tbody>
     <tr bgcolor="#CCCCCC">
-      <td><b>Fuel Category</b></td>
-      <td align="center"><b>Age of<br>Rough</b></td>
-      <td align="center"><b>Overstory<BR>Basal Area</b></td>
-      <td align="center"><b>Height of<br>Understory</b></td>
-      <td align="center"><b>Palmetto<br>Coverage</b></td>
+      <th>Fuel Category</th>
+      <th align="center">Age of<br>Rough</th>
+      <th align="center">Overstory<br>Basal Area</th>
+      <th align="center">Height of<br>Understory</th>
+      <th align="center">Palmetto<br>Coverage</th>
     </tr>
     <tr><td>Live Foliage</td>
       <td align="center">X</td>
@@ -109,7 +97,7 @@ option affect which fuel load classes:
       <td align="center">X</td>
     </tr>
     <tr>
-      <td>Live 0-.025 inch diameter</td>
+      <td>Live 0-0.25 inch diameter</td>
       <td align="center">X</td>
       <td align="center">&nbsp;</td>
       <td align="center">X</td>
@@ -153,34 +141,34 @@ option affect which fuel load classes:
   </tbody>
 </table>
 
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
 
-<p>    <H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+    <ul>
+      <li><a href="vSurfaceFuelPalmettoAge.html">P-G Age of Rough</a></li>
+      <li><a href="vSurfaceFuelPalmettoLoadDead1.html">P-G Dead Fine Fuel Load</a></li>
+      <li><a href="vSurfaceFuelPalmettoLoadDeadFoliage.html">P-G Dead Foliage Fuel Load</a></li>
+      <li><a href="vSurfaceFuelPalmettoLoadDead10.html">P-G Dead Medium Fuel Load</a></li>
+      <li><a href="vSurfaceFuelPalmettoHeight.html">P-G Height of Understory</a></li>
+      <li><a href="vSurfaceFuelPalmettoLoadLitter.html">P-G Litter Fuel Load</a></li>
+      <li><a href="vSurfaceFuelPalmettoLoadLive1.html">P-G Live Fine Fuel Load</a></li>
+      <li><a href="vSurfaceFuelPalmettoLoadLiveFoliage.html">P-G Live Foliage Fuel Load</a></li>
+      <li><a href="vSurfaceFuelPalmettoLoadLive10.html">P-G Live Medium Fuel Load</a></li>
+      <li><a href="vSurfaceFuelPalmettoOverstoryBasalArea.html">P-G Overstory Basal Area</a></li>
+      <li><a href="vSurfaceFuelPalmettoCover.html">P-G Palmetto Coverage</a></li>
+    </ul>
 
-    <UL>
-      <LI><A HREF="vSurfaceFuelPalmettoAge.html">P-G Age of Rough</A></LI>
-      <LI><A HREF="vSurfaceFuelPalmettoLoadDead1.html">P-G Dead Fine Fuel Load</A></LI>
-      <LI><A HREF="vSurfaceFuelPalmettoLoadDeadFoliage.html">P-G Dead Foliage Fuel Load</A></LI>
-      <LI><A HREF="vSurfaceFuelPalmettoLoadDead10.html">P-G Dead Medium Fuel Load</A></LI>
-      <LI><A HREF="vSurfaceFuelPalmettoHeight.html">P-G Height of Understory</A></LI>
-      <LI><A HREF="vSurfaceFuelPalmettoLoadLitter.html">P-G Litter Fuel Load</A></LI>
-      <LI><A HREF="vSurfaceFuelPalmettoLoadLive1.html">P-G Live Fine Fuel Load</A></LI>
-      <LI><A HREF="vSurfaceFuelPalmettoLoadLiveFoliage.html">P-G Live Foliage Fuel Load</A></LI>
-      <LI><A HREF="vSurfaceFuelPalmettoLoadLive10.html">P-G Live Medium Fuel Load</A></LI>
-      <LI><A HREF="vSurfaceFuelPalmettoOverstoryBasalArea.html">P-G Overstory Basal Area</A></LI>
-      <LI><A HREF="vSurfaceFuelPalmettoCover.html">P-G Palmetto Coverage</A></LI>
-    </UL>
-<p>
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
  
-<HR>
-<FONT SIZE=2>BehavePlus On-Line Documentation, February 26, 2014.</FONT>
-</BODY>
-</HTML>
-
+<hr>
+<font size="2">BehavePlus Online Documentation, August 14, 2017.</font>
+</body>
+</html>

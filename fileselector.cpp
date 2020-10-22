@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file fileselector.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BehavePlus custom file selection dialog methods.
  *
@@ -693,6 +693,9 @@ FileSaveAsDialog::FileSaveAsDialog( QWidget *parent,
     m_contextMenu(0),
     m_lvi(0)
 {
+	// const char *cFolder = defaultFolder.latin1();
+	// const char *cFile = defaultFile.latin1();
+	// const char *cDesc = defaultDesc.latin1();
     // Compose labels for the input fields.
     QString text("");
     translate( text, "FileSelector:FieldLabel:Folder" );
@@ -903,19 +906,21 @@ bool FileSaveAsDialog::editFolderDescription( QListViewItem *lvi )
 
 void FileSaveAsDialog::getEntry( int id, QString &value )
 {
-    value = m_entry[id]->text();
+    value = m_entry[id]->displayText();
+    //const char *cDisplay = value.latin1();
     return;
 }
 
 //------------------------------------------------------------------------------
-/*! \brief gets the current file description text from the entry field.
+/*! \brief Gets the current file description text from the entry field.
  *
  *  \param desc Reference to the string to contain the returned text.
  */
 
 void FileSaveAsDialog::getFileDescription( QString &desc )
 {
-    desc = m_entry[2]->text();
+    desc = m_entry[2]->displayText();
+    //const char *cDisplay = desc.latin1();
     return;
 }
 
@@ -1019,7 +1024,7 @@ void FileSaveAsDialog::rightButtonClicked( QListViewItem *lvi,
 }
 
 //------------------------------------------------------------------------------
-/*! \brief Called whenever use double clicks on an item.  Fills out the
+/*! \brief Called whenever user double clicks on an item.  Fills out the
  *  subdirectory and/or file name fields with the selected values.
  *
  *  \param lvi Pointer to the selected item.
@@ -1067,7 +1072,8 @@ void FileSaveAsDialog::store( void )
           row <= lastRow;
           row++ )
     {
-        text = m_entry[row]->text().stripWhiteSpace();
+        //text = m_entry[row]->text().stripWhiteSpace();
+        text = m_entry[row]->displayText().stripWhiteSpace();
         if ( text.isEmpty() )
         {
             translate( caption, "FileSelector:SelectAFile:Caption" );
@@ -1078,7 +1084,8 @@ void FileSaveAsDialog::store( void )
         }
     }
     // The file name must be just one word.
-    QString fileName = m_entry[1]->text().stripWhiteSpace();
+    //QString fileName = m_entry[1]->text().stripWhiteSpace();
+    QString fileName = m_entry[1]->displayText().stripWhiteSpace();
     if ( fileName.contains( " " ) )
     {
         translate( caption, "FileSelector:SelectASaveAsFile:Error:Caption" );
@@ -1097,7 +1104,8 @@ void FileSaveAsDialog::store( void )
     }
     // If the directory name doesn't exist, ask if we should create it.
     // Note: m_topDirName already has a slash as its last character!
-    QString dirName = m_topDirName + m_entry[0]->text().stripWhiteSpace();
+    //QString dirName = m_topDirName + m_entry[0]->text().stripWhiteSpace();
+    QString dirName = m_topDirName + m_entry[0]->displayText().stripWhiteSpace();
     QDir dir( dirName );
     bool newDir = false;
     QString desc("");
@@ -1139,7 +1147,8 @@ void FileSaveAsDialog::store( void )
     }
     // Append the file extension if one wasn't provided.
     fileName = dirName + QDir::separator()
-        + m_entry[1]->text().stripWhiteSpace();
+        // + m_entry[1]->text().stripWhiteSpace();
+        + m_entry[1]->displayText().stripWhiteSpace();
     QFileInfo fi( fileName );
     if ( m_fileType != "Capture" )
     {
@@ -1212,7 +1221,8 @@ void FileSaveAsDialog::store( void )
     {
         // The description file has the same name as the folder it describes
         QString descFileName = dirName + QDir::separator()
-            + m_entry[0]->text().stripWhiteSpace();
+            //+ m_entry[0]->text().stripWhiteSpace();
+            + m_entry[0]->displayText().stripWhiteSpace();
         FILE *fptr;
         if ( ! ( fptr = fopen( descFileName.latin1(), "w" ) ) )
         {

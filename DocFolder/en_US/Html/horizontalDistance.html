@@ -1,67 +1,67 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Slope vs Horizontal Map Distance Tool Page</TITLE>
-  </HEAD>
-<BODY>
-<DIV>
-    <TABLE WIDTH="100%">
-      <TR>
-        <TD width="100">
-          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
-        </TD>
-        <TD ALIGN="left" VALIGN="center">
-	      <H2><FONT color=#ff5500>Slope vs Horizontal Map Distance Tool</FONT></H2>
-		</TD>
-	  </TR>
-	</TABLE>
-<HR>
+<html>
+  <head>
+    <title>BehavePlus Slope vs Horizontal Map Distance Tool Page</title>
+  </head>
+<body>
+    <table width="100%">
+      <tr>
+        <td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+        <td align="left" valign="center"><h2><font color="#ff5500">Slope vs Horizontal Map Distance Tool</font></h2></td>
+	  </tr>
+	</table>
+<hr>
 
+<p>Map distance is found by multiplying slope distance (distance along the ground) by the map scale. This result is then plotted on a map as a horizontal distance (assuming flat ground). This is not technically correct. Because of the many variables that exist in the real world, the difference between slope distance and horizontal distance is not critical in fire behavior modeling, and we often ignore it. We include this tool for the conversion in case you want to make the correction before you plot a distance on a map for areas with very steep slopes or when plotting results over long distances.</p>
 
-<P>When you select the option <I>Display output distances in map units</I> from 
-the Module Selection dialog, the following <I>slope</I> distances (the distance along the ground) are converted 
-to <I>map</I> distances: 
-<UL>
-  <LI>Surface spread distance [SURFACE] 
-  <LI>Crown spread distance [CROWN]   
-  <LI>Heading spread distance [SIZE] 
-  <LI>Flanking spread distance [SIZE] 
-  <LI>Backing spread distance [SIZE] 
-  <LI>Fire length [SIZE] 
-  <LI>Maximum fire width [SIZE] 
-  <LI>Spotting distance [SPOT] </LI></UL>
-<P>Map distance is found by multiplying slope distance by the map scale. This 
-is not technically correct. But because of the many variables that exist in the 
-real world, the difference between slope distance and horizontal distance is 
-not critical.
-<p>We include this tool to do the conversion in case you want to make the correction 
-    before you plot a distance on a map. 
-<P>This plot shows the horizontal map distance from the calculated map distance, the maximum slope steepness, and the 
-direction of the distance with respect to upslope. This example is for a 
-calculated map distance of 3 cm or in. The largest difference is for very steep 
-slopes and for distances that are along the steepest part of the slope. 
-<table>
-	<tr>
-		<td><A NAME="projectionCurves.png"></a><img src="projectionCurves.png" alt="Calculated Map Distance"></td>
-	</tr>
-</table> 
-<P>This diagram illustrates the difference between slope distance and 
-horizontal distance for 45- and 30-degrees slopes. The slope distance in both cases is the same. 
+<p>This diagram illustrates the difference between slope distance and horizontal distance for 45- and 30-degrees slopes. The slope distance in both cases is the same.</p>
+
+<p></p>
 <table>
   <tr>
     <td><a name="projectionExample.png"></a><img src="projectionExample.png" alt="Map Distance Projection Example"></td>
   </tr>
 </table>
-<p>
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+
+<p>When you select the option <i>Display output distances in map units</i> from the Module Selection dialog, the following <i>slope</i> distances (the distance along the ground) are converted to <i>map</i> distances (horizontal distances).</p>
+	<ul>
+		<li>Surface Fire Spread Distance [SURFACE]</li>
+		<li>Active Crown Fire Spread Distance [CROWN]</li>
+		<li>Passive Crown Fire Spread Distance [CROWN]</li>
+		<li>Surface Fire Heading Spread Distance [SIZE]</li>
+		<li>Surface Fire Flanking Spread Distance [SIZE]</li>
+		<li>Surface Fire Backing Spread Distance [SIZE]</li>
+		<li>Surface Fire Length [SIZE]</li>
+		<li>Surface Fire Maximum Width [SIZE]</li>
+		<li>Spotting Distance from a Burning Pile [SPOT]</li>
+		<li>Spotting Distance from a Wind-Driver Surface Fire [SPOT]</li>
+		<li>Spotting Distance from Active Crown Fire [SPOT]</li>
+		<li>Spotting Distance from Torching Trees [SPOT]</li>
+		<li>Flat Terrain Spotting Distance from a Burning Pile [SPOT]</li>
+		<li>Flat Terrain Spotting Distance from a Wind-Driver Surface Fire [SPOT]</li>
+		<li>Flat Terrain Spotting Distance from Active Crown Fire [SPOT]</li>
+		<li>Flat Terrain Spotting Distance from Torching Trees [SPOT]</li>
+	</ul>
+
+<p>This graph shows the horizontal map distance based on the calculated map distance, the maximum slope steepness, and the direction of the distance with respect to upslope. This example is for a calculated map distance of either 3 in or 3 cm (correction is not dependent on the units used). The largest difference is for very steep slopes and for distances that are along the steepest part of the slope.</p>
+
+<p></p>
+<table>
+	<tr>
+		<td><a name="projectionCurves.png"></a><img src="projectionCurves.png" alt="Calculated Map Distance"></td>
+	</tr>
+</table> 
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
  
-<HR>
-<FONT SIZE=2>BehavePlus On-Line Documentation, November 9, 2013.</FONT>
-</BODY>
-</HTML>
+<hr>
+<font size="2">BehavePlus Online Documentation, August 27, 2017.</font>
+</body>
+</html>

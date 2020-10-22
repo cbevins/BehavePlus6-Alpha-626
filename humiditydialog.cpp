@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file humiditydialog.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2013 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BehavePlus relative humidity dialog class methods.
  */

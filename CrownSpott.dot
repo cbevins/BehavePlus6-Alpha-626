@@ -1,0 +1,46 @@
+digraph G {
+	size = "7.5,10.0";
+	htop -> wn [style=bold];
+	g -> wn;
+	anem -> zonh;
+	htop -> zonh [style=bold];
+	zonh -> fact;
+	fact -> utop;
+	uan -> utop;
+	utop -> flame;
+	htop -> flame [style=bold];
+	fikwpm -> flame;
+	flame -> hf;
+	htop -> hf [style=bold];
+	utop -> uc;
+	wn -> uc;
+	hf -> zi;
+	uc -> zi;
+	hf -> xi;
+	uc -> xi;
+	zi -> drift;
+	uc -> drift;
+	xi -> xrel;
+	drift -> xrel;
+	xrel -> spot;
+	htop -> spot [style=bold];
+	
+	anem [label="anem =\nwind measurement ht, m"];
+	drift [label="drift =\nnormalized downwind\ndrift distance, fl"];
+	fact [label="fact =\n1+alog(1.+2.94*zonh"];
+	flame [label="flame =\nAv height of flame\nabove canopy top, m"];
+	g [label="g =\naccel gravity, m/s2"];
+	hf [label="hf =\nflame / htop"];
+	htop [label="htop =\nAv crown top ht\nof forest cover, m"];
+	fikwpm [label="fikwpm =\nfireline intensity, kW/m"];
+	spot [label="spot =\nMax spot distance, m"];
+	uan [label="uan =\nwind speed, km/h"];
+	uc [label="uc =\nutop / wn"];
+	utop [label="utop =\nuan/(3.6*fact)"];
+	wn [label="wn =\nsqrt( g * htop )"];
+	xi [label="xi =\nnormalized spot distance, dl"];
+	xrel [label="xrel = \nnormalize spot+drift\ndistance, dl"];
+	zi [label="zi =\nnormalized loft ht, dl"];
+	zonh [label="zonh =\nanem / htop"];
+}
+	

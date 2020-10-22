@@ -1,0 +1,29 @@
+digraph G {
+	size = "7.5,10.0";
+	u20 -> z;
+	flame -> z;
+	dwOpen -> adjDwCoverHt;
+	dwCoverHt -> adjDwCoverHt;
+	adjDwCoverHt -> critCoverHt;
+	z -> critCoverHt;
+	z -> drift;
+	u20 -> drift;
+	z -> flatDist;
+	u20 -> flatDist;
+	drift -> flatDist;
+	critCoverHt -> flatDist;
+	flatDist -> mtnDist;
+	location -> mtnDist;
+	rvDist -> mtnDist;
+	rvElev -> mtnDist;
+	
+	dwOpen [label="downwind open canopy?"];
+	dwCoverHt [label="downwind canopy ht"];
+	adjDwCoverHt [label="adjusted downwind\ncanopy ht"];
+	
+	flame [label="flame length"];
+	u20 [label="windspeed at 20-ft"];
+	z [label="loft ht"];
+	flatDist [label="spot dist\nflat terrain"];
+	mtnDist [label="spot dist\nmtn terrain"];
+}

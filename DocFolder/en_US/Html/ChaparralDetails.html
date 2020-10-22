@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <title>BehavePlus Chaparral Details Page</title>
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+        <td align="left" valign="center"><h2><font color="#ff5500">Chaparral Details</font></h2></td>
+      </tr>
+    </table>
+    <hr>
+
+    <p>The chaparral special case fuel model in BehavePlus can be used with two types of chaparral: chamise and mixed chaparral. Equations from Rothermel and Philpot (1973) as well as Cohen (1986) are used to create fuel inputs for live and dead fuel by size class to define the necessary surface fuel parameters.</p>
+
+	<p>The following parameters are constants for all chaparral fuel models.</p>
+  	<ul>
+		<li>Dead fuel moisture of extinction = 20%</li>
+		<li>Live fuel moisture of extinction = 65% for chamise and 74% for mixed chaparral.</li>
+	</ul>
+
+	<p>The following parameters are required inputs for the model.</p>
+ 	<ul>
+ 		<li>Chaparral Fuel Type</li>
+ 		<li>Chaparral Fuel Bed Depth</li>
+ 		<li>Chaparral Fuel Dead Load Fraction</li>
+ 		<li>Chaparral Total Fuel Load</li>
+	</ul>
+  
+   <p>Rothermel and Philpot (1973) originally allowed the user to calculate these parameters based on the age of the chaparral, but that has led to incorrect estimates in the model. Therefore, direct entry of the values is required. Additional fuel model inputs can be found in the table below.</p>
+    
+<p></p>
+<a name="Table1"></a>
+<b>Chaparral Fuel Model Inputs</b><br>
+<table border="1" cellspacing="0" cellpadding="5" >
+  <tr bgcolor="#CCCCCC">
+    <th>Chaparral<br> Size Class</th>
+    <th colspan="2">Mean Surface<br>Area-to-Volume Ratio</th>
+    <th colspan="1">Silica-Free<br>Mineral Content</th>
+    <th colspan="2">Particle Density</th>
+  </tr>
+  <tr bgcolor="#CCCCCC">
+    <td align="center">&nbsp;</td>
+    <td align="center"><b>ft<sup>-1</sup></b></td>
+    <td align="center"><b>cm<sup>-1</sup></b></td>
+	<td align="center"><b>fraction dry weight</b></td>
+    <td align="center"><b>lb / ft<sup>3</sup></b></td>
+    <td align="center"><b>kg / m<sup>3</sup></b></td>
+  </tr>
+  <tr>
+    <td height="32">Leaves</td>
+    <td align="center">2200</td>
+    <td align="center">72.2</td>
+    <td align="center">0.035</td>
+    <td align="center">32</td>
+    <td align="center">513</td>
+  </tr>
+  <tr>
+    <td>< 0.25 inches</td>
+    <td align="center">640</td>
+    <td align="center">21.0</td>
+    <td align="center">0.015</td>
+    <td align="center">46</td>
+    <td align="center">737</td>
+  </tr>
+  <tr>
+    <td>0.25 - 0.50 inches</td>
+    <td align="center">127</td>
+    <td align="center">4.2</td>
+    <td align="center">0.015</td>
+    <td align="center">46</td>
+    <td align="center">737</td>
+  </tr>
+  <tr>
+    <td>0.50 - 1.0 inches</td>
+    <td align="center">61</td>
+    <td align="center">2.0</td>
+    <td align="center">0.015</td>
+    <td align="center">46</td>
+    <td align="center">737</td>
+  </tr>
+  <tr>
+    <td>1.0 - 3.0 inches</td>
+    <td align="center">27</td>
+    <td align="center">0.9</td>
+    <td align="center">0.015</td>
+    <td align="center">46</td>
+    <td align="center">737</td>
+  </tr>
+</table>
+
+<h3><font color="#ff5500">See Also</font></h3>
+<ul>
+     <li><a href="chaparralOptions.html">SURFACE Chaparral Input Options</a></li>
+     <li><a href="vSurfaceFuelChaparralDepth.html">Chaparral Fuel Bed Depth</a></li>
+     <li><a href="vSurfaceFuelChaparralType.html">Chaparral Fuel Type</a></li>
+     <li><a href="vSurfaceFuelChaparralDeadFuelFraction.html">Chaparral Fuel Dead Load Fraction</a></li>
+     <li><a href="vSurfaceFuelChaparralLoadDead.html">Chaparral Total Dead Fuel Load</a></li>
+     <li><a href="vSurfaceFuelChaparralLoadTotal.html">Chaparral Total Fuel Load</a></li>
+     <li><a href="vSurfaceFuelChaparralLoadLive.html">Chaparral Total Live Fuel Load</a></li>
+     <li><a href="vSurfaceFuelMoisLiveHerb.html">Live Herbaceous Fuel Moisture</a></li>
+     <li><a href="vSurfaceFuelMoisLiveWood.html">Live Woody Fuel Moisture</a></li>
+  </ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
+ 
+<hr>
+<font size="2">BehavePlus Online Documentation, August 11, 2017.</font>
+</body>
+</html>

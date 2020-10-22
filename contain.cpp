@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file contain.cpp Fire containment algorithm.
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  This is a fire containment algorithm based upon the paper
  *      Fried, Jeremy S. and Fried, Burton D.  199?.

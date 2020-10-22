@@ -1,13 +1,14 @@
 //------------------------------------------------------------------------------
 /*! \file unitseditdialog.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Units editor dialog methods.
  */
 
 // Custom include files
 #include "appmessage.h"
+#include "appproperty.h"
 #include "appsiunits.h"
 #include "apptranslator.h"
 #include "appwindow.h"
@@ -863,8 +864,11 @@ UnitsEditDialog::UnitsEditDialog( BpDocument *bp, const QString &captionKey,
                     FireRatioVars, RatioUnits, row++ );
     page->addEdit( "UnitsEditDialog:FireEffects:Factors",
                     FireFactorVars, RatioUnits, row++ );
-    page->addEdit( "UnitsEditDialog:FireEffects:Power",
+	bool displayPowerOfFire = appProperty()->boolean("crownConfDisplayPowerVariables");
+	if ( displayPowerOfFire ) {
+		page->addEdit( "UnitsEditDialog:FireEffects:Power",
                     FirePowerVars, FirePowerUnits, row++ );
+	}
 
     // Time & Map Units
     page = addPage( "UnitsEditDialog:TimeMap:Tab", 3,
@@ -891,12 +895,12 @@ UnitsEditDialog::UnitsEditDialog( BpDocument *bp, const QString &captionKey,
                     ContainRateVars, FireSpreadUnits, row++, nodecimals );
     page->addEdit("UnitsEditDialog:Contain:Dist",
                     ContainDistVars, FireDistUnits, row++ );
-    page->addEdit("UnitsEditDialog:Safety:Dist",
-                    SafetyDistVars,  DistMedUnits, row++ );
-    page->addEdit("UnitsEditDialog:Safety:Area",
-                    SafetyAreaVars,  FireAreaUnits, row++ );
-    page->addEdit("UnitsEditDialog:Safety:PE",
-                    SafetyPEVars,    SafetyAreaUnits, row++, nodecimals );
+    //page->addEdit("UnitsEditDialog:Safety:Dist",
+    //                SafetyDistVars,  DistMedUnits, row++ );
+    //page->addEdit("UnitsEditDialog:Safety:Area",
+    //                SafetyAreaVars,  FireAreaUnits, row++ );
+    //page->addEdit("UnitsEditDialog:Safety:PE",
+    //                SafetyPEVars,    SafetyAreaUnits, row++, nodecimals );
     return;
 }
 

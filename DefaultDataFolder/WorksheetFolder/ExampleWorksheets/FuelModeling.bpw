@@ -3,8 +3,9 @@
 <!-- Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved. -->
 
 <BehavePlus type="Worksheet" release="60000">
+  <property name="appApplyPropertyXmlOverrides" value="false" />
   <property name="appDeleteRunLogFile" value="true" />
-  <property name="appDescription" value="Surface fire, fuel modeling" />
+  <property name="appDescription" value="Sure fire, fuel modeling" />
   <property name="appExpiration" value="2816788." />
   <property name="appFixedFontColor" value="black" />
   <property name="appFixedFontFamily" value="courier" />
@@ -84,6 +85,9 @@
   <property name="containConfResourcesMultiple" value="false" />
   <property name="containConfResourcesSingle" value="true" />
   <property name="containConfRetry" value="true" />
+  <property name="containConfSizeLimit" value="10001" />
+  <property name="containConfTimeLimit" value="1441" />
+  <property name="containConfVersion5" value="false" />
   <property name="containDiagramAttackFireColor" value="red" />
   <property name="containDiagramAttackPerimColor" value="red" />
   <property name="containDiagramAttackPerimWidth" value="1" />
@@ -110,14 +114,14 @@
   <property name="containModuleActive" value="false" />
   <property name="crownCalcActiveCritOpenWindSpeed" value="false" />
   <property name="crownCalcActiveCritSurfSpreadRate" value="false" />
-  <property name="crownCalcActiveCrown" value="true" />
+  <property name="crownCalcActiveCrown" value="false" />
   <property name="crownCalcActiveFireArea" value="false" />
-  <property name="crownCalcActiveFireLineInt" value="true" />
+  <property name="crownCalcActiveFireLineInt" value="false" />
   <property name="crownCalcActiveFirePerimeter" value="false" />
   <property name="crownCalcActiveFireWidth" value="false" />
   <property name="crownCalcActiveFlameLeng" value="true" />
-  <property name="crownCalcActiveHeatPerUnitArea" value="true" />
-  <property name="crownCalcActiveRatio" value="true" />
+  <property name="crownCalcActiveHeatPerUnitArea" value="false" />
+  <property name="crownCalcActiveRatio" value="false" />
   <property name="crownCalcActiveSpreadDist" value="false" />
   <property name="crownCalcActiveSpreadRate" value="true" />
   <property name="crownCalcCanopyFractionBurned" value="false" />
@@ -125,7 +129,7 @@
   <property name="crownCalcCriticalCrownSpreadRate" value="false" />
   <property name="crownCalcCriticalSurfaceFlameLeng" value="false" />
   <property name="crownCalcCriticalSurfaceIntensity" value="false" />
-  <property name="crownCalcCrownFireType" value="true" />
+  <property name="crownCalcCrownFireType" value="false" />
   <property name="crownCalcCrownSpreadDist" value="false" />
   <property name="crownCalcCrownSpreadRate" value="true" />
   <property name="crownCalcFireArea" value="false" />
@@ -147,9 +151,10 @@
   <property name="crownCalcPowerOfFire" value="false" />
   <property name="crownCalcPowerOfWind" value="false" />
   <property name="crownCalcPowerRatio" value="false" />
-  <property name="crownCalcTransitionRatio" value="true" />
-  <property name="crownCalcTransitionToCrown" value="true" />
+  <property name="crownCalcTransitionRatio" value="false" />
+  <property name="crownCalcTransitionToCrown" value="false" />
   <property name="crownCalcWindDriven" value="false" />
+  <property name="crownConfDisplayPowerVariables" value="false" />
   <property name="crownConfModelRothermel" value="true" />
   <property name="crownConfModelScottReinhardt" value="false" />
   <property name="crownConfUseFireLineInt" value="false" />
@@ -320,7 +325,7 @@
   <property name="surfaceCalcChaparralLoadLive3" value="false" />
   <property name="surfaceCalcChaparralLoadLive4" value="false" />
   <property name="surfaceCalcChaparralLoadLiveLeaf" value="false" />
-  <property name="surfaceCalcChaparralLoadTotal" value="true" />
+  <property name="surfaceCalcChaparralLoadTotal" value="false" />
   <property name="surfaceCalcChaparralLoadTotalDead" value="false" />
   <property name="surfaceCalcChaparralLoadTotalLive" value="false" />
   <property name="surfaceCalcCrownFillPortion" value="false" />
@@ -398,6 +403,7 @@
   <property name="surfaceCalcWindSpeedAtMidflame" value="false" />
   <property name="surfaceConfDegreesWrtNorth" value="false" />
   <property name="surfaceConfDegreesWrtUpslope" value="true" />
+  <property name="surfaceConfDisplayIntermediateDirectionsTab" value="false" />
   <property name="surfaceConfFuel2DDepth" value="2" />
   <property name="surfaceConfFuel2DLaterals" value="0" />
   <property name="surfaceConfFuel2DSamples" value="2" />
@@ -405,8 +411,8 @@
   <property name="surfaceConfFuelAreaWeighted" value="false" />
   <property name="surfaceConfFuelAspen" value="false" />
   <property name="surfaceConfFuelChaparral" value="false" />
-  <property name="surfaceConfFuelChaparralTotalLoadFromDepthType" value="true" />
-  <property name="surfaceConfFuelChaparralTotalLoadFromInput" value="false" />
+  <property name="surfaceConfFuelChaparralTotalLoadFromDepthType" value="false" />
+  <property name="surfaceConfFuelChaparralTotalLoadFromInput" value="true" />
   <property name="surfaceConfFuelHarmonicMean" value="false" />
   <property name="surfaceConfFuelModels" value="false" />
   <property name="surfaceConfFuelPalmettoGallberry" value="false" />

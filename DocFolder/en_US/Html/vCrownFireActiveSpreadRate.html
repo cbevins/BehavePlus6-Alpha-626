@@ -1,22 +1,83 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Active Crown Fire Spread Rate Page</TITLE>
-  </HEAD>
-  <BODY>
-<TABLE WIDTH="100%">
-	<TR>
-		<TD width="100"><IMG SRC="logo90x90.png" ALT="BehavePlus Logo"></TD>
-		<TD ALIGN="left" VALIGN="center">
-			<H2><FONT COLOR="#ff5500">Active Crown Fire Spread Rate</FONT></H2>
-		</TD>
-	</TR> 
-</TABLE>
+<html>
+  <head>
+    <title>BehavePlus Active Crown Fire Rate of Spread Page</title>
+  </head>
+  <body>
+<table width="100%">
+	<tr>
+		<td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+		<td align="left" valign="center"><h2><font color="#ff5500">Active Crown Fire Rate of Spread</font></h2></td>
+	</tr> 
+</table>
+<hr>
 
-<HR> <P>
-THIS IS A TO DO ITEM!!!
-<P>
+<p>Active crown fire rate of spread is the head fire (forward) spread rate of a crown fire estimated using Rothermel's (1991) crown fire spread model. It is the overall spread for a sustained run over several hours and implicitly includes the effects of spotting. It does not consider a description of the overstory. The active crown fire rate of spread is calculated from 20-foot wind speed and surface fuel moisture values.</p>
+ 
+<p>Active crown fire outputs are the same for both the Rothermel (1991) and Scott and Reinhardt (2001) crown fire methods.</p>
 
-<HR><FONT SIZE=2>BehavePlus On-Line Documentation, April 5, 2015.</FONT>
-</BODY>
-</HTML>
+<p></p>
+ <table border="1" cellspacing="0" cellpadding="2">
+  <tr bgcolor="#CCCCCC"> 
+		<td width="67" valign="top" align="center"><strong>I/O</strong></td>
+		<td width="109" valign="top" align="center"><strong>Module</strong></td>
+		<td width="207" valign="top" align="center"><strong>If</strong></td>
+		<td width="207" valign="top" align="center"><strong>Notes</strong></td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top">Input</td>
+    <td width="109" valign="top">None</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="67" valign="top">Output</td>
+    <td width="109" valign="top">CROWN</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
+  </tr>
+</table>
 
+<p>The active crown fire spread model is not physically-based, but is rather a simple correlation between the spread rates of several crown fires and calculations of the Rothermel (1972) surface fire model. The model does not include a description of either the surface or crown fuel. It is a function of only the 20-foot wind speed and surface fuel moisture values, using fuel model 10 (Anderson, 1982) to represent surface fuel characteristics.</p>
+
+<p>Rothermel (1991) termed this value the "average rate of spread." He suggests that a "near maximum" rate of spread can be 1.7 times this average value. Calculation of active crown fire rate of spread in BehavePlus does not include crown fraction burned (Van Wagner 1993); that is part of the passive crown fire rate of spread calculation (Scott and Reinhardt 2001).</p>
+
+ <p></p>
+ <table>
+ 	<tr>
+ 		<td><a name="CrownROS_Power.png"></a> <img src="CrownROS.png" alt="Crown Fire Type Module Data Flow - Active Crown Fire Rate of Spread"></td>
+ 	</tr>
+</table> 
+
+<p>This calculated active crown fire rate of spread is compared to a critical crown fire rate of spread (Van Wagner 1977) to determine whether an active crown fire is possible.</p>
+
+<p></p>
+<table>
+     <tr>
+     	<td><a name="CrownROS.png"></a><img src="CrownROS_Power.png" alt="Active Crown Fire Module Data Flow - Active Crown Fire Rate of Spread"></td>
+     </tr>
+</table>
+
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+    <ul>
+      <li><a href="vWindSpeedAt20Ft.html">20-foot Wind Speed</a></li>
+      <li><a href="vCrownFireActiveCrown.html">Active Crown Fire?</a></li>
+      <li><a href="vCrownFireActiveRatio.html">Active Ratio</a></li>
+      <li><a href="vCrownFireCritCrownSpreadRate.html">Critical Crown Fire Rate of Spread</a></li>
+      <li><a href="vCrownFirePassiveSpreadRate.html">Passive Crown Fire Rate of Spread</a></li>
+    </ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+  <ul>
+      <li><a href="variableIndex.html">Variable Index</a></li>
+      <li><a href="figureIndex.html">Figure Index</a></li>
+      <li><a href="tablesIndex.html">Table Index</a></li>
+      <li><a href="guideIndex.html">Guide Index</a></li>
+      <li><a href="Models_BehavePlus.html">Table of References</a></li>
+  </ul>
+ 
+<hr>
+<font size="2">BehavePlus Online Documentation, February 28, 2017.</font>
+</body>
+</html>

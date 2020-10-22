@@ -1,35 +1,30 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Map Distance Page</TITLE>
-  </HEAD>
-  <BODY>
-<TABLE WIDTH="100%">
-	<TR>
-		<TD width="100">
-			<IMG SRC="logo90x90.png" ALT="BehavePlus Logo"> 
-		</TD>
-		<TD ALIGN="left" VALIGN="center">
-			<H2><FONT COLOR="#ff5500">Map Distance</FONT></H2>
-		</TD>
-	</TR>
-</TABLE>
-<HR>
-<P>The map distance is the distance between two points on a map generally expressed in inches or centimeters. It is 
-used in the calculation of slope steepness.
-<P>
+<html>
+  <head>
+    <title>BehavePlus Map Distance Page</title>
+  </head>
+  <body>
+<table width="100%">
+	<tr>
+		<td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+		<td align="left" valign="center"><h2><font color="#ff5500">Map Distance</font></h2></td>
+	</tr>
+</table>
+<hr>
+
+<p>The map distance is the distance between two points on a map and is generally expressed in inches or centimeters. It is used in the calculation of slope steepness.</p>
+
+<p></p>
 <table border="1" cellspacing="0" cellpadding="2"> 
 	<tr bgcolor="#CCCCCC">
-		<td width="67" valign="top"><p align="center"><strong>I/O</strong></p></td>
-		<td width="109" valign="top"><p align="center"><strong>Module</strong></p></td>
-		<td width="207" valign="top"><p align="center"><strong>If</strong></p></td>
-		<td width="207" valign="top"> <p align="center"><strong>Notes</strong></p></td>
+		<td width="67" valign="top" align="center"><strong>I/O</strong></td>
+		<td width="109" valign="top" align="center"><strong>Module</strong></td>
+		<td width="207" valign="top" align="center"><strong>If</strong></td>
+		<td width="207" valign="top" align="center"><strong>Notes</strong></td>
 	</tr> 
 	<tr>
 		<td width="67" valign="top">Input</td>
 		<td width="109" valign="top">SURFACE</td>
-		<td width="207" valign="top"><p>If <i>Slope steepness is calculated from map measurements</i> is selected as 
-an input option.</p>
-		</td>
+		<td width="207" valign="top">If <i>Slope steepness is calculated from map measurements</i> is selected as an input option.</td>
 		<td width="207" valign="top">&nbsp;</td>
 	</tr>
 	<tr>
@@ -40,55 +35,59 @@ an input option.</p>
 	</tr>
 </table>
 
-<P> If <I>Display output distances in map units</I> is checked in the Module Selection dialog, then 
-appropriate output distances are also shown as map distances for the following variables. 
+<p>If <em>Display output distances in map units</em> is checked in the Module Selection dialog, then appropriate output distances are also shown as map distances for the following variables.</p>
   <ul>
         <li>SURFACE
             <ul>
-                <li>Surface Fire Spread</li>
+                <li>Surface Fire Spread Distance</li>
             </ul>
         </li>
         <li>CROWN
             <ul>
-                <li>Crown Spread Spread</li>
+                <li>Active Crown Spread Distance</li>
+                <li>Passive Crown Spread Distance</li>
             </ul>
         </li>
         <li>SIZE
             <ul>
-                <li>Backing Spread Distance</li>
-                <li>Heading Spread Distance</li>
-                <li>Fire Length</li>
-                <li>Flanking Spread Distance</li>
-                <li>Maximum Fire Width</li>
+                <li>Surface Fire Backing Spread Distance</li>
+                <li>Surface Fire Flanking Spread Distance</li>
+                <li>Surface Fire Heading Spread Distance</li>
+                <li>Surface Fire Length</li>
+                <li>Surface Fire Maximum Width</li>
             </ul>
         </li>
 		<li>SPOT
         	<ul>
                 <li>Spotting Distance from a Burning Pile</li>
+                <li>Spotting Distance from a Wind-Driven Surface Fire</li>
                 <li>Spotting Distance from Active Crown Fire</li>
             	<li>Spotting Distance from Torching Trees</li>
-                <li>Spottting Distance from Wind-Driven Surface Fire</li>
             </ul>
 		</li>
     </ul>
-<p>
-<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
-    <UL>
-        <LI><A HREF="vMapContourInterval.html">Contour Interval</A></LI>
-        <LI><A HREF="vMapFraction.html">Map Representative Fraction</A></LI>
-        <LI><A HREF="vMapContourCount.html">Number of Contour Intervals</A></LI>
-        <LI><A HREF="vSiteSlope.html">Slope Steepness</A></LI>
-    </UL>
-<p>
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+    <ul>
+      <li><a href="vMapContourInterval.html">Contour Interval</a></li>
+      <li><a href="vMapFraction.html">Map Representative Fraction</a></li>
+      <li><a href="vMapContourCount.html">Number of Contour Intervals</a></li>
+	  <li><a href="vSiteSlopeReach.html">Slope Horizontal Distance</a></li>
+      <li><a href="vSiteSlope.html">Slope Steepness</a></li>
+    </ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
  
-<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 13, 2014.</FONT>
-</BODY>
-</HTML>
+<hr>
+<font size="2">BehavePlus Online Documentation, July 26, 2017.</font>
+</body>
+</html>

@@ -1,117 +1,86 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus SURFACE Moisture Input Options Page</TITLE>
-  </HEAD>
-  <BODY>
-    <TABLE WIDTH="100%">
-      <TR>
-        <TD width="100">
-          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
-        </TD>
-        <TD ALIGN="left" VALIGN="center">
-          <H2><FONT COLOR="#ff5500">SURFACE Moisture Input Options</FONT></H2>
-        </TD>
-      </TR>
-    </TABLE>
-    <HR>
-<P>This page controls the input of moisture parameters into the SURFACE 
-  Module. 
-<H3><FONT COLOR="#ff5500">Options</FONT></H3>
+<html>
+  <head>
+    <title>BehavePlus SURFACE Moisture Input Options Page</title>
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+        <td align="left" valign="center"><h2><font color="#ff5500">SURFACE Moisture Input Options</font></h2></td>
+      </tr>
+    </table>
+    <hr>
 
-<TABLE border=1 cell cellspacing="0" CELLPADDING="10" >
-  <TR bgcolor="#CCCCCC"> 
-    <TD COLSPAN=3><b>Dynamic curing load transfer is....</b> </TD>
-  </TR>
-  <TR> 
-    <TD>&nbsp;</TD>
-    <TD width="30%"><I>calculated from live herbaceous fuel moisture.</I></TD>
-    <TD width="65%"> 
-      <P> 'Dynamic' fuel models include the transfer of live herbaceous fuel 
-	  load to the dead category as a function of live herbaceous fuel moisture
-	  (Scott and Burgan 2005). Seventeen of the 40 new fuel models are dynamic.
-    </TD>
-  </TR>
-  <TR>
-    <TD>&nbsp;</TD>
-    <TD width="30%"><I>input directly.</I></TD>
-    <TD width="65%"> 
-      <P> Rather than calculating the load transfer portion from live fuel moisture, 
-	  it can be entered directly. This allows examination of the influence of the load 
-	  transfer function on calculated fire behavior (Jolly 2005, Andrews and others 2006).
-    </TD>
-  </TR>
-  <TR>
-     <TD COLSPAN=3>&nbsp;</TD>
-  </TR>
-  <TR bgcolor="#CCCCCC"> 
-    <TD COLSPAN=3><b>Moisture is entered by....</b> </TD>
-  </TR>
-  <TR> 
-    <TD rowspan="4">&nbsp;</TD>
-    <TD width="30%"><I>individual size class.</I></TD>
-    <TD width="65%"> 
-      <P> The moisture content is entered for each fuel size class 1-h, 10-h, 
-        and 100-h dead fuels and herbaceous and woody live fuels.
-    </TD>
-  </TR>
-  <TR> 
-    <TD width="30%"><I>dead and live categories.</I></TD>
-    <TD width="65%"> 
-      <P> The moisture content value entered for 'dead' is used for 1-h, 10-h, 
-        and 100-h fuel. The moisture content for 'live' is used for live herbaceous 
-        and live woody fuel. This does not include foliar moisture (conifer 
-        needles).
-    </TD>
-  </TR>
-  <TR> 
-    <TD width="30%"><I>dead,  live herb, and live woody categories.</I></TD>
-    <TD width="65%"> 
-      <P> The moisture content value entered for 'dead' is used for 1-h, 10-h, 
-        and 100-h fuel. The moisture content for  live herbaceous 
-        and live woody fuel are entered separately. This does not include foliar moisture (conifer 
-        needles).
-    </TD>
-  </TR>
-  <TR> 
-    <TD width="30%"><I>moisture scenario.</I></TD>
-    <TD width="65%"> 
-      <P> A moisture scenario is a predefined set of fuel moistures for 1-h, 10-h, 
-        and 100-h dead fuel and herbaceous and woody live fuel. It is analogous 
-        to the <I>fuel model</I> concept in that a single code represents a set 
-        of fuel. Fuel moisture scenarios may be developed, for example, to represent 
-        local 90-, 95-, and 97-percentile weather situations. 
-    </TD>
-  </TR>
-</TABLE>
+<p>This page controls the input of moisture parameters into the SURFACE Module.</p>
+<h3><font color="#ff5500">Options</font></h3>
 
-<P>
+<table border="1" cell cellspacing="0" cellpadding="10">
+  <tr bgcolor="#CCCCCC"> 
+    <td colspan="3"><b>Dynamic curing load transfer is....</b></td>
+  </tr>
+  <tr> 
+    <td rowspan="2">&nbsp;</td>
+    <td width="30%"><em>calculated from live herbaceous fuel moisture.</em></td>
+    <td width="65%">Dynamic fuel models include the transfer of live herbaceous fuel load to the dead category as a function of live herbaceous fuel moisture
+	  (Scott and Burgan 2005). Seventeen of the 53 standard fuel models are dynamic.</td>
+  </tr>
+  <tr>
+    <td width="30%"><em>input directly.</em></td>
+    <td width="65%">Rather than calculating the load transfer portion from live fuel moisture, it can be entered directly. This allows examination of the influence of the load transfer function on calculated fire behavior (Jolly 2005, Andrews and others 2006).</td>
+  </tr>
+  <tr>
+     <td colspan="3">&nbsp;</td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <td colspan="3"><b>Moisture is entered by....</b></td>
+  </tr>
+  <tr> 
+    <td rowspan="4">&nbsp;</td>
+    <td width="30%"><em>individual size class.</em></td>
+    <td width="65%">The moisture content is entered for each fuel size class 1-h, 10-h, and 100-h dead fuels and herbaceous and woody live fuels.</td>
+  </tr>
+  <tr> 
+    <td width="30%"><em>dead and live categories.</em></td>
+    <td width="65%">The value entered for dead fuel moisture is used for 1-h, 10-h, and 100-h fuel. The live fuel moisture value is used for live herbaceous and live woody fuel. This does not include foliar moisture (conifer needles), which is not considered in the SURFACE module.</td>
+  </tr>
+  <tr> 
+    <td width="30%"><em>dead,  live herb, and live woody categories.</em></td>
+    <td width="65%">The value entered for dead fuel moisture is used for 1-h, 10-h, and 100-h fuel. The moisture content for live herbaceous and live woody fuel are entered separately. This does not include foliar moisture (conifer needles), which is not considered in the SURFACE module.</td>
+  </tr>
+  <tr> 
+    <td width="30%"><em>moisture scenario.</em></td>
+    <td width="65%">A moisture scenario is a pre-defined set of fuel moistures for 1-h, 10-h, and 100-h dead fuel and herbaceous and woody live fuel. It is analogous 
+        to the <em>fuel model</em> concept in that a single code represents a set of fuel moisture values. Fuel moisture scenarios may be developed, for example, to represent local average, 80-, 90-, 95-, or 97-percentile weather situations. 
+    </td>
+  </tr>
+</table>
 
-
-    <H3><FONT COLOR="#ff5500">See Also</FONT></H3>
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
 	<ul>
-	  <LI><A HREF="vSurfaceFuelLoadTransferEq.html">Fuel Model Type</A></LI>
-	  <LI><A HREF="vSurfaceFuelLoadLiveHerb.html">Live Herbaceous Fuel Load</A></LI>
-      <LI><A HREF="vSurfaceFuelMoisDead1.html">1-h Moisture</A></LI>
-      <LI><A HREF="vSurfaceFuelMoisDead10.html">10-h Moisture</A></LI>
-      <LI><A HREF="vSurfaceFuelMoisDead100.html">100-h Moisture</A></LI>
-      <LI><A HREF="vSurfaceFuelMoisLiveHerb.html">Live Herbaceous Fuel Moisture</A></LI>
-      <LI><A HREF="vSurfaceFuelMoisLiveWood.html">Live Woody Moisture</A></LI>
-      <LI><A HREF="vSurfaceFuelMoisLifeDead.html">Dead Fuel Moisture</A></LI>
-      <LI><A HREF="vSurfaceFuelMoisLifeLive.html">Live Fuel Moisture</A></LI>
-      <LI><A HREF="vSurfaceFuelMoisScenario.html">Moisture Scenario</A></LI>
+	  <li><a href="vSurfaceFuelLoadTransferEq.html">Fuel Model Type</a></li>
+	  <li><a href="vSurfaceFuelLoadLiveHerb.html">Live Herbaceous Fuel Load</a></li>
+      <li><a href="vSurfaceFuelMoisDead1.html">1-h Fuel Moisture</a></li>
+      <li><a href="vSurfaceFuelMoisDead10.html">10-h Fuel Moisture</a></li>
+      <li><a href="vSurfaceFuelMoisDead100.html">100-h Fuel Moisture</a></li>
+      <li><a href="vSurfaceFuelMoisLiveHerb.html">Live Herbaceous Fuel Moisture</a></li>
+      <li><a href="vSurfaceFuelMoisLiveWood.html">Live Woody Fuel Moisture</a></li>
+      <li><a href="vSurfaceFuelMoisLifeDead.html">Dead Fuel Moisture</a></li>
+      <li><a href="vSurfaceFuelMoisLifeLive.html">Live Fuel Moisture</a></li>
+      <li><a href="vSurfaceFuelMoisScenario.html">Moisture Scenario</a></li>
 	</ul>
-<p>
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
- 
-<HR>
-<FONT SIZE=2>BehavePlus On-Line Documentation, February 24, 2014.</FONT>
-</BODY>
-</HTML>
 
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
+ 
+<hr>
+<font size="2">BehavePlus Online Documentation, September 14, 2017.</font>
+</body>
+</html>

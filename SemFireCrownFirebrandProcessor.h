@@ -70,7 +70,7 @@ private:
 	// Housekeeping
 	bool   m_isDirty;	// TRUE if any inputs have changed since last request
 	// Input properties
-	double m_canopyHt;	// Meane height of the active crown fire canopy (m)
+	double m_canopyHt;	// Mean height of the active crown fire canopy (m)
 	double m_deltaStep;	// Albini's plume layer data step size
 	double m_emberDiam;	// Diameter of a viable firebrand ember when alighting at the fuel surface (mm)
 	double m_fireInt;	// Mean flame height above the canopy top (m)

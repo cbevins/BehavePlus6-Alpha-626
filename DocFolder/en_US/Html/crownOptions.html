@@ -1,54 +1,72 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus CROWN Input Options Page</TITLE>
-  </HEAD>
-  <BODY>
-    <TABLE WIDTH="100%">
-      <TR>
-        <TD width="20%">
-          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
-        </TD>
-        <TD width="80%" ALIGN="left" VALIGN="center">
-          <H2><FONT COLOR="#ff5500">CROWN Input Options</FONT></H2>
-        </TD>
-      </TR>
-    </TABLE>
-    <HR>
+<html>
+  <head>
+    <title>BehavePlus CROWN Input Options Page</title>
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+        <td align="left" valign="center"><h2><font color="#ff5500">CROWN Input Options</font></h2></td>
+      </tr>
+    </table>
+    <hr>
 
-<P>This page controls the CROWN Module's input options. This option is meaningful only if CROWN is run without SURFACE.
-<p>
-<H3><FONT COLOR="#ff5500">Options</FONT></H3>
+<p>This page controls the CROWN Module's input options. The first option for calculating crown fire behavior always applies. The surface fireline intensity option is meaningful only if CROWN is run without SURFACE.</p>
 
-<table border=1 cellspacing="0" cellpadding="10" >
+<p></p>
+<h3><font color="#ff5500">Options</font></h3>
+
+<table border="1" cellspacing="0" cellpadding="10">
   <tr bgcolor="#CCCCCC"> 
-    <th colspan=3 align="left">Surface fire intensity is entered as...</th>
+    <td colspan="3"><b>Crown fire is calculated using....</b></td>
+  </tr>
+  <tr> 
+    <td rowspan="2">&nbsp;</td>
+    <td width="30%" valign="top"><i>Rothermel (1991).</i></td>
+    <td width="65%">Rothermel's method for calculating fire behavior for active crown fires is used. Passive crown fire rate of spread is assumed to be the same as surface fire rate of spread.</td>
+  </tr>
+  <tr> 
+    <td width="30%" valign="top"><i>Scott and Reinhardt (2001).</i></td>
+    <td width="65%">Scott and Reinhardt's method for calculating fire behavior for both active and passive crown fires is used. Active crown fire behavior is the same as for Rothermel (1991). Passive crown fire rate of spread is assumed to be greater than the surface fire rate of spread and less than the active crown fire rate of spread. Passive crown fire behavior is based on the canopy fraction burned.</td>
+  </tr>
+  <tr> 
+    <td colspan="3">&nbsp;</td>
+  </tr>
+  <tr bgcolor="#CCCCCC"> 
+    <th colspan="3" align="left">Surface fire intensity is entered as...</th>
   </tr>
   <tr> 
     <td>&nbsp;</td>
     <td width="30%"><i>flame length.</i></td>
-    <td width="65%"> 
-      If CROWN is run without SURFACE, flame length is entered and the program 
-        will determine the equivalent fireline intensity. 
-    </td>
+    <td width="65%">If CROWN is run without SURFACE, flame length is entered and the program will determine the equivalent fireline intensity.</td>
   </tr>
   <tr> 
     <td>&nbsp;</td>
     <td width="30%"><i>fireline intensity.</i></td>
-    <td width="65%"> 
-      If CROWN is run without SURFACE, fireline intensity is entered. 
-    </td>
+    <td width="65%">If CROWN is run without SURFACE, surface fireline intensity is entered.</td>
   </tr>
 </table>
-<P> 
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+    <ul>
+      <li><a href="vSurfaceFireFlameLeng.html">Surface Fire Flame Length</a></li>
+      <li><a href="vSurfaceFireLineInt.html">Surface Fireline Intensity</a></li>
+      <li><a href="vSurfaceFireHeatPerUnitArea.html">Surface Fire Heat per Unit Area</a></li>
+	</ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
  
-<HR><FONT SIZE=2>BehavePlus On-Line Documentation, March 16, 2010.</FONT>
-</BODY>
-</HTML>
+<hr>
+<font size="2">BehavePlus Online Documentation, August 27, 2017.</font>
+</body>
+</html>
+  

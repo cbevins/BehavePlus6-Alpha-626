@@ -1,6 +1,6 @@
 candle ^
 -dlicenseRtf=License.rtf ^
-wix_bp6_product_617.wxs ^
+wix_bp6_product_622.wxs ^
 wix_bp6_directory.wxs ^
 wix_bp6_feature.wxs ^
 wix_bp6_component_executable.wxs ^

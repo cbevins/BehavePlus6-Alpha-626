@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file BehavePlus6.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BehavePlus main driver program.
  */
@@ -35,10 +35,10 @@ extern __declspec(dllimport) int qt_ntfs_permission_lookup;
 
 // Program name and version
 // NOTE: must recompile appwindow.cpp to update the displayed compile date & time
-// NOTE: to save the splsh page in a file, see line 275
+// NOTE: to save the splash page in a file, see line 275
 static QString Program( "BehavePlus" );
 static QString Version( "6.0.0" );
-static QString Build( "Build 617" );
+static QString Build( "Build 626 Beta 3" );
 static QString ReleaseNote( "" );
 static QString SplashFile( "BehavePlus6.bmp" );
 //static QString SplashFile( "splash294.bmp" );

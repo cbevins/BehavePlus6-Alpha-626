@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file bpdocument.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2012 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BpDocument class methods.
  *
@@ -273,7 +273,6 @@ BpDocument::~BpDocument( void )
 void BpDocument::clear( bool /* showRunDialog */ )
 {
     // Save the worksheet entry values
-    int tokens, position, length;
     for ( int lid = 0;
           lid < leafCount();
           lid++ )
@@ -1014,7 +1013,9 @@ void BpDocument::guideClicked( int lid )
 {
     QString qStr("");
 	EqVar* var = leaf( lid );
-	if (var->m_name == "vSurfaceFuelBedModel" )
+	if (var->m_name == "vSurfaceFuelBedModel"
+		|| var->m_name == "vSurfaceFuelBedModel1"
+		|| var->m_name == "vSurfaceFuelBedModel2" )
 	{
 		FuelModelDialog dialog( this, lid, "fuelModelDialog" );
 		if ( dialog.exec() != QDialog::Accepted )

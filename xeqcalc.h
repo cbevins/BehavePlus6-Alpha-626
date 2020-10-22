@@ -68,6 +68,7 @@ public:
     void reconfigureSurfaceModule( PropertyDict *prop, int release ) ;
     void reconfigureSurfaceModule2( PropertyDict *prop, int release ) ;
     void reconfigureWeatherModule( PropertyDict *prop, int release ) ;
+	bool requiresElapsedTime( PropertyDict *prop );
     bool showInitFromFuelModelButton( void ) const ;
     void unmaskCrownInputs( void ) ;
     void unmaskFuelModelInputs( bool twoFuelModels=false ) ;

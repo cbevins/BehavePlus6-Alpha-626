@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqtreeparser.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Experimental Equation Tree parser class methods.
  *  This reads all BehavePlus runs, worksheet, fuel model, moisture scenario,
@@ -108,6 +108,8 @@ bool EqTreeParser::handlePrescription( const QString &elementName,
         return( false );
     }
     name = attribute.value( id );
+	const char* cname = name.latin1();
+
     // Handles V2 to V3 changes as no-ops
     if ( name == "vSurfaceFireEffWindAtHead"
       || name == "vSurfaceFuelMoisDead1"
@@ -126,6 +128,15 @@ bool EqTreeParser::handlePrescription( const QString &elementName,
     {
         return( true );
     }
+
+	// Handles pre-V6 changes
+	if ( m_eqTree->m_release < 60000 )
+	{
+		if ( name == "vCrownFireSpreadRate" )
+		{
+			return true;
+		}
+	}
     // Find this prescription variable.
     RxVar *rxVar = m_eqTree->m_rxVarList->rxVar( name );
     if ( ! rxVar )
@@ -338,6 +349,7 @@ bool EqTreeParser::handleVariable( const QString &elementName,
         return( false );
     }
     name = attribute.value( id );
+	const char *cname = name.latin1();
     // Check if this is a known variable name.
     if ( ! ( varPtr = m_eqTree->m_varDict->find( name ) ) )
     {
@@ -364,10 +376,28 @@ bool EqTreeParser::handleVariable( const QString &elementName,
         {
             return( true );
         }
+
+		// Handles pre-V6 changes
+		if ( m_eqTree->m_release < 60000 )
+		{
+			if ( name == "vCrownFireArea"
+			  || name == "vCrownFireFlameLeng"
+			  || name == "vCrownFireHeatPerUnitArea"
+			  || name == "vCrownFireLineInt"
+			  || name == "vCrownFirePerimeter"
+			  || name == "vCrownFireSpreadDist"
+			  || name == "vCrownFireSpreadMapDist"
+			  || name == "vCrownFireSpreadRate"
+			)
+			{
+				return true;
+			}
+		}
         trError( "EqTreeParser:BadValue", elementName, name, "name", name );
         return( false );
     }
-    // Continuous variables
+
+	// Continuous variables
     if ( varPtr->isContinuous() )
     {
         // "decimals" attribute is required

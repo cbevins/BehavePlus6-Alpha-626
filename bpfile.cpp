@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file bpfile.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2014 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BpDocument class file i/o methods.
  *
@@ -501,6 +501,8 @@ void BpDocument::saveAsFuelModelFile( const QString &oldFileName )
 
 	// Set default values
     QString newFileName = oldFileName;
+	QString fmCode, fmNumb;
+	const char *numb=0, *code=0;
 
 	// Store all input texts, even those that haven't received an Enter.
     translate( text, "BpDocument:SaveFuelModel:MissingInputs" );
@@ -514,7 +516,8 @@ void BpDocument::saveAsFuelModelFile( const QString &oldFileName )
         if ( m_eqTree->m_eqCalc->isFuelModelVariable( leaf(lid) ) )
         {
             // Store the contents in the EqVar store
-            leaf(lid)->m_store = m_entry[lid]->text();
+            //leaf(lid)->m_store = m_entry[lid]->text();
+            leaf(lid)->m_store = m_entry[lid]->displayText();
             // Validate the store
             if ( ! leaf(lid)->isValidStore( &tokens, &position, &length ) )
             {
@@ -531,7 +534,21 @@ void BpDocument::saveAsFuelModelFile( const QString &oldFileName )
 			// If this is the fuel model code, store it as the file name
 			if ( leaf(lid) == m_eqTree->m_eqCalc->vSurfaceFuelBedModelCode )
 			{
+				fmCode = leaf(lid)->m_store;
+				code = fmCode.latin1();
+				if ( fmCode == fmNumb )
+				{
+			        translate( text, "BpDocument:SaveFuelModel:CodeSameAsNumber" );
+					warn( text );
+					focusThis( lid, 0, fmCode.length() );
+			        return;
+				}
 				newFileName = leaf(lid)->m_store;
+			}
+			else if ( leaf(lid) == m_eqTree->m_eqCalc->vSurfaceFuelBedModelNumber )
+			{
+				fmNumb = leaf(lid)->m_store;
+				numb = fmNumb.latin1();
 			}
         }
     }
@@ -542,13 +559,19 @@ void BpDocument::saveAsFuelModelFile( const QString &oldFileName )
         error( text );
         return;
     }
+	// Get the current Run Description field's display text and store it
+	BpDocument *doc = (BpDocument *)appWindow()->getActiveWindow("BpDocument");
+	BpDocEntry *runDescEntry = doc->m_entry[0];
+	QString runDescDisplayText = runDescEntry->displayText();
+    m_eqTree->m_eqCalc->docDescriptionStore( runDescDisplayText );
+
+	// Create a default file description from the Run Description
+    QString newFileDesc = runDescDisplayText;
+	//const char* c_newFileDesc = newFileDesc.latin1();
+
     // Request the fileName if one wasn't specified
-    QString oldDesc = m_eqTree->m_eqCalc->docDescriptionStore();
-    QString newDesc = oldDesc;
-	const char* c_oldFileName = oldFileName;
-	const char* c_oldDesc = oldDesc;
-	const char* c_newFileName = newFileName;
-	const char* c_newDesc = newDesc;
+	//const char* c_oldFileName = oldFileName;
+	//const char* c_newFileName = newFileName;
 
     //if ( newFileName.isNull() || newFileName.isEmpty() )
     {
@@ -563,7 +586,7 @@ void BpDocument::saveAsFuelModelFile( const QString &oldFileName )
             extName,                                // file extension
             "MyFuelModels",                         // default folder
             newFileName,                            // default file name
-            oldDesc,								// default description
+            newFileDesc,							// default description
             "saveAsFuelModelFileDialog" );          // widget name
         // Display the file selection dialog.
         if ( dialog.exec() != QDialog::Accepted )
@@ -572,19 +595,16 @@ void BpDocument::saveAsFuelModelFile( const QString &oldFileName )
         }
         // Get the file selection
         dialog.getFileSelection( newFileName );
-		c_newFileName = newFileName;
+		//c_newFileName = newFileName.latin1();
         // Get the (possibly new) file description
-        dialog.getFileDescription( newDesc );
-		c_newDesc = newDesc;
+        dialog.getFileDescription( newFileDesc );
+		//c_newFileDesc = newFileDesc;
 		// This was commented out to resolve Issue #077 in version 5.0.5 Build 306.
-		// NOTE - This still picks up an 'old' description from the worksheet
-		// if the user has entered a new description without hitting Tab/Return
-		// or making a calculation (which forces the store/update).
 //      if ( ! newDesc.isNull() && ! newDesc.isEmpty() && newDesc != oldDesc )
 //      {
-            m_entry[0]->setText( newDesc );
-            m_eqTree->m_eqCalc->docDescriptionStore( newDesc );
-            property()->string( "appDescription", newDesc );
+            m_entry[0]->setText( newFileDesc );
+            m_eqTree->m_eqCalc->docDescriptionStore( newFileDesc );
+            property()->string( "appDescription", newFileDesc );
 //      }
     }
     // Write the file
@@ -592,18 +612,17 @@ void BpDocument::saveAsFuelModelFile( const QString &oldFileName )
         appWindow()->m_release ) )
     {
         // Attach the fuel model file
-        m_eqApp->attachFuelModel( newFileName );
-        // Display a confirmation
-        translate( text, "BpDocument:SaveFuelModel:Saved", newFileName );
-        info( text );
+        if ( m_eqApp->attachFuelModel( newFileName ) )
+		{
+			// Display a confirmation
+			translate( text, "BpDocument:SaveFuelModel:Saved", newFileName );
+			info( text );
+		}
     }
     // Restore the original description.
-    if ( newDesc != oldDesc )
-    {
-        m_entry[0]->setText( oldDesc );
-        m_eqTree->m_eqCalc->docDescriptionStore( oldDesc );
-        property()->string( "appDescription", oldDesc );
-    }
+    m_entry[0]->setText( runDescDisplayText );
+    m_eqTree->m_eqCalc->docDescriptionStore( runDescDisplayText );
+    property()->string( "appDescription", runDescDisplayText );
     return;
 }
 
@@ -684,7 +703,8 @@ void BpDocument::saveAsMoistureScenarioFile( const QString &fileName )
         if ( m_eqTree->m_eqCalc->isMoisScenarioVariable( leaf(lid) ) )
         {
             // Store the contents in the EqVar store
-            leaf(lid)->m_store = m_entry[lid]->text();
+            //leaf(lid)->m_store = m_entry[lid]->text();
+            leaf(lid)->m_store = m_entry[lid]->displayText();
             // Validate the store
             if ( ! leaf(lid)->isValidStore( &tokens, &position, &length ) )
             {
@@ -707,10 +727,18 @@ void BpDocument::saveAsMoistureScenarioFile( const QString &fileName )
         error( text );
         return;
     }
-    // Request the fileName if one wasn't specified
+	// Get the current Run Description field's display text and store it
+	BpDocument *doc = (BpDocument *)appWindow()->getActiveWindow("BpDocument");
+	BpDocEntry *runDescEntry = doc->m_entry[0];
+	QString runDescDisplayText = runDescEntry->displayText();
+    m_eqTree->m_eqCalc->docDescriptionStore( runDescDisplayText );
+
+	// Create a default file description from the Run Description
+    QString newFileDesc = runDescDisplayText;
+	//const char *ctext = newFileDesc.latin1();
+
+	// Request the fileName if one wasn't specified
     QString newFileName = fileName;
-    QString oldDesc = m_eqTree->m_eqCalc->docDescriptionStore();
-    QString newDesc = oldDesc;
     if ( newFileName.isNull() || newFileName.isEmpty() )
     {
         // Get the Worksheet directory
@@ -718,13 +746,13 @@ void BpDocument::saveAsMoistureScenarioFile( const QString &fileName )
         QString extName = appFileSystem()->moisScenarioExt();
         // Create the file selection dialog
         FileSaveAsDialog dialog(
-            appWindow(),                            // ApplicationWindow
-            dirName,                                // subdirectory
-            "Moisture Scenario",                    // file type name
-            extName,                                // file extension
-            "MyMoistureScenarios",                  // default folder
-            fileName,                               // default file name
-            m_eqTree->m_eqCalc->docDescriptionStore(),// default description
+            appWindow(),                // ApplicationWindow
+            dirName,                    // subdirectory
+            "Moisture Scenario",        // file type name
+            extName,                    // file extension
+            "MyMoistureScenarios",      // default folder
+            fileName,					// default file name
+            newFileDesc,				// default description
             "saveAsMoistureScenarioFileDialog" );   // widget name
         // Display the file selection dialog
         if ( dialog.exec() != QDialog::Accepted )
@@ -734,12 +762,13 @@ void BpDocument::saveAsMoistureScenarioFile( const QString &fileName )
         // Get the file selection
         dialog.getFileSelection( newFileName );
         // Get the (possibly new) file description
-        dialog.getFileDescription( newDesc );
-        if ( ! newDesc.isNull() && ! newDesc.isEmpty() && newDesc != oldDesc )
+        dialog.getFileDescription( newFileDesc );
+        if ( ! newFileDesc.isNull() && ! newFileDesc.isEmpty()
+			&& newFileDesc != runDescDisplayText )
         {
-            m_entry[0]->setText( newDesc );
-            m_eqTree->m_eqCalc->docDescriptionStore( newDesc );
-            property()->string( "appDescription", newDesc );
+            m_entry[0]->setText( newFileDesc );
+            m_eqTree->m_eqCalc->docDescriptionStore( newFileDesc );
+            property()->string( "appDescription", newFileDesc );
         }
     }
     // Write the file
@@ -753,12 +782,9 @@ void BpDocument::saveAsMoistureScenarioFile( const QString &fileName )
         info( text );
     }
     // Restore the original description and return
-    if ( newDesc != oldDesc )
-    {
-        m_entry[0]->setText( oldDesc );
-        m_eqTree->m_eqCalc->docDescriptionStore( oldDesc );
-        property()->string( "appDescription", oldDesc );
-    }
+    m_entry[0]->setText( runDescDisplayText );
+    m_eqTree->m_eqCalc->docDescriptionStore( runDescDisplayText );
+    property()->string( "appDescription", runDescDisplayText );
     return;
 }
 
@@ -819,7 +845,17 @@ void BpDocument::saveAsRunFile( const QString &fileName, bool clone )
     {
         return;
     }
-    // Request the fileName if one wasn't specified
+	// Get the current Run Description field's display text and store it
+	BpDocument *doc = (BpDocument *)appWindow()->getActiveWindow("BpDocument");
+	BpDocEntry *runDescEntry = doc->m_entry[0];
+	QString runDescDisplayText = runDescEntry->displayText();
+    m_eqTree->m_eqCalc->docDescriptionStore( runDescDisplayText );
+
+	// Create a default file description from the Run Description
+    QString newFileDesc = runDescDisplayText;
+	//const char *ctext = newFileDesc.latin1();
+
+	// Request the fileName if one wasn't specified
     QString text("");
     QString newFileName = fileName;
     if ( newFileName.isNull() || newFileName.isEmpty() )
@@ -830,14 +866,14 @@ void BpDocument::saveAsRunFile( const QString &fileName, bool clone )
 
         // Create the file selection dialog
         FileSaveAsDialog dialog(
-            appWindow(),                            // ApplicationWindow
-            dirName,                                // subdirectory
-            "Run",                                  // file type name
-            extName,                                // file extension
-            "MyRuns",                               // default folder
-            fileName,                               // default file name
-            m_eqTree->m_eqCalc->docDescriptionStore(),   // default description
-            "saveAsRunFileDialog" );                // widget name
+            appWindow(),                 // ApplicationWindow
+            dirName,                    // subdirectory
+            "Run",                      // file type name
+            extName,                    // file extension
+            "MyRuns",                   // default folder
+            fileName,                   // default file name
+            newFileDesc,				// default description
+            "saveAsRunFileDialog" );	// widget name
         // Display the file selection dialog
         if ( dialog.exec() != QDialog::Accepted )
         {
@@ -846,16 +882,17 @@ void BpDocument::saveAsRunFile( const QString &fileName, bool clone )
         // Get the file selection
         dialog.getFileSelection( newFileName );
         // Get the (possibly new) file description
-        QString desc;
-        dialog.getFileDescription( desc );
-        if ( ! desc.isNull() && ! desc.isEmpty()
-            && desc != m_eqTree->m_eqCalc->docDescriptionStore() )
+        dialog.getFileDescription( newFileDesc );
+		// Update the worksheet run description with the new file description
+        if ( ! newFileDesc.isNull() && ! newFileDesc.isEmpty()
+            && newFileDesc != m_eqTree->m_eqCalc->docDescriptionStore() )
         {
-            m_entry[0]->setText( desc );
-            m_eqTree->m_eqCalc->docDescriptionStore( desc );
+			m_eqTree->m_eqCalc->docDescriptionStore( newFileDesc );
+			property()->string( "appDescription", newFileDesc );
+			m_entry[0]->setText( newFileDesc );
         }
     }
-    // Cannot save to standard location
+    // Cannot save to standard locations
     QString reserved( QDir::separator() + QString( "RunFolder" )
                     + QDir::separator() + QString( "ExampleRuns" ) );
     if ( newFileName.find( reserved, 0, false ) >= 0 )
@@ -867,7 +904,8 @@ void BpDocument::saveAsRunFile( const QString &fileName, bool clone )
         return;
     }
     // Write the file
-    property()->string( "appDescription", m_entry[0]->text() );
+    //property()->string( "appDescription", m_entry[0]->text() );
+    property()->string( "appDescription", m_entry[0]->displayText() );
     if ( m_eqTree->writeXmlFile( newFileName, "BehavePlus", "Run",
         appWindow()->m_release ) )
     {
@@ -950,11 +988,19 @@ void BpDocument::saveAsUnitsSetFile( const QString &fileName )
 		return;
 	}
 
-    // Request the fileName if one wasn't specified
+	// Get the current Run Description field's display text and store it
+	BpDocument *doc = (BpDocument *)appWindow()->getActiveWindow("BpDocument");
+	BpDocEntry *runDescEntry = doc->m_entry[0];
+	QString runDescDisplayText = runDescEntry->displayText();
+    m_eqTree->m_eqCalc->docDescriptionStore( runDescDisplayText );
+
+	// Create a default file description from the Run Description
+    QString newFileDesc = runDescDisplayText;
+	const char *ctext = newFileDesc.latin1();
+
+	// Request the fileName if one wasn't specified
     QString newFileName = fileName;
-    QString oldDesc = m_eqTree->m_eqCalc->docDescriptionStore();
-    QString newDesc = oldDesc;
-    if ( newFileName.isNull() || newFileName.isEmpty() )
+	if ( newFileName.isNull() || newFileName.isEmpty() )
     {
         // Get the Units Set directory
         QString dirName = appFileSystem()->unitsSetPath();
@@ -962,14 +1008,14 @@ void BpDocument::saveAsUnitsSetFile( const QString &fileName )
 
         // Create the file selection dialog
         FileSaveAsDialog dialog(
-            appWindow(),                            // ApplicationWindow
-            dirName,                                // subdirectory
-            "Units Set",                            // file type name
-            extName,                                // file extension
-            "MyUnitsSets",                          // default folder
-            fileName,                               // default file name
-            m_eqTree->m_eqCalc->docDescriptionStore(),   // default description
-            "saveAsUnitsSetFileDialog" );           // widget name
+            appWindow(),                    // ApplicationWindow
+            dirName,                        // subdirectory
+            "Units Set",                    // file type name
+            extName,                        // file extension
+            "MyUnitsSets",                  // default folder
+            fileName,                       // default file name
+			newFileDesc,					// default description
+            "saveAsUnitsSetFileDialog" );   // widget name
         // Display the file selection dialog
         if ( dialog.exec() != QDialog::Accepted )
         {
@@ -978,12 +1024,13 @@ void BpDocument::saveAsUnitsSetFile( const QString &fileName )
         // Get the file selection
         dialog.getFileSelection( newFileName );
         // Get the (possibly new) file description
-        dialog.getFileDescription( newDesc );
-        if ( ! newDesc.isNull() && ! newDesc.isEmpty() && newDesc != oldDesc )
+        dialog.getFileDescription( newFileDesc );
+        if ( ! newFileDesc.isNull() && ! newFileDesc.isEmpty()
+			&& newFileDesc != runDescDisplayText )
         {
-            m_entry[0]->setText( newDesc );
-            m_eqTree->m_eqCalc->docDescriptionStore( newDesc );
-            property()->string( "appDescription", newDesc );
+            m_entry[0]->setText( newFileDesc );
+            m_eqTree->m_eqCalc->docDescriptionStore( newFileDesc );
+            property()->string( "appDescription", newFileDesc );
         }
     }
     // Write the file
@@ -994,13 +1041,9 @@ void BpDocument::saveAsUnitsSetFile( const QString &fileName )
         translate( text, "BpDocument:SaveUnitsSet:Saved", newFileName );
         info( text );
     }
-    // Restore the original description before returning
-    if ( newDesc != oldDesc )
-    {
-        m_entry[0]->setText( oldDesc );
-        m_eqTree->m_eqCalc->docDescriptionStore( oldDesc );
-        property()->string( "appDescription", oldDesc );
-    }
+    m_entry[0]->setText( runDescDisplayText );
+    m_eqTree->m_eqCalc->docDescriptionStore( runDescDisplayText );
+    property()->string( "appDescription", runDescDisplayText );
     return;
 }
 
@@ -1056,11 +1099,18 @@ void BpDocument::saveAsUnitsSetFile( const QString &fileName )
 
 void BpDocument::saveAsWorksheetFile( const QString &fileName )
 {
+	// Get the current Run Description field's display text and store it
+	BpDocument *doc = (BpDocument *)appWindow()->getActiveWindow("BpDocument");
+	BpDocEntry *runDescEntry = doc->m_entry[0];
+	QString runDescDisplayText = runDescEntry->displayText();
+    m_eqTree->m_eqCalc->docDescriptionStore( runDescDisplayText );
+
+	// Create a default file description from the Run Description
+    QString newFileDesc = runDescDisplayText;
+	//const char *ctext = newFileDesc.latin1();
+
     // Request the fileName if one wasn't specified
     QString newFileName = fileName;
-    QString oldDesc = m_eqTree->m_eqCalc->docDescriptionStore();
-    QString newDesc = oldDesc;
-    QString text("");
     if ( newFileName.isNull() || newFileName.isEmpty() )
     {
         // Get the Worksheet directory
@@ -1074,8 +1124,8 @@ void BpDocument::saveAsWorksheetFile( const QString &fileName )
             "Worksheet",                            // file type name
             extName,                                // file extension
             "MyWorksheets",                         // default folder
-            fileName,                               // default file name
-            m_eqTree->m_eqCalc->docDescriptionStore(),   // default description
+            newFileName,                            // default file name
+			newFileDesc,							// file (run) description
             "saveAsWorksheetFileDialog" );          // widget name
         // Display the file selection dialog
         if ( dialog.exec() != QDialog::Accepted )
@@ -1084,16 +1134,16 @@ void BpDocument::saveAsWorksheetFile( const QString &fileName )
         }
         // Get the file selection
         dialog.getFileSelection( newFileName );
-        // Get the (possibly new) file description
-        dialog.getFileDescription( newDesc );
-        if ( ! newDesc.isNull() && ! newDesc.isEmpty() && newDesc != oldDesc )
-        {
-            m_entry[0]->setText( newDesc );
-            m_eqTree->m_eqCalc->docDescriptionStore( newDesc );
-            property()->string( "appDescription", newDesc );
-        }
+        // Get the (possibly edited) file run description
+        dialog.getFileDescription( newFileDesc );
+		// Save the file description in the run description store
+		// so it gets written to the saved file
+        m_eqTree->m_eqCalc->docDescriptionStore( newFileDesc );
+        property()->string( "appDescription", newFileDesc );
     }
-    // Cannot save to standard location
+
+	QString text("");
+    // Cannot save files to standard protected locations
     QString reserved( QDir::separator() + QString( "WorksheetFolder" )
                     + QDir::separator() + QString( "ExampleWorksheets" ) );
     if ( newFileName.find( reserved, 0, false ) >= 0 )
@@ -1112,13 +1162,10 @@ void BpDocument::saveAsWorksheetFile( const QString &fileName )
         translate( text, "BpDocument:SaveWorksheet:Saved", newFileName );
         info( text );
     }
-    // Restore the original description before returning
-    if ( newDesc != oldDesc )
-    {
-        m_entry[0]->setText( oldDesc );
-        m_eqTree->m_eqCalc->docDescriptionStore( oldDesc );
-        property()->string( "appDescription", oldDesc );
-    }
+    // Restore the original run description before returning
+    m_entry[0]->setText( runDescDisplayText );
+    m_eqTree->m_eqCalc->docDescriptionStore( runDescDisplayText );
+    property()->string( "appDescription", runDescDisplayText );
     return;
 }
 
@@ -1216,4 +1263,3 @@ void BpDocument::saveResults( const QString &fileType )
 //------------------------------------------------------------------------------
 //  End of bpfile.cpp
 //------------------------------------------------------------------------------
-

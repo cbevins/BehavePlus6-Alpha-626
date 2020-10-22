@@ -1,3 +1,188 @@
+BehavePlus6 Release Notes
+
+---------------------------------------
+Build 626 - March 25, 2018
+---------------------------------------
+
+-	The Modules Dialog SURFACE > Output Variables >
+	Intermediate Directions	tab can now be enabled via the
+	BehavePlus6.xml configuration parameter
+	"surfaceConfDisplayIntermediateDirectionsTab".
+	(See Issue #083FAH - Preparation for V6 Alpha Release)
+
+-	The File Save Dialogs for Run, Worksheet, Moisture
+	Scenario, Fuel Model, and Units files now properly use
+	the text from the worksheet's Run Description field
+	as the default file	description, and properly overrides
+	the default description with the text fromt the File
+	Dialog's Description field, regardless of whether or not
+	the user has hit the Enter or Tab keys.
+	(Issue #102 - Saving Moisture Scenario doesn't save description)
+
+-	The CONTAIN Module fire size limit and time limit is now
+	configurable parameters within BehavePlus6.xml via properties
+	"containConfSizeLimit" (10000 ac) and "containConfTimeLimit" (1440 min).
+	(Issue #103 - CONTAIN Module., Single Source)
+	
+-	The CROWN Fire variables "Power of the Fire", "Power of
+	the Wind", "Power Ratio", and "Wind Driven Crown Fire" are
+	now hidden from the CROWN Fire Type Options tab
+	(and from the Units Selection tab).  They can be enabled
+	by setting the new BehavePlus6.xml boolean configuration
+	parameter "crownConfDisplayPowerVariables" to "true".
+	Added new Help Files refdlecting the above changes.
+	(Issue #104FAH - Hide Power of Fire and Power of Wind)
+	
+---------------------------------------
+Build 625 - December 21, 2017
+---------------------------------------
+
+-	The Surface Module > Input Options > Directions dialog
+	text has been revised.
+	(Issue #098FAH - Change Surface Directions Options)
+
+-	Help System HTML files were updated.
+	(Issue #099FAH - Updates to Help System)
+
+-	Graph subtitles now include the fire direction as well as
+	the y- and x-axis labels.
+	(Issue #100FAH - Graph Options Not Working)
+	
+-	CROWN fire results now agree with Scott & Reinhardt examples.
+	
+---------------------------------------
+Build 624 - September 26, 2017
+---------------------------------------
+
+-	The installation package now specifies that this is
+	the BehavePlus6 Beta 1 Release.
+
+---------------------------------------
+Build 623 - September 21, 2017
+---------------------------------------
+
+-	Chaparral output variable names have been updated.
+	(Issue #091 - Chaparral Output Variable Names)
+	
+-	X-axis variable names now appear correctly on bar charts.
+	(Issue #093FAH - X Axis variable names don't appear when
+	using SPOT with new Downwind Canopy COver Variable).
+	
+-	Fuel models now only appear once each in the Fuel Model
+	Choices Dialog.
+	(Issue #094FAH - Fuel Model List for 2-fuel Model Options).
+	
+-	SAFETY Module variable names have been removed
+	from the Units Dialog.
+	(Issue #095FAH - Delete Safety Units)
+
+-	The CONTAIN Module has been modified to behave similar to the
+	WFIPS Version.  Formerly, initial attack forces could be
+	withheld if they would be overrun before subsequent resources
+	arrived.  In the current version, initial attack forces
+	begin line construction upon arrival.
+	(Issue #096TD - Updates to CONTAIN Module)
+	(Issue #092FAH - CONTAIN Outputs)
+	
+-	A complete set of newly updated Help files have been added.
+	(Issue #096FAH - Updated Help Files )
+
+-	A complete set of newly updated example worksheet and run files
+	have been added.
+	(Issue #097FAH - New Example Worksheet and Run Files)
+	
+---------------------------------------
+Build 622 - April 13, 2017
+---------------------------------------
+
+--	Disabled the SURFACE > Output Variables > Intermediate
+	Directions tab from the Modules Dialog for alpha testing.
+	(Issue #083FAH - Preparation for V6 Alpha Release)
+
+---------------------------------------
+Build 621 - April 13, 2017
+---------------------------------------
+
+--	Re-enabled the SURFACE > Output Variables > Intermediate
+	Directions tab from the Modules Dialog for FAH testing.
+	(Issue #083FAH - Preparation for V6 Alpha Release)
+
+--	The SURFACE Spread Directions Help File has been updated.
+	
+--  BP6 is now able to open additional run files created
+	with BP5.
+	(Issue #079FAH - V6 will not open V5 files)
+
+---------------------------------------
+Build 620 - April 10, 2017
+---------------------------------------
+
+--	Disabled the SURFACE > Output Variables > Intermediate
+	Directions tab from the Modules Dialog.
+	(Issue #083FAH - Preparation for V6 Alpha Release)
+	
+---------------------------------------
+Build 619 - April 10, 2017
+---------------------------------------
+
+--  The configuration dialog for the IGNITE Module now correctly
+	grays out the "Specify graph Y axis limits".
+	(Issue #078FAH)
+	
+--  BP6 is now able to open run files created with BP5.
+	(Issue #079FAH - V6 will not open V5 files)
+	
+--  All custom fuel models now display in the choices dialog.
+--	Custom fuel models are not allowed to use reserved fuel
+	model numbers.
+	(Issue #080FAH - Custom fuel models are not appearing in menu)
+	
+--  Elapsed time since ignition is no longer a required input
+	when SURFACE and SIZE Modules are linked but no time-dependent
+	outputs are selected.
+	(Issue #081FAH - Elapsed time is required as an input when it
+	should not be)
+	
+--	The Safety Zone Module has been diabled.
+	(Issue #082FAH - Disable the Safety Zone Module)
+	
+--	BP6 now uses updated example worksheets; and
+	Surface > Output Variables > Basic and Crown > Basic Outputs
+	are now the default configuration tabs.
+	(Issue #083FAH - Preparation for V6 Alpha Release)
+	
+--	BP6 now uses the term 'Direction from Fire Perimeter' rather
+	than 'Direction from Fire Front'.
+	(Issue #084FAH - Change header line on output files to
+	 'Fire Perimeter'
+
+--	Several typographical and layout errors are now corrected
+	in the Configure > Custom Units dialogs.
+	(Issue #085FAH - Minor typos in program)
+	
+--	Chaparral Fuel Age is no longer an available output, and the
+	term 'Chaparral Total Fuel Load' is now used.
+	(Issue #086FAH - Updates to Chaparral special case fuel model)
+	
+--	The CROWN Module output variable 'Critical Surface Fire ROS,
+	Crown Fire Initiation' is now only active when 'Crown fire
+	is calculated using Scott and Reinhardt (2001)' is selected.
+	(Issue #087 - Critical surface fire ros, crown initiation)
+	
+--	Issue 088FAH - Downwind Canopy Height/Cover for Active Crown
+	is pending further review by FAH.
+	
+--	Run Notes for Crown Fire Method now include the [CROWN]
+	module designator.
+	(Issue #089FAH - Run Options for CROWN Fire Method)
+	
+---------------------------------------
+Build 618 - May 25, 2016
+---------------------------------------
+
+--	Restored the CROWN Module dialog to its appearance
+	as in Build 616.
+	
 ---------------------------------------
 Build 617 - Apr 5, 2016
 ---------------------------------------

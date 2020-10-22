@@ -1,0 +1,130 @@
+Period of Performance October 1, 2016 - September 30, 2017
+
+All task and change requests issued during the Period of
+Performance have been resolved.	
+
+BehavePlus6 Alpha test build 619, 620, 621, 622, 623, and 624
+were delivered.
+
+All source code and supporting installation and package files
+were uploaded to the USDA cloud vault.
+
+--  The configuration dialog for the IGNITE Module now correctly
+	grays out the "Specify graph Y axis limits".
+	(Resolves Issue #078FAH - IGNITE Module Graphs)
+	
+--  BP6 is now able to open run files created with BP5.
+	(Resolves Issue #079FAH - V6 will not open V5 files)
+	
+--  All custom fuel models now display in the choices dialog.
+	(Resolves Issue #080FAHa - Custom fuel models are not appearing
+	in menu)
+
+--	Custom fuel models are not allowed to use reserved fuel
+	model numbers.
+	(Resolves Issue #080FAHb - Custom fuel models are not appearing
+	in menu)
+	
+--  Elapsed time since ignition is no longer a required input
+	when SURFACE and SIZE Modules are linked but no time-dependent
+	outputs are selected.
+	(Resolves Issue #081FAH - Elapsed time is required as an input
+	when it	should not be)
+	
+--	The Safety Zone Module has been diabled.
+	(Resolves Issue #082FAH - Disable the Safety Zone Module)
+	
+--	BP6 now uses updated example worksheets; and
+	Surface > Output Variables > Basic and Crown > Basic Outputs
+	are now the default configuration tabs.
+	(Resolves Issue #083FAH - Preparation for V6 Alpha Release)
+	
+--	BP6 now uses the term 'Direction from Fire Perimeter' rather
+	than 'Direction from Fire Front'.
+	(Resolves Issue #084FAH - Change header line on output files to
+	 'Fire Perimeter'
+
+--	Several typographical and layout errors are now corrected
+	in the Configure > Custom Units dialogs.
+	(Resolves Issue #085FAH - Minor typos in program)
+	
+--	Chaparral Fuel Age is no longer an available output, and the
+	term 'Chaparral Total Fuel Load' is now used.
+	(Resolves Issue #086FAH - Updates to Chaparral special case
+	fuel model)
+	
+--	The CROWN Module output variable 'Critical Surface Fire ROS,
+	Crown Fire Initiation' is now only active when 'Crown fire
+	is calculated using Scott and Reinhardt (2001)' is selected.
+	(Resolves Issue #087 - Critical surface fire ros, crown
+	initiation)
+	
+--	Issue 088FAH - Downwind Canopy Height/Cover for Active Crown
+	was discussed and withdrawn by FAH.
+	
+--	Run Notes for Crown Fire Method now include the [CROWN]
+	module designator.
+	(Resolves Issue #089FAH - Run Options for CROWN Fire Method)
+
+--	BehavePlus6 Build 619 released on April 10, 2017
+
+--	Disabled the SURFACE > Output Variables > Intermediate
+	Directions tab from the Modules Dialog.
+	(Resolves Issue #083FAH - Preparation for V6 Alpha Release)
+
+-- BehavePlus6 Build 620 released on April 10, 2017
+
+--	Re-enabled the SURFACE > Output Variables > Intermediate
+	Directions tab from the Modules Dialog for FAH testing.
+	(Resolves Issue #083FAH - Preparation for V6 Alpha Release)
+
+--	The SURFACE Spread Directions Help File has been updated.
+	
+--  BP6 is now able to open additional run files created
+	with BP5.
+	(Resolves Issue #079FAH - V6 will not open V5 files)
+
+-- BehavePlus6 Build 621 released on April 13, 2017
+
+--	Disabled the SURFACE > Output Variables > Intermediate
+	Directions tab from the Modules Dialog for alpha testing.
+	(Resolves Issue #083FAH - Preparation for V6 Alpha Release)
+	
+-- BehavePlus6 Build 622 released on April 13, 2017
+
+--	Chaparral output variable names have been updated.
+	(Resolves Issue #091 - Chaparral Output Variable Names)
+	
+--	X-axis variable names now appear correctly on bar charts.
+	(Resolves Issue #093FAH - X Axis variable names don't appear
+	when using SPOT with new Downwind Canopy COver Variable).
+	
+--	Fuel models now only appear once each in the Fuel Model
+	Choices Dialog.
+	(Resolves Issue #094FAH - Fuel Model List for 2-fuel Model
+	Options).
+	
+--	SAFETY Module variable names have been removed
+	from the Units Dialog.
+	(Resolves Issue #095FAH - Delete Safety Units)
+
+--	The CONTAIN Module has been modified to behave similar to the
+	WFIPS Version.  Formerly, initial attack forces could be
+	withheld if they would be overrun before subsequent resources
+	arrived.  In the current version, initial attack forces
+	begin line construction upon arrival.
+	(Resolves Issue #096TD - Updates to CONTAIN Module)
+	
+--	A complete set of newly updated Help files have been added.
+	(Resolves Issue #096FAH - Updated Help Files )
+
+--	A complete set of newly updated example worksheet and run files
+	have been added.
+	(Resolves Issue #097FAH - New Example Worksheet and Run Files)
+
+--	BehavePlus6 Build 623 released on September 21, 2017
+
+--	The installation package now specifies that this is
+	the BehavePlus6 Beta 1 Release.
+
+-- BehavePlus6 Build 624 BETA released on September 26, 2017

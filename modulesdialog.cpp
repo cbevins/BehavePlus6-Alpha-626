@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file modulesdialog.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BehavePlus Module Selection dialog methods.
  *
@@ -11,6 +11,7 @@
 
 // Custom include files
 #include "appmessage.h"
+#include "appproperty.h"
 #include "apptranslator.h"
 #include "appwindow.h"
 #include "bpdocument.h"
@@ -125,6 +126,12 @@ ModulesDialog::ModulesDialog( BpDocument *bp, const QString &captionKey,
             m_cb[row]->hide();
             m_pb[row]->hide();
         }
+		const char *str = mod->m_name.latin1();
+		if ( strcmp( str, "safety" ) == 0 )
+		{
+            m_cb[row]->hide();
+            m_pb[row]->hide();
+		}
         row++;
     }
     // MAP distances frame
@@ -450,123 +457,8 @@ void ModulesDialog::crownOptions( void )
     addOutput( p, "crownCalcActiveFlameLeng",
                   "vCrownFireActiveFlameLeng",
                   row, 0, row, 0 ); row++;
-
-	// Add the "Fire Type Outputs" page
-    p = dialog->addPage( "PropertyTabDialog:Crown:FireTypeOutputs:Tab", 1, 1,
-                         "Wildfire3.png",
-                         "Wildfire",
-                         "selectOutput.html" );
-	row = 0;
-    addOutput( p, "crownCalcCrownFireType",
-                  "vCrownFireType",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcTransitionToCrown",
-                  "vCrownFireTransToCrown",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcTransitionRatio",
-                  "vCrownFireTransRatio",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcActiveCrown",
-                  "vCrownFireActiveCrown",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcActiveRatio",
-                  "vCrownFireActiveRatio",
-                  row, 0, row, 0 ); row++;
     p->addLabel( "!",
                   row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcPowerOfFire",
-                  "vCrownFirePowerOfFire",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcPowerOfWind",
-                  "vCrownFirePowerOfWind",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcPowerRatio",
-                  "vCrownFirePowerRatio",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcWindDriven",
-                  "vCrownFireWindDriven",
-                  row, 0, row, 0 ); row++;
-
-	// Add the "Size Outputs" page
-    p = dialog->addPage( "PropertyTabDialog:Crown:SizeOutputs:Tab", 1, 1,
-                         "Wildfire1.png",
-                         "Wildfire",
-                         "selectOutput.html" );
-	row = 0;
-    addOutput( p, "crownCalcActiveSpreadDist",
-                  "vCrownFireActiveSpreadDist",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcActiveFireArea",
-                  "vCrownFireActiveFireArea",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcActiveFirePerimeter",
-                  "vCrownFireActiveFirePerimeter",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcFireLengthToWidth",
-                  "vCrownFireLengthToWidth",
-                  row, 0, row, 0 ); row++;
-
-	// Add the "Canopy Outputs" page
-    p = dialog->addPage( "PropertyTabDialog:Crown:CanopyOutputs:Tab", 1, 1,
-                         "Wildfire3.png",
-                         "Wildfire",
-                         "selectOutput.html" );
-	row = 0;
-    addOutput( p, "crownCalcFuelLoad",
-                  "vCrownFireFuelLoad",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcHeatPerUnitAreaCanopy",
-                  "vCrownFireHeatPerUnitAreaCanopy",
-                  row, 0, row, 0 ); row++;
-
-	// Add the "Intermediate Outputs" page
-    p = dialog->addPage( "PropertyTabDialog:Crown:IntermediateOutputs:Tab", 1, 1,
-                         "Wildfire2.png",
-                         "Wildfire",
-                         "selectOutput.html" );
-	row = 0;
-    addOutput( p, "crownCalcCriticalSurfaceIntensity",
-                  "vCrownFireCritSurfFireInt",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcCriticalSurfaceFlameLeng",
-                  "vCrownFireCritSurfFlameLeng",
-                  row, 0, row, 0 ); row++;
-    addOutput( p, "crownCalcCritSurfSpreadRate",
-                  "vCrownFireCritSurfSpreadRate",
-                  row, 0, row, 0 ); row++;
-
-	//addOutput( p, "crownCalcCrownSpreadRate",
-    //              "vCrownFireSpreadRate",
-    //              row, 0, row, 0 ); row++;
-    //addOutput( p, "crownCalcFireLineInt",
-    //              "vCrownFireLineInt",
-    //              row, 0, row, 0 ); row++;
-    //addOutput( p, "crownCalcFlameLeng",
-    //              "vCrownFireFlameLeng",
-    //              row, 0, row, 0 ); row++;
-    //addOutput( p, "crownCalcHeatPerUnitArea",
-    //              "vCrownFireHeatPerUnitArea",
-    //              row, 0, row, 0 ); row++;
-    //addOutput( p, "crownCalcCrownSpreadDist",
-    //              "vCrownFireSpreadDist",
-    //              row, 0, row, 0 ); row++;
-    //addOutput( p, "crownCalcFireArea",
-    //              "vCrownFireArea",
-    //              row, 0, row, 0 ); row++;
-    //addOutput( p, "crownCalcFirePerimeter",
-    //              "vCrownFirePerimeter",
-    //              row, 0, row, 0 ); row++;
-
-	// Add the "Intermediate Outputs" page
-    p = dialog->addPage( "PropertyTabDialog:Crown:ScottReinhardtOutputs:Tab", 1, 1,
-                         "Wildfire3.png",
-                         "Wildfire",
-                         "selectOutput.html" );
-	row = 0;
-
-	p->addLabel( "The Scott & Reinhardt (2001) outputs below:", row, 0, row, 0 ); row++;
-    p->addLabel( "are available only when linked to SURFACE", row, 0, row, 0 ); row++;
-
 	varCheckBox = addOutput( p, "crownCalcPassiveSpreadRate",
                   "vCrownFirePassiveSpreadRate",
                   row, 0, row, 0 ); row++;
@@ -591,6 +483,66 @@ void ModulesDialog::crownOptions( void )
     varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
 	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
 
+	// Add the "Fire Type Outputs" page
+    p = dialog->addPage( "PropertyTabDialog:Crown:FireTypeOutputs:Tab", 1, 1,
+                         "Wildfire3.png",
+                         "Wildfire",
+                         "selectOutput.html" );
+	row = 0;
+    addOutput( p, "crownCalcCrownFireType",
+                  "vCrownFireType",
+                  row, 0, row, 0 ); row++;
+    addOutput( p, "crownCalcTransitionToCrown",
+                  "vCrownFireTransToCrown",
+                  row, 0, row, 0 ); row++;
+    addOutput( p, "crownCalcTransitionRatio",
+                  "vCrownFireTransRatio",
+                  row, 0, row, 0 ); row++;
+    addOutput( p, "crownCalcActiveCrown",
+                  "vCrownFireActiveCrown",
+                  row, 0, row, 0 ); row++;
+    addOutput( p, "crownCalcActiveRatio",
+                  "vCrownFireActiveRatio",
+                  row, 0, row, 0 ); row++;
+
+	bool displayPowerOfFire = appProperty()->boolean("crownConfDisplayPowerVariables");
+	if ( displayPowerOfFire ) {
+		p->addLabel( "!",
+					  row, 0, row, 0 ); row++;
+		addOutput( p, "crownCalcPowerOfFire",
+					  "vCrownFirePowerOfFire",
+					  row, 0, row, 0 ); row++;
+		addOutput( p, "crownCalcPowerOfWind",
+					  "vCrownFirePowerOfWind",
+					  row, 0, row, 0 ); row++;
+		addOutput( p, "crownCalcPowerRatio",
+					  "vCrownFirePowerRatio",
+					  row, 0, row, 0 ); row++;
+		addOutput( p, "crownCalcWindDriven",
+					  "vCrownFireWindDriven",
+					  row, 0, row, 0 ); row++;
+	}
+
+	// Add the "Size Outputs" page
+    p = dialog->addPage( "PropertyTabDialog:Crown:SizeOutputs:Tab", 1, 1,
+                         "Wildfire1.png",
+                         "Wildfire",
+                         "selectOutput.html" );
+	row = 0;
+    addOutput( p, "crownCalcActiveSpreadDist",
+                  "vCrownFireActiveSpreadDist",
+                  row, 0, row, 0 ); row++;
+    addOutput( p, "crownCalcActiveFireArea",
+                  "vCrownFireActiveFireArea",
+                  row, 0, row, 0 ); row++;
+    addOutput( p, "crownCalcActiveFirePerimeter",
+                  "vCrownFireActiveFirePerimeter",
+                  row, 0, row, 0 ); row++;
+    addOutput( p, "crownCalcFireLengthToWidth",
+                  "vCrownFireLengthToWidth",
+                  row, 0, row, 0 ); row++;
+    p->addLabel( "!",
+                  row, 0, row, 0 ); row++;
 	varCheckBox = addOutput( p, "crownCalcPassiveSpreadDist",
                   "vCrownFirePassiveSpreadDist",
                   row, 0, row, 0 ); row++;
@@ -609,8 +561,40 @@ void ModulesDialog::crownOptions( void )
     varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
 	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
 
+	// Add the "Canopy Outputs" page
+    p = dialog->addPage( "PropertyTabDialog:Crown:CanopyOutputs:Tab", 1, 1,
+                         "Wildfire3.png",
+                         "Wildfire",
+                         "selectOutput.html" );
+	row = 0;
+    addOutput( p, "crownCalcFuelLoad",
+                  "vCrownFireFuelLoad",
+                  row, 0, row, 0 ); row++;
+    addOutput( p, "crownCalcHeatPerUnitAreaCanopy",
+                  "vCrownFireHeatPerUnitAreaCanopy",
+                  row, 0, row, 0 ); row++;
+
     varCheckBox = addOutput( p, "crownCalcCanopyFractionBurned",
                   "vCrownFireCanopyFractionBurned",
+                  row, 0, row, 0 ); row++;
+    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+
+	// Add the "Intermediate Outputs" page
+    p = dialog->addPage( "PropertyTabDialog:Crown:IntermediateOutputs:Tab", 1, 1,
+                         "Wildfire2.png",
+                         "Wildfire",
+                         "selectOutput.html" );
+	row = 0;
+    addOutput( p, "crownCalcCriticalSurfaceIntensity",
+                  "vCrownFireCritSurfFireInt",
+                  row, 0, row, 0 ); row++;
+    addOutput( p, "crownCalcCriticalSurfaceFlameLeng",
+                  "vCrownFireCritSurfFlameLeng",
+                  row, 0, row, 0 ); row++;
+
+    varCheckBox = addOutput( p, "crownCalcCritSurfSpreadRate",
+                  "vCrownFireCritSurfSpreadRate",
                   row, 0, row, 0 ); row++;
     varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
 	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
@@ -627,12 +611,45 @@ void ModulesDialog::crownOptions( void )
     varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
 	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
 
-    varCheckBox = addOutput( p, "crownCalcActiveCritSurfSpreadRate",
-                  "vCrownFireActiveCritSurfSpreadRate",
-                  row, 0, row, 0 ); row++;
-    varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
-	connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
-	
+	//addOutput( p, "crownCalcCrownSpreadRate",
+    //              "vCrownFireSpreadRate",
+    //              row, 0, row, 0 ); row++;
+    //addOutput( p, "crownCalcFireLineInt",
+    //              "vCrownFireLineInt",
+    //              row, 0, row, 0 ); row++;
+    //addOutput( p, "crownCalcFlameLeng",
+    //              "vCrownFireFlameLeng",
+    //              row, 0, row, 0 ); row++;
+    //addOutput( p, "crownCalcHeatPerUnitArea",
+    //              "vCrownFireHeatPerUnitArea",
+    //              row, 0, row, 0 ); row++;
+    //addOutput( p, "crownCalcCrownSpreadDist",
+    //              "vCrownFireSpreadDist",
+    //              row, 0, row, 0 ); row++;
+    //addOutput( p, "crownCalcFireArea",
+    //              "vCrownFireArea",
+    //              row, 0, row, 0 ); row++;
+    //addOutput( p, "crownCalcFirePerimeter",
+    //              "vCrownFirePerimeter",
+    //              row, 0, row, 0 ); row++;
+	if ( false )
+	{
+		// Add the "Intermediate Outputs" page
+		p = dialog->addPage( "PropertyTabDialog:Crown:ScottReinhardtOutputs:Tab", 1, 1,
+							 "Wildfire3.png",
+							 "Wildfire",
+							 "selectOutput.html" );
+		row = 0;
+
+		p->addLabel( "The Scott & Reinhardt (2001) outputs below:", row, 0, row, 0 ); row++;
+		p->addLabel( "are available only when linked to SURFACE", row, 0, row, 0 ); row++;
+
+		varCheckBox = addOutput( p, "crownCalcActiveCritSurfSpreadRate",
+					  "vCrownFireActiveCritSurfSpreadRate",
+					  row, 0, row, 0 ); row++;
+		varCheckBox->setDisabled( rothermelCrownButton->isChecked() );
+		connect( rothermelCrownButton, SIGNAL(toggled(bool)), varCheckBox, SLOT(setDisabled(bool)) );
+	}
 	// Show then delete the dialog.
     dialog->resize( sizeHint() );
     dialog->showPage( p1 );
@@ -1179,7 +1196,7 @@ void ModulesDialog::surfaceOptions( void )
                          "Restoring America's Forests",
                          "directionOptions.html" );
 	inTab->addTab( p, "Directions" );
-	inTab->showPage( p );
+	//inTab->showPage( p );
 
 	// Add the "Directions" button group "Rate of spread is calculated" ...
     bg = p->addButtonGroup( "PropertyTabDialog:Surface:Dir:Spread:Caption",
@@ -1313,42 +1330,48 @@ if ( false )
 
 	//--------------------------------------------------------------------------
     // Add the "Output Variables" - "Intermediate Directions" tab 2
-	r = 0;
-	label = "PropertyTabDialog:Surface:FireFront:Tab";
-	p = dialog->addPage( label,
-						 gridRows, 1, // pack items vertically as if there will be 20 rows
-                         "Magpie.png",
-                         "Magpie",
-                         "selectOutput.html" );
-	outTab->addTab( p, "Intermediate Directions" );
-    addOutput( p, "surfaceCalcEllipseF",
-                  "vSurfaceFireEllipseF",
-                  r, 0, r, 0 ); r++;
-    addOutput( p, "surfaceCalcEllipseG",
-                  "vSurfaceFireEllipseG",
-                  r, 0, r, 0 ); r++;
-    addOutput( p, "surfaceCalcEllipseH",
-                  "vSurfaceFireEllipseH",
-                  r, 0, r, 0 ); r++;
-    addOutput( p, "surfaceCalcVectorTheta",
-                  "vSurfaceFireVectorTheta",
-                  r, 0, r, 0 ); r++;
-    addOutput( p, "surfaceCalcVectorOther",
-                  "vSurfaceFireVectorPsi",
-                  r, 0, r, 0 ); r++;
-    addOutput( p, "surfaceCalcFireSpreadAtOther",
-                  "vSurfaceFireSpreadAtPsi",
-                  r, 0, r, 0 ); r++;
-    addOutput( p, "surfaceCalcFireLineIntAtOther",
-                  "vSurfaceFireLineIntAtPsi",
-                  r, 0, r, 0 ); r++;
-    addOutput( p, "surfaceCalcFireFlameLengAtOther",
-                  "vSurfaceFireFlameLengAtPsi",
-                  r, 0, r, 0 ); r++;
-    addOutput( p, "surfaceCalcFireDistAtOther",
-                  "vSurfaceFireDistAtPsi",
-                  r, 0, r, 0 ); r++;
 
+	// This tab was removed at the request of FAH for Build 620
+	bool displayID = appProperty()->boolean("surfaceConfDisplayIntermediateDirectionsTab");
+	if ( displayID )
+	{
+		r = 0;
+		label = "PropertyTabDialog:Surface:FireFront:Tab";
+		p = dialog->addPage( label,
+							 gridRows, 1, // pack items vertically as if there will be 20 rows
+							 "Magpie.png",
+							 "Magpie",
+							 "selectOutput.html" );
+
+		outTab->addTab( p, "Intermediate Directions" );
+		addOutput( p, "surfaceCalcEllipseF",
+					  "vSurfaceFireEllipseF",
+					  r, 0, r, 0 ); r++;
+		addOutput( p, "surfaceCalcEllipseG",
+					  "vSurfaceFireEllipseG",
+					  r, 0, r, 0 ); r++;
+		addOutput( p, "surfaceCalcEllipseH",
+					  "vSurfaceFireEllipseH",
+					  r, 0, r, 0 ); r++;
+		addOutput( p, "surfaceCalcVectorTheta",
+					  "vSurfaceFireVectorTheta",
+					  r, 0, r, 0 ); r++;
+		addOutput( p, "surfaceCalcVectorOther",
+					  "vSurfaceFireVectorPsi",
+					  r, 0, r, 0 ); r++;
+		addOutput( p, "surfaceCalcFireSpreadAtOther",
+					  "vSurfaceFireSpreadAtPsi",
+					  r, 0, r, 0 ); r++;
+		addOutput( p, "surfaceCalcFireLineIntAtOther",
+					  "vSurfaceFireLineIntAtPsi",
+					  r, 0, r, 0 ); r++;
+		addOutput( p, "surfaceCalcFireFlameLengAtOther",
+					  "vSurfaceFireFlameLengAtPsi",
+					  r, 0, r, 0 ); r++;
+		addOutput( p, "surfaceCalcFireDistAtOther",
+					  "vSurfaceFireDistAtPsi",
+					  r, 0, r, 0 ); r++;
+	}
 	//--------------------------------------------------------------------------
 	// Add the "Output Variables" - "Wind" tab 3
 	if ( threeTabs )
@@ -1625,9 +1648,9 @@ if ( false )
 
         p->addLabel( "PropertyTabDialog:Surface:ChaparralOutputs:Note",
                       r, 0, r, 0 ); r++;
-        addOutput( p, "surfaceCalcChaparralAge",
-                      "vSurfaceFuelChaparralAge",
-                      r, 0, r, 0 ); r++;
+//        addOutput( p, "surfaceCalcChaparralAge",
+//                      "vSurfaceFuelChaparralAge",
+//                      r, 0, r, 0 ); r++;
         addOutput( p, "surfaceCalcChaparralLoadTotal",
                       "vSurfaceFuelChaparralLoadTotal",
                       r, 0, r, 0 ); r++;
@@ -1691,7 +1714,7 @@ if ( false )
     // Show then delete the dialog.
     dialog->resize( sizeHint() );
 	dialog->setMinimumWidth( dialog->sizeHint().width() + 180 );
-    dialog->showPage( inTab );
+    dialog->showPage( outTab );
     dialog->exec();
 	delete inTab;	inTab = 0;
 	delete outTab;	outTab = 0;

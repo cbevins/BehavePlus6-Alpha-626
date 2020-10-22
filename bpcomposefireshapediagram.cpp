@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file bpcomposefireshapediagram.cpp
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Composes the Size Module's fire shape diagrams.
  */

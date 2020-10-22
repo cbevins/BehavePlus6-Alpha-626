@@ -1,101 +1,86 @@
-<HTML>
-  <HEAD>
-    <TITLE>BehavePlus Surface Spread Direction Page</TITLE>
-  </HEAD>
-  <BODY>
-    <TABLE WIDTH="100%">
-      <TR>
-        <TD width="100">
-          <IMG SRC="logo90x90.png" ALT="BehavePlus Logo">
-        </TD>
-        <TD ALIGN="left" VALIGN="center">
-          <H2><FONT COLOR="#ff5500">Surface Spread Direction</FONT></H2>
-        </TD>
-      </TR>
-    </TABLE>
-    <HR>
-<P> Surface spread direction is the direction in which the surface fire rate of 
-  spread is calculated. Spread direction from fire front or from ignition point can be specified with respect to upslope or to north, depending on the selected input option. If the surface fire spread direction option is heading only, flanking only, or backing only, an input value for spread direction is not needed.
-<p>For more information on fire spread direction options, see <A HREF="fireSpreadDirections.html">Fire Spread Directions</A>.
-<P>
+<html>
+  <head>
+    <title>BehavePlus Surface Fire Spread Direction Page</title>
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td width="100"><img src="logo90x90.png" alt="BehavePlus Logo"></td>
+        <td align="left" valign="center"><h2><font color="#ff5500">Surface Fire Spread Direction</font></h2></td>
+      </tr>
+    </table>
+    <hr>
+
+<p>Surface spread direction is the direction in which the surface fire rate of spread is calculated. Spread direction from fire perimeter or from ignition point can be specified with respect to upslope or to north, depending on the selected input option. If the surface fire spread direction option is specified as HEADING only, FLANKING only, or BACKING only, an input value for spread direction is not needed.</p>
+
+<p>For more information on fire spread direction options, see <a href="fireSpreadDirections.html">Fire Spread Directions</a>.</p>
+
+<p></p>
 <table border="1" cellspacing="0" cellpadding="2">
   <tr bgcolor="#CCCCCC"> 
-    <td width="67" valign="top"> 
-      <p align="center"><strong>I/O</strong></p>
-    </td>
-    <td width="109" valign="top"> 
-      <p align="center"><strong>Module</strong></p>
-    </td>
-    <td width="207" valign="top"> 
-      <p align="center"><strong>If</strong></p>
-    </td>
-    <td width="207" valign="top"> 
-      <p align="center"><strong>Notes</strong></p>
-    </td>
+		<td width="67" valign="top" align="center"><strong>I/O</strong></td>
+		<td width="109" valign="top" align="center"><strong>Module</strong></td>
+		<td width="207" valign="top" align="center"><strong>If</strong></td>
+		<td width="207" valign="top" align="center"><strong>Notes</strong></td>
   </tr>
   <tr> 
-    <td width="67" valign="top"> 
-      <p>Input</p>
-    </td>
+    <td width="67" valign="top">Input</td>
     <td width="109" valign="top">SURFACE</td>
-    <td width="207" valign="top"> 
-      <p>If <i>Surface fire spread is Directions  from Fire Front</i> or <i>Directions from Ignition Point</i> is selected as an input option.</p>
-    </td>
+    <td width="207" valign="top">If <i>Surface fire spread is Directions from Fire Perimeter</i> or <i>Directions from Ignition Point</i> is selected as an input option.</td>
     <td width="207" valign="top">&nbsp;</td>
   </tr>
   <tr> 
-    <td width="67" valign="top"> 
-      <p>Output</p>
-    </td>
-    <td width="109" valign="top"> 
-      <p>None</p>
-    </td>
-    <td width="207" valign="top"> 
-      <p>&nbsp;</p>
-    </td>
-    <td width="207" valign="top"> 
-      <p>&nbsp;</p>
-    </td>
+    <td width="67" valign="top">Output</td>
+    <td width="109" valign="top">None</td>
+    <td width="207" valign="top">&nbsp;</td>
+    <td width="207" valign="top">&nbsp;</td>
   </tr>
 </table>
-<P>
+
+<p></p>
 <table>
 	<tr>
-    	<td><A NAME="spreadupslope.png"></a><IMG SRC="spreadupslope.png" ALT="Fire Spread Direction (Degrees Clockwise from Upslope)">&nbsp;&nbsp;<A NAME="spreadnorth.png"></a><IMG SRC="spreadnorth.png" ALT="Fire Spread Direction (Degrees Clockwise from North)"></td>
+    	<td><a name="spreadupslope.png"></a><img src="spreadupslope.png" alt="Surface Fire Spread Direction, Degrees Clockwise from Upslope"></td>
+		<td><a name="spreadnorth.png"></a><img src="spreadnorth.png" alt="Surface Fire Spread Direction, Degrees Clockwise from North"></td>
+	</tr>
+</table>
+
+<p></p>
+<table border="1" cellspacing="0" cellpadding="2">
+	<tr>
+		<td>More information about the following graphs can be found in <a href="fireSpreadDirections.html">Fire Spread Directions</a>.</td>
+    </tr>
+    <tr>
+    	<td><a name="spreadIgnitionPoint.png"></a><img src="spreadIgnitionPoint.png" alt="Direction of Fire Spread from Ignition Point"></td>
 	</tr>
 	<tr>
-    	<td><A NAME="spreadIgnitionPoint.png"></a> 
-<IMG SRC="spreadIgnitionPoint.png" ALT="Fire Spread from Ignition Point"></td>
-	</tr>
+    	<td><a name="spreadFirePerim.png"></a><img src="spreadFirePerim.png" alt="Direction of Fire Spread from Fire Perimeter for a Line Source Fire"></td>
 	<tr>
-    	<td><A NAME="spreadFireFront.png"></a> 
-<IMG SRC="spreadFireFront.png" ALT="Spread Direction from Fire Front"></td>
-	<tr>
-    	<td><A NAME="spreadFireFrontFarsite.png"></a> 
-<IMG SRC="spreadFireFrontFarsite.png" ALT="Spread Direction from Fire Front, FARSITE method"></td>
+    	<td><a name="spreadFirePerimEllipse.png"></a><img src="spreadFirePerimEllipse.png" alt="Direction of Fire Spread from Fire Perimeter for a Point Source Fire"></td>
     </tr>    
 </table>
 
-<P>
-<H3><FONT COLOR="#ff5500">See Also</FONT></H3>
-    <UL>
-      <LI><A HREF="vSurfaceFireMaxDir.html">Direction of Maximum Spread</A></LI>
-      <LI><A HREF="vWindDirVector.html">Direction of Wind Vector (from upslope) </A></LI>
-      <LI><A HREF="vSurfaceFireSpread.html">Surface Rate of Spread</A></LI>
-      <LI><A HREF="vSurfaceFireMaxDirDiagram.html">Wind / Slope / Spread Direction Diagram </A></LI>
-      <LI><A HREF="vWindDirSource.html">Wind Direction (from North)</A></LI>
-    </UL>
-<p>
-<H3><FONT COLOR="#ff5500">Links</FONT></H3>
-  <UL>
-      <LI><A HREF="variableIndex.html">Variable Index</A></LI>
-      <LI><A HREF="figureIndex.html">Figure Index</A></LI>
-      <LI><A HREF="tablesIndex.html">Table Index</A></LI>
-      <LI><A HREF="guideIndex.html">Guide Index</A></LI>
-      <LI><A HREF="Models_BehavePlus.html">Table of References</A></LI>
-  </UL>
+<p></p>
+<h3><font color="#ff5500">See Also</font></h3>
+    <ul>
+      <li><a href="vSurfaceFireMaxDir.html">Direction of Maximum Spread</a></li>
+      <li><a href="vWindDirVector.html">Direction of Wind Vector (from upslope) </a></li>
+      <li><a href="vSurfaceFireSpread.html">Surface Rate of Spread</a></li>
+      <li><a href="vSurfaceFireMaxDirDiagram.html">Wind / Slope / Spread Direction Diagram </a></li>
+      <li><a href="vWindDirSource.html">Wind Direction (from North)</a></li>
+    </ul>
+
+<p></p>
+<h3><font color="#ff5500">Links</font></h3>
+	<ul>
+		<li><a href="variableIndex.html">Variable Index</a></li>
+		<li><a href="figureIndex.html">Figure Index</a></li>
+		<li><a href="tablesIndex.html">Table Index</a></li>
+		<li><a href="guideIndex.html">Guide Index</a></li>
+		<li><a href="Models_BehavePlus.html">Table of References</a></li>
+	</ul>
  
-<HR>
-<FONT SIZE=2>BehavePlus On-Line Documentation, March 19, 2014.</FONT>
-</BODY>
-</HTML>
+<hr>
+<font size="2">BehavePlus Online Documentation, July 26, 2017.</font>
+</body>
+</html>

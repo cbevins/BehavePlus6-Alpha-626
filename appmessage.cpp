@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file appmessage.h
  *  \version BehavePlus3
- *  \author Copyright (C) 2002-2004 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Application-wide, shared message handler functions.  Includes
  *  methods for the HelpDialog and MessageDialog classes.

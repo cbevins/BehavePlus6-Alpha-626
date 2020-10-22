@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalcreconfig.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2015 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Reconfigures the EqFun m_active and the EqVar m_isUserOutput flags
  *  to reflect the current configuration options, outputs, & properties.
@@ -46,7 +46,7 @@ QString EqCalc::getSubtitle( void ) const
 		else if ( prop->boolean( "surfaceConfSpreadDirPointSourcePsi" ) )
 			return QString( "Spread from Ignition Point" );
 		else if ( prop->boolean( "surfaceConfSpreadDirFireFront" ) )
-			return QString( "Spread from Fire Front" );
+			return QString( "Spread from Fire Perimeter" );
 	}
 	return QString( "" );
 }
@@ -74,6 +74,15 @@ void EqCalc::reconfigure( int release )
     reconfigureIgnitionModule( m_eqTree->m_propDict, release );
     reconfigureWeatherModule( m_eqTree->m_propDict, release );
     reconfigureSafetyModule( m_eqTree->m_propDict, release );
+	if ( requiresElapsedTime( m_eqTree->m_propDict ) )
+	{
+		vSurfaceFireElapsedTime->m_isConstant = false;
+	}
+	else
+	{
+		vSurfaceFireElapsedTime->m_isConstant = true;
+		vSurfaceFireElapsedTime->update( 1.0 );
+	}
     return;
 }
 
@@ -1537,23 +1546,6 @@ void EqCalc::reconfigureSurfaceModule( PropertyDict *prop, int /* release */ )
         vSurfaceFireDistAtVector->m_isUserOutput = prop->boolean( "surfaceCalcFireDist" );
     }
 
-	// Elapsed time is a constant when just Psi-related variables are required
-	// But it must be user input if any of the distance outputs are requested
-	vSurfaceFireElapsedTime->m_isConstant = true;
-	vSurfaceFireElapsedTime->update( 1.0 );
-	if ( prop->boolean( "surfaceCalcFireDist" )
-      || prop->boolean( "surfaceCalcFireDistAtOther" )
-	  || ( prop->boolean( "crownModuleActive" ) && prop->boolean( "crownCalcCrownSpreadDist" ) )
-	  || ( prop->boolean( "sizeModuleActive" ) ) )
-	  //|| ( prop->boolean( "sizeModuleActive" ) && prop->boolean( "sizeCalcFireDistAtBack" ) )
-	  //|| ( prop->boolean( "sizeModuleActive" ) && prop->boolean( "sizeCalcFireDistAtFront" ) )
-	  //|| ( prop->boolean( "sizeModuleActive" ) && prop->boolean( "sizeCalcFireLengDist" ) )
-	  //|| ( prop->boolean( "sizeModuleActive" ) && prop->boolean( "sizeCalcFireWidthDist" ) )
-	  //|| ( prop->boolean( "sizeModuleActive" ) && prop->boolean( "sizeCalcFireShapeDiagram" ) ) )
-	{
-		vSurfaceFireElapsedTime->m_isConstant = false;
-	}
-
 	// HACK to force label "Fire Spread from Fire Front (from Upslope/North)"
 	if ( prop->boolean( "surfaceConfSpreadDirFireFront" ) )
 	{
@@ -1829,6 +1821,44 @@ void EqCalc::reconfigureWeatherModule( PropertyDict *prop, int /* release */ )
         prop->boolean( "weatherCalcWthrWindChillTemp" );
 
     return;
+}
+
+bool EqCalc::requiresElapsedTime( PropertyDict *prop )
+{
+	if ( prop->boolean( "surfaceModuleActive" ) )
+    {
+		if ( prop->boolean( "surfaceCalcFireDist" )
+	      || prop->boolean( "surfaceCalcFireDistAtOther" ) )
+		{
+			return true;
+		}
+    }
+    if ( prop->boolean( "crownModuleActive" ) )
+    {
+		if ( prop->boolean( "crownCalcActiveSpreadDist"	)
+		  || prop->boolean( "crownCalcActiveFireArea" )
+		  || prop->boolean( "crownCalcActiveFirePerimeter" )
+		  || prop->boolean( "crownCalcPassiveSpreadDist" )
+		  || prop->boolean( "crownCalcPassiveFireArea" )
+		  || prop->boolean( "crownCalcPassiveFirePerimeter" ) )
+		{
+			return true;
+		}
+	}
+    if (  prop->boolean( "sizeModuleActive" ) )
+    {
+		if ( prop->boolean( "sizeCalcFireArea" )
+		  || prop->boolean( "sizeCalcFirePerimeter" )
+		  || prop->boolean( "sizeCalcFireDistAtFront" )
+		  || prop->boolean( "sizeCalcFireDistAtBack" )
+		  || prop->boolean( "sizeCalcFireDistAtFlank" )
+		  || prop->boolean( "sizeCalcFireLengDist" )
+		  || prop->boolean( "sizeCalcFireWidthDist" ) )
+		{
+			return true;
+		}
+    }
+    return false;
 }
 
 //------------------------------------------------------------------------------

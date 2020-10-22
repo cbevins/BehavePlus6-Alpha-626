@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xeqcalcV6Crown.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Rothermel (1991) and Scott & Reinhardt (2001) crown fire implementation.
  *
@@ -74,8 +74,9 @@ void EqCalc::V6CrownFireActiveCriticalSurfaceSpreadRate( void )
 	double windB = fetch( vSurfaceFireWindFactorB );
 	double windK = fetch( vSurfaceFireWindFactorK );
 	double oActive = fetch( vCrownFireActiveCritOpenWindSpeed );
+	double waf = fetch( vWindAdjFactor );
 	// Calculate results
-	double midflame = 0.4 * oActive;
+	double midflame = waf * oActive;
     double phiW = ( midflame <= 0. ) ? 0.0 : ( windK * pow( midflame, windB ) );
 	double criticalRos = ros0 * ( 1. + phiS + phiW );
 	// Store results
@@ -445,7 +446,7 @@ void EqCalc::V6CrownFireCritCrownSpreadRate( void )
 }
 
 //------------------------------------------------------------------------------
-/*! \brief V6CrownFireCritSurfFireInt [R'initiation]
+/*! \brief V6CrownFireCritSurfFireInt [I'initiation]
  *
  *	Calculates the critical surface fire intensity [I'initiation] for a
  *	surface fire to transition to a passsive or active crown fire.
@@ -466,9 +467,9 @@ void EqCalc::V6CrownFireCritSurfFireInt( void )
     double fmc = fetch( vTreeFoliarMois );
     double cbh = fetch( vTreeCrownBaseHt );
     // Calculate results
-    double RprimeInit = FBL_CrownFireCriticalSurfaceFireIntensity( fmc, cbh );
+    double IprimeInit = FBL_CrownFireCriticalSurfaceFireIntensity( fmc, cbh );
     // Store results
-    store( vCrownFireCritSurfFireInt, RprimeInit );
+    store( vCrownFireCritSurfFireInt, IprimeInit );
 }
 
 //------------------------------------------------------------------------------
@@ -626,12 +627,12 @@ void EqCalc::V6CrownFirePassiveFireLineIntensity( void )
 {
 	logMethod( "V6CrownFirePassiveLineIntensity", 2, 1 );
     // Access current input values
-    double chpua = fetch( vCrownFirePassiveHeatPerUnitArea );
-    double cros = fetch( vCrownFirePassiveSpreadRate );
+    double passiveHpua = fetch( vCrownFirePassiveHeatPerUnitArea );
+    double passiveRos = fetch( vCrownFirePassiveSpreadRate );
     // Calculate results
-    double cfli = FBL_CrownFireFirelineIntensity( chpua, cros );
+    double passiveFli = FBL_CrownFireFirelineIntensity( passiveHpua, passiveRos );
     // Store results
-    store( vCrownFirePassiveFireLineInt, cfli );
+    store( vCrownFirePassiveFireLineInt, passiveFli );
 }
 
 //------------------------------------------------------------------------------
@@ -718,8 +719,9 @@ void EqCalc::V6CrownFirePassiveHeatPerUnitArea( void )
     // Access current input values
     double surfaceHpua = fetch( vSurfaceFireHeatPerUnitArea );
     double canopyHpua  = fetch( vCrownFireHeatPerUnitAreaCanopy );
+	double cfb = fetch( vCrownFireCanopyFractionBurned );
     // Calculate results
-    double crownHpua = FBL_CrownFireHeatPerUnitArea( surfaceHpua, canopyHpua );
+    double crownHpua = FBL_CrownFireHeatPerUnitArea( surfaceHpua, cfb*canopyHpua );
     // Store results
     store( vCrownFirePassiveHeatPerUnitArea, crownHpua );
 }

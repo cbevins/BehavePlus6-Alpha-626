@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file fuelmodeldialog.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2013 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief BpDocument worksheet guide button dialog.
  */
@@ -83,7 +83,7 @@ FuelModelDialog::FuelModelDialog( BpDocument *bp, int lid, const char *name ) :
     m_lvi(0)
 {
     // Initialize member data
-    int id, iid;
+    int iid;
 
 	// Determine if the m_sort and m_name are the same or not
     bool showSortCol = false;
@@ -127,17 +127,26 @@ FuelModelDialog::FuelModelDialog( BpDocument *bp, int lid, const char *name ) :
     // Add each item choice
     QListViewItem *item;
     QString fmNumber, fmCode, fmDesc;
+	const char *num, *code;
+	int n;
     for ( iid = 0;
           iid < (int) m_var->m_itemList->count();
           iid++ )
     {
 		fmNumber = m_var->m_itemList->itemSort( iid );
+		num = fmNumber.latin1();
+		n = fmNumber.toInt();
 		fmCode   = m_var->m_itemList->itemName( iid );
-		if ( fmNumber != fmCode	)
+		code = fmCode.latin1();
+		if ( fmNumber != fmCode || ! isReservedFuelModelNumber( n ) )
 		{
 	        fmDesc = *( m_var->m_itemList->itemDesc( iid ) );
 			item = new QListViewItem( m_listView, fmNumber, fmCode, fmDesc );
 			Q_CHECK_PTR( item );
+		}
+		else
+		{
+			bool duplicate = true;
 		}
     }
     //m_listView->setMinimumWidth( m_listView->columnWidth( 0 ) );
@@ -268,6 +277,32 @@ bool FuelModelDialog::displayContents( QListViewItem *lvi )
 	// Display the contents and return.
     info( msg );
     return( true );
+}
+
+//------------------------------------------------------------------------------
+/*! \brief Returns TRUE if \a number is a reserved standard fuel model number.
+ */
+
+bool FuelModelDialog::isReservedFuelModelNumber( int n )
+{
+	return ( n <= 13						// current standard fuel models
+	 || ( n >=  14 && n<=  18 )			// future standard fuel models
+	 || ( n >=  91 && n<=  93 )			// current NB series
+	 || ( n >=  94 && n<=  95 )			// future NB series
+	 || ( n >=  98 && n<=  99 )			// FARSITE water and rock fuel models
+	 || ( n >= 101 && n<= 109 )			// current GR series
+	 || ( n >= 110 && n<= 112 )			// future GR series
+	 || ( n >= 121 && n<= 124 )			// current GS series
+	 || ( n >= 125 && n<= 130 )			// future GS series
+	 || ( n >= 141 && n<= 149 )			// current SH series
+	 || ( n >= 150 && n<= 152 )			// future SH series
+	 || ( n >= 161 && n<= 165 )			// current TU series
+	 || ( n >= 166 && n<= 170 )			// future TU series
+	 || ( n >= 181 && n<= 189 )			// current TL series
+	 || ( n >= 190 && n<= 192 )			// future TL series
+	 || ( n >= 201 && n<= 204 )			// current SB series
+	 || ( n >= 205 && n<= 210 )			// future SB series
+	 || n > 256 );						// FARSITE upper limit
 }
 
 //------------------------------------------------------------------------------

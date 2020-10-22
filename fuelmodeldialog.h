@@ -54,6 +54,7 @@ public:
     FuelModelDialog( BpDocument *parent, int lid, const char *name=0 ) ;
     ~FuelModelDialog( void ) ;
     int resultString( QString &qStr ) ;
+	bool isReservedFuelModelNumber( int number );
 
 // Protected slots
 protected slots:

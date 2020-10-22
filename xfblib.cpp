@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 /*! \file xfblib.cpp
  *  \version BehavePlus6
- *  \author Copyright (C) 2002-2016 by Collin D. Bevins.  All rights reserved.
+ *  \author Copyright (C) 2002-2018 by Collin D. Bevins.  All rights reserved.
  *
  *  \brief Fire behavior C API library.
  *
@@ -402,6 +402,7 @@ double FBL_AspenLoadDead1( int typeIndex, double curing )
         { 0.601, 0.645, 0.671, 0.699, 0.730, 0.7455 },
         { 0.880, 0.906, 1.037, 1.167, 1.300, 1.3665 },
         { 0.754, 0.797, 0.825, 0.854, 0.884, 0.8990 }
+        //{ 0.754, 0.797, 0.825, 1.167, 0.884, 0.8990 }
     };
     double load = 0.0;
     if ( typeIndex >= 0 && typeIndex < 5 )
@@ -733,7 +734,7 @@ double FBL_ChaparralMoistureLiveStem( double daysSinceMay1 )
  *
  * NOTE - Rothermel & Philpot (1973) used a factor of 0.0315 for chamise age,
  * while Cohen used 0.0347 in FIRECAST.  According to Faith Ann Heinsch:
- * <i>We are going to use Cohen’s calculation from FIRECAST. The change has to do
+ * <i>We are going to use Cohenï¿½s calculation from FIRECAST. The change has to do
  * with the fact that we are creating a proxy age from fuel bed depth rather than
  * using an entered age. He had to make some corrections for that assumption.</i>
  */
@@ -843,18 +844,36 @@ double FBL_CrownFireActiveWindSpeed(
 		double heatSink,
 		double slopeFactor )
 {
-	double rhob = 0.5520;							// Fuel model 10 bulk density (lb/ft3)
-	double cbd = 16.0185 * canopyBulkDensity;		// Convert from lb/ft3 to kg/m3
-	double rxInt = 0.189422 * reactionIntensity;	// Convert from Btu/ft2/min to kW/m2
-	// Determine the epsilon * Qig product from the fuel bed rbQig heat sink
-	double epsQig = heatSink / rhob;				// Product of eff htg num and heat of preignition
-	epsQig *= 2.32779;								// Convert from Btu/lb to kJ/kg
-	double numerator = ( 164.8 * epsQig / ( rxInt * cbd ) ) - slopeFactor - 1.;
-	double term = numerator / 0.001612;
-	// Scott & Reinhardt Eq 20 to derive wind speed at 20-ft that sustains a fully active crown fire
-	double oActive = 0.0457 * pow( term, 0.7 );		// m/min
-	double fpm = 3.2808 * oActive;					// Convert from m/min to ft/min
-	return fpm;
+	// Build 624 code
+	if ( false )
+	{
+		double rhob = 0.5520;							// Fuel model 10 bulk density (lb/ft3)
+		double cbd = 16.0185 * canopyBulkDensity;		// Convert from lb/ft3 to kg/m3
+		double rxInt = 0.189422 * reactionIntensity;	// Convert from Btu/ft2/min to kW/m2
+		// Determine the epsilon * Qig product from the fuel bed rbQig heat sink
+		double epsQig = heatSink / rhob;				// Product of eff htg num and heat of preignition
+		epsQig *= 2.32779;								// Convert from Btu/lb to kJ/kg
+		double numerator = ( 164.8 * epsQig / ( rxInt * cbd ) ) - slopeFactor - 1.;
+		double term = numerator / 0.001612;
+		// Scott & Reinhardt Eq 20 to derive wind speed at 20-ft that sustains a fully active crown fire
+		double oActive = 0.0457 * pow( term, 0.7 );		// m/min
+		double fpm = 3.2808 * oActive;					// Convert from m/min to ft/min
+	}
+
+	// In native units
+	double cbd		= 16.0185 * canopyBulkDensity;	// Convert from lb/ft3 to kg/m3
+	double ractive	= 3.28084 * ( 3.0 / cbd );		// R'active, ft/min
+	double r10		= ractive / 3.34;				// R'active = 3.324 R10
+	double propFlux = 0.048317062998571636;			// Fuel model 10 actual propagating flux ratio
+	double ros0     = reactionIntensity * propFlux / heatSink;
+    double windB    = 1.4308256324729873;			// Fuel model 10 actual wind factor B
+    double windBInv = 1. / windB;					// Fuel model 10 actual inverse of wind factor B
+    double windK    = 0.0016102128596515481;        // Fuel model 10 actual K = C*pow((beta/betOpt),-E)
+	double a		= ( ( r10 / ros0 ) - 1. - slopeFactor ) / windK;
+	double uMid		= pow( a, windBInv );
+	double u20		= uMid / 0.4;
+	double ci		= u20 / 54.680665;				// CI, km/h
+	return u20;
 }
 
 //------------------------------------------------------------------------------
@@ -923,9 +942,10 @@ double FBL_CrownFireCanopyFractionBurned(
 
 double FBL_CrownFireCriticalCrownFireSpreadRate( double canopyBulkDensity )
 {
-    double cbd = 16.0185 * canopyBulkDensity;       // Convert to Kg/m3
-    double ros = ( cbd < SMIDGEN ) ? 0.00 : ( 3.0 / cbd );
-    return( 3.28084 * ros );                        // Convert to ft/min
+    double cbdSi = 16.0184663678 * canopyBulkDensity;		// Convert to Kg/m3
+	double rosSi = ( cbdSi > 0. ) ? ( 3.0 / cbdSi ) : 0.;	// m/min
+	double rosFpm = rosSi * 3.2808399;						// ft/min
+    return rosFpm;
 }
 
 //------------------------------------------------------------------------------
@@ -1073,6 +1093,7 @@ double FBL_CrownFireHeatPerUnitArea(
 {
     return( surfaceHpua + canopyHpua );
 }
+
 //------------------------------------------------------------------------------
 /*! \brief Calculates the canopy portion of the crown fire heat per unit area
  *  given the crown fire fuel load and low heat of combustion.
@@ -1671,13 +1692,13 @@ double FBL_RelativeHumidity( double dryBulb, double dewPt )
 //------------------------------------------------------------------------------
 /*! \brief Calculates cover height used in spotting distance calculations.
  *
- *  \param z        Maximum firebrand height.
- *  \param coverHt  Tree/vegetation cover height (ft).
+ *  \param z				Maximum firebrand height.
+ *  \param downwindCoverHt	Mean cover ehight downwind of source (ft).
  *
  *  \return Cover ht used in calculation of flat terrain spotting distance.
  */
 
-double FBL_SpotCriticalCoverHt( double z, double coverHt )
+double FBL_SpotCriticalCoverHt( double z, double downwindCoverHt )
 {
     // Minimum value of coverHt used to calculate flatDist
     // using log variation with ht.
@@ -1686,8 +1707,8 @@ double FBL_SpotCriticalCoverHt( double z, double coverHt )
                       : ( 2.2 * pow( z, 0.337 ) - 4.0 );
 
     // Cover ht used in calculation of flatDist.
-    double htUsed = ( coverHt > criticalHt )
-                  ? ( coverHt )
+    double htUsed = ( downwindCoverHt > criticalHt )
+                  ? ( downwindCoverHt )
                   : ( criticalHt ) ;
     return( htUsed );
 }
@@ -1696,7 +1717,7 @@ double FBL_SpotCriticalCoverHt( double z, double coverHt )
 /*! \brief Calculates maximum spotting distance over flat terrain.
  *
  *  \param firebrandHt      Maximum firebrand height (ft).
- *  \param coverHt          Tree/vegetation cover height (ft).
+ *  \param coverHt          Downwind tree/vegetation cover height (ft).
  *  \param windSpeedAt20Ft  Wind speed at 20 ft (mi/h).
  *
  *  \return Maximum spotting distance over flat terrain.
@@ -1730,8 +1751,8 @@ double FBL_SpotDistanceFlatTerrain(
  *                           (mi).
  *  \param ridgeToValleyElev Vertical distance from ridge top to valley bottom
  *                           (ft).
- *  \param coverHt           Tree/vegetation cover height (ft).
- *	\param openCanopy		 1 if downwind canopy is open, 0 if downwind canopy is closed
+ *  \param downwindCoverHt   Mean cover height downwind of source (ft).
+ *	\param downwindOpenCanopy 1 if downwind canopy is open, 0 if downwind canopy is closed
  *  \param windSpeedAt20Ft   Wind speed at 20 ft (mi/h).
  *  \param flameHt           Burning pile's flame height (ft).
  *  \param[out] htUsed       Actual tree/vegetation ht used (ft).
@@ -1745,8 +1766,8 @@ double FBL_SpotDistanceFromBurningPile(
             int    location,
             double ridgeToValleyDist,
             double ridgeToValleyElev,
-            double coverHt,
-			int    openCanopy,
+            double downwindCoverHt,
+			int    downwindOpenCanopy,
             double windSpeedAt20Ft,
             double flameHt,
             double *htUsed,
@@ -1766,12 +1787,12 @@ double FBL_SpotDistanceFromBurningPile(
         // Determine maximum firebrand height
         z = 12.2 * flameHt;
 
-		// Adjust downwind canopy height based upon canopy cover
+		// Adjust downwind canopy height based upon downwind canopy cover
 		// Added in Release6 by Issues #028FAH - Downwind Canopy Open/Closed
-		coverHt = ( openCanopy ) ? 0.5 * coverHt : coverHt;
+		downwindCoverHt = ( downwindOpenCanopy ) ? 0.5 * downwindCoverHt : downwindCoverHt;
 
-        // Cover ht used in calculation of flatDist.
-        if ( ( ht = FBL_SpotCriticalCoverHt( z, coverHt ) ) > SMIDGEN )
+        // Cover ht used in calculation of  flat terrain spotting distance 'flatDist'.
+        if ( ( ht = FBL_SpotCriticalCoverHt( z, downwindCoverHt ) ) > SMIDGEN )
         {
             // Flat terrain spotting distance.
             flatDist = FBL_SpotDistanceFlatTerrain( z, ht, windSpeedAt20Ft );
@@ -1800,8 +1821,8 @@ double FBL_SpotDistanceFromBurningPile(
  *                           (mi).
  *  \param ridgeToValleyElev Vertical distance from ridge top to valley bottom
  *                           (ft).
- *  \param coverHt           Downwind tree/vegetation cover height (ft).
- *	\param openCanopy		 1 if downwind canopy is open, 0 if downwind canopy is closed
+ *  \param downwindCoverHt   Downwind tree/vegetation cover height (ft).
+ *	\param downwindOpenCanopy 1 if downwind canopy is open, 0 if downwind canopy is closed
  *  \param windSpeedAt20Ft   Wind speed at 20 ft (mi/h).
  *  \param flameLength       Surface fire flame length (ft).
  *  \param[out] htUsed       Actual tree/vegetation ht used (ft).
@@ -1816,8 +1837,8 @@ double FBL_SpotDistanceFromSurfaceFire(
             int    location,
             double ridgeToValleyDist,
             double ridgeToValleyElev,
-            double coverHt,
-			int    openCanopy,
+            double downwindCoverHt,
+			int    downwindOpenCanopy,
             double windSpeedAt20Ft,
             double flameLength,
             double *htUsed,
@@ -1849,10 +1870,10 @@ double FBL_SpotDistanceFromSurfaceFire(
 
 		// Adjust downwind canopy height based upon canopy cover
 		// Added in Release6 by Issues #028FAH - Downwind Canopy Open/Closed
-		coverHt = ( openCanopy ) ? 0.5 * coverHt : coverHt;
+		downwindCoverHt = ( downwindOpenCanopy ) ? 0.5 * downwindCoverHt : downwindCoverHt;
 
         // Cover ht used in calculation of flatDist.
-        if ( ( ht = FBL_SpotCriticalCoverHt( z, coverHt ) ) > SMIDGEN )
+        if ( ( ht = FBL_SpotCriticalCoverHt( z, downwindCoverHt ) ) > SMIDGEN )
         {
             drift    = 0.000278 * windSpeedAt20Ft * pow( z, 0.643 );
             flatDist = FBL_SpotDistanceFlatTerrain( z, ht, windSpeedAt20Ft )
@@ -1882,8 +1903,8 @@ double FBL_SpotDistanceFromSurfaceFire(
  *                           (mi).
  *  \param ridgeToValleyElev Vertical distance from ridge top to valley bottom
  *                           (ft).
- *  \param coverHt           Tree/vegetation cover height (ft).
- *	\param openCanopy		 1 if downwind canopy is open, 0 if downwind canopy is closed
+ *  \param downwindCoverHt   Downwind tree/vegetation cover height (ft).
+ *	\param downwindOpenCanopy 1 if downwind canopy is open, 0 if downwind canopy is closed
  *  \param windSpeedAt20Ft   Wind speed at 20 ft (mi/h).
  *  \param torchingTrees     Number of torching trees.
  *  \param treeDbh           Tree dbh (in).
@@ -1929,8 +1950,8 @@ double FBL_SpotDistanceFromTorchingTrees(
             int    location,
             double ridgeToValleyDist,
             double ridgeToValleyElev,
-            double coverHt,
-			int    openCanopy,
+            double downwindCoverHt,
+			int    downwindOpenCanopy,
             double windSpeedAt20Ft,
             double torchingTrees,
             double treeDbh,
@@ -1993,10 +2014,10 @@ double FBL_SpotDistanceFromTorchingTrees(
 
 		// Adjust downwind canopy height based upon canopy cover
 		// Added in Release6 by Issues #028FAH - Downwind Canopy Open/Closed
-		coverHt = ( openCanopy ) ? 0.5 * coverHt : coverHt;
+		downwindCoverHt = ( downwindOpenCanopy ) ? 0.5 * downwindCoverHt : downwindCoverHt;
 
         // Cover ht used in calculation of flatDist.
-        if ( ( ht = FBL_SpotCriticalCoverHt( z, coverHt ) ) > SMIDGEN )
+        if ( ( ht = FBL_SpotCriticalCoverHt( z, downwindCoverHt ) ) > SMIDGEN )
         {
             flatDist = FBL_SpotDistanceFlatTerrain( z, ht, windSpeedAt20Ft );
             mtnDist  = FBL_SpotDistanceMountainTerrain( flatDist,
@@ -2806,6 +2827,18 @@ double FBL_SurfaceFireForwardSpreadRate(
 
     // Wind direction relative to upslope
     double windDir = windDirFromUpslope;
+
+	// Some temporary stuff for testing PHP Behave
+	if ( false )
+	{
+		double effectiveWindSpeedLimit = 0.9 * reactionIntensity;
+		double windSlopeCoefficientLimit = ( effectiveWindSpeedLimit < SMIDGEN )
+			   ? ( 0.0 )
+			   : ( m_windK * pow( effectiveWindSpeedLimit, m_windB ) );
+		double spreadRateMaximumLimit =
+				noWindNoSlopeSpreadRate * ( 1. + windSlopeCoefficientLimit );
+		double rosUpSlopeWind = noWindNoSlopeSpreadRate * ( 1. + phiEw );
+	}
 
     // No-wind no-slope spread rate and parameters
     double ros0      = noWindNoSlopeSpreadRate;
